@@ -1,0 +1,88 @@
+:: Fishing
+<<pass 10 seconds>>
+/* 显示钓鱼地点 */
+你现在在
+<<switch $fishing_place>>
+	<<case "lake_fishing_rock">>森林湖钓鱼岩
+	<<case "beach">>海滩
+	<<case "barb_street">>倒钩街的运河
+	<<case "moor">>雷米庄园门口的沙地
+	<<case "honey">>森林蜂蜜池
+	<<case "farm_woodland">>农场的林地
+	<<case "wolf_cave_clearing">>狼窝的溪流
+	<<case "bird_tower">>鹰塔的雨水池
+	<<case "eden_clearing">>伊甸小屋的泉水
+	<<case "bog">>沼泽
+	<<case "trash">>垃圾场深处的沸水池
+	<<case "park">>公园的喷泉
+<</switch>>
+钓鱼。<br>
+/* 显示钓鱼结果 */
+<<if $fishing_distance lte 0>>
+	<<if $fishing_high_test_fishing_line isnot true and random(1,7) is 1>>
+		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><span class="red">但是你的鱼线断了......</span>也许你需要一个优质钓鱼线。<br>
+	<<else>>
+		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><br>
+		<<fishing_harvest>>
+	<</if>>
+	<br>
+	<<fishing_bait_consumed>>
+	<br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<fishing_cast_time>><</link>><br>
+	<<fishing_finished_back>>
+<<elseif $fishing_integrity is 0>>
+	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><br>
+	<br>
+	<<fishing_bait_consumed>>
+	<br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<fishing_cast_time>><</link>><br>
+	<<fishing_finished_back>>
+/* 显示每回合的结果 */
+<<else>>	
+	<<switch $fishingphase>>
+	<<case 1>>
+		<span class="teal">一次很成功的收线！</span>|<span class="green">+垂钓</span>
+	<<case 2>>
+		<span class="pink">哦不！它的挣扎使鱼线更加的脆弱......</span>|<span class="green">++垂钓</span>
+	<<case 3>>
+		<span class="teal">你让它挣扎得稍微远离了一些。</span>|<span class="green">+垂钓</span>
+	<<case 4>>
+		<span class="pink">它刚刚明明就没动！</span>|<span class="green">++垂钓</span>
+	<</switch>><br>
+	<br>
+	数值平衡处理好后将具体数字替换为各个颜色的状态文本<br>
+	渔获距离：$fishing_distance<br>
+	鱼线耐久：$fishing_integrity<br>
+	<br>
+	<<if $rng gte 51>>
+		<<set $fish_relax to true>>
+	<<else>>
+		<<set $fish_relax to false>>
+	<</if>><br>
+	<<if ($fishingskill * 0.8 + 200) gte random(1,1000)>>
+		你可以准确地看出来
+		<<if $fish_relax>>
+			它很安静。
+		<<else>>
+			它在挣扎。
+		<</if>>
+	<<else>>
+		你还看不出它的行为。
+	<</if>>
+	<br>
+	<<link [[收线|Fishing]]>>
+		<<if $fish_relax>>
+			<<set $fishing_distance -= $fishing_distance_power>><<fishingskill 1>><<set $fishingphase to 1>>
+		<<else>>
+			<<set $fishing_integrity -= 1>><<fishingskill 2>><<set $fishingphase to 2>>
+		<</if>>
+	<</link>><br>
+	<<link [[停止|Fishing]]>>
+		<<if $fish_relax isnot true>>
+			<<set $fishing_distance += 5>><<fishingskill 1>><<set $fishingphase to 3>>
+		<<else>>
+			<<fishingskill 2>><<set $fishingphase to 4>>
+		<</if>>
+	<</link>>
+<</if>>
+

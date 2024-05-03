@@ -1,0 +1,20 @@
+:: Fishing Skill [widget]
+<<widget "fishingskill">>
+	<<if _args[0] and $statFreeze isnot true>>
+		<<set $fishingskill += _args[0]>>
+		<<set $fishingskill to Math.clamp($fishingskill, 0, 1000)>>
+	<</if>>
+	<<set _fishingConfig = 
+		{ 
+    			name : "垂钓",	
+    			displayType : "grade",
+    			currentValue : $fishingskill,
+    			modifier: 100, 
+    			modTypes: { good: [], bad: [] },
+    			states : _detailedSkillGrades
+		}
+	>>
+	<<if $fishingskill gte 0>>
+		<<characteristic-box _fishingConfig>>
+	<</if>>
+<</widget>>

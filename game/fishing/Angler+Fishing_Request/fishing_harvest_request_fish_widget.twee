@@ -1,0 +1,39 @@
+:: Fishing Harvest Request Fish [widget]
+<<widget "fishing_harvest_request_fish">>
+	<<switch $fishing_request_selection>>
+		<<case 0>><<icon "fishing/quest_fish/Amanita_Fungifin.png">>毒菌鱼<<set $fishing_harvest to "Amanita_Fungifin">>
+		<<case 1>><<icon "fishing/quest_fish/Angelfish.png">>天使鱼<<set $fishing_harvest to "Angelfish">>
+		<<case 2>><<icon "fishing/quest_fish/Batfish.png">>蝙蝠鱼<<set $fishing_harvest to "Batfish">>
+		<<case 3>><<icon "fishing/quest_fish/Bonefish.png">>骷髅鱼<<set $fishing_harvest to "Bonefish">>
+		<<case 4>><<icon "fishing/quest_fish/Bumblebee_Tuna.png">>大黄蜂金枪鱼<<set $fishing_harvest to "Bumblebee_Tuna">>
+		<<case 5>><<icon "fishing/quest_fish/Bunnyfish.png">>兔兔鱼<<set $fishing_harvest to "Bunnyfish">>
+		<<case 6>><<icon "fishing/quest_fish/Catfish.png">>猫鱼<<set $fishing_harvest to "Catfish">>
+		<<case 7>><<icon "fishing/quest_fish/Cloudfish.png">>云鱼<<set $fishing_harvest to "Cloudfish">>
+		<<case 8>><<icon "fishing/quest_fish/Clownfish.png">>小丑鱼<<set $fishing_harvest to "Clownfish">>
+		<<case 9>><<icon "fishing/quest_fish/Demonic_Hellfish.png">>恶魔地狱鱼<<set $fishing_harvest to "Demonic_Hellfish">>
+		<<case 10>><<icon "fishing/quest_fish/Derpfish.png">>跳跳鱼<<set $fishing_harvest to "Derpfish">>
+		<<case 11>><<icon "fishing/quest_fish/Dirtfish.png">>土鱼<<set $fishing_harvest to "Dirtfish">>
+		<<case 12>><<icon "fishing/quest_fish/Dynamite_Fish.png">>雷管鱼<<set $fishing_harvest to "Dynamite_Fish">>
+		<<case 13>><<icon "fishing/quest_fish/Fallen_Starfish.png">>坠落星鱼<<set $fishing_harvest to "Fallen_Starfish">>
+		<<case 14>><<icon "fishing/quest_fish/Fish_of_Cthulhu.png">>克苏鲁鱼<<set $fishing_harvest to "Fish_of_Cthulhu">>
+		<<case 15>><<icon "fishing/quest_fish/Fishotron.png">>骷髅王鱼<<set $fishing_harvest to "Fishotron">>
+		<<case 16>><<icon "fishing/quest_fish/Guide_Voodoo_Fish.png">>向导巫毒鱼<<set $fishing_harvest to "Guide_Voodoo_Fish">>
+		<<case 17>><<icon "fishing/quest_fish/Harpyfish.png">>鸟妖鱼<<set $fishing_harvest to "Harpyfish">>
+		<<case 18>><<icon "fishing/quest_fish/Hungerfish.png">>饿鬼鱼<<set $fishing_harvest to "Hungerfish">>
+		<<case 19>><<icon "fishing/quest_fish/Jewelfish.png">>珠宝鱼<<set $fishing_harvest to "Jewelfish">>
+		<<case 20>><<icon "fishing/quest_fish/Mudfish.png">>泥鱼<<set $fishing_harvest to "Mudfish">>
+		<<case 21>><<icon "fishing/quest_fish/Scarab_Fish.png">>甲虫鱼<<set $fishing_harvest to "Scarab_Fish">>
+		<<case 22>><<icon "fishing/quest_fish/Scorpio_Fish.png">>蝎子鱼<<set $fishing_harvest to "Scorpio_Fish">>
+		<<case 23>><<icon "fishing/quest_fish/Slimefish.png">>史莱姆鱼<<set $fishing_harvest to "Slimefish">>
+		<<case 24>><<icon "fishing/quest_fish/Spiderfish.png">>蜘蛛鱼<<set $fishing_harvest to "Spiderfish">>
+		<<case 25>><<icon "fishing/quest_fish/Tropical_Barracuda.png">>热带梭鱼<<set $fishing_harvest to "Tropical_Barracuda">>
+		<<case 26>><<icon "fishing/quest_fish/Wyverntail.png">>飞龙尾<<set $fishing_harvest to "Wyverntail">>
+		<<case 27>><<icon "fishing/quest_fish/Zombie_Fish.png">>僵尸鱼<<set $fishing_harvest to "Zombie_Fish">>
+		<<case 28>><<icon "fishing/quest_fish/Brimlish.png">>小硫火鱼<<set $fishing_harvest to "Brimlish">>
+		<<case 29>><<icon "fishing/quest_fish/Eutrophic_Sandfish.png">>富养沙地鱼<<set $fishing_harvest to "Eutrophic_Sandfish">>
+		<<case 30>><<icon "fishing/quest_fish/Serpentuna.png">>巨蛇金枪鱼<<set $fishing_harvest to "Serpentuna">>
+		<<case 31>><<icon "fishing/quest_fish/Slurpfish.png">>饮食者鱼<<set $fishing_harvest to "Slurpfish">>
+		<<case 32>><<icon "fishing/quest_fish/Surf_Clam.png">>碎浪蛤<<set $fishing_harvest to "Surf_Clam">>
+		<<case 33>><<icon "fishing/quest_fish/quest_fish_sp/Bloody_Manowar.png">>血腥战神<<set $fishing_harvest to "Bloody_Manowar">>
+	<</switch>>
+<</widget>>

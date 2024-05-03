@@ -1,0 +1,14 @@
+:: Fishingrod Held Icon [widget]
+<<widget "fishingrod_held_icon">>
+
+<<switch $fishingrod_held>>
+	<<case "Golden_Fishing_Rod">><<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>
+	<<case "Hotline_Fishing_Hook">><<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>
+	<<case "Fiberglass_Fishing_Pole">><<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>
+	<<case "Scarab_Fishing_Rod">><<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>
+	<<case "Chum_Caster">><<icon "fishing/fishing_pole/Chum_Caster.png">>
+	<<case "Reinforced_Fishing_Pole">><<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>
+	<<case "Wood_Fishing_Pole">><<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
+<</switch>>
+
+<</widget>>

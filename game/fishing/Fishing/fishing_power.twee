@@ -1,0 +1,76 @@
+:: Fishing Power [widget]
+/* 渔力计算模块 */
+<<widget "fishing_power">>
+	<<set $fishing_power = 0>>
+	/* 不同鱼竿提供不同渔力 */
+	<<switch $fishingrod_held>>
+		<<case "Golden_Fishing_Rod">><<set $fishing_power += 50>>/* 金钓竿：50渔力 */
+		<<case "Hotline_Fishing_Hook">><<set $fishing_power += 45>>/* 熔线钓钩：45渔力 */
+		<<case "Fiberglass_Fishing_Pole">><<set $fishing_power += 30>>/* 玻璃钢钓竿：30渔力 */
+		<<case "Scarab_Fishing_Rod">><<set $fishing_power += 30>>/* 甲虫钓竿：30渔力 */
+		<<case "Chum_Caster">><<set $fishing_power += 25>>/* 鱼饵投掷者：25渔力 */
+		<<case "Reinforced_Fishing_Pole">><<set $fishing_power += 15>>/* 强化钓竿：15渔力 */
+		<<case "Wood_Fishing_Pole">><<set $fishing_power += 5>>/* 木钓竿：5渔力 */
+	<</switch>>
+	/* 不同鱼饵提供不同渔力 */
+	<<switch $Bait>>
+		<<case "Master_Bait">><<set $fishing_power += 50>>/* 大师诱饵：50渔力 */
+		<<case "Journeyman_Bait">><<set $fishing_power += 30>>/* 熟手诱饵：30渔力 */
+		<<case "Apprentice_Bait">><<set $fishing_power += 15>>/* 学徒诱饵：15渔力 */
+		<<case "Worm">><<set $fishing_power += 25>>/* 蠕虫：25渔力 */
+		<<case "Enchanted_Nightcrawler">><<set $fishing_power += 35>>/* 附魔夜行者：35渔力 */
+		<<case "Firefly">><<set $fishing_power += 15>>/* 萤火虫：20渔力 */
+		<<case "Lightning_Bug">><<set $fishing_power += 15>>/* 荧光虫：35渔力 */
+		<<case "Snail">><<set $fishing_power += 10>>/* 蜗牛：10渔力 */
+		<<case "Glowing_Snail">><<set $fishing_power += 15>>/* 发光蜗牛：15渔力 */
+		<<case "Grasshopper">><<set $fishing_power += 10>>/* 蚱蜢：10渔力 */
+		<<case "Monarch_Butterfly">><<set $fishing_power += 5>>/* 帝王蝶：5渔力 */
+		<<case "Sulphur_Butterfly">><<set $fishing_power += 10>>/* 黄粉蝶：10渔力 */
+		<<case "Zebra_Swallowtail_Butterfly">><<set $fishing_power += 15>>/* 带凤蝶：15渔力 */
+		<<case "Ulysses_Butterfly">><<set $fishing_power += 20>>/* 翠凤蝶：20渔力 */
+		<<case "Julia_Butterfly">><<set $fishing_power += 25>>/* 珠袖蝶：25渔力 */
+		<<case "Red_Admiral_Butterfly">><<set $fishing_power += 30>>/* 红蛱蝶：30渔力 */
+		<<case "Purple_Emperor_Butterfly">><<set $fishing_power += 35>>/* 紫蛱蝶：35渔力 */
+		<<case "Tree_Nymph_Butterfly">><<set $fishing_power += 50>>/* 帛斑蝶：50渔力 */
+		<<case "Hell_Butterfly">><<set $fishing_power += 25>>/* 地狱蝴蝶：25渔力 */
+		<<case "Maggot">><<set $fishing_power += 22>>/* 蝇蛆：22渔力 */
+		<<case "Stinkbug">><<set $fishing_power += 10>>/* 臭虫：10渔力 */
+		<<case "Gold_Butterfly">><<set $fishing_power += 50>>/* 金蝴蝶：50渔力 */
+		<<case "Gold_Grasshopper">><<set $fishing_power += 50>>/* 金蚱蜢：50渔力 */
+		<<case "Gold_Worm">><<set $fishing_power += 50>>/* 金蠕虫：50渔力 */
+		<<case "Truffle_Worm">><<set $fishing_power += 666>>/* 松露虫：666渔力 */
+	<</switch>>
+	/* 使用钓鱼药水提供15渔力 */
+	<<if $Fishing_Potion_countdown gt 0>>
+		<<set $fishing_power += 15>>
+	<</if>>
+	/* 装备渔夫耳环提供10渔力 */
+	<<if $Angler_Earring>>
+		<<set $fishing_power += 10>>
+	<</if>>
+	/* 装备钓鱼浮标提供10渔力 */
+	<<if $Fishing_Bobber>>
+		<<set $fishing_power += 10>>
+	<</if>>
+	/* 醉酒状态提供5渔力 */
+	<<if $drunk gt 0>>
+		<<set $fishing_power += 5>>
+	<</if>>
+	/* 雨雪天提供20%渔力加成，阴天提供10%渔力加成 */
+	<<switch $weather>>
+		<<case "rain">><<set $fishing_power *= 1.2>>
+		<<case "snow">><<set $fishing_power *= 1.2>>
+		<<case "overcast">><<set $fishing_power *= 1.1>>
+	<</switch>>
+	/* 6:00-7:30，19:30-21:00提供30%渔力加成 */
+	<<if (Time.hour is 6) or (Time.hour is 7 and Time.minute lte 30) or (Time.hour is 19 and Time.minute gte 30) or (Time.hour is 20) or (Time.hour is 21 and Time.minute is 0)>>
+		<<set $fishing_power *= 1.3>>
+	/* 9:00-15:00，22:30-3:30降低20%渔力 */
+	<<elseif (Time.hour gte 9 and Time.hour lte 14) or (Time.hour is 15 and Time.minute is 0) or (Time.hour is 22 and Time.minute gte 30) or (Time.hour gte 23) or (Time.hour lte 2) or (Time.hour is 3 and Time.minute lte 30)>>
+		<<set $fishing_power *= 0.8>>
+	<</if>>
+	/* 装备附魔珍珠提供10渔力 */
+	<<if $Enchanted_Pearl>>
+		<<set $fishing_power += 10>>
+	<</if>>
+<</widget>>

@@ -1,0 +1,65 @@
+:: Terra Debug
+晶塔相关<br>
+*请在历史等级达到B级，在博物馆向温特询问过晶塔的事情后，再使用这些晶塔相关功能。在这之前解锁晶塔功能无法发挥作用。<br>
+<<if $pylon_bedroom_unlock>>
+	<<icon "pylon/Forest_Pylon.png">><<link [[锁定孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_bedroom_unlock to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "pylon/Forest_Pylon.png">></span><<link [[解锁孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_bedroom_unlock to true>><</link>>
+<</if>>
+<br>
+<<if $pylon_eden_cabin_unlock>>
+	<<icon "pylon/Jungle_Pylon.png">><<link [[锁定伊甸小屋晶塔|Terra Debug]]>><<set $pylon_eden_cabin_unlock to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "pylon/Jungle_Pylon.png">></span><<link [[解锁伊甸小屋晶塔|Terra Debug]]>><<set $pylon_eden_cabin_unlock to true>><</link>>
+<</if>>
+<br>
+<<if $pylon_farm_bedroom_unlock>>
+	<<icon "pylon/Universal_Pylon.png">><<link [[锁定农场卧室晶塔|Terra Debug]]>><<set $pylon_farm_bedroom_unlock to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "pylon/Universal_Pylon.png">></span><<link [[解锁农场卧室晶塔|Terra Debug]]>><<set $pylon_farm_bedroom_unlock to true>><</link>>
+<</if>>
+<br>
+<<if $pylon_hawks_tower_unlock>>
+	<<icon "pylon/Sunken_Pylon.png">><<link [[锁定鹰塔晶塔|Terra Debug]]>><<set $pylon_hawks_tower_unlock to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "pylon/Sunken_Pylon.png">></span><<link [[解锁鹰塔晶塔|Terra Debug]]>><<set $pylon_hawks_tower_unlock to true>><</link>>
+<</if>>
+<br>
+<<if $pylon_wolfcave_unlock>>
+	<<icon "pylon/Mushroom_Pylon.png">><<link [[锁定狼窝晶塔|Terra Debug]]>><<set $pylon_wolfcave_unlock to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "pylon/Mushroom_Pylon.png">></span><<link [[解锁狼窝晶塔|Terra Debug]]>><<set $pylon_wolfcave_unlock to true>><</link>>
+<</if>>
+<br>
+以下几个传送选项，如在正常解锁对应地点前使用，可能会导致问题，请注意。<br>
+<<homeicon>><<link [[传送到卧室|Bedroom]]>><</link>><br>
+<<edenicon>><<link [[传送到伊甸小屋|Eden Cabin]]>><</link>><br>
+<<farmicon "cottage">><<link [[传送到农场卧室|Farm Bedroom]]>><</link>><br>
+<<mooricon "tower">><<link [[传送到鹰塔|Bird Tower]]>><</link>><br>
+<<wolfcaveicon>><<link [[传送到狼窝|Wolf Cave]]>><</link>><br>
+<br>
+钓鱼相关<br>
+<<link [[获得/丢弃鱼竿|Terra Debug Fishing Pole]]>><</link>><br>
+<<link [[获得/丢弃饰品|Terra Debug Accessories]]>><</link>><br>
+<<link [[获得宝匣|Terra Debug Crates]]>><</link>><br>
+<<link [[获得鱼饵|Terra Debug Baits]]>><</link>><br>
+<<link [[获得药水|Terra Debug Potions]]>><</link>><br>
+<<link "<<<">><<set $fishingskill -= 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
+<<link "<<">><<set $fishingskill -= 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
+<<link "<">><<set $fishingskill -= 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
+垂钓: <span id="statsfishingskill"><<print Math.trunc($fishingskill)>></span>
+| <<link ">">><<set $fishingskill += 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+| <<link ">>">><<set $fishingskill += 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+| <<link ">>>">><<set $fishingskill += 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+<br>
+<br>
+血月天塔柱相关<br>
+<<if $blood_moon_monolith_got>>
+	<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[丢弃血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith_got to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "blood_moon_monolith/Blood_Moon_Monolith.png">></span><<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith_got to true>><</link>>
+<</if>><br>
+<br>
+<<icon "fishing/fishing_accessories/Weather_Radio.png">><<link [[收音机调试|Radio Test]]>><</link>><br>
+<br>
+<<getouticon>><<link [[确定并返回|Bedroom]]>><</link>>

@@ -1,0 +1,33 @@
+/*晶塔狼窝*/
+:: Pylon Wolfcave [widget]
+<<widget "pylon_wolfcave">>
+
+<br>
+<<if $historytrait gte 2 and $pylon_museum_asked isnot true>>
+	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+<</if>>
+<<if $pylon_museum_asked>>
+	<<if $pylon_wolfcave_unlock isnot true>>
+		为了激活这个晶塔，你需要找到那块水晶。
+		<<if statusCheck("Black Wolf").love gte 27>>
+			<span class="teal">成为头狼，带黑狼一起去河边打猎吧。</span>
+		<<else>>
+			<span class="blue">如果黑狼对你有足够的好感，你将会得到提示。</span>
+		<</if>>
+	<<elseif $pylon_wolfcave_unlock>>
+		<<if Time.hour gte 6 and Time.hour lte 17>>
+			<<set $wolf_cave_hunt_request_refuse to false>>
+		<</if>>
+		这块充满魔力的水晶可以将你传送至别的地方。
+		<<if $wolf_cave_hunt_request_refuse and (Time.hour lt 6 or Time.hour gt 17) and $blackWolfNotHunting isnot true>>
+			但是现在黑狼不在狼窝，你无法使用它。			
+		<<else>>
+			<br>
+			<<icon "pylon/Mushroom_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "wolfcave">><</link>>
+		<</if>>
+	<</if>>
+<</if>>
+<br>
+<br>
+
+<</widget>>

@@ -1,0 +1,98 @@
+:: Fishing Request Place [widget]
+/* 任务鱼钓鱼点的提示与显示 */
+
+<<widget "fishing_request_place_lake_fishing_rock">>
+	<<if $fishing_place_lake_fishing_rock_unlock isnot true>>
+		森林那么大一片湖，总有你要的东西
+	<<else>>
+		森林湖钓鱼岩
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_beach">>
+	<<if $fishing_place_beach_unlock isnot true>>
+		你能听着屋外的海风声无动于衷么
+	<<else>>
+		海滩
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_barb_street">>
+	<<if $fishingskill lt 100>>
+		？？？
+	<<elseif $fishing_place_barb_street_unlock isnot true>>
+		倒钩街的河床常年干涸。但有传闻说，近年来连绵的雨水，使倒钩街的河床蓄起了一些水池，甚至冒出了些疑似生活在地下的鱼类
+	<<else>>
+		倒钩街的运河
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_moor">>
+	<<if $fishingskill lt 200>>
+		？？？
+	<<elseif $fishing_place_moor_unlock isnot true>>
+		深入荒原不远的一处庄园大门口附近，堆满了从小镇外运来的沙子，有人猜测这是庄园主的特殊需求，也有人认为是他仇敌的杰作：因为这些沙子中间不知为何总能蓄起水池
+	<<else>>
+		雷米庄园门口的沙地
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_honey">>
+	<<if $fishingskill lt 300>>
+		？？？
+	<<elseif $fishing_place_honey_unlock isnot true>>
+		小镇的市场流通着价值不菲的蜂蜡。那些卖家无不以在森林中摘取蜂蜡的折磨经历作为噱头，不过对于那些诸如"被蜜蜂侵犯"的离奇经历，总有人持怀疑态度
+	<<else>>
+		森林蜂蜜池
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_farm_woodland">>
+	<<if $fishingskill lt 400>>
+		？？？
+	<<elseif $fishing_place_farm_woodland_unlock isnot true>>
+		一些上流人士在交流时，会提到他们曾在小镇外的农场林地里见过这种奇特的鱼类。没人知道这是事实，还是他们为了夸耀阅历的杜撰——但无论如何，这是上流社会的共识。不知现在那里是否得到了开发利用
+	<<else>>
+		农场的林地
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_wolf_cave_clearing">>
+	<<if $fishingskill lt 500>>
+		？？？
+	<<elseif $fishing_place_wolf_cave_clearing_unlock isnot true>>
+		一些猎人曾沿着溪边几簇零星的发光蘑菇，想要寻找新的品种来大赚一笔，但他们最终都只有一个选择：追溯到森林中最凶险的狼窝后掉头逃跑
+	<<else>>
+		狼窝的溪流
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_bird_tower">>
+	<<if $fishingskill lt 600>>
+		？？？
+	<<elseif $fishing_place_bird_tower_unlock isnot true>>
+		相传，荒原深处的高塔上有一口永不干涸的水池。其底部的石头取自于另一片大陆，被荒漠深埋在地下的海床...如今这个水池，据有幸从荒原深处冒险回来的探索者说，是一只恐怖的哈比洗澡的地方
+	<<else>>
+		鹰塔的雨水池
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_eden_clearing">>
+	<<if $fishingskill lt 700>>
+		？？？
+	<<elseif $fishing_place_eden_clearing_unlock isnot true>>
+		越来越多的人注意到，夜晚时会有奇怪的物体坠入密林深处。还有人进一步说，他们总能听到这些东西落地时发出巨大的水声。但从没人去寻找过，因为那个位置附近的水源只有悬崖底下的泉水，此处生活着一个古怪的猎人
+	<<else>>
+		伊甸小屋的泉水
+	<</if>>
+<</widget>>
+
+<<widget "fishing_request_place_trash">>
+	<<if $fishingskill lt 900>>
+		？？？
+	<<elseif $fishing_place_trash_unlock isnot true>>
+		学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加“宏伟”。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景。
+	<<else>>
+		垃圾场深处的沸水池
+	<</if>>
+<</widget>>

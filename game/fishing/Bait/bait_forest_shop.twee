@@ -1,0 +1,277 @@
+:: Bait Forest Shop [widget]
+<<widget "bait_forest_shop">>
+	<br><br>
+	<<if $bait_forest_shop_main is undefined>>
+		<<set $bait_forest_shop_main to "Worm">>
+	<</if>>
+	<<if $bait_forest_shop is undefined>>
+		<<set $bait_forest_shop to "Worm">>
+	<</if>>
+	<<if $bait_forest_shop_intro is undefined>>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		放在商店中央的是一张生命木桌，上面一个装着小动物的容器引起了你的注意。<br>
+		<br>
+		<<link [[凑上前去|Bait Forest Shop Intro]]>><</link>>
+		<<exitAll>>
+	<</if>>
+	<<switch $bait_forest_shop>>
+		<<case "Gold_Butterfly">>
+			<<icon "placed_bait/Placed_Gold_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Gold_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有金蝴蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>>
+				<</if>>
+			<</if>>
+		<<case "Monarch_Butterfly">>
+			<<icon "placed_bait/Placed_Monarch_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Monarch_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有帝王蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Sulphur_Butterfly">>
+			<<icon "placed_bait/Placed_Sulphur_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Sulphur_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有黄粉蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Zebra_Swallowtail_Butterfly">>
+			<<icon "placed_bait/Placed_Zebra_Swallowtail_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Zebra_Swallowtail_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有带凤蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Ulysses_Butterfly">>
+			<<icon "placed_bait/Placed_Ulysses_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Ulysses_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有翠凤蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Julia_Butterfly">>
+			<<icon "placed_bait/Placed_Julia_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Julia_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有珠袖蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Red_Admiral_Butterfly">>
+			<<icon "placed_bait/Placed_Red_Admiral_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Red_Admiral_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有红蛱蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Purple_Emperor_Butterfly">>
+			<<icon "placed_bait/Placed_Purple_Emperor_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Purple_Emperor_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有紫蛱蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Tree_Nymph_Butterfly">>
+			<<icon "placed_bait/Placed_Tree_Nymph_Butterfly.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Tree_Nymph_Butterfly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有帛斑蝶的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Stinkbug">>
+			<<icon "placed_bait/Placed_Stinkbug.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Stinkbug isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有臭虫的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Worm">>
+			<<icon "placed_bait/Placed_Worm.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Worm isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有蠕虫的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Enchanted_Nightcrawler">>
+			<<icon "placed_bait/Placed_Enchanted_Nightcrawler.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Enchanted_Nightcrawler isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有附魔夜行者的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Gold_Worm">>
+			<<icon "placed_bait/Placed_Gold_Worm.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Gold_Worm isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有金蠕虫的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Firefly">>
+			<<icon "placed_bait/Placed_Firefly.png">><br>
+			<<if $bestiary_Firefly isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				天花板上挂着一个装有萤火虫的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Lightning_Bug">>
+			<<icon "placed_bait/Placed_Lightning_Bug.png">><br>
+			<<if $bestiary_Lightning_Bug isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				天花板上挂着一个装有荧光虫的罐子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Snail">>
+			<<icon "placed_bait/Placed_Snail.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Snail isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有蜗牛的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Glow_Snail">>
+			<<icon "placed_bait/Placed_Glow_Snail.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Glow_Snail isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有发光蜗牛的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Grasshopper">>
+			<<icon "placed_bait/Placed_Grasshopper.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Grasshopper isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有蚱蜢的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Gold_Grasshopper">>
+			<<icon "placed_bait/Placed_Gold_Grasshopper.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Gold_Grasshopper isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有金蚱蜢的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Maggot">>
+			<<icon "placed_bait/Placed_Maggot.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Maggot isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有蝇蛆的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+	<</switch>>
+<</widget>>

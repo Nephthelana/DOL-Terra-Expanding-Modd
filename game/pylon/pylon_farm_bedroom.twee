@@ -1,0 +1,24 @@
+:: Pylon Farm Bedroom [widget]
+<<widget "pylon_farm_bedroom">>
+
+<<if $historytrait gte 2 and $pylon_museum_asked isnot true>>
+	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+<</if>>
+<<if $pylon_museum_asked>>
+	<<if $pylon_farm_bedroom_unlock isnot true>>
+		为了激活这个晶塔，你需要找到那块水晶。
+		<<if $NPCName[$NPCNameList.indexOf("Alex")].love gte 90>>
+			<span class="teal">和艾利克斯一起在树下休息，然后去骑马逛一圈吧。</span>
+		<<else>>
+			<span class="blue">如果艾利克斯对你有足够的好感，你将会得到提示。</span>
+		<</if>>
+	<<elseif $pylon_farm_bedroom_unlock>>
+		这块充满魔力的水晶可以将你传送至别的地方。
+		<br>
+		<<icon "pylon/Universal_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "farmbedroom">><</link>>
+	<</if>>
+<</if>>
+<br>
+<br>
+
+<</widget>>

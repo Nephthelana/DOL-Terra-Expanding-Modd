@@ -1,0 +1,71 @@
+:: Buff Widget [widget]
+<<widget "buff_widget">>
+
+<br>
+<<if $Fishing_Potion_countdown gt 0 or $Sonar_Potion_countdown gt 0 or $Crate_Potion_countdown gt 0 or $drunk gt 0 or $drugged gt 0 or $hallucinogen gt 0>>
+	<mouse class="tooltip linkBlue">
+	增益追踪器
+		<span>
+			<<if $Fishing_Potion_countdown gt 0>>
+				<<icon "buff_icon/Fishing_(buff).png">>钓鱼:
+				<<if Math.floor($Fishing_Potion_countdown/60) gt 0>>
+					<<print [Math.floor($Fishing_Potion_countdown/60)]>>h
+				<<else>>
+					<<print [$Fishing_Potion_countdown]>>m
+				<</if>>
+				<br>
+			<</if>>
+			<<if $Sonar_Potion_countdown gt 0>>
+				<<icon "buff_icon/Sonar_(buff).png">>声呐:
+				<<if Math.floor($Sonar_Potion_countdown/60) gt 0>>
+					<<print [Math.floor($Sonar_Potion_countdown/60)]>>h
+				<<else>>
+					<<print [$Sonar_Potion_countdown]>>m
+				<</if>>
+				<br>
+			<</if>>
+			<<if $Crate_Potion_countdown gt 0>>
+				<<icon "buff_icon/Crate_(buff).png">>宝匣:
+				<<if Math.floor($Crate_Potion_countdown/60) gt 0>>
+					<<print [Math.floor($Crate_Potion_countdown/60)]>>h
+				<<else>>
+					<<print [$Crate_Potion_countdown]>>m
+				<</if>>
+				<br>
+			<</if>>
+			<<if $drunk gt 0>>
+				<<icon "buff_icon/Tipsy_(buff).png">>醉酒:
+				<<if Math.floor($drunk/60) gt 0>>
+					<<print [Math.floor($drunk/60)]>>h
+				<<else>>
+					<<print [$drunk]>>m
+				<</if>>
+				<br>
+			<</if>>
+			<<if $drugged gt 0>>
+				<<icon "buff_icon/Lovestruck_(buff).png">>催情:
+				<<if Math.floor($drugged/60) gt 0>>
+					<<print [Math.floor($drugged/60)]>>h
+				<<else>>
+					<<print [$drugged]>>m
+				<</if>>
+				<br>
+			<</if>>
+			<<if $hallucinogen gt 0>>
+				<<icon "buff_icon/Cerebral_Mindtrick_(buff).png">>致幻:
+				<<if Math.floor($hallucinogen/60) gt 0>>
+					<<print [Math.floor($hallucinogen/60)]>>h
+				<<else>>
+					<<print [$hallucinogen]>>m
+				<</if>>
+				<br>
+			<</if>>
+		</span>
+	</mouse>
+	<img src="img/misc/icon/buff_icon/Empty.png">
+	<br>
+<<else>>
+	<div></div>
+<</if>>
+
+<</widget>>

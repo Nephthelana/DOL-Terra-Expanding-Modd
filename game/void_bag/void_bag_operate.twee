@@ -1,0 +1,12 @@
+:: Void Bag Operate
+你悄悄打开了虚空袋，在里面翻找着。<br>
+<br>
+<<if $fishingrod>>
+	<span id="fishingrod_held_icon"><<fishingrod_held_icon>></span><<link [[切换鱼竿|Void Bag Switch Fishingrod]]>><</link>><br>
+<</if>>
+<br>
+<<if $Golden_Crate gte 1 or $Iron_Crate gte 1 or $Wooden_Crate gte 1 or $Ocean_Crate gte 1 or $Oyster gte 1 or $Oasis_Crate gte 1 or $Jungle_Crate gte 1 or $Sky_Crate gte 1 or $Sulphurous_Crate gte 1 or $Brimstone_Crate gte 1>>
+	<<icon "fishing/crates/Wooden_Crate.png">><<link [[打开宝匣|Void Bag Unload Crate]]>><</link>><br>
+<</if>>
+<br>
+<<getouticon>><<link [[返回|Orphanage Loft]]>><</link>><br>

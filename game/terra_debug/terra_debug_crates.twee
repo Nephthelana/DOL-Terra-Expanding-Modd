@@ -1,0 +1,26 @@
+:: Terra Debug Crates
+请选择获得的宝匣。<br>
+<<if $Golden_Crate is undefined>><<set $Golden_Crate = 0>><</if>>
+<<if $Iron_Crate is undefined>><<set $Iron_Crate = 0>><</if>>
+<<if $Wooden_Crate is undefined>><<set $Wooden_Crate = 0>><</if>>
+<<if $Ocean_Crate is undefined>><<set $Ocean_Crate = 0>><</if>>
+<<if $Oyster is undefined>><<set $Oyster = 0>><</if>>
+<<if $Oasis_Crate is undefined>><<set $Oasis_Crate = 0>><</if>>
+<<if $Jungle_Crate is undefined>><<set $Jungle_Crate = 0>><</if>>
+<<if $Sky_Crate is undefined>><<set $Sky_Crate = 0>><</if>>
+<<if $Sunken_Crate is undefined>><<set $Sunken_Crate = 0>><</if>>
+<<if $Sulphurous_Crate is undefined>><<set $Sulphurous_Crate = 0>><</if>>
+<<if $Brimstone_Crate is undefined>><<set $Brimstone_Crate = 0>><</if>>
+<<icon "fishing/crates/Golden_Crate.png">><<link [[来5个金匣|Terra Debug Crates]]>><<set $Golden_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Iron_Crate.png">><<link [[来5个铁匣|Terra Debug Crates]]>><<set $Iron_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Wooden_Crate.png">><<link [[来5个木匣|Terra Debug Crates]]>><<set $Wooden_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Ocean_Crate.png">><<link [[来5个海洋匣|Terra Debug Crates]]>><<set $Ocean_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Oyster.png">><<link [[来5个牡蛎|Terra Debug Crates]]>><<set $Oyster += 5>><</link>><br>
+<<icon "fishing/crates/Oasis_Crate.png">><<link [[来5个绿洲匣|Terra Debug Crates]]>><<set $Oasis_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Jungle_Crate.png">><<link [[来5个丛林匣|Terra Debug Crates]]>><<set $Jungle_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Sky_Crate.png">><<link [[来5个天空匣|Terra Debug Crates]]>><<set $Sky_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Sunken_Crate.png">><<link [[来5个沉沦匣|Terra Debug Crates]]>><<set $Sunken_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Sulphurous_Crate.png">><<link [[来5个硫海匣|Terra Debug Crates]]>><<set $Sulphurous_Crate += 5>><</link>><br>
+<<icon "fishing/crates/Brimstone_Crate.png">><<link [[来5个硫火匣|Terra Debug Crates]]>><<set $Brimstone_Crate += 5>><</link>><br>
+<br>
+<<getouticon>><<link [[返回|Terra Debug]]>><</link>>

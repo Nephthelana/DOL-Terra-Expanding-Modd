@@ -1,0 +1,15 @@
+					has: $englishPlayWell is 1,
+				},
+			],
+		},
+		{
+			title: "饰品特质",
+			traits: [
+				{
+					name: "雏翼",
+					colour: "green",
+					has: $Fledgling_Wings is true,
+					text: "使你能从高处滑翔",
+				},
+			],
+		},

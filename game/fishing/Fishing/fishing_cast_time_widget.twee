@@ -1,0 +1,63 @@
+:: Fishing Cast Time [widget]
+<<widget "fishing_cast_time">>
+	<<fishing_power>>
+	<<set $fishing_cast_time = 0>>
+	<<for $fishing_catch_counter = 0 ; $fishing_cast_time lt 30 ; $fishing_cast_time += 1>>
+		<<set $fishing_catch_counter += random (30,60)>>
+		<<set $fishing_catch_counter += $fishing_power * 2>>
+		<<if ($fishing_power / 3) gte random(1,100)>>
+			<<set $fishing_catch_counter += random (30,60)>>
+		<</if>>
+		<<if $fishing_catch_counter gte 660>>
+			<<if ((75 + $fishing_power) / 2) gte random(1,100)>>
+				<<set $fishing_cast_time += 1>>
+				<<break>>
+			<<else>>
+				<<if $trash gte 50 and 
+					(
+						(($Lavaproof_Fishing_Hook or $Lavaproof_Tackle_Bag) and $Bait is "Hell_Butterfly") or
+						(($Lavaproof_Fishing_Hook or $Lavaproof_Tackle_Bag) and $fishingrod_held is "Hotline_Fishing_Hook") or
+						($Bait is "Hell_Butterfly" and $fishingrod_held is "Hotline_Fishing_Hook")
+					)
+				>>
+					<<set $fishing_catch_counter = 240>>
+				<<else>>
+					<<set $fishing_catch_counter = 0>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</for>>
+/* 这部分先用作为注释忽略掉
+	<<if $Tackle_Box>>
+		<<set $fishing_cast_time = random(15,20)>>
+	<<else>>
+		<<set $fishing_cast_time = random(25,35)>>
+	<</if>>
+	<<if $Fishing_Bobber>>
+		<<set $fishing_cast_time -= 2>>
+	<</if>>
+	<<switch $Bait>>
+		<<case "Apprentice_Bait">>
+			<<set $fishing_cast_time -= 3>>
+			<<if $Tackle_Box>>
+				<<if random(1,6*2+15) lte 6>><<set $Apprentice_Bait -= 1>><</if>>
+			<<else>>
+				<<if random(1,6 + 15) lte 6>><<set $Apprentice_Bait -= 1>><</if>>
+			<</if>>
+		<<case "Journeyman_Bait">>
+			<<set $fishing_cast_time -= 6>>
+			<<if $Tackle_Box>>
+				<<if random(1,6*2+30) lte 6>><<set $Journeyman_Bait -= 1>><</if>>
+			<<else>>
+				<<if random(1,6 + 30) lte 6>><<set $Journeyman_Bait -= 1>><</if>>
+			<</if>>
+		<<case "Master_Bait">>
+			<<set $fishing_cast_time -= 10>>
+			<<if $Tackle_Box>>
+				<<if random(1,6*2+50) lte 6>><<set $Master_Bait -= 1>><</if>>
+			<<else>>
+				<<if random(1,6 + 50) lte 6>><<set $Master_Bait -= 1>><</if>>
+			<</if>>
+	<</switch>>
+*/
+<</widget>>

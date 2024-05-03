@@ -1,0 +1,71 @@
+:: Bestiary Forest Shop
+<<npc Gwylan>><<person1>>
+格威岚向你介绍了这种虫子的一些东西。（占位,待完善）<br>
+	<<switch $bait_forest_shop>>
+		<<case "Gold_Butterfly">>
+			<<set $bestiary_Gold_Butterfly to true>>
+			<<set $bestiary_Gold_Butterfly_forest_shop to true>>
+		<<case "Monarch_Butterfly">>
+			<<set $bestiary_Monarch_Butterfly to true>>
+			<<set $bestiary_Monarch_Butterfly_forest_shop to true>>
+		<<case "Sulphur_Butterfly">>
+			<<set $bestiary_Sulphur_Butterfly to true>>
+			<<set $bestiary_Sulphur_Butterfly_forest_shop to true>>
+		<<case "Zebra_Swallowtail_Butterfly">>
+			<<set $bestiary_Zebra_Swallowtail_Butterfly to true>>
+			<<set $bestiary_Zebra_Swallowtail_Butterfly_forest_shop to true>>
+		<<case "Ulysses_Butterfly">>
+			<<set $bestiary_Ulysses_Butterfly to true>>
+			<<set $bestiary_Ulysses_Butterfly_forest_shop to true>>
+		<<case "Julia_Butterfly">>
+			<<set $bestiary_Julia_Butterfly to true>>
+			<<set $bestiary_Julia_Butterfly_forest_shop to true>>
+		<<case "Red_Admiral_Butterfly">>
+			<<set $bestiary_Red_Admiral_Butterfly to true>>
+			<<set $bestiary_Red_Admiral_Butterfly_forest_shop to true>>
+		<<case "Purple_Emperor_Butterfly">>
+			<<set $bestiary_Purple_Emperor_Butterfly to true>>
+			<<set $bestiary_Purple_Emperor_Butterfly_forest_shop to true>>
+		<<case "Tree_Nymph_Butterfly">>
+			<<set $bestiary_Tree_Nymph_Butterfly to true>>
+			<<set $bestiary_Tree_Nymph_Butterfly_forest_shop to true>>
+		<<case "Stinkbug">>
+			<<set $bestiary_Stinkbug to true>>
+			<<set $bestiary_Stinkbug_forest_shop to true>>
+		<<case "Worm">>
+			<<set $bestiary_Worm to true>>
+			<<set $bestiary_Worm_forest_shop to true>>
+		<<case "Enchanted_Nightcrawler">>
+			<<set $bestiary_Enchanted_Nightcrawler to true>>
+			<<set $bestiary_Enchanted_Nightcrawler_forest_shop to true>>
+		<<case "Gold_Worm">>
+			<<set $bestiary_Gold_Worm to true>>
+			<<set $bestiary_Gold_Worm_forest_shop to true>>
+		<<case "Firefly">>
+			<<set $bestiary_Firefly to true>>
+			<<set $bestiary_Firefly_forest_shop to true>>
+		<<case "Lightning_Bug">>
+			<<set $bestiary_Lightning_Bug to true>>
+			<<set $bestiary_Lightning_Bug_forest_shop to true>>
+		<<case "Snail">>
+			<<set $bestiary_Snail to true>>
+			<<set $bestiary_Snail_forest_shop to true>>
+		<<case "Glow_Snail">>
+			<<set $bestiary_Glow_Snail to true>>
+			<<set $bestiary_Glow_Snail_forest_shop to true>>
+		<<case "Grasshopper">>
+			<<set $bestiary_Grasshopper to true>>
+			<<set $bestiary_Grasshopper_forest_shop to true>>
+		<<case "Gold_Grasshopper">>
+			<<set $bestiary_Gold_Grasshopper to true>>
+			<<set $bestiary_Gold_Grasshopper_forest_shop to true>>
+		<<case "Maggot">>
+			<<set $bestiary_Maggot to true>>
+			<<set $bestiary_Maggot_forest_shop to true>>
+	<</switch>>
+<br>
+<span class="gold">图鉴解锁了新的条目！</span><br>
+<br>
+<<getouticon>><<link [[返回|Forest Shop]]>><</link>><br>
+<br>
+<<endevent>>

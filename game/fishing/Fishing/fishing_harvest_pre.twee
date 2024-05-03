@@ -1,0 +1,442 @@
+:: Fishing Harvest Pre [widget]
+<<widget "fishing_harvest_pre">>
+
+	/* “极度罕见”渔获判定通过概率 */
+	<<if $fishing_power gte random(1,4500)>>
+		<<set $fishing_harvest_catch_quality to "extremely_rare">>
+	/* “非常罕见”渔获判定通过概率 */
+	<<elseif $fishing_power gte random(1,2250)>>
+		<<set $fishing_harvest_catch_quality to "very_rare">>
+	/* “罕见”渔获判定通过概率，上限1/4 */
+	<<elseif $fishing_power gt 262.5 and random(1,4) is 1>>
+		<<set $fishing_harvest_catch_quality to "rare">>
+	<<elseif $fishing_power gte random(1,1050)>>
+		<<set $fishing_harvest_catch_quality to "rare">>
+	/* “不常见”渔获判定通过概率，上限1/3 */
+	<<elseif $fishing_power gt 100 and random(1,3) is 1>>
+		<<set $fishing_harvest_catch_quality to "uncommon">>
+	<<elseif $fishing_power gte random(1,300)>>
+		<<set $fishing_harvest_catch_quality to "uncommon">>
+	/* “常见”渔获判定通过概率，上限1/2 */
+	<<elseif $fishing_power gt 75 and random(1,2) is 1>>
+		<<set $fishing_harvest_catch_quality to "common">>
+	<<elseif $fishing_power gte random(1,150)>>
+		<<set $fishing_harvest_catch_quality to "common">>
+	/* 以上都不通过时，稀有度为“丰富” */
+	<<else>>
+		<<set $fishing_harvest_catch_quality to "plentiful">>
+	<</if>>
+
+	/* “宝匣”判定通过概率，无药水10%，有宝匣药水增加15%，有附魔珍珠增加10% */
+	<<set $fishing_crate_chance = 10>>
+	<<if $Crate_Potion_countdown gt 0>>
+		<<set $fishing_crate_chance += 15>>
+	<</if>>
+	<<if $Enchanted_Pearl>>
+		<<set $fishing_crate_chance += 10>>
+	<</if>>
+	<<if random(1,100) lte $fishing_crate_chance>>
+		<<set $fishing_harvest_crate to true>>
+	<<else>>
+		<<set $fishing_harvest_crate to false>>
+	<</if>>
+
+	/* 各个地点渔获列表 从最高渔获稀有度开始依次判定*/
+	<<switch $fishing_place>>
+		<<case "lake_fishing_rock">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $fishing_harvest to "Salmon">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $fishing_harvest to "Salmon">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $fishing_harvest to "Salmon">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 5 or 
+						$fishing_request_selection is 11 or 
+						$fishing_request_selection is 12 or 
+						$fishing_request_selection is 13 or 
+						$fishing_request_selection is 14 or 
+						$fishing_request_selection is 17 or 
+						$fishing_request_selection is 23 or 
+						$fishing_request_selection is 27
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $fishing_harvest to "Salmon">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
+					<</if>>
+			<</switch>>
+		<<case "beach">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Pink_Jellyfish_(bait).png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_(bait)">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Pink_Jellyfish_(bait).png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_(bait)">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Ocean_Crate.png">>海洋匣<<set $fishing_harvest to "Ocean_Crate">>
+					<<else>><<icon "fishing/fish/Pink_Jellyfish_(bait).png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_(bait)">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 8
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Shrimp.png">>虾<<set $fishing_harvest to "Shrimp">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Tuna.png">>金枪鱼<<set $fishing_harvest to "Tuna">>
+					<<else>><<icon "fishing/fish/Red_Snapper.png">>红鲷鱼<<set $fishing_harvest to "Red_Snapper">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Trout.png">>鳟鱼<<set $fishing_harvest to "Trout">>
+					<</if>>
+			<</switch>>
+		<<case "barb_street">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Golden_Carp.png">>金鲤鱼<<set $fishing_harvest to "Golden_Carp">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
+					<<else>><<icon "fishing/fish/Blue_Jellyfish_(bait).png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_(bait)">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
+					<<else>><<icon "fishing/fish/Blue_Jellyfish_(bait).png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_(bait)">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 2 or 
+						$fishing_request_selection is 3 or 
+						$fishing_request_selection is 11 or 
+						$fishing_request_selection is 19 or 
+						$fishing_request_selection is 24
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Armored_Cavefish.png">>装甲洞穴鱼<<set $fishing_harvest to "Armored_Cavefish">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Specular_Fish.png">>镜面鱼<<set $fishing_harvest to "Specular_Fish">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
+					<</if>>
+			<</switch>>
+		<<case "moor">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/crates/Oyster.png">>牡蛎<<set $fishing_harvest to "Oyster">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/crates/Oyster.png">>牡蛎<<set $fishing_harvest to "Oyster">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Oasis_Crate.png">>绿洲匣<<set $fishing_harvest to "Oasis_Crate">>
+					<<else>><<icon "fishing/crates/Oyster.png">>牡蛎<<set $fishing_harvest to "Oyster">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 21 or 
+						$fishing_request_selection is 22
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/crates/Oyster.png">>牡蛎<<set $fishing_harvest to "Oyster">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Flounder.png">>偏口鱼<<set $fishing_harvest to "Flounder">>
+					<<else>><<icon "fishing/fish/Rock_Lobster.png">>岩石龙虾<<set $fishing_harvest to "Rock_Lobster">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Flounder.png">>偏口鱼<<set $fishing_harvest to "Flounder">>
+					<<else>><<icon "fishing/fish/Rock_Lobster.png">>岩石龙虾<<set $fishing_harvest to "Rock_Lobster">>
+					<</if>>
+			<</switch>>
+		<<case "honey">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<else>><<icon "fishing/fish/Honeyfin.png">>蜂蜜鱼<<set $fishing_harvest to "Honeyfin">>
+					<</if>>
+				<<case "very_rare">>
+					<<icon "fishing/fish/Honeyfin.png">>蜂蜜鱼<<set $fishing_harvest to "Honeyfin">>
+				<<case "rare">>
+					<<icon "fishing/fish/Honeyfin.png">>蜂蜜鱼<<set $fishing_harvest to "Honeyfin">>
+				<<case "uncommon">>
+					<<if $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 4
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Honeyfin.png">>蜂蜜鱼<<set $fishing_harvest to "Honeyfin">>
+					<</if>>
+				<<case "common">>
+					<<icon "fishing/fish/Honeyfin.png">>蜂蜜鱼<<set $fishing_harvest to "Honeyfin">>
+				<<case "plentiful">>
+					<<icon "fishing/fish/Honeyfin.png">>蜂蜜鱼<<set $fishing_harvest to "Honeyfin">>
+			<</switch>>
+		<<case "farm_woodland">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Double_Cod.png">>双鳍鳕鱼<<set $fishing_harvest to "Double_Cod">>
+					<<else>><<icon "fishing/fish/Variegated_Lardfish.png">>斑驳油鱼<<set $fishing_harvest to "Variegated_Lardfish">>
+				<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Double_Cod.png">>双鳍鳕鱼<<set $fishing_harvest to "Double_Cod">>
+					<<else>><<icon "fishing/fish/Variegated_Lardfish.png">>斑驳油鱼<<set $fishing_harvest to "Variegated_Lardfish">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Jungle_Crate.png">>丛林匣<<set $fishing_harvest to "Jungle_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Double_Cod.png">>双鳍鳕鱼<<set $fishing_harvest to "Double_Cod">>
+					<<else>><<icon "fishing/fish/Variegated_Lardfish.png">>斑驳油鱼<<set $fishing_harvest to "Variegated_Lardfish">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 6 or 
+						$fishing_request_selection is 10 or 
+						$fishing_request_selection is 20 or 
+						$fishing_request_selection is 25
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Double_Cod.png">>双鳍鳕鱼<<set $fishing_harvest to "Double_Cod">>
+					<<else>><<icon "fishing/fish/Variegated_Lardfish.png">>斑驳油鱼<<set $fishing_harvest to "Variegated_Lardfish">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Neon_Tetra.png">>霓虹脂鲤<<set $fishing_harvest to "Neon_Tetra">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
+					<</if>>
+			<</switch>>
+		<<case "wolf_cave_clearing">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Golden_Carp.png">>金鲤鱼<<set $fishing_harvest to "Golden_Carp">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
+					<<else>><<icon "fishing/fish/Blue_Jellyfish_(bait).png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_(bait)">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
+					<<else>><<icon "fishing/fish/Blue_Jellyfish_(bait).png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_(bait)">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 0 or 
+						$fishing_request_selection is 2 or 
+						$fishing_request_selection is 3 or 
+						$fishing_request_selection is 9 or 
+						$fishing_request_selection is 15 or 
+						$fishing_request_selection is 16					
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Armored_Cavefish.png">>装甲洞穴鱼<<set $fishing_harvest to "Armored_Cavefish">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Specular_Fish.png">>镜面鱼<<set $fishing_harvest to "Specular_Fish">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
+					<</if>>
+			<</switch>>
+		<<case "bird_tower">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $rusted_jingle_bell isnot true>><<icon "Rusted_Jingle_Bell.png">>锈蚀铃铛<<set $fishing_harvest to "Rusted_Jingle_Bell">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Greenwave_Loach.png">>绿波泥鳅<<set $fishing_harvest to "Greenwave_Loach">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Sunken_Sailfish.png">>沉沦帆鱼<<set $fishing_harvest to "Sunken_Sailfish">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Sunken_Crate.png">>沉沦匣<<set $fishing_harvest to "Sunken_Crate">>
+					<<else>><<icon "fishing/fish/Sunken_Sailfish.png">>沉沦帆鱼<<set $fishing_harvest to "Sunken_Sailfish">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 18 or 
+						$fishing_request_selection is 19 or 
+						$fishing_request_selection is 24 or 
+						$fishing_request_selection is 29 or 
+						$fishing_request_selection is 30 or 
+						$fishing_request_selection is 32
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Sunken_Sailfish.png">>沉沦帆鱼<<set $fishing_harvest to "Sunken_Sailfish">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Prismatic_Guppy.png">>棱镜孔雀鱼<<set $fishing_harvest to "Prismatic_Guppy">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣
+					<<else>><<icon "fishing/fish/Prismatic_Guppy.png">>棱镜孔雀鱼<<set $fishing_harvest to "Prismatic_Guppy">>
+					<</if>>
+			<</switch>>
+		<<case "eden_clearing">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Damselfish.png">>雀鲷<<set $fishing_harvest to "Damselfish">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Damselfish.png">>雀鲷<<set $fishing_harvest to "Damselfish">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Sky_Crate.png">>天空匣<<set $fishing_harvest to "Sky_Crate">>
+					<<else>><<icon "fishing/fish/Damselfish.png">>雀鲷<<set $fishing_harvest to "Damselfish">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 1 or 
+						$fishing_request_selection is 7 or 
+						$fishing_request_selection is 13 or 
+						$fishing_request_selection is 14 or 
+						$fishing_request_selection is 17 or 
+						$fishing_request_selection is 26
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Damselfish.png">>雀鲷<<set $fishing_harvest to "Damselfish">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
+					<</if>>
+			<</switch>>
+		<<case "bog">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Pink_Jellyfish_(bait).png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_(bait)">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Pink_Jellyfish_(bait).png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_(bait)">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Sulphurous_Crate.png">>硫海匣<<set $fishing_harvest to "Sulphurous_Crate">>
+					<<else>><<icon "fishing/fish/Pink_Jellyfish_(bait).png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_(bait)">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<else>><<icon "fishing/fish/Shrimp.png">>虾<<set $fishing_harvest to "Shrimp">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Tuna.png">>金枪鱼<<set $fishing_harvest to "Tuna">>
+					<<else>><<icon "fishing/fish/Red_Snapper.png">>红鲷鱼<<set $fishing_harvest to "Red_Snapper">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Trout.png">>鳟鱼<<set $fishing_harvest to "Trout">>
+					<</if>>
+			<</switch>>
+		<<case "trash">>
+			<<switch $fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
+					<<elseif $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Charred_Lasher.png">>焦黑鞭笞者<<set $fishing_harvest to "Charred_Lasher">>
+					<</if>>
+				<<case "very_rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
+					<<else>><<icon "fishing/fish/Coastal_Demonfish.png">>海岸恶魔鱼<<set $fishing_harvest to "Coastal_Demonfish">>
+					<</if>>
+				<<case "rare">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Brimstone_Crate.png">>硫火匣<<set $fishing_harvest to "Brimstone_Crate">>
+					<<else>><<icon "fishing/fish/Coastal_Demonfish.png">>海岸恶魔鱼<<set $fishing_harvest to "Coastal_Demonfish">>
+					<</if>>
+				<<case "uncommon">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
+					<<elseif $fishing_request_fish_obtained isnot true and 
+					(
+						$fishing_request_selection is 28 or 
+						$fishing_request_selection is 31
+					)>>
+						<<fishing_harvest_request_fish>>
+					<<else>><<icon "fishing/fish/Coastal_Demonfish.png">>海岸恶魔鱼<<set $fishing_harvest to "Coastal_Demonfish">>
+					<</if>>
+				<<case "common">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Crag_Bullhead.png">>硫火崖回鱼<<set $fishing_harvest to "Crag_Bullhead">>
+					<</if>>
+				<<case "plentiful">>
+					<<if $fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $fishing_harvest to "Wooden_Crate">>
+					<<else>><<icon "fishing/fish/Crag_Bullhead.png">>硫火崖回鱼<<set $fishing_harvest to "Crag_Bullhead">>
+					<</if>>
+			<</switch>>
+		<<case "park">>
+			<<fishing_harvest_trash>>
+	<</switch>>
+
+<</widget>>

@@ -1,0 +1,12 @@
+:: Pylon Farm Bedroom Ask [widget]
+<<widget "pylon_farm_bedroom_ask">>
+
+<<npc Alex>><<person1>>
+<<if $pylon_museum_asked and $pylon_farm_bedroom_unlock isnot true and $NPCName[$NPCNameList.indexOf("Alex")].love gte 90 and ($weather is "clear" or $weather is "overcast") and $farm_stage gte 7>>
+	<br><br>
+	你没注意到路边的一块石头，直到被它反射的阳光照了一下。艾利克斯注意到你没有跟上来，"怎么了？"<<He>>关切地问道。<br>
+	<<link [[告诉艾利克斯|Pylon Farm Bedroom Unlock]]>><</link>>
+<</if>>
+<<endevent>>
+
+<</widget>>

@@ -1,0 +1,67 @@
+:: Fishing Request Ask
+/*根据是否已经完成了当日任务作出反应（已完成；交任务；没钓到）*/
+<<if $fishing_request_finished_daily>>
+	<<print [
+		`"我的鱼够了！我现在不需要你的帮助！"`,
+		`"你今天已经让我够开心了，可以走了。"`,
+		`"现在没有任务要分配给你。"`,
+		`"一天就一条鱼，请离开！"`,
+		`"你上次给我的鱼还没用呢。我不需要了。"`,
+		`"你完蛋了，伟大的我会解雇你！"`
+	].random()>>
+	<br>
+<<elseif $fishing_request_fish_obtained>>
+	<<switch $fishing_request_selection>>
+		<<case 0>><<set $Amanita_Fungifin to false>>
+		<<case 1>><<set $Angelfish to false>>
+		<<case 2>><<set $Batfish to false>>
+		<<case 3>><<set $Bonefish to false>>
+		<<case 4>><<set $Bumblebee_Tuna to false>>
+		<<case 5>><<set $Bunnyfish to false>>
+		<<case 6>><<set $Catfish to false>>
+		<<case 7>><<set $Cloudfish to false>>
+		<<case 8>><<set $Clownfish to false>>
+		<<case 9>><<set $Demonic_Hellfish to false>>
+		<<case 10>><<set $Derpfish to false>>
+		<<case 11>><<set $Dirtfish to false>>
+		<<case 12>><<set $Dynamite_Fish to false>>
+		<<case 13>><<set $Fallen_Starfish to false>>
+		<<case 14>><<set $Fish_of_Cthulhu to false>>
+		<<case 15>><<set $Fishotron to false>>
+		<<case 16>><<set $Guide_Voodoo_Fish to false>>
+		<<case 17>><<set $Harpyfish to false>>
+		<<case 18>><<set $Hungerfish to false>>
+		<<case 19>><<set $Jewelfish to false>>
+		<<case 20>><<set $Mudfish to false>>
+		<<case 21>><<set $Scarab_Fish to false>>
+		<<case 22>><<set $Scorpio_Fish to false>>
+		<<case 23>><<set $Slimefish to false>>
+		<<case 24>><<set $Spiderfish to false>>
+		<<case 25>><<set $Tropical_Barracuda to false>>
+		<<case 26>><<set $Wyverntail to false>>
+		<<case 27>><<set $Zombie_Fish to false>>
+		<<case 28>><<set $Brimlish to false>>
+		<<case 29>><<set $Eutrophic_Sandfish to false>>
+		<<case 30>><<set $Serpentuna to false>>
+		<<case 31>><<set $Slurpfish to false>>
+		<<case 32>><<set $Surf_Clam to false>>
+		<<case 33>><<set $Bloody_Manowar to false>>
+	<</switch>>
+	<<set $fishing_request_finished_daily to true>>
+	<<set $fishing_requests_finished_count += 1>>
+	<<print [
+		`"哦！谢谢你抓来我要的鱼，可以滚了！"`,
+		`"你这跑腿的活干得挺不错嘛！现在走开！"`,
+		`"哈哈哈哈！你做到了！你竟然毫发无伤，真没劲！"`,
+		`"哇！？你竟然完成了任务，还活了下来！不错，把它交上来，再滚远点！"`,
+		`"抓到啦！一切都是按计划进行的！哈哈哈！"`
+	].random()>><br>
+	<br>
+	<<fishing_request_reward>><br>
+<<else>>
+	你向渔夫询问今天的钓鱼任务。<br>
+	<br>
+	<<fishing_request_select>><br>
+<</if>>
+<br>
+<<link [[返回|Fishing Angler Cabin]]>><</link>>

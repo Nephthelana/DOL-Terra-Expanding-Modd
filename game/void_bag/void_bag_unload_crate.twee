@@ -1,0 +1,311 @@
+:: Void Bag Unload Crate
+<<switch $void_bag_unload_crate>>
+	<<case "Golden_Crate">>
+		你打开了一个<<icon "fishing/crates/Golden_Crate.png">>金匣。<br>
+		<<set $Golden_Crate -= 1>>
+		<span class="gold">你得到了<<moneyGain random(800,2000)>></span>
+		<<if random(1,3) lte 2>>
+			<<set $unload_crate_Bait = random(3,7)>>
+			<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+			<<set $Master_Bait += $unload_crate_Bait>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Iron_Crate">>
+		你打开了一个<<icon "fishing/crates/Iron_Crate.png">>铁匣。<br>
+		<<set $Iron_Crate -= 1>>
+		<span class="gold">你得到了<<moneyGain random(500,1000)>></span>
+		<<if random(1,2) is 1>>
+			<<if random(1,3) is 1>>
+				<<set $unload_crate_Bait = random(2,4)>>
+				<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+				<<set $Master_Bait += $unload_crate_Bait>>
+			<<else>>
+				<<set $unload_crate_Bait = random(2,4)>>
+				<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+				<<set $Journeyman_Bait += $unload_crate_Bait>>
+			<</if>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Wooden_Crate">>
+		你打开了一个<<icon "fishing/crates/Wooden_Crate.png">>木匣。<br>
+		<<set $Wooden_Crate -= 1>>
+		<<if random(1,3) is 1>>
+			<span class="gold">你得到了<<moneyGain random(100,500)>></span>
+		<<else>>
+			<span class="gold">你得到了<<moneyGain random(20,90)>></span>
+		<</if>>
+		<<if random(1,3) is 1>>
+			<<if random(1,3) is 1>>
+				<<set $unload_crate_Bait = random(1,4)>>
+				<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+				<<set $Journeyman_Bait += $unload_crate_Bait>>
+			<<else>>
+				<<set $unload_crate_Bait = random(1,4)>>
+				<span class="gold">、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵($unload_crate_Bait)</span>
+				<<set $Apprentice_Bait += $unload_crate_Bait>>
+			<</if>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Ocean_Crate">>
+		你打开了一个<<icon "fishing/crates/Ocean_Crate.png">>海洋匣。<br>
+		<<set $Ocean_Crate -= 1>>
+		<span class="gold">你得到了<<moneyGain random(500,1200)>></span>
+		<<if random(1,2) is 1>>
+			<<if random(1,2) is 1>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+				<<set $Journeyman_Bait += $unload_crate_Bait>>
+			<<else>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+				<<set $Master_Bait += $unload_crate_Bait>>
+			<</if>>
+		<</if>>
+		<span class="gold">！</span><br>
+		<<if random(1,10) is 1 and $museumAntiques.antiques.antiqueleathermap isnot "found" and $museumAntiques.antiques.antiqueleathermap isnot "talk" and $museumAntiques.antiques.antiqueleathermap isnot "museum">>
+			<br>
+			<<earnFeat "X Marks the Spot">>
+			你发现里面还有一个用蜡质细绳捆着的皮革卷轴。你把它展开，是一张保存完好的地图。这张地图描绘了一个森林旁边的沿海定居点。表示海洋的部分上，线条纵横交错，有的地方被符号标注了，可能是一些重要的地点。在地图的左上角画着一只克拉肯，右下角画着一条龙。博物馆馆长也许会知道更多关于它的信息。<br>
+			<<set $antiquemoney += 4000>>
+		<</if>>
+	<<case "Oyster">>
+		你打开了一个<<icon "fishing/crates/Oyster.png">>牡蛎。<br>
+		<<set $Oyster -= 1>>
+		<span class="gold">你得到了<<icon "food/Shucked_Oyster.png">>去壳牡蛎(1)</span>
+		<<if random(1,5) is 1>>
+			<<set $pearl_chance = random(1,45)>>
+			<<if $pearl_chance lte 28>>
+				<span class="gold">、<<icon "material/White_Pearl.png">>白珍珠(1)</span>
+				<<if $White_Pearl is undefined>><<set $White_Pearl = 0>><</if>>
+				<<set $White_Pearl += 1>>
+			<<elseif $pearl_chance lte 42>>
+				<span class="gold">、<<icon "material/Black_Pearl.png">>黑珍珠(1)</span>
+				<<if $Black_Pearl is undefined>><<set $Black_Pearl = 0>><</if>>
+				<<set $Black_Pearl += 1>>
+			<<else>>
+				<span class="gold">、<<icon "material/Pink_Pearl.png">>粉珍珠(1)</span>
+				<<if $Pink_Pearl is undefined>><<set $Pink_Pearl = 0>><</if>>
+				<<set $Pink_Pearl += 1>>
+			<</if>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Oasis_Crate">>
+		你打开了一个<<icon "fishing/crates/Oasis_Crate.png">>绿洲匣。<br>
+		<<set $Oasis_Crate -= 1>>
+		<span class="gold">你得到了</span>
+		<<switch random(1,4)>>
+			<<case 1>>
+				<span class="gold"><<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿</span>
+				<<set $Scarab_Fishing_Rod to true>>
+			<<case 2>>
+				<span class="gold"><<icon "furniture/Bast_Statue.png">>巴斯特雕像</span>
+				<<set $Bast_Statue to true>>
+			<<case 3>>
+				<span class="gold"><<icon "tool/Snake_Charmers_Flute.png">>耍蛇者长笛</span>
+				<<set $Snake_Charmers_Flute to true>>
+				<<set $tool_obtained to true>>
+			<<case 4>>
+				<span class="gold"><<icon "tool/Magic_Conch.png">>魔法海螺</span>
+				<<set $Magic_Conch to true>>
+				<<set $tool_obtained to true>>
+		<</switch>>
+		<<if random(1,4) is 1>>
+			<span class="gold">、<<moneyGain random(500,1200)>></span>
+		<</if>>
+		<<if random(1,2) is 1>>
+			<<if random(1,2) is 1>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+				<<set $Journeyman_Bait += $unload_crate_Bait>>
+			<<else>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+				<<set $Master_Bait += $unload_crate_Bait>>
+			<</if>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Jungle_Crate">>
+		你打开了一个<<icon "fishing/crates/Jungle_Crate.png">>丛林匣。<br>
+		<<set $Jungle_Crate -= 1>>
+		<span class="gold">你得到了</span>
+		<<switch random(1,2)>>
+			<<case 1>>
+				<span class="gold"><<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿</span>
+				<<set $Fiberglass_Fishing_Pole to true>>
+			<<case 2>>
+				<span class="gold"><<icon "tool/Staff_of_Regrowth.png">>再生法杖</span>
+				<<set $Staff_of_Regrowth to true>>
+		<</switch>>
+		<<if random(1,4) is 1>>
+			<span class="gold">、<<moneyGain random(500,1200)>></span>
+		<</if>>
+		<<if random(1,2) is 1>>
+			<<if random(1,2) is 1>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+				<<set $Journeyman_Bait += $unload_crate_Bait>>
+			<<else>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+				<<set $Master_Bait += $unload_crate_Bait>>
+			<</if>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Sky_Crate">>
+		你打开了一个<<icon "fishing/crates/Sky_Crate.png">>天空匣。<br>
+		<<set $Sky_Crate -= 1>>
+		<span class="gold">你得到了<<icon "tool/Starfury.png">>星怒</span><mouse class="tooltip linkBlue">(?)<span>它没有任何用处，但它应该出现在这里()</span></mouse>
+		<<if random(1,40) is 1>>
+			<span class="gold">、<<icon "tool/Fledgling_Wings.png">>雏翼</span>
+			<<set $Fledgling_Wings to true>>
+		<</if>>
+		<<if random(1,4) is 1>>
+			<span class="gold">、<<moneyGain random(500,1200)>></span>
+		<</if>>
+		<<if random(1,2) is 1>>
+			<<if random(1,2) is 1>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+				<<set $Journeyman_Bait += $unload_crate_Bait>>
+			<<else>>
+				<<set $unload_crate_Bait = random(2,6)>>
+				<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+				<<set $Master_Bait += $unload_crate_Bait>>
+			<</if>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Sunken_Crate">>
+		你打开了一个<<icon "fishing/crates/Sunken_Crate.png">>沉沦匣。<br>
+		<<set $Sunken_Crate -= 1>>
+		<span class="gold">你得到了<<moneyGain random(200,600)>></span>
+		<<if random(1,5) is 1>>
+			<<set $unload_crate_Sea_Prism = random(2,5)>>
+			<span class="gold">、<<icon "material/Sea_Prism.png">>海棱晶($unload_crate_Sea_Prism)</span>
+			<<if $Sea_Prism is undefined>>
+				<<set $Sea_Prism = 0>>
+			<</if>>
+			<<set $Sea_Prism += $unload_crate_Sea_Prism>>
+		<</if>>
+		<<if random(1,3) is 1>>
+			<<set $unload_crate_Bait = random(2,3)>>
+			<span class="gold">、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵($unload_crate_Bait)</span>
+			<<set $Apprentice_Bait += $unload_crate_Bait>>
+		<</if>>
+		<<if random(1,5) is 1>>
+			<<set $unload_crate_Bait = random(1,3)>>
+			<<if random(1,2) is 1>>
+				<span class="gold">、<<icon "fishing/bait/Sea_Minnow.png">>海洋米诺鱼($unload_crate_Bait)</span>
+				<<if $Sea_Minnow is undefined>>
+					<<set $Sea_Minnow = 0>>
+				<</if>>
+				<<set $Sea_Minnow += $unload_crate_Bait>>
+			<<else>>
+				<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+				<<set $Journeyman_Bait += $unload_crate_Bait>>
+			<</if>>
+		<</if>>
+		<<if random(1,10) is 1>>
+			<<set $unload_crate_Bait = random(1,2)>>
+			<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+			<<set $Master_Bait += $unload_crate_Bait>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Sulphurous_Crate">>
+		你打开了一个<<icon "fishing/crates/Sulphurous_Crate.png">>硫海匣。<br>
+		<<set $Sulphurous_Crate -= 1>>
+		<span class="gold">你得到了<<moneyGain random(200,600)>></span>
+		<<if random(1,4) is 1>>
+			<<if random(1,2) is 1>>
+				<span class="gold">、<<icon "Strange_Orb.png">>奇光球</span>
+				<<set $Strange_Orb to true>>
+			<<else>>
+				<span class="gold">、<<icon "tool/Torrential_Tear.png">>洪流之泪</span>
+				<<set $Torrential_Tear to true>>
+				<<set $tool_obtained to true>>
+			<</if>>
+		<</if>>
+		<<if random(1,3) is 1>>
+			<<set $unload_crate_Bait = random(2,3)>>
+			<span class="gold">、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵($unload_crate_Bait)</span>
+			<<set $Apprentice_Bait += $unload_crate_Bait>>
+		<</if>>
+		<<if random(1,5) is 1>>
+			<<set $unload_crate_Bait = random(1,3)>>
+			<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+			<<set $Journeyman_Bait += $unload_crate_Bait>>
+		<</if>>
+		<<if random(1,10) is 1>>
+			<<set $unload_crate_Bait = random(1,2)>>
+			<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+			<<set $Master_Bait += $unload_crate_Bait>>
+		<</if>>
+		<span class="gold">！</span><br>
+	<<case "Brimstone_Crate">>
+		你打开了一个<<icon "fishing/crates/Brimstone_Crate.png">>硫火匣。<br>
+		<<set $Brimstone_Crate -= 1>>
+		<span class="gold">你得到了<<moneyGain random(200,600)>></span>
+		<<set $unload_crate_Demonic_Bone_Ash = random(1,4)>>
+		<span class="gold">、<<icon "material/Demonic_Bone_Ash.png">>恶魔骨灰($unload_crate_Demonic_Bone_Ash)</span>
+		<<if $Demonic_Bone_Ash is undefined>>
+			<<set $Demonic_Bone_Ash = 0>>
+		<</if>>
+		<<set $Demonic_Bone_Ash += $unload_crate_Demonic_Bone_Ash>>
+		<<if random(1,3) is 1>>
+			<<set $unload_crate_Bait = random(2,3)>>
+			<span class="gold">、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵($unload_crate_Bait)</span>
+			<<set $Apprentice_Bait += $unload_crate_Bait>>
+		<</if>>
+		<<if random(1,5) is 1>>
+			<<set $unload_crate_Bait = random(1,3)>>
+			<span class="gold">、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($unload_crate_Bait)</span>
+			<<set $Journeyman_Bait += $unload_crate_Bait>>
+		<</if>>
+		<<if random(1,10) is 1>>
+			<<set $unload_crate_Bait = random(1,2)>>
+			<span class="gold">、<<icon "fishing/bait/Master_Bait.png">>大师诱饵($unload_crate_Bait)</span>
+			<<set $Master_Bait += $unload_crate_Bait>>
+		<</if>>
+		<span class="gold">！</span><br>
+<</switch>>
+<br>
+<<if $Golden_Crate gte 1 or $Iron_Crate gte 1 or $Wooden_Crate gte 1 or $Ocean_Crate gte 1 or $Oyster gte 1 or $Oasis_Crate gte 1 or $Jungle_Crate gte 1 or $Sky_Crate gte 1 or $Sunken_Crate gte 1 or $Sulphurous_Crate gte 1 or $Brimstone_Crate gte 1>>
+	到了激动人心的开奖环节~开哪个呢？<br>
+	<br>
+	<<if $Golden_Crate gt 0>>
+		<<icon "fishing/crates/Golden_Crate.png">><<link [[`金匣(${$Golden_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Golden_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Iron_Crate gt 0>>
+		<<icon "fishing/crates/Iron_Crate.png">><<link [[`铁匣(${$Iron_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Iron_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Wooden_Crate gt 0>>
+		<<icon "fishing/crates/Wooden_Crate.png">><<link [[`木匣(${$Wooden_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Wooden_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Ocean_Crate gt 0>>
+		<<icon "fishing/crates/Ocean_Crate.png">><<link [[`海洋匣(${$Ocean_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Ocean_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Oyster gt 0>>
+		<<icon "fishing/crates/Oyster.png">><<link [[`牡蛎(${$Oyster})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Oyster">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Oasis_Crate gt 0>>
+		<<icon "fishing/crates/Oasis_Crate.png">><<link [[`绿洲匣(${$Oasis_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Oasis_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Jungle_Crate gt 0>>
+		<<icon "fishing/crates/Jungle_Crate.png">><<link [[`丛林匣(${$Jungle_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Jungle_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Sky_Crate gt 0>>
+		<<icon "fishing/crates/Sky_Crate.png">><<link [[`天空匣(${$Sky_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Sky_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Sunken_Crate gt 0>>
+		<<icon "fishing/crates/Sunken_Crate.png">><<link [[`沉沦匣(${$Sunken_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Sunken_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Sulphurous_Crate gt 0>>
+		<<icon "fishing/crates/Sulphurous_Crate.png">><<link [[`硫海匣(${$Sulphurous_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Sulphurous_Crate">><<pass 1>><</link>><br>
+	<</if>>
+	<<if $Brimstone_Crate gt 0>>
+		<<icon "fishing/crates/Brimstone_Crate.png">><<link [[`硫火匣(${$Brimstone_Crate})（00:01）`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to "Brimstone_Crate">><<pass 1>><</link>><br>
+	<</if>>
+<<else>>
+	哦不，你看起来没有匣子了。<br>
+<</if>>
+<br>
+<<getouticon>><<link [[返回|Void Bag Operate]]>><<set $void_bag_unload_crate to "None">><</link>>

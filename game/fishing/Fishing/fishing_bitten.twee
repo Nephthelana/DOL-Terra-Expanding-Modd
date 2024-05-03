@@ -1,0 +1,42 @@
+:: Fishing Bitten
+<<if $trash gte 50 and $fishingrod_held isnot "Hotline_Fishing_Hook" and $Bait isnot "Hell_Butterfly" and $Lavaproof_Fishing_Hook isnot true>>
+	<<pass 30>>
+	经过30分钟的等待，你什么都没等到。也许不惧高温的小动物或渔具能解决这个问题。<br>
+<<elseif $Bait is "Truffle_Worm">>
+	<<if $fishing_place is "beach">>
+		<<pass 5>>
+		经过5分钟的等待，海面逐渐泛起猛烈的波纹。你隐约看到一只巨大的绿色生物从海中向你冲撞而来。但它在撕咬下松露虫后，便掉头扬长而去。<<ggstress>><<stress 12>><br>
+		<br>
+		这是怎么回事？<br>
+		<br>
+		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><br>
+		<br>
+		你扭头看向四周，却什么也没看见。<<gtrauma>><<trauma 2>><br>
+		<br>
+		<<set $Truffle_Worm -= 1>>
+		<<if $Truffle_Worm lte 0>>
+			<<set $Bait to "None">>
+			你用掉了最后一个<<icon "fishing/bait/Truffle_Worm.png">>松露虫。<br>
+		<</if>>
+	<<else>>
+		<<pass 30>>
+		经过30分钟的等待，你什么都没等到...怎么回事？<br>
+		<br>
+		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><br>
+		<br>
+		你扭头看向四周，却什么也没看见。<<gtrauma>><<trauma 2>><br>
+	<</if>>
+<<else>>
+	<<pass $fishing_cast_time>>
+	经过$fishing_cast_time分钟的等待，有东西上钩了！<br>
+	<<silently>><<fishing_harvest_pre>><</silently>>
+	<<if $Sonar_Potion_countdown gt 0>>
+		<span class="green">你的声呐药水显示，这是</span><<fishing_harvest_pre>><span class="green">!</span><br>
+	<</if>>
+	<br>
+	<<link [[收竿！|Fishing]]>><<fishing_prepare>><</link>><br>
+	<br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<fishing_cast_time>><</link>><br>
+<</if>>
+<br>
+<<fishing_finished_back>>

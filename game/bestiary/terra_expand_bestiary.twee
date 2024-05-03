@@ -1,0 +1,25 @@
+:: Terra Expand Bestiary [widget]
+<<widget "terra_expand_bestiary">>
+	<<button '<<icon "Bestiary_icon.png">>图鉴'>><<iModReplace "terraexpandbestiaryOverlay">><</button>>
+<</widget>>
+
+<<widget "terraexpandbestiaryOverlay">>
+	<<replace #customOverlayTitle>><<titleTerraexpandbestiary>><</replace>>
+	<<replace #customOverlayContent>><<terraexpandbestiary>><</replace>>
+<</widget>>
+
+<<widget "titleTerraexpandbestiary">>
+	<<setupTabs>>
+	<div id="overlayTabs" class="tab">
+		<<closeButtonMobile>>
+		<<button "渔获">>
+			<<toggleTab>>
+			<<replace #customOverlayContent>><<terraexpandbestiary>><</replace>>
+		<</button>>
+	</div>
+	<<closeButton>>
+<</widget>>
+
+<<widget "terraexpandbestiary">>
+	图鉴内容待施工（目前游戏内的条目解锁提示还没有实际作用）
+<</widget>>

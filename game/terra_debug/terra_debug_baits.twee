@@ -1,0 +1,10 @@
+:: Terra Debug Baits
+请选择获得的鱼饵。(鱼饵种类实在太多了，暂时只放这三种)<br>
+<<if $Apprentice_Bait is undefined>><<set $Apprentice_Bait = 0>><</if>>
+<<if $Journeyman_Bait is undefined>><<set $Journeyman_Bait = 0>><</if>>
+<<if $Master_Bait is undefined>><<set $Master_Bait = 0>><</if>>
+<<icon "fishing/bait/Apprentice_Bait.png">><<link [[来5个学徒诱饵|Terra Debug Baits]]>><<set $Apprentice_Bait += 5>><</link>><br>
+<<icon "fishing/bait/Journeyman_Bait.png">><<link [[来5个熟手诱饵|Terra Debug Baits]]>><<set $Journeyman_Bait += 5>><</link>><br>
+<<icon "fishing/bait/Master_Bait.png">><<link [[来5个大师诱饵|Terra Debug Baits]]>><<set $Master_Bait += 5>><</link>><br>
+<br>
+<<getouticon>><<link [[返回|Terra Debug]]>><</link>>

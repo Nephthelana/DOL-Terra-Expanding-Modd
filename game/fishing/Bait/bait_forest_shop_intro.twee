@@ -1,0 +1,158 @@
+:: Bait Forest Shop Intro
+<<npc Gwylan>><<person1>>
+"如你所见，这里面装着一只小虫子。我喜欢像这样把它们装在玻璃里欣赏。你觉得呢？"你的耳边响起了格威岚的声音。<br>
+<br>
+还没等你回答，<<He>>继续说道："在森林里能抓到的可不止这一种昆虫。虽然我在这里已经生活了很久，但我不敢保证我已经将它们中的每一种都收入囊中————不断地丰富自己的图鉴也是一桩乐事。"<br>
+<br>
+<<switch $bait_forest_shop>>
+	<<case "Gold_Butterfly">>
+		<<icon "placed_bait/Placed_Gold_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只金蝴蝶。<br>
+		<<set $bestiary_Gold_Butterfly to true>>
+		<<set $bestiary_Gold_Butterfly_forest_shop to true>>
+	<<case "Monarch_Butterfly">>
+		<<icon "placed_bait/Placed_Monarch_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		<<set $bestiary_Monarch_Butterfly to true>>
+		<<set $bestiary_Monarch_Butterfly_forest_shop to true>>
+		格威岚告诉你这是一只帝王蝶。<br>
+	<<case "Sulphur_Butterfly">>
+		<<icon "placed_bait/Placed_Sulphur_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只黄粉蝶。<br>
+		<<set $bestiary_Sulphur_Butterfly to true>>
+		<<set $bestiary_Sulphur_Butterfly_forest_shop to true>>
+	<<case "Zebra_Swallowtail_Butterfly">>
+		<<icon "placed_bait/Placed_Zebra_Swallowtail_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只带凤蝶。<br>
+		<<set $bestiary_Zebra_Swallowtail_Butterfly to true>>
+		<<set $bestiary_Zebra_Swallowtail_Butterfly_forest_shop to true>>
+	<<case "Ulysses_Butterfly">>
+		<<icon "placed_bait/Placed_Ulysses_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只翠凤蝶。<br>
+		<<set $bestiary_Ulysses_Butterfly to true>>
+		<<set $bestiary_Ulysses_Butterfly_forest_shop to true>>
+	<<case "Julia_Butterfly">>
+		<<icon "placed_bait/Placed_Julia_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只珠袖蝶。<br>
+		<<set $bestiary_Julia_Butterfly to true>>
+		<<set $bestiary_Julia_Butterfly_forest_shop to true>>
+	<<case "Red_Admiral_Butterfly">>
+		<<icon "placed_bait/Placed_Red_Admiral_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		<<set $bestiary_Red_Admiral_Butterfly to true>>
+		<<set $bestiary_Red_Admiral_Butterfly_forest_shop to true>>
+		格威岚告诉你这是一只红蛱蝶。<br>
+	<<case "Purple_Emperor_Butterfly">>
+		<<icon "placed_bait/Placed_Purple_Emperor_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只紫蛱蝶。<br>
+		<<set $bestiary_Purple_Emperor_Butterfly to true>>
+		<<set $bestiary_Purple_Emperor_Butterfly_forest_shop to true>>
+	<<case "Tree_Nymph_Butterfly">>
+		<<icon "placed_bait/Placed_Tree_Nymph_Butterfly.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只帛斑蝶。<br>
+		<<set $bestiary_Tree_Nymph_Butterfly to true>>
+		<<set $bestiary_Tree_Nymph_Butterfly_forest_shop to true>>
+	<<case "Stinkbug">>
+		<<icon "placed_bait/Placed_Stinkbug.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只臭虫。<br>
+		<<set $bestiary_Stinkbug to true>>
+		<<set $bestiary_Stinkbug_forest_shop to true>>
+	<<case "Worm">>
+		<<icon "placed_bait/Placed_Worm.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只蠕虫。<br>
+		<<set $bestiary_Worm to true>>
+		<<set $bestiary_Worm_forest_shop to true>>
+	<<case "Enchanted_Nightcrawler">>
+		<<icon "placed_bait/Placed_Enchanted_Nightcrawler.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只附魔夜行者。<br>
+		<<set $bestiary_Enchanted_Nightcrawler to true>>
+		<<set $bestiary_Enchanted_Nightcrawler_forest_shop to true>>
+	<<case "Gold_Worm">>
+		<<icon "placed_bait/Placed_Gold_Worm.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只金蠕虫。<br>
+		<<set $bestiary_Gold_Worm to true>>
+		<<set $bestiary_Gold_Worm_forest_shop to true>>
+	<<case "Firefly">>
+		<<icon "placed_bait/Placed_Firefly.png">><br>
+		格威岚告诉你这是一只萤火虫。<br>
+		<<set $bestiary_Firefly to true>>
+		<<set $bestiary_Firefly_forest_shop to true>>
+	<<case "Lightning_Bug">>
+		<<icon "placed_bait/Placed_Lightning_Bug.png">><br>
+		格威岚告诉你这是一只荧光虫。<br>
+		<<set $bestiary_Lightning_Bug to true>>
+		<<set $bestiary_Lightning_Bug_forest_shop to true>>
+	<<case "Snail">>
+		<<icon "placed_bait/Placed_Snail.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只蜗牛。<br>
+		<<set $bestiary_Snail to true>>
+		<<set $bestiary_Snail_forest_shop to true>>
+	<<case "Glow_Snail">>
+		<<icon "placed_bait/Placed_Glow_Snail.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只发光蜗牛。<br>
+		<<set $bestiary_Glow_Snail to true>>
+		<<set $bestiary_Glow_Snail_forest_shop to true>>
+	<<case "Grasshopper">>
+		<<icon "placed_bait/Placed_Grasshopper.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只蚱蜢。<br>
+		<<set $bestiary_Grasshopper to true>>
+		<<set $bestiary_Grasshopper_forest_shop to true>>
+	<<case "Gold_Grasshopper">>
+		<<icon "placed_bait/Placed_Gold_Grasshopper.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只金蚱蜢。<br>
+		<<set $bestiary_Gold_Grasshopper to true>>
+		<<set $bestiary_Gold_Grasshopper_forest_shop to true>>
+	<<case "Maggot">>
+		<<icon "placed_bait/Placed_Maggot.gif">><br>
+		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		格威岚告诉你这是一只蝇蛆。<br>
+		<<set $bestiary_Maggot to true>>
+		<<set $bestiary_Maggot_forest_shop to true>>
+<</switch>>
+<span class="gold">图鉴解锁了新的条目！</span><br>
+<br>
+你们又交流了好一会关于这种昆虫的事情，其中格威岚第一次见到它时的经历逗得你哈哈大笑。<<lstress>><<stress -10>><<ltrauma>><<trauma -6>><br>
+<br>
+"欢迎你之后多来看看我收集的虫子。<span class="teal">我每个星期会展示一种昆虫的大类，同时我在这一周中，每天可能会把里面的虫子换成这种大类下的另外一种。</span>"<<He>>思考了一下补充道，"<span class="gold">如果你对当天的这种虫子感兴趣的话，我可以送你几只同样的。但我其实抓的并不多，所以我每周只能给你一次。</span>"<br>
+<br>
+格威岚转身走向商店的角落，两手分别拿着一个玻璃笼子和玻璃瓶。"是我的话，我会用这些东西来把它们装起来欣赏。当然，我不介意你用我送你的虫子来做别的事情。我很高兴你能对它们感兴趣。"<br>
+<br>
+"还要看看商店里的其他东西吗？"<br>
+<br>
+<<getouticon>><<link [[返回|Forest Shop]]>><<set $bait_forest_shop_intro to 1>><</link>>
+<<set $Gold_Butterfly = 0>>
+<<set $Monarch_Butterfly = 0>>
+<<set $Sulphur_Butterfly = 0>>
+<<set $Zebra_Swallowtail_Butterfly = 0>>
+<<set $Ulysses_Butterfly = 0>>
+<<set $Julia_Butterfly = 0>>
+<<set $Red_Admiral_Butterfly = 0>>
+<<set $Purple_Emperor_Butterfly = 0>>
+<<set $Tree_Nymph_Butterfly = 0>>
+<<set $Stinkbug = 0>>
+<<set $Worm = 0>>
+<<set $Gold_Worm = 0>>
+<<set $Firefly = 0>>
+<<set $Lightning_Bug = 0>>
+<<set $Snail = 0>>
+<<set $Glow_Snail = 0>>
+<<set $Grasshopper = 0>>
+<<set $Gold_Grasshopper = 0>>
+<<set $Maggot = 0>>
+
+<<endevent>>

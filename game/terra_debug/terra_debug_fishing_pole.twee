@@ -1,0 +1,46 @@
+:: Terra Debug Fishing Pole
+请选择获得/丢弃鱼竿。<br>
+<<if $Golden_Fishing_Rod>>
+	<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">><<link [[丢弃金钓竿|Terra Debug Fishing Pole]]>><<set $Golden_Fishing_Rod to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">></span><<link [[获得金钓竿|Terra Debug Fishing Pole]]>><<set $Golden_Fishing_Rod to true>><</link>>
+<</if>>
+<br>
+<<if $Hotline_Fishing_Hook>>
+	<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">><<link [[丢弃熔线钓钩|Terra Debug Fishing Pole]]>><<set $Hotline_Fishing_Hook to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">></span><<link [[获得熔线钓钩|Terra Debug Fishing Pole]]>><<set $Hotline_Fishing_Hook to true>><</link>>
+<</if>>
+<br>
+<<if $Fiberglass_Fishing_Pole>>
+	<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">><<link [[丢弃玻璃钢钓竿|Terra Debug Fishing Pole]]>><<set $Fiberglass_Fishing_Pole to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">></span><<link [[获得玻璃钢钓竿|Terra Debug Fishing Pole]]>><<set $Fiberglass_Fishing_Pole to true>><</link>>
+<</if>>
+<br>
+<<if $Scarab_Fishing_Rod>>
+	<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">><<link [[丢弃甲虫钓竿|Terra Debug Fishing Pole]]>><<set $Scarab_Fishing_Rod to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">></span><<link [[获得甲虫钓竿|Terra Debug Fishing Pole]]>><<set $Scarab_Fishing_Rod to true>><</link>>
+<</if>>
+<br>
+<<if $Chum_Caster>>
+	<<icon "fishing/fishing_pole/Chum_Caster.png">><<link [[丢弃鱼饵投掷者|Terra Debug Fishing Pole]]>><<set $Chum_Caster to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Chum_Caster.png">></span><<link [[获得鱼饵投掷者|Terra Debug Fishing Pole]]>><<set $Chum_Caster to true>><</link>>
+<</if>>
+<br>
+<<if $Reinforced_Fishing_Pole>>
+	<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">><<link [[丢弃强化钓竿|Terra Debug Fishing Pole]]>><<set $Reinforced_Fishing_Pole to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">></span><<link [[获得强化钓竿|Terra Debug Fishing Pole]]>><<set $Reinforced_Fishing_Pole to true>><</link>>
+<</if>>
+<br>
+<<if $Wood_Fishing_Pole>>
+	<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">><<link [[丢弃木钓竿|Terra Debug Fishing Pole]]>><<set $Wood_Fishing_Pole to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">></span><<link [[获得木钓竿|Terra Debug Fishing Pole]]>><<set $Wood_Fishing_Pole to true>><</link>>
+<</if>>
+<br>
+<br>
+<<getouticon>><<link [[返回|Terra Debug]]>><</link>>

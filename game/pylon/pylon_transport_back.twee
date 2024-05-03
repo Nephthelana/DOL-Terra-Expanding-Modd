@@ -1,0 +1,16 @@
+:: Pylon Destination Back [widget]
+/*晶塔地图返回widget*/
+<<widget "destinationpylon">>
+	<<switch $pylon>>
+	<<case "bedroom">>
+		<<link [[返回|Bedroom]]>><</link>>
+	<<case "farmbedroom">>
+		<<link [[返回|Farm Bedroom]]>><</link>>
+	<<case "edencabin">>
+		<<link [[返回|Eden Cabin]]>><</link>>
+	<<case "hawkstower">>
+		<<link [[返回|Bird Tower]]>><</link>>
+	<<case "wolfcave">>
+		<<link [[返回|Wolf Cave]]>><</link>>
+	<</switch>>	
+<</widget>>

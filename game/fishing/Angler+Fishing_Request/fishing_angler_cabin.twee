@@ -1,0 +1,93 @@
+:: Fishing Angler Cabin
+<<npc Angler>><<person1>>
+/* 小屋介绍 */
+你走进<<he>>的小屋，
+<<print [
+	"虽然里面很拥挤，但工作台、木椅、火把这些房屋的基本设施一应俱全，而墙面的一些不规则的洞口应该是<<he>>开的窗户。不管怎么说，此房屋很核逝。",
+	"狭窄的空间充满了海风的味道。你在想如果让<<he>>住在干旱的沙漠，<<he>>会有什么有趣的反应。",
+	"一股浓烈的鱼腥味扑面而来。你想不到<<he>>是怎么一直生活在这种地方的，更无从得知<<he>>之前的经历。"
+].random()>><br>
+<br>
+/* 初次见面获得鱼竿 */
+<<if $fishingrod isnot true>>
+	渔夫放下了手中的鳟鱼。"哦，我认得你！我当时在梦里马上就要钓上来一条比这重数倍的金枪鱼了，结果你把我吵醒了！"<<He>>用手比划着梦中那条金枪鱼的尺寸，碰倒了一根靠在墙上的鱼竿，差点砸到了你的脚。<br>
+	<br>
+	<<He>>一下就变了脸，似乎先前的生气是装的。"看来你和这根鱼竿很有缘，"看起来<<he>>有了什么计划，"拿它去钓鱼吧！不过你得钓上来我想要的鱼作为道歉——当然，我还会给你'丰厚'的奖励。怎么样，我很慷慨吧？每天来问我任务，然后把那条鱼抓过来：这就是你要做的事情。"<br>
+	<br>
+	鱼竿被不由分说地塞到你的手里。<span class="teal">你获得了<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><<set $fishingrod to true>><<set $Wood_Fishing_Pole to true>><<set $fishingrod_held to "Wood_Fishing_Pole">><br>
+	<br>
+	"忘了告诉你，我<span class="gold">每天早上6点</span>也许就会想要别的鱼了，所以你最好早早把它交给我！"<br>
+	<br>
+	<<set $Apprentice_Bait = 0>><<set $Journeyman_Bait = 0>><<set $Master_Bait = 0>><<set $Bait to "None">>
+	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><<if $fishingskill is undefined>><<set $fishingskill to 0>><</if>><<if $fishing_request_selection is undefined>><<set $fishing_request_selection to random(0,31)>><</if>><</link>><br>
+	<br>
+	<<getouticon>><<link [[离开|Beach]]>><<if $fishingskill is undefined>><<set $fishingskill to 0>><</if>><<if $fishing_request_selection is undefined>><<set $fishing_request_selection to random(0,31)>><</if>><</link>>
+	<<exitAll>>
+<</if>>
+/* 渔夫"打招呼" */
+<<if $fishingrod>>
+	/* 显示任务完成次数统计 */
+	<<if $rng gte 50 and $fishing_requests_finished_count gte 1>>
+		<<print [
+			`"你知道我已经有了$fishing_requests_finished_count条超棒的鱼了吗！？那是因为在跑腿这件事上，你还是发挥了作用！"`,
+			`"喂！你打扰我好像有$fishing_requests_finished_count次了！如果不是每次都有很酷的鱼，我一定会发飙！"`
+		].random()>>
+	/* 还未完成当日钓鱼任务 */
+	<<elseif $fishing_request_finished_daily isnot true>>
+		<<print [
+			`"嘿！我有一个活儿给你。不要以为你能拒绝，怎么都不行！"`,
+			`"我想要一条鱼，你去给我弄一条来！快问我细节！"`,
+			`"我想让你正式成为 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 的跑腿官！"`,
+			`"嘿！你就是我一直在找的牺……我是说称职的钓鱼大师！"`
+		].random()>>
+	/* 已经完成当日钓鱼任务 */
+	<<else>>
+		<<print [
+			`"太可气了！有些鱼可能在我出生之前就灭绝了，真不公平！"`,
+			`"什……么？！难道你没看见我在收钓鱼线吗？？"`,
+			`"整个 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>>中都没有厨师，所以我不得不自己烹鱼！"`,
+			`"我没爹没娘，但我有很多鱼！这也差不多了！"`,
+			`"听听小孩的忠告吧，永远不要用舌头碰冰块！等一下，就当我没说，我就想看你这样做！"`,
+			`"听说过会叫的鱼吗？！我没听说过，只是想知道你听说过没！"`,
+			`"嘿！当心！我设了许多陷阱，用来实施史上最大的恶作剧！没人会发觉！你敢告诉别人试试！"`,
+			`"<<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 到处都是各种稀奇古怪的鱼！"`
+		].random()>>
+	<</if>><br>
+	<br>
+	<<if $furniture_painting_angler_cabin isnot undefined and $furniture_painting_angler_cabin isnot "none">>
+		<<switch $furniture_painting_angler_cabin>>
+			<<case "Bunnyfish_Trophy">><<icon "furniture_placed/Bunnyfish_Trophy_(placed).png">><br><br>
+			<<case "Compass_Rose">><<icon "furniture_placed/Compass_Rose_(placed).png">><br><br>
+			<<case "Couch_Gag">><<icon "furniture_placed/Couch_Gag_(placed).png">><br><br>
+			<<case "Crustography">><<icon "furniture_placed/Crustography_(placed).png">><br><br>
+			<<case "Fangs">><<icon "furniture_placed/Fangs_(placed).png">><br><br>
+			<<case "Goldfish_Trophy">><<icon "furniture_placed/Goldfish_Trophy_(placed).png">><br><br>
+			<<case "Life_Preserver">><<icon "furniture_placed/Life_Preserver_(placed).png">><br>
+			<<case "Not_So_Lost_In_Paradise">><<icon "furniture_placed/Not_So_Lost_In_Paradise_(placed).png">><br><br>
+			<<case "Pillagin_Me_Pixels">><<icon "furniture_placed/Pillagin_Me_Pixels_(placed).png">><br><br>
+			<<case "Seaweed_Planter">><<icon "furniture_placed/Seaweed_Planter_(placed).png">><br><br>
+			<<case "Sharkteeth_Trophy">><<icon "furniture_placed/Sharkteeth_Trophy_(placed).png">><br><br>
+			<<case "Ship_in_a_Bottle">><<icon "furniture_item/Ship_in_a_Bottle.png">><br><br>
+			<<case "Ships_Wheel">><<icon "furniture_placed/Ships_Wheel_(placed).png">><br><br>
+			<<case "Silent_Fish">><<icon "furniture_placed/Silent_Fish_(placed).png">><br><br>
+			<<case "Swordfish_Trophy">><<icon "furniture_placed/Swordfish_Trophy_(placed).png">><br><br>
+			<<case "The_Duke">><<icon "furniture_placed/The_Duke_(placed).png">><br><br>
+			<<case "Treasure_Map">><<icon "furniture_placed/Treasure_Map_(placed).png">><br><br>
+			<<case "Wall_Anchor">><<icon "furniture_placed/Wall_Anchor_(placed).png">><br><br>
+			<<case "What_Lurks_Below">><<icon "furniture_placed/What_Lurks_Below_(placed).png">><br><br>
+		<</switch>>
+	<</if>>
+	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
+	<<getouticon>><<link [[离开|Beach]]>><</link>><br>
+	<<if $furniture_painting>>
+		<<if $furniture_painting_angler_cabin is undefined or $furniture_painting_angler_cabin is "none">>
+			<<link [[放一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
+		<<else>>
+			<<link [[换一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
+		<</if>>
+	<</if>>
+<</if>>
+<br>
+<br>
+使用旧版本存档游戏时，此处↓将会出现报错提示。因技术能力不足暂时无法解决，请忽略。
+<<endevent>>

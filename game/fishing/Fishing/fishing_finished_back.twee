@@ -1,0 +1,17 @@
+:: Fishing Finished Back [widget]
+<<widget "fishing_finished_back">>
+	<<switch $fishing_place>>
+		<<case "lake_fishing_rock">><<getouticon>><<link [[返回钓鱼岩|Lake Fishing Rock]]>><</link>>
+		<<case "beach">><<getouticon>><<link [[返回海滩|Beach]]>><</link>>
+		<<case "barb_street">><<getouticon>><<link [[返回倒钩街|Barb Street]]>><</link>>
+		<<case "moor">><<getouticon>><<link [[返回雷米庄园大门|Moor]]>><</link>>
+		<<case "honey">><<getouticon>><<link [[返回森林|Forest]]>><</link>>
+		<<case "farm_woodland">><<getouticon>><<link [[返回林地|Farm Woodland]]>><</link>>
+		<<case "wolf_cave_clearing">><<getouticon>><<link [[返回狼窝|Wolf Cave Clearing]]>><</link>>
+		<<case "bird_tower">><<getouticon>><<link [[返回鹰塔|Bird Tower]]>><</link>>
+		<<case "eden_clearing">><<getouticon>><<link [[返回伊甸小屋|Eden Clearing]]>><</link>>
+		<<case "bog">><<getouticon>><<link [[返回沼泽|Bog]]>><</link>>
+		<<case "trash">><<getouticon>><<link [[返回垃圾填埋场|Trash]]>><</link>>
+		<<case "park">><<getouticon>><<link [[返回公园|Park]]>><</link>>
+	<</switch>>
+<</widget>>

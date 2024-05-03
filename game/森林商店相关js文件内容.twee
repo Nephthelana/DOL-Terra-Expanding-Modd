@@ -1,0 +1,108 @@
+每周大类：
+一行式：
+if (random(1,3) == 1){V.bait_butterfly_chance = false;V.bait_stinkbug_chance = random(1,13);if (random(1,5) == 1){V.bait_stinkbug_chance = false;}} else {V.bait_stinkbug_chance = false;V.bait_butterfly_chance = random(1,20);if (random(1,5) == 1){V.bait_butterfly_chance = false;}}if (V.bait_butterfly_chance > 0 && random(1,V.bait_butterfly_chance) == 1){V.bait_forest_shop_main = \"Butterfly\";} if (V.bait_stinkbug_chance > 0 && random(1,V.bait_stinkbug_chance) == 1){V.bait_forest_shop_main = \"Stinkbug\";} if (V.bait_forest_shop_main != \"Butterfly\" && V.bait_forest_shop_main != \"Stinkbug\"){switch (random(1,5)){case 1:V.bait_forest_shop_main = \"Worm\";break;case 2:V.bait_forest_shop_main = \"Firefly\";break;case 3:V.bait_forest_shop_main = \"Snail\";break;case 4:V.bait_forest_shop_main = \"Grasshopper\";break;case 5:V.bait_forest_shop_main = \"Maggot\";break;}}
+分行可视化式：
+if (random(1,3) == 1){
+	V.bait_butterfly_chance = false;
+	V.bait_stinkbug_chance = random(1,13);
+	if (random(1,5) == 1){
+		V.bait_stinkbug_chance = false;
+	}
+} else {
+	V.bait_stinkbug_chance = false;
+	V.bait_butterfly_chance = random(1,20);
+	if (random(1,5) == 1){
+		V.bait_butterfly_chance = false;
+	}
+}
+if (V.bait_butterfly_chance > 0 && random(1,V.bait_butterfly_chance) == 1){
+	V.bait_forest_shop_main = \"Butterfly\";
+} 
+if (V.bait_stinkbug_chance > 0 && random(1,V.bait_stinkbug_chance) == 1){
+	V.bait_forest_shop_main = \"Stinkbug\";
+} 
+if (V.bait_forest_shop_main != \"Butterfly\" && V.bait_forest_shop_main != \"Stinkbug\"){
+	switch (random(1,5)){
+		case 1:
+			V.bait_forest_shop_main = \"Worm\";
+			break;
+		case 2:
+			V.bait_forest_shop_main = \"Firefly\";
+			break;
+		case 3:
+			V.bait_forest_shop_main = \"Snail\";
+			break;
+		case 4:
+			V.bait_forest_shop_main = \"Grasshopper\";
+			break;
+		case 5:
+			V.bait_forest_shop_main = \"Maggot\";
+			break;
+	}
+}
+
+每日小类：
+一行式：
+switch(V.bait_forest_shop_main){case \"Butterfly\":if (random(1,400) == 1){V.bait_forest_shop = \"Gold_Butterfly\";}else{switch(random(1,8)){case 1:V.bait_forest_shop = \"Monarch_Butterfly\";break;case 2:V.bait_forest_shop = \"Sulphur_Butterfly\";break;case 3:V.bait_forest_shop = \"Zebra_Swallowtail_Butterfly\";break;case 4:V.bait_forest_shop = \"Ulysses_Butterfly\";break;case 5:V.bait_forest_shop = \"Julia_Butterfly\";break;case 6:V.bait_forest_shop = \"Red_Admiral_Butterfly\";break;case 7:V.bait_forest_shop = \"Purple_Emperor_Butterfly\";break;case 8:V.bait_forest_shop = \"Tree_Nymph_Butterfly\";break;}}break;case \"Stinkbug\":V.bait_forest_shop = \"Stinkbug\";break;case \"Worm\":if (random(1,400) == 1){V.bait_forest_shop = \"Gold_Worm\";}else if(random(1,10) == 1){V.bait_forest_shop = \"Enchanted_Nightcrawler\";}else{V.bait_forest_shop = \"Worm\"}break;case \"Firefly\":if(random(1,10) == 1){V.bait_forest_shop = \"Lightning_Bug\";}else{V.bait_forest_shop = \"Firefly\"}break;case \"Snail\":if (random(1,10) == 1){V.bait_forest_shop = \"Glowing_Snail\";}else{V.bait_forest_shop = \"Snail\"}break;case \"Grasshopper\":if (random(1,400)   == 1){V.bait_forest_shop = \"Gold_Grasshopper\";}else{V.bait_forest_shop = \"Gold_Grasshopper\"}break;case \"Maggot\":V.bait_forest_shop = \"Maggot\";break;}
+分行可视化式：
+switch(V.bait_forest_shop_main){
+	case \"Butterfly\":
+		if (random(1,400) == 1){
+			V.bait_forest_shop = \"Gold_Butterfly\";
+		}else{
+			switch(random(1,8)){
+				case 1:
+					V.bait_forest_shop = \"Monarch_Butterfly\";
+					break;
+				case 2:
+					V.bait_forest_shop = \"Sulphur_Butterfly\";
+					break;
+				case 3:
+					V.bait_forest_shop = \"Zebra_Swallowtail_Butterfly\";
+					break;
+				case 4:
+					V.bait_forest_shop = \"Ulysses_Butterfly\";
+					break;
+				case 5:
+					V.bait_forest_shop = \"Julia_Butterfly\";
+					break;
+				case 6:
+					V.bait_forest_shop = \"Red_Admiral_Butterfly\";
+					break;
+				case 7:
+					V.bait_forest_shop = \"Purple_Emperor_Butterfly\";
+					break;
+				case 8:
+					V.bait_forest_shop = \"Tree_Nymph_Butterfly\";
+					break;
+			}
+		}
+		break;
+	case \"Stinkbug\":
+		V.bait_forest_shop = \"Stinkbug\";
+		break;
+	case \"Worm\":
+		if (random(1,400) == 1){
+			V.bait_forest_shop = \"Gold_Worm\";
+		}else if(random(1,10) == 1){
+			V.bait_forest_shop = \"Enchanted_Nightcrawler\";
+		}
+		break;
+	case \"Firefly\":
+		if(random(1,10) == 1){
+			V.bait_forest_shop = \"Lightning_Bug\";
+		}
+		break;
+	case \"Snail\":
+		if (random(1,10) == 1){
+			V.bait_forest_shop = \"Glowing_Snail\";
+		}
+		break;
+	case \"Grasshopper\":
+		if (random(1,400)   == 1){
+			V.bait_forest_shop = Gold_Grasshopper;
+		}
+		break;
+	case \"Maggot\":
+		break;
+}
