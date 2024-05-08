@@ -19,7 +19,7 @@
 钓鱼。<br>
 /* 显示钓鱼结果 */
 <<if $fishing_distance lte 0>>
-	<<if $fishing_high_test_fishing_line isnot true and random(1,7) is 1>>
+	<<if $High_Test_Fishing_Line isnot true and random(1,7) is 1>>
 		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><span class="red">但是你的鱼线断了......</span>也许你需要一个优质钓鱼线。<br>
 	<<else>>
 		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><br>
