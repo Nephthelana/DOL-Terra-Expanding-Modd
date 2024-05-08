@@ -15,28 +15,49 @@
 
 他给了你
 /* 主要任务奖励 */
-<<if $fishing_requests_finished_count is 1>>
-	<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿<<set $Reinforced_Fishing_Pole to true>>
-<<elseif $Golden_Fishing_Rod isnot true and $fishing_requests_finished_count gte 50 and random(1 , Math.round(250 * $fishing_rarity_reduction)) is 1 >>
-	<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿<<set $Golden_Fishing_Rod to true>>
+<<if $Reinforced_Fishing_Pole isnot true and $fishing_requests_finished_count gte 1>>
+	<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
+	<<set $Reinforced_Fishing_Pole to true>>
+<<elseif $Golden_Fishing_Rod isnot true and ($fishing_requests_finished_count gte 30 or random(1 , Math.round(250 * $fishing_rarity_reduction)) is 1)>>
+	<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
+	<<set $Golden_Fishing_Rod to true>>
 <<elseif $Hotline_Fishing_Hook isnot true and $fishing_requests_finished_count gte 25 and random(1 , Math.round(100 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>熔线钓钩<<set $Hotline_Fishing_Hook to true>>
+	<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>熔线钓钩
+	<<set $Hotline_Fishing_Hook to true>>
+<<elseif $Bottomless_Water_Bucket isnot true and $fishing_requests_finished_count gte 10 and ($fishing_requests_finished_count is 25 or random(1 , Math.round(70 * $fishing_rarity_reduction)) is 1)>>
+	<<icon "Tool/Bottomless_Water_Bucket.png">>无底水桶
+	<<set $Bottomless_Water_Bucket to true>>
 <<elseif $Golden_Bug_Net isnot true and random(1 , Math.round(80 * $fishing_rarity_reduction)) is 1>>
-	<<icon "Tool/Golden_Bug_Net.png">>金虫网<<set $Golden_Bug_Net to true>>
+	<<icon "Tool/Golden_Bug_Net.png">>金虫网
+	<<set $Golden_Bug_Net to true>>
 <<elseif $High_Test_Fishing_Line isnot true and random(1 , Math.round(40 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">>优质钓鱼线<<set $High_Test_Fishing_Line to true>><<set $fishing_accessories to true>>
+	<<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">>优质钓鱼线
+	<<set $High_Test_Fishing_Line to true>>
+	<<set $fishing_accessories to true>>
 <<elseif $Angler_Earring isnot true and random(1 , Math.round(40 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_accessories/Angler_Earring.png">>渔夫耳环<<set $Angler_Earring to true>><<set $fishing_accessories to true>>
+	<<icon "fishing/fishing_accessories/Angler_Earring.png">>渔夫耳环
+	<<set $Angler_Earring to true>>
+	<<set $fishing_accessories to true>>
 <<elseif $Tackle_Box isnot true and random(1 , Math.round(40 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_accessories/Tackle_Box.png">>钓具箱<<set $Tackle_Box to true>><<set $fishing_accessories to true>>
+	<<icon "fishing/fishing_accessories/Tackle_Box.png">>钓具箱
+	<<set $Tackle_Box to true>>
+	<<set $fishing_accessories to true>>
 <<elseif $Fishermans_Pocket_Guide isnot true and random(1 , Math.round(30 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">>渔民袖珍宝典<<set $Fishermans_Pocket_Guide to true>><<set $fishing_accessories to true>>
+	<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">>渔民袖珍宝典
+	<<set $Fishermans_Pocket_Guide to true>>
+	<<set $fishing_accessories to true>>
 <<elseif $Weather_Radio isnot true and random(1 , Math.round(30 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_accessories/Weather_Radio.png">>天气收音机<<set $Weather_Radio to true>><<set $fishing_accessories to true>>
+	<<icon "fishing/fishing_accessories/Weather_Radio.png">>天气收音机
+	<<set $Weather_Radio to true>>
+	<<set $fishing_accessories to true>>
 <<elseif $Sextant isnot true and random(1 , Math.round(30 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_accessories/Sextant.png">>六分仪<<set $Sextant to true>><<set $fishing_accessories to true>>
+	<<icon "fishing/fishing_accessories/Sextant.png">>六分仪
+	<<set $Sextant to true>>
+	<<set $fishing_accessories to true>>
 <<elseif $Fishing_Bobber isnot true and random(1 , Math.round(25 * $fishing_rarity_reduction)) is 1>>
-	<<icon "fishing/fishing_accessories/Fishing_Bobber.png">>钓鱼浮标<<set $Fishing_Bobber to true>><<set $fishing_accessories to true>>
+	<<icon "fishing/fishing_accessories/Fishing_Bobber.png">>钓鱼浮标
+	<<set $Fishing_Bobber to true>>
+	<<set $fishing_accessories to true>>
 <<elseif random(1 , Math.round(3 * $fishing_rarity_reduction)) is 1>>
 	<<set $fishing_reward_potion = random(2,5)>>
 	<<if $Fishing_Potion is undefined>>
