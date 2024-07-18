@@ -1,6 +1,6 @@
 # 泰拉瑞亚拓展MOD
 ---
-| [贴吧发布帖](https://tieba.baidu.com/p/9002979933?pid=150217265872&cid=0#150217265872) | [贴吧开发帖](https://tieba.baidu.com/p/8778551242?pid=149243095215&cid=0#149243095215) |
+| [贴吧发布帖](https://tieba.baidu.com/p/9002979933?pid=150217265872&cid=0#150217265872) | [贴吧开发帖](https://tieba.baidu.com/p/8778551242?pid=149243095215&cid=0#149243095215) | QQ交流群号：672887751 |
 
 ---
 ## 简介
@@ -73,9 +73,9 @@
 
 ## 食用说明
 1. 模组文件下载请见右侧/底部的 [releases(发行版)](https://github.com/Nephthelana/DOL-Terra-Expanding-Modd/releases)。
-2. 下载得到的压缩包中含有3个文件：
+2. release中含有3个文件：
     1. Readme.txt：对本模组的详细说明。如对模组内容有疑问，请先参阅本说明；
-    2. Simple.Frameworks.ver1.12.0.build_3.zip：简易框架mod。本模组部分功能依赖此模组生效。[简易框架mod的其他版本](https://github.com/emicoto/DOLMods/)；
+    2. Simple.Frameworks.xxx.zip：简易框架mod。本模组部分功能依赖此模组生效。[简易框架mod的其他版本](https://github.com/emicoto/DOLMods/)；
     3. Terraria Expand Mod.mod.zip：模组本体。无需多言；
 3. 模组加载方式与加载汉化包、图片包相同。具体步骤可参考[汉化组Github仓库的说明页面](https://github.com/Eltirosto/Degrees-of-Lewdity-Chinese-Localization?tab=readme-ov-file#%E5%8F%91%E5%B8%83%E4%B8%8B%E8%BD%BD%E7%89%88)
 ---
@@ -85,7 +85,7 @@
 - 可以开新档来游玩/测试mod。如果希望用已有的旧存档来游玩/测试mod，请务必注意：
   
   在用加载了mod的游戏中加载已有存档之前，请务必先***对该已有存档进行存档码文本保存或者导出.save文件***，以此形式来保留已有存档被mod“污染”之前的样子！(用含有mod的游戏加载已有存档，会使存档里添加原版没有的信息，之后再将该存档导入回原版可能会导致不可逆转的问题，导致存档丢失)
-- 本模组适配0.4.6.x-0.4.7.x版本，且在模组管理器中未出现报错(error)。更早的版本未经测试，无法保证不会出现因该模组自身产生的错误。
+- 本模组适配0.5.x版本，且在模组管理器中未出现报错(error)。
 - Readme.txt文件中有对模组内容更为详细的说明。如不希望被剧透，请谨慎阅读"Mod具体细节介绍"部分。
 ## 讨论交流
 - 贴吧名：脸木挤白
