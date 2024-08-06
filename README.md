@@ -5,7 +5,9 @@
 
 ---
 ## 简介
-为DOL增加了来自泰拉瑞亚的内容，旨在给同为泰拉瑞亚爱好者的玩家带来更丰富的游戏体验。
+为DOL增加了来自泰拉瑞亚的内容，通过晶塔、钓鱼等系统，丰富DOL的生活内容，旨在带来更多游戏中的便利。
+
+模组以泰拉瑞亚为主题，始终在努力兼顾“玩梗”和“介绍”两方面，希望无论是否接触过泰拉瑞亚的玩家都能有更好的游戏体验。
 
 如果你决定游玩本模组，请务必阅读文末的注意事项。
 
@@ -61,7 +63,7 @@
 
   虚空袋
 
-  ![虚空袋1](https://github.com/Nephthelana/DOL-Terra-Expanding-Modd/assets/153483365/dcdd0b93-aeb7-403f-b408-c81c4363dd16)
+  ![虚空袋1](<img width="232" alt="截屏2024-08-07 07 51 32" src="https://github.com/user-attachments/assets/51cdf88d-ff21-41dc-ba67-e89f90fb0f44">)
   ![虚空袋2](https://github.com/Nephthelana/DOL-Terra-Expanding-Modd/assets/153483365/ed039d06-4839-46bd-b1ce-0535f19fa6f2)
 
   增益追踪器
