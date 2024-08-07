@@ -63,7 +63,7 @@
 
   虚空袋
 
-  ![虚空袋1](<img width="232" alt="截屏2024-08-07 07 51 32" src="https://github.com/user-attachments/assets/51cdf88d-ff21-41dc-ba67-e89f90fb0f44">)
+  ![虚空袋1](https://github.com/user-attachments/assets/51cdf88d-ff21-41dc-ba67-e89f90fb0f44)
   ![虚空袋2](https://github.com/Nephthelana/DOL-Terra-Expanding-Modd/assets/153483365/ed039d06-4839-46bd-b1ce-0535f19fa6f2)
 
   增益追踪器
