@@ -1,0 +1,103 @@
+:: Terra Expand Accessories [widget]
+<<widget "terra_expand_accessories">>
+	<<button '<<icon "Accessories.png">>饰品'>><<iModReplace "terraExpandAccessoriesOverlay">><</button>>
+<</widget>>
+
+<<widget "terraExpandAccessoriesOverlay">>
+	<<replace #customOverlayTitle>><<titleTerraExpandAccessories>><</replace>>
+	<<replace #customOverlayContent>><<terraExpandAccessories>><</replace>>
+<</widget>>
+
+<<widget "titleTerraExpandAccessories">>
+	<<setupTabs>>
+	<div id="overlayTabs" class="tab">
+		<<closeButtonMobile>>
+		<<button "饰品">>
+			<<toggleTab>>
+			<<replace #customOverlayContent>><<terraExpandAccessories>><</replace>>
+		<</button>>
+	</div>
+	<<closeButton>>
+<</widget>>
+
+<<widget "terraExpandAccessories">>
+
+<<run initializeTooltips()>>
+<span id="terra_accessories_slots">
+	<<terra_accessories_slots>>
+</span>
+<span class="gold bold">饰品</span><br>
+<span id="terra_accessories">
+	<<terra_accessories>>
+</span>
+
+<</widget>>
+
+:: Terra Accessories Operate [widget]
+<<widget "terra_accessories_slots">>
+
+<span class="gold bold">饰品栏 $terra_accessories_slots.length / 6</span> <mouse class="tooltip linkblue">(?)<span>该功能尚处于测试阶段，对饰品效果无任何影响，请随意摆弄()</span></mouse><br>
+<<if $terra_accessories_slots.length gte 1>>
+<div class="itemTerra">
+	<<set _accessoryObtained to getAccessoriesObtained()>>
+	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
+		<<set _accessory_equipped to setup.terraAccessories[_accessoryObtained[_t]]>>
+		<<capture _accessory_equipped>>
+			<<if $terra_accessories_slots.includes(_accessory_equipped.name)>>
+				<div class="item">
+					<mouse class="tooltip"><<icon `_accessory_equipped.icon`>><span>_accessory_equipped.cn_name<br>_accessory_equipped.des</span></mouse>
+					<hr>
+					<<link "卸下">>
+						<<set $terra_accessories_slots.delete(_accessory_equipped.name)>>
+						<<replace #terra_accessories>>
+							<<terra_accessories>>
+						<</replace>>
+						<<replace #terra_accessories_slots>>
+							<<terra_accessories_slots>>
+						<</replace>>
+					<</link>>
+				</div>
+			<</if>>
+		<</capture>>
+	<</for>>
+</div>
+<<else>>
+<span class="blue">你没有装备饰品</span><br>
+<br>
+<</if>>
+
+<</widget>>
+
+<<widget "terra_accessories">>
+
+<div class="itemTerra">
+	<<set _accessoryObtained to getAccessoriesObtained()>>
+	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
+		<<set _accessory to setup.terraAccessories[_accessoryObtained[_t]]>>
+		<<capture _accessory>>
+			<<if !$terra_accessories_slots.includes(_accessory.name)>>
+       			<div class="item">
+					<mouse class="tooltip"><<icon `_accessory.icon`>><span>_accessory.cn_name<br>_accessory.des</span></mouse>
+					<<if $terra_accessories_slots.length lt 6>>
+						<hr>
+						<<if _accessory.type is "wings" and ($terra_accessories_slots.includes("Fin_Wings") or $terra_accessories_slots.includes("Fledgling_Wings"))>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个翅膀</span></mouse>
+						<<else>>
+							<<link "装备">>
+								<<set $terra_accessories_slots.pushUnique(_accessory.name)>>
+								<<replace #terra_accessories_slots>>
+									<<terra_accessories_slots>>
+								<</replace>>
+								<<replace #terra_accessories>>
+									<<terra_accessories>>
+								<</replace>>
+							<</link>>
+						<</if>>
+					<</if>>
+				</div>
+			<</if>>
+		<</capture>>
+	<</for>>
+</div>
+
+<</widget>>

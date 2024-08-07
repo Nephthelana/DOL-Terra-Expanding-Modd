@@ -2,23 +2,25 @@
 :: Pylon Hawks Tower [widget]
 <<widget "pylon_hawks_tower">>
 
-<br><br>
+<br>
 <<if $historytrait gte 2 and $pylon_museum_asked isnot true and $syndromebird is 1>>
-	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span><br>
+	<br>
 <</if>>
 <<if $pylon_museum_asked and $syndromebird is 1>>
-	<<if $pylon_hawks_tower_unlock isnot true>>
+	<<if !$pylon_collected.includes("Hawks Tower")>>
 		为了激活这个晶塔，你需要找到那块水晶。
-		<<if $NPCName[$NPCNameList.indexOf("Great Hawk")].love gte 90>>
+		<<if C.npc["Great Hawk"].love gte 90>>
 			<span class="teal">巨鹰在栖木上歌唱时，也许你会被邀请去一次约会。</span>
 		<<else>>
 			<span class="blue">如果巨鹰对你有足够的好感，你将会得到提示。</span>
 		<</if>>
-	<<elseif $pylon_hawks_tower_unlock>>
+	<<else>>
 		这块充满魔力的水晶可以将你传送至别的地方。
 		<br>
 		<<icon "pylon/Sunken_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "hawkstower">><</link>>
 	<</if>>
+	<br>
 <</if>>
 
 <</widget>>

@@ -1,0 +1,98 @@
+{
+    "And Good Riddance ...?": {
+        "title": "终于解脱了...吗？",
+        "desc": "世界软腐化度暂时地降低到了最小值。",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "Special"],
+		"hint": "提示：神殿的雕像完好如初后，去司祭那里确认一下。"
+    },
+	"It's All Up": {
+        "title": "看起来没救了",
+        "desc": "世界软腐化度暂时地提高到了最大值。",
+        "difficulty": 2,
+        "series": "",
+        "filter": ["All", "Special"],
+		"hint": "提示：神殿的雕像破败不堪后，去司祭那里确认一下。"
+    },
+	"Glorious Golden Pole": {
+        "title": "荣耀金杆",
+        "desc": "亮闪闪！鱼儿们很喜欢！",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：从渔夫处获得一根金钓竿。"
+    },
+	"Servant-in-Training": {
+        "title": "受训仆人",
+        "desc": "完成了1个渔夫任务。这是好的开始。",
+        "difficulty": 1,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：完成渔夫任务。"
+    },
+	"Good Little Slave": {
+        "title": "三好小奴隶",
+        "desc": "完成了10个渔夫任务。你对渔夫言听计从。",
+        "difficulty": 2,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：完成更多渔夫任务。"
+    },
+	"Trout Monkey": {
+        "title": "顽皮鳟鱼",
+        "desc": "完成了25个渔夫任务。是什么支撑着你完成了这个？",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：完成更多渔夫任务。"
+    },
+	"Fast and Fishious": {
+        "title": "游刃有鱼",
+        "desc": "完成了50个渔夫任务。你一定是为了解锁这个成就，哈哈！",
+        "difficulty": 4,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：完成更多渔夫任务。"
+    },
+	"Don't Dread on Me": {
+        "title": "不要怕我",
+        "desc": "得到了血月天塔柱。",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "Special"],
+		"hint": "提示：血月的森林湖畔，有时可以听见某物的诉求。"
+    },
+	"Hot Reels!": {
+        "title": "火热渔线轮！",
+        "desc": "这里竟然真的能钓鱼！",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "Special"],
+		"hint": "提示：有没有办法钓一些预先油炸过的鱼？"
+    },
+	"Pylon Collector": {
+        "title": "晶塔收藏家",
+        "desc": "集齐5个晶塔所需的晶石。",
+        "difficulty": 4,
+        "series": "",
+        "filter": ["All", "Discoveries"],
+		"hint": "提示：建立一个尽可能庞大的晶塔传送网络。"
+    },
+	"Kong Jun": {
+        "title": "空军",
+        "desc": "你对钓鱼的真正意义有了全新的理解",
+        "difficulty": 1,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：不停地钓鱼，钓鱼，钓鱼。"
+    },
+	"Blue Sunflower": {
+        "title": "蓝色向日葵",
+        "desc": "感谢steam泰拉瑞亚创意工坊作者 蓝色向日葵 带来的可爱渔夫！",
+        "difficulty": 1,
+        "series": "",
+        "filter": ["All", "Special"],
+		"hint": "提示：怎么让渔夫改改嘴臭的毛病？"
+    }
+}

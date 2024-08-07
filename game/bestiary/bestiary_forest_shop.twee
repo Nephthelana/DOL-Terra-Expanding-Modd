@@ -62,6 +62,12 @@
 		<<case "Maggot">>
 			<<set $bestiary_Maggot to true>>
 			<<set $bestiary_Maggot_forest_shop to true>>
+		<<case "Ladybug">>
+			<<set $bestiary_Ladybug to true>>
+			<<set $bestiary_Ladybug_forest_shop to true>>
+		<<case "Gold_Ladybug">>
+			<<set $bestiary_Gold_Ladybug to true>>
+			<<set $bestiary_Gold_Ladybug_forest_shop to true>>
 	<</switch>>
 <br>
 <span class="gold">图鉴解锁了新的条目！</span><br>

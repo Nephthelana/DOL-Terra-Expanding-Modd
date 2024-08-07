@@ -1,141 +1,22 @@
 :: Fishing Request Select [widget]
 <<widget "fishing_request_select">>
-	<<switch $fishing_request_selection>>
-		<<case 0>>
-			"我在发光蘑菇中发现了这个惊人的地方！一切都是蓝的！我正在采摘蓝光湖畔的一些蘑菇，其中一只蘑菇突然咬了我一口，然后游走了！我想以其人之道还治其人之身，并狂咬它一顿！我的意思是，你去把它弄回来给我！"<br>
+	<<set _allRequestFishList to getAllRequestFishList()>>
+	<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
+		<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
+		<<if $fishing_request_selection is _requestFish.name>>
+			<<if $options.cute_angler>>
+				_requestFish.cute_angler_des
+			<<else>>
+				_requestFish.angler_des
+			<</if>><br>
 			<br>
-			<<icon "fishing/quest_fish/Amanita_Fungifin.png">>毒菌鱼(抓捕地点：<<fishing_request_place_wolf_cave_clearing>>)
-		<<case 1>>
-			"你知道吗，天空中漂浮着许多神奇的岛屿？你肯定不知道！因为这个世界里根本没有！他们说，天使住在天上，我相信这些天使都有鳍和鳃，在那游来游去！我相信你肯定能抓一个给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Angelfish.png">>天使鱼(抓捕地点：<<fishing_request_place_eden_clearing>>)
-		<<case 2>>
-			"呐呐呐呐呐呐呐，蝙蝠鱼！意思是去地下深挖，抓住它，再带来给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Batfish.png">>蝙蝠鱼(抓捕地点：<<fishing_request_place_barb_street>>/<<fishing_request_place_wolf_cave_clearing>>)
-		<<case 3>>
-			"如果看到地下水中漂浮着鱼骨，我通常不怎么好奇，但是这只鱼骨竟然在游泳！什么，你以为在 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 中还能动的只有人类的骷髅吗？去抓一只给我，这样我可以把它钉在别人的床上！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Bonefish.png">>骷髅鱼(抓捕地点：<<fishing_request_place_barb_street>>/<<fishing_request_place_wolf_cave_clearing>>)
-		<<case 4>>
-			"在 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 的森林中有许多光怪陆离的生物！比如说，我看见过这种鱼，像一只超级大黄蜂！我对蜜蜂过敏，所以你必须去把它给我抓来！它的味道肯定像金枪鱼和蜂蜜三明治！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Bumblebee_Tuna.png">>大黄蜂金枪鱼(抓捕地点：<<fishing_request_place_honey>>)
-		<<case 5>>
-			"我正在森林里钓鱼，对吧？你猜发生了什么！一只兔兔朝我跳了过来！然后，又有一只跳过来，又有一只……突然间我就被兔兔包围了！甚至有一只从水里向我游过来，但它没有腿！我惊讶地从椅子上跌下来，把所有兔兔都吓跑了！我想要那条兔兔鱼作为宠物，因此你最好去把它抓来给我！马上！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Bunnyfish.png">>兔兔鱼(抓捕地点：<<fishing_request_place_lake_fishing_rock>>)
-		<<case 6>>
-			"我终于找到一只喜欢水的丛林猫！我想这是因为它还有鱼的天性。我不知道为什么会这样，我也不想知道。我只是希望它能到我手里，你得快点！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Catfish.png">>猫鱼(抓捕地点：<<fishing_request_place_farm_woodland>>)
-		<<case 7>>
-			"有谣言说天上漂浮着岛屿，岛上有惊人的宝藏！但是谁会在意呢，更有意思的是，云彩中有时会形成湖泊，湖泊中游荡着云朵做成的鱼！我想尝尝它的味道，所以你最好去把它抓来给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Cloudfish.png">>云鱼(抓捕地点：<<fishing_request_place_eden_clearing>>)
-		<<case 8>>
-			"我在海边看到过这条亮橙色的彩鱼，它在疯狂地游来游去，好像在找走丢的家人！去把它抓来给我，这样又会有一条游出来找它！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Clownfish.png">>小丑鱼(抓捕地点：<<fishing_request_place_beach>>)
-		<<case 9>>
-			"我听说在地狱，所有恶魔的王其实是一条鱼！想像一下，如果你去抓一条给我，我将拥有强大的王权！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Demonic_Hellfish.png">>恶魔地狱鱼(抓捕地点：<<fishing_request_place_wolf_cave_clearing>>)
-		<<case 10>>
-			"树林里的那些跳跳兽是我见过的最可怕的怪物！好的一面是，有时候它们没有腿！这些是生活在水中的，就没那么可怕了！马上去给我抓一只，这样我可以品尝它们的味道，还不会被吓个半死！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Derpfish.png">>跳跳鱼(抓捕地点：<<fishing_request_place_farm_woodland>>)
-		<<case 11>>
-			"正当我在收线钓起一条大鱼时，这个僵尸从森林湖中蹦出来，不仅很搞笑还会说话，然后开始大说特说这种用土做成的'凶残'的鱼！他说，这鱼能闷死十个像他这个块头的小伙子……我要得到它！马上！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Dirtfish.png">>土鱼（抓捕地点：<<fishing_request_place_lake_fishing_rock>>/<<fishing_request_place_barb_street>>）
-		<<case 12>>
-			"曾经有个爆破专家在森林里的湖中弄丢了一捆雷管，一直很着急。他有那么多炸药，丢的那捆炸药有这么重要吗？显然，因为这捆炸药长出了鳍，开始游走了！我不知道他做炸药的材料是哪儿弄的，但那一捆肯定已经走火入魔了！钓回来给我，我一直想要一条自杀式炸弹鱼！不要问为什么……"<br>
-			<br>
-			<<icon "fishing/quest_fish/Dynamite_Fish.png">>雷管鱼（抓捕地点：<<fishing_request_place_lake_fishing_rock>>）
-		<<case 13>>
-			"我喜欢收集天上落下来的亮黄色星星！如果落在某个人的脑袋上，我会更喜欢。但是……但是……我最喜欢的还是星星落在水中变成鱼！那条鱼简直酷毙了，而你又这么牛，快去抓来给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Fallen_Starfish.png">>坠落星鱼（抓捕地点：<<fishing_request_place_lake_fishing_rock>>/<<fishing_request_place_eden_clearing>>）
-		<<case 14>>
-			"显然，恶魔眼有时是两栖的。它们不飞，它们游！我想知道有人在浴缸中发现一条时会有怎样的表情！它们总是在同一个区域晃悠。所以，你要钓一条给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Fish_of_Cthulhu.png">>克苏鲁鱼（抓捕地点：<<fishing_request_place_lake_fishing_rock>>/<<fishing_request_place_eden_clearing>>）
-		<<case 15>>
-			"我不知道哪种情况更惨：骷髅鱼还是长了手的骷髅鱼。这条深藏在洞穴中的骷髅王鱼真把我吓了一跳！我认为它和旧下水道的那个老人被同一个恶魔掌控着！我给你两个胆，你去把它抓来给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Fishotron.png">>骷髅王鱼(抓捕地点：<<fishing_request_place_wolf_cave_clearing>>)
-		<<case 16>>
-			"地狱的恶魔真的很喜欢巫毒娃娃，但我觉得有一个娃娃身藏着特别多的魔法！它变成了一条鱼，还可以对自己施法。我命令你给我带一个来！如果是我的话，我会小心沸腾的熔岩，因为它会把你烧死，这样我就得不到鱼了！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Guide_Voodoo_Fish.png">>向导巫毒鱼(抓捕地点：<<fishing_request_place_wolf_cave_clearing>>)
-		<<case 17>>
-			"我正要在山上的湖畔睡觉时，这条鱼向我俯冲下来。它在飞！它长着一张女人的脸，还有羽毛！我想我叫得比她还大声！嘿，她把我吓成那样，你去让她付出代价！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Harpyfish.png">>鸟妖鱼（抓捕地点：<<fishing_request_place_lake_fishing_rock>>/<<fishing_request_place_eden_clearing>>）
-		<<case 18>>
-			"有一个饿死鬼，是由血肉墙变形而成，像小鱼一样，漫无目的地在地狱游泳，很恶心，但我现在就要！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Hungerfish.png">>饿鬼鱼(抓捕地点：<<fishing_request_place_bird_tower>>)
-		<<case 19>>
-			"哦哦，我马上就要发大财啦！在洞穴的深处，有一种宝石做的鱼！别问我怎么做，我不知道，我知道的是，这种鱼非常美丽，你去把它抓来给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Jewelfish.png">>珠宝鱼(抓捕地点：<<fishing_request_place_barb_street>>/<<fishing_request_place_bird_tower>>)
-		<<case 20>>
-			"经过丛林的水域时，要注意脚下！为什么？不，我不担心你会被食人鱼吃掉。我担心你会踩到我最喜欢的一种鱼，泥鱼！我还希望，你会抓一条来给我当宠物！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Mudfish.png">>泥鱼(抓捕地点：<<fishing_request_place_farm_woodland>>)
-		<<case 21>>
-			"我读过这个古老的故事，讲的是一条长得像魔法金龟子的鱼！说白了就是甲虫！在哪里能找到它？你说呢？咄，在沙漠！别那样看着我……是真的！那里其实是有水的！我想去，但我怕我的眼珠子被秃鹰啄掉。所以……还是你去吧！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Scarab_Fish.png">>甲虫鱼(抓捕地点：<<fishing_request_place_moor>>)
-		<<case 22>>
-			"我敢肯定有人告诉过你沙漠里没有水，真是愚蠢至极！大错特错！沙漠里有种叫绿洲的地方，那里就有水！你说有水就会有什么！？没错，有鱼！那些奇怪的鱼会叮你、咬你，用尽各种方法折磨你！这是一种很适合我的宠物，也是一个很适合你的任务！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Scorpio_Fish.png">>蝎子鱼(抓捕地点：<<fishing_request_place_moor>>)
-		<<case 23>>
-			"森林里的史莱姆有点恶心。史莱姆鱼更恶心！我可不想与史莱姆们一起游泳，所以你快去从水里抓一条给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Slimefish.png">>史莱姆鱼（抓捕地点：<<fishing_request_place_lake_fishing_rock>>）
-		<<case 24>>
-			"我看到一条八条腿的鱼！不！不可能！你为我钓它，这样到我手里的时候就是死的了！这是我最后一次去这么深的洞穴钓鱼！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Spiderfish.png">>蜘蛛鱼(抓捕地点：<<fishing_request_place_barb_street>>/<<fishing_request_place_bird_tower>>)
-		<<case 25>>
-			"食人鱼和鲨鱼都很丑！太太太丑了！你知道吗？有一种鱼长得很漂亮，但可以把你的脸咬掉。顺便说，我愿意付两铂金币来让这事发生。不过关键是，你要抓一条给我。一定要在你的脸被咬掉之前，把它交给我！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Tropical_Barracuda.png">>热带梭鱼(抓捕地点：<<fishing_request_place_farm_woodland>>)
-		<<case 26>>
-			"我知道一些你……你不知道的事！好吧，我告诉你，有一只可怕的怪物在星空中飞来飞去！这不是我自己编出来的！它叫飞龙！可是，可是，你已经知道了，是不是？你不知道的是，它们的出生和成长历程和蝌蚪一样！所以，它们实际上像……像青蛙！开始行动，给我抓一只！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Wyverntail.png">>飞龙尾(抓捕地点：<<fishing_request_place_eden_clearing>>)
-		<<case 27>>
-			"你相信吗？！我晚上在森林里抓到一条已经死了的鱼！然后，它想吃我！我把它扔掉，然后扭头就跑！现在，我要把它钉在别人的梳妆台上，看看会发生什么，所以你去把那条鱼给我抓回来，好吗？！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Zombie_Fish.png">>僵尸鱼（抓捕地点：<<fishing_request_place_lake_fishing_rock>>）
-		<<case 28>>
-			"硫磺火元素的孩子们掉进了地狱的岩浆中。据说他们都化作了鱼，现在我要你给我搞到一条，这样我新准备的岩浆鱼缸就能派上用场了！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Brimlish.png">>小硫火鱼（抓捕地点：<<fishing_request_place_trash>>）
-		<<case 29>>
-			"你知道沙漠里的蜥蜴往地下钻的太深会发生什么吗？我知道，它们超酷的！可惜它们太滑了我没抓住。 你，现在就去把它抓来，这样我就有新的宠物了！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Eutrophic_Sandfish.png">>富养沙地鱼（抓捕地点：<<fishing_request_place_bird_tower>>）
-		<<case 30>>
-			"海蛇其实还是很漂亮的，只要你不贸然侵入他们的领地。现在我命令你给我抓一条来作为给我的惊喜，限你一天之内完成！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Serpentuna.png">>巨蛇金枪鱼（抓捕地点：<<fishing_request_place_bird_tower>>）
-		<<case 31>>
-			"我知道我知道，要你去臭气熏天的垃圾场里钓鱼简直是不讲道理。我正准备这样做。还不快去？鱼可不会自己上钩！"<br>
-			<br>
-			<<icon "fishing/quest_fish/Slurpfish.png">>饮食者鱼（抓捕地点：<<fishing_request_place_trash>>）
-		<<case 32>>
-			"你知道蛤很美味吗?流言说沙漠地下住着一大群蛤，光是说说就觉得饿了。给我抓一只来，让我练习练习烹饪技巧，也顺便解解馋。"<br>
-			<br>
-			<<icon "fishing/quest_fish/Surf_Clam.png">>碎浪蛤（抓捕地点：<<fishing_request_place_bird_tower>>）
-		<<case 33>>
-			"噢！别靠近我！我被一条血水母蜇了！怕你孤陋寡闻不知道血水母是什么，所以我告诉你，它是整个 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 中最凶险的水母！如果你敢，去那个血月笼罩下的森林湖，把它抓来！"<br>
-			<br>
-			<<icon "fishing/quest_fish/quest_fish_sp/Bloody_Manowar.png">>血腥战神（抓捕地点：<<fishing_request_place_lake_fishing_rock>>，血月期间）
-	<</switch>>
+			<<icon `_requestFish.icon`>>_requestFish.cn_name(抓捕地点：_requestFish.catching_place_des)
+			<<break>>
+		<</if>>
+	<</for>>
+	<mouse class="tooltip linkBlue">(?)<span>出现"？？？"时，表明你需要更高的垂钓等级，才能解锁钓鱼点的信息</span></mouse><br>
+	<br>
+	<<if ($artificial_fishing_pond_eden_cabin is "realized" and $fishingskill gte 700) or ($artificial_fishing_pond_wolf_cave_clearing is "realized" and $fishingskill gte 500) or ($artificial_fishing_pond_bird_tower_clearing is "realized" and $fishingskill gte 600)>>
+		<i>听到这段对于钓鱼点的描述，你回想起先前被追杀的过程，感到不寒而栗。向导是否知道某种方式设立相同渔获的钓鱼池，而避免与之直接接触？</i>
+	<</if>>
 <</widget>>

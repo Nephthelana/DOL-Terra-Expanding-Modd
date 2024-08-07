@@ -7,7 +7,7 @@
 	<<if $world_corruption_hard is 0>>	
 		<span class="green">我们生活在童话之中。</span>"
 	<<else>>
-		<span class="green">世界已完全变得纯净。干得漂亮！</span>"
+		<span class="teal">世界已完全变得纯净。干得漂亮！</span>"
 	<</if>>
 <<elseif $world_corruption_soft lte 25>>
 	<<if $world_corruption_hard is 0>>
@@ -28,4 +28,11 @@
 <</if>>
 <br><br>	
 <<endevent>>
-<<link [[继续|Temple]]>><</link>>
+<<link [[继续|Temple Jordan]]>><</link>>
+
+<<if $world_corruption_soft lte 0>>
+	<<earnFeat "And Good Riddance ...?">>
+<</if>>
+<<if $world_corruption_soft gte 100>>
+	<<earnFeat "It's All Up">>
+<</if>>

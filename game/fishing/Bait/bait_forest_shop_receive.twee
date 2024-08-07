@@ -84,6 +84,14 @@
 		<<set $bait_forest_shop_receive to random(3,5)>>
 		<<set $Maggot += $bait_forest_shop_receive>>
 		<<icon "fishing/bait/Maggot.png">>蝇蛆($bait_forest_shop_receive)
+	<<case "Ladybug">>
+		<<set $bait_forest_shop_receive to random(5,7)>>
+		<<set $Ladybug += $bait_forest_shop_receive>>
+		<<icon "fishing/bait/Ladybug.png">>瓢虫($bait_forest_shop_receive)
+	<<case "Gold_Ladybug">>
+		<<set $bait_forest_shop_receive to random(1,2)>>
+		<<set $Gold_Ladybug += $bait_forest_shop_receive>>
+		<<icon "fishing/bait/Gold_Ladybug.png">>金瓢虫($bait_forest_shop_receive)
 <</switch>><br>
 <<set $bait_forest_shop_received to true>>
 <br>

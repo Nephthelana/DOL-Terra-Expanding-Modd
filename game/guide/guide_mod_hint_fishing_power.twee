@@ -1,0 +1,16 @@
+:: Guide Mod Hint Fishing Power
+"<span class="teal">渔力</span>是许多钓鱼相关因素对钓鱼产生的影响总和。它决定了等待鱼咬钩所需的时间，以及得到高品质渔获的几率。<br>
+<br>
+"<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">><span class="gold">渔民袖珍宝典</span>允许你随时在虚空袋中查看当前的渔力。它是渔夫任务奖励之一。"<br>
+<br>
+<mouse class="tooltip linkBlue">渔力影响因素一览
+	<span>
+		所用钓竿的渔力。钓竿可以在宝匣中找到，或以渔夫奖励的方式得到；<br>
+		所用鱼饵的鱼饵力。鱼饵可由渔夫奖励、宝匣、森林商店得到；<br>
+		特定的配饰和物品。绝大多数都是渔夫任务的奖励；<br>
+		特定药水的增益。由渔夫奖励得到；<br>
+		此外，天气、一天中的时间段、月相也会影响渔力。
+	</span>
+</mouse><br>
+<br>
+<<link [[返回|Guide Mod Hint]]>><</link>><br>

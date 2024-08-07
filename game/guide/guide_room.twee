@@ -1,0 +1,60 @@
+:: Guide Room
+<<if $guide_intro isnot true>>
+	"你好。我知道你是谁，但你也许还不认识我：我是向导。正如我的名字，我可以给你提供一些关于DoL，或者泰拉瑞亚拓展模组的提示。<br>
+	<br>
+	"这个世界与我之前所体验的大为不同，但以我的学习能力，为你提供一些关于在这个小镇生活的提示可以说绰绰有余。但也因为这翻天覆地的变化，我需要几样关键的物品，以及一些时间，来适应这个模组对我先前已经掌握的知识做出的改动。<br>
+	<br>
+	"虽然还没有房子，但我在这里定居了下来。森林商店的店主给了我许多帮助——我能如此了解这个小镇，此人功不可没。<br>
+	<br>
+	"如果你有什么问题，欢迎来找我聊聊。"<br>
+	<br>
+	<<link [[继续|Guide Room]]>><<set $guide_intro to true>><</link>><br>
+<<else>>
+	<<set $guide_daily_dialog_set to ["Daily"]>>
+	<<if Time.dayState is "night">>
+		<<set $guide_daily_dialog_set.pushUnique("Night")>>
+	<</if>>
+	<<if Weather.precipitation is "rain" or Weather.name is "heavyClouds" or Weather.name is "thunderStorm">>
+		<<set $guide_daily_dialog_set.pushUnique("Weather")>>
+	<</if>>
+	<<if Time.isBloodMoon()>>
+		<<set $guide_daily_dialog_set.pushUnique("Bloodmoon")>>
+	<</if>>
+	<<switch $guide_daily_dialog_set.random()>>
+		<<case "Daily">>
+			<<guide_daily_dialog>>
+		<<case "Night">>
+			"晚上你应该呆在家里。黑夜在外面转悠非常危险。"
+		<<case "Weather">>
+			<<if Weather.precipitation is "rain">>
+				<<print [
+					`"注意，如果你在雨中全身湿透，你将不得不在隐秘的地方穿行：直到你找到一个更衣室，或者等衣服重新晾干。"`,
+					`"不要惊慌，这只是水而已。我听说某些事件只在下雨的时候发生。！"`
+				].random()>>
+			<<elseif Weather.name is "heavyClouds">>
+				<<print [
+					`"不要被持续的大风刮走了！"`,
+					`"外面起风了！现在是放风筝的最佳时机。"`
+				].random()>>
+			<<elseif Weather.name is "thunderStorm">>
+				<<print [
+					`"雷雨时在外面很危险。找个地方躲起来，孩子。"`,
+					`"闪电可不是闹着玩的，这种天气下会产生非常强大的恶魔。"`
+				].random()>>
+			<</if>>
+		<<case "Bloodmoon">>
+				<<print [
+					`"如果你向上看，你就能看到此刻月亮是红色的。"`,
+					`"天空变红的时候，你就知道血月升起来了。血月有一种魔力，能吸引超然之物。"`
+				].random()>>
+	<</switch>><br>
+	<br>
+	<<if $guide_mod_hint>>
+		<<askicon>><<link [[关于本模组的提示|Guide Mod Hint]]>><</link>><br>
+	<<else>>
+		<<askicon>><<link [[关于本模组的提示|Guide Mod Hint Pre]]>><</link>><br>
+	<</if>>
+	<<ind>><<link [[失物招领处|Guide Lost And Found]]>><</link>><br>
+	<br>
+	<<getouticon>><<link [[离开|Forest]]>><</link>><br>
+<</if>>

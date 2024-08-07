@@ -57,11 +57,21 @@
 	<</if>>
 <</widget>>
 
+<<widget "fishing_request_place_temple_garden">>
+	<<if $fishingskill lt 400>>
+		？？？
+	<<elseif $fishing_place_temple_garden_unlock isnot true>>
+		神殿成员在布道时看起来并不只是单调地宣传教义。他们会谈论起花园的夜色中，有时闪烁着难以捉摸的奇怪光芒。坚信这是神明给予的启示，实际上他们把这也作为了传教的一部分
+	<<else>>
+		神殿的花园
+	<</if>>
+<</widget>>
+
 <<widget "fishing_request_place_wolf_cave_clearing">>
 	<<if $fishingskill lt 500>>
 		？？？
 	<<elseif $fishing_place_wolf_cave_clearing_unlock isnot true>>
-		一些猎人曾沿着溪边几簇零星的发光蘑菇，想要寻找新的品种来大赚一笔，但他们最终都只有一个选择：追溯到森林中最凶险的狼窝后掉头逃跑
+		一些猎人曾沿着溪边几簇零星的发光蘑菇，想要寻找新的品种来大赚一笔，但他们最终都只有一个选择：追溯到森林中最凶险的狼穴后掉头逃跑
 	<<else>>
 		狼窝的溪流
 	<</if>>
@@ -91,7 +101,7 @@
 	<<if $fishingskill lt 900>>
 		？？？
 	<<elseif $fishing_place_trash_unlock isnot true>>
-		学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加“宏伟”。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景。
+		学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加"宏伟"。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景
 	<<else>>
 		垃圾场深处的沸水池
 	<</if>>

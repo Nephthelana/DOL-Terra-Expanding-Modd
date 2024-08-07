@@ -1,0 +1,7 @@
+.itemTerra {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 50px);
+	gap: 5px;
+	padding: 0.5rem;
+}
+

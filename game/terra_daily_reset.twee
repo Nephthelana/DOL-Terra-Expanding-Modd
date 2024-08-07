@@ -1,0 +1,107 @@
+:: Terra Daily Reset [widget]
+<<widget "terra_daily_reset">>
+
+/* 每日6点刷新任务鱼种类、重置已完成任务鱼状态 */
+<<if $fishing_request_selection_list is undefined>>
+<<set $fishing_request_selection_list to [
+	"Amanita_Fungifin",
+	"Angelfish",
+	"Batfish",
+	"Bonefish",
+	"Bumblebee_Tuna",
+	"Bunnyfish",
+	"Catfish",
+	"Cloudfish",
+	"Clownfish",
+	"Demonic_Hellfish",
+	"Derpfish",
+	"Dirtfish",
+	"Dynamite_Fish",
+	"Fallen_Starfish",
+	"Fish_of_Cthulhu",
+	"Fishotron",
+	"Guide_Voodoo_Fish",
+	"Harpyfish",
+	"Hungerfish",
+	"Jewelfish",
+	"Mirage_Fish",
+	"Mudfish",
+	"Pixiefish",
+	"Scarab_Fish",
+	"Scorpio_Fish",
+	"Slimefish",
+	"Spiderfish",
+	"Tropical_Barracuda",
+	"Unicorn_Fish",
+	"Wyverntail",
+	"Zombie_Fish",
+	"Brimlish",
+	"Eutrophic_Sandfish",
+	"Serpentuna",
+	"Slurpfish",
+	"Surf_Clam"
+]>>
+<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
+<</if>>
+<<if Time.monthDay is Time.lastDayOfMonth>>
+	<<set $fishing_request_selection to "Bloody_Manowar">>
+<<else>>
+	<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
+<</if>>
+<<set $fishing_request_finished_daily to false>>
+/* 每日6点刷新森林商店小动物家具小种类 */
+<<switch $bait_forest_shop_main>>
+	<<case "Butterfly">>
+		<<if random(1,400) is 1>>
+			<<set $bait_forest_shop to "Gold_Butterfly">>
+		<<else>>
+			<<set $bait_forest_shop to [
+				"Monarch_Butterfly",
+				"Sulphur_Butterfly",
+				"Zebra_Swallowtail_Butterfly",
+				"Ulysses_Butterfly",
+				"Julia_Butterfly",
+				"Red_Admiral_Butterfly",
+				"Purple_Emperor_Butterfly",
+				"Tree_Nymph_Butterfly"
+			].random()>>
+		<</if>>
+	<<case "Ladybug">>
+		<<if random(1,400) is 1>>
+			<<set $bait_forest_shop to "Gold_Ladybug">>
+		<<else>>
+			<<set $bait_forest_shop to "Ladybug">>
+		<</if>>
+	<<case "Stinkbug">>
+		<<set $bait_forest_shop to "Stinkbug">>
+	<<case "Worm">>
+		<<if random(1,400) is 1>>
+			<<set $bait_forest_shop to "Gold_Worm">>
+		<<elseif random(1,10) is 1>>
+			<<set $bait_forest_shop to "Enchanted_Nightcrawler">>
+		<<else>>
+			<<set $bait_forest_shop to "Worm">>
+		<</if>>
+	<<case "Firefly">>
+		<<if random(1,10) is 1>>
+			<<set $bait_forest_shop to "Lightning_Bug">>
+		<<else>>
+			<<set $bait_forest_shop to "Firefly">>
+		<</if>>
+	<<case "Snail">>
+		<<if random(1,10) is 1>>
+			<<set $bait_forest_shop to "Glowing_Snail">>
+		<<else>>
+			<<set $bait_forest_shop to "Snail">>
+		<</if>>
+	<<case "Grasshopper">>
+		<<if random(1,400) is 1>>
+			<<set $bait_forest_shop to "Gold_Grasshopper">>
+		<<else>>
+			<<set $bait_forest_shop to "Grasshopper">>
+		<</if>>
+	<<case "Maggot">>
+		<<set $bait_forest_shop to "Maggot">>
+<</switch>>
+
+<</widget>>

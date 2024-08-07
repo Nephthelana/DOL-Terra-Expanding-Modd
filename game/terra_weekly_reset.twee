@@ -1,0 +1,29 @@
+:: Terra Weekly Reset [widget]
+<<widget "terra_weekly_reset">>
+
+<<set $bait_forest_shop_main to undefined>>
+<<if random(1,3) is 1>>
+	<<if random(1,9) is 1>>
+		<<set $bait_forest_shop_main to "Stinkbug">>
+	<</if>>
+<<else>>
+	<<if random(1,13) is 1>>
+		<<if random(1,3) is 1>>
+			<<set $bait_forest_shop_main to "Ladybug">>
+		<<else>>
+			<<set $bait_forest_shop_main to "Butterfly">>
+		<</if>>
+	<</if>>
+<</if>>
+<<if $bait_forest_shop_main is undefined>>
+	<<set $bait_forest_shop_main to [
+		"Worm",
+		"Firefly",
+		"Snail",
+		"Grasshopper",
+		"Maggot",
+	].random()>>
+<</if>>
+<<set $bait_forest_shop_received to false>>
+
+<</widget>>

@@ -1,117 +1,16 @@
 :: Furniture Painting Angler Cabin Switch
 放什么呢？<br>
-<<if $Treasure_Map>>
-	<<icon "furniture_item/Treasure_Map.png">>
-	<<link [[宝藏地图|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Treasure_Map">>
-	<</link>><br>
-<</if>>
-<<if $Goldfish_Trophy>>
-	<<icon "furniture_item/Goldfish_Trophy.png">>
-	<<link [[金鱼纪念章|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Goldfish_Trophy">>
-	<</link>><br>
-<</if>>
-<<if $Bunnyfish_Trophy>>
-	<<icon "furniture_item/Bunnyfish_Trophy.png">>
-	<<link [[兔兔纪念章|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Bunnyfish_Trophy">>
-	<</link>><br>
-<</if>>
-<<if $Swordfish_Trophy>>
-	<<icon "furniture_item/Swordfish_Trophy.png">>
-	<<link [[剑鱼纪念章|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Swordfish_Trophy">>
-	<</link>><br>
-<</if>>
-<<if $Sharkteeth_Trophy>>
-	<<icon "furniture_item/Sharkteeth_Trophy.png">>
-	<<link [[鲨牙纪念章|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Sharkteeth_Trophy">>
-	<</link>><br>
-<</if>>
-<<if $Ship_in_a_Bottle>>
-	<<icon "furniture_item/Ship_in_a_Bottle.png">>
-	<<link [[船舶瓶|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Ship_in_a_Bottle">>
-	<</link>><br>
-<</if>>
-<<if $Seaweed_Planter>>
-	<<icon "furniture_item/Seaweed_Planter.png">>
-	<<link [[海草花盆|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Seaweed_Planter">>
-	<</link>><br>
-<</if>>
-<<if $Crustography>>
-	<<icon "furniture_item/Crustography.png">>
-	<<link [[甲壳摄影|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Crustography">>
-	<</link>><br>
-<</if>>
-<<if $Fangs>>
-	<<icon "furniture_item/Fangs.png">>
-	<<link [[獠牙|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Fangs">>
-	<</link>><br>
-<</if>>
-<<if $What_Lurks_Below>>
-	<<icon "furniture_item/What_Lurks_Below.png">>
-	<<link [[下面潜伏着什么|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "What_Lurks_Below">>
-	<</link>><br>
-<</if>>
-<<if $Couch_Gag>>
-	<<icon "furniture_item/Couch_Gag.png">>
-	<<link [[沙发笑话|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Couch_Gag">>
-	<</link>><br>
-<</if>>
-<<if $The_Duke>>
-	<<icon "furniture_item/The_Duke.png">>
-	<<link [[公爵|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "The_Duke">>
-	<</link>><br>
-<</if>>
-<<if $Silent_Fish>>
-	<<icon "furniture_item/Silent_Fish.png">>
-	<<link [[沉默的鱼|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Silent_Fish">>
-	<</link>><br>
-<</if>>
-<<if $Life_Preserver>>
-	<<icon "furniture_item/Life_Preserver.png">>
-	<<link [[救生圈|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Life_Preserver">>
-	<</link>><br>
-<</if>>
-<<if $Ships_Wheel>>
-	<<icon "furniture_item/Ships_Wheel.png">>
-	<<link [[舵轮|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Ships_Wheel">>
-	<</link>><br>
-<</if>>
-<<if $Compass_Rose>>
-	<<icon "furniture_item/Compass_Rose.png">>
-	<<link [[罗盘针|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Compass_Rose">>
-	<</link>><br>
-<</if>>
-<<if $Wall_Anchor>>
-	<<icon "furniture_item/Wall_Anchor.png">>
-	<<link [[墙锚|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Wall_Anchor">>
-	<</link>><br>
-<</if>>
-<<if $Pillagin_Me_Pixels>>
-	<<icon "furniture_item/Pillagin_Me_Pixels.png">>
-	<<link [[海贼像素画|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Pillagin_Me_Pixels">>
-	<</link>><br>
-<</if>>
-<<if $Not_So_Lost_In_Paradise>>
-	<<icon "furniture_item/Not_So_Lost_In_Paradise.png">>
-	<<link [[并未如此迷失在乐园|Fishing Angler Cabin]]>>
-		<<set $furniture_painting_angler_cabin to "Not_So_Lost_In_Paradise">>
-	<</link>><br>
-<</if>>
+<<set _allAnglerFurnitureList to getAllAnglerFurnitureList()>>
+<<for _t to 0; _t lt _allAnglerFurnitureList.length; _t++>>
+	<<set _anglerFurniture to setup.terraAnglerFurniture[_allAnglerFurnitureList[_t]]>>
+	<<capture _anglerFurniture>>
+		<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
+			<<icon `_anglerFurniture.item_icon`>>
+			<<link [[_anglerFurniture.cn_name|Fishing Angler Cabin]]>>
+				<<set $furniture_painting_angler_cabin to _anglerFurniture.name>>
+			<</link>><br>
+		<</if>>
+	<</capture>>
+<</for>>
+<br>
 <<link [[收起家具|Fishing Angler Cabin]]>><<set $furniture_painting_angler_cabin to "none">><</link>>

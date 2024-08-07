@@ -1,0 +1,112 @@
+:: Museum Gravediggers Shovel Intro
+<<npc Winter>><<person1>>
+你发现今天温特并没有在展馆里接待游客。四处寻找之后，你在博物馆的一处角落里看到了<<he>>的身影。<br>
+<br>
+温特正抱着箱子走进一个奇怪的房间。不详的薄雾从房间里弥漫而出。<br>
+<br>
+你缓缓靠近这个薄雾笼罩的房间。<br>
+<br>
+<<link [[进入|Museum Gravediggers Shovel Enter]]>><</link>><<willpowerdifficulty 300>><br>
+<<link [[等待 (0:10)|Museum Gravediggers Shovel Await]]>><<pass 10>><<set $willpowerSuccess to 0>><</link>><br>
+<<endevent>>
+
+:: Museum Gravediggers Shovel Enter
+<<npc Winter>><<person1>>
+<<if $willpowerSuccess>>
+	<span class="green">你鼓起勇气，进入那诡异的房间一探究竟。</span>你发现温特正举着一柄铲子仔细端详。<br>
+	<br>
+	"你来的正是时候。"温特察觉你的到来，<<he>>把铲子放回了桌上，"你找到的文物帮了大忙——市长在了解了近来本地文物收藏情况后，希望大家能更积极投身于文物的收集，丰富本地历史文化——博物馆因此获得了举办这次展览的机会。<br>
+	<br>
+	"而我需要更多工具来维护文物和打理展馆，因此我去拜访了住在森林的那位贤者，你应该是见过的。他向我分享了一些实用工具的...配方。"温特说到这里时犹豫了一下，<<he>>似乎是想说"蓝图"。<br>
+	<br>
+	"虽然很不可思议，但这确实与书中记载的传说相同：古时候的英雄打造装备与工具，就如同做菜一般，拿着材料到制作站上，就这么完成了..."<<He>>举起手中的铲子，比划了一下。"这件东西就需要在灵雾中制作。根据那位贤者的说法，这把铲子的铲头构造特殊，有很高的挖掘效率，主要用于掘墓工作，被称为'掘墓者铲子'。"<br>
+	<br>
+	<<link [[掘墓...？|Museum Gravediggers Shovel Shock]]>><</link>>
+	<<endevent>>
+<<else>>
+	你小心地靠近诡异的房间，缥缈的薄雾像触手一样围绕着你。当你触碰它们时，似乎听见了雷声和鬼魂的哀嚎。<<gstress>><<stress 5>><br>
+	<br>
+	<span class="red">你感到害怕，在看清里面的东西前就远离那个房间。</span><br>
+	<br>
+	<<link [[等待 (0:10)|Museum Gravediggers Shovel Await]]>><<pass 10>><<set $willpowerSuccess to 0>><</link>><br>
+	<<endevent>>
+<</if>>
+
+:: Museum Gravediggers Shovel Await
+<<npc Winter>><<person1>>
+过了一段时间，温特从奇怪的房间里走了出来。<<He>>手中的箱子不见了，取而代之的是一把铲子。<br>
+<br>
+"你来的正是时候。我正准备在博物馆的院子里举行一次露天展览会，来介绍几件特别的文物，你愿意帮个忙吗？"<br>
+<br>
+<<ind>><<link [[同意 (0:10)|Museum Gravediggers Shovel Agree]]>><</link>><br>
+<<ind>><<link [[婉拒 (0:10)|Museum Gravediggers Shovel Refuse]]>><</link>><br>
+<<askicon>><<link [[询问薄雾|Museum Gravediggers Shovel Fog]]>><</link>><br>
+<<endevent>>
+
+:: Museum Gravediggers Shovel Fog
+<<npc Winter>><<person1>>
+"你想知道这些雾气是什么？这是灵雾，常见于墓地这样阴森的地方。虽然不能吸引什么超然之物，但也颇有几分神秘色彩。"<br>
+<br>
+<<link [[墓...？|Museum Gravediggers Shovel Shock]]>><</link>>
+<<endevent>>
+
+:: Museum Gravediggers Shovel Shock
+你在小镇上根本没见过什么墓地，但温特这番话仍使你毛骨悚然。<<gstress>><<stress 3>><br>
+<br>
+"不要紧张，我只是想在博物馆的院子里修一片适合露天展览的场地，你有空跟我一起试试这个铲子吗？"<br>
+<br>
+<<link [[同意 (0:10)|Museum Gravediggers Shovel Agree]]>><</link>><br>
+<<link [[婉拒 (0:10)|Museum Gravediggers Shovel Refuse]]>><</link>><br>
+
+:: Museum Gravediggers Shovel Agree
+<<pass 10>>
+<<npc Winter>><<person1>>
+你点点头，跟随温特一起来到院子里。温特的挖掘工作进展顺利。你负责将这些挖出来的沙土运送到<<he>>指定的地方。<<gtiredness>><<tiredness 5>><<glove>><<npcincr Winter love 1>><br>
+<br>
+<<if !($willpowerSuccess is 1)>>
+	温特向你解释着这把铲子的来历。"你找到的文物帮了大忙——市长在了解了近来本地文物收藏情况后，希望大家能更积极投身于文物的收集，丰富本地历史文化——博物馆因此获得了举办这次展览的机会。<br>
+	<br>
+	"我需要更多工具来打理博物馆，所以我拜访了住在森林的那位贤者。他向我分享了一些实用工具的...配方，其中就包括这个铲子。其铲头构造特殊，有很高的挖掘效率，主要用于掘墓工作，被称为'掘墓者铲子'..."
+<</if>>
+<<He>>突然停下了手中的工作，看起来是遇到了什么棘手的问题。"显而易见，这铲子挖土非常厉害，但完全对付不了这些大石头!"<br>
+<br>
+温特又挑选了其他几处空地进行挖掘，但无一例外的都遇到了坚固的石头。"看来我需要一些矿镐类的工具，而不是这个铲子..."<<He>>的眉头皱了起来，显得有些失望，"或许我得考虑回到室内举办展览会了...这块地到处都是石头，难怪博物馆没有地下室..."<br>
+<br>
+<<He>>叹了口气，看向你。"嗯...或许这把铲子在你手里能发挥它应有的价值。收下吧，就当是博物馆对你的谢礼。但我可没有鼓励你用它去盗墓。"<br>
+<br>
+<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><<set $Gravediggers_Shovel to true>><br>
+<br>
+<<getouticon>><<link [[返回|Museum]]>><</link>><br>
+<<endevent>>
+
+:: Museum Gravediggers Shovel Refuse
+<<pass 10>>
+<<npc Winter>><<person1>>
+你告诉温特你昨晚在熬夜工作，现在仍十分疲惫。温特露出了关切的目光，"你就在室内休息一下吧。如果有需要，也可以去我的办公室里，那里比较安静。"说完便带着铲子出门了。<br>
+<br>
+你没有前往温特的办公室，而是坐在展厅的椅子上闭目养神。
+<<if !($willpowerSuccess is 1)>>你不禁思索着那把来路不明的铲子。<</if>><br>
+<br>
+一段时间后，温特一脸失望地回来了。"这把铲子确实好用，但博物馆的院子里到处都是大石头，它对此无能为力。或许我应该把展览会改到室内。"<br>
+<br>
+<<He>>沉思片刻后看向你，"嗯...或许这把铲子在你手里能发挥它应有的价值，收下吧，就当是博物馆对你的谢礼。"<br>
+<br>
+<<if $willpowerSuccess is 0>>
+	<<askicon>><<link [[询问铲子|Museum Gravediggers Shovel Ask]]>><</link>><br>
+<<else>>
+	<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><<set $Gravediggers_Shovel to true>><br>
+	<br>
+	<<getouticon>><<link [[返回|Museum]]>><</link>><br>
+<</if>>
+<<endevent>>
+
+:: Museum Gravediggers Shovel Ask
+"这把铲子的铲头构造特殊，有很高的挖掘效率，主要被用于掘墓工作，被称为'掘墓者铲子'。不久之前，住在森林里的那位贤者将它的...配方告诉了我，当然还有其他的一些工具。"<br>
+<br>
+温特将铲子放在一边，继续说道："你找到的文物帮了大忙——市长在了解了近来本地文物收藏情况后，希望大家能更积极投身于文物的收集，丰富本地历史文化——博物馆因此获得了举办这次展览的机会。我原本想用这个铲子在院子里修整出一片展览场地，但我发现这里更需要的是一把镐子。<br>
+<br>
+"总之我用不到这把铲子。作为谢礼，它是你的了。"<br>
+<br>
+<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><<set $Gravediggers_Shovel to true>><br>
+<br>
+<<getouticon>><<link [[返回|Museum]]>><</link>><br>

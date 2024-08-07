@@ -1,8 +1,11 @@
 /*晶塔地图*/
 :: Pylon Transport
+<<if $pylon_collected.length gte 5>>
+	<<earnFeat "Pylon Collector">>
+<</if>>
 你看着晶塔显示的地图，思索你要去哪里。<br>
 <<if $pylon_bedroom_unlock>>
-	<<if getRobinLocation() is "orphanage" or getRobinLocation() is "sleep" or getRobinLocation() is "bath">>
+	<<if getRobinLocation() is "orphanage" or getRobinLocation() is "sleep" or getRobinLocation() is "bath" or getRobinLocation() is "liveStream">>
 		<<icon "pylon/Forest_Pylon.png">><<link [[传送到孤儿院卧室晶塔(0:01)|Bedroom]]>><<pass 1>><</link>>
 	<<else>>
 		<span class="fading"><<icon "pylon/Forest_Pylon.png">></span>罗宾现在不在孤儿院，你无法使用孤儿院卧室晶塔。

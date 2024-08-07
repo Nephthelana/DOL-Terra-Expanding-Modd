@@ -3,10 +3,10 @@
 
 	<<set $fishing_distance to 50>>
 
-	<<set $fishing_integrity to 3>>
-	<<if $High_Test_Fishing_Line>>
-		<<set $fishing_integrity += 2>>
-	<</if>>
+	<<switch $High_Test_Fishing_Line>>
+		<<case true>><<set $fishing_integrity to 5>>
+		<<default>><<set $fishing_integrity to 3>>
+	<</switch>>
 
 	<<switch $fishingrod_held>>
 		<<case "Golden_Fishing_Rod">>

@@ -1,0 +1,8 @@
+:: CuteAngler [widget]
+<<widget "cuteAngler">>
+
+<div class="settingsToggle">
+	<label><<checkbox "$options.cute_angler" false true autocheck>>可爱渔夫语言包</label><mouse class="tooltip linkBlue">(?)<span>开启后修改渔夫的对话风格，可根据需要将渔夫性别调整为女性以获得更佳体验()</span></mouse>
+</div>
+
+<</widget>>

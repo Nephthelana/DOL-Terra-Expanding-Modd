@@ -1,0 +1,6 @@
+:: Guide Lost And Found
+"很抱歉在版本更新上给你带来的不便。请选择你要取回的物品。"<br>
+<br>
+<<link [[取回v0.1.5版本丢失的物品|Guide Lost And Found v0.1.5]]>><</link>>
+<br>
+<<link [[返回|Guide Room]]>><</link>>

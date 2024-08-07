@@ -135,24 +135,5 @@
 "还要看看商店里的其他东西吗？"<br>
 <br>
 <<getouticon>><<link [[返回|Forest Shop]]>><<set $bait_forest_shop_intro to 1>><</link>>
-<<set $Gold_Butterfly = 0>>
-<<set $Monarch_Butterfly = 0>>
-<<set $Sulphur_Butterfly = 0>>
-<<set $Zebra_Swallowtail_Butterfly = 0>>
-<<set $Ulysses_Butterfly = 0>>
-<<set $Julia_Butterfly = 0>>
-<<set $Red_Admiral_Butterfly = 0>>
-<<set $Purple_Emperor_Butterfly = 0>>
-<<set $Tree_Nymph_Butterfly = 0>>
-<<set $Stinkbug = 0>>
-<<set $Worm = 0>>
-<<set $Gold_Worm = 0>>
-<<set $Firefly = 0>>
-<<set $Lightning_Bug = 0>>
-<<set $Snail = 0>>
-<<set $Glow_Snail = 0>>
-<<set $Grasshopper = 0>>
-<<set $Gold_Grasshopper = 0>>
-<<set $Maggot = 0>>
 
 <<endevent>>

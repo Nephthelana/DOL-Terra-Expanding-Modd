@@ -1,0 +1,30 @@
+:: Guide Mod Hint Pylon
+<<if $pylon_museum_asked>>
+	<<if $pylon_collected.length gte 5>>
+		"你已经集齐了5个晶塔，恭喜你！"<br>
+	<<else>>
+		"卧室里的提示不够明确是吗？没问题，你想知道哪个晶塔的晶石位置？不过在此之前，你得保证他们对你有了足够的好感。"<br>
+		<br>
+		<<if !$pylon_collected.includes("Bedroom")>>
+			<<icon "pylon/Forest_Pylon.png">><mouse class="tooltip linkBlue">孤儿院卧室<span>在阴天和罗宾去森林约会，且罗宾自信值不低于20，创伤为0</span></mouse><br>
+		<</if>>
+		<<if !$pylon_collected.includes("Farm Bedroom")>>
+			<<icon "pylon/Universal_Pylon.png">><mouse class="tooltip linkBlue">农场卧室<span>在晴天或阴天，和艾利克斯在马厩休息后，触发一起骑马的剧情</span></mouse><br>
+		<</if>>
+		<<if !$pylon_collected.includes("Eden Clearing")>>
+			<<icon "pylon/Jungle_Pylon.png">><mouse class="tooltip linkBlue">伊甸小屋<span>让伊甸帮忙搜索森林</span></mouse><br>
+		<</if>>
+		<<if !$pylon_collected.includes("Bird Tower")>>
+			<<icon "pylon/Sunken_Pylon.png">><mouse class="tooltip linkBlue">鹰塔<span>在晴天或阴天，巨鹰在栖木上时，有概率被邀请去一次约会</span></mouse><br>
+		<</if>>
+		<<if !$pylon_collected.includes("Wolfcave")>>
+			<<icon "pylon/Mushroom_Pylon.png">><mouse class="tooltip linkBlue">狼窝<span>成为头狼后，与黑狼一起打猎，并选择去河边</span></mouse><br>
+		<</if>>
+	<</if>>
+<<elseif $historytrait gte 2>>
+	"不知道卧室的基座是什么用处？你可以去博物馆问问。"<br>
+<<else>>
+	"如果你对小镇的历史有了更多了解，你会注意到卧室里奇怪的基座。"<br>
+<</if>>
+<br>
+<<link [[返回|Guide Mod Hint]]>><</link>>

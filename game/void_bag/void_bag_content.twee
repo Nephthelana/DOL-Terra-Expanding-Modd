@@ -26,6 +26,8 @@
 
 /* 渔获标签页信息 */
 <<widget "fishingharvests">>
+	<<run initializeTooltips()>>
+	/* 钓鱼信息饰品：渔民袖珍宝典、天气收音机、六分仪 */
 	<<if $Fishermans_Pocket_Guide>>
 		<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">>
 		<<if $Bait is "Truffle_Worm">>
@@ -34,170 +36,107 @@
 			<<fishing_power>>
 			渔力：<<print Math.round($fishing_power)>><br>
 		<</if>>
+	<</if>>
+	<<if $Weather_Radio>>
+		<br>
+		<<icon "fishing/fishing_accessories/Weather_Radio.png">>
+		当前天气：
+		<<switch Weather.name>>
+			<<case "clear">><<icon "clear_icon.png">>晴天
+			<<case "lightClouds">><<icon "lightClouds_icon.png">>有云
+			<<case "heavyClouds">><<icon "heavyClouds_icon.png">>多云
+			<<case "lightPrecipitation">><<icon "lightPrecipitation_icon.png">>小雨
+			<<case "heavyPrecipitation">><<icon "heavyPrecipitation_icon.png">>大雨
+		<</switch>><br>
+	<</if>>
+	<<if $Sextant>>
+		<br>
+		<<icon "fishing/fishing_accessories/Sextant.png">>
+		当前月相：
+		<<if Weather.bloodMoon>>
+			<span class="red">血月</span>(+10%渔力)
+		<<elseif Time.date.moonPhaseFraction is 0>>
+			新月(-10%渔力)
+		<<elseif Time.date.moonPhaseFraction gt 0 and Time.date.moonPhaseFraction lt 0.25>>
+			娥眉月(-5%渔力)
+		<<elseif Time.date.moonPhaseFraction is 0.25>>
+			上弦月
+		<<elseif Time.date.moonPhaseFraction gt 0.25 and Time.date.moonPhaseFraction lt 0.5>>
+			盈凸月(+5%渔力)
+		<<elseif Time.date.moonPhaseFraction is 0.5>>
+			满月(+10%渔力)
+		<<elseif Time.date.moonPhaseFraction gt 0.5 and Time.date.moonPhaseFraction lt 0.75>>
+			亏凸月(+5%渔力)
+		<<elseif Time.date.moonPhaseFraction is 0.75>>
+			下弦月
+		<<elseif Time.date.moonPhaseFraction gt 0.75 and Time.date.moonPhaseFraction lt 1>>
+			残月(-5%渔力)
+		<<else>>
+			额哦，显示月相时好像出了些问题，建议问问模组作者~
+		<</if>>
 		<br>
 	<</if>>
+	/* 持有鱼饵+切换鱼饵 */
 	<<if $fishingrod>>
-		<span class="gold bold">鱼饵</span><mouse class="tooltip linkBlue">(?)<span>鱼饵可以给你提供不同的鱼饵力影响渔获的品质，也影响在成功钓起渔获物时鱼饵物品被消耗掉的几率：高鱼饵力意味着低消耗几率。</span></mouse><br>
 		<br>
+		<span class="gold bold">鱼饵</span><mouse class="tooltip linkBlue">(?)<span>鱼饵可以给你提供不同的鱼饵力，影响渔获的品质，也影响在成功钓起渔获物时鱼饵物品被消耗掉的几率：高鱼饵力意味着低消耗几率。</span></mouse><br>
 		<<if $passage is "Fishing">>
 			哦不，钓钩都抛出去了，怎么能换鱼饵呢？<br>
 		<<else>>
 			<label><<radiobutton "$Bait" "None" autocheck>>不使用鱼饵</label>
 			<br>
-			<<if $Apprentice_Bait gt 0>>
-				<label><<radiobutton "$Bait" "Apprentice_Bait" autocheck>><<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵($Apprentice_Bait)</label>
-				<mouse class="tooltip linkBlue">(?)<span>15渔力</span></mouse>
-			<</if>>
-			<<if $Journeyman_Bait gt 0>>
-				<label><<radiobutton "$Bait" "Journeyman_Bait" autocheck>><<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵($Journeyman_Bait)</label>
-				<mouse class="tooltip linkBlue">(?)<span>30渔力</span></mouse>
-			<</if>>
-			<<if $Master_Bait gt 0>>
-				<label><<radiobutton "$Bait" "Master_Bait" autocheck>><<icon "fishing/bait/Master_Bait.png">>大师诱饵($Master_Bait)</label>
-				<mouse class="tooltip linkBlue">(?)<span>50渔力</span></mouse>
-			<</if>>
-			<<if $Worm gt 0>>
-				<label><<radiobutton "$Bait" "Worm" autocheck>><<icon "fishing/bait/Worm.png">>蠕虫($Worm)</label>
-				<mouse class="tooltip linkBlue">(?)<span>25渔力</span></mouse>
-			<</if>>
-			<<if $Enchanted_Nightcrawler gt 0>>
-				<label><<radiobutton "$Bait" "Enchanted_Nightcrawler" autocheck>><<icon "fishing/bait/Enchanted_Nightcrawler.png">>附魔夜行者($Enchanted_Nightcrawler)</label>
-				<mouse class="tooltip linkBlue">(?)<span>35渔力</span></mouse>
-			<</if>>
-			<<if $Firefly gt 0>>
-			<label><<radiobutton "$Bait" "Firefly" autocheck>><<icon "fishing/bait/Firefly.png">>萤火虫($Firefly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>20渔力</span></mouse>
-			<</if>>
-			<<if $Lightning_Bug gt 0>>
-				<label><<radiobutton "$Bait" "Lightning_Bug" autocheck>><<icon "fishing/bait/Lightning_Bug.png">>荧光虫($Lightning_Bug)</label>
-				<mouse class="tooltip linkBlue">(?)<span>35渔力</span></mouse>
-			<</if>>
-			<<if $Snail gt 0>>
-				<label><<radiobutton "$Bait" "Snail" autocheck>><<icon "fishing/bait/Snail.png">>蜗牛($Snail)</label>
-				<mouse class="tooltip linkBlue">(?)<span>10渔力</span></mouse>
-			<</if>>
-			<<if $Glowing_Snail gt 0>>
-				<label><<radiobutton "$Bait" "Glowing_Snail" autocheck>><<icon "fishing/bait/Glowing_Snail.png">>发光蜗牛($Glowing_Snail)</label>
-				<mouse class="tooltip linkBlue">(?)<span>15渔力</span></mouse>
-			<</if>>
-			<<if $Grasshopper gt 0>>
-				<label><<radiobutton "$Bait" "Grasshopper" autocheck>><<icon "fishing/bait/Grasshopper.png">>蚱蜢($Grasshopper)</label>
-				<mouse class="tooltip linkBlue">(?)<span>10渔力</span></mouse>
-			<</if>>
-			<<if $Monarch_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Monarch_Butterfly" autocheck>><<icon "fishing/bait/Monarch_Butterfly.png">>帝王蝶($Monarch_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>5渔力</span></mouse>
-			<</if>>
-			<<if $Sulphur_Butterfly gt 0>>
-			<label><<radiobutton "$Bait" "Sulphur_Butterfly" autocheck>><<icon "fishing/bait/Sulphur_Butterfly.png">>黄粉蝶($Sulphur_Butterfly)</label>
-					<mouse class="tooltip linkBlue">(?)<span>10渔力</span></mouse>
-			<</if>>
-			<<if $Zebra_Swallowtail_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Zebra_Swallowtail_Butterfly" autocheck>><<icon "fishing/bait/Zebra_Swallowtail_Butterfly.png">>带凤蝶($Zebra_Swallowtail_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>15渔力</span></mouse>
-			<</if>>
-			<<if $Ulysses_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Ulysses_Butterfly" autocheck>><<icon "fishing/bait/Ulysses_Butterfly.png">>翠凤蝶($Ulysses_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>20渔力</span></mouse>
-			<</if>>
-			<<if $Julia_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Julia_Butterfly" autocheck>><<icon "fishing/bait/Julia_Butterfly.png">>珠袖蝶($Julia_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>25渔力</span></mouse>
-			<</if>>
-			<<if $Red_Admiral_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Red_Admiral_Butterfly" autocheck>><<icon "fishing/bait/Red_Admiral_Butterfly.png">>红蛱蝶($Red_Admiral_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>30渔力</span></mouse>
-			<</if>>
-			<<if $Purple_Emperor_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Purple_Emperor_Butterfly" autocheck>><<icon "fishing/bait/Purple_Emperor_Butterfly.png">>紫蛱蝶($Purple_Emperor_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>35渔力</span></mouse>
-			<</if>>
-			<<if $Tree_Nymph_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Tree_Nymph_Butterfly" autocheck>><<icon "fishing/bait/Tree_Nymph_Butterfly.png">>帛斑蝶($Tree_Nymph_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>50渔力</span></mouse>
-			<</if>>
-			<<if $Hell_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Hell_Butterfly" autocheck>><<icon "fishing/bait/Hell_Butterfly.png">>地狱蝴蝶($Hell_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>25渔力，可用于在沸水、熔岩中钓鱼</span></mouse>
-			<</if>>
-			<<if $Maggot gt 0>>
-				<label><<radiobutton "$Bait" "Maggot" autocheck>><<icon "fishing/bait/Maggot.png">>蝇蛆($Maggot)</label>
-				<mouse class="tooltip linkBlue">(?)<span>22渔力</span></mouse>
-			<</if>>
-			<<if $Stinkbug gt 0>>
-				<label><<radiobutton "$Bait" "Stinkbug" autocheck>><<icon "fishing/bait/Stinkbug.png">>臭虫($Stinkbug)</label>
-				<mouse class="tooltip linkBlue">(?)<span>10渔力</span></mouse>
-			<</if>>
-			<<if $Gold_Butterfly gt 0>>
-				<label><<radiobutton "$Bait" "Gold_Butterfly" autocheck>><<icon "fishing/bait/Gold_Butterfly.png">>金蝴蝶($Gold_Butterfly)</label>
-				<mouse class="tooltip linkBlue">(?)<span>50渔力</span></mouse>
-			<</if>>
-			<<if $Gold_Grasshopper gt 0>>
-				<label><<radiobutton "$Bait" "Gold_Grasshopper" autocheck>><<icon "fishing/bait/Gold_Grasshopper.png">>金蚱蜢($Gold_Grasshopper)</label>
-				<mouse class="tooltip linkBlue">(?)<span>50渔力</span></mouse>
-			<</if>>
-			<<if $Gold_Worm gt 0>>
-				<label><<radiobutton "$Bait" "Gold_Worm" autocheck>><<icon "fishing/bait/Gold_Worm.png">>金蠕虫($Gold_Worm)</label>
-				<mouse class="tooltip linkBlue">(?)<span>50渔力</span></mouse>
-			<</if>>
-			<<if $Truffle_Worm gt 0>>
-				<label><<radiobutton "$Bait" "Truffle_Worm" autocheck>><<icon "fishing/bait/Truffle_Worm.png">>松露虫($Truffle_Worm)</label>
-				<mouse class="tooltip linkBlue">(?)<span>666渔力</span></mouse>
-			<</if>>
-			<br>
+			<div class="itemTerra">
+				<<set _baitObtained to getBaitObtainedList()>>
+				<<for _t to 0; _t lt _baitObtained.length; _t++>>
+					<<set _bait to setup.terraBait[_baitObtained[_t]]>>
+					<<set _baitName to _bait.cn_name>>
+					<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
+					<<set _amount = _formatter.format(_bait.amount)>>
+					<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_baitName}<br>▶ ${_bait.fishing_power}渔力`>>
+            		<div class="item" @tooltip="_tooltip">
+						<label><<icon `_bait.icon`>>
+						<hr>
+						<<radiobutton "$Bait" _bait.name autocheck>><<= _amount>></label>
+					</div>
+				<</for>>
+			</div>
 		<</if>>
-		<br>
 	<</if>>
-	<span class="gold bold">任务鱼</span><br>
-	<<if $Amanita_Fungifin>><<icon "fishing/quest_fish/Amanita_Fungifin.png">>毒菌鱼|<</if>>
-	<<if $Angelfish>><<icon "fishing/quest_fish/Angelfish.png">>天使鱼|<</if>>
-	<<if $Batfish>><<icon "fishing/quest_fish/Batfish.png">>蝙蝠鱼|<</if>>
-	<<if $Bonefish>><<icon "fishing/quest_fish/Bonefish.png">>骷髅鱼|<</if>>
-	<<if $Bumblebee_Tuna>><<icon "fishing/quest_fish/Bumblebee_Tuna.png">>大黄蜂金枪鱼|<</if>>
-	<<if $Bunnyfish>><<icon "fishing/quest_fish/Bunnyfish.png">>兔兔鱼|<</if>>
-	<<if $Catfish>><<icon "fishing/quest_fish/Catfish.png">>猫鱼|<</if>>
-	<<if $Cloudfish>><<icon "fishing/quest_fish/Cloudfish.png">>云鱼|<</if>>
-	<<if $Clownfish>><<icon "fishing/quest_fish/Clownfish.png">>小丑鱼|<</if>>
-	<<if $Demonic_Hellfish>><<icon "fishing/quest_fish/Demonic_Hellfish.png">>恶魔地狱鱼|<</if>>
-	<<if $Derpfish>><<icon "fishing/quest_fish/Derpfish.png">>跳跳鱼|<</if>>
-	<<if $Dirtfish>><<icon "fishing/quest_fish/Dirtfish.png">>土鱼|<</if>>
-	<<if $Dynamite_Fish>><<icon "fishing/quest_fish/Dynamite_Fish.png">>雷管鱼|<</if>>
-	<<if $Fallen_Starfish>><<icon "fishing/quest_fish/Fallen_Starfish.png">>坠落星鱼|<</if>>
-	<<if $Fish_of_Cthulhu>><<icon "fishing/quest_fish/Fish_of_Cthulhu.png">>克苏鲁鱼|<</if>>
-	<<if $Fishotron>><<icon "fishing/quest_fish/Fishotron.png">>骷髅王鱼|<</if>>
-	<<if $Guide_Voodoo_Fish>><<icon "fishing/quest_fish/Guide_Voodoo_Fish.png">>向导巫毒鱼|<</if>>
-	<<if $Harpyfish>><<icon "fishing/quest_fish/Harpyfish.png">>鸟妖鱼|<</if>>
-	<<if $Hungerfish>><<icon "fishing/quest_fish/Hungerfish.png">>饿鬼鱼|<</if>>
-	<<if $Jewelfish>><<icon "fishing/quest_fish/Jewelfish.png">>珠宝鱼|<</if>>
-	<<if $Mudfish>><<icon "fishing/quest_fish/Mudfish.png">>泥鱼|<</if>>
-	<<if $Scarab_Fish>><<icon "fishing/quest_fish/Scarab_Fish.png">>甲虫鱼|<</if>>
-	<<if $Scorpio_Fish>><<icon "fishing/quest_fish/Scorpio_Fish.png">>蝎子鱼|<</if>>
-	<<if $Slimefish>><<icon "fishing/quest_fish/Slimefish.png">>史莱姆鱼|<</if>>
-	<<if $Spiderfish>><<icon "fishing/quest_fish/Spiderfish.png">>蜘蛛鱼|<</if>>
-	<<if $Tropical_Barracuda>><<icon "fishing/quest_fish/Tropical_Barracuda.png">>热带梭鱼|<</if>>
-	<<if $Wyverntail>><<icon "fishing/quest_fish/Wyverntail.png">>飞龙尾|<</if>>
-	<<if $Zombie_Fish>><<icon "fishing/quest_fish/Zombie_Fish.png">>僵尸鱼|<</if>>
-	<<if $Brimlish>><<icon "fishing/quest_fish/Brimlish.png">>小硫火鱼|<</if>>
-	<<if $Eutrophic_Sandfish>><<icon "fishing/quest_fish/Eutrophic_Sandfish.png">>富养沙地鱼|<</if>>
-	<<if $Serpentuna>><<icon "fishing/quest_fish/Serpentuna.png">>巨蛇金枪鱼|<</if>>
-	<<if $Slurpfish>><<icon "fishing/quest_fish/Slurpfish.png">>饮食者鱼|<</if>>
-	<<if $Surf_Clam>><<icon "fishing/quest_fish/Surf_Clam.png">>碎浪蛤|<</if>>
-	<<if $Bloody_Manowar>><<icon "fishing/quest_fish/quest_fish_sp/Bloody_Manowar.png">>血腥战神|<</if>>
-	<br>
-	<<if $Golden_Crate gte 1 or $Iron_Crate gte 1 or $Wooden_Crate gte 1 or $Ocean_Crate gte 1 or $Oyster gte 1 or $Oasis_Crate gte 1 or $Jungle_Crate gte 1 or $Sky_Crate gte 1 or $Sulphurous_Crate gte 1 or $Brimstone_Crate gte 1>>
+	/* 持有任务鱼 */
+	<<if $fishing_request_fish.length gte 1>>
+		<span class="gold bold">任务鱼</span><br>
+		<div class="itemTerra">
+			<<set _allRequestFishList to getAllRequestFishList()>>
+			<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
+				<<set _item to setup.terraRequestFish[_allRequestFishList[_t]]>>
+				<<if $fishing_request_fish.includes(_item.name)>>
+					<<set _itemName to _item.cn_name>>
+					<<set _tooltip to ` <span class="gold">${_itemName}</span>`>>
+            		<div class="item" @tooltip="_tooltip">
+						<<icon `_item.icon`>>
+					</div>
+				<</if>>
+			<</for>>
+		</div>
+	<</if>>
+	/* 持有宝匣 */
+	<<if getCrateObtainedList().length gte 1>>
 		<span class="gold bold">宝匣</span><mouse class="tooltip linkBlue">(?)<span>包含一些随机的物品。你可在孤儿院一个秘密的地方打开它们。</span></mouse><br>
-		<br>
-		<<if $Golden_Crate gt 0>><<icon "fishing/crates/Golden_Crate.png">>金匣($Golden_Crate)|<</if>>
-		<<if $Iron_Crate gt 0>><<icon "fishing/crates/Iron_Crate.png">>铁匣($Iron_Crate)|<</if>>
-		<<if $Wooden_Crate gt 0>><<icon "fishing/crates/Wooden_Crate.png">>木匣($Wooden_Crate)|<</if>>
-		<<if $Ocean_Crate gt 0>><<icon "fishing/crates/Ocean_Crate.png">>海洋匣($Ocean_Crate)|<</if>>
-		<<if $Oyster gt 0>><<icon "fishing/crates/Oyster.png">>牡蛎($Oyster)<mouse class="tooltip linkBlue">(?)<span>不要问它为什么在这——我感觉它算()</span></mouse>|<</if>>
-		<<if $Oasis_Crate gt 0>><<icon "fishing/crates/Oasis_Crate.png">>绿洲匣($Oasis_Crate)|<</if>>
-		<<if $Jungle_Crate gt 0>><<icon "fishing/crates/Jungle_Crate.png">>丛林匣($Jungle_Crate)|<</if>>
-		<<if $Sky_Crate gt 0>><<icon "fishing/crates/Sky_Crate.png">>天空匣($Sky_Crate)|<</if>>
-		<<if $Sunken_Crate gt 0>><<icon "fishing/crates/Sunken_Crate.png">>沉沦匣($Sunken_Crate)|<</if>>
-		<<if $Sulphurous_Crate gt 0>><<icon "fishing/crates/Sulphurous_Crate.png">>硫海匣($Sulphurous_Crate)|<</if>>
-		<<if $Brimstone_Crate gt 0>><<icon "fishing/crates/Brimstone_Crate.png">>硫火匣($Brimstone_Crate)|<</if>>
+        <div class="itemTerra">
+			<<set _crateObtained to getCrateObtainedList()>>
+			<<for _t to 0; _t lt _crateObtained.length; _t++>>
+				<<set _crate to setup.terraCrate[_crateObtained[_t]]>>
+               	<<set _crateName to _crate.cn_name>>
+            	<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
+				<<set _amount = _formatter.format(_crate.amount)>>
+            	<<set _tooltip to `<span class="green">${_crate.amount}</span> ${_crateName}`>>
+            	<div class="item" @tooltip="_tooltip">
+					<<icon `_crate.icon`>>
+					<hr>
+					<<= _amount>>
+				</div>
+			<</for>>
+		</div>
 	<</if>>
 <</widget>>
 
@@ -227,117 +166,108 @@
 			<mouse class="tooltip linkBlue">(?)<span>每日可使用一次，将你传送至地下岩浆湖(暂未实装，目前为传送至海滩)</span></mouse><br>
 		<</if>>
 		<<if $Snake_Charmers_Flute>>
-			<<icon "tool/Snake_Charmers_Flute.png">>
-			<<if $location is "town">>
-				<<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use]]>><<pass 1>><</link>>
-				<mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！但只能在小镇的街道使用它)</span></mouse><br>
-			<<else>>
-				<span class="blue">你只能在小镇的街道上使用耍蛇者长笛</span><br>
+			<<if $Fin_Wings or $birdFly gte 1>>
+				<<switch $passage>>
+					<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
+						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Town">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
+					<<case "Lake Shore">>
+						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Lake Shore">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
+					<<case "Meadow">>
+						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Meadow">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
+					<<case "Moor">>
+						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Moor">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
+					<<default>>
+						<span class="blue">你只能在森林湖、小镇街道、镇外草地、鹰塔塔底使用耍蛇者长笛</span><br>
+				<</switch>>
+			<<elseif $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6 or $Fledgling_Wings>>
+				<<switch $passage>>
+					<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
+						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 1]]>><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！但以你的滑翔能力，你只能在小镇的街道使用它)</span></mouse><br>
+					<<default>>
+						<span class="blue">你只能在小镇的街道上使用耍蛇者长笛</span><br>
+				<</switch>>
 			<</if>>
 		<</if>>
 		<<if $Torrential_Tear>>
-			<<icon "tool/Torrential_Tear.png">>
-			<<link "洪流之泪">>
-				<<switch $weather>>
-					<<case "clear">>
-						<<set $weather to "overcast">>
-						<<replace #hint_item_use>>
-							<span class="teal">天气已设为<<icon "overcast_icon.png">>阴天</span><br>
-							<br>
-						<</replace>>
-					<<case "overcast">>
-						<<if Time.season is "winter">>
-							<<set $weather to "snow">>
-							<<replace #hint_item_use>>
-								<span class="teal">天气已设为<<icon "rain_icon.png">>雪天</span><br>
-								<br>
-							<</replace>>
-						<<else>>
-							<<set $weather to "rain">>
-							<<replace #hint_item_use>>
-								<span class="teal">天气已设为<<icon "rain_icon.png">>雨天</span><br>
-								<br>
-							<</replace>>
-						<</if>>
-					<<case "rain">>
-						<<set $weather to "clear">>
-						<<replace #hint_item_use>>
-							<span class="teal">天气已设为<<icon "clear_icon.png">>晴天</span><br>
-							<br>
-						<</replace>>
-					<<case "snow">>
-						<<set $weather to "clear">>
-						<<replace #hint_item_use>>
-							<span class="teal">天气已设为<<icon "clear_icon.png">>晴天</span><br>
-							<br>
-						<</replace>>
-				<</switch>>
+			<<icon "tool/Torrential_Tear.png">>洪流之泪
+			<mouse class="tooltip linkBlue">(?)<span>使用以控制在接下来至少六小时内的天气，在那之后会回到原本的天气模拟。</span></mouse>
+			：将天气调整为
+			<<link "晴天">>
+				<<set Weather.set("clear", true, 6 * 60)>>
+				<<replace #hint_item_use>>
+					<span class="teal">天气已设为<<icon "clear_icon.png">>晴天</span>
+					<br>
+				<</replace>>
+			<</link>> |
+			<<link "有云">>
+				<<set Weather.set("lightClouds", true, 6 * 60)>>
+				<<replace #hint_item_use>>
+					<span class="teal">天气已设为<<icon "lightClouds_icon.png">>有云</span>
+					<br>
+				<</replace>>
+			<</link>> |
+			<<link "多云">>
+				<<set Weather.set("heavyClouds", true, 6 * 60)>>
+				<<replace #hint_item_use>>
+					<span class="teal">天气已设为<<icon "heavyClouds_icon.png">>多云</span>
+					<br>
+				<</replace>>
+			<</link>> |
+			<<link "小雨">>
+				<<set Weather.set("lightPrecipitation", true, 6 * 60)>>
+				<<replace #hint_item_use>>
+					<span class="teal">天气已设为<<icon "lightPrecipitation_icon.png">>小雨</span>
+					<br>
+				<</replace>>
+			<</link>> |
+			<<link "大雨">>
+				<<set Weather.set("heavyPrecipitation", true, 6 * 60)>>
+				<<replace #hint_item_use>>
+					<span class="teal">天气已设为<<icon "heavyPrecipitation_icon.png">>大雨</span>
+					<br>
+				<</replace>>
 			<</link>>
-			<mouse class="tooltip linkBlue">(?)<span>使用以改变天气。使用后在下一个页面生效。</span></mouse><br>
+			<br>
+		<</if>>
+		<<if $Bottomless_Water_Bucket>>
+			<<icon "tool/Bottomless_Water_Bucket.png">>
+			<<link "无底水桶">>
+				<<water>>
+				<<replace #hint_item_use>>
+					<span class="blue">你往自己身上泼了一桶水。</span><br>
+					<br>
+				<</replace>>
+			<</link>>
+			<mouse class="tooltip linkBlue">(?)<span>可以倒出无限的水。谁会想用这个来把自己浇成落汤鸡呢？</span></mouse><br>
+		<</if>>
+		<<if $Gravediggers_Shovel>>
+			<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子<mouse class="tooltip linkBlue">(?)<span>只有在建造人工钓鱼池时才用得到它。</span></mouse><br>
 		<</if>>
 		<br>
 	<</if>>
-	<<if $Fishing_Potion gt 0 or $Sonar_Potion gt 0 or $Crate_Potion gt 0>>
-		<span class="gold bold">药水</span><mouse class="tooltip linkBlue">(?)<span>给予持续一段时间的增益。使用后在下一个页面生效。</span></mouse><br>
-		<<if $Fishing_Potion gt 0>>
-			<<icon "potions/Fishing_Potion.png">>钓鱼药水(<span id="potion_Fishing_Potion_left">$Fishing_Potion</span>)
-			<mouse class="tooltip linkBlue">(?)<span>提高渔力，持续8小时</span></mouse>
-			<<link "使用">>
-				<<set $Fishing_Potion -= 1>>
-				<<set $Fishing_Potion_countdown = 480>>
-				<<replace #hint_item_use>>
-					<span class="teal">你使用了1瓶<<icon "potions/Fishing_Potion.png">>钓鱼药水。</span><br>
-					<br>
-				<</replace>>
-				<<replace #potion_Fishing_Potion_left>>$Fishing_Potion<</replace>>
-			<</link>>
-			<br>
-		<</if>>
-		<<if $Sonar_Potion gt 0>>
-			<<icon "potions/Sonar_Potion.png">>声呐药水(<span id="potion_Sonar_Potion_left">$Sonar_Potion</span>)
-			<mouse class="tooltip linkBlue">(?)<span>你能看到是什么在咬你的鱼钩，持续8小时</span></mouse>
-			<<link "使用">>
-				<<set $Sonar_Potion -= 1>>
-				<<set $Sonar_Potion_countdown = 480>>
-				<<replace #hint_item_use>>
-					<span class="teal">你使用了1瓶<<icon "potions/Sonar_Potion.png">>声呐药水。</span><br>
-					<br>
-				<</replace>>
-				<<replace #potion_Sonar_Potion_left>>$Sonar_Potion<</replace>>
-			<</link>>
-			<br>
-		<</if>>
-		<<if $Crate_Potion gt 0>>
-			<<icon "potions/Crate_Potion.png">>宝匣药水(<span id="potion_Crate_Potion_left">$Crate_Potion</span>)
-			<mouse class="tooltip linkBlue">(?)<span>钓上宝匣的几率更大，持续4小时</span></mouse>
-			<<link "使用">>
-				<<set $Crate_Potion -= 1>>
-				<<set $Crate_Potion_countdown = 240>>
-				<<replace #hint_item_use>>
-					<span class="teal">你使用了1瓶<<icon "potions/Crate_Potion.png">>宝匣药水。</span><br>
-					<br>
-				<</replace>>
-				<<replace #potion_Crate_Potion_left>>$Crate_Potion<</replace>>
-			<</link>>
-			<br>
-		<</if>>
-		<br>
-	<</if>>
+	<span id="void_bag_Potion">
+		<<void_bag_Potion>>
+	</span>
 	<<if $fishingrod>>
-		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你只能在已解锁的钓鱼点处，或者孤儿院的秘密地点切换鱼竿</span></mouse><br>
+		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你只能在已解锁的钓鱼点处，或者孤儿院的阁楼里切换鱼竿</span></mouse><br>
 		<br>
 		<<if ($fishing_place_beach_unlock and $passage is "Beach") or
 			($fishing_place_lake_fishing_rock_unlock and $passage is "Lake Fishing Rock") or
 			($fishing_place_barb_street_unlock and $passage is "Barb Street") or
-			($fishing_place_moor_unlock and $passage is "Moor" and $Moor is 10) or
+			($fishing_place_moor_unlock and $passage is "Moor" and $moor is 10) or
 			($fishing_place_honey_unlock and $passage is "Forest" and $forest gt 50) or
 			($fishing_place_farm_woodland_unlock and $passage is "Farm Woodland") or
+			($fishing_place_temple_garden_unlock and $passage is "Temple Garden") or
 			($fishing_place_wolf_cave_clearing_unlock and $passage is "Wolf Cave Clearing") or
+			($artificial_fishing_pond_wolf_cave_clearing and $passage is "Forest" and $forest gt 50) or
 			($fishing_place_bird_tower_unlock and $passage is "Bird Tower") or
+			($artificial_fishing_pond_bird_tower is "done" and $passage is "Moor" and $moor gte 100) or
 			($fishing_place_eden_clearing_unlock and $passage is "Eden Clearing") or
+			($artificial_fishing_pond_eden_cabin and $passage is "Forest" and $forest gt 50) or
 			($fishing_place_bog_unlock and $passage is "Bog") or
 			($fishing_place_trash_unlock and $passage is "Trash" and $trash gte 50) or
-			($fishing_place_park_unlock and $passage is "Park")
+			($fishing_place_park_unlock and $passage is "Park") or
+			($fishing_place_school_pool_unlock and $passage is "School Pool")
 		>>
 			<<if $Golden_Fishing_Rod>>
 				<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
@@ -497,7 +427,7 @@
 		<</if>>
 		<<if $Sextant and $Fish_Finder isnot true>>
 			<<icon "fishing/fishing_accessories/Sextant.png">>六分仪
-			<mouse class="tooltip linkBlue">(?)<span>还没想好捏</span></mouse><br>
+			<mouse class="tooltip linkBlue">(?)<span>显示当天月相。月相会对当天渔力产生影响</span></mouse><br>
 		<</if>>
 		<<if $Fish_Finder>>
 			<<icon "fishing/fishing_accessories/Fish_Finder.png">>探鱼器

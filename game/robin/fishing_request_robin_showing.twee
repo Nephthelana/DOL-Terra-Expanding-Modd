@@ -1,0 +1,19 @@
+:: Fishing Request Robin Showing
+<<npc Robin>><<person1>>
+你将
+<<set _allRequestFishList to getAllRequestFishList()>>
+<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
+	<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
+	<<if $fishing_request_robin_show is _requestFish.name>>
+		<<set _requestFishName to _requestFish.cn_name>>
+		<<icon `_requestFish.icon`>><span class="gold">_requestFishName</span>
+		<<set $fishing_request_robin.pushUnique(_requestFish.name)>>
+		<<break>>
+	<</if>>
+<</for>>
+交给罗宾。<br>
+<br>
+/文本待填充/<br>
+<br>
+<<set $fishing_request_robin_show to undefined>>
+<<link [[返回|Fishing Request Robin]]>><</link>>

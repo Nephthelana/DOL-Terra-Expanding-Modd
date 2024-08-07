@@ -2,8 +2,7 @@
 <<widget "pylon_museum_ask">>
 
 <<if $historytrait gte 2 and $pylon_museum_asked isnot true>>
-	<<ind>><<link [[询问水晶基座的来历|Pylon Museum]]>><</link>>
-	<br>
+	<<askicon>><<link [[询问水晶基座的来历|Pylon Museum]]>><</link>><br>
 <</if>>
 
 <</widget>>

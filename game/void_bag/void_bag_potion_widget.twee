@@ -1,0 +1,35 @@
+:: Void Bag Potion [widget]
+<<widget "void_bag_Potion">>
+
+<<if getPotionObtained().length gt 0>>
+	<span class="gold bold">药水</span><mouse class="tooltip linkBlue">(?)<span>给予持续一段时间的增益。使用后在下一个页面生效。</span></mouse>
+	<div class="itemTerra">
+		<<set _potionObtainedList to getPotionObtained()>>
+		<<for _t to 0; _t lt _potionObtainedList.length; _t++>>
+			<<set _potion to setup.terraPotion[_potionObtainedList[_t]]>>
+			<<capture _potion>>
+				<div class="item">
+					<mouse class="tooltip">
+						<<icon `_potion.item_icon`>>
+						<hr>
+						_potion.obtained
+						<span>
+							_potion.cn_name<br>▶_potion.des
+						</span>
+					</mouse>
+					<hr>
+					<<link "使用">>
+						_potion.use
+						<<replace #hint_item_use>>
+							<span class="teal">你使用了1瓶<<icon `_potion.item_icon`>>_potion.cn_name。</span><br>
+							<br>
+						<</replace>>
+						<<replace #void_bag_Potion>><<void_bag_Potion>><</replace>>
+					<</link>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+<</if>>
+
+<</widget>>

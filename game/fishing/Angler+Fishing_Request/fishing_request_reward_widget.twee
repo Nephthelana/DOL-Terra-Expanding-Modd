@@ -18,17 +18,22 @@
 <<if $Reinforced_Fishing_Pole isnot true and $fishing_requests_finished_count gte 1>>
 	<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
 	<<set $Reinforced_Fishing_Pole to true>>
-<<elseif $Golden_Fishing_Rod isnot true and ($fishing_requests_finished_count gte 30 or random(1 , Math.round(250 * $fishing_rarity_reduction)) is 1)>>
+<<elseif $Golden_Fishing_Rod isnot true and ($fishing_requests_finished_count is 30 or random(1 , Math.round(250 * $fishing_rarity_reduction)) is 1)>>
 	<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
 	<<set $Golden_Fishing_Rod to true>>
+	<<earnFeat "Glorious Golden Pole">>
 <<elseif $Hotline_Fishing_Hook isnot true and $fishing_requests_finished_count gte 25 and random(1 , Math.round(100 * $fishing_rarity_reduction)) is 1>>
 	<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>熔线钓钩
 	<<set $Hotline_Fishing_Hook to true>>
-<<elseif $Bottomless_Water_Bucket isnot true and $fishing_requests_finished_count gte 10 and ($fishing_requests_finished_count is 25 or random(1 , Math.round(70 * $fishing_rarity_reduction)) is 1)>>
-	<<icon "Tool/Bottomless_Water_Bucket.png">>无底水桶
+<<elseif $Fin_Wings isnot true and $fishing_requests_finished_count gte 10 and random(1 , Math.round(70 * $fishing_rarity_reduction)) is 1>>
+	<<icon "tool/Fin_Wings.png">>鳍翼
+	<<set $Fin_Wings to true>>
+<<elseif $Bottomless_Water_Bucket isnot true and $fishing_requests_finished_count gte 5 and ($fishing_requests_finished_count is 15 or random(1 , Math.round(70 * $fishing_rarity_reduction)) is 1)>>
+	<<icon "tool/Bottomless_Water_Bucket.png">>无底水桶
 	<<set $Bottomless_Water_Bucket to true>>
+	<<set $tool_obtained to true>>
 <<elseif $Golden_Bug_Net isnot true and random(1 , Math.round(80 * $fishing_rarity_reduction)) is 1>>
-	<<icon "Tool/Golden_Bug_Net.png">>金虫网
+	<<icon "tool/Golden_Bug_Net.png">>金虫网
 	<<set $Golden_Bug_Net to true>>
 <<elseif $High_Test_Fishing_Line isnot true and random(1 , Math.round(40 * $fishing_rarity_reduction)) is 1>>
 	<<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">>优质钓鱼线
@@ -60,81 +65,54 @@
 	<<set $fishing_accessories to true>>
 <<elseif random(1 , Math.round(3 * $fishing_rarity_reduction)) is 1>>
 	<<set $fishing_reward_potion = random(2,5)>>
-	<<if $Fishing_Potion is undefined>>
-		<<set $Fishing_Potion = 0>>
-	<</if>>
 	<<icon "potions/Fishing_Potion.png">>钓鱼药水($fishing_reward_potion)
 	<<set $Fishing_Potion += $fishing_reward_potion>>
 <<elseif random(1 , Math.round(2 * $fishing_rarity_reduction)) is 1>>
 	<<set $fishing_reward_potion = random(2,5)>>
-	<<if $Sonar_Potion is undefined>>
-		<<set $Sonar_Potion = 0>>
-	<</if>>
 	<<icon "potions/Sonar_Potion.png">>声呐药水($fishing_reward_potion)
 	<<set $Sonar_Potion += $fishing_reward_potion>>
 <<else>>
 	<<set $fishing_reward_potion = random(2,5)>>
-	<<if $Crate_Potion is undefined>>
-		<<set $Crate_Potion = 0>>
-	<</if>>
 	<<icon "potions/Crate_Potion.png">>宝匣药水($fishing_reward_potion)
 	<<set $Crate_Potion += $fishing_reward_potion>>
 <</if>>
 /* 家具奖励 */
 <<if $fishing_requests_finished_count gte random(1,100)>>
-	、
-	<<print [
-		"<<icon \"furniture_item/Bunnyfish_Trophy.png\">>兔兔鱼纪念章<<set $Bunnyfish_Trophy to true>>",
-		"<<icon \"furniture_item/Compass_Rose.png\">>罗盘针<<set $Compass_Rose to true>>",
-		"<<icon \"furniture_item/Couch_Gag.png\">>沙发笑话<<set $Couch_Gag to true>>",
-		"<<icon \"furniture_item/Crustography.png\">>甲壳摄影<<set $Crustography to true>>",
-		"<<icon \"furniture_item/Fangs.png\">>獠牙<<set $Fangs to true>>",
-		"<<icon \"furniture_item/Goldfish_Trophy.png\">>金鱼纪念章<<set $Goldfish_Trophy to true>>",
-		"<<icon \"furniture_item/Life_Preserver.png\">>救生圈<<set $Life_Preserver to true>>",
-		"<<icon \"furniture_item/Not_So_Lost_In_Paradise.png\">>并未如此迷失在乐园<<set $Not_So_Lost_In_Paradise to true>>",
-		"<<icon \"furniture_item/Pillagin_Me_Pixels.png\">>海贼像素画<<set $Pillagin_Me_Pixels to true>>",
-		"<<icon \"furniture_item/Seaweed_Planter.png\">>海草花盆<<set $Seaweed_Planter to true>>",
-		"<<icon \"furniture_item/Sharkteeth_Trophy.png\">>鲨牙纪念章<<set $Sharkteeth_Trophy to true>>",
-		"<<icon \"furniture_item/Ship_in_a_Bottle.png\">>船舶瓶<<set $Ship_in_a_Bottle to true>>",
-		"<<icon \"furniture_item/Ships_Wheel.png\">>舵轮<<set $Ships_Wheel to true>>",
-		"<<icon \"furniture_item/Silent_Fish.png\">>沉默的鱼<<set $Silent_Fish to true>>",
-		"<<icon \"furniture_item/Swordfish_Trophy.png\">>剑鱼纪念章<<set $Swordfish_Trophy to true>>",
-		"<<icon \"furniture_item/The_Duke.png\">>公爵<<set $The_Duke to true>>",
-		"<<icon \"furniture_item/Treasure_Map.png\">>宝藏地图<<set $Treasure_Map to true>>",
-		"<<icon \"furniture_item/Wall_Anchor.png\">>墙锚<<set $Wall_Anchor to true>>",
-		"<<icon \"furniture_item/What_Lurks_Below.png\">>下面潜伏着什么<<set $What_Lurks_Below to true>>"
-	].random(0,18)>>
-	<<set $furniture_painting to true>>
+	<<set _allAnglerFurnitureList to getAllAnglerFurnitureList()>>
+	<<set _t to random(0,_allAnglerFurnitureList.length)>>
+	<<set _anglerFurniture to setup.terraAnglerFurniture[_allAnglerFurnitureList[_t]]>>
+	<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
+	、<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name
 <</if>>	
 /* 鱼饵奖励 */
 <<if (100 + $fishing_requests_finished_count) gte random(1,200)>>
-	<<set $fishing_reward_bait = 1>>
+	<<set _fishing_reward_bait = 1>>
 	<<if $fishing_requests_finished_count gte random(1,25)>>
-		<<set $fishing_reward_bait += 1>>
+		<<set _fishing_reward_bait += 1>>
 	<</if>>
 	<<if $fishing_requests_finished_count gte random(1,50)>>
-		<<set $fishing_reward_bait += 1>>
+		<<set _fishing_reward_bait += 1>>
 	<</if>>
 	<<if $fishing_requests_finished_count gte random(1,100)>>
-		<<set $fishing_reward_bait += 1>>
+		<<set _fishing_reward_bait += 1>>
 	<</if>>
 	<<if $fishing_requests_finished_count gte random(1,150)>>
-		<<set $fishing_reward_bait += 1>>
+		<<set _fishing_reward_bait += 1>>
 	<</if>>
 	<<if $fishing_requests_finished_count gte random(1,200)>>
-		<<set $fishing_reward_bait += 1>>
+		<<set _fishing_reward_bait += 1>>
 	<</if>>
 	<<if $fishing_requests_finished_count gte random(1,250)>>
-		<<set $fishing_reward_bait += 1>>
+		<<set _fishing_reward_bait += 1>>
 	<</if>>
 	、
 	<<if random(1,15) is 1>>
-		<<icon "fishing/bait/Master_Bait.png">>大师诱饵<<set $Master_Bait += $fishing_reward_bait>>
+		<<icon "fishing/bait/Master_Bait.png">>大师诱饵<<set $Master_Bait += _fishing_reward_bait>>
 	<<elseif random(1,5) is 1>>
-		<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵<<set $Journeyman_Bait += $fishing_reward_bait>>
+		<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵<<set $Journeyman_Bait += _fishing_reward_bait>>
 	<<else>>
-		<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵<<set $Apprentice_Bait += $fishing_reward_bait>>
-	<</if>>($fishing_reward_bait)
+		<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵<<set $Apprentice_Bait += _fishing_reward_bait>>
+	<</if>>(_fishing_reward_bait)
 <</if>>
-
+。
 <</widget>>

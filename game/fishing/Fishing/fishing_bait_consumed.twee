@@ -1,6 +1,26 @@
 :: Fishing Bait Comsumed [widget]
 <<widget "fishing_bait_consumed">>
 
+/*
+<<set _BaitObtained to getBaitObtainedList()>>
+<<for _t to 0; _t lt _BaitObtained.length; _t++>>
+	<<set _bait to setup.terraBait[_BaitObtained[_t]]>>
+	<<if _bait.name is $Bait>>
+		<<if $Tackle_Box>>
+			<<if random(1,6*2+ _bait.fishing_power) lte 6>><<set _bait.amount -= 1>><</if>>
+		<<else>>
+			<<if random(1,6 + _bait.fishing_power) lte 6>><<set _bait.amount -= 1>><</if>>
+		<</if>>
+		<<if _bait.amount lte 0>>
+			<<set $Bait to "None">>
+			你用掉了最后一个<<icon `_bait.icon`>>_bait.cn_name<br>
+		<<else>>
+			你还剩下_bait.amount个<<icon `_bait.icon`>>_bait.cn_name<br>
+		<</if>>
+	<</if>>
+<</for>>
+*/
+
 <<switch $Bait>>
 	<<case "Apprentice_Bait">>
 		<<if $Tackle_Box>>

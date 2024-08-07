@@ -7,9 +7,15 @@
 			traits: [
 				{
 					name: "雏翼",
-					colour: "green",
+					colour: "grey",
 					has: $Fledgling_Wings is true,
-					text: "使你能从高处滑翔",
+					text: "使你能从高处滑翔。",
+				},
+				{
+					name: "鳍翼",
+					colour: "lblue",
+					has: $Fin_Wings is true,
+					text: "使你能从高处滑翔，并具有一定的飞行能力。配合 耍蛇者长笛 使用。",
 				},
 			],
 		},

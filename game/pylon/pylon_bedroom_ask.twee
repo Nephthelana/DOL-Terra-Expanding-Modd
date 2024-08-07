@@ -2,10 +2,10 @@
 :: Pylon Bedroom Ask [widget]
 <<widget "pylon_bedroom_ask">>
 
-<<if $pylon_museum_asked and $NPCName[$NPCNameList.indexOf("Robin")].love gte 90 and $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 1 and $NPCName[$NPCNameList.indexOf("Robin")].dom gte 20 and $pylon_bedroom_unlock isnot true>>
+<<if $pylon_museum_asked and C.npc.Robin.love gte 90 and C.npc.Robin.trauma lt 1 and C.npc.Robin.dom gte 20 and !$pylon_collected.includes("Bedroom")>>
 	<br>
 	尽管是阴天，但这更显得树丛中闪烁着光芒。不只是你，罗宾也注意到了。<br>
-	<<link [[鼓起勇气和罗宾一起去一探究竟|Pylon Bedroom Unlock]]>><</link>>
+	<<link [[鼓起勇气和罗宾一起去一探究竟|Pylon Bedroom Unlock]]>><</link>><br>
 <</if>>
 
 <</widget>>

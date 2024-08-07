@@ -1,12 +1,6 @@
 :: Bait Forest Shop [widget]
 <<widget "bait_forest_shop">>
 	<br><br>
-	<<if $bait_forest_shop_main is undefined>>
-		<<set $bait_forest_shop_main to "Worm">>
-	<</if>>
-	<<if $bait_forest_shop is undefined>>
-		<<set $bait_forest_shop to "Worm">>
-	<</if>>
 	<<if $bait_forest_shop_intro is undefined>>
 		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
 		放在商店中央的是一张生命木桌，上面一个装着小动物的容器引起了你的注意。<br>
@@ -273,5 +267,34 @@
 					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
 				<</if>>
 			<</if>>
+		<<case "Ladybug">>
+			<<icon "placed_bait/Placed_Ladybug.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Ladybug isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有瓢虫的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
+		<<case "Gold_Ladybug">>
+			<<icon "placed_bait/Placed_Gold_Ladybug.gif">><br>
+			<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+			<<if $bestiary_Gold_Ladybug isnot true>>
+				<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>><br>
+			<<else>>
+				生命木桌上摆着一个装有金瓢虫的笼子。<br>
+				<<if $bait_forest_shop_received>>
+					<span class="blue">这周你已经向格威岚要过小虫子了。</span><br>
+				<<else>>
+					<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>><br>
+				<</if>>
+			<</if>>
 	<</switch>>
+	<<if $Bug_Net isnot true>>
+		<<link [[你都是怎么抓的虫子？|Bait Forest Shop Bug Net]]>><</link>><br>
+	<</if>>
 <</widget>>

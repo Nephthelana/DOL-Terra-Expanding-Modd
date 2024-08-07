@@ -10,5 +10,5 @@
 <br>
 (文笔不好，期待大佬能给我这个小mod写个剧情)<br>
 <br>
-<<set $pylon_bedroom_unlock to true>>
+<<set $pylon_bedroom_unlock to true>><<set $pylon_collected.pushUnique("Bedroom")>>
 <<link[[返回孤儿院|Pylon Bedroom Unlocked]]>><</link>>

@@ -1,0 +1,158 @@
+:: Terra Start Only [widget]
+<<widget "terraStartOnly">>
+
+/* 任务鱼 */
+<<set $fishing_request_selection_list to [
+	"Amanita_Fungifin",
+	"Angelfish",
+	"Batfish",
+	"Bonefish",
+	"Bumblebee_Tuna",
+	"Bunnyfish",
+	"Catfish",
+	"Cloudfish",
+	"Clownfish",
+	"Demonic_Hellfish",
+	"Derpfish",
+	"Dirtfish",
+	"Dynamite_Fish",
+	"Fallen_Starfish",
+	"Fish_of_Cthulhu",
+	"Fishotron",
+	"Guide_Voodoo_Fish",
+	"Harpyfish",
+	"Hungerfish",
+	"Jewelfish",
+	"Mirage_Fish",
+	"Mudfish",
+	"Pixiefish",
+	"Scarab_Fish",
+	"Scorpio_Fish",
+	"Slimefish",
+	"Spiderfish",
+	"Tropical_Barracuda",
+	"Unicorn_Fish",
+	"Wyverntail",
+	"Zombie_Fish",
+	"Brimlish",
+	"Eutrophic_Sandfish",
+	"Serpentuna",
+	"Slurpfish",
+	"Surf_Clam"
+]>>
+<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
+<<set $fishing_request_fish to []>>
+<<set $fishing_requests_finished_count to 0>>
+
+/* 渔夫任务奖励家具 */
+<<set $angler_furniture_obtained to []>>
+
+/* 孤儿院卧室家具 */
+<<set $terra_bedroom_furniture to []>>
+
+/* 药水数量 */
+<<set $Fishing_Potion = 0>>
+<<set $Sonar_Potion = 0>>
+<<set $Crate_Potion = 0>>
+
+/* 鱼饵数量 */
+<<set $Apprentice_Bait = 0>>
+<<set $Journeyman_Bait = 0>>
+<<set $Master_Bait = 0>>
+<<set $Gold_Butterfly = 0>>
+<<set $Monarch_Butterfly = 0>>
+<<set $Sulphur_Butterfly = 0>>
+<<set $Zebra_Swallowtail_Butterfly = 0>>
+<<set $Ulysses_Butterfly = 0>>
+<<set $Julia_Butterfly = 0>>
+<<set $Red_Admiral_Butterfly = 0>>
+<<set $Purple_Emperor_Butterfly = 0>>
+<<set $Tree_Nymph_Butterfly = 0>>
+<<set $Stinkbug = 0>>
+<<set $Worm = 0>>
+<<set $Gold_Worm = 0>>
+<<set $Firefly = 0>>
+<<set $Lightning_Bug = 0>>
+<<set $Snail = 0>>
+<<set $Glow_Snail = 0>>
+<<set $Grasshopper = 0>>
+<<set $Gold_Grasshopper = 0>>
+<<set $Maggot = 0>>
+<<set $Ladybug = 0>>
+<<set $Gold_Ladybug = 0>>
+
+/* 渔获数量 */
+/* 宝匣数量 */
+<<set $Golden_Crate = 0>>
+<<set $Iron_Crate = 0>>
+<<set $Wooden_Crate = 0>>
+<<set $Ocean_Crate = 0>>
+<<set $Oyster = 0>>
+<<set $Oasis_Crate = 0>>
+<<set $Jungle_Crate = 0>>
+<<set $Hallowed_Crate = 0>>
+<<set $Sky_Crate = 0>>
+<<set $Sunken_Crate = 0>>
+<<set $Sulphurous_Crate = 0>>
+<<set $Brimstone_Crate = 0>>
+/* 普通鱼数量 */
+<<set $Salmon = 0>>
+<<set $Bass = 0>>
+<<set $Pink_Jellyfish_bait = 0>>
+<<set $Shrimp = 0>>
+<<set $Tuna = 0>>
+<<set $Red_Snapper = 0>>
+<<set $Trout = 0>>
+<<set $Golden_Carp = 0>>
+<<set $Stinkfish = 0>>
+<<set $Blue_Jellyfish_bait = 0>>
+<<set $Armored_Cavefish = 0>>
+<<set $Specular_Fish = 0>>
+<<set $Flounder = 0>>
+<<set $Rock_Lobster = 0>>
+<<set $Honeyfin = 0>>
+<<set $Double_Cod = 0>>
+<<set $Variegated_Lardfish = 0>>
+<<set $Neon_Tetra = 0>>
+<<set $Prismite = 0>>
+<<set $Princess_Fish = 0>>
+<<set $Chaos_Fish = 0>>
+<<set $Greenwave_Loach = 0>>
+<<set $Sunken_Sailfish = 0>>
+<<set $Prismatic_Guppy = 0>>
+<<set $Damselfish = 0>>
+<<set $Charred_Lasher = 0>>
+<<set $Coastal_Demonfish = 0>>
+<<set $Crag_Bullhead = 0>>
+/* 垃圾数量 */
+<<set $Joja_Cola = 0>>
+
+/* 森林商店鱼饵初始化 */
+<<set $bait_forest_shop_main to "Worm">>
+<<set $bait_forest_shop to "Worm">>
+
+/* 向导任务 */
+<<set $guide_mod_hint_pre to []>>
+
+/* 晶塔收集 */
+<<set $pylon_collected to []>>
+
+/* dom罗宾拓展联动 */
+<<set $fishing_request_robin to []>>
+
+/* 宝匣内容物数量 */
+<<set $redemption_voucher to 0>>
+<<set $Sea_Prism = 0>>
+<<set $Sea_Minnow = 0>>
+<<set $Demonic_Bone_Ash = 0>>
+<<set $White_Pearl = 0>>
+<<set $Black_Pearl = 0>>
+<<set $Pink_Pearl = 0>>
+
+/* 饰品栏 */
+<<set $terra_accessories_slots to []>>
+
+/* 偷胖次 */
+<<set $panties_held = 0>>
+
+<</widget>>

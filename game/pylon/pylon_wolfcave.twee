@@ -7,14 +7,14 @@
 	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
 <</if>>
 <<if $pylon_museum_asked>>
-	<<if $pylon_wolfcave_unlock isnot true>>
+	<<if !$pylon_collected.includes("Wolfcave")>>
 		为了激活这个晶塔，你需要找到那块水晶。
 		<<if statusCheck("Black Wolf").love gte 27>>
 			<span class="teal">成为头狼，带黑狼一起去河边打猎吧。</span>
 		<<else>>
 			<span class="blue">如果黑狼对你有足够的好感，你将会得到提示。</span>
 		<</if>>
-	<<elseif $pylon_wolfcave_unlock>>
+	<<else>>
 		<<if Time.hour gte 6 and Time.hour lte 17>>
 			<<set $wolf_cave_hunt_request_refuse to false>>
 		<</if>>

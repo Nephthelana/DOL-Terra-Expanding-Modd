@@ -1,0 +1,42 @@
+:: Snake Charmers Flute Use 2
+<<set $outside to 1>><<effects>>
+你用耍蛇者长笛爬到了高处。有了这对强健的翅膀，你可以飞到更远的地方。<br>
+<<icon "Mystic_Snake_Coil.png">><br>
+<br>
+<<switch $Snake_Charmers_Flute_destination>>
+	<<case "Lake Shore">>
+		<<wolficon>><<link [[飞向狼街(神殿) (00:05)|Wolf Street]]>><<pass 5>><</link>><br>
+		<<lakeicon>><<link [[爬下去 (00:01)|Lake Shore]]>><<pass 1>><</link>><br>
+	<<case "Town">>
+		<<lakeicon>><<link [[飞向森林湖 (00:05)|Lake Shore]]>><<pass 5>><</link>><br>
+		<<farmicon "meadow">><<link [[飞向草地 (00:15)|Meadow]]>><<pass 15>><</link>><br>
+		<br>
+		住宅区<br>
+		<<domusicon>><<link [[飞向宅邸街 (家) (00:01)|Domus Street]]>><<pass 1>><</link>><br>
+		<<barbicon>><<link [[飞向倒钩街 (舞蹈教室) (00:01)|Barb Street]]>><<pass 1>><</link>><br>
+		<<danubeicon>><<link [[飞向多瑙河街 (富人区) (00:01)|Danube Street]]>><<pass 1>><</link>><br>
+		<<wolficon>><<link [[飞向狼街(神殿) (00:01)|Wolf Street]]>><<pass 1>><</link>><br>
+		<br>
+		商业区<br>
+		<<highicon>><<link [[飞向商业街(购物中心) (00:01)|High Street]]>><<pass 1>><</link>><br>
+		<<connudatusicon>><<link [[飞向康努达塔斯街 (会所) (00:01)|Connudatus Street]]>><<pass 1>><</link>><br>
+		<<clifficon>><<link [[飞向峭壁街 (咖啡馆) (00:01)|Cliff Street]]>><<pass 1>><</link>><br>
+		<<nightingaleicon>><<link [[飞向南丁格尔街(医院) (00:01)|Nightingale Street]]>><<pass 1>><</link>><br>
+		<<starfishicon>><<link [[飞向海星街 (海滩) (00:01)|Starfish Street]]>><<pass 1>><</link>><br>
+		<<oxfordicon>><<link [[飞向牛津街(学校) (00:01)|Oxford Street]]>><<pass 1>><</link>><br>
+		<br>
+		工业区<br>
+		<<elkicon>><<link [[飞向麋鹿街 (00:01)|Elk Street]]>><<pass 1>><</link>><br>
+		<<mericon>><<link [[飞向梅尔街(码头) (00:01)|Mer Street]]>><<pass 1>><</link>><br>
+		<<harvesticon>><<link [[飞向丰收街(酒吧) (00:01)|Harvest Street]]>><<pass 1>><</link>><br>
+		<br>
+		爬下去<br>
+		<<getouticon>><<destination>>
+	<<case "Meadow">>
+		<<harvesticon>><<link [[飞向丰收街(酒吧) (00:15)|Harvest Street]]>><<pass 15>><</link>><br>
+		<<birdicon "tower">><<link [[飞向高塔塔底 (00:20)|Moor]]>><<pass 20>><<set $moor to 100>><</link>><br>
+		<<farmicon "meadow">><<link [[爬下去 (00:01)|Meadow]]>><<pass 1>><</link>><br>
+	<<case "Moor">>
+		<<farmicon "meadow">><<link [[飞向草地 (00:20)|Meadow]]>><<pass 20>><<set $moor to 0>><</link>><br>
+		<<birdicon "tower">><<link [[爬下去 (00:01)|Moor]]>><<pass 1>><</link>><br>
+<</switch>>

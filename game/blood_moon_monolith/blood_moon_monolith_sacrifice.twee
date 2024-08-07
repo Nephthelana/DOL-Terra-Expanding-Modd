@@ -1,12 +1,11 @@
 /*血月献祭事件*/
 :: Blood Moon Sacrifice
 <<set $plants["blood_lemon"].amount -= 10>>
-<<set $blood_moon_monolith_got to true>>
+<<set $blood_moon_monolith to "get">>
+<<earnFeat "Don't Dread on Me">>
 <br>
-你把在森林中千辛万苦采摘的血柠投入湖中。当你扔到大概第十个血柠时，湖里的身影逐渐往深处退去。
+你把在森林中千辛万苦采摘的血柠投入湖中。当你扔到大概第十个血柠时，湖里的身影逐渐往深处退去。<br>
 <br>
-<br>
-取而代之的是一个奇怪的"灯泡"被不知名的一股力托上水面，并被推到了岸边：这是一个基座上嵌有月球模型的柱子。基座底部刻有一个图案，你一眼认出这是潜伏在血染水面之下的残忍软体动物——恐惧鹦鹉螺。
-<br>
+取而代之的是一个奇怪的"灯泡"被不知名的一股力托上水面，并被推到了岸边：这是一个基座上嵌有月球模型的柱子。基座底部刻有一个图案，你一眼认出这是潜伏在血染水面之下的残忍软体动物——恐惧鹦鹉螺。<br>
 <br>
 <<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[收起这个天塔柱|Lake Shore]]>><</link>>

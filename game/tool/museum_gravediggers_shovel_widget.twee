@@ -1,0 +1,8 @@
+:: Museum Gravediggers Shovel [widget]
+<<widget "museum_gravediggers_shovel">>
+你漫步在展台之间，浏览着一件又一件藏品。在游客眼中，这些文物承载着历史；而对你来说，它们意味着一次次难忘的经历。<br>
+<br>
+在你的帮助下，博物馆正在一点一点地恢复昔日的辉煌：这一切都要归功于你，正是你的探索和冒险才让这些古董重见天日。<br>
+<br>
+<<link [[继续|Museum Gravediggers Shovel Intro]]>><</link>><br>
+<</widget>>

@@ -1,8 +1,5 @@
 :: Terra Debug Potions
 请选择获得的药水。<br>
-<<if $Fishing_Potion is undefined>><<set $Fishing_Potion = 0>><</if>>
-<<if $Sonar_Potion is undefined>><<set $Sonar_Potion = 0>><</if>>
-<<if $Crate_Potion is undefined>><<set $Crate_Potion = 0>><</if>>
 <<icon "potions/Fishing_Potion.png">><<link [[来5瓶钓鱼药水|Terra Debug Potions]]>><<set $Fishing_Potion += 5>><</link>><br>
 <<icon "potions/Sonar_Potion.png">><<link [[来5瓶声呐药水|Terra Debug Potions]]>><<set $Sonar_Potion += 5>><</link>><br>
 <<icon "potions/Crate_Potion.png">><<link [[来5瓶宝匣药水|Terra Debug Potions]]>><<set $Crate_Potion += 5>><</link>><br>

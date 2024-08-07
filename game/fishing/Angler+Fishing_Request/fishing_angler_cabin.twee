@@ -1,93 +1,237 @@
 :: Fishing Angler Cabin
 <<npc Angler>><<person1>>
+<<if $options.cute_angler>>
+	<<earnFeat "Blue Sunflower">>
+<</if>>
 /* 小屋介绍 */
 你走进<<he>>的小屋，
-<<print [
-	"虽然里面很拥挤，但工作台、木椅、火把这些房屋的基本设施一应俱全，而墙面的一些不规则的洞口应该是<<he>>开的窗户。不管怎么说，此房屋很核逝。",
-	"狭窄的空间充满了海风的味道。你在想如果让<<he>>住在干旱的沙漠，<<he>>会有什么有趣的反应。",
-	"一股浓烈的鱼腥味扑面而来。你想不到<<he>>是怎么一直生活在这种地方的，更无从得知<<he>>之前的经历。"
-].random()>><br>
+<<if $options.cute_angler>>
+	<<print [
+		"虽然房间不是很宽敞，但珊瑚礁桌、珊瑚礁椅、珊瑚礁吊灯这些房屋的基本设施一应俱全，墙面留有一个精致的窗户。不管怎么说，此房屋很合适。",
+		"屋内充满了海风的味道。<<he>>确实应该与大海为伴。",
+		"一股浓烈的鱼腥味扑面而来。你无从得知<<he>>之前的经历，但<<he>>在这的生活好像也不错。"
+	].random()>><br>
+<<else>>
+	<<print [
+		"虽然里面很拥挤，但木桌、木椅、火把这些房屋的基本设施一应俱全，而墙面的一些不规则的洞口应该是<<he>>开的窗户。不管怎么说，此房屋很核逝。",
+		"狭窄的空间充满了海风的味道。你在想如果让<<he>>住在干旱的沙漠，<<he>>会有什么有趣的反应。",
+		"一股浓烈的鱼腥味扑面而来。你想不到<<he>>是怎么一直生活在这种地方的，更无从得知<<he>>之前的经历。"
+	].random()>><br>
+<</if>>
 <br>
 /* 初次见面获得鱼竿 */
 <<if $fishingrod isnot true>>
-	渔夫放下了手中的鳟鱼。"哦，我认得你！我当时在梦里马上就要钓上来一条比这重数倍的金枪鱼了，结果你把我吵醒了！"<<He>>用手比划着梦中那条金枪鱼的尺寸，碰倒了一根靠在墙上的鱼竿，差点砸到了你的脚。<br>
+	<<if $options.cute_angler>>
+		渔夫放下了手中的鳟鱼。"哦，是你来啦！再次谢谢你救了我...我记得我当时还在和一条金枪鱼搏斗呢！"<<He>>用手比划着那条金枪鱼的尺寸，碰倒了一根靠在墙上的鱼竿，差点砸到你的脚。<br>
+		<br>
+		<<He>>一下涨红了脸，"抱歉，我刚回来不久所以还没好好整理..."<<he>>尴尬地不敢用正眼看你，"你之前钓过鱼吗？不介意的话就收下它吧，我相信我们能一起发现钓鱼更多的乐趣！如果你钓到了特别的鱼分享给我，我不会亏待你的。但这些鱼行踪不定，所以记得经常来找我，我或许能给你提供关于它们的信息。"<br>
+		<br>
+		<<He>>将鱼竿交给你。<span class="teal">你获得了<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><br>
+		<br>
+		"忘了告诉你，我<span class="gold">每天早上6点</span>后可能更需要别的鱼了，所以记得及时把当天的给我哦！"<br>
+	<<else>>
+		渔夫放下了手中的鳟鱼。"哦，我认得你！我当时在梦里马上就要钓上来一条比这重数倍的金枪鱼了，结果你把我吵醒了！"<<He>>用手比划着梦中那条金枪鱼的尺寸，碰倒了一根靠在墙上的鱼竿，差点砸到你的脚。<br>
+		<br>
+		<<He>>一下就变了脸，似乎先前的生气是装的。"看来你和这根鱼竿很有缘，"看起来<<he>>有了什么计划，"拿它去钓鱼吧！不过你得钓上来我想要的鱼作为道歉——当然，我还会给你'丰厚'的奖励。怎么样，我很慷慨吧？每天来问我任务，然后把那条鱼抓过来：这就是你要做的事情。"<br>
+		<br>
+		鱼竿被不由分说地塞到你的手里。<span class="teal">你获得了<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><br>
+		<br>
+		"忘了告诉你，我<span class="gold">每天早上6点</span>后也许就会想要别的鱼了，所以你最好早早把它交给我！"<br>
+	<</if>>
 	<br>
-	<<He>>一下就变了脸，似乎先前的生气是装的。"看来你和这根鱼竿很有缘，"看起来<<he>>有了什么计划，"拿它去钓鱼吧！不过你得钓上来我想要的鱼作为道歉——当然，我还会给你'丰厚'的奖励。怎么样，我很慷慨吧？每天来问我任务，然后把那条鱼抓过来：这就是你要做的事情。"<br>
+	<<set $fishingrod to true>>
+	<<set $Wood_Fishing_Pole to true>>
+	<<set $fishingrod_held to "Wood_Fishing_Pole">>
+	<<set $Bait to "None">>
+	<<set $fishingskill to 0>>
+	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
 	<br>
-	鱼竿被不由分说地塞到你的手里。<span class="teal">你获得了<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><<set $fishingrod to true>><<set $Wood_Fishing_Pole to true>><<set $fishingrod_held to "Wood_Fishing_Pole">><br>
-	<br>
-	"忘了告诉你，我<span class="gold">每天早上6点</span>也许就会想要别的鱼了，所以你最好早早把它交给我！"<br>
-	<br>
-	<<set $Apprentice_Bait = 0>><<set $Journeyman_Bait = 0>><<set $Master_Bait = 0>><<set $Bait to "None">>
-	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><<if $fishingskill is undefined>><<set $fishingskill to 0>><</if>><<if $fishing_request_selection is undefined>><<set $fishing_request_selection to random(0,31)>><</if>><</link>><br>
-	<br>
-	<<getouticon>><<link [[离开|Beach]]>><<if $fishingskill is undefined>><<set $fishingskill to 0>><</if>><<if $fishing_request_selection is undefined>><<set $fishing_request_selection to random(0,31)>><</if>><</link>>
+	<<getouticon>><<link [[离开|Beach]]>><</link>>
+	<<endevent>>
 	<<exitAll>>
 <</if>>
 /* 渔夫"打招呼" */
 <<if $fishingrod>>
-	/* 显示任务完成次数统计 */
-	<<if $rng gte 50 and $fishing_requests_finished_count gte 1>>
-		<<print [
-			`"你知道我已经有了$fishing_requests_finished_count条超棒的鱼了吗！？那是因为在跑腿这件事上，你还是发挥了作用！"`,
-			`"喂！你打扰我好像有$fishing_requests_finished_count次了！如果不是每次都有很酷的鱼，我一定会发飙！"`
-		].random()>>
+	<<if random(1,3) is 1>>
+		/* 多云时 */
+		<<if Weather.name is "heavyClouds">>
+			<<if $options.cute_angler>>
+				<<print [
+					`"飓风来了吗！？有条海豚差点撞上到我！"`,
+					`"起风时通常很适合钓鱼，鱼儿们都喜欢这个时候出来换气，但有时候风太大了，我控制不住鱼竿，我真害怕鱼钩住我的眼睛！"`
+				].random()>>
+			<<else>>	
+				<<print [
+					`"这是飓风吗！？我差点跟海豚撞上了！"`,
+					`"起风时通常很适合钓鱼，但这风太大了！鱼钩差点钩住了我的眼睛！"`
+				].random()>>
+			<</if>><br>
+		/* 下雨/雪时 */
+		<<elseif Weather.name is "lightPrecipitation" or Weather.name is "heavyPrecipitation">>
+			<<if Weather.precipitation is "rain">>
+				<<if $options.cute_angler>>
+					<<print [
+						`"我总是在雨中钓鱼！所以我才会戴这顶帽子！"`,
+						`"没错！下雨了！如果你再在外面钓鱼就要变成落汤鸡了！我可没有合你身的衣服给你换..."`
+					].random()>>
+				<<else>>	
+					<<print [
+						`"我总是在雨中钓鱼！所以我才会戴这顶帽子！"`,
+						`"没错！下雨了！现在你要变成钓鱼的落汤鸡了！"`
+					].random()>>
+				<</if>>
+			<<else>>
+				<<if $options.cute_angler>>
+					<<print [
+						`"外面正在下雪呢，一定要多穿点衣服，不然你就要变成冰雕啦！"`
+					].random()>>
+				<<else>>	
+					<<print [
+						`"我还没见过你被冻成冰雕的样子呢！"`
+					].random()>>
+				<</if>>
+			<</if>><br>
+		/* 雷暴时 */
+		<<elseif Weather.name is "thunderStorm">>
+			<<if $options.cute_angler>>
+				<<print [
+					`"上次我在雷雨天钓鱼的时候，一道闪电击中了湖面，紧接着整个湖面都是被电晕的鱼！这就是传说中的大自然的馈赠吧！"`,
+					`"雷雨交加时最适合钓鱼！但也最危险！所以我建议你不要雷雨天钓鱼，虽然对你来说可能不算什么..."`
+				].random()>>
+			<<else>>	
+				<<print [
+					`"这次是在钓鱼营地，闪电击中了湖面！突然，所有的鱼都浮出水面来透气！"`,
+					`"雷雨交加时最适合钓鱼！但也最危险！所以我才派你帮我去！"`
+				].random()>>
+			<</if>><br>
+		/* 显示任务完成次数统计 */
+		<<elseif $fishing_requests_finished_count gte 1 and random(1,3) lte 2>>
+			<<if $options.cute_angler>>
+				<<print [
+					`"你知道我现在有$fishing_requests_finished_count条令人惊讶的超棒的鱼了吗?那是你：全世界最可靠的人，带给我的，谢谢你！！"`,
+					`"嘿，是你啊，我数了一下，你已经帮了我$fishing_requests_finished_count次了，真不知道我要怎么报答你..."`
+				].random()>>
+			<<else>>
+				<<print [
+					`"你知道我已经有了$fishing_requests_finished_count条超棒的鱼了吗！？那是因为在跑腿这件事上，你还是发挥了作用！"`,
+					`"喂！你打扰我好像有$fishing_requests_finished_count次了！如果不是每次都有很酷的鱼，我一定会发飙！"`
+				].random()>>
+			<</if>><br>
+		<<else>>
+			<<if $options.cute_angler>>
+				<<print [
+					`"对我来说大海真的是天堂！"`
+				].random()>>
+			<<else>>
+				<<print [
+					`"为什么海洋是我最喜欢去的地方？咄，因为那里有很多很酷的鱼！"`
+				].random()>>
+			<</if>><br>
+		<</if>>
 	/* 还未完成当日钓鱼任务 */
 	<<elseif $fishing_request_finished_daily isnot true>>
-		<<print [
-			`"嘿！我有一个活儿给你。不要以为你能拒绝，怎么都不行！"`,
-			`"我想要一条鱼，你去给我弄一条来！快问我细节！"`,
-			`"我想让你正式成为 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 的跑腿官！"`,
-			`"嘿！你就是我一直在找的牺……我是说称职的钓鱼大师！"`
-		].random()>>
+		<<if Time.isBloodMoon()>>
+			<<if $options.cute_angler>>
+				<<print [
+					`"你不应该在水面都染红的时候去钓鱼，水里的怪物太危险了！但是如果你能对付它们的话，倒是可以满载而归！"`,
+					`"我很需要一条鱼，但现在外面实在太危险了..."`,
+					`"你知道吗，在血月期间，平时潜伏在水底的超级可怕的东西都游上来了！你要试着钓一下吗？我可以和你一起对付它们！"`
+				].random()>>
+			<<else>>	
+				<<print [
+					`"我有个任务给你！不，现在我才不管什么僵尸大灾难呢！"`,
+					`"快点，听着！我要你马上去抓个东西给我！"`,
+					`"你知道吗，在血月期间，水中潜伏着超级可怕的东西！你应该去试试！我在这里帮你把风！"`
+				].random()>>
+			<</if>><br>
+		<<elseif (Weather.name is "lightPrecipitation" or Weather.name is "heavyPrecipitation") and Weather.precipitation is "snow">>
+			<<if $options.cute_angler>>
+				<<print [
+					`"快进来，外面好冷！今天可别为了帮我钓鱼而冻着了..."`,
+					`"有的鱼得在结冰的水域里才能钓上来，你在冰面上走的时候要小心脚下！"`
+				].random()>>
+			<<else>>	
+				<<print [
+					`"我需要一条鱼，立刻抓来给我！什么？外面在下雪？哈哈，关我什么事，冻僵的是你！"`,
+					`"你说水面结冰了钓不了鱼？你还没结冰呢！快去！"`
+				].random()>>
+			<</if>><br>
+		<<else>>
+			<<if $options.cute_angler>>
+				<<print [
+					`"嘿！呃...你有空吗，我想请你帮个忙...噢！如果你忙的话,等下次也可以..."`,
+					`"嗨...我有个请求，能请你帮帮我么？"`,
+					`"我觉得你是全 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 最可靠的人！"`,
+					`"虽然不想再次麻烦你，但是这种鱼只有你能逮到，所以...拜托了！"`
+				].random()>>
+			<<else>>	
+				<<print [
+					`"嘿！我有一个活儿给你。不要以为你能拒绝，怎么都不行！"`,
+					`"我想要一条鱼，你去给我弄一条来！快问我细节！"`,
+					`"我想让你正式成为 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 的跑腿官！"`,
+					`"嘿！你就是我一直在找的牺...我是说称职的钓鱼大师！"`
+				].random()>>
+			<</if>><br>
+		<</if>>
 	/* 已经完成当日钓鱼任务 */
 	<<else>>
-		<<print [
-			`"太可气了！有些鱼可能在我出生之前就灭绝了，真不公平！"`,
-			`"什……么？！难道你没看见我在收钓鱼线吗？？"`,
-			`"整个 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>>中都没有厨师，所以我不得不自己烹鱼！"`,
-			`"我没爹没娘，但我有很多鱼！这也差不多了！"`,
-			`"听听小孩的忠告吧，永远不要用舌头碰冰块！等一下，就当我没说，我就想看你这样做！"`,
-			`"听说过会叫的鱼吗？！我没听说过，只是想知道你听说过没！"`,
-			`"嘿！当心！我设了许多陷阱，用来实施史上最大的恶作剧！没人会发觉！你敢告诉别人试试！"`,
-			`"<<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 到处都是各种稀奇古怪的鱼！"`
-		].random()>>
-	<</if>><br>
+		<<if $options.cute_angler>>
+			<<print [
+				`"真令人失望！有些鱼可能在我出生之前就灭绝了，为什么我不能早点出生呢！"`,
+				`"哦！是你啊!光顾着鱼一时间没注意到你，嘿嘿，不好意思。"`,
+				`"全 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 一个厨师都没有，所以我只能自己煮鱼...所以其实我厨艺挺好的，有机会让你尝尝。"`,
+				`"我没有妈妈，也没有爸爸，但是我有你陪我...我是说有你帮我抓的鱼陪我！这就够了！"`,
+				`"嘿，你知道用舌头去碰冰块会发生什么吗？它会粘在上面！你可千万别这么干，或者你要这么干之前把我喊上，我给你准备热水！"`,
+				`"你听说哪种鱼会叫吗？啊不是，我不知道哪里有，也没想找你帮忙抓，我只是想知道你有没有听说过类似的传闻，我还挺希望有的。"`,
+				`"去探险的时候当心点！虽然不知道是谁设置的，但是 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 的各个地方都有许多机关...我不希望参加你的葬礼。"`,
+				`"<<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 到处都是各种稀奇古怪的鱼，我最大的愿望就是把它们全部收集齐！然后和你一起...呃...我是说我一个人！开一家'稀奇古怪鱼馆'给全世界的人参观！"`
+			].random()>>
+		<<else>>
+			<<print [
+				`"太可气了！有些鱼可能在我出生之前就灭绝了，真不公平！"`,
+				`"什……么？！难道你没看见我在收钓鱼线吗？？"`,
+				`"整个 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 中都没有厨师，所以我不得不自己烹鱼！"`,
+				`"我没爹没娘，但我有很多鱼！这也差不多了！"`,
+				`"听听小孩的忠告吧，永远不要用舌头碰冰块！等一下，就当我没说，我就想看你这样做！"`,
+				`"听说过会叫的鱼吗？！我没听说过，只是想知道你听说过没！"`,
+				`"嘿！当心！我设了许多陷阱，用来实施史上最大的恶作剧！没人会发觉！你敢告诉别人试试！"`,
+				`"<<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 到处都是各种稀奇古怪的鱼！"`
+			].random()>>
+		<</if>><br>
+	<</if>>
 	<br>
+	/* 放置渔夫任务奖励家具 */
 	<<if $furniture_painting_angler_cabin isnot undefined and $furniture_painting_angler_cabin isnot "none">>
-		<<switch $furniture_painting_angler_cabin>>
-			<<case "Bunnyfish_Trophy">><<icon "furniture_placed/Bunnyfish_Trophy_(placed).png">><br><br>
-			<<case "Compass_Rose">><<icon "furniture_placed/Compass_Rose_(placed).png">><br><br>
-			<<case "Couch_Gag">><<icon "furniture_placed/Couch_Gag_(placed).png">><br><br>
-			<<case "Crustography">><<icon "furniture_placed/Crustography_(placed).png">><br><br>
-			<<case "Fangs">><<icon "furniture_placed/Fangs_(placed).png">><br><br>
-			<<case "Goldfish_Trophy">><<icon "furniture_placed/Goldfish_Trophy_(placed).png">><br><br>
-			<<case "Life_Preserver">><<icon "furniture_placed/Life_Preserver_(placed).png">><br>
-			<<case "Not_So_Lost_In_Paradise">><<icon "furniture_placed/Not_So_Lost_In_Paradise_(placed).png">><br><br>
-			<<case "Pillagin_Me_Pixels">><<icon "furniture_placed/Pillagin_Me_Pixels_(placed).png">><br><br>
-			<<case "Seaweed_Planter">><<icon "furniture_placed/Seaweed_Planter_(placed).png">><br><br>
-			<<case "Sharkteeth_Trophy">><<icon "furniture_placed/Sharkteeth_Trophy_(placed).png">><br><br>
-			<<case "Ship_in_a_Bottle">><<icon "furniture_item/Ship_in_a_Bottle.png">><br><br>
-			<<case "Ships_Wheel">><<icon "furniture_placed/Ships_Wheel_(placed).png">><br><br>
-			<<case "Silent_Fish">><<icon "furniture_placed/Silent_Fish_(placed).png">><br><br>
-			<<case "Swordfish_Trophy">><<icon "furniture_placed/Swordfish_Trophy_(placed).png">><br><br>
-			<<case "The_Duke">><<icon "furniture_placed/The_Duke_(placed).png">><br><br>
-			<<case "Treasure_Map">><<icon "furniture_placed/Treasure_Map_(placed).png">><br><br>
-			<<case "Wall_Anchor">><<icon "furniture_placed/Wall_Anchor_(placed).png">><br><br>
-			<<case "What_Lurks_Below">><<icon "furniture_placed/What_Lurks_Below_(placed).png">><br><br>
-		<</switch>>
+		<<set _allAnglerFurnitureList to getAllAnglerFurnitureList()>>
+		<<for _t to 0; _t lt _allAnglerFurnitureList.length; _t++>>
+			<<set _anglerFurniture to setup.terraAnglerFurniture[_allAnglerFurnitureList[_t]]>>
+			<<if $furniture_painting_angler_cabin is _anglerFurniture.name>>
+				<<icon `_anglerFurniture.placed_icon`>>
+				<<break>>
+			<</if>>
+		<</for>><br>
+		<br>
 	<</if>>
 	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
-	<<getouticon>><<link [[离开|Beach]]>><</link>><br>
-	<<if $furniture_painting>>
+	<<if $angler_furniture_obtained.length gte 1>>
 		<<if $furniture_painting_angler_cabin is undefined or $furniture_painting_angler_cabin is "none">>
-			<<link [[放一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
+			<<ind>><<link [[放一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
 		<<else>>
-			<<link [[换一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
-		<</if>>
+			<<ind>><<link [[换一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
+		<</if>><br>
 	<</if>>
+	<<getouticon>><<link [[离开|Beach]]>><</link>><br>
 <</if>>
 <br>
+<<if $options.cute_angler>>
+	<<ind>><<icon "furniture_placed/Reef_Chandelier_(placed).png">>
+	<br>
+	<br>
+	<br>
+	<<icon "furniture_placed/Reef_Chair_(placed).png">><<icon "furniture_placed/Reef_Table_(placed).png">><<ind>>
+<<else>>
+	<<icon "furniture_placed/Wooden_Chair_(placed).png">><<icon "furniture_placed/Wooden_Table_(placed).png">><<ind>>
+<</if>><br>
 <br>
 使用旧版本存档游戏时，此处↓将会出现报错提示。因技术能力不足暂时无法解决，请忽略。
 <<endevent>>

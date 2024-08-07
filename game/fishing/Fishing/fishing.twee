@@ -9,14 +9,26 @@
 	<<case "moor">>雷米庄园门口的沙地
 	<<case "honey">>森林蜂蜜池
 	<<case "farm_woodland">>农场的林地
+	<<case "temple_garden">>神殿的花园
 	<<case "wolf_cave_clearing">>狼窝的溪流
+	<<case "wolf_cave_clearing_artificial">>狼穴洞口附近的人工钓鱼池
 	<<case "bird_tower">>鹰塔的雨水池
+	<<case "bird_tower_artificial">>高塔塔底的人工钓鱼池
 	<<case "eden_clearing">>伊甸小屋的泉水
+	<<case "eden_clearing_artificial">>猎人小屋附近的人工钓鱼池
 	<<case "bog">>沼泽
 	<<case "trash">>垃圾场深处的沸水池
-	<<case "park">>公园的喷泉
+	<<case "park">>公园喷泉
+	<<case "school_pool">>学校泳池
 <</switch>>
 钓鱼。<br>
+/* 上学日8:59时自动退出钓鱼小游戏 */
+<<if $fishing_place is "school_pool" and Time.schoolDay and Time.hour is 8 and Time.minute is 59>>
+	你听到更衣室传来了嬉笑打闹声。你在梅森和学生们进来之前快速收拾好了渔具。<br>
+	<br>
+	<<fishing_finished_back>>
+	<<exitAll>>
+<</if>>
 /* 显示钓鱼结果 */
 <<if $fishing_distance lte 0>>
 	<<if $High_Test_Fishing_Line isnot true and random(1,7) is 1>>
@@ -28,14 +40,14 @@
 	<br>
 	<<fishing_bait_consumed>>
 	<br>
-	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<fishing_cast_time>><</link>><br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<set $fishing_harvest to undefined>><<fishing_cast_time>><</link>><br>
 	<<fishing_finished_back>>
 <<elseif $fishing_integrity is 0>>
 	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><br>
 	<br>
 	<<fishing_bait_consumed>>
 	<br>
-	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<fishing_cast_time>><</link>><br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<set $fishing_harvest to undefined>><<fishing_cast_time>><</link>><br>
 	<<fishing_finished_back>>
 /* 显示每回合的结果 */
 <<else>>	
@@ -43,18 +55,61 @@
 	<<case 1>>
 		<span class="teal">一次很成功的收线！</span>|<span class="green">+垂钓</span>
 	<<case 2>>
-		<span class="pink">哦不！它的挣扎使鱼线更加的脆弱......</span>|<span class="green">++垂钓</span>
+		<span class="pink">哦不！它的挣扎使鱼线更加的脆弱......</span>|<span class="green">++垂钓</span><<gstress>><<stress 3>>
 	<<case 3>>
 		<span class="teal">你让它挣扎得稍微远离了一些。</span>|<span class="green">+垂钓</span>
 	<<case 4>>
-		<span class="pink">它刚刚明明就没动！</span>|<span class="green">++垂钓</span>
+		<span class="pink">它刚刚明明就没动！</span>|<span class="green">++垂钓</span><<gstress>><<stress 3>>
 	<</switch>><br>
 	<br>
-	数值平衡处理好后将具体数字替换为各个颜色的状态文本<br>
-	渔获距离：$fishing_distance<br>
-	鱼线耐久：$fishing_integrity<br>
+	钓鱼状态：<br>
+	<<if $fishing_distance lte 0>>
+		<span class="green">渔获距离：$fishing_distance/100</span>
+	<<elseif $fishing_distance lte 20>>
+		<span class="teal">渔获距离：$fishing_distance/100</span>
+	<<elseif $fishing_distance lte 40>>
+		<span class="lblue">渔获距离：$fishing_distance/100</span>
+	<<elseif $fishing_distance lte 60>>
+		<span class="blue">渔获距离：$fishing_distance/100</span>
+	<<elseif $fishing_distance lte 80>>
+		<span class="purple">渔获距离：$fishing_distance/100</span>
+	<<elseif $fishing_distance lte 100>>
+		<span class="pink">渔获距离：$fishing_distance/100</span>
+	<<else>>
+		<span class="red">渔获距离：$fishing_distance/100</span>
+	<</if>>
 	<br>
-	<<if $rng gte 51>>
+	<<switch $fishing_integrity>>
+		<<case 1>>
+			<span class="pink">鱼线耐久：$fishing_integrity/<<print $High_Test_Fishing_Line ? 5 : 3>></span>
+		<<case 2>>
+			<span class="blue">鱼线耐久：$fishing_integrity/<<print $High_Test_Fishing_Line ? 5 : 3>></span>
+		<<case 3>>
+			<span class="lblue">鱼线耐久：$fishing_integrity/<<print $High_Test_Fishing_Line ? 5 : 3>></span>
+		<<case 4>>
+			<span class="teal">鱼线耐久：$fishing_integrity/<<print $High_Test_Fishing_Line ? 5 : 3>></span>
+		<<case 5>>
+			<span class="green">鱼线耐久：$fishing_integrity/<<print $High_Test_Fishing_Line ? 5 : 3>></span>
+	<</switch>>
+	<br>
+	/* 渔获距离大于66时开始有概率落水 */
+	<<if random(1,100) lt (3 * $fishing_distance - 200)>>
+		渔获距离太远了！
+		<<if ($danceskill * 0.5) gte random(1,1000)>>
+			<span class="green">但你设法维持住了身体的平衡。</span><br>
+		<<else>>
+			<span class="red">随着一阵猛烈的挣扎，你的身体失去平衡，被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>>
+			<<water>>
+			<br>
+			<br>
+			你花费了一些时间爬到岸上。<br>
+			<br>
+			<<pass 3>>
+			<<fishing_finished_back>>
+			<<exitAll>>
+		<</if>>
+	<</if>>
+	<<if random(1,2) is 1>>
 		<<set $fish_relax to true>>
 	<<else>>
 		<<set $fish_relax to false>>
@@ -85,4 +140,3 @@
 		<</if>>
 	<</link>>
 <</if>>
-

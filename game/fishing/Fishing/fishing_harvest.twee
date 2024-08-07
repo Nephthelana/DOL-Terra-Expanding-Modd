@@ -7,104 +7,102 @@
 		<<case "Rusted_Jingle_Bell">><<icon "Rusted_Jingle_Bell.png">>锈蚀铃铛
 		/* 宝匣 */
 		<<case "Golden_Crate">><<icon "fishing/crates/Golden_Crate.png">>金匣
-			<<if $Golden_Crate is undefined>><<set $Golden_Crate = 0>><</if>>
 			<<set $Golden_Crate += 1>>
 		<<case "Iron_Crate">><<icon "fishing/crates/Iron_Crate.png">>铁匣
-			<<if $Iron_Crate is undefined>><<set $Iron_Crate = 0>><</if>>
 			<<set $Iron_Crate += 1>>
 		<<case "Wooden_Crate">><<icon "fishing/crates/Wooden_Crate.png">>木匣
-			<<if $Wooden_Crate is undefined>><<set $Wooden_Crate = 0>><</if>>
 			<<set $Wooden_Crate += 1>>
 		<<case "Ocean_Crate">><<icon "fishing/crates/Ocean_Crate.png">>海洋匣
-			<<if $Ocean_Crate is undefined>><<set $Ocean_Crate = 0>><</if>>
 			<<set $Ocean_Crate += 1>>
 		<<case "Oyster">><<icon "fishing/crates/Oyster.png">>牡蛎
-			<<if $Oyster is undefined>><<set $Oyster = 0>><</if>>
 			<<set $Oyster += 1>>
 		<<case "Oasis_Crate">><<icon "fishing/crates/Oasis_Crate.png">>绿洲匣
-			<<if $Oasis_Crate is undefined>><<set $Oasis_Crate = 0>><</if>>
 			<<set $Oasis_Crate += 1>>
 		<<case "Jungle_Crate">><<icon "fishing/crates/Jungle_Crate.png">>丛林匣
-			<<if $Jungle_Crate is undefined>><<set $Jungle_Crate = 0>><</if>>
 			<<set $Jungle_Crate += 1>>
+		<<case "Hallowed_Crate">><<icon "fishing/crates/Hallowed_Crate.png">>神圣匣
+			<<set $Hallowed_Crate += 1>>
 		<<case "Sky_Crate">><<icon "fishing/crates/Sky_Crate.png">>天空匣
-			<<if $Sky_Crate is undefined>><<set $Sky_Crate = 0>><</if>>
 			<<set $Sky_Crate += 1>>
 		<<case "Sunken_Crate">><<icon "fishing/crates/Sunken_Crate.png">>沉沦匣
-			<<if $Sunken_Crate is undefined>><<set $Sunken_Crate = 0>><</if>>
 			<<set $Sunken_Crate += 1>>
 		<<case "Sulphurous_Crate">><<icon "fishing/crates/Sulphurous_Crate.png">>硫海匣
-			<<if $Sulphurous_Crate is undefined>><<set $Sulphurous_Crate = 0>><</if>>
 			<<set $Sulphurous_Crate += 1>>
 		<<case "Brimstone_Crate">><<icon "fishing/crates/Brimstone_Crate.png">>硫火匣
-			<<if $Brimstone_Crate is undefined>><<set $Brimstone_Crate = 0>><</if>>
 			<<set $Brimstone_Crate += 1>>
 		/* 普通鱼 */
 		<<case "Salmon">><<icon "fishing/fish/Salmon.png">>三文鱼
+			<<set $Salmon += 1>>
 		<<case "Bass">><<icon "fishing/fish/Bass.png">>鲈鱼
-		<<case "Pink_Jellyfish_(bait)">><<icon "fishing/fish/Pink_Jellyfish_(bait).png">>粉水母
+			<<set $Bass += 1>>
+		<<case "Pink_Jellyfish_bait">><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母
+			<<set $Pink_Jellyfish_bait += 1>>
+		<<case "Shrimp">><<icon "fishing/fish/Shrimp.png">>虾
+			<<set $Shrimp += 1>>
 		<<case "Tuna">><<icon "fishing/fish/Tuna.png">>金枪鱼
+			<<set $Tuna += 1>>
 		<<case "Red_Snapper">><<icon "fishing/fish/Red_Snapper.png">>红鲷鱼
+			<<set $Red_Snapper += 1>>
 		<<case "Trout">><<icon "fishing/fish/Trout.png">>鳟鱼
+			<<set $Trout += 1>>
 		<<case "Golden_Carp">><<icon "fishing/fish/Golden_Carp.png">>金鲤鱼
+			<<set $Golden_Carp += 1>>
 		<<case "Stinkfish">><<icon "fishing/fish/Stinkfish.png">>臭味鱼
-		<<case "Blue_Jellyfish_(bait)">><<icon "fishing/fish/Blue_Jellyfish_(bait).png">>蓝水母
+			<<set $Stinkfish += 1>>
+		<<case "Blue_Jellyfish_bait">><<icon "fishing/fish/Blue_Jellyfish_bait.png">>蓝水母
+			<<set $Blue_Jellyfish_bait += 1>>
 		<<case "Armored_Cavefish">><<icon "fishing/fish/Armored_Cavefish.png">>装甲洞穴鱼
+			<<set $Armored_Cavefish += 1>>
 		<<case "Specular_Fish">><<icon "fishing/fish/Specular_Fish.png">>镜面鱼
+			<<set $Specular_Fish += 1>>
 		<<case "Flounder">><<icon "fishing/fish/Flounder.png">>偏口鱼
+			<<set $Flounder += 1>>
 		<<case "Rock_Lobster">><<icon "fishing/fish/Rock_Lobster.png">>岩石龙虾
+			<<set $Rock_Lobster += 1>>
 		<<case "Honeyfin">><<icon "fishing/fish/Honeyfin.png">>蜂蜜鱼
+			<<set $Honeyfin += 1>>
 		<<case "Double_Cod">><<icon "fishing/fish/Double_Cod.png">>双鳍鳕鱼
+			<<set $Double_Cod += 1>>
 		<<case "Variegated_Lardfish">><<icon "fishing/fish/Variegated_Lardfish.png">>斑驳油鱼
+			<<set $Variegated_Lardfish += 1>>
 		<<case "Neon_Tetra">><<icon "fishing/fish/Neon_Tetra.png">>霓虹脂鲤
+			<<set $Neon_Tetra += 1>>
+		<<case "Prismite">><<icon "fishing/fish/Prismite.png">>七彩矿鱼
+			<<set $Prismite += 1>>
+		<<case "Princess_Fish">><<icon "fishing/fish/Princess_Fish.png">>公主鱼
+			<<set $Princess_Fish += 1>>
+		<<case "Chaos_Fish">><<icon "fishing/fish/Chaos_Fish.png">>混沌鱼
+			<<set $Chaos_Fish += 1>>
 		<<case "Greenwave_Loach">><<icon "fishing/fish/Greenwave_Loach.png">>绿波泥鳅
+			<<set $Greenwave_Loach += 1>>
 		<<case "Sunken_Sailfish">><<icon "fishing/fish/Sunken_Sailfish.png">>沉沦帆鱼
-		<<case "Prismatic_Guppy">><<icon "fishing/fish/Prismatic_Guppy.png">>棱镜孔雀鱼
+			<<set $Sunken_Sailfish += 1>>
+		<<case "Prismatic_Guppy">><<icon "fishing/fish/Prismatic_Guppy.png">>棱晶孔雀鱼
+			<<set $Prismatic_Guppy += 1>>
 		<<case "Damselfish">><<icon "fishing/fish/Damselfish.png">>雀鲷
+			<<set $Damselfish += 1>>
 		<<case "Charred_Lasher">><<icon "fishing/fish/Charred_Lasher.png">>焦黑鞭笞者
+			<<set $Charred_Lasher += 1>>
 		<<case "Coastal_Demonfish">><<icon "fishing/fish/Coastal_Demonfish.png">>海岸恶魔鱼
+			<<set $Coastal_Demonfish += 1>>
 		<<case "Crag_Bullhead">><<icon "fishing/fish/Crag_Bullhead.png">>硫火崖回鱼
+			<<set $Crag_Bullhead += 1>>
 		/* 任务鱼 */
-		<<case "Amanita_Fungifin">><<icon "fishing/quest_fish/Amanita_Fungifin.png">>毒菌鱼<<set $fishing_request_fish_obtained to true>><<set $Amanita_Fungifin to true>>
-		<<case "Angelfish">><<icon "fishing/quest_fish/Angelfish.png">>天使鱼<<set $fishing_request_fish_obtained to true>><<set $Angelfish to true>>
-		<<case "Batfish">><<icon "fishing/quest_fish/Batfish.png">>蝙蝠鱼<<set $fishing_request_fish_obtained to true>><<set $Batfish to true>>
-		<<case "Bonefish">><<icon "fishing/quest_fish/Bonefish.png">>骷髅鱼<<set $fishing_request_fish_obtained to true>><<set $Bonefish to true>>
-		<<case "Bumblebee_Tuna">><<icon "fishing/quest_fish/Bumblebee_Tuna.png">>大黄蜂金枪鱼<<set $fishing_request_fish_obtained to true>><<set $Bumblebee_Tuna to true>>
-		<<case "Bunnyfish">><<icon "fishing/quest_fish/Bunnyfish.png">>兔兔鱼<<set $fishing_request_fish_obtained to true>><<set $Bunnyfish to true>>
-		<<case "Catfish">><<icon "fishing/quest_fish/Catfish.png">>猫鱼<<set $fishing_request_fish_obtained to true>><<set $Catfish to true>>
-		<<case "Cloudfish">><<icon "fishing/quest_fish/Cloudfish.png">>云鱼<<set $fishing_request_fish_obtained to true>><<set $Cloudfish to true>>
-		<<case "Clownfish">><<icon "fishing/quest_fish/Clownfish.png">>小丑鱼<<set $fishing_request_fish_obtained to true>><<set $Clownfish to true>>
-		<<case "Demonic_Hellfish">><<icon "fishing/quest_fish/Demonic_Hellfish.png">>恶魔地狱鱼<<set $fishing_request_fish_obtained to true>><<set $Demonic_Hellfish to true>>
-		<<case "Derpfish">><<icon "fishing/quest_fish/Derpfish.png">>跳跳鱼<<set $fishing_request_fish_obtained to true>><<set $Derpfish to true>>
-		<<case "Dirtfish">><<icon "fishing/quest_fish/Dirtfish.png">>土鱼<<set $fishing_request_fish_obtained to true>><<set $Dirtfish to true>>
-		<<case "Dynamite_Fish">><<icon "fishing/quest_fish/Dynamite_Fish.png">>雷管鱼<<set $fishing_request_fish_obtained to true>><<set $Dynamite_Fish to true>>
-		<<case "Fallen_Starfish">><<icon "fishing/quest_fish/Fallen_Starfish.png">>坠落星鱼<<set $fishing_request_fish_obtained to true>><<set $Fallen_Starfish to true>>
-		<<case "Fish_of_Cthulhu">><<icon "fishing/quest_fish/Fish_of_Cthulhu.png">>克苏鲁鱼<<set $fishing_request_fish_obtained to true>><<set $Fish_of_Cthulhu to true>>
-		<<case "Fishotron">><<icon "fishing/quest_fish/Fishotron.png">>骷髅王鱼<<set $fishing_request_fish_obtained to true>><<set $Fishotron to true>>
-		<<case "Guide_Voodoo_Fish">><<icon "fishing/quest_fish/Guide_Voodoo_Fish.png">>向导巫毒鱼<<set $fishing_request_fish_obtained to true>><<set $Guide_Voodoo_Fish to true>>
-		<<case "Harpyfish">><<icon "fishing/quest_fish/Harpyfish.png">>鸟妖鱼<<set $fishing_request_fish_obtained to true>><<set $Harpyfish to true>>
-		<<case "Hungerfish">><<icon "fishing/quest_fish/Hungerfish.png">>饿鬼鱼<<set $fishing_request_fish_obtained to true>><<set $Hungerfish to true>>
-		<<case "Jewelfish">><<icon "fishing/quest_fish/Jewelfish.png">>珠宝鱼<<set $fishing_request_fish_obtained to true>><<set $Jewelfish to true>>
-		<<case "Mudfish">><<icon "fishing/quest_fish/Mudfish.png">>泥鱼<<set $fishing_request_fish_obtained to true>><<set $Mudfish to true>>
-		<<case "Scarab_Fish">><<icon "fishing/quest_fish/Scarab_Fish.png">>甲虫鱼<<set $fishing_request_fish_obtained to true>><<set $Scarab_Fish to true>>
-		<<case "Scorpio_Fish">><<icon "fishing/quest_fish/Scorpio_Fish.png">>蝎子鱼<<set $fishing_request_fish_obtained to true>><<set $Scorpio_Fish to true>>
-		<<case "Slimefish">><<icon "fishing/quest_fish/Slimefish.png">>史莱姆鱼<<set $fishing_request_fish_obtained to true>><<set $Slimefish to true>>
-		<<case "Spiderfish">><<icon "fishing/quest_fish/Spiderfish.png">>蜘蛛鱼<<set $fishing_request_fish_obtained to true>><<set $Spiderfish to true>>
-		<<case "Tropical_Barracuda">><<icon "fishing/quest_fish/Tropical_Barracuda.png">>热带梭鱼<<set $fishing_request_fish_obtained to true>><<set $Tropical_Barracuda to true>>
-		<<case "Wyverntail">><<icon "fishing/quest_fish/Wyverntail.png">>飞龙尾<<set $fishing_request_fish_obtained to true>><<set $Wyverntail to true>>
-		<<case "Zombie_Fish">><<icon "fishing/quest_fish/Zombie_Fish.png">>僵尸鱼<<set $fishing_request_fish_obtained to true>><<set $Zombie_Fish to true>>
-		<<case "Brimlish">><<icon "fishing/quest_fish/Brimlish.png">>小硫火鱼<<set $fishing_request_fish_obtained to true>><<set $Brimlish to true>>
-		<<case "Eutrophic_Sandfish">><<icon "fishing/quest_fish/Eutrophic_Sandfish.png">>富养沙地鱼<<set $fishing_request_fish_obtained to true>><<set $Eutrophic_Sandfish to true>>
-		<<case "Serpentuna">><<icon "fishing/quest_fish/Serpentuna.png">>巨蛇金枪鱼<<set $fishing_request_fish_obtained to true>><<set $Serpentuna to true>>
-		<<case "Slurpfish">><<icon "fishing/quest_fish/Slurpfish.png">>饮食者鱼<<set $fishing_request_fish_obtained to true>><<set $Slurpfish to true>>
-		<<case "Surf_Clam">><<icon "fishing/quest_fish/Surf_Clam.png">>碎浪蛤<<set $fishing_request_fish_obtained to true>><<set $Surf_Clam to true>>
-		<<case "Bloody_Manowar">><<icon "fishing/quest_fish/quest_fish_sp/Bloody_Manowar.png">>血腥战神<<set $fishing_request_fish_obtained to true>><<set $Bloody_Manowar to true>>
+		<<case "request_fish">>
+			<<fishing_harvest_request_fish>><<set $fishing_request_fish.pushUnique($fishing_request_selection)>>
 		/* 垃圾 */
 		<<case "Old_Shoe">><<icon "fishing/fish/Old_Shoe.png">>旧鞋
 		<<case "Seaweed_(junk)">><<icon "fishing/fish/Seaweed_(junk).png">>海草
 		<<case "Tin_Can">><<icon "fishing/fish/Tin_Can.png">>锡罐
 		<<case "Joja_Cola">><<icon "fishing/fish/Joja_Cola.png">>Joja可乐
+			<<set $Joja_Cola += 1>>
+		/* 泳池的内裤、泳装 */
+		<<case "swim_underwear">>
+			<<set _colour to either("蓝色", "绿色", "红色", "黑色", "粉色", "紫色", "黄色", "白色", "橙色", "条纹", "波点")>>
+			一条_colour的$swimUnderwear<<set $panties_held += 1>>
 	<</switch>>！
-	<<set $fishing_harvest to undefined>>
+	<<if $fishing_place is "school_pool" and $fishing_harvest is "swim_underwear">>
+		或许有人愿意出价收购它。
+	<</if>>
 <</widget>>
 	

@@ -1,0 +1,8 @@
+:: artificialFishingPond [widget]
+<<widget "artificialFishingPond">>
+
+<div class="settingsToggle">
+	<label><<checkbox "$options.artificial_fishing_pond" false true autocheck>>人工钓鱼池</label><mouse class="tooltip linkBlue">(?)<span>开启后，可建造并使用某些原本以NPC交互作为前置条件的钓鱼点。详情请询问向导。</span></mouse>
+</div>
+
+<</widget>>
