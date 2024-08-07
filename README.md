@@ -70,7 +70,27 @@
 
   ![增益追踪器](https://github.com/Nephthelana/DOL-Terra-Expanding-Modd/assets/153483365/8a77c0b6-6641-44d5-9c70-f435883d4806)
 
-  </details>
+</details>
+  
+### 成就
+> 成就系统[如果你真的闲着没事干的话...]
+- 围绕模组内容新增了一些成就，可以在成就页面查看提示。
+<details>
+  <summary>点击查看图片</summary>
+
+  ![成就](https://github.com/user-attachments/assets/0799818a-2f51-41a2-902b-1f5200c8e99c)
+
+</details>
+
+### 提示系统
+> 我是谁？我该做什么？
+- 森林商店附近搬来了一个新居民——向导。你可以在完成他给出的任务后，得到一些关于模组的详细提示。（这部分内容有待交流扩充）
+<details>
+  <summary>点击查看图片</summary>
+
+  ![向导](https://github.com/user-attachments/assets/dfc6971c-a6fc-48bf-bc75-1c5f894b52fb)
+
+</details>
 
 ## 接下来的计划
 - [ ] 完成dom罗宾拓展模组联动剧情；
