@@ -8,6 +8,7 @@
 		<<case "honey">><<getouticon>><<link [[返回森林|Forest]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "farm_woodland">><<getouticon>><<link [[返回林地|Farm Woodland]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "temple_garden">><<getouticon>><<link [[返回花园|Temple Garden]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "temple_garden_artificial">><<getouticon>><<link [[返回老教堂墓地门口|Churchyard]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "wolf_cave_clearing">><<getouticon>><<link [[返回狼窝|Wolf Cave Clearing]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "wolf_cave_clearing_artificial">><<getouticon>><<link [[返回森林|Forest]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "bird_tower">><<getouticon>><<link [[返回鹰塔|Bird Tower]]>><<set $fishing_harvest to undefined>><</link>>

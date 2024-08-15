@@ -1,5 +1,8 @@
 :: Terra Debug
 晶塔相关<br>
+<<if $pylon_collected is undefined>>
+	<<set $pylon_collected to []>>
+<</if>>
 *请在历史等级达到B级，在博物馆向温特询问过晶塔的事情后，再使用这些晶塔相关功能。在这之前解锁晶塔功能无法发挥作用。<br>
 <<if $pylon_collected.includes("Bedroom")>>
 	<<icon "pylon/Forest_Pylon.png">><<link [[锁定孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_collected.delete("Bedroom")>><</link>>
@@ -55,6 +58,8 @@
 <br>
 <br>
 血月天塔柱相关<br>
+<<ind>><<link [[重置初遇恐惧鹦鹉螺|Terra Debug]]>><<set $Dreadnautilus_intro to undefined>><</link>><br>
+<<icon "tool/Bloody_Tear.png">><<link [[获得一颗血泪|Terra Debug]]>><<set $Bloody_Tear += 1>><</link>><br>
 <<if $blood_moon_monolith is undefined>>
 	<span class="fading"><<icon "blood_moon_monolith/Blood_Moon_Monolith.png">></span><<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to "get">><</link>><br>
 <<else>>

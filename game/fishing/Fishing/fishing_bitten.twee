@@ -1,8 +1,8 @@
 :: Fishing Bitten
-<<if ($trash gte 50 and $fishing_place is "trash") and ($fishingrod_held is "Hotline_Fishing_Hook" or $Bait is "Hell_Butterfly" or $Lavaproof_Fishing_Hook)>>
+<<if ($trash gte 50 and $fishing_place is "trash") and ($fishingrod_held is "Hotline_Fishing_Hook" or $Bait is "Hell_Butterfly" or ($terra_accessories_slots.includes("Lavaproof_Fishing_Hook") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")))>>
 	<<earnFeat "Hot Reels!">>
 <</if>>
-<<if ($trash gte 50 and $fishing_place is "trash") and $fishingrod_held isnot "Hotline_Fishing_Hook" and $Bait isnot "Hell_Butterfly" and $Lavaproof_Fishing_Hook isnot true>>
+<<if ($trash gte 50 and $fishing_place is "trash") and $fishingrod_held isnot "Hotline_Fishing_Hook" and $Bait isnot "Hell_Butterfly" and !($terra_accessories_slots.includes("Lavaproof_Fishing_Hook") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag"))>>
 	<<pass 30>>
 	经过30分钟的等待，你什么都没等到。也许不惧高温的小动物或渔具能解决这个问题。<br>
 <<elseif $Bait is "Truffle_Worm">>

@@ -1,0 +1,26 @@
+:: Void Bag Bloody Tear [widget]
+<<widget "void_bag_Bloody_Tear">>
+
+<<if $Bloody_Tear gt 0>>
+	<<icon "tool/Bloody_Tear.png">>
+	<<if Time.isBloodMoon()>>
+		<span class="blue">你不能在血月期间使用血泪</span><br>
+	<<elseif !(Time.dayState is "night")>>
+		<span class="blue">你只能在夜晚使用血泪</span><br>
+	<<else>>
+		<<link "血泪($Bloody_Tear)">>
+			<<set $Bloody_Tear -= 1>>
+			<<set $Bloody_Tear_used to true>>
+			<<checkWraith>>
+			<<replace #hint_item_use>>
+				<span class="red">你使用了<<icon "tool/Bloody_Tear.png">>血泪。<i>"诅咒之夜真可怕。"</i></span><br>
+				<br>
+			<</replace>>
+			<<replace #void_bag_Bloody_Tear>>
+				<<void_bag_Bloody_Tear>>
+			<</replace>>
+		<</link>><br>
+	<</if>>
+<</if>>
+
+<</widget>>

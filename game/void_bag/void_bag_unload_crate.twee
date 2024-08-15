@@ -53,6 +53,10 @@
 <<widget "Iron_Crate_unload">>
 	<<set $Iron_Crate -= 1>>
 	<<moneyGain random(500,1000)>>
+	<<if random(1,23) is 1>>
+		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
+		<<set $Sailfish_Boots to true>>
+	<</if>>
 	<<if random(1,2) is 1>>
 		<<if random(1,3) is 1>>
 			<<set _unload_crate_Bait = random(2,4)>>
@@ -218,7 +222,7 @@
 	<<set $Sky_Crate -= 1>>
 	<<icon "tool/Starfury.png">>星怒<mouse class="tooltip linkBlue">(?)<span>它没有任何用处，但它应该出现在这里()</span></mouse>
 	<<if random(1,40) is 1>>
-		、<<icon "tool/Fledgling_Wings.png">>雏翼
+		、<<icon "accessories/Fledgling_Wings.png">>雏翼
 		<<set $Fledgling_Wings to true>>
 	<</if>>
 	<<if random(1,4) is 1>>

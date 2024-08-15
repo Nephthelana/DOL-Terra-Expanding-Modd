@@ -1,0 +1,110 @@
+:: Robin Fishing Place
+<<npc Robin>><<person1>>
+<<if $speech_attitude is "meek">>
+	"你想去钓鱼吗？"你问道。
+<<elseif $speech_attitude is "bratty">>
+	"让我们一起去钓鱼吧！"你这样说道。
+<<else>>
+	"想去钓鱼么？"你问道。
+<</if>><br>
+<br>
+<<if Time.hour lt 12 and (Time.schoolDay or Time.isWeekEnd())>>
+	<<effects>>
+	<<His>>的眼神一下子亮了起来，但<<he>>看了看墙上的时钟，然后惋惜地说："抱歉，我需要尽快做好准备。晚上我应该没问题。"<br>
+	<br>
+	<<robinoptions>>
+<<else>>
+	<<set $outside to 1>>
+	<<effects>>
+	<<set $daily.robin.fishing to 1>>
+	"我白天都在想这件事呢！今天去哪里钓鱼？"<<He>>开始收拾渔具。<br>
+	<br>
+	<<if $fishing_place_lake_fishing_rock_unlock>>
+		<<lakeicon>><<link [[森林湖|Robin Fishing]]>>
+			<<set $robin_fishing_place to "Lake Fishing Rock">>
+		<</link>><br>
+	<</if>>
+	<<if $fishing_place_beach_unlock>>
+		<<beachicon>><<link [[海滩|Robin Fishing]]>>
+			<<set $robin_fishing_place to "Beach">>
+			<<set $robin_fishing_place_unlocked.pushUnique("Beach")>>
+		<</link>><br>
+	<</if>>
+	<<if $fishing_place_barb_street_unlock>>
+		<<barbicon>><<link [[倒钩街|Robin Fishing]]>>
+			<<set $robin_fishing_place to "Barb Street">>
+			<<set $robin_fishing_place_unlocked.pushUnique("Barb Street")>>
+		<</link>><br>
+	<</if>>
+	<<if $robin_fishing_place_unlocked.length gt 0>>
+		<<askicon>><<link [[让罗宾来选|Robin Fishing]]>>
+			<<set $robin_fishing_place to $robin_fishing_place_unlocked.random()>>
+		<</link>>
+	<</if>>
+<</if>>
+<<endevent>>
+
+:: Robin Fishing
+<<npc Robin>><<person1>>
+<<switch $robin_fishing_place>>
+	<<case "Lake Fishing Rock">>
+		<<if !$robin_fishing_place_unlocked.includes("Lake Fishing Rock")>>
+			你提议去森林湖钓鱼。<br>
+			<br>
+			"森林湖确实是个钓鱼的好地方！"罗宾恍然大悟，但<<he>>很快又陷入沉思，"那之前怎么没见到有人在那钓鱼呢？"<br>
+			<br>
+			你解释说，森林湖附近有块非常适合钓鱼的岩石。那里风景不错，但知道的人不多，钓鱼的时候不容易被打扰。<br>
+			<<set $robin_fishing_place_unlocked.pushUnique("Lake Fishing Rock")>>
+		<<else>>
+			你们决定去森林湖钓鱼。<br>
+		<</if>>
+		<br>
+		<<if $town_projects.road gte 4>>
+			<span class="green">得益于市政厅建设的这条道路，你们很快就到达了森林湖边的钓鱼岩。</span><br>
+			<<pass 15>>
+		<<else>>
+			<span class="blue">在森林中小心地穿梭，你们到达了森林湖边的钓鱼岩。</span><br>
+			<<pass 30>>
+		<</if>>
+		<br>
+		你帮罗宾取出了钓竿和鱼饵。<br>
+		<br>
+		<<link [[一起在森林湖钓鱼|Robin Fishing Lake Fishing Rock]]>><</link>>
+	<<case "Beach">>
+		<<if !$robin_fishing_place_unlocked.includes("Beach")>>
+			你提议去海滩钓鱼。<br>
+			<br>
+			你向罗宾介绍着海面下的居民："海洋里生活着各种鱼类，其中不乏危险的生物。很多人会为了赚大钱，冒险远赴几公里外的海域。我们只是在海岸钓鱼，也能钓到许多鲜美的鱼类：比如金枪鱼、鲷鱼之类的。"<br>
+			<br>
+			"哦！我想到了一个好主意。"罗宾看起来十分兴奋，"柠檬水配烤鱼，一定会很畅销。"<br>
+			<br>
+			你也觉得这是个很棒的点子。但是你们需要升级柠檬水摊，才能售卖更多的物品。<br>
+			<<set $robin_fishing_place_unlocked.pushUnique("Beach")>>
+		<<else>>
+			你们决定去海滩钓鱼。<br>
+		<</if>>
+		<br>
+		一路上讨论着<<print ["海洋生物","钓鱼技巧","今天有趣的见闻"].random()>>，你们很快就到了海边。<br>
+		<<pass 15>>
+		<br>
+		你帮罗宾取出了钓竿和鱼饵。<br>
+		<br>
+		<<link [[一起在海滩钓鱼|Robin Fishing Beach]]>><</link>>
+	<<case "Barb Street">>
+		<<if !$robin_fishing_place_unlocked.includes("Barb Street")>>
+			你提议去倒钩街钓鱼。<br>
+			<br>
+			罗宾十分困惑："倒钩街？我记得温特提到过那条河，但它在上个世纪末就已经完全干涸了。"<br>
+			<br>
+			你告诉<<he>>由于近年来的降水，河床开始会积起一些小水池。里面生活着一些奇异的鱼类。<br>
+			<<set $robin_fishing_place_unlocked.pushUnique("Barb Street")>>
+		<<else>>
+			你们决定去倒钩街钓鱼。<br>
+		<</if>>
+		一路上讨论着<<print ["钓鱼技巧","今天有趣的见闻"].random()>>，你们很快就到了倒钩街。<br>
+		<<pass 5>>
+		<br>
+		<<link [[一起在海滩钓鱼|Robin Fishing Barb Street]]>><</link>>
+<</switch>>
+<<endevent>>
+

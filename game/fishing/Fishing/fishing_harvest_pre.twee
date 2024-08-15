@@ -1,11 +1,21 @@
 :: Fishing Harvest Pre [widget]
 <<widget "fishing_harvest_pre">>
 	
-/*	<<if random(1,6) is 1 and Time.isBloodMoon()>>
-		<span class="red">恐惧鹦鹉螺</span>
-		<<set $fishing_harvest to "bloodmoon_enemy">>
-		<<exit>>
-*/	<</if>>
+	/* 血月钓到敌怪 */
+	<<if Time.isBloodMoon()>>
+		<<if $fishingrod_held is "Chum_Caster">>
+			<<set _bloodmoonEnemyChance to 3>>
+		<<else>>
+			<<set _bloodmoonEnemyChance to 6>>
+		<</if>>
+		<<if random(1,_bloodmoonEnemyChance) is 1>>
+			<<switch random(1,2)>>
+				<<case 1>><span class="red">恐惧鹦鹉螺</span><<set $fishing_harvest to "Dreadnautilus">>
+				<<case 2>><span class="red">恐惧鹦鹉螺</span><<set $fishing_harvest to "Dreadnautilus">>
+			<</switch>>
+			<<exit>>
+		<</if>>
+	<</if>>
 
 	/* “极度罕见”渔获判定通过概率 */
 	<<if $fishing_power gte random(1,4500)>>
@@ -38,7 +48,7 @@
 	<<if $Crate_Potion_countdown gt 0>>
 		<<set _fishing_crate_chance += 15>>
 	<</if>>
-	<<if $Enchanted_Pearl>>
+	<<if $terra_accessories_slots.includes("Enchanted_Pearl")>>
 		<<set _fishing_crate_chance += 10>>
 	<</if>>
 	<<if random(1,100) lte _fishing_crate_chance>>
@@ -242,7 +252,7 @@
 					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $fishing_harvest to "Bass">>
 					<</if>>
 			<</switch>>
-		<<case "temple_garden">>
+		<<case "temple_garden" or "temple_garden_artificial">>
 			<<switch _fishing_harvest_catch_quality>>
 				<<case "extremely_rare">>
 					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>

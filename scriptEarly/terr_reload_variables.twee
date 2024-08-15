@@ -144,6 +144,18 @@
 <<if $Joja_Cola is undefined>><<set $Joja_Cola = 0>><</if>>
 
 /* 鱼饵数量 */
+<<if $butterfly_list is undefined>>
+	<<set $butterfly_list to [
+		"Monarch_Butterfly",
+		"Sulphur_Butterfly",
+		"Zebra_Swallowtail_Butterfly",
+		"Ulysses_Butterfly",
+		"Julia_Butterfly",
+		"Red_Admiral_Butterfly",
+		"Purple_Emperor_Butterfly",
+		"Tree_Nymph_Butterfly"
+	]>>
+<</if>>
 <<if $Apprentice_Bait is undefined>>
 	<<set $Apprentice_Bait = 0>>
 <</if>>
@@ -286,6 +298,16 @@
 /* 偷胖次 */
 <<if $panties_held is undefined>>
 	<<set $panties_held = 0>>
+<</if>>
+
+/* 血泪数量 */
+<<if $Bloody_Tear is undefined>>
+	<<set $Bloody_Tear = 0>>
+<</if>>
+
+/* dom罗宾拓展联动 */
+<<if $robin_fishing_place_unlocked is undefined>>
+	<<set $robin_fishing_place_unlocked to []>>
 <</if>>
 
 <</widget>>

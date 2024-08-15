@@ -5,3 +5,9 @@
 	padding: 0.5rem;
 }
 
+.itemTerraTool {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 60px);
+	gap: 5px;
+	padding: 0.5rem;
+}

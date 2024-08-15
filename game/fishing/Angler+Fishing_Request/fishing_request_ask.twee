@@ -1,5 +1,5 @@
 :: Fishing Request Ask
-/*根据是否已经完成了当日任务作出反应（已完成；交任务；没钓到）*/
+/*根据是否已经完成了当日任务作出反应（已完成；未完成）*/
 <<if $fishing_request_finished_daily>>
 	<<if $options.cute_angler>>
 		<<print [
@@ -20,43 +20,14 @@
 			`"你完蛋了，伟大的我会解雇你！"`
 		].random()>><br>
 	<</if>>
-<<elseif $fishing_request_fish.includes($fishing_request_selection)>>
-	<<set $fishing_request_fish.delete($fishing_request_selection)>>
-	<<set $fishing_request_finished_daily to true>>
-	<<set $fishing_requests_finished_count += 1>>
-	<<switch $fishing_requests_finished_count>>
-		<<case 1>>
-			<<earnFeat "Servant-in-Training">>
-		<<case 10>>
-			<<earnFeat "Good Little Slave">>
-		<<case 25>>
-			<<earnFeat "Trout Monkey">>
-		<<case 50>>
-			<<earnFeat "Fast and Fishious">>
-	<</switch>>
-	<<if $options.cute_angler>>
-		<<print [
-			`"哦！谢谢你抓来我要的鱼，让我看看我能用些什么来作为你的酬劳..."`,
-			`"抓到啦！你永远都不会失手,一如既往！"`,
-			`"哇哦，你做到了！真高兴你毫发无伤！"`,
-			`"哇！？你竟然完成了任务，还活了下来！你太厉害了！还有其他事要忙？好吧...那你快去吧！我就不再占用你的时间了。"`,
-			`"你办事可真利索，不知道上辈子烧了什么好香能遇到你..."`
-		].random()>>
-	<<else>>
-		<<print [
-			`"哦！谢谢你抓来我要的鱼，可以滚了！"`,
-			`"你这跑腿的活干得挺不错嘛！现在走开！"`,
-			`"哈哈哈哈！你做到了！你竟然毫发无伤，真没劲！"`,
-			`"哇！？你竟然完成了任务，还活了下来！不错，把它交上来，再滚远点！"`,
-			`"抓到啦！一切都是按计划进行的！哈哈哈！"`
-		].random()>>
-	<</if>><br>
-	<br>
-	<<fishing_request_reward>><br>
 <<else>>
 	你向渔夫询问今天的钓鱼任务。<br>
 	<br>
 	<<fishing_request_select>>
+	<<set $fishing_request_asked to true>>
+	<<if $fishing_request_fish.includes($fishing_request_selection) and $fishing_request_finished_daily isnot true>>
+		<<link [[提交任务|Fishing Request Rewarding]]>><</link>>
+	<</if>>
 <</if>>
 <br>
 <<link [[返回|Fishing Angler Cabin]]>><</link>>

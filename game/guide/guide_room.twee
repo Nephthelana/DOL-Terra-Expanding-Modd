@@ -20,6 +20,9 @@
 	<<if Time.isBloodMoon()>>
 		<<set $guide_daily_dialog_set.pushUnique("Bloodmoon")>>
 	<</if>>
+	<<if $exposed gte 1>>
+		<<set $guide_daily_dialog_set.pushUnique("Exposure")>>
+	<</if>>
 	<<switch $guide_daily_dialog_set.random()>>
 		<<case "Daily">>
 			<<guide_daily_dialog>>
@@ -43,10 +46,18 @@
 				].random()>>
 			<</if>>
 		<<case "Bloodmoon">>
-				<<print [
-					`"如果你向上看，你就能看到此刻月亮是红色的。"`,
-					`"天空变红的时候，你就知道血月升起来了。血月有一种魔力，能吸引超然之物。"`
-				].random()>>
+			<<print [
+				`"如果你向上看，你就能看到此刻月亮是红色的。"`,
+				`"天空变红的时候，你就知道血月升起来了。血月有一种魔力，能吸引超然之物。"`
+			].random()>>
+		<<case "Exposure">>
+			<<print [
+				`"欢迎光...啊，这...\"向导想说的话卡在了喉咙里。他眨了眨眼睛，不好意思地偏过头去，\"咳咳，你的衣着让我想起了一位朋友，她总是穿着藤条和树叶编织的...衣服。哦，我不知道你和她一样是一位自然主义者。"`,
+				`"你是遇到什么麻烦了吗？快进来吧，把门关好，这里是安全的。\"他用你几乎听不到的声音补充道，\"我想这里应该没有会开门的僵尸..."`,
+				/*
+					`"在我以前住的地方，防护十分重要，像你这样几乎什么都没穿是非常危险的。如果你囊中羞涩买不起防具的话，我可以教你用丝绸——嗯，小镇上的人称这种东西为布料——制作衣服。不过前提是你得找到织布机..."`
+				*/
+			].random()>>
 	<</switch>><br>
 	<br>
 	<<if $guide_mod_hint>>

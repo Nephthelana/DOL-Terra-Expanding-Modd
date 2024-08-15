@@ -11,7 +11,7 @@
 				<<if $Gravediggers_Shovel>>
 					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<tiredness 30>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
 				<<else>>
-					<i>你没有掘墓者铲子，无法挖掘水池。去垃圾填埋场找找吧。</i><br>
+					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
 				<</if>>
 			<<case "progressing">>
 				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
@@ -44,7 +44,7 @@
 				<<if $Gravediggers_Shovel>>
 					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<tiredness 30>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
 				<<else>>
-					<i>你没有掘墓者铲子，无法挖掘水池。去垃圾填埋场找找吧。</i><br>
+					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
 				<</if>>
 			<<case "progressing">>
 				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
@@ -75,14 +75,14 @@
 			<<case "realized">>
 				<span class="lblue">看来这里附近就是那只巨鹰栖息的高塔。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
-					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<tiredness 30>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
+					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Moor]]>><<tiredness 30>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
 				<<else>>
-					<i>你没有掘墓者铲子，无法挖掘水池。去垃圾填埋场找找吧。</i><br>
+					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
 				<</if>>
 			<<case "progressing">>
 				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
 				<<if $Bottomless_Water_Bucket>>
-					<<icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Forest]]>><<tiredness 10>><<set $artificial_fishing_pond_bird_tower to "done">><</link>><<gtiredness>><br>
+					<<icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Moor]]>><<tiredness 10>><<set $artificial_fishing_pond_bird_tower to "done">><</link>><<gtiredness>><br>
 				<<else>>
 					<i>你没有无底水桶，无法填满水池。再多完成些渔夫任务吧。</i><br>
 				<</if>>
@@ -90,6 +90,39 @@
 				钓鱼<br>
 				<span id="fishingrod_held_icon"><<fishingrod_held_icon>></span>
 				<<link [[在高塔塔底的人工钓鱼池钓鱼|Fishing Bitten]]>><<set $fishing_place to "bird_tower_artificial">><<fishing_cast_time>><</link>><br>
+				<br>
+		<</switch>>
+	<</if>>
+<</if>>
+
+<</widget>>
+
+:: Artificial Fishing Pond Temple Garden [widget]
+<<widget "artificial_fishing_pond_temple_garden">>
+
+<<if $options.artificial_fishing_pond>>
+	<<if $fishingskill gte 400>>
+		<<switch $artificial_fishing_pond_temple_garden>>
+			<<case undefined>>
+				<span class="blue">你不能确定这里是否就是合适的钓鱼点场地。</span><br>
+			<<case "realized">>
+				<span class="lblue">看来这里附近就是施粥所工作人员提到的空地。你可以在这里建造一个钓鱼池。</span><br>
+				<<if $Gravediggers_Shovel>>
+					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Churchyard]]>><<tiredness 30>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
+				<<else>>
+					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
+				<</if>>
+			<<case "progressing">>
+				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
+				<<if $Bottomless_Water_Bucket>>
+					<<icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Churchyard]]>><<tiredness 10>><<set $artificial_fishing_pond_temple_garden to "done">><</link>><<gtiredness>><br>
+				<<else>>
+					<i>你没有无底水桶，无法填满水池。再多完成些渔夫任务吧。</i><br>
+				<</if>>
+			<<case "done">>
+				钓鱼<br>
+				<span id="fishingrod_held_icon"><<fishingrod_held_icon>></span>
+				<<link [[在老教堂墓地的人工钓鱼池钓鱼|Fishing Bitten]]>><<set $fishing_place to "temple_garden_artificial">><<fishing_cast_time>><</link>><br>
 				<br>
 		<</switch>>
 	<</if>>

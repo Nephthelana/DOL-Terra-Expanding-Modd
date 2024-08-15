@@ -216,3 +216,23 @@ setup.terraFish = {
         icon: "fishing/fish/Crag_Bullhead.png"
     }
 }
+
+function getAllFishList() {
+	for (let fish in setup.terraFish) {
+        setup.terraFish[fish].amount = V[fish] || 0;
+    }
+    let all_fish_list = Object.keys(setup.terraFish);
+	return all_fish_list;
+}
+window.getAllFishList = getAllFishList
+
+function getFishObtainedList() {
+	for (let fish in setup.terraFish) {
+        setup.terraFish[fish].amount = V[fish] || 0;
+    }
+    let fish_obtained = Object.keys(setup.terraFish);
+    return fish_obtained.filter(fish => {
+        return setup.terraFish[fish].amount > 0;
+    });
+}
+window.getFishObtainedList = getFishObtainedList;

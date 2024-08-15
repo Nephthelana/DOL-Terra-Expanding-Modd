@@ -1,0 +1,13 @@
+:: Fishing Request Journal [widget]
+<<widget "fishing_request_journal">>
+<<if $fishing_request_asked and $fishing_request_finished_daily isnot true>>
+	<<set _allRequestFishList to getAllRequestFishList()>>
+	<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
+		<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
+		<<if $fishing_request_selection is _requestFish.name>>
+			<li>今日钓鱼任务：<<icon `_requestFish.icon`>>_requestFish.cn_name(抓捕地点：_requestFish.catching_place_des)</li>
+			<<break>>
+		<</if>>
+	<</for>>
+<</if>>
+<</widget>>

@@ -1,0 +1,140 @@
+:: Void Bag Tool [widget]
+<<widget "void_bag_Tool">>
+<<if getToolObtained().length gt 0>>
+	<span class="gold bold">工具</span>
+	<div class="itemTerraTool">
+		<<set _toolObtainedList to getToolObtained()>>
+		<<for _t to 0; _t lt _toolObtainedList.length; _t++>>
+			<<set _tool to setup.terraTool[_toolObtainedList[_t]]>>
+			<<capture _tool>>
+				<div class="item">
+					<mouse class="tooltip">
+						<<icon `_tool.icon`>>
+						<span>
+							_tool.cn_name<br>▶_tool.des
+						</span>
+					</mouse>
+					<hr>
+					_tool.use
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+<</if>>
+<</widget>>
+
+<<widget "terra_tool_use_Magic_Conch">>
+<<if $daily.Magic_Conch>>
+	<mouse class="tooltip linkBlue">不可用<span>你今天使用过魔法海螺了</span></mouse>
+<<else>>
+	<<link [[使用|Beach]]>><<set $daily.Magic_Conch to true>><</link>>
+<</if>>
+<</widget>>
+
+<<widget "terra_tool_use_Demon_Conch">>
+<<if $daily.Demon_Conch>>
+	<mouse class="tooltip linkBlue">不可用<span>你今天使用过恶魔海螺了</span></mouse>
+<<else>>
+	<<link [[使用|Beach]]>><<set $daily.Demon_Conch to true>><</link>>
+<</if>>
+<</widget>>
+
+<<widget "terra_tool_use_Snake_Charmers_Flute">>
+<<if $terra_accessories_slots.includes("Fin_Wings") or $birdFly gte 1>>
+	<<switch $passage>>
+		<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
+			<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Town">><<pass 1>><</link>>
+		<<case "Lake Shore">>
+			<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Lake Shore">><<pass 1>><</link>>
+		<<case "Meadow">>
+			<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Meadow">><<pass 1>><</link>>
+		<<case "Moor">>
+			<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Moor">><<pass 1>><</link>>
+		<<default>>
+			<mouse class="tooltip linkBlue">不可用<span>你只能在森林湖、小镇街道、镇外草地、鹰塔塔底使用耍蛇者长笛</span></mouse>
+	<</switch>>
+<<else>>
+	<<switch $passage>>
+		<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
+			<<link [[使用|Snake Charmers Flute Use 1]]>><<pass 1>><</link>>
+		<<default>>
+			<mouse class="tooltip linkBlue">不可用<span>你只能在小镇的街道上使用耍蛇者长笛</span></mouse>
+	<</switch>>
+<</if>>
+<</widget>>
+
+<<widget "terra_tool_use_Torrential_Tear">>
+<<link "使用">>
+	<<replace #hint_item_use>>
+		<span class="teal">
+		<<icon "tool/Torrential_Tear.png">>将天气调节为
+		<<link "晴天">>
+			<<set Weather.set("clear", true, 6 * 60)>>
+			<<replace #hint_item_use>>
+				<span class="teal">天气已设为<<icon "clear_icon.png">>晴天</span>
+				<br>
+			<</replace>>
+		<</link>> |
+		<<link "有云">>
+			<<set Weather.set("lightClouds", true, 6 * 60)>>
+			<<replace #hint_item_use>>
+				<span class="teal">天气已设为<<icon "lightClouds_icon.png">>有云</span>
+				<br>
+			<</replace>>
+		<</link>> |
+		<<link "多云">>
+			<<set Weather.set("heavyClouds", true, 6 * 60)>>
+			<<replace #hint_item_use>>
+				<span class="teal">天气已设为<<icon "heavyClouds_icon.png">>多云</span>
+				<br>
+			<</replace>>
+		<</link>> |
+		<<link "小雨">>
+			<<set Weather.set("lightPrecipitation", true, 6 * 60)>>
+			<<replace #hint_item_use>>
+				<span class="teal">天气已设为<<icon "lightPrecipitation_icon.png">>小雨</span>
+				<br>
+			<</replace>>
+		<</link>> |
+		<<link "大雨">>
+			<<set Weather.set("heavyPrecipitation", true, 6 * 60)>>
+			<<replace #hint_item_use>>
+				<span class="teal">天气已设为<<icon "heavyPrecipitation_icon.png">>大雨</span>
+				<br>
+			<</replace>>
+		<</link>> |
+		<br>
+		</span>
+	<</replace>>
+<</link>>
+<</widget>>
+
+<<widget "terra_tool_use_Bottomless_Water_Bucket">>
+<<link "使用">>
+	<<water>>
+	<<replace #hint_item_use>>
+		<span class="blue">你往自己身上泼了一桶水。</span><br>
+		<br>
+	<</replace>>
+<</link>>
+<</widget>>
+
+<<widget "terra_tool_use_Gravediggers_Shovel">>
+不可用
+<</widget>>
+
+<<widget "terra_tool_use_Bug_Net">>
+不可用
+<</widget>>
+
+<<widget "terra_tool_use_Golden_Bug_Net">>
+不可用
+<</widget>>
+
+<<widget "terra_tool_use_Staff_of_Regrowth">>
+不可用
+<</widget>>
+
+<<widget "terra_tool_use_Starfury">>
+不可用
+<</widget>>

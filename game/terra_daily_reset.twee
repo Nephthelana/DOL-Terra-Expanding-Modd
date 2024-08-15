@@ -1,7 +1,7 @@
 :: Terra Daily Reset [widget]
 <<widget "terra_daily_reset">>
 
-/* 每日6点刷新任务鱼种类、重置已完成任务鱼状态 */
+/* 每日6点刷新任务鱼种类、重置已完成任务鱼状态、重置渔夫猜拳 */
 <<if $fishing_request_selection_list is undefined>>
 <<set $fishing_request_selection_list to [
 	"Amanita_Fungifin",
@@ -41,7 +41,6 @@
 	"Slurpfish",
 	"Surf_Clam"
 ]>>
-<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
 <</if>>
 <<if Time.monthDay is Time.lastDayOfMonth>>
 	<<set $fishing_request_selection to "Bloody_Manowar">>
@@ -49,22 +48,16 @@
 	<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
 <</if>>
 <<set $fishing_request_finished_daily to false>>
+<<set $fishing_request_asked to undefined>>
+<<set $Angler_RPS_daily to undefined>>
+
 /* 每日6点刷新森林商店小动物家具小种类 */
 <<switch $bait_forest_shop_main>>
 	<<case "Butterfly">>
 		<<if random(1,400) is 1>>
 			<<set $bait_forest_shop to "Gold_Butterfly">>
 		<<else>>
-			<<set $bait_forest_shop to [
-				"Monarch_Butterfly",
-				"Sulphur_Butterfly",
-				"Zebra_Swallowtail_Butterfly",
-				"Ulysses_Butterfly",
-				"Julia_Butterfly",
-				"Red_Admiral_Butterfly",
-				"Purple_Emperor_Butterfly",
-				"Tree_Nymph_Butterfly"
-			].random()>>
+			<<set $bait_forest_shop to $butterfly_list.random()>>
 		<</if>>
 	<<case "Ladybug">>
 		<<if random(1,400) is 1>>
@@ -103,5 +96,9 @@
 	<<case "Maggot">>
 		<<set $bait_forest_shop to "Maggot">>
 <</switch>>
+
+/* 清除血泪带来的效果 */
+<<set $Bloody_Tear_used to false>>
+<<clearWraith>>
 
 <</widget>>

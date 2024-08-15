@@ -5,7 +5,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Apprentice_Bait || 0,
 		fishing_power: 15,
-        icon: "fishing/bait/Apprentice_Bait.png"
+        icon: "fishing/bait/Apprentice_Bait.png",
+		consumed: "<<set $Apprentice_Bait -= 1>>",
     },
 	"Journeyman_Bait": {
         name: "Journeyman_Bait",
@@ -13,7 +14,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Journeyman_Bait || 0,
 		fishing_power: 30,
-        icon: "fishing/bait/Journeyman_Bait.png"
+        icon: "fishing/bait/Journeyman_Bait.png",
+		consumed: "<<set $Journeyman_Bait -= 1>>",
     },
 	"Master_Bait": {
         name: "Master_Bait",
@@ -21,7 +23,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Master_Bait || 0,
 		fishing_power: 50,
-        icon: "fishing/bait/Master_Bait.png"
+        icon: "fishing/bait/Master_Bait.png",
+		consumed: "<<set $Master_Bait -= 1>>",
     },
 	"Worm": {
         name: "Worm",
@@ -29,7 +32,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Worm || 0,
 		fishing_power: 25,
-        icon: "fishing/bait/Worm.png"
+        icon: "fishing/bait/Worm.png",
+		consumed: "<<set $Worm -= 1>>",
     },
 	"Enchanted_Nightcrawler": {
         name: "Enchanted_Nightcrawler",
@@ -37,7 +41,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Enchanted_Nightcrawler || 0,
 		fishing_power: 35,
-        icon: "fishing/bait/Enchanted_Nightcrawler.png"
+        icon: "fishing/bait/Enchanted_Nightcrawler.png",
+		consumed: "<<set $Enchanted_Nightcrawler -= 1>>",
     },
 	"Firefly": {
         name: "Firefly",
@@ -45,7 +50,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Firefly || 0,
 		fishing_power: 20,
-        icon: "fishing/bait/Firefly.png"
+        icon: "fishing/bait/Firefly.png",
+		consumed: "<<set $Firefly -= 1>>",
     },
 	"Lightning_Bug": {
         name: "Lightning_Bug",
@@ -53,7 +59,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Lightning_Bug || 0,
 		fishing_power: 35,
-        icon: "fishing/bait/Lightning_Bug.png"
+        icon: "fishing/bait/Lightning_Bug.png",
+		consumed: "<<set $Lightning_Bug -= 1>>",
     },
 	"Snail": {
         name: "Snail",
@@ -61,7 +68,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Snail || 0,
 		fishing_power: 10,
-        icon: "fishing/bait/Snail.png"
+        icon: "fishing/bait/Snail.png",
+		consumed: "<<set $Snail -= 1>>",
     },
 	"Glowing_Snail": {
         name: "Glowing_Snail",
@@ -69,7 +77,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Glowing_Snail || 0,
 		fishing_power: 15,
-        icon: "fishing/bait/Glowing_Snail.png"
+        icon: "fishing/bait/Glowing_Snail.png",
+		consumed: "<<set $Glowing_Snail -= 1>>",
     },
 	"Grasshopper": {
         name: "Grasshopper",
@@ -77,7 +86,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Grasshopper || 0,
 		fishing_power: 10,
-        icon: "fishing/bait/Grasshopper.png"
+        icon: "fishing/bait/Grasshopper.png",
+		consumed: "<<set $Grasshopper -= 1>>",
     },
 	"Monarch_Butterfly": {
         name: "Monarch_Butterfly",
@@ -85,7 +95,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Monarch_Butterfly || 0,
 		fishing_power: 5,
-        icon: "fishing/bait/Monarch_Butterfly.png"
+        icon: "fishing/bait/Monarch_Butterfly.png",
+		caught: "<<set $Monarch_Butterfly += 1>>",
+		consumed: "<<set $Monarch_Butterfly -= 1>>",
     },
 	"Sulphur_Butterfly": {
         name: "Sulphur_Butterfly",
@@ -93,7 +105,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Sulphur_Butterfly || 0,
 		fishing_power: 10,
-        icon: "fishing/bait/Sulphur_Butterfly.png"
+        icon: "fishing/bait/Sulphur_Butterfly.png",
+		caught: "<<set $Sulphur_Butterfly += 1>>",
+		consumed: "<<set $Sulphur_Butterfly -= 1>>",
     },
 	"Zebra_Swallowtail_Butterfly": {
         name: "Zebra_Swallowtail_Butterfly",
@@ -101,7 +115,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Zebra_Swallowtail_Butterfly || 0,
 		fishing_power: 15,
-        icon: "fishing/bait/Zebra_Swallowtail_Butterfly.png"
+        icon: "fishing/bait/Zebra_Swallowtail_Butterfly.png",
+		caught: "<<set $Zebra_Swallowtail_Butterfly += 1>>",
+		consumed: "<<set $Zebra_Swallowtail_Butterfly -= 1>>",
     },
 	"Ulysses_Butterfly": {
         name: "Ulysses_Butterfly",
@@ -109,7 +125,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Ulysses_Butterfly || 0,
 		fishing_power: 20,
-        icon: "fishing/bait/Ulysses_Butterfly.png"
+        icon: "fishing/bait/Ulysses_Butterfly.png",
+		caught: "<<set $Ulysses_Butterfly += 1>>",
+		consumed: "<<set $Ulysses_Butterfly -= 1>>",
     },
 	"Julia_Butterfly": {
         name: "Julia_Butterfly",
@@ -117,7 +135,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Julia_Butterfly || 0,
 		fishing_power: 25,
-        icon: "fishing/bait/Julia_Butterfly.png"
+        icon: "fishing/bait/Julia_Butterfly.png",
+		caught: "<<set $Julia_Butterfly += 1>>",
+		consumed: "<<set $Julia_Butterfly -= 1>>",
     },
 	"Red_Admiral_Butterfly": {
         name: "Red_Admiral_Butterfly",
@@ -125,7 +145,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Red_Admiral_Butterfly || 0,
 		fishing_power: 30,
-        icon: "fishing/bait/Red_Admiral_Butterfly.png"
+        icon: "fishing/bait/Red_Admiral_Butterfly.png",
+		caught: "<<set $Red_Admiral_Butterfly += 1>>",
+		consumed: "<<set $Red_Admiral_Butterfly -= 1>>",
     },
 	"Purple_Emperor_Butterfly": {
         name: "Purple_Emperor_Butterfly",
@@ -133,7 +155,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Purple_Emperor_Butterfly || 0,
 		fishing_power: 35,
-        icon: "fishing/bait/Purple_Emperor_Butterfly.png"
+        icon: "fishing/bait/Purple_Emperor_Butterfly.png",
+		caught: "<<set $Purple_Emperor_Butterfly += 1>>",
+		consumed: "<<set $Purple_Emperor_Butterfly -= 1>>",
     },
 	"Tree_Nymph_Butterfly": {
         name: "Tree_Nymph_Butterfly",
@@ -141,7 +165,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Tree_Nymph_Butterfly || 0,
 		fishing_power: 50,
-        icon: "fishing/bait/Tree_Nymph_Butterfly.png"
+        icon: "fishing/bait/Tree_Nymph_Butterfly.png",
+		caught: "<<set $Tree_Nymph_Butterfly += 1>>",
+		consumed: "<<set $Tree_Nymph_Butterfly -= 1>>",
     },
 	"Hell_Butterfly": {
         name: "Hell_Butterfly",
@@ -149,7 +175,8 @@ setup.terraBait = {
         type: "lavaproof",
         amount: V.Hell_Butterfly || 0,
 		fishing_power: 25,
-        icon: "fishing/bait/Hell_Butterfly.png"
+        icon: "fishing/bait/Hell_Butterfly.png",
+		consumed: "<<set $Hell_Butterfly -= 1>>",
     },
 	"Maggot": {
         name: "Maggot",
@@ -157,7 +184,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Maggot || 0,
 		fishing_power: 22,
-        icon: "fishing/bait/Maggot.png"
+        icon: "fishing/bait/Maggot.png",
+		consumed: "<<set $Maggot -= 1>>",
     },
 	"Stinkbug": {
         name: "Stinkbug",
@@ -165,7 +193,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Stinkbug || 0,
 		fishing_power: 10,
-        icon: "fishing/bait/Stinkbug.png"
+        icon: "fishing/bait/Stinkbug.png",
+		consumed: "<<set $Stinkbug -= 1>>",
     },
 	"Ladybug": {
         name: "Ladybug",
@@ -173,7 +202,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Ladybug || 0,
 		fishing_power: 17,
-        icon: "fishing/bait/Ladybug.png"
+        icon: "fishing/bait/Ladybug.png",
+		consumed: "<<set $Ladybug -= 1>>",
     },
 	"Gold_Butterfly": {
         name: "Gold_Butterfly",
@@ -181,7 +211,9 @@ setup.terraBait = {
         type: "bait",
         amount: V.Gold_Butterfly || 0,
 		fishing_power: 50,
-        icon: "fishing/bait/Gold_Butterfly.png"
+        icon: "fishing/bait/Gold_Butterfly.png",
+		caught: "<<set $Gold_Butterfly += 1>>",
+		consumed: "<<set $Gold_Butterfly -= 1>>",
     },
 	"Gold_Grasshopper": {
         name: "Gold_Grasshopper",
@@ -189,7 +221,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Gold_Grasshopper || 0,
 		fishing_power: 50,
-        icon: "fishing/bait/Gold_Grasshopper.png"
+        icon: "fishing/bait/Gold_Grasshopper.png",
+		consumed: "<<set $Gold_Grasshopper -= 1>>",
     },
 	"Gold_Worm": {
         name: "Gold_Worm",
@@ -197,7 +230,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Gold_Worm || 0,
 		fishing_power: 50,
-        icon: "fishing/bait/Gold_Worm.png"
+        icon: "fishing/bait/Gold_Worm.png",
+		consumed: "<<set $Gold_Worm -= 1>>",
     },
 	"Gold_Ladybug": {
         name: "Gold_Ladybug",
@@ -205,7 +239,8 @@ setup.terraBait = {
         type: "bait",
         amount: V.Gold_Ladybug || 0,
 		fishing_power: 50,
-        icon: "fishing/bait/Gold_Ladybug.png"
+        icon: "fishing/bait/Gold_Ladybug.png",
+		consumed: "<<set $Gold_Ladybug -= 1>>",
     },
 	"Truffle_Worm": {
         name: "Truffle_Worm",
@@ -213,7 +248,8 @@ setup.terraBait = {
         type: "boss_summoner",
         amount: V.Truffle_Worm || 0,
 		fishing_power: 666,
-        icon: "fishing/bait/Truffle_Worm.png"
+        icon: "fishing/bait/Truffle_Worm.png",
+		consumed: "<<set $Truffle_Worm -= 1>>",
     },
 }
 

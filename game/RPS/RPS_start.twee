@@ -1,0 +1,65 @@
+:: RPS Start
+你准备出什么？<br>
+<br>
+<<icon "RPS/Emote_RPS_Rock.png">><<link [[石头！|RPS]]>><<set $RPS_PC to "Rock">><</link>><br>
+<<icon "RPS/Emote_RPS_Scissors.png">><<link [[剪刀！|RPS]]>><<set $RPS_PC to "Scissors">><</link>><br>
+<<icon "RPS/Emote_RPS_Paper.png">><<link [[布！|RPS]]>><<set $RPS_PC to "Paper">><</link>><br>
+
+:: RPS
+<<set $Angler_RPS_daily to true>>
+<<set _RPS_Angler to ["Rock","Scissors","Paper"].random()>>
+
+<<if $RPS_PC is _RPS_Angler>>
+	<<set $RPS_win to "None">>
+<<else>>
+	<<if ($RPS_PC is "Rock" and _RPS_Angler is "Scissors") or ($RPS_PC is "Scissors" and _RPS_Angler is "Paper") or ($RPS_PC is "Paper" and _RPS_Angler is "Rock")>>
+		<<set $RPS_win to "PC">>
+	<<else>>
+		<<set $RPS_win to "Angler">>
+	<</if>>
+<</if>>
+
+<div id="RPS">
+	<div id="RPS_PC">
+		　你▶<img @src="'img/misc/icon/RPS/RPS.gif'">
+	</div>
+	<br>
+	<div id="RPS_Angler">
+		渔夫▶<img @src="'img/misc/icon/RPS/RPS.gif'">
+	</div>
+</div>
+<br>
+<div id="RPS_result">
+	<br>
+</div>
+
+<<timed 2s>>
+	<<replace #RPS_PC>>
+		<<switch $RPS_win>>
+			<<case "PC">>
+				　你▶<img @src="'img/misc/icon/RPS/Emote_RPS_Win_' + $RPS_PC + '.gif'">
+			<<default>>
+				　你▶<img @src="'img/misc/icon/RPS/Emote_RPS_' + $RPS_PC + '.png'">
+		<</switch>>
+	<</replace>>
+	<<replace #RPS_Angler>>
+		<<switch $RPS_win>>
+			<<case "Angler">>
+				渔夫▶<img @src="'img/misc/icon/RPS/Emote_RPS_Win_' + _RPS_Angler + '.gif'">
+			<<default>>
+				渔夫▶<img @src="'img/misc/icon/RPS/Emote_RPS_' + _RPS_Angler + '.png'">
+		<</switch>>
+	<</replace>>
+	<<replace #RPS_result>>
+		<<switch $RPS_win>>
+			<<case "PC">>
+				你获得了胜利！
+			<<case "Angler">>
+				渔夫获得了胜利。
+			<<case "None">>
+				你们打成了平手。
+		<</switch>>
+	<</replace>>
+<</timed>>
+<br>
+<<link [[继续|RPS Result]]>><</link>>

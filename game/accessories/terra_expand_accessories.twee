@@ -22,7 +22,6 @@
 
 <<widget "terraExpandAccessories">>
 
-<<run initializeTooltips()>>
 <span id="terra_accessories_slots">
 	<<terra_accessories_slots>>
 </span>
@@ -36,8 +35,10 @@
 :: Terra Accessories Operate [widget]
 <<widget "terra_accessories_slots">>
 
-<span class="gold bold">饰品栏 $terra_accessories_slots.length / 6</span> <mouse class="tooltip linkblue">(?)<span>该功能尚处于测试阶段，对饰品效果无任何影响，请随意摆弄()</span></mouse><br>
-<<if $terra_accessories_slots.length gte 1>>
+<<if $terra_accessories_slots is undefined>>
+	<<set $terra_accessories_slots to []>>
+<</if>>
+<span class="gold bold">饰品栏</span><mouse class="tooltip linkBlue">(?)<span>该功能尚处于测试阶段，对饰品效果无任何影响，请随意摆弄()</span></mouse><br>
 <div class="itemTerra">
 	<<set _accessoryObtained to getAccessoriesObtained()>>
 	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
@@ -60,11 +61,14 @@
 			<</if>>
 		<</capture>>
 	<</for>>
+	<<for _t to 0; _t lt (6-$terra_accessories_slots.length); _t++>>
+		<div class="item">
+			<<icon "Accessories.png">>
+			<hr>
+			空
+		</div>
+	<</for>>
 </div>
-<<else>>
-<span class="blue">你没有装备饰品</span><br>
-<br>
-<</if>>
 
 <</widget>>
 

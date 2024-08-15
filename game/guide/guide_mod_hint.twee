@@ -13,7 +13,10 @@
 <<link [[关于渔力|Guide Mod Hint Fishing Power]]>><</link>><br>
 <br>
 <<icon "hint/Emote_Event_Bloodmoon.gif">>关于血月<br>
-<<link [[关于血月时的森林湖岸|Guide Mod Hint Bloodmoon]]>><</link>><br>
+<<link [[关于血月时的怪物|Guide Mod Hint Bloodmoon]]>><</link>><br>
+<<if $Dreadnautilus_intro and $Bloody_Tear gte 1>>
+	<<link [[关于血泪|Guide Mod Hint Bloody Tear]]>><</link>><br>
+<</if>>
 <br>
 <<link [[返回|Guide Room]]>><</link>><br>
 <br>

@@ -10,6 +10,7 @@
 	<<case "honey">>森林蜂蜜池
 	<<case "farm_woodland">>农场的林地
 	<<case "temple_garden">>神殿的花园
+	<<case "temple_garden_artificial">>老教堂墓地庭院的人工钓鱼池
 	<<case "wolf_cave_clearing">>狼窝的溪流
 	<<case "wolf_cave_clearing_artificial">>狼穴洞口附近的人工钓鱼池
 	<<case "bird_tower">>鹰塔的雨水池
@@ -31,11 +32,17 @@
 <</if>>
 /* 显示钓鱼结果 */
 <<if $fishing_distance lte 0>>
-	<<if $High_Test_Fishing_Line isnot true and random(1,7) is 1>>
-		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><span class="red">但是你的鱼线断了......</span>也许你需要一个优质钓鱼线。<br>
+	<<if !($terra_accessories_slots.includes("High_Test_Fishing_Line") or $terra_accessories_slots.includes("Angler_Tackle_Bag") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")) and random(1,7) is 1>>
+		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><span class="red">但是你的鱼线断了......</span>也许你需要一个优质钓鱼线。<<ggstress>><<stress 6>><br>
 	<<else>>
-		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><br>
-		<<fishing_harvest>>
+		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><<llstress>><<stress -6>><br>
+		<<switch $fishing_harvest>>
+			<<case "Dreadnautilus">>
+				<<fishing_Dreadnautilus>>
+				<<exit>>
+			<<default>>
+				<<fishing_harvest>>
+		<</switch>>
 	<</if>>
 	<br>
 	<<fishing_bait_consumed>>
@@ -43,7 +50,7 @@
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<set $fishing_harvest to undefined>><<fishing_cast_time>><</link>><br>
 	<<fishing_finished_back>>
 <<elseif $fishing_integrity is 0>>
-	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><br>
+	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><<ggstress>><<stress 6>><br>
 	<br>
 	<<fishing_bait_consumed>>
 	<br>
@@ -53,13 +60,13 @@
 <<else>>	
 	<<switch $fishingphase>>
 	<<case 1>>
-		<span class="teal">一次很成功的收线！</span>|<span class="green">+垂钓</span>
+		<span class="teal">一次很成功的收线！</span>|<span class="green">+ 垂钓</span>
 	<<case 2>>
-		<span class="pink">哦不！它的挣扎使鱼线更加的脆弱......</span>|<span class="green">++垂钓</span><<gstress>><<stress 3>>
+		<span class="pink">哦不！它的挣扎使鱼线更加的脆弱......</span>|<span class="green">+ + 垂钓</span><<gstress>><<stress 3>>
 	<<case 3>>
-		<span class="teal">你让它挣扎得稍微远离了一些。</span>|<span class="green">+垂钓</span>
+		<span class="teal">你让它挣扎得稍微远离了一些。</span>|<span class="green">+ 垂钓</span>
 	<<case 4>>
-		<span class="pink">它刚刚明明就没动！</span>|<span class="green">++垂钓</span><<gstress>><<stress 3>>
+		<span class="pink">它刚刚明明就没动！</span>|<span class="green">+ + 垂钓</span><<gstress>><<stress 3>>
 	<</switch>><br>
 	<br>
 	钓鱼状态：<br>

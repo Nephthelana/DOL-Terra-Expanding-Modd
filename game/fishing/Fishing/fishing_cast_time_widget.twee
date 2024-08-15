@@ -15,8 +15,8 @@
 			<<else>>
 				<<if $trash gte 50 and $passage is "Trash" and 
 					(
-						(($Lavaproof_Fishing_Hook or $Lavaproof_Tackle_Bag) and $Bait is "Hell_Butterfly") or
-						(($Lavaproof_Fishing_Hook or $Lavaproof_Tackle_Bag) and $fishingrod_held is "Hotline_Fishing_Hook") or
+						(($terra_accessories_slots.includes("Lavaproof_Fishing_Hook") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")) and $Bait is "Hell_Butterfly") or
+						(($terra_accessories_slots.includes("Lavaproof_Fishing_Hook") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")) and $fishingrod_held is "Hotline_Fishing_Hook") or
 						($Bait is "Hell_Butterfly" and $fishingrod_held is "Hotline_Fishing_Hook")
 					)
 				>>

@@ -56,6 +56,16 @@
 <<set $Crate_Potion = 0>>
 
 /* 鱼饵数量 */
+<<set $butterfly_list to [
+	"Monarch_Butterfly",
+	"Sulphur_Butterfly",
+	"Zebra_Swallowtail_Butterfly",
+	"Ulysses_Butterfly",
+	"Julia_Butterfly",
+	"Red_Admiral_Butterfly",
+	"Purple_Emperor_Butterfly",
+	"Tree_Nymph_Butterfly"
+]>>
 <<set $Apprentice_Bait = 0>>
 <<set $Journeyman_Bait = 0>>
 <<set $Master_Bait = 0>>
@@ -154,5 +164,11 @@
 
 /* 偷胖次 */
 <<set $panties_held = 0>>
+
+/* 血月 */
+<<set $Bloody_Tear = 0>>
+
+/* dom罗宾拓展联动 */
+<<set $robin_fishing_place_unlocked to []>>
 
 <</widget>>

@@ -25,12 +25,20 @@
 	<<if $Fishing_Potion_countdown gt 0>>
 		<<set $fishing_power += 15>>
 	<</if>>
-	/* 装备渔夫耳环提供10渔力 */
-	<<if $Angler_Earring>>
-		<<set $fishing_power += 10>>
-	<</if>>
 	/* 装备钓鱼浮标提供10渔力 */
 	<<if $Fishing_Bobber>>
+		<<set $fishing_power += 10>>
+	<</if>>
+	/* 装备渔夫耳环提供10渔力 */
+	<<if $terra_accessories_slots.includes("Angler_Earring")>>
+		<<set $fishing_power += 10>>
+	<</if>>
+	/* 装备渔夫渔具袋提供10渔力 */
+	<<if $terra_accessories_slots.includes("Angler_Tackle_Bag")>>
+		<<set $fishing_power += 10>>
+	<</if>>
+	/* 装备防熔岩渔具袋提供10渔力 */
+	<<if $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")>>
 		<<set $fishing_power += 10>>
 	<</if>>
 	/* 醉酒状态提供5渔力 */
@@ -38,7 +46,7 @@
 		<<set $fishing_power += 5>>
 	<</if>>
 	/* 装备附魔珍珠提供10渔力 */
-	<<if $Enchanted_Pearl>>
+	<<if $terra_accessories_slots.includes("Enchanted_Pearl")>>
 		<<set $fishing_power += 10>>
 	<</if>>
 	/* 雨雪天提供20%渔力加成，阴天提供10%渔力加成 */

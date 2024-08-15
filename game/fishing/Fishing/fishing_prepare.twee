@@ -3,10 +3,11 @@
 
 	<<set $fishing_distance to 50>>
 
-	<<switch $High_Test_Fishing_Line>>
-		<<case true>><<set $fishing_integrity to 5>>
-		<<default>><<set $fishing_integrity to 3>>
-	<</switch>>
+	<<if $terra_accessories_slots.includes("High_Test_Fishing_Line") or $terra_accessories_slots.includes("Angler_Tackle_Bag") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")>>
+		<<set $fishing_integrity to 5>>
+	<<else>>
+		<<set $fishing_integrity to 3>>
+	<</if>>
 
 	<<switch $fishingrod_held>>
 		<<case "Golden_Fishing_Rod">>

@@ -1,6 +1,6 @@
 {
   "name": "Terraria Expand Mod",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "styleFileList": [],
   "scriptFileList": [
     "game/fishing/Angler.js",
@@ -63,7 +63,6 @@
   "additionFile": [
 	"game/terra_feats.json",
 	"game/blood_moon_monolith/blood_moon_monolith_lake_shore.txt",
-	"game/traits_terra.txt",
     "readme.md"
   ],
   "addonPlugin": [
@@ -151,12 +150,6 @@
 		  "_comment13":"向温特询问晶塔的事情的选项入口"
         },
         {
-          "passage": "Lake Shore",
-          "findString": "<<if Weather.bloodMoon>>\n\t\t\t你淹没在血月的绯红中。",
-          "replaceFile": "game/blood_moon_monolith/blood_moon_monolith_lake_shore.txt",
-		  "_comment14":"湖岸触发遇见恐惧鹦鹉螺的事件"
-        },
-        {
           "passage": "Bedroom",
           "findString": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>",
           "replace": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>\n<<blood_moon_monolith_bedroom>>",
@@ -165,7 +158,7 @@
         {
           "passage": "Widgets Icon Img",
           "findString": "(Weather.bloodMoon or $forcedBloodmoon)",
-          "replace": "(Weather.bloodMoon or $forcedBloodmoon or ($blood_moon_monolith and Time.dayState is \"night\"))",
+          "replace": "(Weather.bloodMoon or $forcedBloodmoon or ($blood_moon_monolith and Time.dayState is \"night\") or $Bloody_Tear_used)",
 		  "_comment16":"启用血月天塔柱时，丰收街出城的图标显示血月对应的图像"
         },
         {
@@ -399,13 +392,25 @@
         {
 		  "passage": "Moor",
 		  "findString": "<<if $moor_hunt gte 1>>",
-		  "replace": "<<if $moor_hunt gte 1>><<if $artificial_fishing_pond_bird_tower_clearing>><<set $artificial_fishing_pond_bird_tower_clearing to \"realized\">><</if>>",
-		  "_comment42":"人工钓鱼池(鹰塔)解锁的前置条件之一：被巨鹰追杀过一次"
+		  "replace": "<<if $moor_hunt gte 1>><<if $artificial_fishing_pond_bird_tower is undefined>><<set $artificial_fishing_pond_bird_tower to \"realized\">><</if>>",
+		  "_comment":"人工钓鱼池(鹰塔)解锁的前置条件之一：被巨鹰追杀过一次"
 		},
 		{
 		  "passage": "Moor",
 		  "findString": "<</link>>\n\t\t<br><br>",
 		  "replace": "<</link>><br><br><<artificial_fishing_pond_bird_tower>>",
+		  "_comment":"人工钓鱼池：鹰塔，选项入口"
+		},
+        {
+		  "passage": "Soup Kitchen Work",
+		  "findString": "<br><br>",
+		  "replace": "<br><br><<if $artificial_fishing_pond_temple_garden is undefined>><<set $artificial_fishing_pond_temple_garden to \"realized\">>你听见其他工作人员在商讨着什么。他们好像提到森林中的<span class=\"green\">老教堂墓地门口的庭院有一块比较大的空地</span>，可以存放用于扩建神殿和施粥所的建筑材料。但每到夜晚，那里有时会<span class=\"teal\">闪烁着难以捉摸的奇怪光芒</span>。他们正为此头疼不已。<br><br><</if>>",
+		  "_comment":"人工钓鱼池(神殿)解锁的前置条件之一：在施粥所提供一次帮助"
+		},
+		{
+		  "passage": "Churchyard",
+		  "findString": "<<foresticon \"churchyard\">>",
+		  "replace": "<<artificial_fishing_pond_temple_garden>><br><<foresticon \"churchyard\">>",
 		  "_comment":"人工钓鱼池：鹰塔，选项入口"
 		},
 		{
@@ -439,41 +444,35 @@
 		  "_comment46":"森林商店的小动物家具"
 		},
 		{
-		  "passage": "Traits",
-		  "findString": "has: $englishPlayWell is 1,\n\t\t\t\t},\n\t\t\t],\n\t\t},",
-		  "replaceFile": "game/traits_terra.txt",
-		  "_comment47":"泰拉瑞亚饰品/物品带来的特质"
-		},
-		{
 		  "passage": "Bog Intro",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $Fledgling_Wings",
-		  "_comment48":"沼泽处增加雏翼的功能"
+		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+		  "_comment48":"沼泽处增加翅膀的功能"
 		},
 		{
 		  "passage": "Meadow Tunnel",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $Fledgling_Wings",
-		  "_comment49":"草地处增加雏翼的功能"
+		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+		  "_comment49":"草地处增加翅膀的功能"
 		},
 		{
 		  "passage": "Moor Widgets",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $Fledgling_Wings",
-		  "_comment50":"荒原处增加雏翼的功能"
+		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+		  "_comment50":"荒原处增加翅膀的功能"
 		},
 		{
 		  "passage": "Commercial rooftops",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $Fledgling_Wings",
+		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
 		  "all": "true",
-		  "_comment51":"百货大楼楼顶处增加雏翼的功能"
+		  "_comment51":"百货大楼楼顶处增加翅膀的功能"
 		},
 		{
 		  "passage": "Briar Hack 2",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $Fledgling_Wings",
-		  "_comment52":"妓院米奇任务处增加雏翼的差分"
+		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+		  "_comment52":"妓院米奇任务处增加翅膀的差分"
 		},
 		{
 		  "passage": "StoryCaption",
@@ -536,16 +535,40 @@
 		  "_comment":"dom罗宾拓展联动：多云天森林约会，获得鱼饵"
 		},
 		{
+		  "passage": "Robin Forest",
+		  "findString": "<br>\n<</if>>",
+		  "replace": "<br><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<robin_forest_bait_clear>><</if>><</if>>",
+		  "_comment":"dom罗宾拓展联动：晴天森林约会，获得鱼饵"
+		},
+		{
+		  "passage": "Robin Walk",
+		  "findString": "<</if>>\n\t<br>\n<</if>>",
+		  "replace": "<</if>><br><</if>><<if $fishing_request_robin.length gte 10 and $daily.robin.fishing isnot true>><<lakeicon \"fishing\">><<link [[去钓鱼|Robin Fishing Place]]>><</link>><br><</if>>",
+		  "_comment":"dom罗宾拓展联动：约会钓鱼选项入口"
+		},
+		{
 		  "passage": "gameStartOnly",
 		  "findString": "<<set $passageChangesCount to 0>>",
 		  "replace": "<<set $passageChangesCount to 0>><<terraStartOnly>>",
-		  "_comment52":"新存档初始化"
+		  "_comment":"新存档初始化"
 		},
 		{
 		  "passage": "Widgets variablesVersionUpdate",
 		  "findString": "<<set $objectVersion.islandHomeFix to 1>>\n\t<</if>>",
 		  "replace": "<<set $objectVersion.islandHomeFix to 1>><</if>><<terraReloadVariables>>",
-		  "_comment52":"读存档初始化"
+		  "_comment":"读存档初始化"
+		},
+		{
+		  "passage": "Widgets Journal",
+		  "findString": "<<guide_hint_journal>>",
+		  "replace": "<<guide_hint_journal>><<fishing_request_journal>>",
+		  "_comment":"日志显示当日渔夫任务"
+		},
+		{
+		  "passage": "Characteristics",
+		  "findString": "<</switch>>\n\t\t\t\t<<if $worn.feet.type.includes(\"shackle\")>>",
+		  "replace": "<</switch>><<if $terra_accessories_slots.includes(\"Sailfish_Boots\")>><<set _athleticsConfig.modifier to Math.floor(_athleticsConfig.modifier * 1.1)>><<set _athleticsConfig.modTypes.good.pushUnique(\"航鱼靴\")>><</if>><<if $worn.feet.type.includes(\"shackle\")>>",
+		  "_comment":"装备航鱼靴时提供运动加成"
 		}
       ]
     },
@@ -582,13 +605,19 @@
             "from": "(\"Majordomo\");",
             "to": "(\"Majordomo\");if (V.fishingskill >= 1000) earnFeat(\"Kong Jun\");",
 			"fileName": "feats.js",
-			"_comment102":"解锁垂钓S成就"
+			"_comment":"解锁垂钓S成就"
           },
 		  {
             "from": "(Time.date.day === 1 && Time.date.hour < sunSet)",
-            "to": "(Time.date.day === 1 && Time.date.hour < sunSet) || (V.blood_moon_monolith && (Time.hour < 6 || Time.hour >= 20))",
+            "to": "(Time.date.day === 1 && Time.date.hour < sunSet) || (V.blood_moon_monolith && (Time.hour < 6 || Time.hour >= 20)) || V.Bloody_Tear_used",
 			"fileName": "01-weather.js",
-			"_comment102":"侧边栏 血月天塔柱"
+			"_comment":"血月天塔柱启用时，或使用血泪后，侧边栏天气背景转为血月背景"
+          },
+		  {
+            "from": "(date.day === 1 && date.hour < 6)",
+            "to": "(date.day === 1 && date.hour < 6) || V.Bloody_Tear_used",
+			"fileName": "time.js",
+			"_comment":"血泪使用后，当晚变为血月"
           }
         ]
       }
@@ -624,6 +653,10 @@
 	{
 	  "modName": "ModdedFeatsAddon",
 	  "version": "^1.0.0"
-	}
+	},
+    {
+      "modName": "GameVersion",
+      "version": ">=0.5.1.0"
+    }
   ]
 }

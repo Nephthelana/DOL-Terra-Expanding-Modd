@@ -1,0 +1,102 @@
+:: RPS Result
+<<switch $RPS_win>>
+	<<case "PC">>
+		<<if $options.cute_angler>>
+			<<print [
+				`"哦！看来今天是你的运气略胜一筹呀。你想要什么呢？"`,
+				`"嘿！难道石头剪刀布也有技巧吗？下次我要是赢了，你就得教我！"`,
+			].random()>>
+		<<else>>	
+			<<print [
+				`"啧！看在你今天运气好的份上，你想要什么？"`,
+				`"咄！为什么我看不出你到底怎么作弊的？"`,
+			].random()>>
+		<</if>><br>
+		<br>
+		<<link [[一些鱼饵|RPS Bait]]>><</link>><br>
+		<<if $fishing_request_finished_daily isnot true>>
+			<<link [[换个任务|RPS Request]]>><</link>><br>
+		<<else>>
+			<span class="blue">你今天已经完成了任务。</span><br>
+		<</if>>
+	<<case "Angler">>
+		<<if $options.cute_angler>>
+			<<print [
+				`"是我捕了这么多鱼给我带来的好运！每次你带来我想要的鱼，我都会分你一点！"`,
+			].random()>>
+		<<else>>	
+			<<print [
+				`"像我这种捕到的鱼比你吃过的饭还多的人，这点胜利是理所应当的！现在别打扰我了！"`,
+			].random()>>
+		<</if>><br>
+		<br>
+		/待完善/<br>
+		<br>
+		<<link [[返回|Fishing Angler Cabin]]>><</link>><br>
+	<<case "None">>
+		<<if $options.cute_angler>>
+			<<print [
+				`"看来咱们旗鼓相当，明日再战！"`,
+			].random()>>
+		<<else>>	
+			<<print [
+				`"什么？你竟然能猜到我要出这个？"`,
+			].random()>>
+		<</if>><br>
+		<br>
+		/待完善/<br>
+		<br>
+		<<link [[返回|Fishing Angler Cabin]]>><</link>><br>
+<</switch>>
+
+:: RPS Bait
+<<if $options.cute_angler>>
+	<<print [
+		`"可以哦，我这儿还有很多呢。"`,
+	].random()>>
+<<else>>	
+	<<print [
+		`"鱼饵是吧？我最不缺这个了。拿去拿去。"`,
+	].random()>>
+<</if>><br>
+<br>
+你获得了
+<<set _fishing_reward_bait = 1>>
+<<if $fishing_requests_finished_count gte random(1,50)>>
+	<<set _fishing_reward_bait += 1>>
+<</if>>
+<<if $fishing_requests_finished_count gte random(1,100)>>
+	<<set _fishing_reward_bait += 1>>
+<</if>>
+<<if $fishing_requests_finished_count gte random(1,150)>>
+	<<set _fishing_reward_bait += 1>>
+<</if>>
+<<if $fishing_requests_finished_count gte random(1,200)>>
+	<<set _fishing_reward_bait += 1>>
+<</if>>
+<<if random(1,20) is 1>>
+	<<icon "fishing/bait/Master_Bait.png">>大师诱饵<<set $Master_Bait += _fishing_reward_bait>>
+<<elseif random(1,10) is 1>>
+	<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵<<set $Journeyman_Bait += _fishing_reward_bait>>
+<<else>>
+	<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵<<set $Apprentice_Bait += _fishing_reward_bait>>
+<</if>>(_fishing_reward_bait)。<br>
+<br>
+<<link [[返回|Fishing Angler Cabin]]>><</link>>
+
+:: RPS Request
+<<npc Angler>><<person1>>
+<<if $options.cute_angler>>
+	<<print [
+		`"这个任务对你来说太难了是吗？我今天确实不急着要这条鱼。"`,
+	].random()>>
+<<else>>	
+	<<print [
+		`"蛤？你想让我放弃今天的目标？我可是花了整整一个晚上的时间，思考出来我今天需要这条鱼的！"<<He>>看你并没有做出让步的样子，最终还是妥协了。`,
+	].random()>>
+<</if>><br>
+<br>
+<<link [[那么，今天的新任务是什么呢？|Fishing Request Ask]]>>
+	<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
+<</link>>
+<<endevent>>

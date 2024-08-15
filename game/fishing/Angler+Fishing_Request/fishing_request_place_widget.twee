@@ -61,39 +61,47 @@
 	<<if $fishingskill lt 400>>
 		？？？
 	<<elseif $fishing_place_temple_garden_unlock isnot true>>
-		神殿成员在布道时看起来并不只是单调地宣传教义。他们会谈论起花园的夜色中，有时闪烁着难以捉摸的奇怪光芒。坚信这是神明给予的启示，实际上他们把这也作为了传教的一部分
-	<<else>>
 		神殿的花园
+	<<elseif $artificial_fishing_pond_temple_garden is "done">>
+		老教堂墓地庭院的人工钓鱼池
+	<<else>>
+		神殿成员在布道时看起来并不只是单调地宣传教义。他们会谈论起花园的夜色中，有时闪烁着难以捉摸的奇怪光芒。坚信这是神明给予的启示，实际上他们把这也作为了传教的一部分
 	<</if>>
 <</widget>>
 
 <<widget "fishing_request_place_wolf_cave_clearing">>
 	<<if $fishingskill lt 500>>
 		？？？
-	<<elseif $fishing_place_wolf_cave_clearing_unlock isnot true>>
-		一些猎人曾沿着溪边几簇零星的发光蘑菇，想要寻找新的品种来大赚一笔，但他们最终都只有一个选择：追溯到森林中最凶险的狼穴后掉头逃跑
-	<<else>>
+	<<elseif $fishing_place_wolf_cave_clearing_unlock>>
 		狼窝的溪流
+	<<elseif $artificial_fishing_pond_wolf_cave_clearing is "done">>
+		狼穴门口的人工钓鱼池
+	<<else>>
+		一些猎人曾沿着溪边几簇零星的发光蘑菇，想要寻找新的品种来大赚一笔，但他们最终都只有一个选择：追溯到森林中最凶险的狼穴后掉头逃跑
 	<</if>>
 <</widget>>
 
 <<widget "fishing_request_place_bird_tower">>
 	<<if $fishingskill lt 600>>
 		？？？
-	<<elseif $fishing_place_bird_tower_unlock isnot true>>
-		相传，荒原深处的高塔上有一口永不干涸的水池。其底部的石头取自于另一片大陆，被荒漠深埋在地下的海床...如今这个水池，据有幸从荒原深处冒险回来的探索者说，是一只恐怖的哈比洗澡的地方
-	<<else>>
+	<<elseif $fishing_place_bird_tower_unlock>>
 		鹰塔的雨水池
+	<<elseif $artificial_fishing_pond_bird_tower is "done">>
+		高塔塔底的人工钓鱼池
+	<<else>>
+		相传，荒原深处的高塔上有一口永不干涸的水池。其底部的石头取自于另一片大陆，被荒漠深埋在地下的海床...如今这个水池，据有幸从荒原深处冒险回来的探索者说，是一只恐怖的哈比洗澡的地方
 	<</if>>
 <</widget>>
 
 <<widget "fishing_request_place_eden_clearing">>
 	<<if $fishingskill lt 700>>
 		？？？
-	<<elseif $fishing_place_eden_clearing_unlock isnot true>>
-		越来越多的人注意到，夜晚时会有奇怪的物体坠入密林深处。还有人进一步说，他们总能听到这些东西落地时发出巨大的水声。但从没人去寻找过，因为那个位置附近的水源只有悬崖底下的泉水，此处生活着一个古怪的猎人
-	<<else>>
+	<<elseif $fishing_place_eden_clearing_unlock>>
 		伊甸小屋的泉水
+	<<elseif $artificial_fishing_pond_eden_cabin is "done">>
+		猎人小屋门口的人工钓鱼池
+	<<else>>
+		越来越多的人注意到，夜晚时会有奇怪的物体坠入密林深处。还有人进一步说，他们总能听到这些东西落地时发出巨大的水声。但从没人去寻找过，因为那个位置附近的水源只有悬崖底下的泉水，此处生活着一个古怪的猎人
 	<</if>>
 <</widget>>
 

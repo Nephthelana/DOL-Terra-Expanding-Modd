@@ -28,7 +28,7 @@
 <<widget "fishingharvests">>
 	<<run initializeTooltips()>>
 	/* 钓鱼信息饰品：渔民袖珍宝典、天气收音机、六分仪 */
-	<<if $Fishermans_Pocket_Guide>>
+	<<if $Fishermans_Pocket_Guide or $Fish_Finder>>
 		<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">>
 		<<if $Bait is "Truffle_Worm">>
 			警告！<br>
@@ -37,7 +37,7 @@
 			渔力：<<print Math.round($fishing_power)>><br>
 		<</if>>
 	<</if>>
-	<<if $Weather_Radio>>
+	<<if $Weather_Radio or $Fish_Finder>>
 		<br>
 		<<icon "fishing/fishing_accessories/Weather_Radio.png">>
 		当前天气：
@@ -49,11 +49,11 @@
 			<<case "heavyPrecipitation">><<icon "heavyPrecipitation_icon.png">>大雨
 		<</switch>><br>
 	<</if>>
-	<<if $Sextant>>
+	<<if $Sextant or $Fish_Finder>>
 		<br>
 		<<icon "fishing/fishing_accessories/Sextant.png">>
 		当前月相：
-		<<if Weather.bloodMoon>>
+		<<if Time.isBloodMoon()>>
 			<span class="red">血月</span>(+10%渔力)
 		<<elseif Time.date.moonPhaseFraction is 0>>
 			新月(-10%渔力)
@@ -138,113 +138,38 @@
 			<</for>>
 		</div>
 	<</if>>
+	/* 持有鱼 */
+	<<if getFishObtainedList().length gte 1>>
+		<span class="gold bold">鱼</span><mouse class="tooltip linkBlue">(?)<span>下列渔获在泰拉瑞亚拓展mod中还没有具体作用，但你可以在dom罗宾拓展mod中，和罗宾一起烤鱼并出售它们中的一部分。</span></mouse><br>
+        <div class="itemTerra">
+			<<set _fishObtained to getFishObtainedList()>>
+			<<for _t to 0; _t lt _fishObtained.length; _t++>>
+				<<set _fish to setup.terraFish[_fishObtained[_t]]>>
+               	<<set _fishName to _fish.cn_name>>
+            	<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
+				<<set _amount = _formatter.format(_fish.amount)>>
+            	<<set _tooltip to `<span class="green">${_fish.amount}</span> ${_fishName}`>>
+            	<div class="item" @tooltip="_tooltip">
+					<<icon `_fish.icon`>>
+					<hr>
+					<<= _amount>>
+				</div>
+			<</for>>
+		</div>
+	<</if>>
 <</widget>>
 
 /* 工具标签页信息 */
 <<widget "tools">>
 	<<setupOptions>>
 	<span id="hint_item_use"></span>
-	<<if $tool_obtained>>
-		<span class="gold bold">可使用工具</span><br>
-		<br>
-		<<if $Magic_Conch>>
-			<<icon "tool/Magic_Conch.png">>
-			<<if $daily.Magic_Conch>>
-				<span class="blue">你今天使用过魔法海螺了</span>
-			<<else>>
-				<<link [[魔法海螺|Beach]]>><<set $daily.Magic_Conch to true>><</link>>
-			<</if>>
-			<mouse class="tooltip linkBlue">(?)<span>每日可使用一次，将你传送至海滩</span></mouse><br>
-		<</if>>
-		<<if $Demon_Conch>>
-			<<icon "tool/Demon_Conch.png">>
-			<<if $daily.Demon_Conch>>
-				<span class="blue">你今天使用过恶魔海螺了</span>
-			<<else>>
-				<<link [[恶魔海螺|Beach]]>><<set $daily.Demon_Conch to true>><</link>>
-			<</if>>
-			<mouse class="tooltip linkBlue">(?)<span>每日可使用一次，将你传送至地下岩浆湖(暂未实装，目前为传送至海滩)</span></mouse><br>
-		<</if>>
-		<<if $Snake_Charmers_Flute>>
-			<<if $Fin_Wings or $birdFly gte 1>>
-				<<switch $passage>>
-					<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
-						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Town">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
-					<<case "Lake Shore">>
-						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Lake Shore">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
-					<<case "Meadow">>
-						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Meadow">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
-					<<case "Moor">>
-						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Moor">><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！以你的飞行能力，你可以在森林湖、小镇街道、镇外草地、鹰塔塔底使用它)</span></mouse><br>
-					<<default>>
-						<span class="blue">你只能在森林湖、小镇街道、镇外草地、鹰塔塔底使用耍蛇者长笛</span><br>
-				<</switch>>
-			<<elseif $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6 or $Fledgling_Wings>>
-				<<switch $passage>>
-					<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
-						<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (00:01)|Snake Charmers Flute Use 1]]>><<pass 1>><</link>><mouse class="tooltip linkBlue">(?)<span>使用后生成一条可供向上攀爬的蛇(它非常安全！但以你的滑翔能力，你只能在小镇的街道使用它)</span></mouse><br>
-					<<default>>
-						<span class="blue">你只能在小镇的街道上使用耍蛇者长笛</span><br>
-				<</switch>>
-			<</if>>
-		<</if>>
-		<<if $Torrential_Tear>>
-			<<icon "tool/Torrential_Tear.png">>洪流之泪
-			<mouse class="tooltip linkBlue">(?)<span>使用以控制在接下来至少六小时内的天气，在那之后会回到原本的天气模拟。</span></mouse>
-			：将天气调整为
-			<<link "晴天">>
-				<<set Weather.set("clear", true, 6 * 60)>>
-				<<replace #hint_item_use>>
-					<span class="teal">天气已设为<<icon "clear_icon.png">>晴天</span>
-					<br>
-				<</replace>>
-			<</link>> |
-			<<link "有云">>
-				<<set Weather.set("lightClouds", true, 6 * 60)>>
-				<<replace #hint_item_use>>
-					<span class="teal">天气已设为<<icon "lightClouds_icon.png">>有云</span>
-					<br>
-				<</replace>>
-			<</link>> |
-			<<link "多云">>
-				<<set Weather.set("heavyClouds", true, 6 * 60)>>
-				<<replace #hint_item_use>>
-					<span class="teal">天气已设为<<icon "heavyClouds_icon.png">>多云</span>
-					<br>
-				<</replace>>
-			<</link>> |
-			<<link "小雨">>
-				<<set Weather.set("lightPrecipitation", true, 6 * 60)>>
-				<<replace #hint_item_use>>
-					<span class="teal">天气已设为<<icon "lightPrecipitation_icon.png">>小雨</span>
-					<br>
-				<</replace>>
-			<</link>> |
-			<<link "大雨">>
-				<<set Weather.set("heavyPrecipitation", true, 6 * 60)>>
-				<<replace #hint_item_use>>
-					<span class="teal">天气已设为<<icon "heavyPrecipitation_icon.png">>大雨</span>
-					<br>
-				<</replace>>
-			<</link>>
-			<br>
-		<</if>>
-		<<if $Bottomless_Water_Bucket>>
-			<<icon "tool/Bottomless_Water_Bucket.png">>
-			<<link "无底水桶">>
-				<<water>>
-				<<replace #hint_item_use>>
-					<span class="blue">你往自己身上泼了一桶水。</span><br>
-					<br>
-				<</replace>>
-			<</link>>
-			<mouse class="tooltip linkBlue">(?)<span>可以倒出无限的水。谁会想用这个来把自己浇成落汤鸡呢？</span></mouse><br>
-		<</if>>
-		<<if $Gravediggers_Shovel>>
-			<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子<mouse class="tooltip linkBlue">(?)<span>只有在建造人工钓鱼池时才用得到它。</span></mouse><br>
-		<</if>>
-		<br>
-	<</if>>
+	<span id="void_bag_Tool">
+		<<void_bag_Tool>>
+	</span>
+	<span id="void_bag_Bloody_Tear">
+		<<void_bag_Bloody_Tear>>
+	</span>
+	<br>
 	<span id="void_bag_Potion">
 		<<void_bag_Potion>>
 	</span>
@@ -259,11 +184,11 @@
 			($fishing_place_farm_woodland_unlock and $passage is "Farm Woodland") or
 			($fishing_place_temple_garden_unlock and $passage is "Temple Garden") or
 			($fishing_place_wolf_cave_clearing_unlock and $passage is "Wolf Cave Clearing") or
-			($artificial_fishing_pond_wolf_cave_clearing and $passage is "Forest" and $forest gt 50) or
+			($artificial_fishing_pond_wolf_cave_clearing is "done" and $passage is "Forest" and $forest gt 50) or
 			($fishing_place_bird_tower_unlock and $passage is "Bird Tower") or
 			($artificial_fishing_pond_bird_tower is "done" and $passage is "Moor" and $moor gte 100) or
 			($fishing_place_eden_clearing_unlock and $passage is "Eden Clearing") or
-			($artificial_fishing_pond_eden_cabin and $passage is "Forest" and $forest gt 50) or
+			($artificial_fishing_pond_eden_cabin is "done" and $passage is "Forest" and $forest gt 50) or
 			($fishing_place_bog_unlock and $passage is "Bog") or
 			($fishing_place_trash_unlock and $passage is "Trash" and $trash gte 50) or
 			($fishing_place_park_unlock and $passage is "Park") or
@@ -367,12 +292,12 @@
 			<</if>>
 			<<if $Reinforced_Fishing_Pole>>
 				<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
-				<mouse class="tooltip linkBlue">(?)<span>15渔力，每次收线减少11距离</span></mouse>
+				<mouse class="tooltip linkBlue">(?)<span>20渔力，每次收线减少11距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Wood_Fishing_Pole>>
 				<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿
-				<mouse class="tooltip linkBlue">(?)<span>5渔力，每次收线减少10距离</span></mouse>
+				<mouse class="tooltip linkBlue">(?)<span>15渔力，每次收线减少10距离</span></mouse>
 				<br>
 			<</if>>
 		<</if>>
@@ -380,58 +305,5 @@
 		渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？<br>
 	<<else>>
 		你需要从某人那里获得鱼竿。也许这人正漂浮在海上。<br>
-	<</if>>
-	<br>
-	<<if $fishing_accessories>>
-		<span class="gold bold">饰品</span><br>
-		<br>
-		<<if $Fishing_Bobber>>
-			<<icon "fishing/fishing_accessories/Fishing_Bobber.png">>钓鱼浮标
-			<mouse class="tooltip linkBlue">(?)<span>增加10点渔力</span></mouse><br>
-		<</if>>
-		<<if $Angler_Earring and $Angler_Tackle_Bag isnot true and $Lavaproof_Tackle_Bag isnot true>>
-			<<icon "fishing/fishing_accessories/Angler_Earring.png">>渔夫耳环
-			<mouse class="tooltip linkBlue">(?)<span>增加10点渔力</span></mouse><br>
-		<</if>>
-		<<if $High_Test_Fishing_Line and $Angler_Tackle_Bag isnot true and $Lavaproof_Tackle_Bag isnot true>>
-			<<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">>优质钓鱼线
-			<mouse class="tooltip linkBlue">(?)<span>提高钓鱼过程中鱼线的耐久，并防止钓上鱼时鱼线断裂</span></mouse><br>
-		<</if>>
-		<<if $Tackle_Box and $Angler_Tackle_Bag isnot true and $Lavaproof_Tackle_Bag isnot true>>
-			<<icon "fishing/fishing_accessories/Tackle_Box.png">>钓具箱
-			<mouse class="tooltip linkBlue">(?)<span>降低钓鱼时消耗鱼饵的几率</span></mouse><br>
-		<</if>>
-		<<if $Enchanted_Pearl>>
-			<<icon "fishing/fishing_accessories/Enchanted_Pearl.png">>附魔珍珠
-			<mouse class="tooltip linkBlue">(?)<span>增加渔力，并增加钓到宝匣的几率</span></mouse><br>
-		<</if>>
-		<<if $Angler_Tackle_Bag and $Lavaproof_Tackle_Bag isnot true>>
-			<<icon "fishing/fishing_accessories/Angler_Tackle_Bag.png">>渔夫渔具袋
-			<mouse class="tooltip linkBlue">(?)<span>组合了<<icon "fishing/fishing_accessories/Angler_Earring.png">>渔夫耳环、<<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">>优质钓鱼线、<<icon "fishing/fishing_accessories/Tackle_Box.png">>钓具箱的功能</span></mouse><br>
-		<</if>>
-		<<if $Lavaproof_Fishing_Hook and $Lavaproof_Tackle_Bag isnot true>>
-			<<icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">>防熔岩钓钩
-			<mouse class="tooltip linkBlue">(?)<span>允许你用任意鱼饵和鱼竿在沸水/熔岩中钓鱼</span></mouse><br>
-		<</if>>
-		<<if $Lavaproof_Tackle_Bag>>
-			<<icon "fishing/fishing_accessories/Lavaproof_Tackle_Bag.png">>防熔岩渔具袋
-			<mouse class="tooltip linkBlue">(?)<span>组合了<<icon "fishing/fishing_accessories/Angler_Earring.png">>渔夫耳环、<<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">>优质钓鱼线、<<icon "fishing/fishing_accessories/Tackle_Box.png">>钓具箱、<<icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">>防熔岩钓钩的功能</span></mouse><br>
-		<</if>>
-		<<if $Fishermans_Pocket_Guide and $Fish_Finder isnot true>>
-			<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">>渔民袖珍宝典
-			<mouse class="tooltip linkBlue">(?)<span>显示目前的渔力</span></mouse><br>
-		<</if>>
-		<<if $Weather_Radio and $Fish_Finder isnot true>>
-			<<icon "fishing/fishing_accessories/Weather_Radio.png">>天气收音机
-			<mouse class="tooltip linkBlue">(?)<span>显示当前的天气</span></mouse><br>
-		<</if>>
-		<<if $Sextant and $Fish_Finder isnot true>>
-			<<icon "fishing/fishing_accessories/Sextant.png">>六分仪
-			<mouse class="tooltip linkBlue">(?)<span>显示当天月相。月相会对当天渔力产生影响</span></mouse><br>
-		<</if>>
-		<<if $Fish_Finder>>
-			<<icon "fishing/fishing_accessories/Fish_Finder.png">>探鱼器
-			<mouse class="tooltip linkBlue">(?)<span>组合了<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">>渔民袖珍宝典、<<icon "fishing/fishing_accessories/Weather_Radio.png">>天气收音机、<<icon "fishing/fishing_accessories/Sextant.png">>六分仪的功能<br>
-		<</if>>
 	<</if>>
 <</widget>>
