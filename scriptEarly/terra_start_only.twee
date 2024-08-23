@@ -158,6 +158,8 @@
 <<set $White_Pearl = 0>>
 <<set $Black_Pearl = 0>>
 <<set $Pink_Pearl = 0>>
+<<set $Iron_Bar = 0>>
+<<set $Sea_Remains = 0>>
 
 /* 饰品栏 */
 <<set $terra_accessories_slots to []>>
@@ -170,5 +172,11 @@
 
 /* dom罗宾拓展联动 */
 <<set $robin_fishing_place_unlocked to []>>
+
+/* 食物 */
+<<set $Sashimi to 0>>
+
+/* 海岛 */
+<<set $island_build_cooking to []>>
 
 <</widget>>

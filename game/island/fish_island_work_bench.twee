@@ -1,0 +1,58 @@
+:: Fish Island Work Bench
+你可以在工作台这里简单地将鱼类处理成生鱼片食用。尽管这些鱼类同样没有经过高温处理，但至少去除了令人反胃的鱼鳞和脏器。<br>
+<br>
+<span id="island_food_item_Sashimi">
+	<<island_food_item_Sashimi>>
+</span>
+<br>
+<span id="island_work_bench">
+	<<island_work_bench>>
+</span>
+<br>
+<<link [[返回|Island]]>><</link>>
+
+:: Widget Fish Island Work Bench [widget]
+<<widget "island_food_item_Sashimi">>
+	<<if $Sashimi gt 0>>
+		你有$Sashimi份生鱼片。
+	<<else>>
+		你没有生鱼片。
+	<</if>><br>
+<</widget>>
+
+<<widget "island_work_bench">>
+	制作生鱼片(0:05) <<ghousekeeping>>
+	<<if getFishObtainedList().length gte 1>>
+        <div class="itemTerra">
+			<<set _fishObtained to getFishObtainedList()>>
+			<<for _t to 0; _t lt _fishObtained.length; _t++>>
+				<<set _fish to setup.terraFish[_fishObtained[_t]]>>
+				<<capture _fish>>
+            		<div class="item">
+						<mouse class="tooltip">
+							<<icon `_fish.icon`>>
+							<span>
+								_fish.cn_name
+							</span>
+						</mouse>
+						<hr>
+						_fish.amount
+						<hr>
+						<<link "⬆">>
+							_fish.consumed
+							<<set $Sashimi += 1>>
+							<<housekeeping 1 1000>>
+							<<replace #island_food_item_Sashimi>>
+								<<island_food_item_Sashimi>>
+							<</replace>>
+							<<replace #island_work_bench>>
+								<<island_work_bench>>
+							<</replace>>
+							<<island_pass 5>>
+						<</link>>
+					</div>
+				<</capture>>
+			<</for>>
+		</div>
+	<</if>>
+<</widget>>

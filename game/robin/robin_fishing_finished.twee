@@ -1,0 +1,96 @@
+:: Robin Fishing Finished
+<<npc Robin>><<person1>>
+<<switch $robin_fishing_finished_phase>>
+	<<case 1>>
+		<<robin_fishing_travel_time>>
+		你觉得今天钓得差不多了。罗宾也同意回去休息。<br>
+		<br>
+		<<robin_bait_back>>你们收拾好渔具回到了孤儿院。<br>
+		<br>
+		<<robinoptions>>
+	<<case 2>>
+		<<robin_fishing_travel_time>>
+		<<robin_bait_back>>你们收拾好渔具回到了孤儿院。<br>
+		<br>
+		<<robinoptions>>
+	<<case 3>>
+		罗宾看起来意犹未尽，转身去拾起了一块石头。"我经常看到大家在森林湖边玩这种游戏。你看。"<br>
+		<br>
+		<<He>>站起身来，摆出蓄力的动作，然后将石头水平抛了出去。石头在水面上连续地跳动，最后落进了水里——罗宾在玩"打水漂"。<br>
+		<br>
+		"一...二...三...四...这么完美的石头竟然只有四下，太可惜了。"<<He>>蹲下来找另一块合适的石头，想让你也试试。<br>
+		<br>
+		你接过罗宾给你挑选的石头。<<He>>告诉你像这种平整光滑的石头，能打更多的水漂。模仿着罗宾刚刚的准备姿势，你也扔出了石头。但可惜力道不对，与其说是你抛出了石头，不如说是你把石头砸向了湖中。<br>
+		<br>
+		罗宾露出一副十分惊讶的表情。<<He>>挠了挠头："抱歉，我忘了告诉你打水漂的另一个要点：要像这样，尽量把石头以水平的方向扔出去。"<<He>>又重复了一遍刚刚的动作。<br>
+		<br>
+		罗宾背过身去，决定再找一块石头给你尝试。你弯下腰来，端详着湖面倒映中的自己。<br>
+		<br>
+		"找到了！"罗宾忽然兴奋地大叫，"这是我找到的最好的一块！"<<He>>猛地站起身，却不小心撞到了你——又是熟悉的身体失去平衡的感觉。<br>
+		<br>
+		<<switch $bodysize>>
+			<<case 0>>
+				<<if random(1,4) is 1>>
+					罗宾抓住了你的手。但一切太过突然，<<he>>没能控制住你身体倾斜的态势。情急之下，你感到<<he>>拼尽全力，可以说是把你甩了出去。但<<he>>自己却失去了平衡，摔到了水里。<br>
+					<br>
+					"罗宾！"你连忙拉起罗宾。<<He>>的全身湿哒哒的。你想起来罗宾在钓鱼时，<<he>>从未落过水。<br>
+					<br>
+					这样全身湿透对身体不好。你们该回去处理一下。<br>
+					<br>
+					<<link [[回家|Robin Fishing Finished]]>><<set $robin_fishing_finished_phase to 2>><</link>>
+				<<else>>
+					罗宾抓住了你的手。<<he>>稳住身体，将你拉了回来。真是有惊无险。<br>
+					<br>
+					你们决定今天还是就到这里吧。<br>
+					<br>
+					<<link [[回家|Robin Fishing Finished]]>><<set $robin_fishing_finished_phase to 2>><</link>>
+				<</if>>
+			<<case 1 2>>
+				<<switch random(1,5)>>
+					<<case 1 2>>
+						罗宾抓住了你的手。<<he>>稳住身体，将你拉了回来。真是有惊无险。<br>
+						<br>
+						你们决定今天还是就到这里吧。<br>
+						<br>
+						<<link [[回家|Robin Fishing Finished]]>><<set $robin_fishing_finished_phase to 2>><</link>>
+					<<case 3 4>>
+						罗宾抓住了你的手。但一切太过突然，<<he>>没能控制住你身体倾斜的态势。情急之下，你感到<<he>>拼尽全力，可以说是把你甩了出去。但<<he>>自己却失去了平衡，摔到了水里。<br>
+						<br>
+						"罗宾！"你连忙拉起罗宾。<<He>>的全身湿答答的。你想起来罗宾在钓鱼时，<<he>>从未落过水。<br>
+						<br>
+						这样全身湿透对身体不好。你们该回去了。<br>
+						<br>
+						<<link [[回家|Robin Fishing Finished]]>><<set $robin_fishing_finished_phase to 2>><</link>>
+					<<case 5>>
+						罗宾抓住了你的手。但一切太过突然，<<he>>没能控制住你身体倾斜的态势。情急之下，你感到<<he>>拼尽全力，但还是没能拉动你，和你一起跌入了湖中。<<water>><br>
+						<br>
+						你们都湿答答地爬上了岸。<br>
+						<br>
+						<<effect>>
+						<br>
+						这样全身湿透对身体不好。你们该回去了。<br>
+						<br>
+						<<link [[回家|Robin Fishing Finished]]>><<set $robin_fishing_finished_phase to 2>><</link>>
+				<</switch>>
+			<<case 3>>
+				<<if random(1,4) is 1>>
+					罗宾抓住了你的手。但一切太过突然，<<he>>没能控制住你身体倾斜的态势。情急之下，你感到<<he>>拼尽全力，可以说是把你甩了出去。但<<he>>自己却失去了平衡，摔到了水里。<br>
+					<br>
+					"罗宾！"你连忙拉起罗宾。<<He>>的全身湿哒哒的。你想起来罗宾在钓鱼时，<<he>>从未落过水。<br>
+					<br>
+					这样全身湿透对身体不好。你们该回去处理一下。<br>
+					<br>
+					<<link [[回家|Robin Fishing Finished]]>><<set $robin_fishing_finished_phase to 2>><</link>>
+				<<else>>
+					罗宾抓住了你的手。但一切太过突然，<<he>>没能控制住你身体倾斜的态势。情急之下，你感到<<he>>拼尽全力，但还是没能拉动你，和你一起跌入了湖中。<<water>><br>
+					<br>
+					你们都湿答答地爬上了岸。<br>
+					<br>
+					<<effect>>
+					<br>
+					这样全身湿透对身体不好。你们该回去了。<br>
+					<br>
+					<<link [[回家|Robin Fishing Finished]]>><<set $robin_fishing_finished_phase to 2>><</link>>
+				<</if>>
+		<</switch>>
+<</switch>>

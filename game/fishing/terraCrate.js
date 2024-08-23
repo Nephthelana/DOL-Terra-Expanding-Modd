@@ -65,7 +65,7 @@ setup.terraCrate = {
     },
 	"Sunken_Crate": {
         name: "Sunken_Crate",
-        cn_name: "沉沦匣",
+        cn_name: "富养匣",
         type: "crate",
         amount: V.Sunken_Crate || 0,
         icon: "fishing/crates/Sunken_Crate.png",
@@ -81,7 +81,7 @@ setup.terraCrate = {
     },
 	"Brimstone_Crate": {
         name: "Brimstone_Crate",
-        cn_name: "硫火匣",
+        cn_name: "焦炭匣",
         type: "crate",
         amount: V.Brimstone_Crate || 0,
         icon: "fishing/crates/Brimstone_Crate.png",

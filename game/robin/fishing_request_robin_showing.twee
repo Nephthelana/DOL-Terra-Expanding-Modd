@@ -1,4 +1,5 @@
 :: Fishing Request Robin Showing
+/* 展示给罗宾任务鱼的互动页面。每种任务鱼的互动文本待填充 */
 <<npc Robin>><<person1>>
 你将
 <<set _allRequestFishList to getAllRequestFishList()>>
@@ -13,7 +14,6 @@
 <</for>>
 交给罗宾。<br>
 <br>
-/文本待填充/<br>
-<br>
 <<set $fishing_request_robin_show to undefined>>
 <<link [[返回|Fishing Request Robin]]>><</link>>
+<<endevent>>

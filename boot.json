@@ -1,6 +1,6 @@
 {
   "name": "Terraria Expand Mod",
-  "version": "0.1.6",
+  "version": "0.1.7-pre",
   "styleFileList": [],
   "scriptFileList": [
     "game/fishing/Angler.js",
@@ -28,7 +28,6 @@
 	"img/misc/icon/fishing/crates/Wooden_Crate.png",
 	"img/misc/icon/fishing/fish/Armored_Cavefish.png",
 	"img/misc/icon/fishing/fish/Bass.png",
-	"img/misc/icon/fishing/fish/Blue_Jellyfish_bait.png",
 	"img/misc/icon/fishing/fish/Charred_Lasher.png",
 	"img/misc/icon/fishing/fish/Coastal_Demonfish.png",
 	"img/misc/icon/fishing/fish/Crag_Bullhead.png",
@@ -36,13 +35,11 @@
 	"img/misc/icon/fishing/fish/Double_Cod.png",
 	"img/misc/icon/fishing/fish/Flounder.png",
 	"img/misc/icon/fishing/fish/Golden_Carp.png",
-	"img/misc/icon/fishing/fish/Green_Jellyfish_bait.png",
 	"img/misc/icon/fishing/fish/Greenwave_Loach.png",
 	"img/misc/icon/fishing/fish/Honeyfin.png",
 	"img/misc/icon/fishing/fish/Joja_Cola.png",
 	"img/misc/icon/fishing/fish/Neon_Tetra.png",
 	"img/misc/icon/fishing/fish/Old_Shoe.png",
-	"img/misc/icon/fishing/fish/Pink_Jellyfish_bait.png",
 	"img/misc/icon/fishing/fish/Prismatic_Guppy.png",
 	"img/misc/icon/fishing/fish/Red_Snapper.png",
 	"img/misc/icon/fishing/fish/Rock_Lobster.png",
@@ -75,31 +72,31 @@
           "passage": "Temple Jordan",
           "findString": "|Temple Spear Zephyr]]>><</link>>\n\t\t<br>\n\t<</if>>",
           "replace": "|Temple Spear Zephyr]]>><</link>><br><</if>><<askicon>><<link [[询问世界腐化度的状况|World Corruption Ask]]>><</link>><br>",
-		  "_comment1":"神殿询问约旦世界腐化度的选项入口"
+		  "_comment":"神殿询问约旦世界腐化度的选项入口"
         },
         {
           "passage": "Bedroom",
           "findString": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>",
           "replace": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>\n<<pylon_bedroom>>",
-		  "_comment2":"卧室晶塔操作界面"
+		  "_comment":"卧室晶塔操作界面"
         },
         {
           "passage": "Robin Forest",
           "findString": "<<set $money -= 2000>><<npcincr Robin love 1>><</link>><<glove>>\n\t\t<br>\n\t<</if>>",
           "replace": "<<set $money -= 2000>><<npcincr Robin love 1>><</link>><<glove>>\n\t\t<br>\n\t<</if>>\n<<pylon_bedroom_ask>>",
-		  "_comment3":"触发卧室晶塔解锁剧情"
+		  "_comment":"触发卧室晶塔解锁剧情"
         },
         {
           "passage": "Widgets Cabin",
           "findString": "<<endevent>><</link>>\n\t<</if>>\n\t<br><br>",
-          "replace": "<<endevent>><</link>>\n\t<</if>>\n\t<br><br>\n<<pylon_eden_cabin>>",
-		  "_comment4":"伊甸小屋晶塔操作界面"
+          "replace": "<<endevent>><</link>><</if>><br><br><<pylon_eden_cabin>>",
+		  "_comment":"伊甸小屋晶塔操作界面"
         },
         {
           "passage": "Eden Forest Search",
           "findString": "<</if>>\n<</if>>",
-          "replace": "<</if>>\n<</if>>\n<<pylon_eden_cabin_ask>>",
-		  "_comment5":"触发伊甸小屋晶塔解锁剧情"
+          "replace": "<</if>><</if>><<pylon_eden_cabin_ask>>",
+		  "_comment":"触发伊甸小屋晶塔解锁剧情"
         },
         {
           "passage": "Farm Bedroom",
@@ -110,7 +107,7 @@
         {
           "passage": "Farm Meadow Date 3",
           "findString": "|Farm Meadow Date 4]]>><</link>>",
-          "replace": "|Farm Meadow Date 4]]>><</link>>\n<<pylon_farm_bedroom_ask>>",
+          "replace": "|Farm Meadow Date 4]]>><</link>><<pylon_farm_bedroom_ask>>",
 		  "_comment7":"触发农场卧室晶塔解锁剧情"
         },
         {
@@ -122,7 +119,7 @@
         {
           "passage": "Widgets Bird",
           "findString": "<br>\n\t\t<<bird_fly_options>>",
-          "replace": "<<pylon_hawks_tower_ask>>\n<br>\n\t\t<<bird_fly_options>>",
+          "replace": "<<pylon_hawks_tower_ask>><br><<bird_fly_options>>",
 		  "_comment9":"触发鹰塔晶塔解锁剧情"
         },
         {
@@ -200,7 +197,7 @@
         {
           "passage": "Beach",
           "findString": "<<if $earSlime.forcedCommando isnot undefined",
-          "replace": "<br><<if $fishingrod and $fishing_place_beach_unlock>><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在海滩钓鱼|Fishing Bitten]]>><<set $fishing_place to \"beach\">><<fishing_cast_time>><</link>><</if>><<if $fishing_anglerintro>><br><<if $options.cute_angler>><<icon \"fishing/house_icon.png\">><<else>><<icon \"fishing/iron_fence.png\">><</if>><<link [[进入渔夫小屋|Fishing Angler Cabin]]>><</link>><br><<if $fishing_requests_finished_count is undefined>><<set $fishing_requests_finished_count to 0>><</if>><</if>><<if $earSlime.forcedCommando isnot undefined",
+          "replace": "<br><<if $fishingrod and $fishing_place_beach_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在海滩钓鱼|Fishing Bitten]]>><<set $fishing_place to \"beach\">><<fishing_cast_time>><</link>><</if>><<if $fishing_anglerintro>><br><<if $options.cute_angler>><<icon \"fishing/house_icon.png\">><<else>><<icon \"fishing/iron_fence.png\">><</if>><<link [[进入渔夫小屋|Fishing Angler Cabin]]>><</link>><br><<if $fishing_requests_finished_count is undefined>><<set $fishing_requests_finished_count to 0>><</if>><</if>><<if $earSlime.forcedCommando isnot undefined",
 		  "_comment23":"海滩钓鱼点入口，渔夫小屋入口"
         },
         {
@@ -212,7 +209,7 @@
         {
           "passage": "Lake Fishing Rock",
           "findString": "<<pass 20>><</link>>\n\t<br><br>",
-          "replace": "<<pass 20>><</link>><<if $fishingrod and $fishing_place_lake_fishing_rock_unlock>><br><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在森林湖钓鱼|Fishing Bitten]]>><<set $fishing_place to \"lake_fishing_rock\">><<fishing_cast_time>><</link>><</if>><br><br>",
+          "replace": "<<pass 20>><</link>><<if $fishingrod and $fishing_place_lake_fishing_rock_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在森林湖钓鱼|Fishing Bitten]]>><<set $fishing_place to \"lake_fishing_rock\">><<fishing_cast_time>><</link>><</if>><br><br>",
 		  "_comment25":"森林湖钓鱼岩钓鱼点入口"
         },
         {
@@ -224,7 +221,7 @@
         {
           "passage": "Barb Street",
           "findString": "|Doren Entrance]]>><<pass 2>><</link>>\n\t\t\t<br>\n\t\t<</if>>",
-          "replace": "|Doren Entrance]]>><<pass 2>><</link>><br><</if>><<if $fishingrod and $fishing_place_barb_street_unlock>><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在运河钓鱼|Fishing Bitten]]>><<set $fishing_place to \"barb_street\">><<fishing_cast_time>><</link>><br><</if>>",
+          "replace": "|Doren Entrance]]>><<pass 2>><</link>><br><</if>><<if $fishingrod and $fishing_place_barb_street_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在运河钓鱼|Fishing Bitten]]>><<set $fishing_place to \"barb_street\">><<fishing_cast_time>><</link>><br><</if>>",
 		  "_comment27":"倒钩街钓鱼点入口"
         },
         {
@@ -236,7 +233,7 @@
         {
           "passage": "Moor",
           "findString": "|Estate Approach]]>><</link>>\n\t\t<br><br>",
-          "replace": "|Estate Approach]]>><</link>><br><br><<if $fishingrod and $fishing_place_moor_unlock>>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在雷米庄园门口钓鱼|Fishing Bitten]]>><<set $fishing_place to \"moor\">><<fishing_cast_time>><</link>><br><br><</if>>",
+          "replace": "|Estate Approach]]>><</link>><br><br><<if $fishingrod and $fishing_place_moor_unlock>>钓鱼<br><<fishingrod_held_icon>><<link [[在雷米庄园门口钓鱼|Fishing Bitten]]>><<set $fishing_place to \"moor\">><<fishing_cast_time>><</link>><br><br><</if>>",
 		  "_comment29":"雷米庄园门口的沙地钓鱼点入口"
         },
         {
@@ -248,13 +245,13 @@
         {
           "passage": "Widgets Forest",
           "findString": "<<set $eventskip to 1>><</link>>\n\t\t\t\t<br>",
-          "replace": "<<set $eventskip to 1>><</link>><br><<if $fishingrod and $fishing_place_honey_unlock>><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><br><</if>>",
+          "replace": "<<set $eventskip to 1>><</link>><br><<if $fishingrod and $fishing_place_honey_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><br><</if>>",
 		  "_comment31":"森林蜂巢蜂蜜池钓鱼点入口"
         },
 		{
 		  "passage": "Forest",
 		  "findString": "<</if>>\n\t\t\t\t<br>\n\t\t\t<</if>>",
-		  "replace": "<</if>><br><</if>><br><<if $fishingrod and $fishing_place_honey_unlock and ($forest gte 80 and $forest lte 90)>><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><</if>>",
+		  "replace": "<</if>><br><</if>><br><<if $fishingrod and $fishing_place_honey_unlock and ($forest gte 80 and $forest lte 90)>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><</if>>",
 		  "_comment":"森林蜂蜜池钓鱼点入口"
 		},
         {
@@ -266,7 +263,7 @@
         {
           "passage": "Farm Woodland",
           "findString": "<</link>>\n\t\t<br>\n\t<</if>>",
-          "replace": "<</link>><br><</if>><<if $fishingrod and $fishing_place_farm_woodland_unlock>><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在林地钓鱼|Fishing Bitten]]>><<set $fishing_place to \"farm_woodland\">><<fishing_cast_time>><</link>><br><br><</if>>",
+          "replace": "<</link>><br><</if>><<if $fishingrod and $fishing_place_farm_woodland_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在林地钓鱼|Fishing Bitten]]>><<set $fishing_place to \"farm_woodland\">><<fishing_cast_time>><</link>><br><br><</if>>",
 		  "_comment":"林场钓鱼点入口"
         },
         {
@@ -278,7 +275,7 @@
         {
           "passage": "Temple Garden",
           "findString": "<</if>>\n\n\t<br>",
-          "replace": "<</if>><br><<if $fishingrod and $fishing_place_temple_garden_unlock>><<if $temple_garden gte -5>>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在花园钓鱼|Fishing Bitten]]>><<set $fishing_place to \"temple_garden\">><<fishing_cast_time>><</link>><br><br><<else>><i>这里实在太过杂乱，你根本无法钓鱼。</i><br><br><</if>><</if>>",
+          "replace": "<</if>><br><<if $fishingrod and $fishing_place_temple_garden_unlock>><<if $temple_garden gte -5>>钓鱼<br><<fishingrod_held_icon>><<link [[在花园钓鱼|Fishing Bitten]]>><<set $fishing_place to \"temple_garden\">><<fishing_cast_time>><</link>><br><br><<else>><i>这里实在太过杂乱，你根本无法钓鱼。</i><br><br><</if>><</if>>",
 		  "_comment":"神殿花园钓鱼点入口"
         },
         {
@@ -290,7 +287,7 @@
         {
           "passage": "Wolf Cave Clearing",
           "findString": "<</link>>\n\t<</if>>",
-          "replace": "<</link>>\n\t<</if>><<if $fishingrod and $fishing_place_wolf_cave_clearing_unlock>><br><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在小溪里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"wolf_cave_clearing\">><<fishing_cast_time>><</link>><</if>>",
+          "replace": "<</link>>\n\t<</if>><<if $fishingrod and $fishing_place_wolf_cave_clearing_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在小溪里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"wolf_cave_clearing\">><<fishing_cast_time>><</link>><</if>>",
 		  "_comment35":"狼窝的溪流钓鱼点入口"
         },
 		{
@@ -302,7 +299,7 @@
 		{
 		  "passage": "Bird Tower",
 		  "findString": "Bird Tower Rainwater Pool]]>><</link>>\n\t<br>",
-		  "replace": "Bird Tower Rainwater Pool]]>><</link>><br><<if $fishingrod and $fishing_place_bird_tower_unlock>>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在雨水池里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bird_tower\">><<fishing_cast_time>><</link>><br><br><</if>>",
+		  "replace": "Bird Tower Rainwater Pool]]>><</link>><br><<if $fishingrod and $fishing_place_bird_tower_unlock>>钓鱼<br><<fishingrod_held_icon>><<link [[在雨水池里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bird_tower\">><<fishing_cast_time>><</link>><br><br><</if>>",
 		  "_comment37":"鹰塔的雨水池钓鱼点入口"
 		},
         {
@@ -314,7 +311,7 @@
         {
           "passage": "Widgets Cabin",
           "findString": "<</if>>\n\t\t<br>\n\t<</if>>",
-          "replace": "<</if>><br><</if>><<if $fishingrod and $fishing_place_eden_clearing_unlock>><<if $edenspring gte 1>>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在泉水里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"eden_clearing\">><<fishing_cast_time>><</link>><br><br><<else>><i>你不能在这样脏乱的泉水中钓鱼。</i><br><br><</if>><</if>>",
+          "replace": "<</if>><br><</if>><<if $fishingrod and $fishing_place_eden_clearing_unlock>><<if $edenspring gte 1>>钓鱼<br><<fishingrod_held_icon>><<link [[在泉水里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"eden_clearing\">><<fishing_cast_time>><</link>><br><br><<else>><i>你不能在这样脏乱的泉水中钓鱼。</i><br><br><</if>><</if>>",
 		  "_comment39":"伊甸家的泉水钓鱼点入口"
         },
         {
@@ -326,7 +323,7 @@
         {
           "passage": "Bog",
           "findString": "to 1>><<pass 5>><</link>>\n\t\t\t\t<br>\n\t\t\t<</if>>",
-          "replace": "to 1>><<pass 5>><</link>><br><</if>><<if $fishingrod and $fishing_place_bog_unlock>><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在沼泽钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bog\">><<fishing_cast_time>><</link>><br><br><</if>>",
+          "replace": "to 1>><<pass 5>><</link>><br><</if>><<if $fishingrod and $fishing_place_bog_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在沼泽钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bog\">><<fishing_cast_time>><</link>><br><br><</if>>",
 		  "_comment41":"沼泽钓鱼点入口"
         },
         {
@@ -338,7 +335,7 @@
         {
           "passage": "Trash",
           "findString": "<</if>>\n\n\t<<if $trash lte 0>>",
-          "replace": "<</if>><<if $fishingrod and $fishing_place_trash_unlock and $trash gte 50>><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在沸水中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"trash\">><<fishing_cast_time>><</link>><br><br><</if>><<if $trash lte 0>>",
+          "replace": "<</if>><<if $fishingrod and $fishing_place_trash_unlock and $trash gte 50>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在沸水中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"trash\">><<fishing_cast_time>><</link>><br><br><</if>><<if $trash lte 0>>",
 		  "_comment43":"垃圾场的沸水钓鱼点入口"
         },
         {
@@ -350,7 +347,7 @@
         {
           "passage": "Park",
           "findString": "<<exhibitionist4>>\n\t\t<</if>>",
-          "replace": "<<exhibitionist4>><</if>><<if $fishingrod and $fishing_place_park_unlock>><br><br>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在喷泉中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"park\">><<fishing_cast_time>><</link>><</if>>",
+          "replace": "<<exhibitionist4>><</if>><<if $fishingrod and $fishing_place_park_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在喷泉中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"park\">><<fishing_cast_time>><</link>><</if>>",
 		  "_comment":"公园喷泉的钓鱼点入口"
         },
 		{
@@ -362,7 +359,7 @@
 		{
 		  "passage": "School Pool",
 		  "findString": "<<exhibitionclassroom>>",
-		  "replace": "<<exhibitionclassroom>><<if $fishingrod and $fishing_place_school_pool_unlock and !Time.schoolTime>>钓鱼<br><span id=\"fishingrod_held_icon\"><<fishingrod_held_icon>></span><<link [[在学校泳池中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"school_pool\">><<fishing_cast_time>><</link>><br><br><</if>>",
+		  "replace": "<<exhibitionclassroom>><<if $fishingrod and $fishing_place_school_pool_unlock and !Time.schoolTime>>钓鱼<br><<fishingrod_held_icon>><<link [[在学校泳池中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"school_pool\">><<fishing_cast_time>><</link>><br><br><</if>>",
 		  "_comment":"学校泳池的钓鱼点入口"
 		},
         {
@@ -513,7 +510,7 @@
 		{
 		  "passage": "Widgets Robin",
 		  "findString": "<<robinbully>>",
-		  "replace": "<<robinbully>>/*<<ind>><<link [[给罗宾看看你钓到的任务鱼|Fishing Request Robin]]>><</link>><br><br>*/",
+		  "replace": "<<robinbully>><<ind>><<link [[给罗宾看看你钓到的任务鱼|Fishing Request Robin]]>><</link>><br><br>",
 		  "_comment":"dom罗宾拓展联动：展示任务鱼选项入口"
 		},
 		{
@@ -543,7 +540,7 @@
 		{
 		  "passage": "Robin Walk",
 		  "findString": "<</if>>\n\t<br>\n<</if>>",
-		  "replace": "<</if>><br><</if>><<if $fishing_request_robin.length gte 10 and $daily.robin.fishing isnot true>><<lakeicon \"fishing\">><<link [[去钓鱼|Robin Fishing Place]]>><</link>><br><</if>>",
+		  "replace": "<</if>><br><</if>><<if $fishing_request_robin.length gte 10>><<if $daily.robin.fishing>><span class=\"fading\"><<lakeicon \"fishing\">></span><span class=\"blue\">你们今天已经一起钓过鱼了。</span><<else>><<lakeicon \"fishing\">><<link [[去钓鱼 (1:30)|Robin Fishing Place]]>><</link>><</if>><br><</if>>",
 		  "_comment":"dom罗宾拓展联动：约会钓鱼选项入口"
 		},
 		{
@@ -569,6 +566,24 @@
 		  "findString": "<</switch>>\n\t\t\t\t<<if $worn.feet.type.includes(\"shackle\")>>",
 		  "replace": "<</switch>><<if $terra_accessories_slots.includes(\"Sailfish_Boots\")>><<set _athleticsConfig.modifier to Math.floor(_athleticsConfig.modifier * 1.1)>><<set _athleticsConfig.modTypes.good.pushUnique(\"航鱼靴\")>><</if>><<if $worn.feet.type.includes(\"shackle\")>>",
 		  "_comment":"装备航鱼靴时提供运动加成"
+		},
+		{
+		  "passage": "Island",
+		  "findString": "<<preMirror>><</link>>\n\t<br>",
+		  "replace": "<<preMirror>><</link>><br><<fishing_island>>",
+		  "_comment":"海岛钓鱼选项入口"
+		},
+		{
+		  "passage": "Island",
+		  "findString": "<</if>>\n\t<br>\n<</if>>",
+		  "replace": "<</if>><br><</if>><<fish_island>><br>",
+		  "_comment":"海岛吃鱼选项入口"
+		},
+		{
+		  "passage": "Island Build",
+		  "findString": "<<islandBuildOption raft>>\n\t\t<</if>>",
+		  "replace": "<<islandBuildOption raft>><</if>><<if $island_cooking_unlocked>><<island_build_cooking>><</if>>",
+		  "_comment":"海岛建造制作站的交互框"
 		}
       ]
     },
@@ -618,6 +633,12 @@
             "to": "(date.day === 1 && date.hour < 6) || V.Bloody_Tear_used",
 			"fileName": "time.js",
 			"_comment":"血泪使用后，当晚变为血月"
+          },
+		  {
+            "from": "updateOptions();",
+            "to": "updateOptions();updateVoidbag();",
+			"fileName": "ui.js",
+			"_comment":"虚空袋内切换鱼竿后，刷新页面"
           }
         ]
       }

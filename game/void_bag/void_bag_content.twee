@@ -20,6 +20,10 @@
 			<<toggleTab>>
 			<<replace #customOverlayContent>><<tools>><</replace>>
 		<</button>>
+		<<button "打开宝匣">>
+			<<toggleTab>>
+			<<replace #customOverlayContent>><<unloadCrate>><</replace>>
+		<</button>>
 	</div>
 	<<closeButton>>
 <</widget>>
@@ -80,7 +84,7 @@
 	<<if $fishingrod>>
 		<br>
 		<span class="gold bold">鱼饵</span><mouse class="tooltip linkBlue">(?)<span>鱼饵可以给你提供不同的鱼饵力，影响渔获的品质，也影响在成功钓起渔获物时鱼饵物品被消耗掉的几率：高鱼饵力意味着低消耗几率。</span></mouse><br>
-		<<if $passage is "Fishing">>
+		<<if $passage is "Fishing" or  $passage is "Robin Fishing">>
 			哦不，钓钩都抛出去了，怎么能换鱼饵呢？<br>
 		<<else>>
 			<label><<radiobutton "$Bait" "None" autocheck>>不使用鱼饵</label>
@@ -174,129 +178,71 @@
 		<<void_bag_Potion>>
 	</span>
 	<<if $fishingrod>>
-		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你只能在已解锁的钓鱼点处，或者孤儿院的阁楼里切换鱼竿</span></mouse><br>
+		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你不能在钓鱼小游戏中切换鱼竿</span></mouse><br>
 		<br>
-		<<if ($fishing_place_beach_unlock and $passage is "Beach") or
-			($fishing_place_lake_fishing_rock_unlock and $passage is "Lake Fishing Rock") or
-			($fishing_place_barb_street_unlock and $passage is "Barb Street") or
-			($fishing_place_moor_unlock and $passage is "Moor" and $moor is 10) or
-			($fishing_place_honey_unlock and $passage is "Forest" and $forest gt 50) or
-			($fishing_place_farm_woodland_unlock and $passage is "Farm Woodland") or
-			($fishing_place_temple_garden_unlock and $passage is "Temple Garden") or
-			($fishing_place_wolf_cave_clearing_unlock and $passage is "Wolf Cave Clearing") or
-			($artificial_fishing_pond_wolf_cave_clearing is "done" and $passage is "Forest" and $forest gt 50) or
-			($fishing_place_bird_tower_unlock and $passage is "Bird Tower") or
-			($artificial_fishing_pond_bird_tower is "done" and $passage is "Moor" and $moor gte 100) or
-			($fishing_place_eden_clearing_unlock and $passage is "Eden Clearing") or
-			($artificial_fishing_pond_eden_cabin is "done" and $passage is "Forest" and $forest gt 50) or
-			($fishing_place_bog_unlock and $passage is "Bog") or
-			($fishing_place_trash_unlock and $passage is "Trash" and $trash gte 50) or
-			($fishing_place_park_unlock and $passage is "Park") or
-			($fishing_place_school_pool_unlock and $passage is "School Pool")
-		>>
-			<<if $Golden_Fishing_Rod>>
-				<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
-				<<link "使用">>
-					<<set $fishingrod_held to "Golden_Fishing_Rod">>
-					<<replace #fishingrod_held_icon>>
-						<<fishingrod_held_icon>>
-					<</replace>>
-				<</link>>
-				<br>
-			<</if>>
-			<<if $Hotline_Fishing_Hook>>
-				<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>熔线钓钩
-				<<link "使用">>
-					<<set $fishingrod_held to "Hotline_Fishing_Hook">>
-					<<replace #fishingrod_held_icon>>
-						<<fishingrod_held_icon>>
-					<</replace>>
-				<</link>>
-				<br>
-			<</if>>
-			<<if $Fiberglass_Fishing_Pole>>
-				<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿
-				<<link "使用">>
-					<<set $fishingrod_held to "Fiberglass_Fishing_Pole">>
-					<<replace #fishingrod_held_icon>>
-						<<fishingrod_held_icon>>
-					<</replace>>
-				<</link>>
-				<br>
-			<</if>>
-			<<if $Scarab_Fishing_Rod>>
-				<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
-				<<link "使用">>
-					<<set $fishingrod_held to "Scarab_Fishing_Rod">>
-					<<replace #fishingrod_held_icon>>
-						<<fishingrod_held_icon>>
-					<</replace>>
-				<</link>>
-				<br>
-			<</if>>
-			<<if $Chum_Caster>>
-				<<icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者
-				<<link "使用">>
-					<<set $fishingrod_held to "Chum_Caster">>
-					<<replace #fishingrod_held_icon>>
-						<<fishingrod_held_icon>>
-					<</replace>>
-				<</link>>
-				<br>
-			<</if>>
-			<<if $Reinforced_Fishing_Pole>>
-				<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
-				<<link "使用">>
-					<<set $fishingrod_held to "Reinforced_Fishing_Pole">>
-					<<replace #fishingrod_held_icon>>
-						<<fishingrod_held_icon>>
-					<</replace>>
-				<</link>>
-				<br>
-			<</if>>
-			<<if $Wood_Fishing_Pole>>
-				<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿
-				<<link "使用">>
-					<<set $fishingrod_held to "Wood_Fishing_Pole">>
-					<<replace #fishingrod_held_icon>>
-						<<fishingrod_held_icon>>
-					<</replace>>
-				<</link>>
-				<br>
-			<</if>>
+		<<if $passage is "Fishing" or $passage is "Robin Fishing">>
+			哦不，钓钩都抛出去了，怎么能换鱼竿呢？
 		<<else>>
 			<<if $Golden_Fishing_Rod>>
 				<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Golden_Fishing_Rod">>
+					<<set _optionsRefresh to true>>
+				<</link>>
 				<mouse class="tooltip linkBlue">(?)<span>50渔力，每次收线减少15距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Hotline_Fishing_Hook>>
 				<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>熔线钓钩
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Hotline_Fishing_Hook">>
+					<<set _optionsRefresh to true>>
+				<</link>>
 				<mouse class="tooltip linkBlue">(?)<span>45渔力，每次收线减少14距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Fiberglass_Fishing_Pole>>
 				<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Fiberglass_Fishing_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
 				<mouse class="tooltip linkBlue">(?)<span>30渔力，每次收线减少13距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Scarab_Fishing_Rod>>
 				<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Scarab_Fishing_Rod">>
+					<<set _optionsRefresh to true>>
+				<</link>>
 				<mouse class="tooltip linkBlue">(?)<span>30渔力，每次收线减少13距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Chum_Caster>>
 				<<icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Chum_Caster">>
+					<<set _optionsRefresh to true>>
+				<</link>>
 				<mouse class="tooltip linkBlue">(?)<span>25渔力，每次收线减少12距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Reinforced_Fishing_Pole>>
 				<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Reinforced_Fishing_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
 				<mouse class="tooltip linkBlue">(?)<span>20渔力，每次收线减少11距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Wood_Fishing_Pole>>
 				<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Wood_Fishing_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
 				<mouse class="tooltip linkBlue">(?)<span>15渔力，每次收线减少10距离</span></mouse>
 				<br>
 			<</if>>
@@ -306,4 +252,80 @@
 	<<else>>
 		你需要从某人那里获得鱼竿。也许这人正漂浮在海上。<br>
 	<</if>>
+<</widget>>
+
+<<widget "unloadCrate">>
+
+	<span id="unloadCrateHint">
+	</span>
+	<span id="crateList">
+		<<crateList>>
+	</span>
+
+<</widget>>
+
+:: Unload Crate [widget]
+<<widget "UnloadCrateHint">>
+
+<<set _allCrateList to getAllCrateList()>>
+<<for _t to 0; _t lt _allCrateList.length; _t++>>
+	<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
+	<<if $void_bag_unload_crate is _crate.name>>
+		你打开了一个<<icon `_crate.icon`>>_crate.cn_name。<br>
+		<span class="gold">
+			你得到了_crate.unload！
+		</span><br>
+		<<break>>
+	<</if>>
+<</for>>
+<<if random(1,10) is 1 and $void_bag_unload_crate is "Ocean_Crate">>
+	<br>
+	<<earnFeat "X Marks the Spot">>
+	你发现里面还有一个用蜡质细绳捆着的皮革卷轴。你把它展开，是一张保存完好的地图。这张地图描绘了一个森林旁边的沿海定居点。表示海洋的部分上，线条纵横交错，有的地方被符号标注了，可能是一些重要的地点。在地图的左上角画着一只克拉肯，右下角画着一条龙。博物馆馆长也许会知道更多关于它的信息。<br>
+	<<set $antiquemoney += 4000>>
+	<<if $museumAntiques.antiques.antiqueleathermap is "notFound">>
+		<<set $museumAntiques.antiques.antiqueleathermap to "found">>
+	<</if>>
+<</if>>
+<br>
+
+<</widget>>
+
+<<widget "crateList">>
+
+<<if getCrateObtainedList().length gte 1>>
+	到了激动人心的开奖环节~开哪个呢？<br>
+	<br>
+	<div class="itemTerra">
+		<<set _crateObtained to getCrateObtainedList()>>
+		<<for _t to 0; _t lt _crateObtained.length; _t++>>
+			<<set _crate to setup.terraCrate[_crateObtained[_t]]>>
+			<<capture _crate>>
+				<div class="item">
+					<mouse class="tooltip">
+						<<icon `_crate.icon`>>
+						<span>
+							_crate.cn_name
+						</span>
+					</mouse>
+					<hr>
+					_crate.amount
+					<hr>
+					<<link "打开">>
+						<<set $void_bag_unload_crate to _crate.name>>
+						<<replace #unloadCrateHint>>
+							<<UnloadCrateHint>>
+						<</replace>>
+						<<replace #crateList>>
+							<<crateList>>
+						<</replace>>
+					<</link>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+<<else>>
+	哦不，你看起来没有匣子了。<br>
+<</if>>
+
 <</widget>>

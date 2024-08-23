@@ -1,0 +1,26 @@
+:: Fish Island Eat Raw
+
+<<if $island_cooking_unlocked>>
+	<<set _fishAllList to getAllFishList()>>
+	<<for _t to 0; _t lt _fishAllList.length; _t++>>
+		<<set _fish to setup.terraFish[_fishAllList[_t]]>>
+		<<if $fish_island_eat is _fish.name>>
+			<<island_pass 10>>
+			你努力地生吃掉了一条<<icon `_fish.icon`>>_fish.cn_name。尽管这样的吃法并不能饱腹，但能解燃眉之急。<span class="pink">你尽量避免感受它在你口中的存在。</span><<gtrauma>><<trauma 3>><<lcontrol>><<control -5>><br>
+			_fish.consumed
+			<<hunger -100>>
+			<<break>>
+		<</if>>
+	<</for>>
+	<br>
+	<<link [[继续|Fish Island Eat]]>><</link>>
+<<else>>
+	<<set $island_cooking_unlocked to true>>
+	你将鱼送到了嘴边。你不断试图说服自己：这是流落荒岛，缺乏工具的无奈之举。唯有存活才能找到生还的契机，<span class="teal">你还有更重要的事情要做</span>。<br>
+	<br>
+	不对，总有别的办法的。你至少可以用收集得到的木头做些什么，来加工鱼类。<br>
+	<br>
+	<span class="gold">你可以从用木头制作一个工作台开始，来简单地处理鱼类。</span><br>
+	<br>
+	<<link [[继续|Fish Island Eat]]>><</link>>
+<</if>>

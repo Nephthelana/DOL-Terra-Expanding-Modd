@@ -1,0 +1,131 @@
+:: Island Build Cooking [widget]
+<<widget "island_build_cooking">>
+
+<div>
+	<<if !$island_build_cooking.includes("Work Bench")>>
+		<<set $_disableBuild_Work_Bench to false>>
+		<span class="red">没有工作台</span>：无法加工鱼类。<br>
+		<<if $sciencetrait lt 1>>
+			<span class="purple">C</span><span class="black">需要有科学学科特质。</span><br>
+			<<set $_disableBuild_Work_Bench to true>>
+		<</if>>
+		<<if currentSkillValue('housekeeping') lt 200>>
+			<span class="purple">D</span><span class="black">需要有家务技能。</span><br>
+			<<set $_disableBuild_Work_Bench to true>>
+		<</if>>
+		<<if $island.wood lt 5>>
+			<span class="black">需要更多的木材。</span> | 需要木材的数量：5<br>
+			<<set $_disableBuild_Work_Bench to true>>
+		<</if>>
+		<<if !$_disableBuild_Work_Bench>>
+			<<icon "furniture_item/Work_Bench.png">><<link [[制作工作台 (0:30)|Island Build Cooking Work Bench]]>>
+				<<set $island_build_cooking.pushUnique("Work Bench")>>
+				<<island_pass 30>>
+				<<set $island.wood -= 5>>
+			<</link>> | 需要木材的数量：5<br>
+		<</if>>
+	<<else>>
+		<<icon "furniture_item/Work_Bench.png">><span class="green">工作台</span>：可以简单地将鱼类处理成生鱼片。<br>
+		<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Work Bench")>><</link>>
+	<</if>>
+</div>
+/*
+<div>
+	<<if !$island_build_cooking.includes("Campfire")>>
+		<<set $_disableBuild_Campfire to false>>
+		<span class="red">没有篝火</span>：无法烤制鱼类。<br>
+		<<if !$island_build_cooking.includes("Work Bench")>>
+			<span class="black">需要在工作台上制作得到篝火。</span><br>
+			<<set $_disableBuild_Campfire to true>>
+		<<else>>
+			<<if $sciencetrait lt 1>>
+				<span class="purple">C</span><span class="black">需要有科学学科特质。</span><br>
+				<<set $_disableBuild_Work_Bench to true>>
+			<</if>>
+			<<if currentSkillValue('housekeeping') lt 400>>
+				<span class="blue">C</span><span class="black">需要有家务技能。</span><br>
+				<<set $_disableBuild_Campfire to true>>
+			<</if>>
+			<<if $island.wood lt 5>>
+				<span class="black">需要更多的木材。</span> | 需要木材的数量：5<br>
+				<<set $_disableBuild_Campfire to true>>
+			<</if>>
+		<</if>>
+		<<if !$_disableBuild_Campfire>>
+			<<icon "furniture_item/Campfire.png">><<link [[制作篝火 (0:30)|Island Build Cooking Campfire]]>>
+				<<set $island_build_cooking.pushUnique("Campfire")>>
+				<<island_pass 30>>
+				<<set $island.wood -= 5>>
+			<</link>> | 需要木材的数量：5<br>
+		<</if>>
+	<<else>>
+		<<icon "furniture_item/Campfire.png">><span class="green">篝火</span>：可以消耗木头，为鱼类加工提供热源<br>
+		<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Campfire")>><</link>>
+	<</if>>
+</div>
+<<if $island_build_cooking.includes("Work Bench")>>
+	<div>
+		<<if !$island_build_cooking.includes("Cooking Pot")>>
+			<<set $_disableBuild_Cooking_Pot to false>>
+			<span class="red">没有烹饪锅</span>：无法烹饪鱼类。<br>
+			<<if !$island_build_cooking.includes("Campfire") or !$island_build_cooking.includes("Iron Anvil")>>
+				<<if !$island_build_cooking.includes("Campfire")>>
+					<span class="black">需要篝火作为热源。</span><br>
+					<<set $_disableBuild_Cooking_Pot to true>>
+				<</if>>
+				<<if !$island_build_cooking.includes("Iron Anvil")>>
+					<span class="black">需要在铁砧上制作得到烹饪锅。</span> | 制作铁砧需要铁锭的数量：5<br>
+					<<set $_disableBuild_Cooking_Pot to true>>
+					<<if $Iron_Bar gte 5>>
+						<<icon "furniture_item/Iron_Anvil.png">><<link [[制作铁砧 (0:30)|Island Build]]>><<island_pass 30>><<set $Iron_Bar -= 5>><<set $island_build_cooking.pushUnique("Iron Anvil")>><</link>><br>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $sciencetrait lt 2>>
+					<span class="purple">B</span><span class="black">需要有科学学科特质。</span><br>
+					<<set $_disableBuild_Cooking_Pot to true>>
+				<</if>>
+				<<if currentSkillValue('housekeeping') lt 600>>
+					<span class="blue">B</span><span class="black">需要有家务技能。</span><br>
+					<<set $_disableBuild_Cooking_Pot to true>>
+				<</if>>
+				<<if $island.wood lt 2>>
+					<span class="black">需要更多的木材。</span> | 需要木材的数量：2<br>
+					<<set $_disableBuild_Cooking_Pot to true>>
+				<</if>>
+				<<if $Iron_Bar lt 10>>
+					<span class="black">需要更多的铁锭。</span> | 需要铁锭的数量：10<br>
+					<<set $_disableBuild_Cooking_Pot to true>>
+				<</if>>
+			<</if>>
+			<<if !$_disableBuild_Cooking_Pot>>
+				<<icon "furniture_item/Cooking_Pot.png">><<link [[制作烹饪锅 (1:00)|Island Build Cooking Cooking Pot]]>>
+					<<set $island_build_cooking.pushUnique("Cooking Pot")>>
+					<<island_pass 60>>
+					<<set $island.wood -= 2>>
+					<<set $Iron_Bar -= 10>>
+				<</link>> | 需要木材的数量：5<br>
+			<</if>>
+		<<else>>
+			<<icon "furniture_item/Cooking_Pot.png">><span class="green">烹饪锅</span>：配合篝火，可以消耗木头，烹饪得到更有营养的食物<br>
+			<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Cooking Pot")>><</link>>
+		<</if>>
+	</div>
+<</if>>
+*/
+<</widget>>
+
+:: Island Build Cooking Work Bench
+你立即开始着手制作工作台。这种简单的小型工作站点可以满足你处理鱼类的基本需要。<br>
+<br>
+<<link [[继续|Island Build]]>><</link>>
+
+:: Island Build Cooking Campfire
+你在工作台上将这些木头处理成合适的结构，以更好地发挥生热作用，并方便后续的添柴工作。<br>
+<br>
+<<link [[继续|Island Build]]>><</link>>
+
+:: Island Build Cooking Cooking Pot
+你一顿努力之下，将这些铁锭铸造成了可以说是一口锅的形状，然后把它驾在了篝火上。<br>
+<br>
+<<link [[继续|Island Build]]>><</link>>

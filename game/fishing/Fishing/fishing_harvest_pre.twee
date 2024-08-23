@@ -62,7 +62,7 @@
 	<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
 		<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
 		<<if $fishing_request_selection is _requestFish.name>>
-			<<if $fishing_place is _requestFish.catching_place1 or $fishing_place is _requestFish.catching_place2 or $fishing_place is _requestFish.catching_place3>>
+			<<if _requestFish.catching_place.includes($fishing_place)>>
 				<<set _request_fish_canbe_obtained to true>>
 			<<else>>
 				<<set _request_fish_canbe_obtained to false>>
@@ -73,7 +73,7 @@
 
 	/* 各个地点渔获列表 从最高渔获稀有度开始依次判定*/
 	<<switch $fishing_place>>
-		<<case "lake_fishing_rock">>
+		<<case "lake_fishing_rock" or "waterfall">>
 			<<switch _fishing_harvest_catch_quality>>
 				<<case "extremely_rare">>
 					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
@@ -108,15 +108,15 @@
 				<<case "extremely_rare">>
 					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
 					<<elseif _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
-					<<else>><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
 					<</if>>
 				<<case "very_rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
-					<<else>><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
 					<</if>>
 				<<case "rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Ocean_Crate.png">>海洋匣<<set $fishing_harvest to "Ocean_Crate">>
-					<<else>><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
 					<</if>>
 				<<case "uncommon">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
@@ -134,7 +134,7 @@
 					<<else>><<icon "fishing/fish/Trout.png">>鳟鱼<<set $fishing_harvest to "Trout">>
 					<</if>>
 			<</switch>>
-		<<case "barb_street">>
+		<<case "barb_street" or "gulch">>
 			<<switch _fishing_harvest_catch_quality>>
 				<<case "extremely_rare">>
 					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
@@ -144,12 +144,12 @@
 				<<case "very_rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
 					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
-					<<else>><<icon "fishing/fish/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
 					<</if>>
 				<<case "rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
 					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
-					<<else>><<icon "fishing/fish/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
 					<</if>>
 				<<case "uncommon">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
@@ -292,12 +292,12 @@
 				<<case "very_rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
 					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
-					<<else>><<icon "fishing/fish/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
 					<</if>>
 				<<case "rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
 					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $fishing_harvest to "Stinkfish">>
-					<<else>><<icon "fishing/fish/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Blue_Jellyfish_bait.png">>蓝水母<<set $fishing_harvest to "Blue_Jellyfish_bait">>
 					<</if>>
 				<<case "uncommon">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
@@ -345,7 +345,7 @@
 					<<else>><<icon "fishing/fish/Prismatic_Guppy.png">>棱镜孔雀鱼<<set $fishing_harvest to "Prismatic_Guppy">>
 					<</if>>
 			<</switch>>
-		<<case "eden_clearing" or "eden_clearing_artificial">>
+		<<case "eden_clearing" or "eden_clearing_artificial" or "rocky_hillock">>
 			<<switch _fishing_harvest_catch_quality>>
 				<<case "extremely_rare">>
 					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
@@ -380,15 +380,15 @@
 				<<case "extremely_rare">>
 					<<if $zephyr_fish isnot true>><<icon "Zephyr_Fish.png">>和风鱼<<set $fishing_harvest to "Zephyr_Fish">>
 					<<elseif _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
-					<<else>><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
 					<</if>>
 				<<case "very_rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $fishing_harvest to "Golden_Crate">>
-					<<else>><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
 					<</if>>
 				<<case "rare">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Sulphurous_Crate.png">>硫海匣<<set $fishing_harvest to "Sulphurous_Crate">>
-					<<else>><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $fishing_harvest to "Pink_Jellyfish_bait">>
 					<</if>>
 				<<case "uncommon">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>

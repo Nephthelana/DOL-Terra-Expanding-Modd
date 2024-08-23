@@ -1,5 +1,7 @@
 :: Fishing Request Robin
 <<npc Robin>><<person1>>
+
+/* 展示任务鱼数量不少于5条时，森林约会时将有4/5概率出现抓小动物鱼饵的选项 */
 <<if $fishing_request_robin.length gte 5 and $robin_forest_bait_intro isnot true>>
 	<<set $robin_forest_bait_intro to true>>
 	"等等！你都是用什么吸引它们的？它们肯定不会像这样自己跳进你的袋子里。"罗宾比划着一条抛物线。<br>
@@ -17,6 +19,7 @@
 	<br>
 	<<link [[继续|Fishing Request Robin]]>><</link>>
 	<<exitAll>>
+/* 展示任务鱼数量不少于10条时，约会时会出现一起钓鱼的选项 */
 <<elseif $fishing_request_robin.length gte 10 and $robin_date_fishing_intro isnot true>>
 	<<set $robin_date_fishing_intro to true>>
 	"嘿！打住！"罗宾看起来想阻止你从虚空袋里掏鱼。你已经向<<him>>展示了好几条鱼，却不告诉<<him>>你到底是如何抓到这些稀奇玩意的。<br>
@@ -47,6 +50,8 @@
 	<<link [[继续|Fishing Request Robin]]>><</link>>
 	<<exitAll>>
 <</if>>
+
+/* 日常对话 */
 <<if $fishing_request_robin.length lt 1>>
 	你在虚空袋里翻找着。"这...这是个袋子吗？"罗宾好奇地瞪大了双眼。<br>
 <<else>>

@@ -289,6 +289,12 @@
 <<if $Pink_Pearl is undefined>>
 	<<set $Pink_Pearl = 0>>
 <</if>>
+<<if $Iron_Bar is undefined>>
+	<<set $Iron_Bar = 0>>
+<</if>>
+<<if $Sea_Remains is undefined>>
+	<<set $Sea_Remains = 0>>
+<</if>>
 
 /* 饰品栏 */
 <<if $terra_accessories_slots is undefined>>
@@ -308,6 +314,16 @@
 /* dom罗宾拓展联动 */
 <<if $robin_fishing_place_unlocked is undefined>>
 	<<set $robin_fishing_place_unlocked to []>>
+<</if>>
+
+/* 食物 */
+<<if $Sashimi is undefined>>
+	<<set $Sashimi to 0>>
+<</if>>
+
+/* 海岛 */
+<<if $island_build_cooking is undefined>>
+	<<set $island_build_cooking to []>>
 <</if>>
 
 <</widget>>

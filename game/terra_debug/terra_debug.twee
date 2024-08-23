@@ -1,37 +1,34 @@
 :: Terra Debug
 晶塔相关<br>
-<<if $pylon_collected is undefined>>
-	<<set $pylon_collected to []>>
-<</if>>
 *请在历史等级达到B级，在博物馆向温特询问过晶塔的事情后，再使用这些晶塔相关功能。在这之前解锁晶塔功能无法发挥作用。<br>
 <<if $pylon_collected.includes("Bedroom")>>
 	<<icon "pylon/Forest_Pylon.png">><<link [[锁定孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_collected.delete("Bedroom")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Forest_Pylon.png">></span><<link [[解锁孤儿院卧室晶塔|Terra Debug]]>><<set $$pylon_collected.pushUnique("Bedroom")>><</link>>
+	<span class="fading"><<icon "pylon/Forest_Pylon.png">></span><<link [[解锁孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Bedroom")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Eden Cabin")>>
-	<<icon "pylon/Jungle_Pylon.png">><<link [[锁定伊甸小屋晶塔|Terra Debug]]>><<set $pylon_collected.delete("Eden Cabin") to false>><</link>>
+	<<icon "pylon/Jungle_Pylon.png">><<link [[锁定伊甸小屋晶塔|Terra Debug]]>><<set $pylon_collected.delete("Eden Cabin")>><</link>>
 <<else>>
 	<span class="fading"><<icon "pylon/Jungle_Pylon.png">></span><<link [[解锁伊甸小屋晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Eden Cabin")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Farm Bedroom")>>
-	<<icon "pylon/Universal_Pylon.png">><<link [[锁定农场卧室晶塔|Terra Debug]]>><<set $pylon_collected.delete("Farm Bedroom") to false>><</link>>
+	<<icon "pylon/Universal_Pylon.png">><<link [[锁定农场卧室晶塔|Terra Debug]]>><<set $pylon_collected.delete("Farm Bedroom")>><</link>>
 <<else>>
 	<span class="fading"><<icon "pylon/Universal_Pylon.png">></span><<link [[解锁农场卧室晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Farm Bedroom")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Hawks Tower")>>
-	<<icon "pylon/Sunken_Pylon.png">><<link [[锁定鹰塔晶塔|Terra Debug]]>><<set $pylon_collected.delete("Hawks Tower") to false>><</link>>
+	<<icon "pylon/Sunken_Pylon.png">><<link [[锁定鹰塔晶塔|Terra Debug]]>><<set $pylon_collected.delete("Hawks Tower")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Sunken_Pylon.png">></span><<link [[解锁鹰塔晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Hawks Tower") to true>><</link>>
+	<span class="fading"><<icon "pylon/Sunken_Pylon.png">></span><<link [[解锁鹰塔晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Hawks Tower")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Wolfcave")>>
-	<<icon "pylon/Mushroom_Pylon.png">><<link [[锁定狼窝晶塔|Terra Debug]]>><<set $pylon_collected.delete("Wolfcave") to false>><</link>>
+	<<icon "pylon/Mushroom_Pylon.png">><<link [[锁定狼窝晶塔|Terra Debug]]>><<set $pylon_collected.delete("Wolfcave")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Mushroom_Pylon.png">></span><<link [[解锁狼窝晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Wolfcave") to true>><</link>>
+	<span class="fading"><<icon "pylon/Mushroom_Pylon.png">></span><<link [[解锁狼窝晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Wolfcave")>><</link>>
 <</if>>
 <br>
 以下几个传送选项，如在正常解锁对应地点前使用，可能会导致问题，请注意。<br>
@@ -65,5 +62,8 @@
 <<else>>
 	<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[丢弃血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to undefined>><</link>><br>
 <</if>>
+<br>
+海岛相关<br>
+<<link [[传送到海岛|Island]]>><<island_init>><<if $island.home is undefined>><<set $island.home to "rocky_hillock">><</if>><</link>><br>
 <br>
 <<getouticon>><<link [[确定并返回|Bedroom]]>><</link>>

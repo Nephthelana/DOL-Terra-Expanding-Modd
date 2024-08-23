@@ -1,0 +1,20 @@
+:: Fish Island [widget]
+<<widget "fish_island">>
+		
+<<if $fishingrod isnot true>>
+	<span class="blue">如果你能有一根鱼竿的话，可以试试钓鱼来解决食物问题。但在这个鬼地方，哪会有鱼竿呢？</span><br>
+<<elseif getFishObtainedList().length lte 0>>
+	<span class="teal">你也许可以试着钓一些鱼来充饥。</span><br>
+<<else>>
+	你可以吃鱼来填饱肚子。<br>
+	<<ind>><<link [[生吃鱼|Fish Island Eat]]>><</link>><br>
+<</if>>
+<<if $Sashimi gt 0>>
+	<<ind>><<link [[`吃一份生鱼片(${$Sashimi})（0:05)`|Island]]>><<island_pass 5>><<set $Sashimi -= 1>><<hunger -200>><<stress -3>><</link>><<lhunger>><<lstress>><br>
+<</if>>
+<<if $island_build_cooking.includes("Work Bench")>>
+	<<icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Fish Island Work Bench]]>><</link>><br>
+<</if>>
+<<link [[调试选项：回到孤儿院卧室|Bedroom]]>><</link>>
+
+<</widget>>

@@ -21,6 +21,9 @@
 	<<case "trash">>垃圾场深处的沸水池
 	<<case "park">>公园喷泉
 	<<case "school_pool">>学校泳池
+	<<case "rocky_hillock">>海岛的山顶营地
+	<<case "waterfall">>海岛的河流营地
+	<<case "gulch">>海岛的峡谷营地
 <</switch>>
 钓鱼。<br>
 /* 上学日8:59时自动退出钓鱼小游戏 */
@@ -41,7 +44,10 @@
 				<<fishing_Dreadnautilus>>
 				<<exit>>
 			<<default>>
-				<<fishing_harvest>>
+				你钓到了<<fishing_harvest>>！
+				<<if $fishing_place is "school_pool" and $fishing_harvest is "swim_underwear">>
+					或许有人愿意出价收购它。
+				<</if>>
 		<</switch>>
 	<</if>>
 	<br>
@@ -69,7 +75,7 @@
 		<span class="pink">它刚刚明明就没动！</span>|<span class="green">+ + 垂钓</span><<gstress>><<stress 3>>
 	<</switch>><br>
 	<br>
-	钓鱼状态：<br>
+	<<fishingrod_bobber>>钓鱼状态：<br>
 	<<if $fishing_distance lte 0>>
 		<span class="green">渔获距离：$fishing_distance/100</span>
 	<<elseif $fishing_distance lte 20>>
@@ -105,7 +111,7 @@
 		<<if ($danceskill * 0.5) gte random(1,1000)>>
 			<span class="green">但你设法维持住了身体的平衡。</span><br>
 		<<else>>
-			<span class="red">随着一阵猛烈的挣扎，你的身体失去平衡，被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>>
+			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...你被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>>
 			<<water>>
 			<br>
 			<br>

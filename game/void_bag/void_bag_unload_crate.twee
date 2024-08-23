@@ -101,12 +101,15 @@
 	<<set $Ocean_Crate -= 1>>
 	<<moneyGain random(500,1200)>>
 	<<if random(1,2) is 1>>
+		<<set _unload_crate_Sea_Remains to random(1,2)>>
+		、<<icon "material/Sea_Remains.png">>海洋残渣(_unload_crate_Sea_Remains)
+		<<set $Sea_Remains += _unload_crate_Sea_Remains>>
+	<<if random(1,2) is 1>>
+		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			<<set _unload_crate_Bait = random(2,6)>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 		<<else>>
-			<<set _unload_crate_Bait = random(2,6)>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
 		<</if>>

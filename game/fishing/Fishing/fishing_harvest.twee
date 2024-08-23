@@ -1,6 +1,5 @@
 :: Fishing Harvest [widget]
 <<widget "fishing_harvest">>
-	你钓到了
 	<<switch $fishing_harvest>>
 		/* 宠物 */
 		<<case "Zephyr_Fish">><<icon "Zephyr_Fish.png">>和风鱼
@@ -35,7 +34,7 @@
 			<<set $Salmon += 1>>
 		<<case "Bass">><<icon "fishing/fish/Bass.png">>鲈鱼
 			<<set $Bass += 1>>
-		<<case "Pink_Jellyfish_bait">><<icon "fishing/fish/Pink_Jellyfish_bait.png">>粉水母
+		<<case "Pink_Jellyfish_bait">><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母
 			<<set $Pink_Jellyfish_bait += 1>>
 		<<case "Shrimp">><<icon "fishing/fish/Shrimp.png">>虾
 			<<set $Shrimp += 1>>
@@ -49,7 +48,7 @@
 			<<set $Golden_Carp += 1>>
 		<<case "Stinkfish">><<icon "fishing/fish/Stinkfish.png">>臭味鱼
 			<<set $Stinkfish += 1>>
-		<<case "Blue_Jellyfish_bait">><<icon "fishing/fish/Blue_Jellyfish_bait.png">>蓝水母
+		<<case "Blue_Jellyfish_bait">><<icon "fishing/bait/Blue_Jellyfish_bait.png">>蓝水母
 			<<set $Blue_Jellyfish_bait += 1>>
 		<<case "Armored_Cavefish">><<icon "fishing/fish/Armored_Cavefish.png">>装甲洞穴鱼
 			<<set $Armored_Cavefish += 1>>
@@ -100,9 +99,6 @@
 		<<case "swim_underwear">>
 			<<set _colour to either("蓝色", "绿色", "红色", "黑色", "粉色", "紫色", "黄色", "白色", "橙色", "条纹", "波点")>>
 			一条_colour的$swimUnderwear<<set $panties_held += 1>>
-	<</switch>>！
-	<<if $fishing_place is "school_pool" and $fishing_harvest is "swim_underwear">>
-		或许有人愿意出价收购它。
-	<</if>>
+	<</switch>>
 <</widget>>
 	

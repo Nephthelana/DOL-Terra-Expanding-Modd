@@ -25,8 +25,8 @@
 	<<if $Fishing_Potion_countdown gt 0>>
 		<<set $fishing_power += 15>>
 	<</if>>
-	/* 装备钓鱼浮标提供10渔力 */
-	<<if $Fishing_Bobber>>
+	/* 装备钓鱼浮标或发光钓鱼浮标提供10渔力 */
+	<<if $terra_accessories_slots.includes("Fishing_Bobber") or $terra_accessories_slots.includes("Glowing_Fishing_Bobber")>>
 		<<set $fishing_power += 10>>
 	<</if>>
 	/* 装备渔夫耳环提供10渔力 */

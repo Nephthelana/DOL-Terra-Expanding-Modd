@@ -1,0 +1,20 @@
+:: Fishing Island [widget] 
+<<widget "fishing_island">>
+	
+	<<if $fishingrod>>
+		钓鱼<br>
+		<<fishingrod_held_icon>><<link [[在营地里钓鱼|Fishing Bitten]]>>
+			<<fishing_cast_time>>
+			<<switch $island.home>>
+				<<case "rocky_hillock">>
+					<<set $fishing_place to "rocky_hillock">>
+				<<case "waterfall">>
+					<<set $fishing_place to "waterfall">>
+				<<case "gulch">>
+					<<set $fishing_place to "gulch">>
+			<</switch>>
+		<</link>><br>
+		<br>
+	<</if>>
+
+<</widget>>

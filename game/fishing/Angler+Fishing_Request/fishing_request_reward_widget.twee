@@ -2,16 +2,18 @@
 	<<set $fishing_request_fish.delete($fishing_request_selection)>>
 	<<set $fishing_request_finished_daily to true>>
 	<<set $fishing_requests_finished_count += 1>>
-	<<switch $fishing_requests_finished_count>>
-		<<case 1>>
-			<<earnFeat "Servant-in-Training">>
-		<<case 10>>
-			<<earnFeat "Good Little Slave">>
-		<<case 25>>
-			<<earnFeat "Trout Monkey">>
-		<<case 50>>
-			<<earnFeat "Fast and Fishious">>
-	<</switch>>
+	<<if $fishing_requests_finished_count gte 1>>
+		<<earnFeat "Servant-in-Training">>
+	<</if>>
+	<<if $fishing_requests_finished_count gte 10>>
+		<<earnFeat "Good Little Slave">>
+	<</if>>
+	<<if $fishing_requests_finished_count gte 25>>
+		<<earnFeat "Trout Monkey">>
+	<</if>>
+	<<if $fishing_requests_finished_count gte 50>>
+		<<earnFeat "Fast and Fishious">>
+	<</if>>
 	<<if $options.cute_angler>>
 		<<print [
 			`"哦！谢谢你抓来我要的鱼，让我看看我能用些什么来作为你的酬劳..."`,

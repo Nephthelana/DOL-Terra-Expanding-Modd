@@ -1,0 +1,79 @@
+:: Robin Fishing Prepare
+<<npc Robin>><<person1>>
+/* 获取交给罗宾的鱼饵的名称、图标、渔力信息 */
+<<set $robin_bait_amount = Number($options.robin_bait_amount)>>
+<<set $robin_bait_type = $options.robin_bait_type>>
+<<set _baitObtained to getBaitObtainedList()>>
+<<for _t to 0; _t lt _baitObtained.length; _t++>>
+	<<set _bait to setup.terraBait[_baitObtained[_t]]>>
+	<<if $robin_bait_type is _bait.name>>
+		<<set $robin_bait_icon to _bait.icon>>
+		<<set $robin_bait_cn_name to _bait.cn_name>>
+		<<set $robin_bait_fishing_power to _bait.fishing_power>>
+		<<if _bait.amount lt $robin_bait_amount>>
+			<<set $robin_bait_amount to _bait.amount>>
+		<</if>>
+		<<break>>
+	<</if>>
+<</for>>
+/* 计算罗宾的渔力[默认使用强化钓竿，渔力为(20+鱼饵渔力)]，用于计算得到罗宾当天钓鱼等待咬钩所需的时间 */
+<<set $robin_fishing_fishing_power to (20+$robin_bait_fishing_power)>>
+/* 计算得到罗宾当天钓鱼等待咬钩所需的时间 */
+<<robin_fishing_cast_time>>
+/* 约会计时器归零，后续用于统计距离开始钓鱼已经过去的时间，以秒为单位 */
+<<set $robin_fishing_date_time_passed to 0>>
+/* 根据钓鱼地点的不同，从钓鱼约会总计的90分钟内，扣除赶路所需的对应时间，即为对应地点的可钓鱼时间 */
+<<switch $fishing_place>>
+	<<case "lake_fishing_rock">>
+		<<if $town_projects.road gte 4>>
+			<<set $robin_fishing_date_time to 3600>>
+		<<else>>
+			<<set $robin_fishing_date_time to 1800>>
+		<</if>>
+		<<set $fishing_place to "lake_fishing_rock">>
+	<<case "Beach">>
+		<<set $robin_fishing_date_time to 3600>>
+		<<set $fishing_place to "beach">>
+	<<case "Barb Street">>
+		<<set $robin_fishing_date_time to 4800>>
+		<<set $fishing_place to "barb_street">>
+<</switch>>
+/* 给予罗宾鱼饵。在罗宾的鱼饵消耗完之前，罗宾会处在钓鱼状态；消耗完之后，会处于在旁边看pc钓鱼的状态 */
+你给了罗宾$robin_bait_amount个<<icon `$robin_bait_icon`>>$robin_bait_cn_name。<br>
+/* 从pc身上扣除给出的鱼饵，免得在约会中继续使用这种鱼饵产生透支的情况 */
+<<set _baitObtained to getBaitObtainedList()>>
+<<for _t to 0; _t lt _baitObtained.length; _t++>>
+	<<set _bait to setup.terraBait[_baitObtained[_t]]>>
+	<<capture _bait>>
+		<<if _bait.name is $robin_bait_type>>
+			_bait.robin_give
+			<<break>>
+		<</if>>
+	<</capture>>
+<</for>>
+<br>
+<span id="fishingrod_held_icon"><<fishingrod_held_icon>></span>
+<<link [[钓鱼|Robin Fishing Bitten]]>><<fishing_cast_time>><<set $robin_fishing_harvest_times_prev to 0>><</link>>
+<<endevent>>
+
+
+:: Robin Fishing Cast Time [widget]
+<<widget "robin_fishing_cast_time">>
+	/* 获取罗宾当天抛竿等待鱼咬钩所需时间 */
+	<<set $robin_fishing_cast_time = 0>>
+	<<for _fishing_catch_counter = 0 ; $robin_fishing_cast_time lt 30 ; $robin_fishing_cast_time += 1>>
+		<<set _fishing_catch_counter += random (30,60)>>
+		<<set _fishing_catch_counter += $robin_fishing_fishing_power * 2>>
+		<<if ($robin_fishing_fishing_power / 3) gte random(1,100)>>
+			<<set _fishing_catch_counter += random (30,60)>>
+		<</if>>
+		<<if _fishing_catch_counter gte 660>>
+			<<if ((75 + $robin_fishing_fishing_power) / 2) gte random(1,100)>>
+				<<set $robin_fishing_cast_time += 1>>
+				<<break>>
+			<<else>>
+				<<set _fishing_catch_counter = 0>>
+			<</if>>
+		<</if>>
+	<</for>>
+<</widget>>

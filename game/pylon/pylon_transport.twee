@@ -4,7 +4,7 @@
 	<<earnFeat "Pylon Collector">>
 <</if>>
 你看着晶塔显示的地图，思索你要去哪里。<br>
-<<if $pylon_bedroom_unlock>>
+<<if $pylon_collected.includes("Bedroom")>>
 	<<if getRobinLocation() is "orphanage" or getRobinLocation() is "sleep" or getRobinLocation() is "bath" or getRobinLocation() is "liveStream">>
 		<<icon "pylon/Forest_Pylon.png">><<link [[传送到孤儿院卧室晶塔(0:01)|Bedroom]]>><<pass 1>><</link>>
 	<<else>>
@@ -12,11 +12,11 @@
 	<</if>>
 	<br>
 <</if>>
-<<if $pylon_farm_bedroom_unlock>>
+<<if $pylon_collected.includes("Farm Bedroom")>>
 	<<icon "pylon/Universal_Pylon.png">><<link [[传送到农场卧室晶塔(0:01)|Farm Bedroom]]>><<pass 1>><</link>>
 	<br>
 <</if>>
-<<if $pylon_eden_cabin_unlock>>
+<<if $pylon_collected.includes("Eden Cabin")>>
 	<<if Time.hour lt 11 or Time.hour gt 14 >>
 		<<icon "pylon/Jungle_Pylon.png">><<link [[传送到伊甸小屋晶塔(0:01)|Eden Cabin]]>><<pass 1>><</link>>
 	<<else>>
@@ -24,11 +24,11 @@
 	<</if>>
 	<br>
 <</if>>
-<<if $pylon_hawks_tower_unlock>>
+<<if $pylon_collected.includes("Hawks Tower")>>
 	<<icon "pylon/Sunken_Pylon.png">><<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><</link>>
 	<br>
 <</if>>
-<<if $pylon_wolfcave_unlock>>
+<<if $pylon_collected.includes("Wolfcave")>>
 	<<if Time.hour gte 6 and Time.hour lte 17>>
 		<<set $wolf_cave_hunt_request_refuse to false>>
 	<</if>>

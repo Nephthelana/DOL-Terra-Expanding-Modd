@@ -5,7 +5,8 @@ setup.terraFish = {
         type: "cookable",
         price: 7.5,
         amount: V.Salmon || 0,
-        icon: "fishing/fish/Salmon.png"
+        icon: "fishing/fish/Salmon.png",
+        consumed: "<<set $Salmon -= 1>>"
     },
     "Bass": {
         name: "Bass",
@@ -13,15 +14,8 @@ setup.terraFish = {
         type: "cookable",
         price: 5,
         amount: V.Bass || 0,
-        icon: "fishing/fish/Bass.png"
-    },
-    "Pink_Jellyfish_bait": {
-        name: "Pink_Jellyfish_bait",
-        cn_name: "粉水母",
-        type: "bait",
-        price: 350,
-        amount: V.Pink_Jellyfish_bait || 0,
-        icon: "fishing/fish/Pink_Jellyfish_bait.png"
+        icon: "fishing/fish/Bass.png",
+        consumed: "<<set $Bass -= 1>>"
     },
 	"Shrimp": {
         name: "Shrimp",
@@ -29,7 +23,8 @@ setup.terraFish = {
         type: "cookable",
         price: 15,
         amount: V.Shrimp || 0,
-        icon: "fishing/fish/Shrimp.png"
+        icon: "fishing/fish/Shrimp.png",
+        consumed: "<<set $Shrimp -= 1>>"
     },
 	"Tuna": {
         name: "Tuna",
@@ -37,7 +32,8 @@ setup.terraFish = {
         type: "cookable",
         price: 7.5,
         amount: V.Tuna || 0,
-        icon: "fishing/fish/Tuna.png"
+        icon: "fishing/fish/Tuna.png",
+        consumed: "<<set $Tuna -= 1>>"
     },
 	"Red_Snapper": {
         name: "Red_Snapper",
@@ -45,7 +41,8 @@ setup.terraFish = {
         type: "cookable",
         price: 7.5,
         amount: V.Red_Snapper || 0,
-        icon: "fishing/fish/Red_Snapper.png"
+        icon: "fishing/fish/Red_Snapper.png",
+        consumed: "<<set $Red_Snapper -= 1>>"
     },
 	"Trout": {
         name: "Trout",
@@ -53,7 +50,8 @@ setup.terraFish = {
         type: "cookable",
         price: 5,
         amount: V.Trout || 0,
-        icon: "fishing/fish/Trout.png"
+        icon: "fishing/fish/Trout.png",
+        consumed: "<<set $Trout -= 1>>"
     },
 	"Golden_Carp": {
         name: "Golden_Carp",
@@ -61,7 +59,8 @@ setup.terraFish = {
         type: "fish",
         price: 1000,
         amount: V.Golden_Carp || 0,
-        icon: "fishing/fish/Golden_Carp.png"
+        icon: "fishing/fish/Golden_Carp.png",
+        consumed: "<<set $Golden_Carp -= 1>>"
     },
 	"Stinkfish": {
         name: "Stinkfish",
@@ -69,15 +68,8 @@ setup.terraFish = {
         type: "potion",
         price: 25,
         amount: V.Stinkfish || 0,
-        icon: "fishing/fish/Stinkfish.png"
-    },
-	"Blue_Jellyfish_bait": {
-        name: "Blue_Jellyfish_bait",
-        cn_name: "蓝水母",
-        type: "bait",
-        price: 350,
-        amount: V.Blue_Jellyfish_bait || 0,
-        icon: "fishing/fish/Blue_Jellyfish_bait.png"
+        icon: "fishing/fish/Stinkfish.png",
+        consumed: "<<set $Stinkfish -= 1>>"
     },
 	"Armored_Cavefish": {
         name: "Armored_Cavefish",
@@ -85,7 +77,8 @@ setup.terraFish = {
         type: "potion",
         price: 15,
         amount: V.Armored_Cavefish || 0,
-        icon: "fishing/fish/Armored_Cavefish.png"
+        icon: "fishing/fish/Armored_Cavefish.png",
+        consumed: "<<set $Armored_Cavefish -= 1>>"
     },
 	"Specular_Fish": {
         name: "Specular_Fish",
@@ -93,7 +86,8 @@ setup.terraFish = {
         type: "potion",
         price: 7.5,
         amount: V.Specular_Fish || 0,
-        icon: "fishing/fish/Specular_Fish.png"
+        icon: "fishing/fish/Specular_Fish.png",
+        consumed: "<<set $Specular_Fish -= 1>>"
     },
 	"Flounder": {
         name: "Flounder",
@@ -101,7 +95,8 @@ setup.terraFish = {
         type: "cookable",
         price: 1.5,
         amount: V.Flounder || 0,
-        icon: "fishing/fish/Flounder.png"
+        icon: "fishing/fish/Flounder.png",
+        consumed: "<<set $Flounder -= 1>>"
     },
 	"Rock_Lobster": {
         name: "Rock_Lobster",
@@ -109,7 +104,8 @@ setup.terraFish = {
         type: "cookable",
         price: 10,
         amount: V.Rock_Lobster || 0,
-        icon: "fishing/fish/Rock_Lobster.png"
+        icon: "fishing/fish/Rock_Lobster.png",
+        consumed: "<<set $Rock_Lobster -= 1>>"
     },
 	"Honeyfin": {
         name: "Honeyfin",
@@ -117,7 +113,8 @@ setup.terraFish = {
         type: "potion",
         price: 15,
         amount: V.Honeyfin || 0,
-        icon: "fishing/fish/Honeyfin.png"
+        icon: "fishing/fish/Honeyfin.png",
+        consumed: "<<set $Honeyfin -= 1>>"
     },
 	"Double_Cod": {
         name: "Double_Cod",
@@ -125,7 +122,8 @@ setup.terraFish = {
         type: "potion",
         price: 15,
         amount: V.Double_Cod || 0,
-        icon: "fishing/fish/Double_Cod.png"
+        icon: "fishing/fish/Double_Cod.png",
+        consumed: "<<set $Double_Cod -= 1>>"
     },
 	"Variegated_Lardfish": {
         name: "Variegated_Lardfish",
@@ -133,7 +131,8 @@ setup.terraFish = {
         type: "potion",
         price: 15,
         amount: V.Variegated_Lardfish || 0,
-        icon: "fishing/fish/Variegated_Lardfish.png"
+        icon: "fishing/fish/Variegated_Lardfish.png",
+        consumed: "<<set $Variegated_Lardfish -= 1>>"
     },
 	"Neon_Tetra": {
         name: "Neon_Tetra",
@@ -141,7 +140,8 @@ setup.terraFish = {
         type: "potion",
         price: 15,
         amount: V.Neon_Tetra || 0,
-        icon: "fishing/fish/Neon_Tetra.png"
+        icon: "fishing/fish/Neon_Tetra.png",
+        consumed: "<<set $Neon_Tetra -= 1>>"
     },
 	"Chaos_Fish": {
         name: "Chaos_Fish",
@@ -149,7 +149,8 @@ setup.terraFish = {
         type: "potion",
         price: 300,
         amount: V.Chaos_Fish || 0,
-        icon: "fishing/fish/Chaos_Fish.png"
+        icon: "fishing/fish/Chaos_Fish.png",
+        consumed: "<<set $Chaos_Fish -= 1>>"
     },
 	"Prismite": {
         name: "Prismite",
@@ -157,7 +158,8 @@ setup.terraFish = {
         type: "potion",
         price: 100,
         amount: V.Prismite || 0,
-        icon: "fishing/fish/Prismite.png"
+        icon: "fishing/fish/Prismite.png",
+        consumed: "<<set $Prismite -= 1>>"
     },
 	"Princess_Fish": {
         name: "Princess_Fish",
@@ -165,7 +167,8 @@ setup.terraFish = {
         type: "potion",
         price: 25,
         amount: V.Princess_Fish || 0,
-        icon: "fishing/fish/Princess_Fish.png"
+        icon: "fishing/fish/Princess_Fish.png",
+        consumed: "<<set $Princess_Fish -= 1>>"
     },
 	"Greenwave_Loach": {
         name: "Greenwave_Loach",
@@ -173,7 +176,8 @@ setup.terraFish = {
         type: "fish",
         price: 1000,
         amount: V.Greenwave_Loach || 0,
-        icon: "fishing/fish/Greenwave_Loach.png"
+        icon: "fishing/fish/Greenwave_Loach.png",
+        consumed: "<<set $Greenwave_Loach -= 1>>"
     },
 	"Sunken_Sailfish": {
         name: "Sunken_Sailfish",
@@ -181,7 +185,8 @@ setup.terraFish = {
         type: "potion",
         price: 70,
         amount: V.Sunken_Sailfish || 0,
-        icon: "fishing/fish/Sunken_Sailfish.png"
+        icon: "fishing/fish/Sunken_Sailfish.png",
+        consumed: "<<set $Sunken_Sailfish -= 1>>"
     },
 	"Prismatic_Guppy": {
         name: "Prismatic_Guppy",
@@ -189,7 +194,8 @@ setup.terraFish = {
         type: "cookable",
         price: 5,
         amount: V.Prismatic_Guppy || 0,
-        icon: "fishing/fish/Prismatic_Guppy.png"
+        icon: "fishing/fish/Prismatic_Guppy.png",
+        consumed: "<<set $Prismatic_Guppy -= 1>>"
     },
 	"Damselfish": {
         name: "Damselfish",
@@ -197,7 +203,8 @@ setup.terraFish = {
         type: "fish",
         price: 1000,
         amount: V.Damselfish || 0,
-        icon: "fishing/fish/Damselfish.png"
+        icon: "fishing/fish/Damselfish.png",
+        consumed: "<<set $Damselfish -= 1>>"
     },
 	"Coastal_Demonfish": {
         name: "Coastal_Demonfish",
@@ -205,7 +212,8 @@ setup.terraFish = {
         type: "potion",
         price: 8,
         amount: V.Coastal_Demonfish || 0,
-        icon: "fishing/fish/Coastal_Demonfish.png"
+        icon: "fishing/fish/Coastal_Demonfish.png",
+        consumed: "<<set $Coastal_Demonfish -= 1>>"
     },
 	"Crag_Bullhead": {
         name: "Crag_Bullhead",
@@ -213,7 +221,8 @@ setup.terraFish = {
         type: "cookable",
         price: 5,
         amount: V.Crag_Bullhead || 0,
-        icon: "fishing/fish/Crag_Bullhead.png"
+        icon: "fishing/fish/Crag_Bullhead.png",
+        consumed: "<<set $Crag_Bullhead -= 1>>"
     }
 }
 

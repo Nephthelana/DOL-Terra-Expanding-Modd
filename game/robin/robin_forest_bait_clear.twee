@@ -8,8 +8,10 @@
 <</widget>>
 
 :: Robin Forest Bait Clear Catch
+/* 判断孤儿院内是否有种花 */
 <<garden_flower_exist>>
 <<npc Robin>><<person1>>
+/* 非雨天、非大风天抓蝴蝶(此处待补充非晴天抓蚂蚱) */
 你的目光停留在一片灌木的缝隙中，那里时不时有阵风吹来，似乎有什么东西藏在后面。你指着那个方向，告诉罗宾你想过去看看。<br>
 <br>
 "好呀，说不定能找到上次丢的篮子呢！"罗宾笑了起来。<br>
@@ -76,7 +78,6 @@
 你们一起回到孤儿院。
 <br><br>
 <<robinoptions>>
-<<endevent>>
 
 :: Garden Flower Exist [widget]
 <<widget "garden_flower_exist">>

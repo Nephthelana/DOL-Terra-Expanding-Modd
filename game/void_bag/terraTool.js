@@ -59,7 +59,7 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Bug_Net,
         icon: "tool/Bug_Net_item.png",
-		des: "用来捕捉小动物。",
+		des: "完成前置任务后，可以用来和罗宾在森林捕捉小动物。",
 		use: "<<terra_tool_use_Bug_Net>>"
     },
 	"Golden_Bug_Net": {
@@ -68,7 +68,7 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Golden_Bug_Net,
         icon: "tool/Golden_Bug_Net_item.png",
-		des: "用来捕捉小动物。也可以捕捉熔岩小动物！",
+		des: "完成前置任务后，可以用来和罗宾在森林捕捉小动物。也可以捕捉熔岩小动物(未实装)！",
 		use: "<<terra_tool_use_Golden_Bug_Net>>"
     },
 	"Staff_of_Regrowth": {

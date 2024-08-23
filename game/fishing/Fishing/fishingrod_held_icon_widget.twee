@@ -1,7 +1,7 @@
 :: Fishingrod Held Icon [widget]
 <<widget "fishingrod_held_icon">>
 
-<<switch $fishingrod_held>>
+<<switch $options.fishingrod_held>>
 	<<case "Golden_Fishing_Rod">><<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>
 	<<case "Hotline_Fishing_Hook">><<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>
 	<<case "Fiberglass_Fishing_Pole">><<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>
@@ -10,5 +10,25 @@
 	<<case "Reinforced_Fishing_Pole">><<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>
 	<<case "Wood_Fishing_Pole">><<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
 <</switch>>
+
+<</widget>>
+
+<<widget "fishingrod_bobber">>
+
+<<if $terra_accessories_slots.includes("Glowing_Fishing_Bobber")>>
+	<<icon "fishing/bobber/Glowing_Fishing_Bobber.png">>
+<<elseif $terra_accessories_slots.includes("Fishing_Bobber")>>
+	<<icon "fishing/bobber/Fishing_Bobber.png">>
+<<else>>
+	<<switch $options.fishingrod_held>>
+		<<case "Golden_Fishing_Rod">><<icon "fishing/bobber/Bobber_(Golden).png">>
+		<<case "Hotline_Fishing_Hook">><<icon "fishing/bobber/Bobber_(Hotlines).png">>
+		<<case "Fiberglass_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Fiberglass).png">>
+		<<case "Scarab_Fishing_Rod">><<icon "fishing/bobber/Bobber_(Scarab).png">>
+		<<case "Chum_Caster">><<icon "fishing/bobber/Bobber_(Bloody).png">>
+		<<case "Reinforced_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Reinforced).png">>
+		<<case "Wood_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Wooden).png">>
+	<</switch>>
+<</if>>
 
 <</widget>>
