@@ -9,7 +9,7 @@
 		<<set $fishing_integrity to 3>>
 	<</if>>
 
-	<<switch $fishingrod_held>>
+	<<switch $options.fishingrod_held>>
 		<<case "Golden_Fishing_Rod">>
 			<<set $fishing_distance_power = 15>>
 		<<case "Hotline_Fishing_Hook">>

@@ -2,6 +2,7 @@ setup.terraTool = {
 	"Magic_Conch": {
         name: "Magic_Conch",
         cn_name: "魔法海螺",
+		material: true,
         type: "tool",
         obtained: V.Magic_Conch,
         icon: "tool/Magic_Conch_item.png",
@@ -11,6 +12,7 @@ setup.terraTool = {
 	"Demon_Conch": {
         name: "Demon_Conch",
         cn_name: "恶魔海螺",
+		material: false,
         type: "tool",
         obtained: V.Demon_Conch,
         icon: "tool/Demon_Conch_item.png",
@@ -20,6 +22,7 @@ setup.terraTool = {
 	"Snake_Charmers_Flute": {
         name: "Snake_Charmers_Flute",
         cn_name: "耍蛇者长笛",
+		material: false,
         type: "tool",
         obtained: V.Snake_Charmers_Flute,
         icon: "tool/Snake_Charmers_Flute_item.png",
@@ -29,6 +32,7 @@ setup.terraTool = {
 	"Torrential_Tear": {
         name: "Torrential_Tear",
         cn_name: "洪流之泪",
+		material: false,
         type: "tool",
         obtained: V.Torrential_Tear,
         icon: "tool/Torrential_Tear_item.png",
@@ -38,6 +42,7 @@ setup.terraTool = {
 	"Bottomless_Water_Bucket": {
         name: "Bottomless_Water_Bucket",
         cn_name: "无底水桶",
+		material: false,
         type: "tool",
         obtained: V.Bottomless_Water_Bucket,
         icon: "tool/Bottomless_Water_Bucket_item.png",
@@ -47,6 +52,7 @@ setup.terraTool = {
 	"Gravediggers_Shovel": {
         name: "Gravediggers_Shovel",
         cn_name: "掘墓者铲子",
+		material: false,
         type: "tool",
         obtained: V.Gravediggers_Shovel,
         icon: "tool/Gravediggers_Shovel_item.png",
@@ -56,6 +62,7 @@ setup.terraTool = {
 	"Bug_Net": {
         name: "Bug_Net",
         cn_name: "虫网",
+		material: false,
         type: "tool",
         obtained: V.Bug_Net,
         icon: "tool/Bug_Net_item.png",
@@ -65,6 +72,7 @@ setup.terraTool = {
 	"Golden_Bug_Net": {
         name: "Golden_Bug_Net",
         cn_name: "金虫网",
+		material: false,
         type: "tool",
         obtained: V.Golden_Bug_Net,
         icon: "tool/Golden_Bug_Net_item.png",
@@ -74,6 +82,7 @@ setup.terraTool = {
 	"Staff_of_Regrowth": {
         name: "Staff_of_Regrowth",
         cn_name: "再生法杖",
+		material: false,
         type: "tool",
         obtained: V.Staff_of_Regrowth,
         icon: "tool/Staff_of_Regrowth_item.png",
@@ -83,6 +92,7 @@ setup.terraTool = {
 	"Starfury": {
         name: "Starfury",
         cn_name: "星怒",
+		material: false,
         type: "tool",
         obtained: V.Starfury,
         icon: "tool/Starfury_item.png",

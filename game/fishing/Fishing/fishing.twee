@@ -21,9 +21,9 @@
 	<<case "trash">>垃圾场深处的沸水池
 	<<case "park">>公园喷泉
 	<<case "school_pool">>学校泳池
-	<<case "rocky_hillock">>海岛的山顶营地
-	<<case "waterfall">>海岛的河流营地
-	<<case "gulch">>海岛的峡谷营地
+	<<case "rocky_hillock">>海岛的天湖
+	<<case "waterfall">>海岛的瀑布湖
+	<<case "gulch">>海岛的洞穴湖
 <</switch>>
 钓鱼。<br>
 /* 上学日8:59时自动退出钓鱼小游戏 */

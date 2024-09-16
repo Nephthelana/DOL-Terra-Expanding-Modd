@@ -5,5 +5,13 @@
 	<br>
 	<<icon "Royal_Delight.png">><span class="teal">"适合国王的甜点！"</span><span class="gold"><i>感谢游玩泰拉瑞亚拓展模组！</i></span>
 <</if>>
+<<if $Zephyr_Fish>>
+	<br>
+	<<icon "Zephyr_Fish.png">>"它喜欢在你周围游泳。"
+<</if>>
+<<if $Rusted_Jingle_Bell>>
+	<br>
+	<<icon "Rusted_Jingle_Bell.png">>"敲响后会发出悦耳的声音。"
+<</if>>
 
 <</widget>>

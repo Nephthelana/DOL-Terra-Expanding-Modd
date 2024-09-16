@@ -16,13 +16,13 @@
 			<<toggleTab>>
 			<<replace #customOverlayContent>><<fishingharvests>><</replace>>
 		<</button>>
-		<<button "工具">>
+		<<button "食物\&材料">>
 			<<toggleTab>>
-			<<replace #customOverlayContent>><<tools>><</replace>>
+			<<replace #customOverlayContent>><<craftingMaterial>><</replace>>
 		<</button>>
-		<<button "打开宝匣">>
+		<<button "图鉴">>
 			<<toggleTab>>
-			<<replace #customOverlayContent>><<unloadCrate>><</replace>>
+			<<replace #customOverlayContent>><<bestiary>><</replace>>
 		<</button>>
 	</div>
 	<<closeButton>>
@@ -93,10 +93,9 @@
 				<<set _baitObtained to getBaitObtainedList()>>
 				<<for _t to 0; _t lt _baitObtained.length; _t++>>
 					<<set _bait to setup.terraBait[_baitObtained[_t]]>>
-					<<set _baitName to _bait.cn_name>>
 					<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
 					<<set _amount = _formatter.format(_bait.amount)>>
-					<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_baitName}<br>▶ ${_bait.fishing_power}渔力`>>
+					<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_bait.cn_name}<br>▶ ${_bait.fishing_power}渔力`>>
             		<div class="item" @tooltip="_tooltip">
 						<label><<icon `_bait.icon`>>
 						<hr>
@@ -114,8 +113,7 @@
 			<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
 				<<set _item to setup.terraRequestFish[_allRequestFishList[_t]]>>
 				<<if $fishing_request_fish.includes(_item.name)>>
-					<<set _itemName to _item.cn_name>>
-					<<set _tooltip to ` <span class="gold">${_itemName}</span>`>>
+					<<set _tooltip to `<span class="gold">${_item.cn_name}</span>`>>
             		<div class="item" @tooltip="_tooltip">
 						<<icon `_item.icon`>>
 					</div>
@@ -125,34 +123,23 @@
 	<</if>>
 	/* 持有宝匣 */
 	<<if getCrateObtainedList().length gte 1>>
-		<span class="gold bold">宝匣</span><mouse class="tooltip linkBlue">(?)<span>包含一些随机的物品。你可在孤儿院一个秘密的地方打开它们。</span></mouse><br>
-        <div class="itemTerra">
-			<<set _crateObtained to getCrateObtainedList()>>
-			<<for _t to 0; _t lt _crateObtained.length; _t++>>
-				<<set _crate to setup.terraCrate[_crateObtained[_t]]>>
-               	<<set _crateName to _crate.cn_name>>
-            	<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
-				<<set _amount = _formatter.format(_crate.amount)>>
-            	<<set _tooltip to `<span class="green">${_crate.amount}</span> ${_crateName}`>>
-            	<div class="item" @tooltip="_tooltip">
-					<<icon `_crate.icon`>>
-					<hr>
-					<<= _amount>>
-				</div>
-			<</for>>
-		</div>
+		<span class="gold bold">宝匣</span><mouse class="tooltip linkBlue">(?)<span>包含一些随机的物品。</span></mouse><br>
+		<span id="unloadCrateHint"></span>
+        <span id="crateList">
+			<<crateList>>
+		</span>
 	<</if>>
 	/* 持有鱼 */
 	<<if getFishObtainedList().length gte 1>>
-		<span class="gold bold">鱼</span><mouse class="tooltip linkBlue">(?)<span>下列渔获在泰拉瑞亚拓展mod中还没有具体作用，但你可以在dom罗宾拓展mod中，和罗宾一起烤鱼并出售它们中的一部分。</span></mouse><br>
+		<span class="gold bold">鱼</span><mouse class="tooltip linkBlue">(?)<span>普通渔获作为<i>材料</i>可以用于制作物品。你也可以在dom罗宾拓展mod中，和罗宾一起烤鱼并出售它们中的一部分。</span></mouse><br>
         <div class="itemTerra">
 			<<set _fishObtained to getFishObtainedList()>>
 			<<for _t to 0; _t lt _fishObtained.length; _t++>>
 				<<set _fish to setup.terraFish[_fishObtained[_t]]>>
-               	<<set _fishName to _fish.cn_name>>
             	<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
 				<<set _amount = _formatter.format(_fish.amount)>>
-            	<<set _tooltip to `<span class="green">${_fish.amount}</span> ${_fishName}`>>
+				<<set _isMaterial to _fish.material ? "<br><i>材料</i>" : "">>
+            	<<set _tooltip to `<span class="green">${_fish.amount}</span> ${_fish.cn_name}${_isMaterial}`>>
             	<div class="item" @tooltip="_tooltip">
 					<<icon `_fish.icon`>>
 					<hr>
@@ -163,105 +150,43 @@
 	<</if>>
 <</widget>>
 
-/* 工具标签页信息 */
-<<widget "tools">>
-	<<setupOptions>>
-	<span id="hint_item_use"></span>
-	<span id="void_bag_Tool">
-		<<void_bag_Tool>>
+<<widget "craftingMaterial">>
+
+	<<run initializeTooltips()>>
+
+	<span id="hunger_description">
+		<<hunger_description>><br>
 	</span>
-	<span id="void_bag_Bloody_Tear">
-		<<void_bag_Bloody_Tear>>
+	<span id="foodList">
+		<<foodList>>
 	</span>
 	<br>
-	<span id="void_bag_Potion">
-		<<void_bag_Potion>>
-	</span>
-	<<if $fishingrod>>
-		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你不能在钓鱼小游戏中切换鱼竿</span></mouse><br>
-		<br>
-		<<if $passage is "Fishing" or $passage is "Robin Fishing">>
-			哦不，钓钩都抛出去了，怎么能换鱼竿呢？
-		<<else>>
-			<<if $Golden_Fishing_Rod>>
-				<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
-				<<link "使用">>
-					<<set $options.fishingrod_held to "Golden_Fishing_Rod">>
-					<<set _optionsRefresh to true>>
-				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>50渔力，每次收线减少15距离</span></mouse>
-				<br>
-			<</if>>
-			<<if $Hotline_Fishing_Hook>>
-				<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>熔线钓钩
-				<<link "使用">>
-					<<set $options.fishingrod_held to "Hotline_Fishing_Hook">>
-					<<set _optionsRefresh to true>>
-				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>45渔力，每次收线减少14距离</span></mouse>
-				<br>
-			<</if>>
-			<<if $Fiberglass_Fishing_Pole>>
-				<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿
-				<<link "使用">>
-					<<set $options.fishingrod_held to "Fiberglass_Fishing_Pole">>
-					<<set _optionsRefresh to true>>
-				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>30渔力，每次收线减少13距离</span></mouse>
-				<br>
-			<</if>>
-			<<if $Scarab_Fishing_Rod>>
-				<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
-				<<link "使用">>
-					<<set $options.fishingrod_held to "Scarab_Fishing_Rod">>
-					<<set _optionsRefresh to true>>
-				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>30渔力，每次收线减少13距离</span></mouse>
-				<br>
-			<</if>>
-			<<if $Chum_Caster>>
-				<<icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者
-				<<link "使用">>
-					<<set $options.fishingrod_held to "Chum_Caster">>
-					<<set _optionsRefresh to true>>
-				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>25渔力，每次收线减少12距离</span></mouse>
-				<br>
-			<</if>>
-			<<if $Reinforced_Fishing_Pole>>
-				<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
-				<<link "使用">>
-					<<set $options.fishingrod_held to "Reinforced_Fishing_Pole">>
-					<<set _optionsRefresh to true>>
-				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>20渔力，每次收线减少11距离</span></mouse>
-				<br>
-			<</if>>
-			<<if $Wood_Fishing_Pole>>
-				<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿
-				<<link "使用">>
-					<<set $options.fishingrod_held to "Wood_Fishing_Pole">>
-					<<set _optionsRefresh to true>>
-				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>15渔力，每次收线减少10距离</span></mouse>
-				<br>
-			<</if>>
-		<</if>>
-	<<elseif $fishing_anglerintro>>
-		渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？<br>
+	/ 材料栏正在施工中 /<br>
+	<<set _materialObtained to getMaterialObtainedList()>>
+	<span class="gold bold">材料</span><mouse class="tooltip linkBlue">(?)<span>一部分物品并不能直接发挥特别的用处，但它们可以作为合成的材料。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到提示。</span></mouse><br>
+	<<if _materialObtained.length gt 0>>
+		<div class="itemTerra">
+			<<for _i to 0; _i lt _materialObtained.length; _i++>>
+				<<set _material to setup.terraMaterial[_materialObtained[_i]]>>
+				<<capture _material>>
+					<<if _material.type is "material">>
+						<div class="item" @tooltip="_material.cn_name">
+							<<icon `_material.icon`>>
+							<hr>
+							_material.amount
+						</div>
+					<</if>>
+				<</capture>>
+			<</for>>
+		</div>
 	<<else>>
-		你需要从某人那里获得鱼竿。也许这人正漂浮在海上。<br>
+		你没有携带的材料。
 	<</if>>
+
 <</widget>>
 
-<<widget "unloadCrate">>
-
-	<span id="unloadCrateHint">
-	</span>
-	<span id="crateList">
-		<<crateList>>
-	</span>
-
+<<widget "bestiary">>
+	图鉴内容待施工（目前游戏内的条目解锁提示还没有实际作用）
 <</widget>>
 
 :: Unload Crate [widget]
@@ -286,33 +211,32 @@
 	<<if $museumAntiques.antiques.antiqueleathermap is "notFound">>
 		<<set $museumAntiques.antiques.antiqueleathermap to "found">>
 	<</if>>
+	<br>
 <</if>>
-<br>
+<<set $void_bag_unload_crate to undefined>>
 
 <</widget>>
 
 <<widget "crateList">>
 
+<<run initializeTooltips()>>
+
 <<if getCrateObtainedList().length gte 1>>
-	到了激动人心的开奖环节~开哪个呢？<br>
-	<br>
 	<div class="itemTerra">
 		<<set _crateObtained to getCrateObtainedList()>>
 		<<for _t to 0; _t lt _crateObtained.length; _t++>>
 			<<set _crate to setup.terraCrate[_crateObtained[_t]]>>
 			<<capture _crate>>
 				<div class="item">
-					<mouse class="tooltip">
+					<div @tooltip="`${_crate.cn_name}`">
 						<<icon `_crate.icon`>>
-						<span>
-							_crate.cn_name
-						</span>
-					</mouse>
+					</div>
 					<hr>
 					_crate.amount
 					<hr>
 					<<link "打开">>
 						<<set $void_bag_unload_crate to _crate.name>>
+						<<set _optionsRefresh to true>>
 						<<replace #unloadCrateHint>>
 							<<UnloadCrateHint>>
 						<</replace>>
@@ -324,8 +248,45 @@
 			<</capture>>
 		<</for>>
 	</div>
+<</if>>
+
+<</widget>>
+
+:: Void Bag Food List [widget]
+<<widget "foodList">>
+
+<<run initializeTooltips()>>
+
+<span class="gold bold">食物</span><mouse class="tooltip linkBlue">(?)<span>吃下食物可以降低饥饿值。食物的附加效果待定。</span></mouse><br>
+<<set _foodObtained to getFoodObtained()>>
+<<if _foodObtained.length gt 0>>
+	<div class="itemTerra">
+		<<for _j to 0; _j lt _foodObtained.length; _j++>>
+			<<set _food to setup.terraFood[_foodObtained[_j]]>>
+			<<capture _food>>
+				<div class="item">
+					<div @tooltip="`${_food.cn_name}<br><br>${_food.des}`">
+						<<icon `_food.icon`>>
+					</div>
+					<hr>
+					_food.amount
+					<hr>
+					<<link "吃">>
+						_food.use
+						<<replace #hunger_description>>
+							<<hunger_description>><br>
+							你吃了一份<<icon `_food.icon`>>_food.cn_name。_food.use_hint<br>
+						<</replace>>
+						<<replace #foodList>>
+							<<foodList>>
+						<</replace>>
+					<</link>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
 <<else>>
-	哦不，你看起来没有匣子了。<br>
+	你没有携带的食物。
 <</if>>
 
 <</widget>>

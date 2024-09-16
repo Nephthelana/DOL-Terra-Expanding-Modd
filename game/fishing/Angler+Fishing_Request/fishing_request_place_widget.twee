@@ -60,7 +60,7 @@
 <<widget "fishing_request_place_temple_garden">>
 	<<if $fishingskill lt 400>>
 		？？？
-	<<elseif $fishing_place_temple_garden_unlock isnot true>>
+	<<elseif $fishing_place_temple_garden_unlock>>
 		神殿的花园
 	<<elseif $artificial_fishing_pond_temple_garden is "done">>
 		老教堂墓地庭院的人工钓鱼池

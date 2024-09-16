@@ -2,6 +2,7 @@ setup.terraAccessories = {
 	"Fishing_Bobber": {
         name: "Fishing_Bobber",
         cn_name: "钓鱼浮标",
+		material: false,
         type: "fishing",
         obtained: V.Fishing_Bobber,
         icon: "fishing/fishing_accessories/Fishing_Bobber.png",
@@ -10,6 +11,7 @@ setup.terraAccessories = {
 	"Angler_Earring": {
         name: "Angler_Earring",
         cn_name: "渔夫耳环",
+		material: true,
         type: "fishing",
         obtained: V.Angler_Earring,
         icon: "fishing/fishing_accessories/Angler_Earring.png",
@@ -18,6 +20,7 @@ setup.terraAccessories = {
 	"High_Test_Fishing_Line": {
         name: "High_Test_Fishing_Line",
         cn_name: "优质钓鱼线",
+		material: true,
         type: "fishing",
         obtained: V.High_Test_Fishing_Line,
         icon: "fishing/fishing_accessories/High_Test_Fishing_Line.png",
@@ -26,6 +29,7 @@ setup.terraAccessories = {
 	"Tackle_Box": {
         name: "Tackle_Box",
         cn_name: "钓具箱",
+		material: true,
         type: "fishing",
         obtained: V.Tackle_Box,
         icon: "fishing/fishing_accessories/Tackle_Box.png",
@@ -34,6 +38,7 @@ setup.terraAccessories = {
 	"Angler_Tackle_Bag": {
         name: "Angler_Tackle_Bag",
         cn_name: "渔夫渔具袋",
+		material: true,
         type: "fishing",
         obtained: V.Angler_Tackle_Bag,
         icon: "fishing/fishing_accessories/Angler_Tackle_Bag.png",
@@ -41,7 +46,8 @@ setup.terraAccessories = {
     },
 	"Lavaproof_Fishing_Hook": {
         name: "Lavaproof_Fishing_Hook",
-        cn_name: "防熔岩吊钩",
+        cn_name: "防熔岩钓钩",
+		material: true,
         type: "fishing",
         obtained: V.Lavaproof_Fishing_Hook,
         icon: "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png",
@@ -50,6 +56,7 @@ setup.terraAccessories = {
 	"Lavaproof_Tackle_Bag": {
         name: "Lavaproof_Tackle_Bag",
         cn_name: "防熔岩渔具袋",
+		material: false,
         type: "fishing",
         obtained: V.Lavaproof_Tackle_Bag,
         icon: "fishing/fishing_accessories/Lavaproof_Tackle_Bag.png",
@@ -58,6 +65,7 @@ setup.terraAccessories = {
 	"Enchanted_Pearl": {
         name: "Enchanted_Pearl",
         cn_name: "附魔珍珠",
+		material: false,
         type: "fishing",
         obtained: V.Enchanted_Pearl,
         icon: "fishing/fishing_accessories/Enchanted_Pearl.png",
@@ -66,6 +74,7 @@ setup.terraAccessories = {
 	"Fishermans_Pocket_Guide": {
         name: "Fishermans_Pocket_Guide",
         cn_name: "渔民袖珍宝典",
+		material: true,
         type: "fishing",
         obtained: V.Fishermans_Pocket_Guide,
         icon: "fishing/fishing_accessories/Fishermans_Pocket_Guide.png",
@@ -74,6 +83,7 @@ setup.terraAccessories = {
 	"Sextant": {
         name: "Sextant",
         cn_name: "六分仪",
+		material: true,
         type: "fishing",
         obtained: V.Sextant,
         icon: "fishing/fishing_accessories/Sextant.png",
@@ -82,6 +92,7 @@ setup.terraAccessories = {
 	"Weather_Radio": {
         name: "Weather_Radio",
         cn_name: "天气收音机",
+		material: true,
         type: "fishing",
         obtained: V.Weather_Radio,
         icon: "fishing/fishing_accessories/Weather_Radio.png",
@@ -90,6 +101,7 @@ setup.terraAccessories = {
 	"Fish_Finder": {
         name: "Fish_Finder",
         cn_name: "探鱼器",
+		material: false,
         type: "fishing",
         obtained: V.Fish_Finder,
         icon: "fishing/fishing_accessories/Fish_Finder.png",
@@ -98,6 +110,7 @@ setup.terraAccessories = {
 	"Fin_Wings": {
         name: "Fin_Wings",
         cn_name: "鳍翼",
+		material: false,
         type: "wings",
         obtained: V.Fin_Wings,
         icon: "accessories/Fin_Wings.png",
@@ -106,6 +119,7 @@ setup.terraAccessories = {
 	"Fledgling_Wings": {
         name: "Fledgling_Wings",
         cn_name: "雏翼",
+		material: false,
         type: "wings",
         obtained: V.Fledgling_Wings,
         icon: "accessories/Fledgling_Wings.png",
@@ -114,6 +128,7 @@ setup.terraAccessories = {
 	"Lucky_Horseshoe": {
         name: "Lucky_Horseshoe",
         cn_name: "幸运马掌",
+		material: false,
         type: "none",
         obtained: V.Lucky_Horseshoe,
         icon: "accessories/Lucky_Horseshoe.png",
@@ -122,6 +137,7 @@ setup.terraAccessories = {
 	"Sailfish_Boots": {
         name: "Sailfish_Boots",
         cn_name: "航鱼靴",
+		material: false,
         type: "none",
         obtained: V.Sailfish_Boots,
         icon: "accessories/Sailfish_Boots.png",

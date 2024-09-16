@@ -1,7 +1,7 @@
 :: Guide Hint Journal [widget]
 <<widget "guide_hint_journal">>
 
-<<if $guide_mod_hint_pre isnot undefined>>
+<<if $guide_mod_hint_pre_intro and $guide_mod_hint isnot true>>
 	<<if $Purification_Powder isnot true>>
 		<li>神殿的司祭处，有向导需要的净化粉。<br></li>
 	<</if>>

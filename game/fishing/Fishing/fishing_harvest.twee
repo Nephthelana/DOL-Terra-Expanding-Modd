@@ -2,8 +2,8 @@
 <<widget "fishing_harvest">>
 	<<switch $fishing_harvest>>
 		/* 宠物 */
-		<<case "Zephyr_Fish">><<icon "Zephyr_Fish.png">>和风鱼
-		<<case "Rusted_Jingle_Bell">><<icon "Rusted_Jingle_Bell.png">>锈蚀铃铛
+		<<case "Zephyr_Fish">><<icon "Zephyr_Fish.png">>和风鱼<<set $Zephyr_Fish to true>>
+		<<case "Rusted_Jingle_Bell">><<icon "Rusted_Jingle_Bell.png">>锈蚀铃铛<<set $Rusted_Jingle_Bell to true>>
 		/* 宝匣 */
 		<<case "Golden_Crate">><<icon "fishing/crates/Golden_Crate.png">>金匣
 			<<set $Golden_Crate += 1>>
@@ -23,11 +23,11 @@
 			<<set $Hallowed_Crate += 1>>
 		<<case "Sky_Crate">><<icon "fishing/crates/Sky_Crate.png">>天空匣
 			<<set $Sky_Crate += 1>>
-		<<case "Sunken_Crate">><<icon "fishing/crates/Sunken_Crate.png">>沉沦匣
+		<<case "Sunken_Crate">><<icon "fishing/crates/Sunken_Crate.png">>富养匣
 			<<set $Sunken_Crate += 1>>
 		<<case "Sulphurous_Crate">><<icon "fishing/crates/Sulphurous_Crate.png">>硫海匣
 			<<set $Sulphurous_Crate += 1>>
-		<<case "Brimstone_Crate">><<icon "fishing/crates/Brimstone_Crate.png">>硫火匣
+		<<case "Brimstone_Crate">><<icon "fishing/crates/Brimstone_Crate.png">>焦炭匣
 			<<set $Brimstone_Crate += 1>>
 		/* 普通鱼 */
 		<<case "Salmon">><<icon "fishing/fish/Salmon.png">>三文鱼

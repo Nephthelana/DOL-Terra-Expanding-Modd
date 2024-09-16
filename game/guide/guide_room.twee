@@ -10,20 +10,20 @@
 	<br>
 	<<link [[继续|Guide Room]]>><<set $guide_intro to true>><</link>><br>
 <<else>>
-	<<set $guide_daily_dialog_set to ["Daily"]>>
+	<<set _guide_daily_dialog_set to ["Daily"]>>
 	<<if Time.dayState is "night">>
-		<<set $guide_daily_dialog_set.pushUnique("Night")>>
+		<<set _guide_daily_dialog_set.pushUnique("Night")>>
 	<</if>>
 	<<if Weather.precipitation is "rain" or Weather.name is "heavyClouds" or Weather.name is "thunderStorm">>
-		<<set $guide_daily_dialog_set.pushUnique("Weather")>>
+		<<set _guide_daily_dialog_set.pushUnique("Weather")>>
 	<</if>>
 	<<if Time.isBloodMoon()>>
-		<<set $guide_daily_dialog_set.pushUnique("Bloodmoon")>>
+		<<set _guide_daily_dialog_set.pushUnique("Bloodmoon")>>
 	<</if>>
 	<<if $exposed gte 1>>
-		<<set $guide_daily_dialog_set.pushUnique("Exposure")>>
+		<<set _guide_daily_dialog_set.pushUnique("Exposure")>>
 	<</if>>
-	<<switch $guide_daily_dialog_set.random()>>
+	<<switch _guide_daily_dialog_set.random()>>
 		<<case "Daily">>
 			<<guide_daily_dialog>>
 		<<case "Night">>
@@ -69,3 +69,4 @@
 	<br>
 	<<getouticon>><<link [[离开|Forest]]>><</link>><br>
 <</if>>
+<<Eden_Cabin_Map>>

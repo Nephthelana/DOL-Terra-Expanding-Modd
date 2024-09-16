@@ -1,43 +1,3 @@
-:: Void Bag Unload Crate
-
-<<set _allCrateList to getAllCrateList()>>
-<<for _t to 0; _t lt _allCrateList.length; _t++>>
-	<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
-	<<if $void_bag_unload_crate is _crate.name>>
-		你打开了一个<<icon `_crate.icon`>>_crate.cn_name。<br>
-		<span class="gold">
-			你得到了_crate.unload！
-		</span><br>
-		<<break>>
-	<</if>>
-<</for>>
-<<if random(1,10) is 1 and $void_bag_unload_crate is "Ocean_Crate">>
-	<br>
-	<<earnFeat "X Marks the Spot">>
-	你发现里面还有一个用蜡质细绳捆着的皮革卷轴。你把它展开，是一张保存完好的地图。这张地图描绘了一个森林旁边的沿海定居点。表示海洋的部分上，线条纵横交错，有的地方被符号标注了，可能是一些重要的地点。在地图的左上角画着一只克拉肯，右下角画着一条龙。博物馆馆长也许会知道更多关于它的信息。<br>
-	<<set $antiquemoney += 4000>>
-	<<if $museumAntiques.antiques.antiqueleathermap is "notFound">>
-		<<set $museumAntiques.antiques.antiqueleathermap to "found">>
-	<</if>>
-<</if>>
-<br>
-<<if getCrateObtainedList().length gte 1>>
-	到了激动人心的开奖环节~开哪个呢？<br>
-	<br>
-	<<set _crateObtained to getCrateObtainedList()>>
-	<<for _t to 0; _t lt _crateObtained.length; _t++>>
-		<<set _crate to setup.terraCrate[_crateObtained[_t]]>>
-		<<set _crateName to _crate.cn_name>>
-		<<capture _crate>>
-			<<icon `_crate.icon`>><<link [[`_crateName(_crate.amount）(0:01)`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to _crate.name>><<pass 1>><</link>><br>
-		<</capture>>
-	<</for>>
-<<else>>
-	哦不，你看起来没有匣子了。<br>
-<</if>>
-<br>
-<<getouticon>><<link [[返回|Void Bag Operate]]>><<set $void_bag_unload_crate to "None">><</link>>
-
 :: Crate Unload [widget]
 
 <<widget "Golden_Crate_unload">>
@@ -56,6 +16,11 @@
 	<<if random(1,23) is 1>>
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
+	<</if>>
+	<<if random(1,5) is 1>>
+		<<set _unload_crate_Iron_Bar = random(4,7)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
 		<<if random(1,3) is 1>>
@@ -81,6 +46,11 @@
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
 	<</if>>
+	<<if random(1,10) is 1>>
+		<<set _unload_crate_Iron_Bar = random(2,5)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
 	<<if random(1,3) is 1>>
 		<<if random(1,3) is 1>>
 			<<set _unload_crate_Bait = random(1,4)>>
@@ -92,7 +62,7 @@
 			<<set $Apprentice_Bait += _unload_crate_Bait>>
 		<</if>>
 	<</if>>
-	<<if random(1,2) is 1>>
+	<<if random(1,10) is 1>>
 		<<facesend 3 wardrobe>>、医用外科口罩
 	<</if>>
 <</widget>>
@@ -100,10 +70,16 @@
 <<widget "Ocean_Crate_unload">>
 	<<set $Ocean_Crate -= 1>>
 	<<moneyGain random(500,1200)>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Sea_Remains to random(1,2)>>
 		、<<icon "material/Sea_Remains.png">>海洋残渣(_unload_crate_Sea_Remains)
 		<<set $Sea_Remains += _unload_crate_Sea_Remains>>
+	<</if>>
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
@@ -137,14 +113,17 @@
 		<<case 3>>
 			<<icon "tool/Snake_Charmers_Flute.png">>耍蛇者长笛
 			<<set $Snake_Charmers_Flute to true>>
-			<<set $tool_obtained to true>>
 		<<case 4>>
 			<<icon "tool/Magic_Conch.png">>魔法海螺
 			<<set $Magic_Conch to true>>
-			<<set $tool_obtained to true>>
 	<</switch>>
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
 		<<if random(1,2) is 1>>
@@ -176,6 +155,11 @@
 	<<if random(1,4) is 1>>
 		<span class="gold">、<<moneyGain random(500,1200)>></span>
 	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
 	<<if random(1,2) is 1>>
 		<<if random(1,2) is 1>>
 			<<set _unload_crate_Bait = random(2,6)>>
@@ -198,6 +182,11 @@
 	<<set $redemption_voucher =+ 1>>
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
 		<<if random(1,2) is 1>>
@@ -230,6 +219,11 @@
 	<</if>>
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
 		<<if random(1,2) is 1>>
@@ -283,7 +277,6 @@
 		<<else>>
 			、<<icon "tool/Torrential_Tear.png">>洪流之泪
 			<<set $Torrential_Tear to true>>
-			<<set $tool_obtained to true>>
 		<</if>>
 	<</if>>
 	<<set _bait_chance to random(1,30)>>
@@ -326,6 +319,7 @@
 
 <<widget "Oyster_unload">>
 	<<set $Oyster -= 1>>
+	<<set $Shucked_Oyster += 1>>
 	<<icon "food/Shucked_Oyster.png">>去壳牡蛎(1)
 	<<if random(1,5) is 1>>
 		<<set _pearl_chance = random(1,45)>>

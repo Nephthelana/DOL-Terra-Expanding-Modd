@@ -1,4 +1,4 @@
-:: Void Bag Tool [widget]
+:: Terra Tool [widget]
 <<widget "void_bag_Tool">>
 <<if getToolObtained().length gt 0>>
 	<span class="gold bold">工具</span>
@@ -8,12 +8,10 @@
 			<<set _tool to setup.terraTool[_toolObtainedList[_t]]>>
 			<<capture _tool>>
 				<div class="item">
-					<mouse class="tooltip">
+					<<set _isMaterial to _tool.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_tool.cn_name}${_isMaterial}<br><br>▶${_tool.des}`">
 						<<icon `_tool.icon`>>
-						<span>
-							_tool.cn_name<br>▶_tool.des
-						</span>
-					</mouse>
+					</div>
 					<hr>
 					_tool.use
 				</div>

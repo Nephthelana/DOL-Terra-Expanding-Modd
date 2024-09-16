@@ -1,6 +1,6 @@
 :: Snake Charmers Flute Use [widget]
 <<widget "snakeCharmersFluteUse">>
-	<div id='test'>
+
 		<<if $Snake_Charmers_Flute>>
 			<<if $terra_accessories_slots.includes("Fin_Wings") or $birdFly gte 1>>
 				<<switch $passage>>
@@ -20,6 +20,5 @@
 				<</switch>>
 			<</if>>
 		<</if>>
-	</div>
 
 <</widget>>

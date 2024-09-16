@@ -19,5 +19,8 @@
 		<<case "trash">><<getouticon>><<link [[返回垃圾填埋场|Trash]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "park">><<getouticon>><<link [[返回公园|Park]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "school_pool">><<getouticon>><<link [[返回学校泳池|School Pool]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "rocky_hillock">><<getouticon>><<link [[返回海岛的山顶营地|Island]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "waterfall">><<getouticon>><<link [[返回海岛的河流营地|Island]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "gulch">><<getouticon>><<link [[返回海岛的峡谷营地|Island]]>><<set $fishing_harvest to undefined>><</link>>
 	<</switch>>
 <</widget>>

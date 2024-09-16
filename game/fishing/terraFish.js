@@ -2,6 +2,7 @@ setup.terraFish = {
 	"Salmon": {
         name: "Salmon",
         cn_name: "三文鱼",
+		material: true,
         type: "cookable",
         price: 7.5,
         amount: V.Salmon || 0,
@@ -11,6 +12,7 @@ setup.terraFish = {
     "Bass": {
         name: "Bass",
         cn_name: "鲈鱼",
+		material: true,
         type: "cookable",
         price: 5,
         amount: V.Bass || 0,
@@ -20,6 +22,7 @@ setup.terraFish = {
 	"Shrimp": {
         name: "Shrimp",
         cn_name: "虾",
+		material: true,
         type: "cookable",
         price: 15,
         amount: V.Shrimp || 0,
@@ -29,6 +32,7 @@ setup.terraFish = {
 	"Tuna": {
         name: "Tuna",
         cn_name: "金枪鱼",
+		material: true,
         type: "cookable",
         price: 7.5,
         amount: V.Tuna || 0,
@@ -38,6 +42,7 @@ setup.terraFish = {
 	"Red_Snapper": {
         name: "Red_Snapper",
         cn_name: "红鲷鱼",
+		material: true,
         type: "cookable",
         price: 7.5,
         amount: V.Red_Snapper || 0,
@@ -47,6 +52,7 @@ setup.terraFish = {
 	"Trout": {
         name: "Trout",
         cn_name: "鳟鱼",
+		material: true,
         type: "cookable",
         price: 5,
         amount: V.Trout || 0,
@@ -56,6 +62,7 @@ setup.terraFish = {
 	"Golden_Carp": {
         name: "Golden_Carp",
         cn_name: "金鲤鱼",
+		material: false,
         type: "fish",
         price: 1000,
         amount: V.Golden_Carp || 0,
@@ -65,6 +72,7 @@ setup.terraFish = {
 	"Stinkfish": {
         name: "Stinkfish",
         cn_name: "臭味鱼",
+		material: true,
         type: "potion",
         price: 25,
         amount: V.Stinkfish || 0,
@@ -74,6 +82,7 @@ setup.terraFish = {
 	"Armored_Cavefish": {
         name: "Armored_Cavefish",
         cn_name: "装甲洞穴鱼",
+		material: true,
         type: "potion",
         price: 15,
         amount: V.Armored_Cavefish || 0,
@@ -83,6 +92,7 @@ setup.terraFish = {
 	"Specular_Fish": {
         name: "Specular_Fish",
         cn_name: "镜面鱼",
+		material: true,
         type: "potion",
         price: 7.5,
         amount: V.Specular_Fish || 0,
@@ -92,6 +102,7 @@ setup.terraFish = {
 	"Flounder": {
         name: "Flounder",
         cn_name: "偏口鱼",
+		material: true,
         type: "cookable",
         price: 1.5,
         amount: V.Flounder || 0,
@@ -101,6 +112,7 @@ setup.terraFish = {
 	"Rock_Lobster": {
         name: "Rock_Lobster",
         cn_name: "岩石龙虾",
+		material: true,
         type: "cookable",
         price: 10,
         amount: V.Rock_Lobster || 0,
@@ -110,6 +122,7 @@ setup.terraFish = {
 	"Honeyfin": {
         name: "Honeyfin",
         cn_name: "蜂蜜鱼",
+		material: true,
         type: "potion",
         price: 15,
         amount: V.Honeyfin || 0,
@@ -119,6 +132,7 @@ setup.terraFish = {
 	"Double_Cod": {
         name: "Double_Cod",
         cn_name: "双鳍鳕鱼",
+		material: true,
         type: "potion",
         price: 15,
         amount: V.Double_Cod || 0,
@@ -128,6 +142,7 @@ setup.terraFish = {
 	"Variegated_Lardfish": {
         name: "Variegated_Lardfish",
         cn_name: "斑驳油鱼",
+		material: true,
         type: "potion",
         price: 15,
         amount: V.Variegated_Lardfish || 0,
@@ -137,6 +152,7 @@ setup.terraFish = {
 	"Neon_Tetra": {
         name: "Neon_Tetra",
         cn_name: "霓虹脂鲤",
+		material: true,
         type: "potion",
         price: 15,
         amount: V.Neon_Tetra || 0,
@@ -146,6 +162,7 @@ setup.terraFish = {
 	"Chaos_Fish": {
         name: "Chaos_Fish",
         cn_name: "混沌鱼",
+		material: true,
         type: "potion",
         price: 300,
         amount: V.Chaos_Fish || 0,
@@ -155,6 +172,7 @@ setup.terraFish = {
 	"Prismite": {
         name: "Prismite",
         cn_name: "七彩矿鱼",
+		material: true,
         type: "potion",
         price: 100,
         amount: V.Prismite || 0,
@@ -164,6 +182,7 @@ setup.terraFish = {
 	"Princess_Fish": {
         name: "Princess_Fish",
         cn_name: "公主鱼",
+		material: true,
         type: "potion",
         price: 25,
         amount: V.Princess_Fish || 0,
@@ -173,6 +192,7 @@ setup.terraFish = {
 	"Greenwave_Loach": {
         name: "Greenwave_Loach",
         cn_name: "绿波泥鳅",
+		material: false,
         type: "fish",
         price: 1000,
         amount: V.Greenwave_Loach || 0,
@@ -182,6 +202,7 @@ setup.terraFish = {
 	"Sunken_Sailfish": {
         name: "Sunken_Sailfish",
         cn_name: "沉沦帆鱼",
+		material: true,
         type: "potion",
         price: 70,
         amount: V.Sunken_Sailfish || 0,
@@ -191,6 +212,7 @@ setup.terraFish = {
 	"Prismatic_Guppy": {
         name: "Prismatic_Guppy",
         cn_name: "棱晶孔雀鱼",
+		material: true,
         type: "cookable",
         price: 5,
         amount: V.Prismatic_Guppy || 0,
@@ -200,6 +222,7 @@ setup.terraFish = {
 	"Damselfish": {
         name: "Damselfish",
         cn_name: "焦黑鞭笞者",
+		material: false,
         type: "fish",
         price: 1000,
         amount: V.Damselfish || 0,
@@ -209,6 +232,7 @@ setup.terraFish = {
 	"Coastal_Demonfish": {
         name: "Coastal_Demonfish",
         cn_name: "海岸恶魔鱼",
+		material: true,
         type: "potion",
         price: 8,
         amount: V.Coastal_Demonfish || 0,
@@ -218,12 +242,13 @@ setup.terraFish = {
 	"Crag_Bullhead": {
         name: "Crag_Bullhead",
         cn_name: "硫火崖回鱼",
+		material: true,
         type: "cookable",
         price: 5,
         amount: V.Crag_Bullhead || 0,
         icon: "fishing/fish/Crag_Bullhead.png",
         consumed: "<<set $Crag_Bullhead -= 1>>"
-    }
+    },
 }
 
 function getAllFishList() {

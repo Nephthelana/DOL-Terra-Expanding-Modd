@@ -1,4 +1,5 @@
 :: Guide Mod Hint Pre
+<<set $guide_mod_hint_pre_intro to true>>
 <<if $guide_mod_hint_pre.length lt 2>>
 	"哦，你需要一些关于泰拉瑞亚拓展模组的提示是么？正如我们最初见面时所说，我需要研究几件关键物品，来适应这个模组对我先前已经掌握的知识做出的改动。<br>
 	<br>

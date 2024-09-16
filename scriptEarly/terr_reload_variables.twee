@@ -296,6 +296,10 @@
 	<<set $Sea_Remains = 0>>
 <</if>>
 
+/* 盔甲栏 */
+<<if $terra_armor_slots is undefined>>
+	<<set $terra_armor_slots to ["Armor_Helmet","Armor_Shirt","Armor_Pants"]>>
+<</if>>
 /* 饰品栏 */
 <<if $terra_accessories_slots is undefined>>
 	<<set $terra_accessories_slots to []>>
@@ -319,6 +323,21 @@
 /* 食物 */
 <<if $Sashimi is undefined>>
 	<<set $Sashimi to 0>>
+<</if>>
+<<if $Cooked_Fish is undefined>>
+	<<set $Cooked_Fish to 0>>
+<</if>>
+<<if $Cooked_Shrimp is undefined>>
+	<<set $Cooked_Shrimp to 0>>
+<</if>>
+<<if $Lobster_Tail is undefined>>
+	<<set $Lobster_Tail to 0>>
+<</if>>
+<<if $Seafood_Dinner is undefined>>
+	<<set $Seafood_Dinner to 0>>
+<</if>>
+<<if $Shucked_Oyster is undefined>>
+	<<set $Shucked_Oyster to 0>>
 <</if>>
 
 /* 海岛 */

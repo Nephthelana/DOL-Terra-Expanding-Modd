@@ -41,7 +41,7 @@
 	<br>
 	<<set $fishingrod to true>>
 	<<set $Wood_Fishing_Pole to true>>
-	<<set $fishingrod_held to "Wood_Fishing_Pole">>
+	<<set $options.fishingrod_held to "Wood_Fishing_Pole">>
 	<<set $Bait to "None">>
 	<<set $fishingskill to 0>>
 	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>

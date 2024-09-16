@@ -3,7 +3,7 @@
 <<widget "fishing_power">>
 	<<set $fishing_power = 0>>
 	/* 不同鱼竿提供不同渔力 */
-	<<switch $fishingrod_held>>
+	<<switch $options.fishingrod_held>>
 		<<case "Golden_Fishing_Rod">><<set $fishing_power += 50>>/* 金钓竿：50渔力 */
 		<<case "Hotline_Fishing_Hook">><<set $fishing_power += 45>>/* 熔线钓钩：45渔力 */
 		<<case "Fiberglass_Fishing_Pole">><<set $fishing_power += 30>>/* 玻璃钢钓竿：30渔力 */
@@ -21,6 +21,16 @@
 			<<break>>
 		<</if>>
 	<</for>>
+	/* 装备渔夫盔甲部件，每件提供5渔力 */
+	<<if $terra_armor_slots.includes("Angler_Hat")>>
+		<<set $fishing_power += 5>>
+	<</if>>
+	<<if $terra_armor_slots.includes("Angler_Vest")>>
+		<<set $fishing_power += 5>>
+	<</if>>
+	<<if $terra_armor_slots.includes("Angler_Pants")>>
+		<<set $fishing_power += 5>>
+	<</if>>
 	/* 使用钓鱼药水提供15渔力 */
 	<<if $Fishing_Potion_countdown gt 0>>
 		<<set $fishing_power += 15>>

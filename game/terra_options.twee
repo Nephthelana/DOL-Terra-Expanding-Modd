@@ -1,0 +1,13 @@
+:: terraOptions [widget]
+<<widget "terraOptions">>
+
+<div class="gold">泰拉瑞亚拓展</div>
+<div class="settingsToggle">
+	<label><<checkbox "$options.cute_angler" false true autocheck>>可爱渔夫语言包</label><mouse class="tooltip linkBlue">(?)<span>开启后修改渔夫的对话风格，可根据需要将渔夫性别调整为女性以获得更佳体验()</span></mouse>
+</div>
+<div class="settingsToggle">
+	<label><<checkbox "$options.artificial_fishing_pond" false true autocheck>>人工钓鱼池</label><mouse class="tooltip linkBlue">(?)<span>开启后，可建造并使用某些原本以NPC交互作为前置条件的钓鱼点。详情请询问向导。</span></mouse>
+</div><br>
+<br>
+
+<</widget>>

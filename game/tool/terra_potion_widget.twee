@@ -1,4 +1,4 @@
-:: Void Bag Potion [widget]
+:: Terra Potion [widget]
 <<widget "void_bag_Potion">>
 
 <<if getPotionObtained().length gt 0>>
@@ -9,12 +9,9 @@
 			<<set _potion to setup.terraPotion[_potionObtainedList[_t]]>>
 			<<capture _potion>>
 				<div class="item">
-					<mouse class="tooltip">
+					<div @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
 						<<icon `_potion.item_icon`>>
-						<span>
-							_potion.cn_name<br>▶_potion.des
-						</span>
-					</mouse>
+					</div>
 					<hr>
 					_potion.obtained
 					<hr>

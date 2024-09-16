@@ -1,5 +1,5 @@
 :: Guide Mod Hint
-"如果你还有什么其他疑问或者建议，欢迎通过贴吧、QQ与我...哦不是，与作者 苯环 交流。你可以在模组的说明文件(Readme.txt)里找到联系方式。"<br>
+"如果你还有什么其他疑问或者建议，欢迎通过贴吧、QQ与我...哦不是，与作者 苯环 交流。你可以在模组的说明文件(readme.txt)里找到联系方式。"<br>
 <br>
 <<icon "hint/Emote_Emote_Confused.gif">>关于模组提示的前置任务<br>
 <<link [[关于净化粉|Guide Mod Hint Purification Powder Guide]]>><</link>><br>
@@ -11,12 +11,16 @@
 <<icon "hint/Emote_Item_Fishing_Rod.gif">>关于钓鱼<br>
 <<link [[关于钓鱼点|Guide Mod Hint Fishing Place]]>><</link>><br>
 <<link [[关于渔力|Guide Mod Hint Fishing Power]]>><</link>><br>
+<<link [[关于渔夫任务|Guide Mod Hint Fishing Request]]>><</link>><br>
 <br>
 <<icon "hint/Emote_Event_Bloodmoon.gif">>关于血月<br>
 <<link [[关于血月时的怪物|Guide Mod Hint Bloodmoon]]>><</link>><br>
 <<if $Dreadnautilus_intro and $Bloody_Tear gte 1>>
 	<<link [[关于血泪|Guide Mod Hint Bloody Tear]]>><</link>><br>
 <</if>>
+<br>
+<<icon "hint/Emote_Crafting.gif">>关于制作<br>
+<<link [[关于合成物品|Guide Mod Hint Crafting]]>><</link>><br>
 <br>
 <<link [[返回|Guide Room]]>><</link>><br>
 <br>

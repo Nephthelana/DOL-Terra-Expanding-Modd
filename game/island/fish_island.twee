@@ -1,20 +1,143 @@
-:: Fish Island [widget]
-<<widget "fish_island">>
-		
-<<if $fishingrod isnot true>>
-	<span class="blue">如果你能有一根鱼竿的话，可以试试钓鱼来解决食物问题。但在这个鬼地方，哪会有鱼竿呢？</span><br>
-<<elseif getFishObtainedList().length lte 0>>
-	<span class="teal">你也许可以试着钓一些鱼来充饥。</span><br>
-<<else>>
-	你可以吃鱼来填饱肚子。<br>
-	<<ind>><<link [[生吃鱼|Fish Island Eat]]>><</link>><br>
+:: Fish Island
+/ 本页面正在施工中，内容将在后续完善 /<br>
+<br>
+这里是你临时存放渔获的地点，距离你的营地不远。原住民不会到这儿来，但你要小心野猫的盗窃。<br>
+<br>
+<<if $cat gte 6>>
+	<<link [[生吃鱼|Fish Island Eat Raw]]>><</link>><<cat>><br>
 <</if>>
-<<if $Sashimi gt 0>>
-	<<ind>><<link [[`吃一份生鱼片(${$Sashimi})（0:05)`|Island]]>><<island_pass 5>><<set $Sashimi -= 1>><<hunger -200>><<stress -3>><</link>><<lhunger>><<lstress>><br>
-<</if>>
+/*
+<<link [[查看晾肉架|Fish Island Drying Rack]]>><</link>><br>
+*/
 <<if $island_build_cooking.includes("Work Bench")>>
-	<<icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Fish Island Work Bench]]>><</link>><br>
+	<<link [[查看工作台|Fish Island Work Bench]]>><</link>><br>
 <</if>>
-<<link [[调试选项：回到孤儿院卧室|Bedroom]]>><</link>>
+/*
+<<if $island_build_cooking.includes("Campfire")>>
+	<<link [[查看篝火|Fish Island Campfire]]>><</link>><br>
+<</if>>
+<<if $island_build_cooking.includes("Cooking Pot")>>
+	<<link [[查看烹饪锅|Fish Island Cooking Pot]]>><</link>><br>
+<</if>>
+*/
+<br>
+<<link [[返回营地 (0:05)|Island]]>><<island_pass 5>><</link>>
+
+:: Fish Island Eat Raw
+<<hunger_description>><br>
+<<print $eat_raw_hint is undefined ? "" : $eat_raw_hint>>
+吃生鱼 (0:05)<br>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<set _fishObtained to getFishObtainedList()>>
+		<<for _t to 0; _t lt _fishObtained.length; _t++>>
+			<<set _fish to setup.terraFish[_fishObtained[_t]]>>
+			<<if _fish.type is "cookable">>
+				<<capture _fish>>
+            		<div class="item">
+						<mouse class="tooltip">
+							<<icon `_fish.icon`>>
+							<span>
+								_fish.cn_name
+							</span>
+						</mouse>
+						<hr>
+						_fish.amount
+						<hr>
+						<<link [[吃|Fish Island Eat Raw]]>>
+							<<island_pass 5>>
+							_fish.consumed
+							<<hunger -200>>
+							<<set $eat_raw_icon to _fish.icon>>
+							<<set $eat_raw_hint to "你吃掉了一条<<icon `$eat_raw_icon`>>。<<lhunger>><br>">>
+						<</link>>
+					</div>
+				<</capture>>
+			<</if>>
+		<</for>>
+	</div>
+</span>
+<br>
+<<link [[返回|Fish Island]]>>
+	<<set $eat_raw_icon to undefined>>
+	<<set $eat_raw_hint to undefined>>
+<</link>>
+
+:: Fish Island Drying Rack
+/空，待完善/<br>
+<<link [[返回|Fish Island]]>><</link>>
+
+:: Fish Island Work Bench
+你擦去落在工作台上的杂物。由于海岛缺乏工具，你在这里使用工作台只能将鱼类加工为食物。
+<<icon "furniture_placed/Work_Bench_(placed).png">><br>
+<br>
+<<if currentSkillValue('housekeeping') lt 600>>
+	你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
+<<else>>
+	<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
+<</if>>
+<br>
+<span id="crafting_island_info"></span>
+<span id="crafting_island_work_bench"><<crafting_island_work_bench>></span>
+<br>
+<<getouticon>><<link [[返回|Fish Island]]>><</link>>
+
+:: Fish Island Work Bench Crafting [widget]
+<<widget "crafting_island_info">>
+	_crafted_info
+<</widget>>
+
+<<widget "crafting_island_work_bench">>
+
+<<run initializeTooltips()>>
+
+<span class="no-numberify">
+<<set _recipe_list to getAllRecipeList()>>
+<<set _recipe_avalible to false>>
+<div class="itemTerra">
+	<<for _t to 0; _t lt _recipe_list.length; _t++>>
+		<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
+		<<if _recipe.required_crafting_station is "Work_Bench" and _recipe.type is "food">>
+			<<capture _recipe>>
+				_recipe.craftable
+				<<if _craftable>>
+					<<set _recipe_avalible to true>>
+					<div class="item">
+						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+							<<icon `_recipe.icon`>>
+						</div>
+						<hr>
+						<mouse class="tooltip">
+							配方
+							<span>
+								_recipe.required_material_info
+							</span>
+						</mouse>
+						<hr>
+						<<link "制作">>
+							_recipe.craft
+							<<if _recipe.type is "food">>
+								<<housekeeping 1 600>>
+							<</if>>
+							<<set _crafted_info to _recipe.crafting_info>>
+							<<replace #crafting_island_info>>
+								<<crafting_island_info>>
+							<</replace>>
+							<<replace #crafting_island_work_bench>>
+								<<crafting_island_work_bench>>
+							<</replace>>
+						<</link>>
+					</div>
+				<</if>>
+			<</capture>>
+		<</if>>
+	<</for>>
+</div>
+<<if !_recipe_avalible>>
+	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
+<</if>>
+</span>
 
 <</widget>>
+
+:: Fish Island Campfire

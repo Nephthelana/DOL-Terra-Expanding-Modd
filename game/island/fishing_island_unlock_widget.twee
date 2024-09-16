@@ -1,0 +1,159 @@
+:: Fishing Island Unlock [widget]
+<<widget "fishing_island_unlock">>
+		
+<<if $fishing_island_unlock is undefined>>
+	<<set $fishing_island_unlock to []>>
+<</if>>
+<<if $fishing_island_unlock gte 1 and $island_cooking_unlocked is undefined>>
+	<<set $island_cooking_unlocked to true>>
+<</if>>
+<<if $fishingrod>>
+<<switch $island.home>>
+	<<case "rocky_hillock">>
+		<<if $fishing_island_unlock.includes("rocky_hillock")>>
+			<<fishingrod_held_icon>><<link [[前往天湖钓鱼 (0:20)|Fishing Bitten]]>>
+				<<island_pass 20>>
+				<<fishing_cast_time>>
+				<<set $fishing_place to "rocky_hillock">>
+			<</link>><br>
+		<<else>>
+			你看到不远处有个云雾缭绕的地方，你偶尔会发现有叼着鱼的海鸟从那个方向飞出来。<br>
+			<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Rocky Hillock 1]]>>
+				<<island_pass 20>>
+				<<set $island_fishing_place_unlock to "rocky_hillock">>
+				<<tiredness 10>>
+			<</link>><<gtiredness>><br>
+		<</if>>
+	<<case "waterfall">>
+		<<if $fishing_island_unlock.includes("waterfall")>>
+			<<fishingrod_held_icon>><<link [[前往瀑布湖钓鱼 (0:20)|Fishing Bitten]]>>
+				<<island_pass 20>>
+				<<fishing_cast_time>>
+				<<set $fishing_place to "waterfall">>
+			<</link>><br>
+		<<else>>
+			你的营地在瀑布附近，直觉告诉你附近很可能会有适合钓鱼的地方，这也许能够帮你收集一些食物。<br>
+			<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Waterfall 1]]>>
+				<<island_pass 20>>
+				<<set $island_fishing_place_unlock to "waterfall">>
+				<<tiredness 10>>
+			<</link>><<gtiredness>><br>
+		<</if>>
+	<<case "gulch">>
+		<<if $fishing_island_unlock.includes("gulch")>>
+			<<fishingrod_held_icon>><<link [[前往洞穴湖钓鱼 (0:20)|Fishing Bitten]]>>
+				<<island_pass 20>>
+				<<fishing_cast_time>>
+				<<set $fishing_place to "gulch">>
+			<</link>><br>
+		<<else>>
+			你经过一处幽暗的山洞，里面传来潺潺的流水声。<br>
+			<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Gulch 1]]>>
+				<<island_pass 20>>
+				<<set $island_fishing_place_unlock to "gulch">>
+				<<tiredness 10>>
+			<</link>><<gtiredness>><br>
+		<</if>>
+<</switch>>
+<<if $fishing_island_unlock.length gte 1>>
+	<<ind>><<link [[查看你的渔获 (0:05)|Fish Island]]>><<island_pass 5>><</link>><br>
+<</if>>
+<<ind>><<link [[(调试选项)返回孤儿院卧室|Bedroom]]>><</link>><<terraHint>><br>
+<</if>>
+
+<</widget>>
+
+:: Fishing Island Unlock General 1
+<<npc Bailey>><<npc Robin 2>>
+你近乎虔诚地跪坐在岸上，看着面前离水的鱼。它的鱼唇和鳃盖一开一合，不停地摆动身体试图逃跑，时不时还蹦跶一下，或是用尾巴猛拍地板，然而这都无济于事。<br>
+<br>
+恍惚间，你想到了自己，想到了自己至今为止的生活——从记事以来就不曾感受过父母的温暖；没有人可以依赖，没有人可以亲近；贝利可怕又可恨，但你却无法离开<<person1>><<him>>；罗宾给你安慰，但<<person2>><<him>>更需要你。你想起自己几乎每天都不得不面对暴力和骚扰，还有贝利的征收像影子一样追赶着你。小镇上的人都对你如饥似渴，没有任何地方是安全的。但离开了小镇，在这与世隔绝的海岛上，你却比任何时候更像这条脱水的鱼。<br>
+<br>
+几天以来，饥饿和焦虑折磨着你，无处不在的原住民让你草木皆兵，你的尊严和身体都被肆意蹂躏。你食不果腹、衣不蔽体、夜不能寐，每天像老鼠一样搜寻着核桃充饥，像猎物一样躲避着四面八方的追捕，像面前这条可怜的鱼任人宰割。<br>
+<br>
+它是多么鲜美，多么诱人。虽然带着腥味，但它所能带给你的满足，绝非是核桃能比的。<br>
+<br>
+你发觉眼泪流过自己的脸颊，你不知道这是因为想起了自己的境遇，还是对这条鱼心生同情。<br>
+<br>
+<<link [[继续|Fishing Island Unlock General 2]]>><</link>>
+
+:: Fishing Island Unlock General 2
+你摇了摇头，平复心情，擦干了眼泪。鱼和小镇上的动物并不相同：你不能伤害那些东西，但鱼是你的食物，这不一样。<br>
+<br>
+鱼的挣扎越来越微弱了。你狠下心来，捡起一旁的石头，给了它一个痛快。<br>
+<br>
+那么，现在只剩下一个问题了，你要怎么吃它呢？<br>
+<br>
+<<link [[继续|Fishing Island Unlock General 3]]>><</link>>
+
+:: Fishing Island Unlock General 3
+你双手捧起这条一动不动的鱼，将它靠近嘴边。鱼皮上分泌的粘液又滑又腥，让你抓不稳，也下不了口。<br>
+<br>
+当然，你还必须说服自己生吃这条鱼。这并不容易，因为光是这个想法就让你感到恶心。你一刻不停地给自己做思想工作。可是当鱼靠近你嘴边的时候，那股腥味还是让你想要呕吐。<<gstress>><<stress 5>><<lcontrol>><<control -5>><br>
+<br>
+你深吸一口气，闭上眼睛，皱起眉头，犹豫地张开嘴，然后带着视死如归般的决心咬了下去——<br>
+<br>
+一种诡异的感觉在你牙齿和舌头之间滑动着。腥臭味钻进了你的喉咙和鼻腔。你不自主地吐出那条鱼，呕吐了起来，但你的口中仍有大量的混合着唾液的腥臭鱼鳞和粘液。你再也受不了了，赶紧把鱼丢到一旁，跑到水边开始漱口。<span class="red">看样子生吃并不是一个好主意...</span><<ggstress>><<stress 10>><<lcontrol>><<control -5>><br>
+<br>
+你回头看着那条鱼。你发现自己刚刚那样一番努力，却连鱼皮都没能咬开，只是在上面留下了一道牙痕。你无奈地叹了一口气。<br>
+<br>
+看来你必须先对它做些处理。<br>
+<br>
+<<link [[继续|Fishing Island Unlock General 4]]>><</link>>
+
+:: Fishing Island Unlock General 4
+<<if $island_fishing_place_unlock is "gulch">>
+	你在靠近蘑菇地的地方，找到了一块大石头，看起来能够当作桌子使用，附近的蘑菇为你提供了充足的照明。<br>
+<<else>>
+	你在岸边找到了一处较为开阔的，有树荫遮挡的好地方。这里还有一些干净平滑的大石头能当做石桌使用。可惜这里空间实在太小，而且不利于出去收集资源，否则还真是个扎营的好地方。<br>
+<</if>>
+<br>
+你拣起一块锋利的石头，用它刮去了鱼鳞、剖开鱼腹、去掉内脏，最后清洗干净。
+<<if currentSkillValue('housekeeping') gte 200>>
+	现在这条鱼看起来就像摆在市场上的商品了，你感到欣慰。<<lstress>><<stress -3>><br>
+<<else>>
+	你从没有做过类似的事情，显得笨手笨脚。一段时间之后，这条可怜的鱼被你折腾得惨不忍睹，但至少看起来还有食材的样子。<br>
+<</if>>
+<br>
+你小心地割下一小片鱼肉，犹豫片刻之后送入嘴里，品尝起来——<br>
+<br>
+<<if $cat gte 6>>
+	<<hunger -200>>
+	土腥味几乎没有了，但你还是尝到了一丝宛如水垢的怪味。鱼肉是一种难以言说的奇怪的口感：又滑又嫩，但你感觉很好。<br>
+	<br>
+	随着你的咀嚼，你逐渐接受了这种奇怪的体验。鱼肉中的汁水在你口中游走，令你感到有些兴奋。臭味也完全不见了，一股鲜甜的味道从舌尖传遍你的全身，这感觉...好极了！你完全爱上了这种味道，刚才对生鱼的可怕印象一扫而空，看来只要稍加处理，生鱼就会变成你的美餐。<<cat>><br>
+<<else>>
+	土腥味几乎没有了。但随着你的咀嚼，一股水垢的气息和腥甜的味道弥漫在你的口腔里，鱼肉也是一种难以言说的奇怪的口感。虽然说比刚才没有任何处理的情况好了不少，但你仍感到生理上不适，只好将它吐掉。<br>
+<</if>>
+<br>
+这种程度的料理还不足以让你接受它，你需要对它做更多的处理，或许晒成鱼干会是个好主意。<br>
+<br>
+<<link [[返回营地 (0:20)|Fishing Island Unlock General 5]]>><<island_pass 20>><</link>>
+
+:: Fishing Island Unlock General 5
+你收拾好渔具，简单清理了一下，带上渔获返回了营地。<br>
+<br>
+你在营地附近挑选了一块风水宝地：通风、干燥、全天都能被阳光照射，也鲜少有蚊虫活动。你搬来一块干净的石板，又用树枝和荷叶支起一个小顶棚，反复调整角度，确保鱼能被太阳晾晒，而不会被雨水淋到。<br>
+<br>
+做完这一些后，你把鱼摆在石板上，现在，你唯一需要的就是等待。<br>
+<br>
+你的内心感到一丝欣慰。<<lstress>><<stress -3>><br>
+<br>
+<span class="gold">
+	你现在可以前往
+	<<switch $island_fishing_place_unlock>>
+		<<case "rocky_hillock">>天湖<<set $fishing_island_unlock.pushUnique("rocky_hillock")>>
+		<<case "waterfall">>瀑布湖<<set $fishing_island_unlock.pushUnique("waterfall")>>
+		<<case "gulch">>洞穴湖<<set $fishing_island_unlock.pushUnique("gulch")>>
+	<</switch>>
+	钓鱼了！<br>
+	/*
+	你现在可以制作鱼干了!<br>
+	*/
+</span>
+<br>
+/*
+<span class="teal"><i>把鲜鱼晾晒成鱼干需要三天。鱼干每天都需要翻面以降低其变质概率。若当天有下雨，则鱼干晾晒的进度不会增长。</i></span><br>
+<br>
+*/
+<<link [[继续|Island]]>><<set $island_fishing_place_unlock to undefined>><<endevent>><</link>>

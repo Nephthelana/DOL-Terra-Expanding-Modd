@@ -11,3 +11,22 @@
 	gap: 5px;
 	padding: 0.5rem;
 }
+
+.terraMod {
+	animation: 180s infinite linear lustful;
+	background: linear-gradient(-90deg, #1ea44a, #1ea44a, #1ea44a, #1ea44a, #1ea44a, #d9e299);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+@keyframes blink {
+	0% { color: #FFC437; } 
+	33% { color: #FFE76B; } 
+	66% { color: #FFFEF3; } 
+	100% { color: #FFC437; } 
+  }
+   
+  .blinking-text {
+	animation: blink 1.5s infinite; /* 每秒闪烁一次，无限循环 */
+  }

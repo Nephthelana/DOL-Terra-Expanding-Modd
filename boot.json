@@ -1,6 +1,6 @@
 {
   "name": "Terraria Expand Mod",
-  "version": "0.1.7-pre",
+  "version": "0.2.0-pre",
   "styleFileList": [],
   "scriptFileList": [
     "game/fishing/Angler.js",
@@ -102,151 +102,151 @@
           "passage": "Farm Bedroom",
           "findString": "|Farm Cottage]]>><<pass 1>><</link>>\n\t<br>\n\t<br>",
           "replace": "|Farm Cottage]]>><<pass 1>><</link>>\n\t<br>\n\t<br>\n<<pylon_farm_bedroom>>",
-		  "_comment6":"农场卧室晶塔操作界面"
+		  "_comment":"农场卧室晶塔操作界面"
         },
         {
           "passage": "Farm Meadow Date 3",
           "findString": "|Farm Meadow Date 4]]>><</link>>",
           "replace": "|Farm Meadow Date 4]]>><</link>><<pylon_farm_bedroom_ask>>",
-		  "_comment7":"触发农场卧室晶塔解锁剧情"
+		  "_comment":"触发农场卧室晶塔解锁剧情"
         },
         {
           "passage": "Bird Tower",
           "findString": "<<if $bird.upgrades.mirror is 1>>",
           "replace": "\n<<pylon_hawks_tower>><<if $bird.upgrades.mirror is 1>>",
-		  "_comment8":"鹰塔晶塔操作界面"
+		  "_comment":"鹰塔晶塔操作界面"
         },
         {
           "passage": "Widgets Bird",
           "findString": "<br>\n\t\t<<bird_fly_options>>",
           "replace": "<<pylon_hawks_tower_ask>><br><<bird_fly_options>>",
-		  "_comment9":"触发鹰塔晶塔解锁剧情"
+		  "_comment":"触发鹰塔晶塔解锁剧情"
         },
         {
           "passage": "Wolf Cave",
           "findString": "<<if $nextPassageCheck is \"Wolf Cave Clearing\">>",
           "replace": "<<pylon_wolfcave>>\n<<if $nextPassageCheck is \"Wolf Cave Clearing\">>",
-		  "_comment10":"狼窝晶塔操作界面"
+		  "_comment":"狼窝晶塔操作界面"
         },
         {
           "passage": "Wolf River",
           "findString": "|Wolf River Rouse]]>><</link>>\n\t\t<br>\n\t<</if>>",
           "replace": "|Wolf River Rouse]]>><</link>>\n\t\t<br>\n\t<</if>>\n<<pylon_wolfcave_ask>>",
-		  "_comment11":"触发狼窝晶塔解锁剧情"
+		  "_comment":"触发狼窝晶塔解锁剧情"
         },
         {
           "passage": "Widgets Wolf Cave",
           "findString": "Wolf Cave Hunt Leave]]>><</link>>",
           "replace": "Wolf Cave Hunt Leave]]>><<set $wolf_cave_hunt_request_refuse to true>><</link>>",
-		  "_comment12":"黑狼是否在狼窝的一个条件，用于判断晶塔是否可以使用"
+		  "_comment":"黑狼是否在狼窝的一个条件，用于判断晶塔是否可以使用"
         },
         {
           "passage": "Museum",
           "findString": "<<museumdonate>><</link>>\n\t\t<br>\n\t<</if>>",
           "replace": "<<museumdonate>><</link>>\n\t\t<br>\n\t<</if>>\n<<pylon_museum_ask>>",
-		  "_comment13":"向温特询问晶塔的事情的选项入口"
+		  "_comment":"向温特询问晶塔的事情的选项入口"
         },
         {
           "passage": "Bedroom",
           "findString": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>",
           "replace": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>\n<<blood_moon_monolith_bedroom>>",
-		  "_comment15":"房间内的血月天塔柱菜单"
+		  "_comment":"房间内的血月天塔柱菜单"
         },
         {
           "passage": "Widgets Icon Img",
           "findString": "(Weather.bloodMoon or $forcedBloodmoon)",
           "replace": "(Weather.bloodMoon or $forcedBloodmoon or ($blood_moon_monolith and Time.dayState is \"night\") or $Bloody_Tear_used)",
-		  "_comment16":"启用血月天塔柱时，丰收街出城的图标显示血月对应的图像"
+		  "_comment":"启用血月天塔柱时，丰收街出城的图标显示血月对应的图像"
         },
         {
           "passage": "Widgets",
           "findString": "(Time.isBloodMoon() or $forcedBloodmoon)",
           "replace": "(Time.isBloodMoon() or $forcedBloodmoon or $blood_moon_monolith)",
-		  "_comment17":"启用血月天塔柱时，侧边栏夜间背景显示血月的图像"
+		  "_comment":"启用血月天塔柱时，侧边栏夜间背景显示血月的图像"
         },
         {
           "passage": "Widgets Wraith",
           "findString": "* 100)) or Time.isBloodMoon()",
           "replace": "* 100)) or Time.isBloodMoon() or $blood_moon_monolith",
-		  "_comment18":"启用血月天塔柱时，社交栏会如同血月期间地显示苍白怨灵"
+		  "_comment":"启用血月天塔柱时，社交栏会如同血月期间地显示苍白怨灵"
         },
         {
           "passage": "Widgets Lake",
           "findString": "<<trauma 6>><<stress 6>>",
           "replace": "<<trauma 6>><<stress 6>><<elseif $blood_moon_monolith>>红色的月亮倒映在冰面上，一阵恐惧袭上心头，让你感到刺痛。但你仍能意识到这是血月天塔柱带来的效果。",
-		  "_comment19":"启用血月天塔柱时，在森林湖岸对血月天塔柱带来的血月幻象的反应"
+		  "_comment":"启用血月天塔柱时，在森林湖岸对血月天塔柱带来的血月幻象的反应"
         },
         {
           "passage": "Wolf Cave Clearing",
           "findString": "if Time.isBloodMoon()",
           "replace": "if Time.isBloodMoon() or ($blood_moon_monolith and Time.dayState is \"night\")",
-		  "_comment20":"启用血月天塔柱时，在狼窝溪流对血月天塔柱带来的血月幻象的反应"
+		  "_comment":"启用血月天塔柱时，在狼窝溪流对血月天塔柱带来的血月幻象的反应"
         },
         {
           "passage": "Sea",
           "findString": "<<set $sea -= 10>><</link>><<gtiredness>><<swimmingdifficulty 1 100>>\n\t\t\t\t<br>",
           "replace": "<<set $sea -= 10>><</link>><<gtiredness>><<swimmingdifficulty 1 100>>\n\t\t\t<br><br><<if $fishing_anglerintro isnot true>>你看到有个小孩浮在海面上。<br><<link [[叫醒这个人|Fishing Angler Intro]]>><</link>><</if>>",
-		  "_comment21":"海中叫醒渔夫的剧情选项"
+		  "_comment":"海中叫醒渔夫的剧情选项"
         },
         {
           "passage": "Beach",
           "findString": "<<if $exposed gte 1>>",
           "replace": "<<if $fishingskill gte 0 and $fishing_place_beach_unlock isnot true>>看到眼前如此广阔的海域，不钓鱼真是可惜了~<span class=\"green\">你可以在海滩钓鱼了！</span><br><br><<link [[继续|Beach]]>><<set $fishing_place_beach_unlock to true>><<endevent>><</link>><<exitAll>><</if>><<if $exposed gte 1>>",
-		  "_comment22":"到达海滩时解锁海滩钓鱼点"
+		  "_comment":"到达海滩时解锁海滩钓鱼点"
         },
         {
           "passage": "Beach",
           "findString": "<<if $earSlime.forcedCommando isnot undefined",
           "replace": "<br><<if $fishingrod and $fishing_place_beach_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在海滩钓鱼|Fishing Bitten]]>><<set $fishing_place to \"beach\">><<fishing_cast_time>><</link>><</if>><<if $fishing_anglerintro>><br><<if $options.cute_angler>><<icon \"fishing/house_icon.png\">><<else>><<icon \"fishing/iron_fence.png\">><</if>><<link [[进入渔夫小屋|Fishing Angler Cabin]]>><</link>><br><<if $fishing_requests_finished_count is undefined>><<set $fishing_requests_finished_count to 0>><</if>><</if>><<if $earSlime.forcedCommando isnot undefined",
-		  "_comment23":"海滩钓鱼点入口，渔夫小屋入口"
+		  "_comment":"海滩钓鱼点入口，渔夫小屋入口"
         },
         {
           "passage": "Lake Fishing Rock",
           "findString": "<</if>>\n<br><br>",
           "replace": "<</if>><br><br><<if $fishingskill gte 0 and $fishing_place_lake_fishing_rock_unlock isnot true>>这么大一片森林湖，配上这块可供休憩的岩石——不在这里钓鱼简直就是暴殄天物！<span class=\"green\">你可以在钓鱼岩钓鱼了！</span><br><br><<link [[继续|Lake Fishing Rock]]>><<set $fishing_place_lake_fishing_rock_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment24":"到达森林湖钓鱼岩时解锁森林湖钓鱼岩钓鱼点"
+		  "_comment":"到达森林湖钓鱼岩时解锁森林湖钓鱼岩钓鱼点"
         },
         {
           "passage": "Lake Fishing Rock",
           "findString": "<<pass 20>><</link>>\n\t<br><br>",
           "replace": "<<pass 20>><</link>><<if $fishingrod and $fishing_place_lake_fishing_rock_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在森林湖钓鱼|Fishing Bitten]]>><<set $fishing_place to \"lake_fishing_rock\">><<fishing_cast_time>><</link>><</if>><br><br>",
-		  "_comment25":"森林湖钓鱼岩钓鱼点入口"
+		  "_comment":"森林湖钓鱼岩钓鱼点入口"
         },
         {
           "passage": "Barb Street",
           "findString": "<</if>>\n<<streeteffects>>",
           "replace": "<</if>><<if $fishingskill gte 100 and $fishing_place_barb_street_unlock isnot true>><br><br>今年以来的降水给干涸的河床带来了一丝生机，一些水坑里竟有生命在活动。<span class=\"green\">你可以在倒钩街的运河钓鱼了！</span><br><br><<link [[继续|Barb Street]]>><<set $fishing_place_barb_street_unlock to true>><</link>><<exitAll>><</if>><<streeteffects>>",
-		  "_comment26":"钓鱼等级达到F+（100）后，到达倒钩街时解锁倒钩街钓鱼点"
+		  "_comment":"钓鱼等级达到F+（100）后，到达倒钩街时解锁倒钩街钓鱼点"
         },
         {
           "passage": "Barb Street",
           "findString": "|Doren Entrance]]>><<pass 2>><</link>>\n\t\t\t<br>\n\t\t<</if>>",
           "replace": "|Doren Entrance]]>><<pass 2>><</link>><br><</if>><<if $fishingrod and $fishing_place_barb_street_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在运河钓鱼|Fishing Bitten]]>><<set $fishing_place to \"barb_street\">><<fishing_cast_time>><</link>><br><</if>>",
-		  "_comment27":"倒钩街钓鱼点入口"
+		  "_comment":"倒钩街钓鱼点入口"
         },
         {
           "passage": "Moor",
           "findString": "<</if>>\n<</if>>",
           "replace": "<</if>><</if>><<if $fishingskill gte 200 and $fishing_place_moor_unlock isnot true and $moor is 10>><br><br>庄园旁堆积着大量的沙子，中间围成的水池是个钓鱼的好地方。<span class=\"green\">你可以在雷米庄园门口钓鱼了！</span><br><br><<link [[继续|Moor]]>><<set $fishing_place_moor_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment28":"钓鱼等级达到D（200）后，到达荒原雷米庄园门口时解锁雷米庄园门口的沙地钓鱼点"
+		  "_comment":"钓鱼等级达到D（200）后，到达荒原雷米庄园门口时解锁雷米庄园门口的沙地钓鱼点"
         },
         {
           "passage": "Moor",
           "findString": "|Estate Approach]]>><</link>>\n\t\t<br><br>",
           "replace": "|Estate Approach]]>><</link>><br><br><<if $fishingrod and $fishing_place_moor_unlock>>钓鱼<br><<fishingrod_held_icon>><<link [[在雷米庄园门口钓鱼|Fishing Bitten]]>><<set $fishing_place to \"moor\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment29":"雷米庄园门口的沙地钓鱼点入口"
+		  "_comment":"雷米庄园门口的沙地钓鱼点入口"
         },
         {
           "passage": "Forest",
           "findString": "<br><br>\n<</if>>",
           "replace": "<br><br><</if>><<if $fishingskill gte 300 and $fishing_place_honey_unlock isnot true>>森林中的蜂巢附近，应该会有蜂蜜池可供钓鱼。<span class=\"green\">你可以在蜂蜜池钓鱼了！</span><br><br><<link [[继续|Forest]]>><<set $fishing_place_honey_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment30":"钓鱼等级达到D+（300）后，到达森林时解锁蜂巢蜂蜜池钓鱼点"
+		  "_comment":"钓鱼等级达到D+（300）后，到达森林时解锁蜂巢蜂蜜池钓鱼点"
         },
         {
           "passage": "Widgets Forest",
           "findString": "<<set $eventskip to 1>><</link>>\n\t\t\t\t<br>",
           "replace": "<<set $eventskip to 1>><</link>><br><<if $fishingrod and $fishing_place_honey_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment31":"森林蜂巢蜂蜜池钓鱼点入口"
+		  "_comment":"森林蜂巢蜂蜜池钓鱼点入口"
         },
 		{
 		  "passage": "Forest",
@@ -282,61 +282,61 @@
           "passage": "Wolf Cave Clearing",
           "findString": "<<wolfcavestate>>\n<</if>>",
           "replace": "<<wolfcavestate>><</if>><<if $fishingskill gte 500 and $fishing_place_wolf_cave_clearing_unlock isnot true and $syndromewolves gte 1>><br><br>你发现这条溪流时常有古怪的鱼类出没，也许是生长在底部的菌类所致。<span class=\"green\">你可以在狼窝的溪流里钓鱼了！</span><br><br><<link [[继续|Wolf Cave Clearing]]>><<set $fishing_place_wolf_cave_clearing_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment34":"钓鱼等级达到C+（500）后，到达狼窝时解锁狼窝的溪流钓鱼点"
+		  "_comment":"钓鱼等级达到C+（500）后，到达狼窝时解锁狼窝的溪流钓鱼点"
         },
         {
           "passage": "Wolf Cave Clearing",
           "findString": "<</link>>\n\t<</if>>",
           "replace": "<</link>>\n\t<</if>><<if $fishingrod and $fishing_place_wolf_cave_clearing_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在小溪里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"wolf_cave_clearing\">><<fishing_cast_time>><</link>><</if>>",
-		  "_comment35":"狼窝的溪流钓鱼点入口"
+		  "_comment":"狼窝的溪流钓鱼点入口"
         },
 		{
 		  "passage": "Bird Tower",
 		  "findString": "<<if $exposed gte 1>>",
 		  "replace": "<<if $fishingskill gte 600 and $fishing_place_bird_tower_unlock isnot true and $syndromebird gte 1>><br><br>面前的雨水池里总能神奇地维持水量，而且...它什么时候有了养鱼的习惯？<span class=\"green\">你可以在鹰塔的雨水池里钓鱼了！</span><br><br><<link [[继续|Bird Tower]]>><<set $fishing_place_bird_tower_unlock to true>><</link>><<exitAll>><</if>><<if $exposed gte 1>>",
-		  "_comment36":"钓鱼等级达到B（600）后，到达鹰塔时解锁鹰塔的雨水池钓鱼点"
+		  "_comment":"钓鱼等级达到B（600）后，到达鹰塔时解锁鹰塔的雨水池钓鱼点"
 		},
 		{
 		  "passage": "Bird Tower",
 		  "findString": "Bird Tower Rainwater Pool]]>><</link>>\n\t<br>",
 		  "replace": "Bird Tower Rainwater Pool]]>><</link>><br><<if $fishingrod and $fishing_place_bird_tower_unlock>>钓鱼<br><<fishingrod_held_icon>><<link [[在雨水池里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bird_tower\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment37":"鹰塔的雨水池钓鱼点入口"
+		  "_comment":"鹰塔的雨水池钓鱼点入口"
 		},
         {
           "passage": "Eden Clearing",
           "findString": "<br><br>\n\n<<if $foresthunt gte 1>>",
           "replace": "<br><br><<if $fishingskill gte 700 and $fishing_place_eden_clearing_unlock isnot true and $syndromeeden gte 1>>你注意到泉水下有些东西在活动，稍加清理后会是个不错的钓鱼地点。<span class=\"green\">你可以在伊甸家的泉水里钓鱼了！</span>但在此之前需要泉水足够干净。<br><br><<link [[继续|Eden Clearing]]>><<set $fishing_place_eden_clearing_unlock to true>><</link>><<exitAll>><</if>><<if $foresthunt gte 1>>",
-		  "_comment38":"钓鱼等级达到B+（700）后，到达伊甸小屋时解锁伊甸家的泉水钓鱼点"
+		  "_comment":"钓鱼等级达到B+（700）后，到达伊甸小屋时解锁伊甸家的泉水钓鱼点"
         },
         {
           "passage": "Widgets Cabin",
           "findString": "<</if>>\n\t\t<br>\n\t<</if>>",
           "replace": "<</if>><br><</if>><<if $fishingrod and $fishing_place_eden_clearing_unlock>><<if $edenspring gte 1>>钓鱼<br><<fishingrod_held_icon>><<link [[在泉水里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"eden_clearing\">><<fishing_cast_time>><</link>><br><br><<else>><i>你不能在这样脏乱的泉水中钓鱼。</i><br><br><</if>><</if>>",
-		  "_comment39":"伊甸家的泉水钓鱼点入口"
+		  "_comment":"伊甸家的泉水钓鱼点入口"
         },
         {
           "passage": "Bog",
           "findString": "<</if>>\n<br><br>",
           "replace": "<</if>><br><br><<if $fishingskill gte 800 and $fishing_place_bog_unlock isnot true>>这片沼泽的水域虽然散发着一股怪味，但仍有一钓的价值。<span class=\"green\">你可以在沼泽钓鱼了！</span><br><br><<link [[继续|Bog]]>><<set $fishing_place_bog_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment40":"钓鱼等级达到A（800）后，到达沼泽时解锁沼泽钓鱼点"
+		  "_comment":"钓鱼等级达到A（800）后，到达沼泽时解锁沼泽钓鱼点"
         },
         {
           "passage": "Bog",
           "findString": "to 1>><<pass 5>><</link>>\n\t\t\t\t<br>\n\t\t\t<</if>>",
           "replace": "to 1>><<pass 5>><</link>><br><</if>><<if $fishingrod and $fishing_place_bog_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在沼泽钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bog\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment41":"沼泽钓鱼点入口"
+		  "_comment":"沼泽钓鱼点入口"
         },
         {
           "passage": "Trash",
           "findString": "<</if>>\n\n<<if $robinmissing",
           "replace": "<</if>><<if $fishingskill gte 900 and $fishing_place_trash_unlock isnot true and $trash gte 50>><br><br>垃圾场深处还有些滚烫的热水池，也许是某处管道泄漏导致的。<span class=\"green\">你可以在垃圾场深处滚烫的热水中钓鱼了！</span><br><br><<link [[继续|Trash]]>><<set $fishing_place_trash_unlock to true>><</link>><<exitAll>><</if>><<if $robinmissing",
-		  "_comment42":"钓鱼等级达到A+（900）后，到达垃圾场深处时解锁垃圾场的沸水钓鱼点"
+		  "_comment":"钓鱼等级达到A+（900）后，到达垃圾场深处时解锁垃圾场的沸水钓鱼点"
         },
         {
           "passage": "Trash",
           "findString": "<</if>>\n\n\t<<if $trash lte 0>>",
           "replace": "<</if>><<if $fishingrod and $fishing_place_trash_unlock and $trash gte 50>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在沸水中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"trash\">><<fishing_cast_time>><</link>><br><br><</if>><<if $trash lte 0>>",
-		  "_comment43":"垃圾场的沸水钓鱼点入口"
+		  "_comment":"垃圾场的沸水钓鱼点入口"
         },
         {
           "passage": "Park",
@@ -366,7 +366,7 @@
           "passage": "Forest",
           "findString": "<<if $edenforesthunt is 1>>",
           "replace": "<<if $edenforesthunt is 1>><<if $artificial_fishing_pond_eden_cabin is undefined>><<set $artificial_fishing_pond_eden_cabin to \"realized\">><</if>>",
-		  "_comment42":"人工钓鱼池(伊甸小屋)解锁的前置条件之一：被伊甸追杀过一次"
+		  "_comment":"人工钓鱼池(伊甸小屋)解锁的前置条件之一：被伊甸追杀过一次"
         },
         {
           "passage": "Forest",
@@ -378,7 +378,7 @@
           "passage": "Forest",
           "findString": "<<elseif $blackwolfhunt is 1>>",
           "replace": "<<elseif $blackwolfhunt is 1>><<if $artificial_fishing_pond_wolf_cave_clearing is undefined>><<set $artificial_fishing_pond_wolf_cave_clearing to \"realized\">><</if>>",
-		  "_comment42":"人工钓鱼池(狼窝)解锁的前置条件之一：被黑狼追杀过一次"
+		  "_comment":"人工钓鱼池(狼窝)解锁的前置条件之一：被黑狼追杀过一次"
         },
 		{
 		  "passage": "Forest",
@@ -426,74 +426,74 @@
           "passage": "Bedroom",
           "findString": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>",
           "replace": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>><<if random(1,20) is 1>><<icon \"Journey_Toggle.png\">><<link [[旅行模式能力菜单|Terra Debug]]>><</link>><br><<else>><<icon \"Debug.png\">><<link [[进入泰拉瑞亚拓展调试/作弊页面(使用前确保自己能善用存档/回溯功能)|Terra Debug]]>><</link>><br><</if>>",
-		  "_comment44":"访问调试/作弊页面的入口"
+		  "_comment":"访问调试/作弊页面的入口"
         },
 		{
 		  "passage": "Orphanage Loft",
 		  "findString": "<<getouticon>>",
-		  "replace": "<<icon \"Void_Bag.png\">><<link [[打开虚空袋|Void Bag Operate]]>><</link>><br><<getouticon>>",
-		  "_comment45":"阁楼内打开虚空袋与内部物品交互的功能"
+		  "replace": "<<orphanage_loft_work_bench>><<orphanage_loft_iron_anvil>><<orphanage_loft_cooking_pot>><br><<getouticon>>",
+		  "_comment":"阁楼内使用制作站的功能"
 		},
 		{
 		  "passage": "Forest Shop Widgets",
 		  "findString": "<</if>>\n\t<<if $robin_in_forest_shop>>",
 		  "replace": "<</if>><<bait_forest_shop>><<if $robin_in_forest_shop>>",
-		  "_comment46":"森林商店的小动物家具"
+		  "_comment":"森林商店的小动物家具"
 		},
 		{
 		  "passage": "Bog Intro",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
 		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment48":"沼泽处增加翅膀的功能"
+		  "_comment":"沼泽处增加翅膀的功能"
 		},
 		{
 		  "passage": "Meadow Tunnel",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
 		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment49":"草地处增加翅膀的功能"
+		  "_comment":"草地处增加翅膀的功能"
 		},
 		{
 		  "passage": "Moor Widgets",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
 		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment50":"荒原处增加翅膀的功能"
+		  "_comment":"荒原处增加翅膀的功能"
 		},
 		{
 		  "passage": "Commercial rooftops",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
 		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
 		  "all": "true",
-		  "_comment51":"百货大楼楼顶处增加翅膀的功能"
+		  "_comment":"百货大楼楼顶处增加翅膀的功能"
 		},
 		{
 		  "passage": "Briar Hack 2",
 		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
 		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment52":"妓院米奇任务处增加翅膀的差分"
+		  "_comment":"妓院米奇任务处增加翅膀的差分"
 		},
 		{
 		  "passage": "StoryCaption",
 		  "findString": "<<hallucinogencaption>>\n\t\t</div>",
 		  "replace": "<<hallucinogencaption>></div><<buff_widget>>",
-		  "_comment52":"侧边栏增加增益追踪器，以查看激活的增益及其剩余时间"
+		  "_comment":"侧边栏增加增益追踪器，以查看激活的增益及其剩余时间"
 		},
 		{
 		  "passage": "Forest",
 		  "findString": "<</if>>\n\t\t\t<</if>>",
 		  "replace": "<</if>>\n\t\t\t<</if>><<icon \"fishing/house_icon.png\">><<link [[进入小屋|Guide Room]]>><</link>><br><br>",
-		  "_comment52":"森林商店处，向导小屋的入口"
+		  "_comment":"森林商店处，向导小屋的入口"
 		},
 		{
 		  "passage": "Widgets Journal",
 		  "findString": "<</if>>\n\t\t</ul>\n\t<</if>>",
 		  "replace": "<</if>></ul><</if>><<guide_hint_journal>>",
-		  "_comment52":"日志中增加对向导任务的提示"
+		  "_comment":"日志中增加对向导任务的提示"
 		},
 		{
 		  "passage": "Temple Jordan",
 		  "findString": "|World Corruption Ask]]>><</link>><br>",
 		  "replace": "|World Corruption Ask]]>><</link>><br><<if $guide_mod_hint_pre isnot undefined and $Purification_Powder isnot true>><<askicon>><<link [[询问净化粉|Guide Mod Hint Purification Powder Jordan]]>><</link>><br><</if>>",
-		  "_comment52":"约旦处询问净化粉"
+		  "_comment":"约旦处询问净化粉"
 		},
 		{
 		  "passage": "Museum",
@@ -568,22 +568,58 @@
 		  "_comment":"装备航鱼靴时提供运动加成"
 		},
 		{
-		  "passage": "Island",
-		  "findString": "<<preMirror>><</link>>\n\t<br>",
-		  "replace": "<<preMirror>><</link>><br><<fishing_island>>",
-		  "_comment":"海岛钓鱼选项入口"
-		},
-		{
-		  "passage": "Island",
-		  "findString": "<</if>>\n\t<br>\n<</if>>",
-		  "replace": "<</if>><br><</if>><<fish_island>><br>",
-		  "_comment":"海岛吃鱼选项入口"
-		},
-		{
 		  "passage": "Island Build",
 		  "findString": "<<islandBuildOption raft>>\n\t\t<</if>>",
 		  "replace": "<<islandBuildOption raft>><</if>><<if $island_cooking_unlocked>><<island_build_cooking>><</if>>",
 		  "_comment":"海岛建造制作站的交互框"
+		},
+		{
+		  "passage": "Island",
+		  "findString": "<<gphysique>>\n<br><br>",
+		  "replace": "<<gphysique>>\n<br><<fishing_island_unlock>><br>",
+		  "_comment":"海岛解锁钓鱼点的剧情"
+		},
+		{
+		  "passage": "Widget displayLinks",
+		  "findString": "<</for>>",
+		  "replace": "<</for>><br><<snakeCharmersFluteUse>>",
+		  "_comment":"在合适的街道页面显示耍蛇者长笛的选项"
+		},
+		{
+		  "passage": "Lake Shore",
+		  "findString": "<</link>>\n\t<</if>>\n\t<br><br>",
+		  "replace": "<</link>>\n\t<</if>>\n\t<br><br><<snakeCharmersFluteUse>><br>",
+		  "_comment":"在森林湖页面显示耍蛇者长笛的选项"
+		},
+		{
+		  "passage": "Meadow",
+		  "findString": "<<farmicon>>",
+		  "replace": "<<snakeCharmersFluteUse>><br><<farmicon>>",
+		  "_comment":"在草地页面显示耍蛇者长笛的选项"
+		},
+		{
+		  "passage": "Moor",
+		  "findString": "<br><br>\n\t<<else>>",
+		  "replace": "<br><br><<if $moor gte 100>><<snakeCharmersFluteUse>><</if>><<else>>",
+		  "_comment":"在荒原页面显示耍蛇者长笛的选项"
+		},
+		{
+		  "passage": "Widgets Clothing Caption",
+		  "findString": "))>>\n\t<</if>>",
+		  "replace": "))>>\n\t<</if>><<if $armor_set_bonus is \"Angler\">><<set $allure to Math.floor($allure * 0.8)>><</if>>",
+		  "_comment":"渔夫盔甲套装奖励：诱惑值降低20%"
+		},
+		{
+		  "passage": "Widgets Mirror",
+		  "findString": "????</span>\n\t\t<br>\n\t<</if>>",
+		  "replace": "????</span>\n\t\t<br>\n\t<</if>><<if $armor_set_bonus is \"Angler\">><span class=\"green\">渔夫盔甲套装奖励</span><br><</if>>",
+		  "_comment":"镜子中检查在他人眼中的自己时，显示渔夫盔甲套装奖励带来的效果"
+		},
+		{
+		  "passage": "StoryCaption",
+		  "findString": "<<if $options.sidebarStats isnot \"disabled\">>",
+		  "replace": "<<terraExpandHintMobile>><<if $options.sidebarStats isnot \"disabled\">>",
+		  "_comment":"在收纳的侧边栏增加模组图标"
 		}
       ]
     },
@@ -602,13 +638,13 @@
 			"from": "delete V.robin_kicked_out;",
 			"to": "delete V.robin_kicked_out;fragment.append(wikifier(\"terra_daily_reset\"));",
 			"fileName": "time.js",
-			"_comment":"每天6点时刷新任务鱼种类和森林商店小动物家具小种类，"
+			"_comment":"每天6点时刷新任务鱼种类，森林商店小动物家具小种类，以及重置血泪使用后的血月"
           },
 		  {
             "from": "statChange.worldCorruption(\"soft\", V.world_corruption_hard);",
             "to": "statChange.worldCorruption(\"soft\", V.world_corruption_hard);fragment.append(wikifier(\"terra_weekly_reset\"));",
 			"fileName": "time.js",
-			"_comment102":"每周重置森林商店摆放的小动物家具大种类"
+			"_comment":"每周重置森林商店摆放的小动物家具大种类"
           },
 		  {
             "from": "statChange.pain(minutes, -1);",
@@ -632,7 +668,7 @@
             "from": "(date.day === 1 && date.hour < 6)",
             "to": "(date.day === 1 && date.hour < 6) || V.Bloody_Tear_used",
 			"fileName": "time.js",
-			"_comment":"血泪使用后，当晚变为血月"
+			"_comment":"使用血泪后，当晚变为血月"
           },
 		  {
             "from": "updateOptions();",

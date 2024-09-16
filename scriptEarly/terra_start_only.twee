@@ -161,6 +161,8 @@
 <<set $Iron_Bar = 0>>
 <<set $Sea_Remains = 0>>
 
+/* 盔甲栏 */
+<<set $terra_armor_slots to ["Armor_Helmet","Armor_Shirt","Armor_Pants"]>>
 /* 饰品栏 */
 <<set $terra_accessories_slots to []>>
 
@@ -175,6 +177,11 @@
 
 /* 食物 */
 <<set $Sashimi to 0>>
+<<set $Cooked_Fish to 0>>
+<<set $Cooked_Shrimp to 0>>
+<<set $Lobster_Tail to 0>>
+<<set $Seafood_Dinner to 0>>
+<<set $Shucked_Oyster to 0>>
 
 /* 海岛 */
 <<set $island_build_cooking to []>>

@@ -1,5 +1,7 @@
 :: Blood Moon Sacrifice 0
+<<earnFeat "Don't Dread on Me">>
 <<set $blood_moon_sacrifice += 1>>
+<<set $plants["blood_lemon"].amount -= 10>>
 它看着你，等待着你的行动。虽然不是第一次见到它了，但你仍然感到害怕和紧张。<<gstress>><<stress 3>><br>
 <br>
 你冷静下来，翻出背包里的血柠，确认好数目，把它们放在水边。血乌贼已经在附近等候多时。<br>
@@ -30,6 +32,7 @@
 它的瞳孔是一道深渊，鲜血从其中泊泊而出。你的灵魂仿佛要坠入其中。<<ggstress>><<stress 12>><<ggtrauma>><<trauma 10>><<lcontrol>><<control -10>><br>
 <br>
 <span class="red">它仍在上升。</span><br>
+<br>
 它壳上的尖刺收缩又舒张，发出令人不安的响声<span class="red">像机械间的碰撞，又像骨头的断裂</span>。红色的水沿着祂壳上的纹路流下，宛如鲜血，你这才发现水池里的水已经全部变成了红色。血月腥红的光辉渗透之处，已经全都是一片血红。<<gggstress>><<stress 18>><<ggghallucinogens>><<hallucinogen 400>><br>
 <br>
 它的触手<span class="red">既是摄食痛苦的舌头，又是撕裂皮肉的鞭子</span>。它们在空中蠕动、翻腾，随着壳口的开闭不停地抽搐。触手间互相碰撞，发出令人疯狂的声音。<<gggstress>><<stress 18>><<ggtrauma>><<trauma 10>><br>
@@ -108,6 +111,7 @@
 <<link [[休息 (0:10)|Blood Moon Sacrifice 5]]>><<pass 10>><</link>><br>
 
 :: Blood Moon Sacrifice 5
+<<earnFeat "Don't Dread on Me">>
 过了一会儿，你终于平静下来。你挣扎着起身，发现身上的压力和重担都消失不见了，刚刚仿佛经历了一场真实的噩梦，回想起来仍然心有余悸。<br>
 <br>
 虽然恐惧鹦鹉螺带给你巨大的冲击和压迫感，但仔细回想一下，它从头到尾全没有要伤害你的意思。说不定它其实比你想象的更友好，只是无法控制自己散发的恐惧而已。<<llstress>><<stress -8>><<lltrauma>><<trauma -6>><br>
