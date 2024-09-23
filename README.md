@@ -221,8 +221,8 @@
 - 感谢 铁单质 给予我将渔力机制实装的动力，同时提供了微光水在dol中的作用(未实装)，在斯德哥尔摩li处的钓鱼点附近修建人工钓鱼池，在渔夫奖励池添加鳍翼的想法！
 - 感谢 星海横流 提供的日志显示当日任务鱼的想法！
 ## 友情链接
-- [更多恋人模组](https://github.com/Nephthelana) by 苯环
+- [更多恋人模组](https://github.com/Nephthelana/DoL-More-Love-Interests-Mod) by 苯环
 - [社交栏NPC小头像模组](https://github.com/Eudemonism00/DOL-NPC-Avatars-Mod) by [动车(Eudemonism00)](https://github.com/Eudemonism00)
 ## 免责声明
 1. 本mod为泰拉瑞亚拓展mod，并非本体内容。
-2. 本mod完全免费游玩，严禁对本mod进行二传/二改/用作商业盈利用途/传播，对于商业盈利或传播导致的可能法律后果完全由使用者自行承担，与mod作者无关。
+2. 本mod完全免费游玩，严禁对本mod进行二传/用作商业盈利用途，对于二传或商业盈利导致的可能法律后果完全由使用者自行承担，与mod作者无关。
