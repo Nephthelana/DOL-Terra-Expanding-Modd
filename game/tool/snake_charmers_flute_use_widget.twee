@@ -1,5 +1,6 @@
 :: Snake Charmers Flute Use [widget]
 <<widget "snakeCharmersFluteUse">>
+<<<<<<< Updated upstream
 	<div id='test'>
 		<<if $Snake_Charmers_Flute>>
 			<<if $terra_accessories_slots.includes("Fin_Wings") or $birdFly gte 1>>
@@ -21,5 +22,27 @@
 			<</if>>
 		<</if>>
 	</div>
+=======
+
+	<<if $Snake_Charmers_Flute>>
+		<<if $terra_accessories_slots.includes("Fin_Wings") or $birdFly gte 1>>
+			<<switch $passage>>
+				<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
+					<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (0:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Town">><<pass 1>><</link>>
+				<<case "Lake Shore">>
+					<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (0:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Lake Shore">><<pass 1>><</link>>
+				<<case "Meadow">>
+					<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (0:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Meadow">><<pass 1>><</link>>
+				<<case "Moor">>
+					<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (0:01)|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Moor">><<pass 1>><</link>>
+			<</switch>>
+		<<elseif $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6 or $terra_accessories_slots.includes("Fledgling_Wings")>>
+			<<switch $passage>>
+				<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
+					<<icon "tool/Snake_Charmers_Flute.png">><<link [[耍蛇者长笛 (0:01)|Snake Charmers Flute Use 1]]>><<pass 1>><</link>>
+			<</switch>>
+		<</if>>
+	<</if>>
+>>>>>>> Stashed changes
 
 <</widget>>

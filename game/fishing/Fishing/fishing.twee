@@ -37,8 +37,10 @@
 <<if $fishing_distance lte 0>>
 	<<if !($terra_accessories_slots.includes("High_Test_Fishing_Line") or $terra_accessories_slots.includes("Angler_Tackle_Bag") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")) and random(1,7) is 1>>
 		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><span class="red">但是你的鱼线断了......</span>也许你需要一个优质钓鱼线。<<ggstress>><<stress 6>><br>
+		<<set $fishing_failed_count += 1>>
 	<<else>>
 		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><<llstress>><<stress -6>><br>
+		<<set $fishing_harvest_count += 1>>
 		<<switch $fishing_harvest>>
 			<<case "Dreadnautilus">>
 				<<fishing_Dreadnautilus>>
@@ -57,6 +59,7 @@
 	<<fishing_finished_back>>
 <<elseif $fishing_integrity is 0>>
 	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><<ggstress>><<stress 6>><br>
+	<<set $fishing_failed_count += 1>>
 	<br>
 	<<fishing_bait_consumed>>
 	<br>

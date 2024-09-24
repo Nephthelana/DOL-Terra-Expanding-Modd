@@ -1,0 +1,226 @@
+:: Terra Expand Equipment [widget]
+<<widget "terra_expand_equipment">>
+	<<button '<<icon "Accessories_icon.png">>装备'>><<iModReplace "terraExpandEquipmentOverlay">><</button>>
+<</widget>>
+
+<<widget "terraExpandEquipmentOverlay">>
+	<<replace #customOverlayTitle>><<titleTerraExpandEquipment>><</replace>>
+	<<replace #customOverlayContent>><<terraExpandEquipment>><</replace>>
+<</widget>>
+
+<<widget "titleTerraExpandEquipment">>
+	<<setupTabs>>
+	<div id="overlayTabs" class="tab">
+		<<closeButtonMobile>>
+		<<button "盔甲\&饰品">>
+			<<toggleTab>>
+			<<replace #customOverlayContent>><<terraExpandEquipment>><</replace>>
+		<</button>>
+	</div>
+	<<closeButton>>
+<</widget>>
+
+<<widget "terraExpandEquipment">>
+
+	<span id="terra_armor_slots">
+		<<terra_armor_slots>>
+	</span>
+	<span id="terra_armor">
+		<<terra_armor>>
+	</span>
+
+	<span id="terra_accessories_slots">
+		<<terra_accessories_slots>>
+	</span>
+	<span id="terra_accessories">
+		<<terra_accessories>>
+	</span>
+
+<</widget>>
+
+:: Terra Armor Operate [widget]
+<<widget "terra_armor_slots">>
+
+<<run initializeTooltips()>>
+
+<<switch $terra_armor_slots[0]>>
+	<<case "Angler_Hat">>
+		<<if $terra_armor_slots[1] is "Angler_Vest" and $terra_armor_slots[2] is "Angler_Pants">>
+			<<set $armor_set_bonus to "Angler">>
+		<<else>>
+			<<set $armor_set_bonus to undefined>>
+		<</if>>
+	<<default>>
+		<<set $armor_set_bonus to undefined>>
+<</switch>>
+<<updateallure>>
+<span class="gold bold">盔甲栏</span><mouse class="tooltip linkBlue">(?)<span>装备同一盔甲类型的全部三个部件时，会提供独特的套装奖励</span></mouse><br>
+<div class="itemTerra">
+	<<for _i to 0; _i lt 3; _i++>>
+		<<capture _i>>
+			<<set _armorList to getAllArmorList()>>
+			<<if _armorList.includes($terra_armor_slots[_i])>>
+				<<for _j to 0; _j lt _armorList.length; _j++>>
+					<<set _armor to setup.terraArmor[_armorList[_j]]>>
+					<<if $terra_armor_slots[_i] is _armor.name>>
+						<div class="item">
+							<<set _isArmorSet to $armor_set_bonus is undefined ? "" : "<br>_armor.set_bonus">>
+							<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
+								<<icon `_armor.icon_item`>>
+							</div>
+							<hr>
+							<<link "卸下">>
+								<<switch _armor.type>>
+									<<case "helmet">>
+										<<set $terra_armor_slots[0] to "Armor_Helmet">>
+									<<case "shirt">>
+										<<set $terra_armor_slots[1] to "Armor_Shirt">>
+									<<case "pants">>
+										<<set $terra_armor_slots[2] to "Armor_Pants">>
+								<</switch>>
+								<<replace #terra_armor_slots>>
+									<<terra_armor_slots>>
+								<</replace>>
+								<<replace #terra_armor>>
+									<<terra_armor>>
+								<</replace>>
+							<</link>>
+						</div>
+					<</if>>
+				<</for>>
+			<<else>>
+				<div class="item">
+					<img @src="'img/misc/icon/armor/' + $terra_armor_slots[_i] + '.png'">
+					<hr>
+					空
+				</div>
+			<</if>>
+		<</capture>>
+	<</for>>
+</div>
+
+<</widget>>
+
+<<widget "terra_armor">>
+
+<<run initializeTooltips()>>
+
+<span class="gold bold">盔甲</span><br>
+<<set _armorObtained to getArmorObtained()>>
+<div class="itemTerra">
+	<<for _t to 0; _t lt _armorObtained.length; _t++>>
+		<<set _armor to setup.terraArmor[_armorObtained[_t]]>>
+		<<capture _armor>>
+			<<if !$terra_armor_slots.includes(_armor.name)>>
+				<div class="item">
+					<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
+						<<icon `_armor.icon_item`>>
+					</div>
+					<hr>
+					<<link "装备">>
+						<<switch _armor.type>>
+							<<case "helmet">>
+								<<set $terra_armor_slots[0] to _armor.name>>
+							<<case "shirt">>
+								<<set $terra_armor_slots[1] to _armor.name>>
+							<<case "pants">>
+								<<set $terra_armor_slots[2] to _armor.name>>
+						<</switch>>
+						<<replace #terra_armor_slots>>
+							<<terra_armor_slots>>
+						<</replace>>
+						<<replace #terra_armor>>
+							<<terra_armor>>
+						<</replace>>
+					<</link>>
+				</div>
+			<</if>>
+		<</capture>>
+	<</for>>
+</div>
+
+<</widget>>
+
+:: Terra Accessories Operate [widget]
+<<widget "terra_accessories_slots">>
+
+<<run initializeTooltips()>>
+
+<span class="gold bold">饰品栏</span><mouse class="tooltip linkBlue">(?)<span>大部分饰品需要装备在饰品栏内才会生效</span></mouse><br>
+<div class="itemTerra">
+	<<set _accessoryObtained to getAccessoriesObtained()>>
+	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
+		<<set _accessory_equipped to setup.terraAccessories[_accessoryObtained[_t]]>>
+		<<capture _accessory_equipped>>
+			<<if $terra_accessories_slots.includes(_accessory_equipped.name)>>
+				<div class="item">
+					<<set _isMaterial to _accessory_equipped.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}`">
+						<<icon `_accessory_equipped.icon`>>
+					</div>
+					<hr>
+					<<link "卸下">>
+						<<set $terra_accessories_slots.delete(_accessory_equipped.name)>>
+						<<replace #terra_accessories>>
+							<<terra_accessories>>
+						<</replace>>
+						<<replace #terra_accessories_slots>>
+							<<terra_accessories_slots>>
+						<</replace>>
+					<</link>>
+				</div>
+			<</if>>
+		<</capture>>
+	<</for>>
+	<<for _t to 0; _t lt (6-$terra_accessories_slots.length); _t++>>
+		<div class="item">
+			<<icon "Accessories.png">>
+			<hr>
+			空
+		</div>
+	<</for>>
+</div>
+
+<</widget>>
+
+<<widget "terra_accessories">>
+
+<<run initializeTooltips()>>
+
+<span class="gold bold">饰品</span><br>
+<div class="itemTerra">
+	<<set _accessoryObtained to getAccessoriesObtained()>>
+	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
+		<<set _accessory to setup.terraAccessories[_accessoryObtained[_t]]>>
+		<<capture _accessory>>
+			<<if !$terra_accessories_slots.includes(_accessory.name)>>
+       			<div class="item">
+					<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}`">
+						<<icon `_accessory.icon`>>
+					</div>
+					<<if $terra_accessories_slots.length lt 6>>
+						<hr>
+						<<if _accessory.type is "wings" and ($terra_accessories_slots.includes("Fin_Wings") or $terra_accessories_slots.includes("Fledgling_Wings"))>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个翅膀</span></mouse>
+						<<elseif _accessory.type is "boots" and ($terra_accessories_slots.includes("Sailfish_Boots") or $terra_accessories_slots.includes("Dunerider_Boots") or $terra_accessories_slots.includes("Flurry_Boots"))>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一双靴子</span></mouse>
+						<<else>>
+							<<link "装备">>
+								<<set $terra_accessories_slots.pushUnique(_accessory.name)>>
+								<<replace #terra_accessories_slots>>
+									<<terra_accessories_slots>>
+								<</replace>>
+								<<replace #terra_accessories>>
+									<<terra_accessories>>
+								<</replace>>
+							<</link>>
+						<</if>>
+					<</if>>
+				</div>
+			<</if>>
+		<</capture>>
+	<</for>>
+</div>
+
+<</widget>>

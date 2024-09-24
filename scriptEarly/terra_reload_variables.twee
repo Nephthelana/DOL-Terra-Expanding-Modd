@@ -102,6 +102,12 @@
 <<if $Sky_Crate is undefined>>
 	<<set $Sky_Crate = 0>>
 <</if>>
+<<if $Frozen_Crate is undefined>>
+	<<set $Frozen_Crate = 0>>
+<</if>>
+<<if $Obsidian_Crate is undefined>>
+	<<set $Obsidian_Crate = 0>>
+<</if>>
 <<if $Sunken_Crate is undefined>>
 	<<set $Sunken_Crate = 0>>
 <</if>>
@@ -133,6 +139,10 @@
 <<if $Prismite is undefined>><<set $Prismite = 0>><</if>>
 <<if $Princess_Fish is undefined>><<set $Princess_Fish = 0>><</if>>
 <<if $Chaos_Fish is undefined>><<set $Chaos_Fish = 0>><</if>>
+<<if $Frost_Minnow is undefined>><<set $Frost_Minnow = 0>><</if>>
+<<if $Atlantic_Cod is undefined>><<set $Atlantic_Cod = 0>><</if>>
+<<if $Flarefin_Koi is undefined>><<set $Flarefin_Koi = 0>><</if>>
+<<if $Obsidifish is undefined>><<set $Obsidifish = 0>><</if>>
 <<if $Greenwave_Loach is undefined>><<set $Greenwave_Loach = 0>><</if>>
 <<if $Sunken_Sailfish is undefined>><<set $Sunken_Sailfish = 0>><</if>>
 <<if $Prismatic_Guppy is undefined>><<set $Prismatic_Guppy = 0>><</if>>
@@ -266,6 +276,9 @@
 <<if $fishing_request_robin is undefined>>
 	<<set $fishing_request_robin to []>>
 <</if>>
+<<if $robin_fishing_place_unlocked is undefined>>
+	<<set $robin_fishing_place_unlocked to []>>
+<</if>>
 
 /* 宝匣内容物数量 */
 <<if $redemption_voucher is undefined>>
@@ -311,11 +324,6 @@
 	<<set $Bloody_Tear = 0>>
 <</if>>
 
-/* dom罗宾拓展联动 */
-<<if $robin_fishing_place_unlocked is undefined>>
-	<<set $robin_fishing_place_unlocked to []>>
-<</if>>
-
 /* 食物 */
 <<if $Sashimi is undefined>>
 	<<set $Sashimi to 0>>
@@ -324,6 +332,73 @@
 /* 海岛 */
 <<if $island_build_cooking is undefined>>
 	<<set $island_build_cooking to []>>
+<</if>>
+
+/* 统计数据 */
+<<if $fishing_bitten_count is undefined>>
+	<<set $fishing_bitten_count to 0>>
+<</if>>
+<<if $fishing_harvest_count is undefined>>
+	<<set $fishing_harvest_count to 0>>
+<</if>>
+<<if $fishing_failed_count is undefined>>
+	<<set $fishing_failed_count to 0>>
+<</if>>
+<<if $RPS_win_count is undefined>>
+	<<set $RPS_win_count to 0>>
+<</if>>
+<<if $RPS_none_count is undefined>>
+	<<set $RPS_none_count to 0>>
+<</if>>
+<<if $PRS_lose_count is undefined>>
+	<<set $PRS_lose_count to 0>>
+<</if>>
+<<if $pylon_teleport_count is undefined>>
+	<<set $pylon_teleport_count to 0>>
+<</if>>
+<<if $fishing_crate_count is undefined>>
+	<<set $fishing_crate_count to {
+		Golden_Crate: 0,
+		Iron_Crate: 0,
+		Wooden_Crate: 0,
+		Ocean_Crate: 0,
+		Oyster: 0,
+		Oasis_Crate: 0,
+		Jungle_Crate: 0,
+		Hallowed_Crate: 0,
+		Sky_Crate: 0,
+		Sunken_Crate: 0,
+		Sulphurous_Crate: 0,
+		Brimstone_Crate: 0,
+	}>>
+<</if>>
+<<if $unload_crate_count is undefined>>
+	<<set $unload_crate_count to {
+		Golden_Crate: 0,
+		Iron_Crate: 0,
+		Wooden_Crate: 0,
+		Ocean_Crate: 0,
+		Oyster: 0,
+		Oasis_Crate: 0,
+		Jungle_Crate: 0,
+		Hallowed_Crate: 0,
+		Sky_Crate: 0,
+		Sunken_Crate: 0,
+		Sulphurous_Crate: 0,
+		Brimstone_Crate: 0,
+	}>>
+<</if>>
+<<if $crafting_count is undefined>>
+	<<set $crafting_count to {
+		Work_Bench: 0,
+		Iron_Anvil: 0,
+		Cooking_Pot: 0,
+	}>>
+<</if>>
+
+/* 阁楼制作站初始化 */
+<<if $orphanage_loft_crafting_station is undefined>>
+	<<set $orphanage_loft_crafting_station to []>>
 <</if>>
 
 <</widget>>

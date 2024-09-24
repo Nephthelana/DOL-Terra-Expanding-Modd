@@ -1,0 +1,111 @@
+:: Terra Expand Tool [widget]
+<<widget "terra_expand_tool">>
+	<<button '<<icon "tool/Snake_Charmers_Flute.png">>工具'>><<iModReplace "terraExpandToolOverlay">><</button>>
+<</widget>>
+
+<<widget "terraExpandToolOverlay">>
+	<<replace #customOverlayTitle>><<titleTerraExpandTool>><</replace>>
+	<<replace #customOverlayContent>><<terraExpandTool>><</replace>>
+<</widget>>
+
+<<widget "titleTerraExpandTool">>
+	<<setupTabs>>
+	<div id="overlayTabs" class="tab">
+		<<closeButtonMobile>>
+		<<button "工具">>
+			<<toggleTab>>
+			<<replace #customOverlayContent>><<terraExpandTool>><</replace>>
+		<</button>>
+	</div>
+	<<closeButton>>
+<</widget>>
+
+<!-- 工具标签页信息 -->
+<<widget "terraExpandTool">>
+	<<setupOptions>>
+	<span id="hint_item_use"></span>
+	<span id="void_bag_Tool">
+		<<void_bag_Tool>>
+	</span>
+	<span id="void_bag_Bloody_Tear">
+		<<void_bag_Bloody_Tear>>
+	</span>
+	<span id="void_bag_Potion">
+		<<void_bag_Potion>>
+	</span>
+	<<if $fishingrod>>
+		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你不能在钓鱼小游戏中切换鱼竿</span></mouse><br>
+		<br>
+		<<if $passage is "Fishing" or $passage is "Robin Fishing">>
+			哦不，钓钩都抛出去了，怎么能换鱼竿呢？
+		<<else>>
+			<<if $Golden_Fishing_Rod>>
+				<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Golden_Fishing_Rod">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>50渔力，每次收线减少15距离</span></mouse>
+				<br>
+			<</if>>
+			<<if $Hotline_Fishing_Hook>>
+				<<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>熔线钓钩
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Hotline_Fishing_Hook">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>45渔力，每次收线减少14距离</span></mouse>
+				<br>
+			<</if>>
+			<<if $Fiberglass_Fishing_Pole>>
+				<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Fiberglass_Fishing_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>30渔力，每次收线减少13距离</span></mouse>
+				<br>
+			<</if>>
+			<<if $Scarab_Fishing_Rod>>
+				<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Scarab_Fishing_Rod">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>30渔力，每次收线减少13距离</span></mouse>
+				<br>
+			<</if>>
+			<<if $Chum_Caster>>
+				<<icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Chum_Caster">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>25渔力，每次收线减少12距离</span></mouse>
+				<br>
+			<</if>>
+			<<if $Reinforced_Fishing_Pole>>
+				<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Reinforced_Fishing_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>20渔力，每次收线减少11距离</span></mouse>
+				<br>
+			<</if>>
+			<<if $Wood_Fishing_Pole>>
+				<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Wood_Fishing_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>15渔力，每次收线减少10距离</span></mouse>
+				<br>
+			<</if>>
+		<</if>>
+	<<elseif $fishing_anglerintro>>
+		渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？<br>
+	<<else>>
+		你需要从某人那里获得鱼竿。也许这人正漂浮在海上。<br>
+	<</if>>
+<</widget>>

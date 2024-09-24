@@ -42,9 +42,11 @@
 <<link [[获得/丢弃鱼竿|Terra Debug Fishing Pole]]>><</link>><br>
 <<link [[获得/丢弃饰品|Terra Debug Accessories]]>><</link>><br>
 <<link [[获得/丢弃任务鱼|Terra Debug Request Fish]]>><</link>><br>
-<<link [[获得宝匣|Terra Debug Crates]]>><</link>><br>
 <<link [[获得鱼饵|Terra Debug Baits]]>><</link>><br>
+<<link [[获得鱼|Terra Debug Fish]]>><</link>><br>
+<<link [[获得宝匣|Terra Debug Crates]]>><</link>><br>
 <<link [[获得药水|Terra Debug Potions]]>><</link>><br>
+<span class="no-numberify">
 <<link "<<<">><<set $fishingskill -= 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
 <<link "<<">><<set $fishingskill -= 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
 <<link "<">><<set $fishingskill -= 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
@@ -52,6 +54,7 @@
 | <<link ">">><<set $fishingskill += 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
 | <<link ">>">><<set $fishingskill += 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
 | <<link ">>>">><<set $fishingskill += 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+</span>
 <br>
 <br>
 血月天塔柱相关<br>

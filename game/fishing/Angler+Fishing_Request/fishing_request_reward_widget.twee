@@ -58,7 +58,23 @@
 <<if $Reinforced_Fishing_Pole isnot true and $fishing_requests_finished_count gte 1>>
 	<<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>强化钓竿
 	<<set $Reinforced_Fishing_Pole to true>>
+<<<<<<< Updated upstream
 <<elseif $Golden_Fishing_Rod isnot true and ($fishing_requests_finished_count is 30 or random(1 , Math.round(250 * $fishing_rarity_reduction)) is 1)>>
+=======
+<<elseif $Angler_Hat isnot true and $fishing_requests_finished_count gte 10>>
+	<<icon "armor/Angler_Hat.png">>渔夫帽
+	<<set $Angler_Hat to true>>
+<<elseif $Angler_Vest isnot true and $fishing_requests_finished_count gte 15>>
+	<<icon "armor/Angler_Vest.png">>渔夫背心
+	<<set $Angler_Vest to true>>
+<<elseif $Angler_Pants isnot true and $fishing_requests_finished_count gte 20>>
+	<<icon "armor/Angler_Pants.png">>渔夫裤
+	<<set $Angler_Pants to true>>
+<<elseif $Bottomless_Honey_Bucket isnot true and $fishing_request_selection is "Bumblebee_Tuna" and random(1,4) is 1>>
+	<<icon "tool/Bottomless_Honey_Bucket.png">>无底蜂蜜桶
+	<<set $Bottomless_Honey_Bucket to true>>
+<<elseif $Golden_Fishing_Rod isnot true and ($fishing_requests_finished_count is 30 or random(1 , Math.round(250 * _fishing_rarity_reduction)) is 1)>>
+>>>>>>> Stashed changes
 	<<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>金钓竿
 	<<set $Golden_Fishing_Rod to true>>
 	<<earnFeat "Glorious Golden Pole">>
@@ -68,11 +84,21 @@
 <<elseif $Fin_Wings isnot true and $fishing_requests_finished_count gte 10 and random(1 , Math.round(70 * $fishing_rarity_reduction)) is 1>>
 	<<icon "accessories/Fin_Wings.png">>鳍翼
 	<<set $Fin_Wings to true>>
+<<<<<<< Updated upstream
 <<elseif $Bottomless_Water_Bucket isnot true and $fishing_requests_finished_count gte 5 and ($fishing_requests_finished_count is 15 or random(1 , Math.round(70 * $fishing_rarity_reduction)) is 1)>>
 	<<icon "tool/Bottomless_Water_Bucket.png">>无底水桶
 	<<set $Bottomless_Water_Bucket to true>>
 	<<set $tool_obtained to true>>
 <<elseif $Golden_Bug_Net isnot true and random(1 , Math.round(80 * $fishing_rarity_reduction)) is 1>>
+=======
+<<elseif $Bottomless_Water_Bucket isnot true and $fishing_requests_finished_count gte 5 and ($fishing_requests_finished_count is 25 or random(1 , Math.round(70 * _fishing_rarity_reduction)) is 1)>>
+	<<icon "tool/Bottomless_Water_Bucket.png">>无底水桶
+	<<set $Bottomless_Water_Bucket to true>>
+<<elseif $Super_Absorbant_Sponge isnot true and $fishing_requests_finished_count gte 10 and random(1 , Math.round(70 * _fishing_rarity_reduction)) is 1>>
+	<<icon "tool/Super_Absorbant_Sponge.png">>超级吸水棉
+	<<set $Super_Absorbant_Sponge to true>>
+<<elseif $Golden_Bug_Net isnot true and random(1 , Math.round(80 * _fishing_rarity_reduction)) is 1>>
+>>>>>>> Stashed changes
 	<<icon "tool/Golden_Bug_Net.png">>金虫网
 	<<set $Golden_Bug_Net to true>>
 <<elseif $High_Test_Fishing_Line isnot true and random(1 , Math.round(40 * $fishing_rarity_reduction)) is 1>>

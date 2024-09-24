@@ -5,7 +5,7 @@
 	<span class="red">一个熟悉的巨大身影逐渐浮现出来。尽管你已经见过它一面，但你仍不寒而栗。</span><<gstress>><<stress 3>><br>
 	<br>
 	<<if $plants["blood_lemon"].amount lt 10>>
-		<<askicon>><span class="teal">保险起见，再多摘一些吧。</span>
+		<<askicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
 	<<else>>
 		<<icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 0]]>><</link>>
 	<</if>><br>
@@ -21,7 +21,7 @@
 	<<if $plants["blood_lemon"] is undefined>>
 		<<askicon>><span class="blue">去森林深处找找看吧。</span>
 	<<elseif $plants["blood_lemon"].amount lt 10>>
-		<<askicon>><span class="teal">保险起见，再多摘一些吧。</span>
+		<<askicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
 	<<else>>
 		<<icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 1]]>><</link>>
 	<</if>><br>

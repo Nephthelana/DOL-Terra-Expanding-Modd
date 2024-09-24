@@ -2,6 +2,7 @@ setup.terraBait = {
 	"Apprentice_Bait": {
         name: "Apprentice_Bait",
         cn_name: "学徒诱饵",
+		material: true,
         type: "bait",
         amount: V.Apprentice_Bait || 0,
 		fishing_power: 15,
@@ -13,6 +14,7 @@ setup.terraBait = {
 	"Journeyman_Bait": {
         name: "Journeyman_Bait",
         cn_name: "熟手诱饵",
+		material: true,
         type: "bait",
         amount: V.Journeyman_Bait || 0,
 		fishing_power: 30,
@@ -24,6 +26,7 @@ setup.terraBait = {
 	"Master_Bait": {
         name: "Master_Bait",
         cn_name: "大师诱饵",
+		material: true,
         type: "bait",
         amount: V.Master_Bait || 0,
 		fishing_power: 50,
@@ -35,6 +38,7 @@ setup.terraBait = {
     "Pink_Jellyfish_bait": {
         name: "Pink_Jellyfish_bait",
         cn_name: "粉水母",
+		material: false,
         type: "bait",
         amount: V.Pink_Jellyfish_bait || 0,
 		fishing_power: 20,
@@ -46,6 +50,7 @@ setup.terraBait = {
 	"Blue_Jellyfish_bait": {
         name: "Blue_Jellyfish_bait",
         cn_name: "蓝水母",
+		material: false,
         type: "bait",
         amount: V.Blue_Jellyfish_bait || 0,
 		fishing_power: 20,
@@ -57,6 +62,7 @@ setup.terraBait = {
 	"Green_Jellyfish_bait": {
         name: "Green_Jellyfish_bait",
         cn_name: "绿水母",
+		material: false,
         type: "bait",
         amount: V.Green_Jellyfish_bait || 0,
 		fishing_power: 20,
@@ -68,6 +74,7 @@ setup.terraBait = {
 	"Worm": {
         name: "Worm",
         cn_name: "蠕虫",
+		material: false,
         type: "bait",
         amount: V.Worm || 0,
 		fishing_power: 25,
@@ -79,6 +86,7 @@ setup.terraBait = {
 	"Enchanted_Nightcrawler": {
         name: "Enchanted_Nightcrawler",
         cn_name: "附魔夜行者",
+		material: false,
         type: "bait",
         amount: V.Enchanted_Nightcrawler || 0,
 		fishing_power: 35,
@@ -90,6 +98,7 @@ setup.terraBait = {
 	"Firefly": {
         name: "Firefly",
         cn_name: "萤火虫",
+		material: false,
         type: "bait",
         amount: V.Firefly || 0,
 		fishing_power: 20,
@@ -101,6 +110,7 @@ setup.terraBait = {
 	"Lightning_Bug": {
         name: "Lightning_Bug",
         cn_name: "荧光虫",
+		material: false,
         type: "bait",
         amount: V.Lightning_Bug || 0,
 		fishing_power: 35,
@@ -112,6 +122,7 @@ setup.terraBait = {
 	"Snail": {
         name: "Snail",
         cn_name: "蜗牛",
+		material: false,
         type: "bait",
         amount: V.Snail || 0,
 		fishing_power: 10,
@@ -123,6 +134,7 @@ setup.terraBait = {
 	"Glowing_Snail": {
         name: "Glowing_Snail",
         cn_name: "发光蜗牛",
+		material: false,
         type: "bait",
         amount: V.Glowing_Snail || 0,
 		fishing_power: 15,
@@ -134,6 +146,7 @@ setup.terraBait = {
 	"Grasshopper": {
         name: "Grasshopper",
         cn_name: "蚱蜢",
+		material: false,
         type: "bait",
         amount: V.Grasshopper || 0,
 		fishing_power: 10,
@@ -157,6 +170,7 @@ setup.terraBait = {
 	"Sulphur_Butterfly": {
         name: "Sulphur_Butterfly",
         cn_name: "黄粉蝶",
+		material: false,
         type: "bait",
         amount: V.Sulphur_Butterfly || 0,
 		fishing_power: 10,
@@ -169,6 +183,7 @@ setup.terraBait = {
 	"Zebra_Swallowtail_Butterfly": {
         name: "Zebra_Swallowtail_Butterfly",
         cn_name: "带凤蝶",
+		material: false,
         type: "bait",
         amount: V.Zebra_Swallowtail_Butterfly || 0,
 		fishing_power: 15,
@@ -181,6 +196,7 @@ setup.terraBait = {
 	"Ulysses_Butterfly": {
         name: "Ulysses_Butterfly",
         cn_name: "翠凤蝶",
+		material: false,
         type: "bait",
         amount: V.Ulysses_Butterfly || 0,
 		fishing_power: 20,
@@ -193,6 +209,7 @@ setup.terraBait = {
 	"Julia_Butterfly": {
         name: "Julia_Butterfly",
         cn_name: "珠袖蝶",
+		material: false,
         type: "bait",
         amount: V.Julia_Butterfly || 0,
 		fishing_power: 25,
@@ -205,6 +222,7 @@ setup.terraBait = {
 	"Red_Admiral_Butterfly": {
         name: "Red_Admiral_Butterfly",
         cn_name: "红蛱蝶",
+		material: false,
         type: "bait",
         amount: V.Red_Admiral_Butterfly || 0,
 		fishing_power: 30,
@@ -217,6 +235,7 @@ setup.terraBait = {
 	"Purple_Emperor_Butterfly": {
         name: "Purple_Emperor_Butterfly",
         cn_name: "紫蛱蝶",
+		material: false,
         type: "bait",
         amount: V.Purple_Emperor_Butterfly || 0,
 		fishing_power: 35,
@@ -229,6 +248,7 @@ setup.terraBait = {
 	"Tree_Nymph_Butterfly": {
         name: "Tree_Nymph_Butterfly",
         cn_name: "帛斑蝶",
+		material: false,
         type: "bait",
         amount: V.Tree_Nymph_Butterfly || 0,
 		fishing_power: 50,
@@ -241,6 +261,7 @@ setup.terraBait = {
 	"Hell_Butterfly": {
         name: "Hell_Butterfly",
         cn_name: "地狱蝴蝶",
+		material: false,
         type: "lavaproof",
         amount: V.Hell_Butterfly || 0,
 		fishing_power: 25,
@@ -252,6 +273,7 @@ setup.terraBait = {
 	"Maggot": {
         name: "Maggot",
         cn_name: "蝇蛆",
+		material: false,
         type: "bait",
         amount: V.Maggot || 0,
 		fishing_power: 22,
@@ -263,6 +285,7 @@ setup.terraBait = {
 	"Stinkbug": {
         name: "Stinkbug",
         cn_name: "臭虫",
+		material: false,
         type: "bait",
         amount: V.Stinkbug || 0,
 		fishing_power: 10,
@@ -274,6 +297,7 @@ setup.terraBait = {
 	"Ladybug": {
         name: "Ladybug",
         cn_name: "瓢虫",
+		material: false,
         type: "bait",
         amount: V.Ladybug || 0,
 		fishing_power: 17,
@@ -285,6 +309,7 @@ setup.terraBait = {
 	"Gold_Butterfly": {
         name: "Gold_Butterfly",
         cn_name: "金蝴蝶",
+		material: false,
         type: "bait",
         amount: V.Gold_Butterfly || 0,
 		fishing_power: 50,
@@ -297,6 +322,7 @@ setup.terraBait = {
 	"Gold_Grasshopper": {
         name: "Gold_Grasshopper",
         cn_name: "金蚱蜢",
+		material: false,
         type: "bait",
         amount: V.Gold_Grasshopper || 0,
 		fishing_power: 50,
@@ -308,6 +334,7 @@ setup.terraBait = {
 	"Gold_Worm": {
         name: "Gold_Worm",
         cn_name: "金蠕虫",
+		material: false,
         type: "bait",
         amount: V.Gold_Worm || 0,
 		fishing_power: 50,
@@ -319,6 +346,7 @@ setup.terraBait = {
 	"Gold_Ladybug": {
         name: "Gold_Ladybug",
         cn_name: "金瓢虫",
+		material: false,
         type: "bait",
         amount: V.Gold_Ladybug || 0,
 		fishing_power: 50,
@@ -330,6 +358,7 @@ setup.terraBait = {
 	"Truffle_Worm": {
         name: "Truffle_Worm",
         cn_name: "松露虫",
+		material: false,
         type: "boss_summoner",
         amount: V.Truffle_Worm || 0,
 		fishing_power: 666,

@@ -1,0 +1,35 @@
+:: Terra Orphanage Loft Spray [widget]
+<<widget "terra_orphanage_loft_spray">>
+
+<<if $loft_kylar and $fishing_spray_material gt 0>>
+	<<if $fishing_spray_known>>
+		你有防狼喷雾原料($fishing_spray_material)。
+		<<if $spray lt $spraymax>>
+			<br><<peppersprayicon>><<link [[重新填充防狼喷雾 (0:10)|Terra Orphanage Loft Spray Refill]]>><<pass 10>><</link>><<terraHint>><br>
+		<<else>>
+			<span class="teal">但你现在没有空瓶需要补充。</span><br>
+		<</if>>
+	<<else>>
+		你可以在实验室中研究从<<icon "fishing/crates/Obsidian_Crate.png">>黑曜石匣中开出的粉末。<br>
+		<<ind>><<link [[研究粉末 (0:10)|Terra Orphanage Loft Spray Research]]>><<pass 10>><</link>><<terraHint>><br>
+	<</if>>
+<</if>>
+
+<</widget>>
+
+:: Terra Orphanage Loft Spray Research
+<<set $outside to 0>><<set $location to "home">><<effects>>
+<<set $fishing_spray_known to true>>
+你进入了化学实验室，里面的一些烧杯还在冒泡。在一个<<generateyv1>><<person1>><<person>>的帮助下，你们打开了一袋粉末。经过分析，<span class="green">这是用于制作防狼喷雾的原料。</span><br>
+<br>
+<span class="gold">你可以在实验室用原料补充防狼喷雾了！</span><br>
+<br>
+<<link [[继续|Orphanage Loft]]>><<endevent>><</link>>
+
+:: Terra Orphanage Loft Spray Refill
+<<set $outside to 0>><<set $location to "home">><<effects>>
+<<set $fishing_spray_material -= 1>>
+<<spray 1>>
+你进入了化学实验室，里面的一些烧杯还在冒泡。参照着使用说明，你重新装填了你的防狼喷雾。<br>
+<br>
+<<link [[继续|Orphanage Loft]]>><</link>>

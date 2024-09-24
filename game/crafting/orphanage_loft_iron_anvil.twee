@@ -1,0 +1,73 @@
+:: Orphanage Loft Iron Anvil Widget [widget]
+<<widget "orphanage_loft_iron_anvil">>
+
+<<if $orphanage_loft_crafting_station.includes("Iron_Anvil")>>
+	<<icon "furniture_placed/Iron_Anvil_(placed).png">><<link [[使用铁砧|Orphanage Loft Iron Anvil]]>><</link>><br>
+<</if>>
+
+<</widget>>
+
+:: Orphanage Loft Iron Anvil
+你拿起锻造用的工具。
+<<icon "furniture_placed/Iron_Anvil_(placed).png">><br>
+<br>
+<span id="crafting_orphanage_loft_iron_anvil_info"></span>
+<span id="crafting_orphanage_loft_iron_anvil"><<crafting_orphanage_loft_iron_anvil>></span>
+<br>
+<<getouticon>><<link [[返回|Orphanage Loft]]>><</link>>
+
+:: Orphanage Loft Iron Anvil Crafting [widget]
+<<widget "crafting_orphanage_loft_iron_anvil_info">>
+	_crafted_info
+<</widget>>
+
+<<widget "crafting_orphanage_loft_iron_anvil">>
+
+<<run initializeTooltips()>>
+
+<span class="no-numberify">
+<<set _recipe_list to getAllRecipeList()>>
+<<set _recipe_avalible to false>>
+<div class="itemTerra">
+	<<for _t to 0; _t lt _recipe_list.length; _t++>>
+		<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
+		<<if _recipe.required_crafting_station is "Iron_Anvil">>
+			<<capture _recipe>>
+				_recipe.craftable
+				<<if _craftable>>
+					<<set _recipe_avalible to true>>
+					<div class="item">
+						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+							<<icon `_recipe.icon`>>
+						</div>
+						<hr>
+						<mouse class="tooltip">
+							配方
+							<span>
+								_recipe.required_material_info
+							</span>
+						</mouse>
+						<hr>
+						<<link "制作">>
+							_recipe.craft
+							<<set $crafting_count.Iron_Anvil += 1>>
+							<<set _crafted_info to _recipe.crafting_info>>
+							<<replace #crafting_orphanage_loft_iron_anvil_info>>
+								<<crafting_orphanage_loft_iron_anvil_info>>
+							<</replace>>
+							<<replace #crafting_orphanage_loft_iron_anvil>>
+								<<crafting_orphanage_loft_iron_anvil>>
+							<</replace>>
+						<</link>>
+					</div>
+				<</if>>
+			<</capture>>
+		<</if>>
+	<</for>>
+</div>
+<<if !_recipe_avalible>>
+	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
+<</if>>
+</span>
+
+<</widget>>

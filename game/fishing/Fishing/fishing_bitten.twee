@@ -12,7 +12,7 @@
 		<br>
 		这是怎么回事？<br>
 		<br>
-		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><br>
+		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><<gawareness>><<awareness 10>><br>
 		<br>
 		你扭头看向四周，却什么也没看见。<<gtrauma>><<trauma 2>><br>
 		<br>
@@ -25,7 +25,7 @@
 		<<pass 30>>
 		经过30分钟的等待，你什么都没等到...怎么回事？<br>
 		<br>
-		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><br>
+		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><<gawareness>><<awareness 10>><br>
 		<br>
 		你扭头看向四周，却什么也没看见。<<gtrauma>><<trauma 2>><br>
 	<</if>>
@@ -36,6 +36,7 @@
 		<<pass _time_left>>
 	<<else>>
 		<<pass $fishing_cast_time>>
+		<<set $fishing_bitten_count += 1>>
 		经过$fishing_cast_time分钟的等待，有东西上钩了！<br>
 		<<silently>><<fishing_harvest_pre>><</silently>>
 		<<if $Sonar_Potion_countdown gt 0>>

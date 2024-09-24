@@ -1,0 +1,83 @@
+:: Terra Mod Icon [widget]
+<<widget "terraExpandHintMobile">>
+
+	<<cleareventpool>>
+
+	<<addinlineevent "Normal">>
+		<<set _message to "你正在游玩泰拉瑞亚拓展模组！Enjoy it!">>
+	<</addinlineevent>>
+
+	<<addinlineevent "DoL">>
+		<<set _message to "DoL！好玩！">>
+	<</addinlineevent>>
+
+	<<addinlineevent "BugReport" 0.3>>
+		<<set _message to "如果你遇到可能是模组导致的问题，欢迎向模组作者反馈～">>
+	<</addinlineevent>>
+
+	<<addinlineevent "Advice" 0.3>>
+		<<set _message to "如果你有关于泰拉瑞亚拓展模组的意见或建议，欢迎找我～">>
+	<</addinlineevent>>
+
+	<<addinlineevent "DomRobin" 0.1>>
+		<<set _message to hasDomRobinModInfo() ? ($hasGivenFish ? "试试和罗宾一起钓鱼！" : "试试和罗宾一起在柠檬水摊烤鱼！") : "试试 <i>Dom罗宾</i> 模组！">>
+	<</addinlineevent>>
+
+	<<addinlineevent "NPCAvatarsMods" 0.1>>
+		<<set _message to hasNPCAvatarsModsInfo() ? "社交栏里NPC的小头像们真可爱！<br>你有想过自己也画一套看看吗？" : "试试 <i>NPC社交栏小头像</i> 模组！">>
+	<</addinlineevent>>
+
+	<<addinlineevent "MoreLoveInterests" 0.1>>
+		<<set _message to hasMoreLoveInterestsModInfo() ? "你有没有掰着指头数过你现在有几个恋人了？" : "试试 <i>更多恋人</i> 模组！">>
+	<</addinlineevent>>
+
+	<<addinlineevent "BabyHawk" 0.1>>
+		<<set _message to hasBabyHawkModInfo() ? "鹰塔里的小鸡崽们今天吃饱了吗？" : "试试 <i>鹰宝宝</i> 模组！">>
+	<</addinlineevent>>
+
+	<<addinlineevent "Terraria" 0.05>>
+		<<set _message to "试试泰拉瑞亚(Terraria)！你可以在Steam/谷歌商店里买到它。">>
+	<</addinlineevent>>
+
+	<<addinlineevent "ErrorJoke" 0.01>>
+		<<set _message to "Error: 出现错误，请联系模组作者以修复此问题。<br><br>好吧其实这并不是个报错。开个玩笑~">>
+	<</addinlineevent>>
+
+	<<if $passage is "Fishing Bitten">>
+		<<addinlineevent "Fishing Bitten" 2>>
+			<<set _message to $Sonar_Potion_countdown gt 0 ? "非常漂亮的抛竿！我们来看看你这竿是什么鱼咬钩了吧。" : "非常漂亮的抛竿！如果你使用了'声呐药水'，你能看到现在是什么东西在咬钩。">>
+		<</addinlineevent>>
+	<</if>>
+
+	<<if $passage is "Fishing">>
+		<<addinlineevent "Fishing" 2>>
+			<<switch random(0,1)>>
+				<<case 0>>
+					<<set _message to $fishing_distance lte 0 ? "你做到了！" : $fishing_distance lte 15 ? "加油！就差一点了！" : $fishing_distance lte 40 ? "还有些距离呀...给点力！" : $fishing_distance lte 66 ? "不太看得清浮标的位置诶...总之你加油！" : "渔获距离太远，你可得小心了！">>
+				<<case 1>>
+					<<set _message to $fishing_integrity is 0 ? "又断线了吗？也许下次还是谨慎为妙。" : $fishing_integrity is 1 ? "当心！你的鱼线岌岌可危！" : $fishing_integrity is 2 ? "你的鱼线看起来还有放手一搏的机会。" : $fishing_integrity is 3 ? "你的鱼线看起来状况很好。" : "优质钓鱼线，爽！">>
+			<</switch>>
+		<</addinlineevent>>
+	<</if>>
+
+	<<if $passage is "Fishing Angler Cabin">>
+		<<addinlineevent "Angler" 2>>
+			<<set _message to $options.cute_angler ? "你也许更喜欢现在的渔夫，但会不会有时怀念一下那个嘴臭的家伙？" : "应该不止我一个人感觉这渔夫嘴巴很臭吧？">>
+		<</addinlineevent>>
+	<</if>>
+
+	<<if $passage is "Fishing Request Rewarding">>
+		<<addinlineevent "Fishing Request Rewarding" 5>>
+			<<set _message to [
+				"让我猜猜...这次渔夫给你的都是垃圾！对不对？",
+				"让我猜猜...这次渔夫给了你好东西！对不对？",
+				"任务完成得越多，得到家具的概率越高。而我比较喜欢把渔夫送的家具直接放回去做装饰。",
+			]>>
+		<</addinlineevent>>
+	<</if>>
+
+	<<runeventpool>>
+
+    <input type="button" class="saveMenuButton terraExpandHintMobile" value="" style="cursor: help;" tooltip=_message>
+
+<</widget>>

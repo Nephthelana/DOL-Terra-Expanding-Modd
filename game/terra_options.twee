@@ -1,0 +1,26 @@
+:: terraOptions [widget]
+<<widget "terraOptions">>
+
+<div class="settingsHeader options"><span class="gold">泰拉瑞亚拓展</span></div>
+<div class="settingsGrid">
+<div class="settingsToggleItem">
+	<label><<checkbox "$options.cute_angler" false true autocheck>>可爱渔夫语言包</label><mouse class="tooltip linkBlue">(?)<span>开启后修改渔夫的对话风格，可根据需要将渔夫性别调整为女性以获得更佳体验()</span></mouse>
+</div>
+<div class="settingsToggleItem">
+	<label><<checkbox "$options.artificial_fishing_pond" false true autocheck>>人工钓鱼池</label><mouse class="tooltip linkBlue">(?)<span>开启后，可建造并使用某些原本以NPC交互作为前置条件的钓鱼点。详情请询问向导。</span></mouse>
+</div>
+<!-- 游戏内用V.halloween是否为1来记录当前是否为万圣节
+<div class="settingsToggleItemWide">
+	<label>万圣节：
+		<<listbox "$options.terra_halloween" autoselect>>
+			<<option "仅当万圣节期间" "onlyHalloween">>
+			<<option "始终开启" "alwaysTrue">>
+			<<option "始终关闭" "alwaysFalse">>
+		<</listbox>>
+	</label>
+	<mouse class="tooltip linkBlue">(?)<span>生效期间，会随机发生泰拉瑞亚拓展模组新增的万圣节事件。</span></mouse>
+</div> -->
+</div>
+<hr>
+
+<</widget>>

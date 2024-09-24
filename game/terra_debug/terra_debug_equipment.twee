@@ -1,0 +1,71 @@
+:: Terra Debug Equipment
+<<run initializeTooltips()>>
+请选择获得/丢弃装备。<br>
+盔甲<br>
+<<set _allArmorList to getAllArmorList()>>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<for _i to 0; _i lt _allArmorList.length; _i++>>
+			<<set _armor to setup.terraArmor[_allArmorList[_i]]>>
+			<<capture _armor>>
+				<div class="item">
+					<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
+						<<if V[_armor.name]>>
+							<<icon `_armor.icon`>>
+						<<else>>
+							<span class="terraFading"><<icon `_armor.icon`>></span>
+						<</if>>
+					</div>
+					<hr>
+					<<if V[_armor.name]>>
+						<<link [[丢弃|Terra Debug Equipment]]>>
+							<<set V[_armor.name] to undefined>>
+							<<switch _armor.type>>
+								<<case "helmet">>
+									<<set $terra_armor_slots[0] to "Armor_Helmet">>
+								<<case "shirt">>
+									<<set $terra_armor_slots[1] to "Armor_Shirt">>
+								<<case "pants">>
+									<<set $terra_armor_slots[2] to "Armor_Pants">>
+							<</switch>>
+						<</link>>
+					<<else>>
+						<<link [[获得|Terra Debug Equipment]]>><<set V[_armor.name] to true>><</link>>
+					<</if>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
+饰品
+<<set _allAccessoryList to getAllAccessoriesList()>>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<for _j to 0; _j lt _allAccessoryList.length; _j++>>
+			<<set _accessory to setup.terraAccessories[_allAccessoryList[_j]]>>
+			<<capture _accessory>>
+				<div class="item">
+					<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}`">
+						<<if V[_accessory.name]>>
+							<<icon `_accessory.icon`>>
+						<<else>>
+							<span class="terraFading"><<icon `_accessory.icon`>></span>
+						<</if>>
+					</div>
+					<hr>
+					<<if V[_accessory.name]>>
+						<<link [[丢弃|Terra Debug Equipment]]>>
+							<<set V[_accessory.name] to undefined>>
+							<<set $terra_accessories_slots.delete(_accessory.name)>>
+						<</link>>
+					<<else>>
+						<<link [[获得|Terra Debug Equipment]]>><<set V[_accessory.name] to true>><</link>>
+					<</if>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
+<br>
+<<getouticon>><<link [[返回|Terra Debug]]>><</link>>

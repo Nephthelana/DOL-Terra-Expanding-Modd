@@ -102,6 +102,8 @@
 <<set $Jungle_Crate = 0>>
 <<set $Hallowed_Crate = 0>>
 <<set $Sky_Crate = 0>>
+<<set $Frozen_Crate = 0>>
+<<set $Obsidian_Crate = 0>>
 <<set $Sunken_Crate = 0>>
 <<set $Sulphurous_Crate = 0>>
 <<set $Brimstone_Crate = 0>>
@@ -127,6 +129,10 @@
 <<set $Prismite = 0>>
 <<set $Princess_Fish = 0>>
 <<set $Chaos_Fish = 0>>
+<<set $Frost_Minnow = 0>>
+<<set $Atlantic_Cod = 0>>
+<<set $Flarefin_Koi = 0>>
+<<set $Obsidifish = 0>>
 <<set $Greenwave_Loach = 0>>
 <<set $Sunken_Sailfish = 0>>
 <<set $Prismatic_Guppy = 0>>
@@ -149,6 +155,7 @@
 
 /* dom罗宾拓展联动 */
 <<set $fishing_request_robin to []>>
+<<set $robin_fishing_place_unlocked to []>>
 
 /* 宝匣内容物数量 */
 <<set $redemption_voucher to 0>>
@@ -170,13 +177,55 @@
 /* 血月 */
 <<set $Bloody_Tear = 0>>
 
-/* dom罗宾拓展联动 */
-<<set $robin_fishing_place_unlocked to []>>
-
 /* 食物 */
 <<set $Sashimi to 0>>
 
 /* 海岛 */
 <<set $island_build_cooking to []>>
+
+/* 统计数据 */
+<<set $fishing_bitten_count to 0>>
+<<set $fishing_harvest_count to 0>>
+<<set $fishing_failed_count to 0>>
+<<set $RPS_win_count to 0>>
+<<set $RPS_none_count to 0>>
+<<set $PRS_lose_count to 0>>
+<<set $pylon_teleport_count to 0>>
+<<set $fishing_crate_count to {
+	Golden_Crate: 0,
+	Iron_Crate: 0,
+	Wooden_Crate: 0,
+	Ocean_Crate: 0,
+	Oyster: 0,
+	Oasis_Crate: 0,
+	Jungle_Crate: 0,
+	Hallowed_Crate: 0,
+	Sky_Crate: 0,
+	Sunken_Crate: 0,
+	Sulphurous_Crate: 0,
+	Brimstone_Crate: 0,
+}>>
+<<set $unload_crate_count to {
+	Golden_Crate: 0,
+	Iron_Crate: 0,
+	Wooden_Crate: 0,
+	Ocean_Crate: 0,
+	Oyster: 0,
+	Oasis_Crate: 0,
+	Jungle_Crate: 0,
+	Hallowed_Crate: 0,
+	Sky_Crate: 0,
+	Sunken_Crate: 0,
+	Sulphurous_Crate: 0,
+	Brimstone_Crate: 0,
+}>>
+<<set $crafting_count to {
+	Work_Bench: 0,
+	Iron_Anvil: 0,
+	Cooking_Pot: 0,
+}>>
+
+/* 阁楼制作站初始化 */
+<<set $orphanage_loft_crafting_station to []>>
 
 <</widget>>

@@ -7,6 +7,7 @@
 	<<else>>
 		<<set _time_remain to ($robin_fishing_date_time - $robin_fishing_date_time_passed)>>
 		<<pass _time_remain seconds>>
+		<<set $fishing_bitten_count += 1>>
 		经过<<print [Math.floor(_time_remain/60)]>>分钟的等待，你没有等到下一次咬钩。<<robin_bait_back>>你们收拾好渔具，在约定的时间回到了孤儿院。<br>
 	<</if>>
 	<br>
@@ -14,6 +15,7 @@
 	<<robinoptions>>
 <<else>>
 	<<pass $fishing_cast_time>>
+	<<set $fishing_bitten_count += 1>>
 	/* 计算钓鱼约会中已钓鱼时间 */
 	<<set $robin_fishing_date_time_passed += $fishing_cast_time * 60>>
 	经过$fishing_cast_time分钟的等待，有东西上钩了！<br>

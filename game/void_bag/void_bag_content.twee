@@ -96,7 +96,12 @@
 					<<set _baitName to _bait.cn_name>>
 					<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
 					<<set _amount = _formatter.format(_bait.amount)>>
+<<<<<<< Updated upstream
 					<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_baitName}<br>▶ ${_bait.fishing_power}渔力`>>
+=======
+					<<set _isMaterial to _bait.material ? "<br><i>材料</i>" : "">>
+					<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_bait.cn_name}${_isMaterial}<br><br>▶ ${_bait.fishing_power}渔力`>>
+>>>>>>> Stashed changes
             		<div class="item" @tooltip="_tooltip">
 						<label><<icon `_bait.icon`>>
 						<hr>
@@ -173,6 +178,7 @@
 	<span id="void_bag_Bloody_Tear">
 		<<void_bag_Bloody_Tear>>
 	</span>
+<<<<<<< Updated upstream
 	<br>
 	<span id="void_bag_Potion">
 		<<void_bag_Potion>>
@@ -249,6 +255,25 @@
 		<</if>>
 	<<elseif $fishing_anglerintro>>
 		渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？<br>
+=======
+	<<set _materialObtained to getMaterialObtainedList()>>
+	<span class="gold bold">材料</span><mouse class="tooltip linkBlue">(?)<span>一部分物品并不能直接发挥特别的用处，但它们可以作为合成的材料。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到提示。</span></mouse><br>
+	<<if _materialObtained.length gt 0>>
+		<div class="itemTerra">
+			<<for _i to 0; _i lt _materialObtained.length; _i++>>
+				<<set _material to setup.terraMaterial[_materialObtained[_i]]>>
+				<<capture _material>>
+					<<if _material.type is "material">>
+						<div class="item" @tooltip="_material.cn_name">
+							<<icon `_material.icon`>>
+							<hr>
+							_material.amount
+						</div>
+					<</if>>
+				<</capture>>
+			<</for>>
+		</div>
+>>>>>>> Stashed changes
 	<<else>>
 		你需要从某人那里获得鱼竿。也许这人正漂浮在海上。<br>
 	<</if>>
@@ -324,6 +349,48 @@
 			<</capture>>
 		<</for>>
 	</div>
+<<<<<<< Updated upstream
+=======
+<</if>>
+
+<</widget>>
+
+:: Void Bag Food List [widget]
+<<widget "foodList">>
+
+<<run initializeTooltips()>>
+
+<span class="gold bold">食物</span><mouse class="tooltip linkBlue">(?)<span>吃下食物可以降低饥饿值。食物的附加效果待定。</span></mouse><br>
+<<set _foodObtained to getFoodObtained()>>
+<<if _foodObtained.length gt 0>>
+	<div class="itemTerra">
+		<<for _j to 0; _j lt _foodObtained.length; _j++>>
+			<<set _food to setup.terraFood[_foodObtained[_j]]>>
+			<<capture _food>>
+				<div class="item">
+					<<set _isMaterial to _food.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_food.cn_name}${_isMaterial}<br><br>${_food.des}`">
+						<<icon `_food.icon`>>
+					</div>
+					<hr>
+					_food.amount
+					<hr>
+					<<link "吃">>
+						_food.use
+						<<earnFeat "Don't Starve">>
+						<<replace #hunger_description>>
+							<<hunger_description>><br>
+							你吃了一份<<icon `_food.icon`>>_food.cn_name。_food.use_hint<br>
+						<</replace>>
+						<<replace #foodList>>
+							<<foodList>>
+						<</replace>>
+					<</link>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+>>>>>>> Stashed changes
 <<else>>
 	哦不，你看起来没有匣子了。<br>
 <</if>>

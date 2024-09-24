@@ -76,7 +76,7 @@
         "desc": "集齐5个晶塔所需的晶石。",
         "difficulty": 4,
         "series": "",
-        "filter": ["All", "Discoveries"],
+        "filter": ["All", "Social"],
 		"hint": "提示：建立一个尽可能庞大的晶塔传送网络。"
     },
 	"Kong Jun": {
@@ -94,5 +94,13 @@
         "series": "",
         "filter": ["All", "Special"],
 		"hint": "提示：怎么让渔夫改改嘴臭的毛病？"
+    },
+	"Don't Starve": {
+        "title": "撑得慌",
+        "desc": "吃不完的食物！我喜欢'精美毛绒玩具'！",
+        "difficulty": 1,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：自制一份食物，然后吃掉它！"
     }
 }

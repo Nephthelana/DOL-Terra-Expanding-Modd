@@ -42,16 +42,19 @@
 
 <<widget "Golden_Crate_unload">>
 	<<set $Golden_Crate -= 1>>
+	<<set $unload_crate_count.Golden_Crate += 1>>
 	<<moneyGain random(800,2000)>>
 	<<if random(1,3) lte 2>>
 		<<set _unload_crate_Bait = random(3,7)>>
 		<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Iron_Crate_unload">>
 	<<set $Iron_Crate -= 1>>
+	<<set $unload_crate_count.Iron_Crate += 1>>
 	<<moneyGain random(500,1000)>>
 	<<if random(1,23) is 1>>
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
@@ -68,10 +71,12 @@
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 		<</if>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Wooden_Crate_unload">>
 	<<set $Wooden_Crate -= 1>>
+	<<set $unload_crate_count.Wooden_Crate += 1>>
 	<<if random(1,3) is 1>>
 		<<moneyGain random(100,500)>>
 	<<else>>
@@ -95,10 +100,12 @@
 	<<if random(1,2) is 1>>
 		<<facesend 3 wardrobe>>、医用外科口罩
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Ocean_Crate_unload">>
 	<<set $Ocean_Crate -= 1>>
+	<<set $unload_crate_count.Ocean_Crate += 1>>
 	<<moneyGain random(500,1200)>>
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Sea_Remains to random(1,2)>>
@@ -123,11 +130,13 @@
 			<<case 5>><<facesend 19 wardrobe>>、泳镜
 		<</switch>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Oasis_Crate_unload">>
 	<<set $Oasis_Crate -= 1>>
-	<<switch random(1,4)>>
+	<<set $unload_crate_count.Oasis_Crate += 1>>
+	<<switch random(1,5)>>
 		<<case 1>>
 			<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
 			<<set $Scarab_Fishing_Rod to true>>
@@ -141,7 +150,13 @@
 		<<case 4>>
 			<<icon "tool/Magic_Conch.png">>魔法海螺
 			<<set $Magic_Conch to true>>
+<<<<<<< Updated upstream
 			<<set $tool_obtained to true>>
+=======
+		<<case 5>>
+			<<icon "accessories/Dunerider_Boots.png">>沙丘行者靴
+			<<set $Dunerider_Boots to true>>
+>>>>>>> Stashed changes
 	<</switch>>
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>
@@ -160,10 +175,12 @@
 	<<if random(1,2) is 1>>
 		<<uppersend 39 wardrobe>>、背带裤
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Jungle_Crate_unload">>
 	<<set $Jungle_Crate -= 1>>
+	<<set $unload_crate_count.Jungle_Crate += 1>>
 	<<switch random(1,2)>>
 		<<case 1>>
 			<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿
@@ -190,10 +207,12 @@
 	<<if random(1,2) is 1>>
 		<span class="gold"><<uppersend 33 wardrobe>><<lowersend 22 wardrobe>>、格子衬衫和牛仔裤</span>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Hallowed_Crate_unload">>
 	<<set $Hallowed_Crate -= 1>>
+	<<set $unload_crate_count.Hallowed_Crate += 1>>
 	赎罪券(1)<mouse class="tooltip linkBlue">(?)<span>消耗品，在神殿使用后 +恩典</span></mouse>
 	<<set $redemption_voucher =+ 1>>
 	<<if random(1,4) is 1>>
@@ -219,11 +238,20 @@
 			<<case 5>><<necksend 5 wardrobe>>、石制十字架
 		<</switch>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Sky_Crate_unload">>
 	<<set $Sky_Crate -= 1>>
-	<<icon "tool/Starfury.png">>星怒<mouse class="tooltip linkBlue">(?)<span>它没有任何用处，但它应该出现在这里()</span></mouse>
+	<<set $unload_crate_count.Sky_Crate += 1>>
+	<<switch random(1,2)>>
+		<<case 1>>
+			<<icon "tool/Starfury.png">>星怒<mouse class="tooltip linkBlue">(?)<span>它没有任何用处，但它应该出现在这里()</span></mouse>
+			<<set $Starfury to true>>
+		<<case 2>>
+			<<icon "accessories/Lucky_Horseshoe.png">>幸运马掌
+			<<set $Lucky_Horseshoe to true>>
+	<</switch>>
 	<<if random(1,40) is 1>>
 		、<<icon "accessories/Fledgling_Wings.png">>雏翼
 		<<set $Fledgling_Wings to true>>
@@ -242,10 +270,91 @@
 			<<set $Master_Bait += _unload_crate_Bait>>
 		<</if>>
 	<</if>>
+	<<updatesidebarmoney>>
+<</widget>>
+
+<<widget "Frozen_Crate_unload">>
+	<<set $Frozen_Crate -= 1>>
+	<<set $unload_crate_count.Frozen_Crate += 1>>
+	<<switch random(1,3)>>
+		<<case 1>>
+			<<icon "accessories/Flurry_Boots.png">>疾风雪靴
+			<<set $Flurry_Boots to true>>
+		<<case 2>>
+			<<icon "tool/Ice_Mirror.png">>冰雪镜
+			<<set $Ice_Mirror to true>>
+		<<case 3>>
+			<<icon "accessories/Ice_Skates.png">>溜冰鞋
+			<<set $Ice_Skates to true>>
+	<</switch>>
+	<<if random(1,4) is 1>>
+		、<<moneyGain random(500,1200)>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
+	<<if random(1,2) is 1>>
+		<<if random(1,2) is 1>>
+			<<set _unload_crate_Bait = random(2,6)>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			<<set $Journeyman_Bait += _unload_crate_Bait>>
+		<<else>>
+			<<set _unload_crate_Bait = random(2,6)>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			<<set $Master_Bait += _unload_crate_Bait>>
+		<</if>>
+	<</if>>
+	<<updatesidebarmoney>>
+<</widget>>
+
+<<widget "Obsidian_Crate_unload">>
+	<<set $Obsidian_Crate -= 1>>
+	<<set $unload_crate_count.Obsidian_Crate += 1>>
+	<<switch random(1,20)>>
+		<<case 20>>
+			<<icon "accessories/Lava_Charm.png">>熔岩护身符
+			<<set $Lava_Charm to true>>
+		<<default>>
+			<<icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">>防熔岩钓钩
+			<<set $Lavaproof_Fishing_Hook to true>>
+	<</switch>>
+	<<if random(1,3) is 1>>
+		<<if $fishing_spraymax>>
+			<<if $fishing_spray_material is undefined>>
+				<<set $fishing_spray_material to 0>>
+			<</if>>
+			、<<print $fishing_spray_known ? "一包防狼喷雾原料" : "一包奇怪的粉末<mouse class='tooltip linkBlue'>(?)<span>你可以在实验室分析研究这包粉末，找到它的用途</span></mouse>">><<set $fishing_spray_material += 1>>
+		<<else>>
+			、<<peppersprayicon>>你获得了额外的防狼喷雾<<set $spraymax += 1>><<spray 5>><<gspraymax>><<set $fishing_spraymax to true>>
+		<</if>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		、<<moneyGain random(500,1200)>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
+	<<if random(1,2) is 1>>
+		<<if random(1,2) is 1>>
+			<<set _unload_crate_Bait = random(2,6)>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			<<set $Journeyman_Bait += _unload_crate_Bait>>
+		<<else>>
+			<<set _unload_crate_Bait = random(2,6)>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			<<set $Master_Bait += _unload_crate_Bait>>
+		<</if>>
+	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Sunken_Crate_unload">>
 	<<set $Sunken_Crate -= 1>>
+	<<set $unload_crate_count.Sunken_Crate += 1>>
 	<<moneyGain random(200,600)>>
 	<<if random(1,5) is 1>>
 		<<set _unload_crate_Sea_Prism = random(2,5)>>
@@ -271,10 +380,12 @@
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Sulphurous_Crate_unload">>
 	<<set $Sulphurous_Crate -= 1>>
+	<<set $unload_crate_count.Sulphurous_Crate += 1>>
 	<<moneyGain random(200,600)>>
 	<<if random(1,4) is 1>>
 		<<if random(1,2) is 1>>
@@ -300,10 +411,12 @@
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Brimstone_Crate_unload">>
 	<<set $Brimstone_Crate -= 1>>
+	<<set $unload_crate_count.Brimstone_Crate += 1>>
 	<<moneyGain random(200,600)>>
 	<<set _unload_crate_Demonic_Bone_Ash = random(1,4)>>
 	<<icon "material/Demonic_Bone_Ash.png">>恶魔骨灰(_unload_crate_Demonic_Bone_Ash)
@@ -322,10 +435,16 @@
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Oyster_unload">>
 	<<set $Oyster -= 1>>
+<<<<<<< Updated upstream
+=======
+	<<set $unload_crate_count.Oyster += 1>>
+	<<set $Shucked_Oyster += 1>>
+>>>>>>> Stashed changes
 	<<icon "food/Shucked_Oyster.png">>去壳牡蛎(1)
 	<<if random(1,5) is 1>>
 		<<set _pearl_chance = random(1,45)>>
@@ -340,4 +459,5 @@
 			<<set $Pink_Pearl += 1>>
 		<</if>>
 	<</if>>
+	<<updatesidebarmoney>>
 <</widget>>

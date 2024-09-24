@@ -10,4 +10,52 @@
 	grid-template-columns: repeat(auto-fill, 60px);
 	gap: 5px;
 	padding: 0.5rem;
+<<<<<<< Updated upstream
+=======
+}
+
+.terraMod {
+	animation: 180s infinite linear lustful;
+	background: linear-gradient(-90deg, #1ea44a, #1ea44a, #1ea44a, #1ea44a, #1ea44a, #d9e299);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+@keyframes blink {
+	0% { color: #FFC437; } 
+	33% { color: #FFE76B; } 
+	66% { color: #FFFEF3; } 
+	100% { color: #FFC437; } 
+  }
+   
+  .blinking-text {
+	animation: blink 1.5s infinite; /* 每秒闪烁一次，无限循环 */
+  }
+
+@keyframes terraFading {
+	0% {
+		opacity: 1;
+	}
+
+	60% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0.3;
+	}
+}
+
+.terraFading {
+	background: var(--150);
+	text-shadow: 0 0 32px var(--purple);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	animation-name: terraFading;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	opacity: 0.3;
+>>>>>>> Stashed changes
 }

@@ -117,16 +117,50 @@ setup.terraAccessories = {
         type: "none",
         obtained: V.Lucky_Horseshoe,
         icon: "accessories/Lucky_Horseshoe.png",
-		des: "降低少量诱惑。<i>\"据说能带来好运、驱除邪灵\"</i>",
+		des: "给你带来好运。<i>\"据说能带来好运、驱除邪灵\"</i>",
     },
 	"Sailfish_Boots": {
         name: "Sailfish_Boots",
         cn_name: "航鱼靴",
+<<<<<<< Updated upstream:game/accessories/terraAccessories.js
         type: "none",
+=======
+		material: false,
+        type: "boots",
+>>>>>>> Stashed changes:game/equipment/terraAccessories.js
         obtained: V.Sailfish_Boots,
         icon: "accessories/Sailfish_Boots.png",
-		des: "增加运动能力",
+		des: "增加运动能力，与其它靴子效果不叠加",
     },
+	"Dunerider_Boots": {
+        name: "Dunerider_Boots",
+        cn_name: "沙丘行者靴",
+		material: false,
+        type: "boots",
+        obtained: V.Dunerider_Boots,
+        icon: "accessories/Dunerider_Boots.png",
+		des: "增加运动能力，与其它靴子效果不叠加",
+    },
+	/*
+	"Flurry_Boots": {
+        name: "Flurry_Boots",
+        cn_name: "疾风雪靴",
+		material: false,
+        type: "boots",
+        obtained: V.Flurry_Boots,
+        icon: "accessories/Flurry_Boots.png",
+		des: "增加运动能力，与其它靴子效果不叠加",
+    },
+	"Ice_Skates": {
+        name: "Ice_Skates",
+        cn_name: "溜冰鞋",
+		material: false,
+        type: "boots",
+        obtained: V.Ice_Skates,
+        icon: "accessories/Ice_Skates.png",
+		des: "在冰面上行走时更加安全",
+    },
+	*/
 }
 
 function getAllAccessoriesList() {
