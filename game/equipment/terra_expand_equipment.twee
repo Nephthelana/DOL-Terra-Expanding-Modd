@@ -53,6 +53,7 @@
 	<<default>>
 		<<set $armor_set_bonus to undefined>>
 <</switch>>
+<<updateallure>>
 <span class="gold bold">盔甲栏</span><mouse class="tooltip linkBlue">(?)<span>装备同一盔甲类型的全部三个部件时，会提供独特的套装奖励</span></mouse><br>
 <div class="itemTerra">
 	<<for _i to 0; _i lt 3; _i++>>
@@ -69,12 +70,12 @@
 							</div>
 							<hr>
 							<<link "卸下">>
-								<<switch _i>>
-									<<case 0>>
+								<<switch _armor.type>>
+									<<case "helmet">>
 										<<set $terra_armor_slots[0] to "Armor_Helmet">>
-									<<case 1>>
+									<<case "shirt">>
 										<<set $terra_armor_slots[1] to "Armor_Shirt">>
-									<<case 2>>
+									<<case "pants">>
 										<<set $terra_armor_slots[2] to "Armor_Pants">>
 								<</switch>>
 								<<replace #terra_armor_slots>>
@@ -147,11 +148,10 @@
 
 <span class="gold bold">饰品栏</span><mouse class="tooltip linkBlue">(?)<span>大部分饰品需要装备在饰品栏内才会生效</span></mouse><br>
 <div class="itemTerra">
-	<<set _accessoryObtained to getAccessoriesObtained()>>
-	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
-		<<set _accessory_equipped to setup.terraAccessories[_accessoryObtained[_t]]>>
+	<<set _accessory_equipped_type to []>>
+	<<for _t to 0; _t lt $terra_accessories_slots.length; _t++>>
+		<<set _accessory_equipped to setup.terraAccessories[$terra_accessories_slots[_t]]>>
 		<<capture _accessory_equipped>>
-			<<if $terra_accessories_slots.includes(_accessory_equipped.name)>>
 				<div class="item">
 					<<set _isMaterial to _accessory_equipped.material ? "<br><i>材料</i>" : "">>
 					<div @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}`">
@@ -160,15 +160,37 @@
 					<hr>
 					<<link "卸下">>
 						<<set $terra_accessories_slots.delete(_accessory_equipped.name)>>
-						<<replace #terra_accessories>>
-							<<terra_accessories>>
-						<</replace>>
 						<<replace #terra_accessories_slots>>
 							<<terra_accessories_slots>>
 						<</replace>>
+						<<replace #terra_accessories>>
+							<<terra_accessories>>
+						<</replace>>
 					<</link>>
+					<hr>
+					<<capture _t>>
+						<<if _t is 0>>
+							/
+						<<else>>
+							<<link "⬅">>
+								<<set _temp to $terra_accessories_slots[_t-1]>>
+								<<set $terra_accessories_slots[_t-1] to $terra_accessories_slots[_t]>>
+								<<set $terra_accessories_slots[_t] to _temp>>
+								<<replace #terra_accessories_slots>>
+									<<terra_accessories_slots>>
+								<</replace>>
+							<</link>>
+						<</if>>
+					<</capture>>
 				</div>
-			<</if>>
+				<<switch _accessory_equipped.type>>
+					<<case "wings">>
+						<<set _accessory_equipped_type.pushUnique("wings")>>
+					<<case "boots">>
+						<<set _accessory_equipped_type.pushUnique("boots")>>
+					<<case "bobber">>
+						<<set _accessory_equipped_type.pushUnique("bobber")>>
+				<</switch>>
 		<</capture>>
 	<</for>>
 	<<for _t to 0; _t lt (6-$terra_accessories_slots.length); _t++>>
@@ -176,6 +198,8 @@
 			<<icon "Accessories.png">>
 			<hr>
 			空
+			<hr>
+			/
 		</div>
 	<</for>>
 </div>
@@ -187,6 +211,7 @@
 <<run initializeTooltips()>>
 
 <span class="gold bold">饰品</span><br>
+
 <div class="itemTerra">
 	<<set _accessoryObtained to getAccessoriesObtained()>>
 	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
@@ -200,8 +225,12 @@
 					</div>
 					<<if $terra_accessories_slots.length lt 6>>
 						<hr>
-						<<if _accessory.type is "wings" and ($terra_accessories_slots.includes("Fin_Wings") or $terra_accessories_slots.includes("Fledgling_Wings"))>>
+						<<if _accessory.type is "wings" and _accessory_equipped_type.includes("wings")>>
 							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个翅膀</span></mouse>
+						<<elseif _accessory.type is "boots" and _accessory_equipped_type.includes("boots")>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一双靴子</span></mouse>
+						<<elseif _accessory.type is "bobber" and _accessory_equipped_type.includes("bobber")>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个钓鱼浮标</span></mouse>
 						<<else>>
 							<<link "装备">>
 								<<set $terra_accessories_slots.pushUnique(_accessory.name)>>

@@ -38,7 +38,7 @@ function getAllArmorList() {
 	let all_armor_list = Object.keys(setup.terraArmor);
 	return all_armor_list;
 }
-window.getAllArmorList = getAllArmorList
+window.getAllArmorList = getAllArmorList;
 
 function getArmorObtained() {
 	for (let armor in setup.terraArmor) {

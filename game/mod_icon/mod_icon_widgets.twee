@@ -20,15 +20,19 @@
 	<</addinlineevent>>
 
 	<<addinlineevent "DomRobin" 0.1>>
-		<<set _message to hasDomRobinModInfo() ? ($hasGivenFish ? "试试和罗宾一起钓鱼！" : "试试和罗宾一起在柠檬水摊烤鱼！") : "试试Dom罗宾模组！">>
+		<<set _message to hasDomRobinModInfo() ? ($hasGivenFish ? "试试和罗宾一起钓鱼！" : "试试和罗宾一起在柠檬水摊烤鱼！") : "试试 <i>Dom罗宾</i> 模组！">>
 	<</addinlineevent>>
 
 	<<addinlineevent "NPCAvatarsMods" 0.1>>
-		<<set _message to hasNPCAvatarsModsInfo() ? "社交栏里NPC的小头像们真可爱！<br>你有想过自己也画一套看看吗？" : "试试NPC社交栏小头像模组！">>
+		<<set _message to hasNPCAvatarsModsInfo() ? "社交栏里NPC的小头像们真可爱！<br>你有想过自己也画一套看看吗？" : "试试 <i>NPC社交栏小头像</i> 模组！">>
 	<</addinlineevent>>
 
 	<<addinlineevent "MoreLoveInterests" 0.1>>
-		<<set _message to hasMoreLoveInterestsModInfo() ? "你有没有掰着指头数过你现在有几个恋人了？" : "试试更多恋人模组！">>
+		<<set _message to hasMoreLoveInterestsModInfo() ? "你有没有掰着指头数过你现在有几个恋人了？" : "试试 <i>更多恋人</i> 模组！">>
+	<</addinlineevent>>
+
+	<<addinlineevent "BabyHawk" 0.1>>
+		<<set _message to hasBabyHawkModInfo() ? "鹰塔里的小鸡崽们今天吃饱了吗？" : "试试 <i>鹰宝宝</i> 模组！">>
 	<</addinlineevent>>
 
 	<<addinlineevent "Terraria" 0.05>>

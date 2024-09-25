@@ -1,7 +1,22 @@
 :: Terra Debug Potions
+<<run initializeTooltips()>>
 请选择获得的药水。<br>
-<<icon "potions/Fishing_Potion.png">><<link [[来5瓶钓鱼药水|Terra Debug Potions]]>><<set $Fishing_Potion += 5>><</link>><br>
-<<icon "potions/Sonar_Potion.png">><<link [[来5瓶声呐药水|Terra Debug Potions]]>><<set $Sonar_Potion += 5>><</link>><br>
-<<icon "potions/Crate_Potion.png">><<link [[来5瓶宝匣药水|Terra Debug Potions]]>><<set $Crate_Potion += 5>><</link>><br>
+<<set _allPotionList to getAllPotionList()>>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<for _t to 0; _t lt _allPotionList.length; _t++>>
+			<<set _potion to setup.terraPotion[_allPotionList[_t]]>>
+			<<capture _potion>>
+				<div class="item">
+					<div @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
+						<<icon `_potion.item_icon`>>
+					</div>
+					<hr>
+					<<link [[来5瓶|Terra Debug Potions]]>><<set V[_potion.name] += 5>><</link>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
 <br>
 <<getouticon>><<link [[返回|Terra Debug]]>><</link>>

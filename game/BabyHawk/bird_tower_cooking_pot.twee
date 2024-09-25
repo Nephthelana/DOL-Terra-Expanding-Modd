@@ -1,0 +1,96 @@
+:: Bird Tower Cooking Pot Link [widget]
+<<widget "BirdTowerCookingPotLink">>
+
+	<<birdicon "pot_cook">><<link [[烹饪鱼类|Bird Tower Cooking Pot]]>><</link>><br>
+
+<</widget>>
+
+:: Bird Tower Cooking Pot
+你可以利用这口锅烹饪鱼类。不过鹰崽们还只能消化熟鱼。
+<<birdicon "pot_cook">><br>
+<br>
+<span id="crafting_bird_tower_cooking_pot_info">
+	<<if currentSkillValue('housekeeping') lt 1000>>
+		你可以从<span class="teal">烹饪鱼类</span>中精进你的<span class="gold">家务技能</span>。<br>
+	<<else>>
+		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+	<</if>>
+	<br>
+</span>
+<span id="crafting_bird_tower_cooking_pot">
+	<<crafting_bird_tower_cooking_pot>>
+</span>
+<br>
+<span id="crafting_bird_tower_cooking_pot_exit">
+	<<getouticon>><<link [[返回|Bird Tower Firepit]]>><</link>>
+</span>
+
+:: Bird Tower Cooking Pot Crafting [widget]
+<<widget "crafting_bird_tower_cooking_pot_info">>
+	<<if currentSkillValue('housekeeping') lt 1000>>
+		你可以从<span class="teal">烹饪鱼类</span>中精进你的<span class="gold">家务技能</span>。<br>
+	<<else>>
+		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+	<</if>>
+	<br>
+	_crafted_info
+<</widget>>
+
+<<widget "crafting_bird_tower_cooking_pot">>
+
+<<run initializeTooltips()>>
+
+<span class="no-numberify">
+<<set _recipe_list to getAllRecipeList()>>
+<<set _recipe_avalible to false>>
+<div class="itemTerra">
+	<<for _t to 0; _t lt _recipe_list.length; _t++>>
+		<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
+		<<if _recipe.required_crafting_station is "Cooking_Pot">>
+			<<capture _recipe>>
+				_recipe.craftable
+				<<if _craftable>>
+					<<set _recipe_avalible to true>>
+					<div class="item">
+						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+							<<icon `_recipe.icon`>>
+						</div>
+						<hr>
+						<mouse class="tooltip">
+							配方
+							<span>
+								_recipe.required_material_info
+							</span>
+						</mouse>
+						<hr>
+						<<link "制作">>
+							_recipe.craft
+							<<set $crafting_count.Cooking_Pot += 1>>
+							<<if _recipe.type is "food">>
+								<<housekeeping 1 1000>>
+							<</if>>
+							<<set _crafted_info to _recipe.crafting_info>>
+							<<replace #crafting_bird_tower_cooking_pot_info>>
+								<<crafting_bird_tower_cooking_pot_info>>
+							<</replace>>
+							<<replace #crafting_bird_tower_cooking_pot>>
+								<<crafting_bird_tower_cooking_pot>>
+							<</replace>>
+							<<if hasBabyHawkModInfo()>>
+								<<replace #crafting_bird_tower_cooking_pot_exit>>
+									<<getouticon>><<link [[返回|Crafting Bird Tower Cooking Pot Exit]]>><</link>>
+								<</replace>>
+							<</if>>
+						<</link>>
+					</div>
+				<</if>>
+			<</capture>>
+		<</if>>
+	<</for>>
+</div>
+<<if !_recipe_avalible>>
+	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
+<</if>>
+</span>
+
+<</widget>>

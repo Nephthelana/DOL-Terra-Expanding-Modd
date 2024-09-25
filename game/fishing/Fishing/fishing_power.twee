@@ -35,10 +35,13 @@
 	<<if $Fishing_Potion_countdown gt 0>>
 		<<set $fishing_power += 15>>
 	<</if>>
-	/* 装备钓鱼浮标或发光钓鱼浮标提供10渔力 */
-	<<if $terra_accessories_slots.includes("Fishing_Bobber") or $terra_accessories_slots.includes("Glowing_Fishing_Bobber")>>
-		<<set $fishing_power += 10>>
-	<</if>>
+	/* 装备钓鱼浮标或其升级物提供10渔力 */
+	<<for _i = 0; _i lt $terra_accessories_slots.length; _i++>>
+		<<if setup.terraAccessories[$terra_accessories_slots[_i]].type is "bobber">>
+			<<set $fishing_power += 10>>
+			<<break>>
+		<</if>>
+	<</for>>
 	/* 装备渔夫耳环提供10渔力 */
 	<<if $terra_accessories_slots.includes("Angler_Earring")>>
 		<<set $fishing_power += 10>>

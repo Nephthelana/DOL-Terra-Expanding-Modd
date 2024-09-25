@@ -1,0 +1,444 @@
+:: Terra Reload Variables [widget]
+<<widget "terraReloadVariables">>
+
+/* 任务鱼 */
+<<if $fishing_request_selection_list is undefined>>
+<<set $fishing_request_selection_list to [
+	"Amanita_Fungifin",
+	"Angelfish",
+	"Batfish",
+	"Bonefish",
+	"Bumblebee_Tuna",
+	"Bunnyfish",
+	"Catfish",
+	"Cloudfish",
+	"Clownfish",
+	"Demonic_Hellfish",
+	"Derpfish",
+	"Dirtfish",
+	"Dynamite_Fish",
+	"Fallen_Starfish",
+	"Fish_of_Cthulhu",
+	"Fishotron",
+	"Fishron",
+	"Guide_Voodoo_Fish",
+	"Harpyfish",
+	"Hungerfish",
+	"Jewelfish",
+	"Mirage_Fish",
+	"Mudfish",
+	"Mutant_Flinxfin",
+	"Pengfish",
+	"Pixiefish",
+	"Scarab_Fish",
+	"Scorpio_Fish",
+	"Slimefish",
+	"Spiderfish",
+	"Tropical_Barracuda",
+	"Tundra_Trout",
+	"Unicorn_Fish",
+	"Wyverntail",
+	"Zombie_Fish",
+	"Brimlish",
+	"Eutrophic_Sandfish",
+	"Serpentuna",
+	"Slurpfish",
+	"Surf_Clam"
+]>>
+<</if>>
+<<if $fishing_request_selection is undefined>>
+	<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
+<</if>>
+<<if $fishing_request_fish is undefined>>
+	<<set $fishing_request_fish to []>>
+<</if>>
+<<if $fishing_requests_finished_count is undefined>>
+	<<set $fishing_requests_finished_count to 0>>
+<</if>>
+
+/* 渔夫任务奖励家具 */
+<<if $angler_furniture_obtained is undefined>>
+	<<set $angler_furniture_obtained to []>>
+<</if>>
+
+/* 孤儿院卧室家具 */
+<<if $terra_bedroom_furniture is undefined>>
+	<<set $terra_bedroom_furniture to []>>
+<</if>>
+
+/* 药水数量 */
+<<if $Fishing_Potion is undefined>>
+	<<set $Fishing_Potion = 0>>
+<</if>>
+<<if $Sonar_Potion is undefined>>
+	<<set $Sonar_Potion = 0>>
+<</if>>
+<<if $Crate_Potion is undefined>>
+	<<set $Crate_Potion = 0>>
+<</if>>
+
+/* 渔获数量 */
+/* 宝匣数量 */
+<<if $Golden_Crate is undefined>>
+	<<set $Golden_Crate = 0>>
+<</if>>
+<<if $Iron_Crate is undefined>>
+	<<set $Iron_Crate = 0>>
+<</if>>
+<<if $Wooden_Crate is undefined>>
+	<<set $Wooden_Crate = 0>>
+<</if>>
+<<if $Ocean_Crate is undefined>>
+	<<set $Ocean_Crate = 0>>
+<</if>>
+<<if $Oyster is undefined>>
+	<<set $Oyster = 0>>
+<</if>>
+<<if $Oasis_Crate is undefined>>
+	<<set $Oasis_Crate = 0>>
+<</if>>
+<<if $Jungle_Crate is undefined>>
+	<<set $Jungle_Crate = 0>>
+<</if>>
+<<if $Hallowed_Crate is undefined>>
+	<<set $Hallowed_Crate = 0>>
+<</if>>
+<<if $Sky_Crate is undefined>>
+	<<set $Sky_Crate = 0>>
+<</if>>
+<<if $Frozen_Crate is undefined>>
+	<<set $Frozen_Crate = 0>>
+<</if>>
+<<if $Obsidian_Crate is undefined>>
+	<<set $Obsidian_Crate = 0>>
+<</if>>
+<<if $Sunken_Crate is undefined>>
+	<<set $Sunken_Crate = 0>>
+<</if>>
+<<if $Sulphurous_Crate is undefined>>
+	<<set $Sulphurous_Crate = 0>>
+<</if>>
+<<if $Brimstone_Crate is undefined>>
+	<<set $Brimstone_Crate = 0>>
+<</if>>
+/* 普通鱼数量 */
+<<if $Salmon is undefined>><<set $Salmon = 0>><</if>>
+<<if $Bass is undefined>><<set $Bass = 0>><</if>>
+<<if $Pink_Jellyfish_bait is undefined>><<set $Pink_Jellyfish_bait = 0>><</if>>
+<<if $Shrimp is undefined>><<set $Shrimp = 0>><</if>>
+<<if $Tuna is undefined>><<set $Tuna = 0>><</if>>
+<<if $Red_Snapper is undefined>><<set $Red_Snapper = 0>><</if>>
+<<if $Trout is undefined>><<set $Trout = 0>><</if>>
+<<if $Golden_Carp is undefined>><<set $Golden_Carp = 0>><</if>>
+<<if $Stinkfish is undefined>><<set $Stinkfish = 0>><</if>>
+<<if $Blue_Jellyfish_bait is undefined>><<set $Blue_Jellyfish_bait = 0>><</if>>
+<<if $Armored_Cavefish is undefined>><<set $Armored_Cavefish = 0>><</if>>
+<<if $Specular_Fish is undefined>><<set $Specular_Fish = 0>><</if>>
+<<if $Flounder is undefined>><<set $Flounder = 0>><</if>>
+<<if $Rock_Lobster is undefined>><<set $Rock_Lobster = 0>><</if>>
+<<if $Honeyfin is undefined>><<set $Honeyfin = 0>><</if>>
+<<if $Double_Cod is undefined>><<set $Double_Cod = 0>><</if>>
+<<if $Variegated_Lardfish is undefined>><<set $Variegated_Lardfish = 0>><</if>>
+<<if $Neon_Tetra is undefined>><<set $Neon_Tetra = 0>><</if>>
+<<if $Prismite is undefined>><<set $Prismite = 0>><</if>>
+<<if $Princess_Fish is undefined>><<set $Princess_Fish = 0>><</if>>
+<<if $Chaos_Fish is undefined>><<set $Chaos_Fish = 0>><</if>>
+<<if $Frost_Minnow is undefined>><<set $Frost_Minnow = 0>><</if>>
+<<if $Atlantic_Cod is undefined>><<set $Atlantic_Cod = 0>><</if>>
+<<if $Flarefin_Koi is undefined>><<set $Flarefin_Koi = 0>><</if>>
+<<if $Obsidifish is undefined>><<set $Obsidifish = 0>><</if>>
+<<if $Greenwave_Loach is undefined>><<set $Greenwave_Loach = 0>><</if>>
+<<if $Sunken_Sailfish is undefined>><<set $Sunken_Sailfish = 0>><</if>>
+<<if $Prismatic_Guppy is undefined>><<set $Prismatic_Guppy = 0>><</if>>
+<<if $Damselfish is undefined>><<set $Damselfish = 0>><</if>>
+<<if $Charred_Lasher is undefined>><<set $Charred_Lasher = 0>><</if>>
+<<if $Coastal_Demonfish is undefined>><<set $Coastal_Demonfish = 0>><</if>>
+<<if $Crag_Bullhead is undefined>><<set $Crag_Bullhead = 0>><</if>>
+/* 垃圾数量 */
+<<if $Joja_Cola is undefined>><<set $Joja_Cola = 0>><</if>>
+
+/* 鱼饵数量 */
+<<if $butterfly_list is undefined>>
+	<<set $butterfly_list to [
+		"Monarch_Butterfly",
+		"Sulphur_Butterfly",
+		"Zebra_Swallowtail_Butterfly",
+		"Ulysses_Butterfly",
+		"Julia_Butterfly",
+		"Red_Admiral_Butterfly",
+		"Purple_Emperor_Butterfly",
+		"Tree_Nymph_Butterfly"
+	]>>
+<</if>>
+<<if $Apprentice_Bait is undefined>>
+	<<set $Apprentice_Bait = 0>>
+<</if>>
+<<if $Journeyman_Bait is undefined>>
+	<<set $Journeyman_Bait = 0>>
+<</if>>
+<<if $Master_Bait is undefined>>
+	<<set $Master_Bait = 0>>
+<</if>>
+<<if $Gold_Butterfly is undefined>>
+	<<set $Gold_Butterfly = 0>>
+<</if>>
+<<if $Monarch_Butterfly is undefined>>
+	<<set $Monarch_Butterfly = 0>>
+<</if>>
+<<if $Sulphur_Butterfly is undefined>>
+	<<set $Sulphur_Butterfly = 0>>
+<</if>>
+<<if $Zebra_Swallowtail_Butterfly is undefined>>
+	<<set $Zebra_Swallowtail_Butterfly = 0>>
+<</if>>
+<<if $Ulysses_Butterfly is undefined>>
+	<<set $Ulysses_Butterfly = 0>>
+<</if>>
+<<if $Julia_Butterfly is undefined>>
+	<<set $Julia_Butterfly = 0>>
+<</if>>
+<<if $Red_Admiral_Butterfly is undefined>>
+	<<set $Red_Admiral_Butterfly = 0>>
+<</if>>
+<<if $Purple_Emperor_Butterfly is undefined>>
+	<<set $Purple_Emperor_Butterfly = 0>>
+<</if>>
+<<if $Tree_Nymph_Butterfly is undefined>>
+	<<set $Tree_Nymph_Butterfly = 0>>
+<</if>>
+<<if $Stinkbug is undefined>>
+	<<set $Stinkbug = 0>>
+<</if>>
+<<if $Worm is undefined>>
+	<<set $Worm = 0>>
+<</if>>
+<<if $Gold_Worm is undefined>>
+	<<set $Gold_Worm = 0>>
+<</if>>
+<<if $Firefly is undefined>>
+	<<set $Firefly = 0>>
+<</if>>
+<<if $Lightning_Bug is undefined>>
+	<<set $Lightning_Bug = 0>>
+<</if>>
+<<if $Snail is undefined>>
+	<<set $Snail = 0>>
+<</if>>
+<<if $Glow_Snail is undefined>>
+	<<set $Glow_Snail = 0>>
+<</if>>
+<<if $Grasshopper is undefined>>
+	<<set $Grasshopper = 0>>
+<</if>>
+<<if $Gold_Grasshopper is undefined>>
+	<<set $Gold_Grasshopper = 0>>
+<</if>>
+<<if $Maggot is undefined>>
+	<<set $Maggot = 0>>
+<</if>>
+<<if $Ladybug is undefined>>
+	<<set $Ladybug = 0>>
+<</if>>
+<<if $Gold_Ladybug is undefined>>
+	<<set $Gold_Ladybug = 0>>
+<</if>>
+
+/* 森林商店鱼饵初始化 */
+<<if $bait_forest_shop_main is undefined>>
+	<<set $bait_forest_shop_main to "Worm">>
+<</if>>
+<<if $bait_forest_shop is undefined>>
+	<<set $bait_forest_shop to "Worm">>
+<</if>>
+
+/* 向导任务 */
+<<if $guide_mod_hint_pre is undefined>>
+	<<set $guide_mod_hint_pre to []>>
+<</if>>
+
+/* 晶塔收集 */
+<<if $pylon_collected is undefined>>
+	<<set $pylon_collected to []>>
+<</if>>
+<<if $pylon_bedroom_unlock>>
+	<<set $pylon_collected.pushUnique("Bedroom")>>
+<</if>>
+<<if $pylon_eden_cabin_unlock>>
+	<<set $pylon_collected.pushUnique("Eden Cabin")>>
+<</if>>
+<<if $pylon_farm_bedroom_unlock>>
+	<<set $pylon_collected.pushUnique("Farm Bedroom")>>
+<</if>>
+<<if $pylon_hawks_tower_unlock>>
+	<<set $pylon_collected.pushUnique("Hawks Tower")>>
+<</if>>
+<<if $pylon_wolfcave_unlock>>
+	<<set $pylon_collected.pushUnique("Wolfcave")>>
+<</if>>
+
+/* dom罗宾拓展联动 */
+<<if $fishing_request_robin is undefined>>
+	<<set $fishing_request_robin to []>>
+<</if>>
+<<if $robin_fishing_place_unlocked is undefined>>
+	<<set $robin_fishing_place_unlocked to []>>
+<</if>>
+
+/* 宝匣内容物数量 */
+<<if $redemption_voucher is undefined>>
+	<<set $redemption_voucher to 0>>
+<</if>>
+<<if $Sea_Prism is undefined>>
+	<<set $Sea_Prism = 0>>
+<</if>>
+<<if $Sea_Minnow is undefined>>
+	<<set $Sea_Minnow = 0>>
+<</if>>
+<<if $Demonic_Bone_Ash is undefined>>
+	<<set $Demonic_Bone_Ash = 0>>
+<</if>>
+<<if $White_Pearl is undefined>>
+	<<set $White_Pearl = 0>>
+<</if>>
+<<if $Black_Pearl is undefined>>
+	<<set $Black_Pearl = 0>>
+<</if>>
+<<if $Pink_Pearl is undefined>>
+	<<set $Pink_Pearl = 0>>
+<</if>>
+<<if $Iron_Bar is undefined>>
+	<<set $Iron_Bar = 0>>
+<</if>>
+<<if $Sea_Remains is undefined>>
+	<<set $Sea_Remains = 0>>
+<</if>>
+<<if $Fallen_Star is undefined>>
+	<<set $Fallen_Star = 0>>
+<</if>>
+
+/* 盔甲栏 */
+<<if $terra_armor_slots is undefined>>
+	<<set $terra_armor_slots to ["Armor_Helmet","Armor_Shirt","Armor_Pants"]>>
+<</if>>
+/* 饰品栏 */
+<<if $terra_accessories_slots is undefined>>
+	<<set $terra_accessories_slots to []>>
+<</if>>
+
+/* 偷胖次 */
+<<if $panties_held is undefined>>
+	<<set $panties_held = 0>>
+<</if>>
+
+/* 血泪数量 */
+<<if $Bloody_Tear is undefined>>
+	<<set $Bloody_Tear = 0>>
+<</if>>
+
+/* 食物 */
+<<if $Sashimi is undefined>>
+	<<set $Sashimi to 0>>
+<</if>>
+<<if $Cooked_Fish is undefined>>
+	<<set $Cooked_Fish to 0>>
+<</if>>
+<<if $Cooked_Shrimp is undefined>>
+	<<set $Cooked_Shrimp to 0>>
+<</if>>
+<<if $Lobster_Tail is undefined>>
+	<<set $Lobster_Tail to 0>>
+<</if>>
+<<if $Seafood_Dinner is undefined>>
+	<<set $Seafood_Dinner to 0>>
+<</if>>
+<<if $Shucked_Oyster is undefined>>
+	<<set $Shucked_Oyster to 0>>
+<</if>>
+
+/* 海岛 */
+<<if $island_build_cooking is undefined>>
+	<<set $island_build_cooking to []>>
+<</if>>
+
+/* 统计数据 */
+<<if $fishing_bitten_count is undefined>>
+	<<set $fishing_bitten_count to 0>>
+<</if>>
+<<if $fishing_harvest_count is undefined>>
+	<<set $fishing_harvest_count to 0>>
+<</if>>
+<<if $fishing_failed_count is undefined>>
+	<<set $fishing_failed_count to 0>>
+<</if>>
+<<if $RPS_win_count is undefined>>
+	<<set $RPS_win_count to 0>>
+<</if>>
+<<if $RPS_none_count is undefined>>
+	<<set $RPS_none_count to 0>>
+<</if>>
+<<if $PRS_lose_count is undefined>>
+	<<set $PRS_lose_count to 0>>
+<</if>>
+<<if $pylon_teleport_count is undefined>>
+	<<set $pylon_teleport_count to 0>>
+<</if>>
+<<if $fishing_crate_count is undefined>>
+	<<set $fishing_crate_count to {
+		Golden_Crate: 0,
+		Iron_Crate: 0,
+		Wooden_Crate: 0,
+		Ocean_Crate: 0,
+		Oyster: 0,
+		Oasis_Crate: 0,
+		Jungle_Crate: 0,
+		Hallowed_Crate: 0,
+		Sky_Crate: 0,
+		Sunken_Crate: 0,
+		Sulphurous_Crate: 0,
+		Brimstone_Crate: 0,
+	}>>
+<</if>>
+<<if $unload_crate_count is undefined>>
+	<<set $unload_crate_count to {
+		Golden_Crate: 0,
+		Iron_Crate: 0,
+		Wooden_Crate: 0,
+		Ocean_Crate: 0,
+		Oyster: 0,
+		Oasis_Crate: 0,
+		Jungle_Crate: 0,
+		Hallowed_Crate: 0,
+		Sky_Crate: 0,
+		Sunken_Crate: 0,
+		Sulphurous_Crate: 0,
+		Brimstone_Crate: 0,
+	}>>
+<</if>>
+<<if $crafting_count is undefined>>
+	<<set $crafting_count to {
+		Work_Bench: 0,
+		Iron_Anvil: 0,
+		Cooking_Pot: 0,
+	}>>
+<</if>>
+
+/* 阁楼制作站初始化 */
+<<if $orphanage_loft_crafting_station is undefined>>
+	<<set $orphanage_loft_crafting_station to []>>
+<</if>>
+
+<!-- 落星概率初始化 -->
+<<if $Meteor_Shower is undefined>>
+	<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
+	<<fallen_star_rate_set>>
+<</if>>
+
+<!-- 发光地衣数量初始化 -->
+<<set $Argon_Moss to $Argon_Moss is undefined ? 0 : $Argon_Moss>>
+<<set $Krypton_Moss to $Krypton_Moss is undefined ? 0 : $Krypton_Moss>>
+<<set $Lava_Moss to $Lava_Moss is undefined ? 0 : $Lava_Moss>>
+<<set $Neon_Moss to $Neon_Moss is undefined ? 0 : $Neon_Moss>>
+<<set $Xenon_Moss to $Xenon_Moss is undefined ? 0 : $Xenon_Moss>>
+<<set $Helium_Moss to $Helium_Moss is undefined ? 0 : $Helium_Moss>>
+
+<</widget>>

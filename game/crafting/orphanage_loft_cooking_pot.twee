@@ -65,6 +65,7 @@
 						<hr>
 						<<link "制作">>
 							_recipe.craft
+							<<set $crafting_count.Cooking_Pot += 1>>
 							<<if _recipe.type is "food">>
 								<<housekeeping 1 1000>>
 							<</if>>

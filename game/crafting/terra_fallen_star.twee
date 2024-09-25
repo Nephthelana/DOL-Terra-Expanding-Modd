@@ -1,0 +1,17 @@
+:: Terra Fallen Star [widget]
+<<widget "terra_fallen_star">>
+
+<span id="terra_fallen_star">
+<<if Time.dayState is "night" and random(1 , Math.round(2000 / $fallen_star_rate)) is 1 and (setup.majorAreas.includes($passage) and $event is undefined)>>
+	你听到一个不寻常的声音。它离你越来越近，然后在一声撞击后戛然而止。你沿着声音的来源上前查看：是一颗落在地上的星星！<<terraHint>><br>
+	<<link "捡起">>
+		<<set $Fallen_Star += 1>>
+		<<replace #terra_fallen_star>>
+			你捡起了一颗<<icon "material/Fallen_Star.png">>坠落之星。<br><br>
+		<</replace>>
+	<</link>><br>
+	<br>
+<</if>>
+</span>
+
+<</widget>>

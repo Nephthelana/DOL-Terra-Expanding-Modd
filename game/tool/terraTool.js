@@ -16,8 +16,18 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Demon_Conch,
         icon: "tool/Demon_Conch_item.png",
-		des: "每日可使用一次，将你传送至地下岩浆湖(暂未实装，目前为传送至海滩)",
+		des: "每日可使用一次，将你传送至地下熔岩湖(暂未实装，目前为传送至海滩)",
 		use: "<<terra_tool_use_Demon_Conch>>"
+    },
+	"Ice_Mirror": {
+        name: "Ice_Mirror",
+        cn_name: "冰雪镜",
+		material: false,
+        type: "tool",
+        obtained: V.Ice_Mirror,
+        icon: "tool/Ice_Mirror_item.png",
+		des: "每日可使用一次，将你传送至地下永冻湖(暂未实装)",
+		use: "<<terra_tool_use_Ice_Mirror>>"
     },
 	"Snake_Charmers_Flute": {
         name: "Snake_Charmers_Flute",
@@ -48,6 +58,36 @@ setup.terraTool = {
         icon: "tool/Bottomless_Water_Bucket_item.png",
 		des: "可以倒出无限的水。谁会想用这个来把自己浇成落汤鸡呢？",
 		use: "<<terra_tool_use_Bottomless_Water_Bucket>>"
+    },
+	"Bottomless_Lava_Bucket": {
+        name: "Bottomless_Lava_Bucket",
+        cn_name: "无底熔岩桶",
+		material: false,
+        type: "tool",
+        obtained: V.Bottomless_Lava_Bucket,
+        icon: "tool/Bottomless_Lava_Bucket_item.png",
+		des: "可以倒出无限的熔岩。你能感觉到它十分滚烫，但同时也散发着一种奇异的芳香。",
+		use: "<<terra_tool_use_Bottomless_Lava_Bucket>>"
+    },
+	"Bottomless_Honey_Bucket": {
+        name: "Bottomless_Honey_Bucket",
+        cn_name: "无底蜂蜜桶",
+		material: false,
+        type: "tool",
+        obtained: V.Bottomless_Honey_Bucket,
+        icon: "tool/Bottomless_Honey_Bucket_item.png",
+		des: "可以倒出无限的蜂蜜。孩子们一定非常喜欢。(功能未实装)",
+		use: "<<terra_tool_use_Bottomless_Honey_Bucket>>"
+    },
+	"Super_Absorbant_Sponge": {
+        name: "Super_Absorbant_Sponge",
+        cn_name: "超级吸水棉",
+		material: false,
+        type: "tool",
+        obtained: V.Super_Absorbant_Sponge,
+        icon: "tool/Super_Absorbant_Sponge_item.png",
+		des: "能够吸收无限多的水。可以快速吸干衣物中的水分。",
+		use: "<<terra_tool_use_Super_Absorbant_Sponge>>"
     },
 	"Gravediggers_Shovel": {
         name: "Gravediggers_Shovel",

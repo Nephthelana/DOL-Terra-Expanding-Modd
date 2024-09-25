@@ -189,6 +189,56 @@ setup.terraFish = {
         icon: "fishing/fish/Princess_Fish.png",
         consumed: "<<set $Princess_Fish -= 1>>"
     },
+	"Damselfish": {
+        name: "Damselfish",
+        cn_name: "雀鲷",
+		material: false,
+        type: "fish",
+        price: 1000,
+        amount: V.Damselfish || 0,
+        icon: "fishing/fish/Damselfish.png",
+        consumed: "<<set $Damselfish -= 1>>"
+    },
+	"Frost_Minnow": {
+        name: "Frost_Minnow",
+        cn_name: "寒霜绦鱼",
+		material: true,
+        type: "potion",
+        price: 15,
+        amount: V.Frost_Minnow || 0,
+        icon: "fishing/fish/Frost_Minnow.png",
+        consumed: "<<set $Frost_Minnow -= 1>>"
+    },
+	"Atlantic_Cod": {
+        name: "Atlantic_Cod",
+        cn_name: "大西洋鳕鱼",
+		material: true,
+        type: "cookable",
+        price: 7.5,
+        amount: V.Atlantic_Cod || 0,
+        icon: "fishing/fish/Atlantic_Cod.png",
+        consumed: "<<set $Atlantic_Cod -= 1>>"
+    },
+	"Flarefin_Koi": {
+        name: "Flarefin_Koi",
+        cn_name: "闪鳍锦鲤",
+		material: true,
+        type: "potion",
+        price: 50,
+        amount: V.Flarefin_Koi || 0,
+        icon: "fishing/fish/Flarefin_Koi.png",
+        consumed: "<<set $Flarefin_Koi -= 1>>"
+    },
+	"Obsidifish": {
+        name: "Obsidifish",
+        cn_name: "黑曜石鱼",
+		material: true,
+        type: "potion",
+        price: 15,
+        amount: V.Obsidifish || 0,
+        icon: "fishing/fish/Obsidifish.png",
+        consumed: "<<set $Obsidifish -= 1>>"
+    },
 	"Greenwave_Loach": {
         name: "Greenwave_Loach",
         cn_name: "绿波泥鳅",
@@ -219,15 +269,15 @@ setup.terraFish = {
         icon: "fishing/fish/Prismatic_Guppy.png",
         consumed: "<<set $Prismatic_Guppy -= 1>>"
     },
-	"Damselfish": {
-        name: "Damselfish",
+	"Charred_Lasher": {
+        name: "Charred_Lasher",
         cn_name: "焦黑鞭笞者",
 		material: false,
         type: "fish",
         price: 1000,
-        amount: V.Damselfish || 0,
-        icon: "fishing/fish/Damselfish.png",
-        consumed: "<<set $Damselfish -= 1>>"
+        amount: V.Charred_Lasher || 0,
+        icon: "fishing/fish/Charred_Lasher.png",
+        consumed: "<<set $Charred_Lasher -= 1>>"
     },
 	"Coastal_Demonfish": {
         name: "Coastal_Demonfish",

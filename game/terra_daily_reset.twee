@@ -20,18 +20,22 @@
 	"Fallen_Starfish",
 	"Fish_of_Cthulhu",
 	"Fishotron",
+	"Fishron",
 	"Guide_Voodoo_Fish",
 	"Harpyfish",
 	"Hungerfish",
 	"Jewelfish",
 	"Mirage_Fish",
 	"Mudfish",
+	"Mutant_Flinxfin",
+	"Pengfish",
 	"Pixiefish",
 	"Scarab_Fish",
 	"Scorpio_Fish",
 	"Slimefish",
 	"Spiderfish",
 	"Tropical_Barracuda",
+	"Tundra_Trout",
 	"Unicorn_Fish",
 	"Wyverntail",
 	"Zombie_Fish",
@@ -101,4 +105,22 @@
 <<set $Bloody_Tear_used to false>>
 <<clearWraith>>
 
+<!-- 流星雨事件概率：1/10 -->
+<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
+<<fallen_star_rate_set>>
+
+<</widget>>
+
+:: Fallen Star Rate Set [widget]
+<!-- 坠落之星倍率 -->
+<<widget "fallen_star_rate_set">>
+	<<if $Meteor_Shower>>
+		<<set $fallen_star_rate to random(300,500)>>
+	<<else>>
+		<<if random(1,3) is 1>>
+			<<set $fallen_star_rate to random(100,150)>>
+		<<else>>
+			<<set $fallen_star_rate to 100>>
+		<</if>>
+	<</if>>
 <</widget>>

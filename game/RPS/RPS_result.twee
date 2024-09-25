@@ -1,6 +1,7 @@
 :: RPS Result
 <<switch $RPS_win>>
 	<<case "PC">>
+		<<set $RPS_win_count += 1>>
 		<<if $options.cute_angler>>
 			<<print [
 				`"哦！看来今天是你的运气略胜一筹呀。你想要什么呢？"`,
@@ -20,6 +21,7 @@
 			<span class="blue">你今天已经完成了任务。</span><br>
 		<</if>>
 	<<case "Angler">>
+		<<set $PRS_lose_count += 1>>
 		<<if $options.cute_angler>>
 			<<print [
 				`"是我捕了这么多鱼给我带来的好运！每次你带来我想要的鱼，我都会分你一点！"`,
@@ -34,6 +36,7 @@
 		<br>
 		<<link [[返回|Fishing Angler Cabin]]>><</link>><br>
 	<<case "None">>
+		<<set $RPS_none_count += 1>>
 		<<if $options.cute_angler>>
 			<<print [
 				`"看来咱们旗鼓相当，明日再战！"`,

@@ -1,0 +1,34 @@
+:: Terra Manor Lab Spray [widget]
+<<widget "terra_manor_lab_spray">>
+
+<<if $fishing_spray_material gt 0>>
+	<<if $fishing_spray_known>>
+		你有防狼喷雾原料($fishing_spray_material)。
+		<<if $spray lt $spraymax>>
+			<<peppersprayicon>><<link [[重新填充防狼喷雾 (0:10)|Terra Manor Lab Spray Refill]]>><<pass 10>><</link>><<terraHint>><br>
+		<<else>>
+			<span class="teal">但你现在没有空瓶需要补充。</span><br>
+		<</if>>
+	<<else>>
+		你可以在实验室中研究从<<icon "fishing/crates/Obsidian_Crate.png">>黑曜石匣中开出的粉末。<br>
+		<<ind>><<link [[研究粉末 (0:10)|Terra Manor Lab Spray Research]]>><<pass 10>><</link>><<terraHint>><br>
+	<</if>>
+	<br>
+<</if>>
+
+<</widget>>
+
+:: Terra Manor Lab Spray Research
+<<set $fishing_spray_known to true>>
+你小心翼翼地打开了一袋粉末。经过分析，<span class="green">这是用于制作防狼喷雾的原料。</span><br>
+<br>
+<span class="gold">你可以在实验室用原料补充防狼喷雾了！</span><br>
+<br>
+<<link [[继续|Manor Lab]]>><<endevent>><</link>>
+
+:: Terra Manor Lab Spray Refill
+<<set $fishing_spray_material -= 1>>
+<<spray 1>>
+参照着凯拉尔留在墙上的使用说明，你重新装填了你的防狼喷雾。<br>
+<br>
+<<link [[继续|Manor Lab]]>><</link>>

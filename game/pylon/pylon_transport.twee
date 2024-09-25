@@ -6,26 +6,26 @@
 你看着晶塔显示的地图，思索你要去哪里。<br>
 <<if $pylon_collected.includes("Bedroom")>>
 	<<if getRobinLocation() is "orphanage" or getRobinLocation() is "sleep" or getRobinLocation() is "bath" or getRobinLocation() is "liveStream">>
-		<<icon "pylon/Forest_Pylon.png">><<link [[传送到孤儿院卧室晶塔(0:01)|Bedroom]]>><<pass 1>><</link>>
+		<<icon "pylon/Forest_Pylon.png">><<link [[传送到孤儿院卧室晶塔(0:01)|Bedroom]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<<else>>
-		<span class="fading"><<icon "pylon/Forest_Pylon.png">></span>罗宾现在不在孤儿院，你无法使用孤儿院卧室晶塔。
+		<span class="terraFading"><<icon "pylon/Forest_Pylon.png">></span>罗宾现在不在孤儿院，你无法使用孤儿院卧室晶塔。
 	<</if>>
 	<br>
 <</if>>
 <<if $pylon_collected.includes("Farm Bedroom")>>
-	<<icon "pylon/Universal_Pylon.png">><<link [[传送到农场卧室晶塔(0:01)|Farm Bedroom]]>><<pass 1>><</link>>
+	<<icon "pylon/Universal_Pylon.png">><<link [[传送到农场卧室晶塔(0:01)|Farm Bedroom]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<br>
 <</if>>
 <<if $pylon_collected.includes("Eden Cabin")>>
 	<<if Time.hour lt 11 or Time.hour gt 14 >>
-		<<icon "pylon/Jungle_Pylon.png">><<link [[传送到伊甸小屋晶塔(0:01)|Eden Cabin]]>><<pass 1>><</link>>
+		<<icon "pylon/Jungle_Pylon.png">><<link [[传送到伊甸小屋晶塔(0:01)|Eden Cabin]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<<else>>
-		<span class="fading"><<icon "pylon/Jungle_Pylon.png">></span>伊甸现在不在小屋，你无法使用伊甸小屋晶塔。
+		<span class="terraFading"><<icon "pylon/Jungle_Pylon.png">></span>伊甸现在不在小屋，你无法使用伊甸小屋晶塔。
 	<</if>>
 	<br>
 <</if>>
 <<if $pylon_collected.includes("Hawks Tower")>>
-	<<icon "pylon/Sunken_Pylon.png">><<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><</link>>
+	<<icon "pylon/Sunken_Pylon.png">><<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<br>
 <</if>>
 <<if $pylon_collected.includes("Wolfcave")>>
@@ -33,9 +33,9 @@
 		<<set $wolf_cave_hunt_request_refuse to false>>
 	<</if>>
 	<<if $wolf_cave_hunt_request_refuse and (Time.hour lt 6 or Time.hour gt 17) and $blackWolfNotHunting isnot true>>
-		<span class="fading"><<icon "pylon/Mushroom_Pylon.png">></span>黑狼现在不在狼窝，你无法使用狼窝晶塔。
+		<span class="terraFading"><<icon "pylon/Mushroom_Pylon.png">></span>黑狼现在不在狼窝，你无法使用狼窝晶塔。
 	<<else>>
-		<<icon "pylon/Mushroom_Pylon.png">><<link [[传送到狼窝晶塔(0:01)|Wolf Cave]]>><<pass 1>><</link>>
+		<<icon "pylon/Mushroom_Pylon.png">><<link [[传送到狼窝晶塔(0:01)|Wolf Cave]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<</if>>
 	<br>
 <</if>>

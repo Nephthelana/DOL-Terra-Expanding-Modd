@@ -8,6 +8,7 @@
 	<<set $island_cooking_unlocked to true>>
 <</if>>
 <<if $fishingrod>>
+<br>
 <<switch $island.home>>
 	<<case "rocky_hillock">>
 		<<if $fishing_island_unlock.includes("rocky_hillock")>>

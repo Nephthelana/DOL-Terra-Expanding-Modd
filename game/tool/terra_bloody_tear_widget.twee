@@ -1,0 +1,35 @@
+:: Terra Bloody Tear [widget]
+<<widget "void_bag_Bloody_Tear">>
+
+<<if $Bloody_Tear gt 0>>
+	<div class="itemTerra">
+		<div class="item">
+			<div @tooltip="`<span class='red'>血泪</span><br><br>在夜晚使用以召唤血月。这不会影响原本的血月周期。<br><i><span class='red'>使用它即表示你同意承担召唤血月将会带来的所有后果</span></i>`">
+				<<icon "tool/Bloody_Tear.png">>
+			</div>
+			<hr>
+			$Bloody_Tear
+			<hr>
+			<<if Time.isBloodMoon()>>
+				<mouse class="tooltip linkBlue">不可用<span>你不能在血月期间使用血泪</span></mouse>
+			<<elseif !(Time.dayState is "night")>>
+				<mouse class="tooltip linkBlue">不可用<span>你只能在夜晚使用血泪</span></mouse>
+			<<else>>
+				<<link "使用">>
+					<<set $Bloody_Tear -= 1>>
+					<<set $Bloody_Tear_used to true>>
+					<<checkWraith>>
+					<<replace #hint_item_use>>
+						<span class="red">你使用了<<icon "tool/Bloody_Tear.png">>血泪。<i>"诅咒之夜真可怕。"</i></span><br>
+						<br>
+					<</replace>>
+					<<replace #void_bag_Bloody_Tear>>
+						<<void_bag_Bloody_Tear>>
+					<</replace>>
+				<</link>>
+			<</if>>
+		</div>
+	</div>
+<</if>>
+
+<</widget>>

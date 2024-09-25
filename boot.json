@@ -1,65 +1,559 @@
 {
   "name": "Terraria Expand Mod",
-  "version": "0.2.0-pre",
-  "styleFileList": [],
-  "scriptFileList": [
-    "game/fishing/Angler.js",
-	"game/fishing/terraFish.js",
-	"game/fishing/terraRequestFish.js",
-	"game/fishing/terraCrate.js"
+  "version": "0.2.0",
+  "styleFileList": [
+    "module/css/item_terra.css",
+    "game/mod_icon/icon.css"
   ],
-  "tweeFileList": [],
+  "scriptFileList": [
+    "game/food/terraFood.js",
+    "game/tool/terraTool.js",
+    "game/fishing/Bait/terraBait.js",
+    "game/crafting/terraMaterial.js",
+    "game/robin/hasCollab.js",
+    "game/equipment/terraAccessories.js",
+    "game/fishing/terraAnglerFurniture.js",
+    "game/tool/terraPotion.js",
+    "game/fishing/terraFish.js",
+    "game/equipment/terraArmor.js",
+    "game/crafting/terraRecipe.js",
+    "game/fishing/terraRequestFish.js",
+    "game/void_bag/updateVoidbag.js",
+    "game/fishing/Angler.js",
+    "game/fishing/terraCrate.js"
+  ],
+  "tweeFileList": [
+    "game/fishing/Angler+Fishing_Request/furniture_painting_angler_cabin_switch.twee",
+    "game/island/fishing_island_unlock_waterfall.twee",
+    "game/fishing/Fishing/fishing_place_school_pool_unlock_3.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_angler_cabin.twee",
+    "game/terra_debug/terra_debug_baits.twee",
+    "game/RPS/RPS_result.twee",
+    "game/terra_debug/terra_debug_crates.twee",
+    "game/pylon/pylon_wolfcave_ask.twee",
+    "game/tool/terra_expand_tool.twee",
+    "game/guide/guide_mod_hint_fishing_place_1.twee",
+    "game/crafting/terra_fallen_star.twee",
+    "game/equipment/lake_ice_skating.twee",
+    "game/terra_hint_widget.twee",
+    "game/robin/robin_fishing_bitten.twee",
+    "game/island/fishing_island_unlock_widget.twee",
+    "game/tool/snake_charmers_flute_use_1.twee",
+    "game/pylon/pylon_transport_back.twee",
+    "game/fishing/Fishing/fishing_finished_back.twee",
+    "game/blood_moon_monolith/fishing_bloodmoon/fishing_bloodmoon_dreadnautilus.twee",
+    "game/guide/guide_mod_hint_fishing_place.twee",
+    "game/fishing/Bait/bait_forest_shop_intro.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_request_select_widget.twee",
+    "game/crafting/orphanage_loft_work_bench.twee",
+    "game/BabyHawk/BabyHawkExtraFood.twee",
+    "game/pylon/pylon_hawks_tower_ask.twee",
+    "game/tool/terra_tool_widget.twee",
+    "game/bestiary/bestiary_forest_shop.twee",
+    "game/robin/robin_fishing_harvest_request_fish_widget.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_harvest_request_fish_widget.twee",
+    "game/guide/guide_room.twee",
+    "game/terra_debug/terra_debug_fishing_pole.twee",
+    "game/fishing/Fishing/fishing_island.twee",
+    "game/fishing/Bait/bait_forest_shop_receive.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_request_ask.twee",
+    "game/terra_debug/terra_debug_fish.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_request_place_widget.twee",
+    "game/equipment/terra_expand_equipment.twee",
+    "game/robin/robin_fishing_place.twee",
+    "game/guide/guide_mod_hint_pre.twee",
+    "game/tool/terra_bloody_tear_widget.twee",
+    "game/island/fish_island.twee",
+    "game/pylon/pylon_bedroom_unlocked.twee",
+    "game/fishing/Fishing/fishing_power.twee",
+    "game/guide/guide_lost_and_found_v0.1.5.twee",
+    "game/tool/museum_gravediggers_shovel_intro.twee",
+    "scriptEarly/terra_start_only.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_request_reward_widget.twee",
+    "game/void_bag/void_bag_content.twee",
+    "game/robin/robin_fishing_bait_give.twee",
+    "game/halloween/widgets_terra_halloween.twee",
+    "game/fishing/Fishing/fishing_cast_time_widget.twee",
+    "game/fishing/Fishing/fishing_harvest_trash_widget.twee",
+    "game/pylon/pylon_wolfcave.twee",
+    "game/RPS/RPS_start.twee",
+    "game/mod_icon/mod_icon_widgets.twee",
+    "game/tool/terra_potion_widget.twee",
+    "game/pylon/pylon_farm_bedroom.twee",
+    "game/BabyHawk/bird_tower_cooking_pot.twee",
+    "game/pylon/pylon_farm_bedroom_ask.twee",
+    "game/fishing/Fishing/fishingrod_held_icon_widget.twee",
+    "game/guide/guide_hint_journal_widget.twee",
+    "game/terra_debug/terra_debug_equipment.twee",
+    "game/pylon/pylon_bedroom.twee",
+    "game/artificial_fishing_pond_widget.twee",
+    "game/pylon/pylon_hawks_tower.twee",
+    "game/robin/robin_forest_bait_rainy.twee",
+    "game/pylon/pylon_eden_cabin.twee",
+    "game/guide/guide_daily_dialog_widget.twee",
+    "game/guide/guide_mod_hint.twee",
+    "game/guide/guide_mod_hint_crafting.twee",
+    "game/fishing/Bait/bait_forest_shop_bug_net.twee",
+    "game/fishing/Fishing/fishing_place_school_pool_unlock_1.twee",
+    "game/guide/guide_lost_and_found.twee",
+    "game/pylon/pylon_eden_cabin_unlock.twee",
+    "game/robin/fishing_request_robin.twee",
+    "game/tool/snake_charmers_flute_use_2.twee",
+    "game/pylon/pylon_transport.twee",
+    "game/world_corruption_ask/world_corruption_ask_result.twee",
+    "game/terra_debug/terra_debug.twee",
+    "game/robin/robin_fishing.twee",
+    "game/blood_moon_monolith/fishing_bloodmoon/fishing_bloodmoon_widget.twee",
+    "game/terra_debug/terra_debug_potions.twee",
+    "game/guide/guide_mod_hint_fishing_request.twee",
+    "game/guide/guide_mod_hint_fishing_power.twee",
+    "game/tool/snake_charmers_flute_use_widget.twee",
+    "game/island/island_build_cooking_widget.twee",
+    "game/crafting/orphanage_loft_cooking_pot.twee",
+    "scriptEarly/terra_reload_variables.twee",
+    "game/BabyHawk/bird_tower_work_bench.twee",
+    "game/terra_manor_lab_spray.twee",
+    "game/terra_daily_reset.twee",
+    "game/crafting/orphanage_loft_iron_anvil.twee",
+    "game/island/fishing_island_unlock_rocky_hillock.twee",
+    "game/pylon/pylon_farm_bedroom_unlock.twee",
+    "game/terra_statistics.twee",
+    "game/fishing/Fishing/fishing_harvest.twee",
+    "game/tool/museum_gravediggers_shovel_widget.twee",
+    "game/blood_moon_monolith/blood_moon_monolith_bedroom.twee",
+    "game/pylon/pylon_bedroom_ask.twee",
+    "game/terra_options.twee",
+    "game/robin/robin_fishing_prepare.twee",
+    "game/robin/robin_fishing_harvest.twee",
+    "game/fishing/Fishing/fishing_place_school_pool_unlock_2.twee",
+    "game/fishing/Fishing/fishing_harvest_pre.twee",
+    "game/fishing/Fishing/fishing_prepare.twee",
+    "game/robin/robin_fishing_finished.twee",
+    "game/pylon/pylon_bedroom_unlock.twee",
+    "game/guide/guide_mod_hint_bloody_tear.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_request_journal_widget.twee",
+    "game/pylon/pylon_eden_cabin_ask.twee",
+    "game/pylon/pylon_museum.twee",
+    "game/robin/robin_forest_bait_overcast.twee",
+    "game/void_bag/void_bag_unload_crate.twee",
+    "game/terra_weekly_reset.twee",
+    "game/guide/guide_mod_hint_pylon.twee",
+    "game/fishing/Fishing/fishing_skill.twee",
+    "game/fishing/Fishing/fishing.twee",
+    "game/pylon/pylon_wolfcave_unlock.twee",
+    "game/fishing/Fishing/fishing_bitten.twee",
+    "game/island/fishing_island_unlock_gulch.twee",
+    "game/robin/fishing_request_robin_showing.twee",
+    "game/guide/guide_mod_hint_bloodmoon.twee",
+    "game/fishing/Angler+Fishing_Request/fishing_angler_intro.twee",
+    "game/terra_bedroom_furniture_widget.twee",
+    "game/fishing/Bait/bait_forest_shop.twee",
+    "game/terra_debug/terra_debug_request_fish.twee",
+    "game/terra_orphanage_loft_spray.twee",
+    "game/robin/robin_forest_bait_clear.twee",
+    "game/fishing/Fishing/fishing_bait_consumed.twee",
+    "game/buff_widget.twee",
+    "game/equipment/characteristics_bonus.twee",
+    "game/pylon/pylon_museum_ask.twee",
+    "game/pylon/pylon_hawks_tower_unlock.twee"
+  ],
   "imgFileList": [
-	"img/misc/icon/blood_moon_monolith/Blood_Moon_Monolith.png",
-	"img/misc/icon/blood_moon_monolith/Blood_Moon_Monolith_(placed).png",
-	"img/misc/icon/blood_moon_monolith/Blood_Moon_Monolith_(placed)_(active).gif",
+    "img/misc/icon/fishing/quest_fish/Zombie_Fish.png",
+    "img/misc/icon/tool/Golden_Bug_Net_item.png",
+    "img/misc/icon/Accessories.png",
+    "img/misc/icon/furniture_placed/Bast_Statue_placed.png",
+    "img/misc/icon/fishing/bait/Gold_Grasshopper.png",
+    "img/misc/icon/tool/Bottomless_Lava_Bucket.png",
+    "img/misc/icon/fishing/crates/Sky_Crate.png",
+    "img/misc/icon/tool/Torrential_Tear.png",
+    "img/misc/icon/fishing/fishing_accessories/Neon_Moss_Fishing_Bobber.png",
+    "img/misc/icon/placed_bait/Placed_Tree_Nymph_Butterfly.gif",
+    "img/misc/icon/fishing/bait/Apprentice_Bait_material.png",
+    "img/misc/icon/fishing/quest_fish/Amanita_Fungifin.png",
+    "img/misc/icon/fishing/fish/Charred_Lasher.png",
+    "img/misc/icon/furniture_placed/Bunnyfish_Trophy_placed.png",
+    "img/misc/icon/fishing/quest_fish/Catfish.png",
+    "img/misc/icon/fishing/iron_fence.png",
+    "img/misc/icon/tool/Magic_Mirror.png",
+    "img/misc/icon/RPS/Emote_RPS_Win_Scissors.gif",
+    "img/misc/icon/material/Pink_Pearl.png",
+    "img/misc/icon/furniture_item/Dread_of_the_Red_Sea.png",
+    "img/misc/icon/RPS/Emote_RPS_Paper.png",
+    "img/misc/icon/tool/Torrential_Tear_item.png",
+    "img/misc/icon/fishing/quest_fish/Bumblebee_Tuna.png",
+    "img/misc/icon/pylon/Jungle_Pylon.png",
+    "img/misc/icon/fishing/fish/Princess_Fish.png",
+    "img/misc/icon/heavyPrecipitation_icon.png",
+    "img/misc/icon/fishing/quest_fish/Slurpfish.png",
+    "img/misc/icon/furniture_item/Bast_Statue.png",
+    "img/misc/icon/fishing/fish/Old_Shoe.png",
+    "img/misc/icon/furniture_placed/Fangs_placed.png",
+    "img/misc/icon/placed_bait/Placed_Truffle_Worm.gif",
+    "img/misc/icon/material/Lava_Moss.png",
+    "img/misc/icon/fishing/bait/Journeyman_Bait_material.png",
+    "img/misc/icon/fishing/fishing_pole/Scarab_Fishing_Rod.png",
+    "img/misc/icon/furniture_placed/Compass_Rose_placed.png",
+    "img/misc/icon/blood_moon_monolith/Blood_Moon_Monolith.png",
+    "img/misc/icon/armor/Armor_Shirt.png",
+    "img/misc/icon/furniture_placed/Goldfish_Trophy_placed.png",
+    "img/misc/icon/placed_bait/Placed_Gold_Worm.gif",
+    "img/misc/icon/fishing/bait/Zebra_Swallowtail_Butterfly.png",
+    "img/misc/icon/armor/Angler_Pants.png",
+    "img/misc/icon/fishing/quest_fish/Dirtfish.png",
+    "img/misc/icon/fishing/crates/Oyster.png",
+    "img/misc/icon/fishing/quest_fish/Serpentuna.png",
+    "img/misc/icon/fishing/quest_fish/Derpfish.png",
+    "img/misc/icon/fishing/bait/Worm.png",
+    "img/misc/icon/material/Sea_Remains.png",
+    "img/misc/icon/furniture_item/Couch_Gag.png",
+    "img/misc/icon/fishing/house_icon.png",
+    "img/misc/icon/material/Krypton_Moss_item.png",
+    "img/misc/icon/fishing/bait/Julia_Butterfly.png",
+    "img/misc/icon/Strange_Orb.png",
+    "img/misc/icon/fishing/fishing_accessories/Angler_Tackle_Bag.png",
+    "img/misc/icon/pylon/Desert_Pylon_(placed).gif",
+    "img/misc/icon/potions/Crate_Potion.png",
+    "img/misc/icon/fishing/bait/Red_Admiral_Butterfly.png",
+    "img/misc/icon/fishing/quest_fish/Scarab_Fish.png",
+    "img/misc/icon/fishing/bait/Sea_Minnow.png",
+    "img/misc/icon/fishing/fish/Neon_Tetra.png",
+    "img/misc/icon/Copper_Shortsword.png",
+    "img/misc/icon/furniture_item/Cooking_Pot.png",
+    "img/misc/icon/fishing/crates/Wooden_Crate.png",
+    "img/misc/icon/tool/Bug_Net_item.png",
+    "img/misc/icon/fishing/bait/Lightning_Bug.png",
+    "img/misc/icon/tool/Magic_Conch.png",
+    "img/misc/icon/armor/Angler_Hat_item.png",
+    "img/misc/icon/tool/Starfury.png",
+    "img/misc/icon/accessories/Water_Walking_Boots.png",
+    "img/misc/icon/Purification_Powder.png",
+    "img/misc/icon/fishing/bobber/Bobber_(Golden).png",
+    "img/misc/icon/potions/Sonar_Potion.png",
+    "img/misc/icon/fishing/fish/Flounder.png",
+    "img/misc/icon/fishing/quest_fish/Fishron.png",
+    "img/misc/icon/hint/Emote_Event_Bloodmoon.gif",
+    "img/misc/icon/furniture_placed/Work_Bench_(placed).png",
+    "img/misc/icon/fishing/bobber/Krypton_Moss_Fishing_Bobber.png",
+    "img/misc/icon/fishing/fishing_accessories/Fish_Finder.png",
+    "img/misc/icon/furniture_item/Fangs.png",
+    "img/misc/icon/furniture_placed/Swordfish_Trophy_placed.png",
+    "img/misc/icon/food/Shucked_Oyster.png",
+    "img/misc/icon/fishing/crates/Jungle_Crate.png",
+    "img/misc/icon/fishing/bobber/Lava_Moss_Fishing_Bobber.png",
+    "img/misc/icon/food/Seafood_Dinner.png",
+    "img/misc/icon/fishing/bobber/Argon_Moss_Fishing_Bobber.png",
+    "img/misc/icon/tool/Gravediggers_Shovel_item.png",
+    "img/misc/icon/furniture_placed/Wall_Anchor_placed.png",
+    "img/misc/icon/fishing/fishing_accessories/Krypton_Moss_Fishing_Bobber.png",
+    "img/misc/icon/accessories/Hermes_Boots.png",
+    "img/misc/icon/fishing/quest_fish/Hungerfish.png",
+    "img/misc/icon/furniture_placed/Reef_Chair_(placed).png",
+    "img/misc/icon/Void_Bag.png",
+    "img/misc/icon/furniture_item/Silent_Fish.png",
+    "img/misc/icon/fishing/fish/Trout.png",
+    "img/misc/icon/buff_icon/Empty.png",
+    "img/misc/icon/accessories/Lucky_Horseshoe.png",
+    "img/misc/icon/fishing/fishing_accessories/High_Test_Fishing_Line.png",
+    "img/misc/icon/placed_bait/Placed_Snail.gif",
+    "img/misc/icon/tool/Snake_Charmers_Flute_item.png",
+    "img/misc/icon/armor/Angler_Vest_item.png",
+    "img/misc/icon/fishing/fishing_pole/Chum_Caster.png",
+    "img/misc/icon/fishing/bobber/Bobber_(Hotlines).png",
+    "img/misc/icon/fishing/fish/Damselfish.png",
+    "img/misc/icon/material/White_Pearl.png",
+    "img/misc/icon/hint/Forest_Pylon_icon.png",
+    "img/misc/icon/food/Sashimi.png",
+    "img/misc/icon/fishing/fish/Chaos_Fish.png",
+    "img/misc/icon/furniture_placed/Not_So_Lost_In_Paradise_placed.png",
+    "img/misc/icon/furniture_item/Ship_in_a_Bottle.png",
+    "img/misc/icon/furniture_placed/Reef_Table_(placed).png",
+    "img/misc/icon/tool/Bug_Net.png",
+    "img/misc/icon/furniture_placed/Life_Preserver_placed.png",
+    "img/misc/icon/Zephyr_Fish.png",
+    "img/misc/icon/fishing/crates/Iron_Crate.png",
+    "img/misc/icon/fishing/bait/Worm_material.png",
+    "img/misc/icon/furniture_placed/Iron_Anvil_(placed).png",
+    "img/misc/icon/pylon/Forest_Pylon.png",
+    "img/misc/icon/fishing/quest_fish/Surf_Clam.png",
+    "img/misc/icon/fishing/bait/Gold_Ladybug.png",
+    "img/misc/icon/RPS/RPS.gif",
+    "img/misc/icon/fishing/quest_fish/Bloody_Manowar.png",
+    "img/misc/icon/fishing/fishing_pole/Wood_Fishing_Pole.png",
+    "img/misc/icon/furniture_placed/Ships_Wheel_placed.png",
+    "img/misc/icon/lightClouds_icon.png",
+    "img/misc/icon/hint/Emote_Emote_Confused.gif",
+    "img/misc/icon/fishing/quest_fish/Cloudfish.png",
+    "img/misc/icon/fishing/fishing_accessories/Weather_Radio.png",
+    "img/misc/icon/fishing/fish/Armored_Cavefish.png",
+    "img/misc/icon/fishing/bait/Ladybug.png",
+    "img/misc/icon/fishing/fish/Atlantic_Cod.png",
+    "img/misc/icon/fishing/bait/Purple_Emperor_Butterfly.png",
+    "img/misc/icon/fishing/bait/Firefly.png",
+    "img/misc/icon/RPS/Emote_RPS_Win_Rock.gif",
+    "img/misc/icon/fishing/fish/Red_Snapper.png",
+    "img/misc/icon/Bestiary_icon.png",
+    "img/misc/icon/fishing/bait/Green_Jellyfish_bait.png",
+    "img/misc/icon/material/Neon_Moss_item.png",
+    "img/misc/icon/fishing/bait/Gold_Butterfly.png",
+    "img/misc/icon/fishing/fish/Flarefin_Koi.png",
+    "img/misc/icon/fishing/bait/Sulphur_Butterfly.png",
+    "img/misc/icon/food/Cooked_Fish.png",
+    "img/misc/icon/tool/Magic_Conch_material.png",
+    "img/misc/icon/accessories/Dunerider_Boots.png",
+    "img/misc/icon/furniture_item/Work_Bench.png",
+    "img/misc/icon/RPS/Emote_RPS_Scissors.png",
+    "img/misc/icon/placed_bait/Placed_Lightning_Bug.png",
+    "img/misc/icon/pylon/Jungle_Pylon_(placed).gif",
+    "img/misc/icon/fishing/bait/Snail.png",
+    "img/misc/icon/accessories/Ice_Skates.png",
+    "img/misc/icon/furniture_item/Ships_Wheel.png",
+    "img/misc/icon/furniture_item/Living_Wood_Table.png",
+    "img/misc/icon/fishing/fish/Coastal_Demonfish.png",
+    "img/misc/icon/fishing/fish/Shrimp.png",
+    "img/misc/icon/buff_icon/Cerebral_Mindtrick_(buff).png",
+    "img/misc/icon/accessories/Sailfish_Boots.png",
+    "img/misc/icon/fishing/crates/Frozen_Crate.png",
+    "img/misc/icon/furniture_placed/Wooden_Table_(placed).png",
+    "img/misc/icon/material/Sea_Prism.png",
+    "img/misc/icon/placed_bait/Placed_Firefly.png",
+    "img/misc/icon/fishing/fishing_pole/Golden_Fishing_Rod.png",
+    "img/misc/icon/furniture_placed/Seaweed_Planter_placed.png",
+    "img/misc/icon/fishing/fishing_accessories/Xenon_Moss_Fishing_Bobber.png",
+    "img/misc/icon/fishing/fishing_accessories/Lavaproof_Tackle_Bag.png",
+    "img/misc/icon/fishing/fish/Joja_Cola.png",
+    "img/misc/icon/fishing/crates/Golden_Crate.png",
+    "img/misc/icon/material/Black_Pearl.png",
+    "img/misc/icon/fishing/quest_fish/Spiderfish.png",
+    "img/misc/icon/fishing/fishing_pole/Reinforced_Fishing_Pole.png",
+    "img/misc/icon/fishing/bobber/Bobber_(Wooden).png",
+    "img/misc/icon/fishing/crates/Oasis_Crate.png",
+    "img/misc/icon/placed_bait/Placed_Hell_Butterfly.gif",
+    "img/misc/icon/hint/Emote_Crafting.gif",
+    "img/misc/icon/material/Neon_Moss.png",
+    "img/misc/icon/fishing/fishing_accessories/Tackle_Box.png",
+    "img/misc/icon/fishing/fishing_accessories/Angler_Earring.png",
+    "img/misc/icon/heavyClouds_icon.png",
+    "img/misc/icon/fishing/bobber/Bobber_(Scarab).png",
+    "img/misc/icon/fishing/bobber/Fishing_Bobber.png",
+    "img/misc/icon/fishing/quest_fish/Scorpio_Fish.png",
+    "img/misc/icon/fishing/bait/Grasshopper.png",
+    "img/misc/icon/Accessories_icon.png",
+    "img/misc/icon/hint/Emote_Item_Fishing_Rod.gif",
+    "img/misc/icon/material/Fallen_Star.png",
+    "img/misc/icon/tool/Demon_Conch_item.png",
+    "img/misc/icon/fishing/fish/Sunken_Sailfish.png",
+    "img/misc/icon/fishing/quest_fish/Brimlish.png",
+    "img/misc/icon/fishing/fish/Tuna.png",
+    "img/misc/icon/fishing/fish/Obsidifish.png",
+    "img/misc/icon/furniture_item/Compass_Rose.png",
+    "img/misc/icon/tool/Snake_Charmers_Flute.png",
+    "img/misc/icon/fishing/fishing_accessories/Enchanted_Pearl.png",
+    "img/misc/icon/fishing/fishing_accessories/Lava_Moss_Fishing_Bobber.png",
+    "img/misc/icon/tool/Super_Absorbant_Sponge.png",
+    "img/misc/icon/furniture_placed/Reef_Chandelier_(placed).png",
+    "img/misc/icon/lightPrecipitation_icon.png",
+    "img/misc/icon/furniture_item/The_Duke.png",
+    "img/misc/icon/fishing/fishing_accessories/Helium_Moss_Fishing_Bobber.gif",
+    "img/misc/icon/tool/Staff_of_Regrowth_item.png",
+    "img/misc/icon/pylon/Sunken_Pylon.png",
+    "img/misc/icon/material/Xenon_Moss_item.png",
+    "img/misc/icon/furniture_placed/Campfire_(placed).gif",
+    "img/misc/icon/tool/Bloody_Tear.png",
+    "img/misc/icon/material/Xenon_Moss.png",
+    "img/misc/icon/fishing/fish/Rock_Lobster.png",
+    "img/misc/icon/fishing/quest_fish/Tropical_Barracuda.png",
+    "img/misc/icon/furniture_item/Treasure_Map.png",
+    "img/misc/icon/furniture_item/Bunnyfish_Trophy.png",
+    "img/misc/icon/fishing/bait/Gold_Worm.png",
+    "img/misc/icon/fishing/bobber/Helium_Moss_Fishing_Bobber.gif",
+    "img/misc/icon/fishing/fishing_accessories/Glowing_Fishing_Bobber.png",
+    "img/misc/icon/fishing/bait/Maggot.png",
+    "img/misc/icon/fishing/fish/Frost_Minnow.png",
+    "img/misc/icon/fishing/fishing_accessories/Fishing_Bobber.png",
+    "img/misc/icon/fishing/quest_fish/Fallen_Starfish.png",
+    "img/misc/icon/furniture_item/Tinkerers_Workshop.png",
+    "img/misc/icon/fishing/quest_fish/Bonefish.png",
+    "img/misc/icon/furniture_placed/What_Lurks_Below_placed.png",
+    "img/misc/icon/buff_icon/Crate_(buff).png",
+    "img/misc/icon/clear_icon.png",
+    "img/misc/icon/placed_bait/Placed_Ulysses_Butterfly.gif",
+    "img/misc/icon/furniture_item/Swordfish_Trophy.png",
+    "img/misc/icon/fishing/quest_fish/Mudfish.png",
+    "img/misc/icon/Journey_Toggle.png",
+    "img/misc/icon/placed_bait/Placed_Enchanted_Nightcrawler.gif",
+    "img/misc/icon/tool/Starfury_item.png",
+    "img/misc/icon/food/Lobster_Tail.png",
+    "img/misc/icon/buff_icon/Fishing_(buff).png",
+    "img/misc/icon/fishing/bait/Stinkbug.png",
+    "img/misc/icon/fishing/fish/Golden_Carp.png",
+    "img/misc/icon/placed_bait/Placed_Purple_Emperor_Butterfly.gif",
+    "img/misc/icon/RPS/Emote_RPS_Win_Paper.gif",
+    "img/misc/icon/furniture_placed/Placed_Tables.png",
+    "img/misc/icon/furniture_placed/Dread_of_the_Red_Sea_placed.png",
+    "img/misc/icon/armor/Armor_Helmet.png",
+    "img/misc/icon/placed_bait/Placed_Glowing_Snail.gif",
+    "img/misc/icon/placed_bait/Placed_Gold_Ladybug.gif",
+    "img/misc/icon/furniture_item/Hellforge.png",
+    "img/misc/icon/fishing/crates/Sulphurous_Crate.png",
+    "img/misc/icon/material/Krypton_Moss.png",
+    "img/misc/icon/pylon/Sunken_Pylon_(placed).gif",
+    "img/misc/icon/pylon/Mushroom_Pylon_(placed).gif",
+    "img/misc/icon/fishing/quest_fish/Fishotron.png",
+    "img/misc/icon/fishing/fish/Honeyfin.png",
+    "img/misc/icon/fishing/fish/Seaweed_(junk).png",
+    "img/misc/icon/furniture_item/Life_Preserver.png",
+    "img/misc/icon/fishing/quest_fish/Angelfish.png",
+    "img/misc/icon/fishing/fishing_pole/Fiberglass_Fishing_Pole.png",
+    "img/misc/icon/rain_icon.png",
+    "img/misc/icon/pylon/Universal_Pylon.png",
+    "img/misc/icon/fishing/bait/Glowing_Snail.png",
+    "img/misc/icon/fishing/crates/Obsidian_Crate.png",
+    "img/misc/icon/fishing/bait/Hell_Butterfly.png",
+    "img/misc/icon/armor/Angler_Vest.png",
+    "img/misc/icon/tool/Gravediggers_Shovel.png",
+    "img/misc/icon/pylon/Mushroom_Pylon.png",
+    "img/misc/icon/material/Iron_Bar.png",
+    "img/misc/icon/fishing/fishing_accessories/Fishermans_Pocket_Guide.png",
+    "img/misc/icon/fishing/fish/Bass.png",
+    "img/misc/icon/fishing/quest_fish/Dynamite_Fish.png",
+    "img/misc/icon/furniture_placed/Ship_in_a_Bottle_placed.png",
+    "img/misc/icon/buff_icon/Lovestruck_(buff).png",
+    "img/misc/icon/fishing/fishing_accessories/Lavaproof_Fishing_Hook.png",
+    "img/misc/icon/furniture_item/Seaweed_Planter.png",
+    "img/misc/icon/fishing/quest_fish/Pengfish.png",
+    "img/misc/icon/potions/Fishing_Potion.png",
+    "img/misc/icon/fishing/quest_fish/Guide_Voodoo_Fish.png",
+    "img/misc/icon/accessories/Flurry_Boots.png",
+    "img/misc/icon/fishing/bobber/Glowing_Fishing_Bobber.png",
+    "img/misc/icon/pylon/Universal_Pylon_(placed).gif",
+    "img/misc/icon/material/Demonic_Bone_Ash.png",
+    "img/misc/icon/fishing/fish/Prismatic_Guppy.png",
+    "img/misc/icon/material/Argon_Moss_item.png",
+    "img/misc/icon/fishing/fish/Salmon.png",
+    "img/misc/icon/赎罪券.png",
+    "img/misc/icon/furniture_placed/campfire_(placed)_off.png",
+    "img/misc/icon/tool/Magic_Mirror_item.png",
+    "img/misc/icon/tool/Bottomless_Water_Bucket.png",
+    "img/misc/icon/fishing/bobber/Bobber_(Bloody).png",
+    "img/misc/icon/fishing/fish/Prismite.png",
+    "img/misc/icon/furniture_item/Wall_Anchor.png",
+    "img/misc/icon/Mystic_Snake_Coil.png",
+    "img/misc/icon/fishing/bait/Master_Bait_material.png",
+    "img/misc/icon/fishing/crates/Ocean_Crate.png",
+    "img/misc/icon/furniture_item/Sharkteeth_Trophy.png",
+    "img/misc/icon/fishing/quest_fish/Mutant_Flinxfin.png",
+    "img/misc/icon/fishing/crates/Dungeon_Crate.png",
+    "img/misc/icon/placed_bait/Placed_Red_Admiral_Butterfly.gif",
+    "img/misc/icon/furniture_placed/Silent_Fish_placed.png",
+    "img/misc/icon/blood_moon_monolith/Blood_Moon_Monolith_(placed)_(active).gif",
+    "img/misc/icon/fishing/bait/Enchanted_Nightcrawler_material.png",
+    "img/misc/icon/fishing/fish/Greenwave_Loach.png",
+    "img/misc/icon/furniture_placed/Pillagin_Me_Pixels_placed.png",
+    "img/misc/icon/tool/Bottomless_Honey_Bucket_item.png",
+    "img/misc/icon/placed_bait/Placed_Gold_Grasshopper.gif",
+    "img/misc/icon/tool/Ice_Mirror_item.png",
+    "img/misc/icon/fishing/quest_fish/Jewelfish.png",
+    "img/misc/icon/furniture_item/Pillagin_Me_Pixels.png",
+    "img/misc/icon/placed_bait/Placed_Stinkbug.gif",
+    "img/misc/icon/blood_moon_monolith/Blood_Moon_Monolith_(placed).png",
+    "img/misc/icon/tool/Demon_Conch.png",
+    "img/misc/icon/Sextant_regular.png",
+    "img/misc/icon/furniture_placed/Couch_Gag_placed.png",
+    "img/misc/icon/placed_bait/Placed_Worm.gif",
+    "img/misc/icon/fishing/fish/Crag_Bullhead.png",
+    "img/misc/icon/fishing/quest_fish/Unicorn_Fish.png",
+    "img/misc/icon/fishing/fish/Specular_Fish.png",
+    "img/misc/icon/fishing/bait/Pink_Jellyfish_bait.png",
+    "img/misc/icon/placed_bait/Placed_Sulphur_Butterfly.gif",
+    "img/misc/icon/furniture_item/What_Lurks_Below.png",
+    "img/misc/icon/accessories/Fledgling_Wings.png",
+    "img/misc/icon/fishing/quest_fish/Clownfish.png",
+    "img/misc/icon/fishing/quest_fish/Fish_of_Cthulhu.png",
+    "img/misc/icon/furniture_item/Crustography.png",
+    "img/misc/icon/fishing/fish/Variegated_Lardfish.png",
+    "img/misc/icon/fishing/fishing_accessories/Sextant.png",
+    "img/misc/icon/buff_icon/Sonar_(buff).png",
+    "img/misc/icon/tool/Bottomless_Water_Bucket_item.png",
+    "img/misc/icon/fishing/bait/Apprentice_Bait.png",
+    "img/misc/icon/furniture_placed/Treasure_Map_placed.png",
+    "img/misc/icon/tool/Magic_Conch_item.png",
+    "img/misc/icon/Sextant_bloodmoon.png",
+    "img/misc/icon/tool/Staff_of_Regrowth.png",
+    "img/misc/icon/fishing/quest_fish/quest_fish_sp/Cap'n_Tunabeard.png",
+    "img/misc/icon/fishing/bait/Journeyman_Bait.png",
+    "img/misc/icon/placed_bait/Placed_Maggot.gif",
+    "img/misc/icon/fishing/bait/Master_Bait.png",
+    "img/misc/icon/armor/Angler_Pants_item.png",
+    "img/misc/icon/fishing/quest_fish/Pixiefish.png",
+    "img/misc/icon/RPS/Emote_RPS_Rock.png",
+    "img/misc/icon/furniture_placed/Crustography_placed.png",
+    "img/misc/icon/tool/Bottomless_Lava_Bucket_item.png",
+    "img/misc/icon/fishing/bobber/Bobber_(Reinforced).png",
+    "img/misc/icon/fishing/quest_fish/Slimefish.png",
+    "img/misc/icon/fishing/bait/Blue_Jellyfish_bait.png",
+    "img/misc/icon/fishing/quest_fish/Demonic_Hellfish.png",
+    "img/misc/icon/furniture_placed/Cooking_Pot_(placed).png",
+    "img/misc/icon/tool/Bottomless_Honey_Bucket.png",
+    "img/misc/icon/furniture_item/Campfire.png",
     "img/misc/icon/fishing/crates/Brimstone_Crate.png",
-	"img/misc/icon/fishing/crates/Dungeon_Crate.png",
-	"img/misc/icon/fishing/crates/Golden_Crate.png",
-	"img/misc/icon/fishing/crates/Iron_Crate.png",
-	"img/misc/icon/fishing/crates/Jungle_Crate.png",
-	"img/misc/icon/fishing/crates/Oasis_Crate.png",
-	"img/misc/icon/fishing/crates/Obsidian_Crate.png",
-	"img/misc/icon/fishing/crates/Ocean_Crate.png",
-	"img/misc/icon/fishing/crates/Oyster.png",
-	"img/misc/icon/fishing/crates/Sky_Crate.png",
-	"img/misc/icon/fishing/crates/Sulphurous_Crate.png",
-	"img/misc/icon/fishing/crates/Sunken_Crate.png",
-	"img/misc/icon/fishing/crates/Wooden_Crate.png",
-	"img/misc/icon/fishing/fish/Armored_Cavefish.png",
-	"img/misc/icon/fishing/fish/Bass.png",
-	"img/misc/icon/fishing/fish/Charred_Lasher.png",
-	"img/misc/icon/fishing/fish/Coastal_Demonfish.png",
-	"img/misc/icon/fishing/fish/Crag_Bullhead.png",
-	"img/misc/icon/fishing/fish/Damselfish.png",
-	"img/misc/icon/fishing/fish/Double_Cod.png",
-	"img/misc/icon/fishing/fish/Flounder.png",
-	"img/misc/icon/fishing/fish/Golden_Carp.png",
-	"img/misc/icon/fishing/fish/Greenwave_Loach.png",
-	"img/misc/icon/fishing/fish/Honeyfin.png",
-	"img/misc/icon/fishing/fish/Joja_Cola.png",
-	"img/misc/icon/fishing/fish/Neon_Tetra.png",
-	"img/misc/icon/fishing/fish/Old_Shoe.png",
-	"img/misc/icon/fishing/fish/Prismatic_Guppy.png",
-	"img/misc/icon/fishing/fish/Red_Snapper.png",
-	"img/misc/icon/fishing/fish/Rock_Lobster.png",
-	"img/misc/icon/fishing/fish/Salmon.png",
-	"img/misc/icon/fishing/fish/Seaweed_(junk).png",
-	"img/misc/icon/fishing/fish/Shrimp.png",
-	"img/misc/icon/fishing/fish/Specular_Fish.png",
-	"img/misc/icon/fishing/fish/Stinkfish.png",
-	"img/misc/icon/fishing/fish/Sunken_Sailfish.png",
-	"img/misc/icon/fishing/fish/Tin_Can.png",
-	"img/misc/icon/fishing/fish/Trout.png",
-	"img/misc/icon/fishing/fish/Tuna.png",
-	"img/misc/icon/fishing/fish/Variegated_Lardfish.png"
+    "img/misc/icon/pylon/Desert_Pylon.png",
+    "img/misc/icon/fishing/crates/Hallowed_Crate.png",
+    "img/misc/icon/Rusted_Jingle_Bell.png",
+    "img/misc/icon/tool/Super_Absorbant_Sponge_item.png",
+    "img/misc/icon/placed_bait/Placed_Grasshopper.gif",
+    "img/misc/icon/fishing/fishing_accessories/Argon_Moss_Fishing_Bobber.png",
+    "img/misc/icon/placed_bait/Placed_Zebra _Swallowtail _Butterfly.gif",
+    "img/misc/icon/fishing/fish/Stinkfish.png",
+    "img/misc/icon/fishing/fish/Double_Cod.png",
+    "img/misc/icon/fishing/quest_fish/Batfish.png",
+    "img/misc/icon/fishing/quest_fish/Harpyfish.png",
+    "img/misc/icon/furniture_item/Not_So_Lost_In_Paradise.png",
+    "img/misc/icon/fishing/bobber/Neon_Moss_Fishing_Bobber.png",
+    "img/misc/icon/fishing/quest_fish/Wyverntail.png",
+    "img/misc/icon/material/Helium_Moss.gif",
+    "img/misc/icon/fishing/bait/Enchanted_Nightcrawler.png",
+    "img/misc/icon/material/Lava_Moss_item.png",
+    "img/misc/icon/fishing/fish/Tin_Can.png",
+    "img/misc/icon/armor/Angler_Hat.png",
+    "img/misc/icon/accessories/Lava_Charm.png",
+    "img/misc/icon/fishing/quest_fish/Mirage_Fish.png",
+    "img/misc/icon/placed_bait/Placed_Monarch_Butterfly.gif",
+    "img/misc/icon/placed_bait/Placed_Gold_Butterfly.gif",
+    "img/misc/icon/fishing/bobber/Xenon_Moss_Fishing_Bobber.png",
+    "img/misc/icon/tool/Ice_Mirror.png",
+    "img/misc/icon/furniture_placed/Living_Wood_Table_(placed).png",
+    "img/misc/icon/furniture_placed/Sharkteeth_Trophy_placed.png",
+    "img/misc/icon/furniture_placed/The_Duke_placed.png",
+    "img/misc/icon/tool/Golden_Bug_Net.png",
+    "img/misc/icon/armor/Armor_Pants.png",
+    "img/misc/icon/accessories/Fin_Wings.png",
+    "img/misc/icon/Royal_Delight.png",
+    "img/misc/icon/placed_bait/Placed_Ladybug.gif",
+    "img/misc/icon/furniture_placed/Wooden_Chair_(placed).png",
+    "img/misc/icon/furniture_item/Goldfish_Trophy.png",
+    "img/misc/icon/fishing/bait/Truffle_Worm.png",
+    "img/misc/icon/pylon/Forest_Pylon_(placed).gif",
+    "img/misc/icon/fishing/bait/Tree_Nymph_Butterfly.png",
+    "img/misc/icon/Debug.png",
+    "img/misc/icon/fishing/bait/Ulysses_Butterfly.png",
+    "img/misc/icon/fishing/bobber/Bobber_(Fiberglass).png",
+    "img/misc/icon/fishing/crates/Sunken_Crate.png",
+    "img/misc/icon/material/Argon_Moss.png",
+    "img/misc/icon/buff_icon/Tipsy_(buff).png",
+    "img/misc/icon/fishing/fishing_pole/Hotline_Fishing_Hook.png",
+    "img/misc/icon/fishing/bait/Monarch_Butterfly.png",
+    "img/misc/icon/fishing/quest_fish/Tundra_Trout.png",
+    "img/misc/icon/placed_bait/Placed_Julia_Butterfly.gif",
+    "img/misc/icon/furniture_item/Iron_Anvil.png",
+    "img/misc/icon/fishing/quest_fish/Bunnyfish.png",
+    "img/misc/icon/fishing/quest_fish/Eutrophic_Sandfish.png",
+    "img/misc/icon/food/Cooked_Shrimp.png"
   ],
   "scriptFileList_inject_early": [
     "scriptEarly/SFRegist.js"
   ],
   "additionFile": [
-	"game/terra_feats.json",
-	"game/blood_moon_monolith/blood_moon_monolith_lake_shore.txt",
+    "game/terra_feats.json",
     "readme.md"
   ],
   "addonPlugin": [
@@ -72,555 +566,609 @@
           "passage": "Temple Jordan",
           "findString": "|Temple Spear Zephyr]]>><</link>>\n\t\t<br>\n\t<</if>>",
           "replace": "|Temple Spear Zephyr]]>><</link>><br><</if>><<askicon>><<link [[询问世界腐化度的状况|World Corruption Ask]]>><</link>><br>",
-		  "_comment":"神殿询问约旦世界腐化度的选项入口"
+          "_comment": "神殿询问约旦世界腐化度的选项入口"
         },
         {
           "passage": "Bedroom",
           "findString": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>",
           "replace": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>\n<<pylon_bedroom>>",
-		  "_comment":"卧室晶塔操作界面"
+          "_comment": "卧室晶塔操作界面"
         },
         {
           "passage": "Robin Forest",
           "findString": "<<set $money -= 2000>><<npcincr Robin love 1>><</link>><<glove>>\n\t\t<br>\n\t<</if>>",
           "replace": "<<set $money -= 2000>><<npcincr Robin love 1>><</link>><<glove>>\n\t\t<br>\n\t<</if>>\n<<pylon_bedroom_ask>>",
-		  "_comment":"触发卧室晶塔解锁剧情"
+          "_comment": "触发卧室晶塔解锁剧情"
         },
         {
           "passage": "Widgets Cabin",
           "findString": "<<endevent>><</link>>\n\t<</if>>\n\t<br><br>",
           "replace": "<<endevent>><</link>><</if>><br><br><<pylon_eden_cabin>>",
-		  "_comment":"伊甸小屋晶塔操作界面"
+          "_comment": "伊甸小屋晶塔操作界面"
         },
         {
           "passage": "Eden Forest Search",
           "findString": "<</if>>\n<</if>>",
           "replace": "<</if>><</if>><<pylon_eden_cabin_ask>>",
-		  "_comment":"触发伊甸小屋晶塔解锁剧情"
+          "_comment": "触发伊甸小屋晶塔解锁剧情"
         },
         {
           "passage": "Farm Bedroom",
           "findString": "|Farm Cottage]]>><<pass 1>><</link>>\n\t<br>\n\t<br>",
           "replace": "|Farm Cottage]]>><<pass 1>><</link>>\n\t<br>\n\t<br>\n<<pylon_farm_bedroom>>",
-		  "_comment":"农场卧室晶塔操作界面"
+          "_comment": "农场卧室晶塔操作界面"
         },
         {
           "passage": "Farm Meadow Date 3",
           "findString": "|Farm Meadow Date 4]]>><</link>>",
           "replace": "|Farm Meadow Date 4]]>><</link>><<pylon_farm_bedroom_ask>>",
-		  "_comment":"触发农场卧室晶塔解锁剧情"
+          "_comment": "触发农场卧室晶塔解锁剧情"
         },
         {
           "passage": "Bird Tower",
           "findString": "<<if $bird.upgrades.mirror is 1>>",
           "replace": "\n<<pylon_hawks_tower>><<if $bird.upgrades.mirror is 1>>",
-		  "_comment":"鹰塔晶塔操作界面"
+          "_comment": "鹰塔晶塔操作界面"
         },
         {
           "passage": "Widgets Bird",
           "findString": "<br>\n\t\t<<bird_fly_options>>",
           "replace": "<<pylon_hawks_tower_ask>><br><<bird_fly_options>>",
-		  "_comment":"触发鹰塔晶塔解锁剧情"
+          "_comment": "触发鹰塔晶塔解锁剧情"
         },
         {
           "passage": "Wolf Cave",
           "findString": "<<if $nextPassageCheck is \"Wolf Cave Clearing\">>",
           "replace": "<<pylon_wolfcave>>\n<<if $nextPassageCheck is \"Wolf Cave Clearing\">>",
-		  "_comment":"狼窝晶塔操作界面"
+          "_comment": "狼窝晶塔操作界面"
         },
         {
           "passage": "Wolf River",
           "findString": "|Wolf River Rouse]]>><</link>>\n\t\t<br>\n\t<</if>>",
           "replace": "|Wolf River Rouse]]>><</link>>\n\t\t<br>\n\t<</if>>\n<<pylon_wolfcave_ask>>",
-		  "_comment":"触发狼窝晶塔解锁剧情"
+          "_comment": "触发狼窝晶塔解锁剧情"
         },
         {
           "passage": "Widgets Wolf Cave",
           "findString": "Wolf Cave Hunt Leave]]>><</link>>",
           "replace": "Wolf Cave Hunt Leave]]>><<set $wolf_cave_hunt_request_refuse to true>><</link>>",
-		  "_comment":"黑狼是否在狼窝的一个条件，用于判断晶塔是否可以使用"
+          "_comment": "黑狼是否在狼窝的一个条件，用于判断晶塔是否可以使用"
         },
         {
           "passage": "Museum",
           "findString": "<<museumdonate>><</link>>\n\t\t<br>\n\t<</if>>",
           "replace": "<<museumdonate>><</link>>\n\t\t<br>\n\t<</if>>\n<<pylon_museum_ask>>",
-		  "_comment":"向温特询问晶塔的事情的选项入口"
+          "_comment": "向温特询问晶塔的事情的选项入口"
         },
         {
           "passage": "Bedroom",
           "findString": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>",
           "replace": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>\n<<blood_moon_monolith_bedroom>>",
-		  "_comment":"房间内的血月天塔柱菜单"
+          "_comment": "房间内的血月天塔柱菜单"
         },
         {
           "passage": "Widgets Icon Img",
           "findString": "(Weather.bloodMoon or $forcedBloodmoon)",
           "replace": "(Weather.bloodMoon or $forcedBloodmoon or ($blood_moon_monolith and Time.dayState is \"night\") or $Bloody_Tear_used)",
-		  "_comment":"启用血月天塔柱时，丰收街出城的图标显示血月对应的图像"
+          "_comment": "启用血月天塔柱时，丰收街出城的图标显示血月对应的图像"
         },
         {
           "passage": "Widgets",
           "findString": "(Time.isBloodMoon() or $forcedBloodmoon)",
           "replace": "(Time.isBloodMoon() or $forcedBloodmoon or $blood_moon_monolith)",
-		  "_comment":"启用血月天塔柱时，侧边栏夜间背景显示血月的图像"
+          "_comment": "启用血月天塔柱时，侧边栏夜间背景显示血月的图像"
         },
         {
           "passage": "Widgets Wraith",
           "findString": "* 100)) or Time.isBloodMoon()",
           "replace": "* 100)) or Time.isBloodMoon() or $blood_moon_monolith",
-		  "_comment":"启用血月天塔柱时，社交栏会如同血月期间地显示苍白怨灵"
+          "_comment": "启用血月天塔柱时，社交栏会如同血月期间地显示苍白怨灵"
         },
         {
           "passage": "Widgets Lake",
           "findString": "<<trauma 6>><<stress 6>>",
           "replace": "<<trauma 6>><<stress 6>><<elseif $blood_moon_monolith>>红色的月亮倒映在冰面上，一阵恐惧袭上心头，让你感到刺痛。但你仍能意识到这是血月天塔柱带来的效果。",
-		  "_comment":"启用血月天塔柱时，在森林湖岸对血月天塔柱带来的血月幻象的反应"
+          "_comment": "启用血月天塔柱时，在森林湖岸对血月天塔柱带来的血月幻象的反应"
         },
         {
           "passage": "Wolf Cave Clearing",
           "findString": "if Time.isBloodMoon()",
           "replace": "if Time.isBloodMoon() or ($blood_moon_monolith and Time.dayState is \"night\")",
-		  "_comment":"启用血月天塔柱时，在狼窝溪流对血月天塔柱带来的血月幻象的反应"
+          "_comment": "启用血月天塔柱时，在狼窝溪流对血月天塔柱带来的血月幻象的反应"
         },
         {
           "passage": "Sea",
           "findString": "<<set $sea -= 10>><</link>><<gtiredness>><<swimmingdifficulty 1 100>>\n\t\t\t\t<br>",
           "replace": "<<set $sea -= 10>><</link>><<gtiredness>><<swimmingdifficulty 1 100>>\n\t\t\t<br><br><<if $fishing_anglerintro isnot true>>你看到有个小孩浮在海面上。<br><<link [[叫醒这个人|Fishing Angler Intro]]>><</link>><</if>>",
-		  "_comment":"海中叫醒渔夫的剧情选项"
+          "_comment": "海中叫醒渔夫的剧情选项"
         },
         {
           "passage": "Beach",
           "findString": "<<if $exposed gte 1>>",
           "replace": "<<if $fishingskill gte 0 and $fishing_place_beach_unlock isnot true>>看到眼前如此广阔的海域，不钓鱼真是可惜了~<span class=\"green\">你可以在海滩钓鱼了！</span><br><br><<link [[继续|Beach]]>><<set $fishing_place_beach_unlock to true>><<endevent>><</link>><<exitAll>><</if>><<if $exposed gte 1>>",
-		  "_comment":"到达海滩时解锁海滩钓鱼点"
+          "_comment": "到达海滩时解锁海滩钓鱼点"
         },
         {
           "passage": "Beach",
           "findString": "<<if $earSlime.forcedCommando isnot undefined",
           "replace": "<br><<if $fishingrod and $fishing_place_beach_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在海滩钓鱼|Fishing Bitten]]>><<set $fishing_place to \"beach\">><<fishing_cast_time>><</link>><</if>><<if $fishing_anglerintro>><br><<if $options.cute_angler>><<icon \"fishing/house_icon.png\">><<else>><<icon \"fishing/iron_fence.png\">><</if>><<link [[进入渔夫小屋|Fishing Angler Cabin]]>><</link>><br><<if $fishing_requests_finished_count is undefined>><<set $fishing_requests_finished_count to 0>><</if>><</if>><<if $earSlime.forcedCommando isnot undefined",
-		  "_comment":"海滩钓鱼点入口，渔夫小屋入口"
+          "_comment": "海滩钓鱼点入口，渔夫小屋入口"
         },
         {
           "passage": "Lake Fishing Rock",
           "findString": "<</if>>\n<br><br>",
           "replace": "<</if>><br><br><<if $fishingskill gte 0 and $fishing_place_lake_fishing_rock_unlock isnot true>>这么大一片森林湖，配上这块可供休憩的岩石——不在这里钓鱼简直就是暴殄天物！<span class=\"green\">你可以在钓鱼岩钓鱼了！</span><br><br><<link [[继续|Lake Fishing Rock]]>><<set $fishing_place_lake_fishing_rock_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"到达森林湖钓鱼岩时解锁森林湖钓鱼岩钓鱼点"
+          "_comment": "到达森林湖钓鱼岩时解锁森林湖钓鱼岩钓鱼点"
         },
         {
           "passage": "Lake Fishing Rock",
           "findString": "<<pass 20>><</link>>\n\t<br><br>",
           "replace": "<<pass 20>><</link>><<if $fishingrod and $fishing_place_lake_fishing_rock_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在森林湖钓鱼|Fishing Bitten]]>><<set $fishing_place to \"lake_fishing_rock\">><<fishing_cast_time>><</link>><</if>><br><br>",
-		  "_comment":"森林湖钓鱼岩钓鱼点入口"
+          "_comment": "森林湖钓鱼岩钓鱼点入口"
         },
         {
           "passage": "Barb Street",
           "findString": "<</if>>\n<<streeteffects>>",
           "replace": "<</if>><<if $fishingskill gte 100 and $fishing_place_barb_street_unlock isnot true>><br><br>今年以来的降水给干涸的河床带来了一丝生机，一些水坑里竟有生命在活动。<span class=\"green\">你可以在倒钩街的运河钓鱼了！</span><br><br><<link [[继续|Barb Street]]>><<set $fishing_place_barb_street_unlock to true>><</link>><<exitAll>><</if>><<streeteffects>>",
-		  "_comment":"钓鱼等级达到F+（100）后，到达倒钩街时解锁倒钩街钓鱼点"
+          "_comment": "钓鱼等级达到F+（100）后，到达倒钩街时解锁倒钩街钓鱼点"
         },
         {
           "passage": "Barb Street",
           "findString": "|Doren Entrance]]>><<pass 2>><</link>>\n\t\t\t<br>\n\t\t<</if>>",
           "replace": "|Doren Entrance]]>><<pass 2>><</link>><br><</if>><<if $fishingrod and $fishing_place_barb_street_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在运河钓鱼|Fishing Bitten]]>><<set $fishing_place to \"barb_street\">><<fishing_cast_time>><</link>><br><</if>>",
-		  "_comment":"倒钩街钓鱼点入口"
+          "_comment": "倒钩街钓鱼点入口"
         },
         {
           "passage": "Moor",
           "findString": "<</if>>\n<</if>>",
           "replace": "<</if>><</if>><<if $fishingskill gte 200 and $fishing_place_moor_unlock isnot true and $moor is 10>><br><br>庄园旁堆积着大量的沙子，中间围成的水池是个钓鱼的好地方。<span class=\"green\">你可以在雷米庄园门口钓鱼了！</span><br><br><<link [[继续|Moor]]>><<set $fishing_place_moor_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"钓鱼等级达到D（200）后，到达荒原雷米庄园门口时解锁雷米庄园门口的沙地钓鱼点"
+          "_comment": "钓鱼等级达到D（200）后，到达荒原雷米庄园门口时解锁雷米庄园门口的沙地钓鱼点"
         },
         {
           "passage": "Moor",
           "findString": "|Estate Approach]]>><</link>>\n\t\t<br><br>",
           "replace": "|Estate Approach]]>><</link>><br><br><<if $fishingrod and $fishing_place_moor_unlock>>钓鱼<br><<fishingrod_held_icon>><<link [[在雷米庄园门口钓鱼|Fishing Bitten]]>><<set $fishing_place to \"moor\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment":"雷米庄园门口的沙地钓鱼点入口"
+          "_comment": "雷米庄园门口的沙地钓鱼点入口"
         },
         {
           "passage": "Forest",
           "findString": "<br><br>\n<</if>>",
           "replace": "<br><br><</if>><<if $fishingskill gte 300 and $fishing_place_honey_unlock isnot true>>森林中的蜂巢附近，应该会有蜂蜜池可供钓鱼。<span class=\"green\">你可以在蜂蜜池钓鱼了！</span><br><br><<link [[继续|Forest]]>><<set $fishing_place_honey_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"钓鱼等级达到D+（300）后，到达森林时解锁蜂巢蜂蜜池钓鱼点"
+          "_comment": "钓鱼等级达到D+（300）后，到达森林时解锁蜂巢蜂蜜池钓鱼点"
         },
         {
           "passage": "Widgets Forest",
           "findString": "<<set $eventskip to 1>><</link>>\n\t\t\t\t<br>",
           "replace": "<<set $eventskip to 1>><</link>><br><<if $fishingrod and $fishing_place_honey_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment":"森林蜂巢蜂蜜池钓鱼点入口"
+          "_comment": "森林蜂巢蜂蜜池钓鱼点入口"
         },
-		{
-		  "passage": "Forest",
-		  "findString": "<</if>>\n\t\t\t\t<br>\n\t\t\t<</if>>",
-		  "replace": "<</if>><br><</if>><br><<if $fishingrod and $fishing_place_honey_unlock and ($forest gte 80 and $forest lte 90)>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><</if>>",
-		  "_comment":"森林蜂蜜池钓鱼点入口"
-		},
+        {
+          "passage": "Forest",
+          "findString": "<</if>>\n\t\t\t\t<br>\n\t\t\t<</if>>",
+          "replace": "<</if>><br><</if>><br><<if $fishingrod and $fishing_place_honey_unlock and ($forest gte 80 and $forest lte 90)>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在蜂蜜池钓鱼|Fishing Bitten]]>><<set $fishing_place to \"honey\">><<fishing_cast_time>><</link>><br><</if>>",
+          "_comment": "森林蜂蜜池钓鱼点入口"
+        },
         {
           "passage": "Farm Woodland",
           "findString": "<</if>>\n<br><br>",
           "replace": "<</if>><br><br><<if $fishingskill gte 400 and $fishing_place_farm_woodland_unlock isnot true>>你发现这块林地里有一个水池，生活着漂亮的鱼类。<span class=\"green\">你可以在农场的林地钓鱼了！</span><br><br><<link [[继续|Farm Woodland]]>><<set $fishing_place_farm_woodland_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"钓鱼等级达到C（400）后，到达农场的林场时解锁林场钓鱼点"
+          "_comment": "钓鱼等级达到C（400）后，到达农场的林场时解锁林场钓鱼点"
         },
         {
           "passage": "Farm Woodland",
           "findString": "<</link>>\n\t\t<br>\n\t<</if>>",
           "replace": "<</link>><br><</if>><<if $fishingrod and $fishing_place_farm_woodland_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在林地钓鱼|Fishing Bitten]]>><<set $fishing_place to \"farm_woodland\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment":"林场钓鱼点入口"
+          "_comment": "林场钓鱼点入口"
         },
         {
           "passage": "Temple Garden",
           "findString": "<br><br>",
           "replace": "<br><br><<if $fishingskill gte 400 and $fishing_place_temple_garden_unlock isnot true>>花园的一角有个不起眼的水潭，也许只有经常清扫花园的人才能注意到它。<span class=\"green\">你可以在神殿的花园里钓鱼了！</span><br><br><<link [[继续|Temple Garden]]>><<set $fishing_place_temple_garden_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"钓鱼等级达到C（400）后，到达神殿的花园时解锁神殿钓鱼点"
+          "_comment": "钓鱼等级达到C（400）后，到达神殿的花园时解锁神殿钓鱼点"
         },
         {
           "passage": "Temple Garden",
           "findString": "<</if>>\n\n\t<br>",
           "replace": "<</if>><br><<if $fishingrod and $fishing_place_temple_garden_unlock>><<if $temple_garden gte -5>>钓鱼<br><<fishingrod_held_icon>><<link [[在花园钓鱼|Fishing Bitten]]>><<set $fishing_place to \"temple_garden\">><<fishing_cast_time>><</link>><br><br><<else>><i>这里实在太过杂乱，你根本无法钓鱼。</i><br><br><</if>><</if>>",
-		  "_comment":"神殿花园钓鱼点入口"
+          "_comment": "神殿花园钓鱼点入口"
         },
         {
           "passage": "Wolf Cave Clearing",
           "findString": "<<wolfcavestate>>\n<</if>>",
           "replace": "<<wolfcavestate>><</if>><<if $fishingskill gte 500 and $fishing_place_wolf_cave_clearing_unlock isnot true and $syndromewolves gte 1>><br><br>你发现这条溪流时常有古怪的鱼类出没，也许是生长在底部的菌类所致。<span class=\"green\">你可以在狼窝的溪流里钓鱼了！</span><br><br><<link [[继续|Wolf Cave Clearing]]>><<set $fishing_place_wolf_cave_clearing_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"钓鱼等级达到C+（500）后，到达狼窝时解锁狼窝的溪流钓鱼点"
+          "_comment": "钓鱼等级达到C+（500）后，到达狼窝时解锁狼窝的溪流钓鱼点"
         },
         {
           "passage": "Wolf Cave Clearing",
           "findString": "<</link>>\n\t<</if>>",
           "replace": "<</link>>\n\t<</if>><<if $fishingrod and $fishing_place_wolf_cave_clearing_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在小溪里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"wolf_cave_clearing\">><<fishing_cast_time>><</link>><</if>>",
-		  "_comment":"狼窝的溪流钓鱼点入口"
+          "_comment": "狼窝的溪流钓鱼点入口"
         },
-		{
-		  "passage": "Bird Tower",
-		  "findString": "<<if $exposed gte 1>>",
-		  "replace": "<<if $fishingskill gte 600 and $fishing_place_bird_tower_unlock isnot true and $syndromebird gte 1>><br><br>面前的雨水池里总能神奇地维持水量，而且...它什么时候有了养鱼的习惯？<span class=\"green\">你可以在鹰塔的雨水池里钓鱼了！</span><br><br><<link [[继续|Bird Tower]]>><<set $fishing_place_bird_tower_unlock to true>><</link>><<exitAll>><</if>><<if $exposed gte 1>>",
-		  "_comment":"钓鱼等级达到B（600）后，到达鹰塔时解锁鹰塔的雨水池钓鱼点"
-		},
-		{
-		  "passage": "Bird Tower",
-		  "findString": "Bird Tower Rainwater Pool]]>><</link>>\n\t<br>",
-		  "replace": "Bird Tower Rainwater Pool]]>><</link>><br><<if $fishingrod and $fishing_place_bird_tower_unlock>>钓鱼<br><<fishingrod_held_icon>><<link [[在雨水池里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bird_tower\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment":"鹰塔的雨水池钓鱼点入口"
-		},
+        {
+          "passage": "Bird Tower",
+          "findString": "<<if $exposed gte 1>>",
+          "replace": "<<if $fishingskill gte 600 and $fishing_place_bird_tower_unlock isnot true and $syndromebird gte 1>><br><br>面前的雨水池里总能神奇地维持水量，而且...它什么时候有了养鱼的习惯？<span class=\"green\">你可以在鹰塔的雨水池里钓鱼了！</span><br><br><<link [[继续|Bird Tower]]>><<set $fishing_place_bird_tower_unlock to true>><</link>><<exitAll>><</if>><<if $exposed gte 1>>",
+          "_comment": "钓鱼等级达到B（600）后，到达鹰塔时解锁鹰塔的雨水池钓鱼点"
+        },
+        {
+          "passage": "Bird Tower",
+          "findString": "Bird Tower Rainwater Pool]]>><</link>>\n\t<br>",
+          "replace": "Bird Tower Rainwater Pool]]>><</link>><br><<if $fishingrod and $fishing_place_bird_tower_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在雨水池里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bird_tower\">><<fishing_cast_time>><</link>><br><</if>><<BirdTowerWorkBenchLink>>",
+          "_comment": "鹰塔的雨水池钓鱼点入口"
+        },
         {
           "passage": "Eden Clearing",
           "findString": "<br><br>\n\n<<if $foresthunt gte 1>>",
           "replace": "<br><br><<if $fishingskill gte 700 and $fishing_place_eden_clearing_unlock isnot true and $syndromeeden gte 1>>你注意到泉水下有些东西在活动，稍加清理后会是个不错的钓鱼地点。<span class=\"green\">你可以在伊甸家的泉水里钓鱼了！</span>但在此之前需要泉水足够干净。<br><br><<link [[继续|Eden Clearing]]>><<set $fishing_place_eden_clearing_unlock to true>><</link>><<exitAll>><</if>><<if $foresthunt gte 1>>",
-		  "_comment":"钓鱼等级达到B+（700）后，到达伊甸小屋时解锁伊甸家的泉水钓鱼点"
+          "_comment": "钓鱼等级达到B+（700）后，到达伊甸小屋时解锁伊甸家的泉水钓鱼点"
         },
         {
           "passage": "Widgets Cabin",
           "findString": "<</if>>\n\t\t<br>\n\t<</if>>",
           "replace": "<</if>><br><</if>><<if $fishingrod and $fishing_place_eden_clearing_unlock>><<if $edenspring gte 1>>钓鱼<br><<fishingrod_held_icon>><<link [[在泉水里钓鱼|Fishing Bitten]]>><<set $fishing_place to \"eden_clearing\">><<fishing_cast_time>><</link>><br><br><<else>><i>你不能在这样脏乱的泉水中钓鱼。</i><br><br><</if>><</if>>",
-		  "_comment":"伊甸家的泉水钓鱼点入口"
+          "_comment": "伊甸家的泉水钓鱼点入口"
         },
         {
           "passage": "Bog",
           "findString": "<</if>>\n<br><br>",
           "replace": "<</if>><br><br><<if $fishingskill gte 800 and $fishing_place_bog_unlock isnot true>>这片沼泽的水域虽然散发着一股怪味，但仍有一钓的价值。<span class=\"green\">你可以在沼泽钓鱼了！</span><br><br><<link [[继续|Bog]]>><<set $fishing_place_bog_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"钓鱼等级达到A（800）后，到达沼泽时解锁沼泽钓鱼点"
+          "_comment": "钓鱼等级达到A（800）后，到达沼泽时解锁沼泽钓鱼点"
         },
         {
           "passage": "Bog",
           "findString": "to 1>><<pass 5>><</link>>\n\t\t\t\t<br>\n\t\t\t<</if>>",
           "replace": "to 1>><<pass 5>><</link>><br><</if>><<if $fishingrod and $fishing_place_bog_unlock>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在沼泽钓鱼|Fishing Bitten]]>><<set $fishing_place to \"bog\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment":"沼泽钓鱼点入口"
+          "_comment": "沼泽钓鱼点入口"
         },
         {
           "passage": "Trash",
           "findString": "<</if>>\n\n<<if $robinmissing",
           "replace": "<</if>><<if $fishingskill gte 900 and $fishing_place_trash_unlock isnot true and $trash gte 50>><br><br>垃圾场深处还有些滚烫的热水池，也许是某处管道泄漏导致的。<span class=\"green\">你可以在垃圾场深处滚烫的热水中钓鱼了！</span><br><br><<link [[继续|Trash]]>><<set $fishing_place_trash_unlock to true>><</link>><<exitAll>><</if>><<if $robinmissing",
-		  "_comment":"钓鱼等级达到A+（900）后，到达垃圾场深处时解锁垃圾场的沸水钓鱼点"
+          "_comment": "钓鱼等级达到A+（900）后，到达垃圾场深处时解锁垃圾场的沸水钓鱼点"
         },
         {
           "passage": "Trash",
           "findString": "<</if>>\n\n\t<<if $trash lte 0>>",
           "replace": "<</if>><<if $fishingrod and $fishing_place_trash_unlock and $trash gte 50>><br>钓鱼<br><<fishingrod_held_icon>><<link [[在沸水中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"trash\">><<fishing_cast_time>><</link>><br><br><</if>><<if $trash lte 0>>",
-		  "_comment":"垃圾场的沸水钓鱼点入口"
+          "_comment": "垃圾场的沸水钓鱼点入口"
         },
         {
           "passage": "Park",
           "findString": "<<streeteffects>>",
           "replace": "<<streeteffects>><<if $fishingskill gte 1000 and $fishing_place_park_unlock isnot true>><br><br>公园的喷泉里肯定不止人们丢进去的硬币。<span class=\"green\">你可以在公园的喷泉里钓鱼了！</span><br><br><<link [[继续|Park]]>><<set $fishing_place_park_unlock to true>><</link>><<exitAll>><</if>>",
-		  "_comment":"钓鱼等级达到S（1000）后，到达公园时解锁公园喷泉钓鱼点"
+          "_comment": "钓鱼等级达到S（1000）后，到达公园时解锁公园喷泉钓鱼点"
         },
         {
           "passage": "Park",
           "findString": "<<exhibitionist4>>\n\t\t<</if>>",
           "replace": "<<exhibitionist4>><</if>><<if $fishingrod and $fishing_place_park_unlock>><br><br>钓鱼<br><<fishingrod_held_icon>><<link [[在喷泉中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"park\">><<fishing_cast_time>><</link>><</if>>",
-		  "_comment":"公园喷泉的钓鱼点入口"
+          "_comment": "公园喷泉的钓鱼点入口"
         },
-		{
-		  "passage": "School Pool",
-		  "findString": "<<if $arousal gte $arousalmax>>",
-		  "replace": "<<if $fishingskill gte 100 and $fishing_place_school_pool_unlock isnot true and !Time.schoolTime>><<link [[观察水面|Fishing Place School Pool Unlock 1]]>><</link>><br><<exitAll>><</if>><<if $arousal gte $arousalmax>>",
-		  "_comment":"钓鱼等级达到F+（100）后，在上课时间外到达学校游泳池解锁钓鱼点"
-		},
-		{
-		  "passage": "School Pool",
-		  "findString": "<<exhibitionclassroom>>",
-		  "replace": "<<exhibitionclassroom>><<if $fishingrod and $fishing_place_school_pool_unlock and !Time.schoolTime>>钓鱼<br><<fishingrod_held_icon>><<link [[在学校泳池中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"school_pool\">><<fishing_cast_time>><</link>><br><br><</if>>",
-		  "_comment":"学校泳池的钓鱼点入口"
-		},
+        {
+          "passage": "School Pool",
+          "findString": "<<if $arousal gte $arousalmax>>",
+          "replace": "<<if $fishingskill gte 100 and $fishing_place_school_pool_unlock isnot true and !Time.schoolTime>><<link [[观察水面|Fishing Place School Pool Unlock 1]]>><</link>><br><<exitAll>><</if>><<if $arousal gte $arousalmax>>",
+          "_comment": "钓鱼等级达到F+（100）后，在上课时间外到达学校游泳池解锁钓鱼点"
+        },
+        {
+          "passage": "School Pool",
+          "findString": "<<exhibitionclassroom>>",
+          "replace": "<<exhibitionclassroom>><<if $fishingrod and $fishing_place_school_pool_unlock and !Time.schoolTime>>钓鱼<br><<fishingrod_held_icon>><<link [[在学校泳池中钓鱼|Fishing Bitten]]>><<set $fishing_place to \"school_pool\">><<fishing_cast_time>><</link>><br><br><</if>>",
+          "_comment": "学校泳池的钓鱼点入口"
+        },
         {
           "passage": "Forest",
           "findString": "<<if $edenforesthunt is 1>>",
           "replace": "<<if $edenforesthunt is 1>><<if $artificial_fishing_pond_eden_cabin is undefined>><<set $artificial_fishing_pond_eden_cabin to \"realized\">><</if>>",
-		  "_comment":"人工钓鱼池(伊甸小屋)解锁的前置条件之一：被伊甸追杀过一次"
+          "_comment": "人工钓鱼池(伊甸小屋)解锁的前置条件之一：被伊甸追杀过一次"
         },
         {
           "passage": "Forest",
           "findString": "<</if>>\n                    <br>\n\t\t\t<</if>>",
           "replace": "<</if>><br><</if>><<artificial_fishing_pond_eden_cabin>>",
-		  "_comment":"人工钓鱼池:伊甸小屋，选项入口"
+          "_comment": "人工钓鱼池:伊甸小屋，选项入口"
         },
         {
           "passage": "Forest",
           "findString": "<<elseif $blackwolfhunt is 1>>",
           "replace": "<<elseif $blackwolfhunt is 1>><<if $artificial_fishing_pond_wolf_cave_clearing is undefined>><<set $artificial_fishing_pond_wolf_cave_clearing to \"realized\">><</if>>",
-		  "_comment":"人工钓鱼池(狼窝)解锁的前置条件之一：被黑狼追杀过一次"
+          "_comment": "人工钓鱼池(狼窝)解锁的前置条件之一：被黑狼追杀过一次"
         },
-		{
-		  "passage": "Forest",
-		  "findString": "</span>\n\t\t\t\t<br>\n\t\t\t<</if>>",
-		  "replace": "</span><br><</if>><<artificial_fishing_pond_wolf_cave_clearing>>",
-		  "_comment":"人工钓鱼池：狼窝，选项入口"
-		},
         {
-		  "passage": "Moor",
-		  "findString": "<<if $moor_hunt gte 1>>",
-		  "replace": "<<if $moor_hunt gte 1>><<if $artificial_fishing_pond_bird_tower is undefined>><<set $artificial_fishing_pond_bird_tower to \"realized\">><</if>>",
-		  "_comment":"人工钓鱼池(鹰塔)解锁的前置条件之一：被巨鹰追杀过一次"
-		},
-		{
-		  "passage": "Moor",
-		  "findString": "<</link>>\n\t\t<br><br>",
-		  "replace": "<</link>><br><br><<artificial_fishing_pond_bird_tower>>",
-		  "_comment":"人工钓鱼池：鹰塔，选项入口"
-		},
+          "passage": "Forest",
+          "findString": "</span>\n\t\t\t\t<br>\n\t\t\t<</if>>",
+          "replace": "</span><br><</if>><<artificial_fishing_pond_wolf_cave_clearing>>",
+          "_comment": "人工钓鱼池：狼窝，选项入口"
+        },
         {
-		  "passage": "Soup Kitchen Work",
-		  "findString": "<br><br>",
-		  "replace": "<br><br><<if $artificial_fishing_pond_temple_garden is undefined>><<set $artificial_fishing_pond_temple_garden to \"realized\">>你听见其他工作人员在商讨着什么。他们好像提到森林中的<span class=\"green\">老教堂墓地门口的庭院有一块比较大的空地</span>，可以存放用于扩建神殿和施粥所的建筑材料。但每到夜晚，那里有时会<span class=\"teal\">闪烁着难以捉摸的奇怪光芒</span>。他们正为此头疼不已。<br><br><</if>>",
-		  "_comment":"人工钓鱼池(神殿)解锁的前置条件之一：在施粥所提供一次帮助"
-		},
-		{
-		  "passage": "Churchyard",
-		  "findString": "<<foresticon \"churchyard\">>",
-		  "replace": "<<artificial_fishing_pond_temple_garden>><br><<foresticon \"churchyard\">>",
-		  "_comment":"人工钓鱼池：鹰塔，选项入口"
-		},
-		{
-		  "passage": "Museum",
-		  "findString": "<<endevent>><</link>>\n\t<br>",
-		  "replace": "<<endevent>><</link>><br><<elseif $Gravediggers_Shovel isnot true and $museumAntiques.museumCount gte 15>><<museum_gravediggers_shovel>>",
-		  "_comment":"获得掘墓者铲子"
-		},
-		{
-		  "passage": "Temple",
-		  "findString": "<<llpurity>>\n\t\t<br>\n\t<</if>>",
-		  "replace": "<<llpurity>><br><</if>><<if $redemption_voucher gte 1>><<ind>><<link [[`使用一张赎罪券(${$redemption_voucher})(测试)`|Temple]]>><<set $redemption_voucher -= 1>><<grace 5>><</link>><<ggrace>><br><</if>>",
-		  "_comment":"使用赎罪券(测试)"
-		},
+          "passage": "Moor",
+          "findString": "<<if $moor_hunt gte 1>>",
+          "replace": "<<if $moor_hunt gte 1>><<if $artificial_fishing_pond_bird_tower is undefined>><<set $artificial_fishing_pond_bird_tower to \"realized\">><</if>>",
+          "_comment": "人工钓鱼池(鹰塔)解锁的前置条件之一：被巨鹰追杀过一次"
+        },
+        {
+          "passage": "Moor",
+          "findString": "<</link>>\n\t\t<br><br>",
+          "replace": "<</link>><br><br><<artificial_fishing_pond_bird_tower>>",
+          "_comment": "人工钓鱼池：鹰塔，选项入口"
+        },
+        {
+          "passage": "Soup Kitchen Work",
+          "findString": "<br><br>",
+          "replace": "<br><br><<if $artificial_fishing_pond_temple_garden is undefined>><<set $artificial_fishing_pond_temple_garden to \"realized\">>你听见其他工作人员在商讨着什么。他们好像提到森林中的<span class=\"green\">老教堂墓地门口的庭院有一块比较大的空地</span>，可以存放用于扩建神殿和施粥所的建筑材料。但每到夜晚，那里有时会<span class=\"teal\">闪烁着难以捉摸的奇怪光芒</span>。他们正为此头疼不已。<br><br><</if>>",
+          "_comment": "人工钓鱼池(神殿)解锁的前置条件之一：在施粥所提供一次帮助"
+        },
+        {
+          "passage": "Churchyard",
+          "findString": "<<foresticon \"churchyard\">>",
+          "replace": "<<terra_halloween_crow_church_yard>><<artificial_fishing_pond_temple_garden>><br><<foresticon \"churchyard\">>",
+          "_comment": "万圣节墓地出现乌鸦+人工钓鱼池：神殿，选项入口"
+        },
+        {
+          "passage": "Museum",
+          "findString": "<<endevent>><</link>>\n\t<br>",
+          "replace": "<<endevent>><</link>><br><<elseif $Gravediggers_Shovel isnot true and $museumAntiques.museumCount gte 15>><<museum_gravediggers_shovel>>",
+          "_comment": "获得掘墓者铲子"
+        },
+        {
+          "passage": "Temple",
+          "findString": "<<llpurity>>\n\t\t<br>\n\t<</if>>",
+          "replace": "<<llpurity>><br><</if>><<if $redemption_voucher gte 1>><<ind>>/*<<icon \"赎罪券.png\">>*/<<link [[`使用一张赎罪券(${$redemption_voucher})(测试)`|Temple]]>><<set $redemption_voucher -= 1>><<grace 5>><</link>><<ggrace>><br><</if>>",
+          "_comment": "使用赎罪券(测试)"
+        },
         {
           "passage": "Bedroom",
           "findString": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>>",
           "replace": "<<ghope>>\n\t\t<br><br>\n\t<</if>>\n<</if>><<if random(1,20) is 1>><<icon \"Journey_Toggle.png\">><<link [[旅行模式能力菜单|Terra Debug]]>><</link>><br><<else>><<icon \"Debug.png\">><<link [[进入泰拉瑞亚拓展调试/作弊页面(使用前确保自己能善用存档/回溯功能)|Terra Debug]]>><</link>><br><</if>>",
-		  "_comment":"访问调试/作弊页面的入口"
+          "_comment": "访问调试/作弊页面的入口"
         },
-		{
-		  "passage": "Orphanage Loft",
-		  "findString": "<<getouticon>>",
-		  "replace": "<<orphanage_loft_work_bench>><<orphanage_loft_iron_anvil>><<orphanage_loft_cooking_pot>><br><<getouticon>>",
-		  "_comment":"阁楼内使用制作站的功能"
-		},
-		{
-		  "passage": "Forest Shop Widgets",
-		  "findString": "<</if>>\n\t<<if $robin_in_forest_shop>>",
-		  "replace": "<</if>><<bait_forest_shop>><<if $robin_in_forest_shop>>",
-		  "_comment":"森林商店的小动物家具"
-		},
-		{
-		  "passage": "Bog Intro",
-		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment":"沼泽处增加翅膀的功能"
-		},
-		{
-		  "passage": "Meadow Tunnel",
-		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment":"草地处增加翅膀的功能"
-		},
-		{
-		  "passage": "Moor Widgets",
-		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment":"荒原处增加翅膀的功能"
-		},
-		{
-		  "passage": "Commercial rooftops",
-		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "all": "true",
-		  "_comment":"百货大楼楼顶处增加翅膀的功能"
-		},
-		{
-		  "passage": "Briar Hack 2",
-		  "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
-		  "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
-		  "_comment":"妓院米奇任务处增加翅膀的差分"
-		},
-		{
-		  "passage": "StoryCaption",
-		  "findString": "<<hallucinogencaption>>\n\t\t</div>",
-		  "replace": "<<hallucinogencaption>></div><<buff_widget>>",
-		  "_comment":"侧边栏增加增益追踪器，以查看激活的增益及其剩余时间"
-		},
-		{
-		  "passage": "Forest",
-		  "findString": "<</if>>\n\t\t\t<</if>>",
-		  "replace": "<</if>>\n\t\t\t<</if>><<icon \"fishing/house_icon.png\">><<link [[进入小屋|Guide Room]]>><</link>><br><br>",
-		  "_comment":"森林商店处，向导小屋的入口"
-		},
-		{
-		  "passage": "Widgets Journal",
-		  "findString": "<</if>>\n\t\t</ul>\n\t<</if>>",
-		  "replace": "<</if>></ul><</if>><<guide_hint_journal>>",
-		  "_comment":"日志中增加对向导任务的提示"
-		},
-		{
-		  "passage": "Temple Jordan",
-		  "findString": "|World Corruption Ask]]>><</link>><br>",
-		  "replace": "|World Corruption Ask]]>><</link>><br><<if $guide_mod_hint_pre isnot undefined and $Purification_Powder isnot true>><<askicon>><<link [[询问净化粉|Guide Mod Hint Purification Powder Jordan]]>><</link>><br><</if>>",
-		  "_comment":"约旦处询问净化粉"
-		},
-		{
-		  "passage": "Museum",
-		  "findString": "<<pylon_museum_ask>>",
-		  "replace": "<<pylon_museum_ask>><<if $guide_mod_hint_pre isnot undefined and $Copper_Shortsword isnot true>><<askicon>><<link [[询问铜短剑|Guide Mod Hint Copper Shortsword Winter]]>><</link>><br><</if>>",
-		  "_comment":"温特处询问铜短剑"
-		},
-		{
-		  "passage": "Bedroom",
-		  "findString": "<</if>>\n\t<</switch>>\n<</if>>",
-		  "replace": "<</if>><</switch>><</if>><<terra_bedroom_furniture>>",
-		  "_comment":"卧室小家具"
-		},
-		{
-		  "passage": "Widgets Robin",
-		  "findString": "<<robinbully>>",
-		  "replace": "<<robinbully>><<ind>><<link [[给罗宾看看你钓到的任务鱼|Fishing Request Robin]]>><</link>><br><br>",
-		  "_comment":"dom罗宾拓展联动：展示任务鱼选项入口"
-		},
-		{
-		  "passage": "Robin Forest Cheer",
-		  "findString": "不然我会感冒的。”\n<br>",
-		  "replace": "不然我会感冒的。”<br><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<link [[继续|Robin Forest Bait Rainy]]>><</link>><<exitAll>><</if>>",
-		  "_comment":"dom罗宾拓展联动：雨天森林约会，获得鱼饵"
-		},
-		{
-		  "passage": "Robin Forest Beneath",
-		  "findString": "不然我会感冒的。”\n<br>",
-		  "replace": "不然我会感冒的。”<br><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<link [[继续|Robin Forest Bait Rainy]]>><</link>><<exitAll>><</if>>",
-		  "_comment":"dom罗宾拓展联动：雨天森林约会，获得鱼饵"
-		},
-		{
-		  "passage": "Robin Forest",
-		  "findString": "<<pylon_bedroom_ask>>",
-		  "replace": "<<pylon_bedroom_ask>><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<robin_forest_bait_overcast>><</if>>",
-		  "_comment":"dom罗宾拓展联动：多云天森林约会，获得鱼饵"
-		},
-		{
-		  "passage": "Robin Forest",
-		  "findString": "<br>\n<</if>>",
-		  "replace": "<br><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<robin_forest_bait_clear>><</if>><</if>>",
-		  "_comment":"dom罗宾拓展联动：晴天森林约会，获得鱼饵"
-		},
-		{
-		  "passage": "Robin Walk",
-		  "findString": "<</if>>\n\t<br>\n<</if>>",
-		  "replace": "<</if>><br><</if>><<if $fishing_request_robin.length gte 10>><<if $daily.robin.fishing>><span class=\"fading\"><<lakeicon \"fishing\">></span><span class=\"blue\">你们今天已经一起钓过鱼了。</span><<else>><<lakeicon \"fishing\">><<link [[去钓鱼 (1:30)|Robin Fishing Place]]>><</link>><</if>><br><</if>>",
-		  "_comment":"dom罗宾拓展联动：约会钓鱼选项入口"
-		},
-		{
-		  "passage": "gameStartOnly",
-		  "findString": "<<set $passageChangesCount to 0>>",
-		  "replace": "<<set $passageChangesCount to 0>><<terraStartOnly>>",
-		  "_comment":"新存档初始化"
-		},
-		{
-		  "passage": "Widgets variablesVersionUpdate",
-		  "findString": "<<set $objectVersion.islandHomeFix to 1>>\n\t<</if>>",
-		  "replace": "<<set $objectVersion.islandHomeFix to 1>><</if>><<terraReloadVariables>>",
-		  "_comment":"读存档初始化"
-		},
-		{
-		  "passage": "Widgets Journal",
-		  "findString": "<<guide_hint_journal>>",
-		  "replace": "<<guide_hint_journal>><<fishing_request_journal>>",
-		  "_comment":"日志显示当日渔夫任务"
-		},
-		{
-		  "passage": "Characteristics",
-		  "findString": "<</switch>>\n\t\t\t\t<<if $worn.feet.type.includes(\"shackle\")>>",
-		  "replace": "<</switch>><<if $terra_accessories_slots.includes(\"Sailfish_Boots\")>><<set _athleticsConfig.modifier to Math.floor(_athleticsConfig.modifier * 1.1)>><<set _athleticsConfig.modTypes.good.pushUnique(\"航鱼靴\")>><</if>><<if $worn.feet.type.includes(\"shackle\")>>",
-		  "_comment":"装备航鱼靴时提供运动加成"
-		},
-		{
-		  "passage": "Island Build",
-		  "findString": "<<islandBuildOption raft>>\n\t\t<</if>>",
-		  "replace": "<<islandBuildOption raft>><</if>><<if $island_cooking_unlocked>><<island_build_cooking>><</if>>",
-		  "_comment":"海岛建造制作站的交互框"
-		},
-		{
-		  "passage": "Island",
-		  "findString": "<<gphysique>>\n<br><br>",
-		  "replace": "<<gphysique>>\n<br><<fishing_island_unlock>><br>",
-		  "_comment":"海岛解锁钓鱼点的剧情"
-		},
-		{
-		  "passage": "Widget displayLinks",
-		  "findString": "<</for>>",
-		  "replace": "<</for>><br><<snakeCharmersFluteUse>>",
-		  "_comment":"在合适的街道页面显示耍蛇者长笛的选项"
-		},
-		{
-		  "passage": "Lake Shore",
-		  "findString": "<</link>>\n\t<</if>>\n\t<br><br>",
-		  "replace": "<</link>>\n\t<</if>>\n\t<br><br><<snakeCharmersFluteUse>><br>",
-		  "_comment":"在森林湖页面显示耍蛇者长笛的选项"
-		},
-		{
-		  "passage": "Meadow",
-		  "findString": "<<farmicon>>",
-		  "replace": "<<snakeCharmersFluteUse>><br><<farmicon>>",
-		  "_comment":"在草地页面显示耍蛇者长笛的选项"
-		},
-		{
-		  "passage": "Moor",
-		  "findString": "<br><br>\n\t<<else>>",
-		  "replace": "<br><br><<if $moor gte 100>><<snakeCharmersFluteUse>><</if>><<else>>",
-		  "_comment":"在荒原页面显示耍蛇者长笛的选项"
-		},
-		{
-		  "passage": "Widgets Clothing Caption",
-		  "findString": "))>>\n\t<</if>>",
-		  "replace": "))>>\n\t<</if>><<if $armor_set_bonus is \"Angler\">><<set $allure to Math.floor($allure * 0.8)>><</if>>",
-		  "_comment":"渔夫盔甲套装奖励：诱惑值降低20%"
-		},
-		{
-		  "passage": "Widgets Mirror",
-		  "findString": "????</span>\n\t\t<br>\n\t<</if>>",
-		  "replace": "????</span>\n\t\t<br>\n\t<</if>><<if $armor_set_bonus is \"Angler\">><span class=\"green\">渔夫盔甲套装奖励</span><br><</if>>",
-		  "_comment":"镜子中检查在他人眼中的自己时，显示渔夫盔甲套装奖励带来的效果"
-		},
-		{
-		  "passage": "StoryCaption",
-		  "findString": "<<if $options.sidebarStats isnot \"disabled\">>",
-		  "replace": "<<terraExpandHintMobile>><<if $options.sidebarStats isnot \"disabled\">>",
-		  "_comment":"在收纳的侧边栏增加模组图标"
-		}
+        {
+          "passage": "Orphanage Loft",
+          "findString": "<<getouticon>>",
+          "replace": "<<terra_orphanage_loft_spray>><<orphanage_loft_work_bench>><<orphanage_loft_iron_anvil>><<orphanage_loft_cooking_pot>><br><<getouticon>>",
+          "_comment": "阁楼内使用制作站与制备防狼喷雾的功能"
+        },
+        {
+          "passage": "Forest Shop Widgets",
+          "findString": "<</if>>\n\t<<if $robin_in_forest_shop>>",
+          "replace": "<</if>><<bait_forest_shop>><<if $robin_in_forest_shop>>",
+          "_comment": "森林商店的小动物家具"
+        },
+        {
+          "passage": "Bog Intro",
+          "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
+          "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+          "_comment": "沼泽处增加翅膀的功能"
+        },
+        {
+          "passage": "Meadow Tunnel",
+          "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
+          "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+          "_comment": "草地处增加翅膀的功能"
+        },
+        {
+          "passage": "Moor Widgets",
+          "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
+          "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+          "_comment": "荒原处增加翅膀的功能"
+        },
+        {
+          "passage": "Commercial rooftops",
+          "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
+          "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+          "all": "true",
+          "_comment": "百货大楼楼顶处增加翅膀的功能"
+        },
+        {
+          "passage": "Briar Hack 2",
+          "findString": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2",
+          "replace": "$harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes(\"Fin_Wings\") or $terra_accessories_slots.includes(\"Fledgling_Wings\")",
+          "_comment": "妓院米奇任务处增加翅膀的差分"
+        },
+        {
+          "passage": "StoryCaption",
+          "findString": "<<hallucinogencaption>>\n\t\t</div>",
+          "replace": "<<hallucinogencaption>></div><<buff_widget>>",
+          "_comment": "侧边栏增加增益追踪器，以查看激活的增益及其剩余时间"
+        },
+        {
+          "passage": "Forest",
+          "findString": "<</if>>\n\t\t\t<</if>>",
+          "replace": "<</if>>\n\t\t\t<</if>><<icon \"fishing/house_icon.png\">><<link [[进入小屋|Guide Room]]>><</link>><br><br>",
+          "_comment": "森林商店处，向导小屋的入口"
+        },
+        {
+          "passage": "Widgets Journal",
+          "findString": "<</if>>\n\t\t</ul>\n\t<</if>>",
+          "replace": "<</if>></ul><</if>><<guide_hint_journal>>",
+          "_comment": "日志中增加对向导任务的提示"
+        },
+        {
+          "passage": "Temple Jordan",
+          "findString": "|World Corruption Ask]]>><</link>><br>",
+          "replace": "|World Corruption Ask]]>><</link>><br><<if $guide_mod_hint_pre isnot undefined and $Purification_Powder isnot true>><<askicon>><<link [[询问净化粉|Guide Mod Hint Purification Powder Jordan]]>><</link>><br><</if>>",
+          "_comment": "约旦处询问净化粉"
+        },
+        {
+          "passage": "Museum",
+          "findString": "<<pylon_museum_ask>>",
+          "replace": "<<pylon_museum_ask>><<if $guide_mod_hint_pre isnot undefined and $Copper_Shortsword isnot true>><<askicon>><<link [[询问铜短剑|Guide Mod Hint Copper Shortsword Winter]]>><</link>><br><</if>>",
+          "_comment": "温特处询问铜短剑"
+        },
+        {
+          "passage": "Bedroom",
+          "findString": "<</if>>\n\t<</switch>>\n<</if>>",
+          "replace": "<</if>><</switch>><</if>><<terra_bedroom_furniture>>",
+          "_comment": "卧室小家具"
+        },
+        {
+          "passage": "Widgets Robin",
+          "findString": "<<robinbully>>",
+          "replace": "<<robinbully>><<ind>><<link [[给罗宾看看你钓到的任务鱼|Fishing Request Robin]]>><</link>><<terraHint>><br><br>",
+          "_comment": "dom罗宾拓展联动：展示任务鱼选项入口"
+        },
+        {
+          "passage": "Robin Forest Cheer",
+          "findString": "不然我会感冒的。”\n<br>",
+          "replace": "不然我会感冒的。”<br><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<link [[继续|Robin Forest Bait Rainy]]>><</link>><<exitAll>><</if>>",
+          "_comment": "dom罗宾拓展联动：雨天森林约会，获得鱼饵"
+        },
+        {
+          "passage": "Robin Forest Beneath",
+          "findString": "不然我会感冒的。”\n<br>",
+          "replace": "不然我会感冒的。”<br><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<link [[继续|Robin Forest Bait Rainy]]>><</link>><<exitAll>><</if>>",
+          "_comment": "dom罗宾拓展联动：雨天森林约会，获得鱼饵"
+        },
+        {
+          "passage": "Robin Forest",
+          "findString": "<<pylon_bedroom_ask>>",
+          "replace": "<<pylon_bedroom_ask>><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<robin_forest_bait_overcast>><</if>>",
+          "_comment": "dom罗宾拓展联动：多云天森林约会，获得鱼饵"
+        },
+        {
+          "passage": "Robin Forest",
+          "findString": "<br>\n<</if>>",
+          "replace": "<br><<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>><<robin_forest_bait_clear>><</if>><</if>>",
+          "_comment": "dom罗宾拓展联动：晴天森林约会，获得鱼饵"
+        },
+        {
+          "passage": "Robin Walk",
+          "findString": "<</if>>\n\t<br>\n<</if>>",
+          "replace": "<</if>><br><</if>><<if $fishing_request_robin.length gte 10>><<if $daily.robin.fishing>><span class=\"fading\"><<lakeicon \"fishing\">></span><span class=\"blue\">你们今天已经一起钓过鱼了。</span><<else>><<lakeicon \"fishing\">><<link [[去钓鱼 (1:30)|Robin Fishing Place]]>><</link>><<terraHint>><</if>><br><</if>>",
+          "_comment": "dom罗宾拓展联动：约会钓鱼选项入口"
+        },
+        {
+          "passage": "gameStartOnly",
+          "findString": "<<set $passageChangesCount to 0>>",
+          "replace": "<<set $passageChangesCount to 0>><<terraStartOnly>>",
+          "_comment": "新存档初始化"
+        },
+        {
+          "passage": "Widgets variablesVersionUpdate",
+          "findString": "<<set $objectVersion.islandHomeFix to 1>>\n\t<</if>>",
+          "replace": "<<set $objectVersion.islandHomeFix to 1>><</if>><<terraReloadVariables>>",
+          "_comment": "读存档初始化"
+        },
+        {
+          "passage": "Widgets Journal",
+          "findString": "<<guide_hint_journal>>",
+          "replace": "<<guide_hint_journal>><<fishing_request_journal>>",
+          "_comment": "日志显示当日渔夫任务"
+        },
+        {
+          "passage": "Characteristics",
+          "findString": "<</if>>\n\t\t\t\t<<if $moorLuck gt 0>>",
+          "replace": "<</if>><<CharacteristicsBonus>><<if $moorLuck gt 0>>",
+          "_comment": "饰品提供加成"
+        },
+        {
+          "passage": "Island Build",
+          "findString": "<<islandBuildOption raft>>\n\t\t<</if>>",
+          "replace": "<<islandBuildOption raft>><</if>><<if $island_cooking_unlocked>><<island_build_cooking>><</if>>",
+          "_comment": "海岛建造制作站的交互框"
+        },
+        {
+          "passage": "Island",
+          "findString": "<<gphysique>>\n<br><br>",
+          "replace": "<<gphysique>>\n<br><<fishing_island_unlock>><br>",
+          "_comment": "海岛解锁钓鱼点的剧情"
+        },
+        {
+          "passage": "Widget displayLinks",
+          "findString": "<</for>>",
+          "replace": "<</for>><br><<snakeCharmersFluteUse>>",
+          "_comment": "在合适的街道页面显示耍蛇者长笛的选项"
+        },
+        {
+          "passage": "Lake Shore",
+          "findString": "<</link>>\n\t<</if>>\n\t<br><br>",
+          "replace": "<</link>>\n\t<</if>>\n\t<br><br><<snakeCharmersFluteUse>><br>",
+          "_comment": "在森林湖页面显示耍蛇者长笛的选项"
+        },
+        {
+          "passage": "Meadow",
+          "findString": "<<farmicon>>",
+          "replace": "<<snakeCharmersFluteUse>><br><<farmicon>>",
+          "_comment": "在草地页面显示耍蛇者长笛的选项"
+        },
+        {
+          "passage": "Moor",
+          "findString": "<br><br>\n\t<<else>>",
+          "replace": "<br><br><<if $moor gte 100>><<snakeCharmersFluteUse>><</if>><<else>>",
+          "_comment": "在荒原页面显示耍蛇者长笛的选项"
+        },
+        {
+          "passage": "Widgets Clothing Caption",
+          "findString": "))>>\n\t<</if>>",
+          "replace": "))>>\n\t<</if>><<if $armor_set_bonus is \"Angler\">><<set $allure to Math.floor($allure * 0.8)>><</if>><<if $terra_accessories_slots.includes(\"Lucky_Horseshoe\")>><<set $allure to Math.floor($allure * 0.95)>><</if>>",
+          "_comment": "渔夫盔甲套装奖励：诱惑值降低20%；幸运马掌效果：诱惑值降低5%"
+        },
+        {
+          "passage": "Widgets Mirror",
+          "findString": "????</span>\n\t\t<br>\n\t<</if>>",
+          "replace": "????</span>\n\t\t<br>\n\t<</if>><<if $armor_set_bonus is \"Angler\">><span class=\"green\">渔夫盔甲套装奖励</span><br><</if>><<if $terra_accessories_slots.includes(\"Lucky_Horseshoe\")>><span class=\"green\">幸运马掌</span><br><</if>>",
+          "_comment": "镜子中检查在他人眼中的自己时，显示渔夫盔甲套装奖励带来的效果"
+        },
+        {
+          "passage": "StoryCaption",
+          "findString": "<<if $options.sidebarStats isnot \"disabled\">>",
+          "replace": "<<terraExpandHintMobile>><<if $options.sidebarStats isnot \"disabled\">>",
+          "_comment": "在收纳的侧边栏增加模组图标"
+        },
+        {
+          "passage": "Statistics",
+          "findString": "<</for>>\n\t\t\t<</foldout>>\n\t\t<</if>>",
+          "replace": "<</for>><</foldout>><</if>><<terraExtraStatistics>>",
+          "_comment": "额外统计信息新增内容"
+        },
+        {
+          "passage": "Widgets Bird",
+          "findString": "<<bird_pass 15>><</link>>\n\t\t<br>",
+          "replace": "<<bird_pass 15>><</link>><br><<BirdTowerCookingPotLink>>",
+          "_comment": "鹰宝宝mod联动：烹饪锅制作熟鱼"
+        },
+        {
+          "passage": "Widgets Lake",
+          "findString": "</span>\n\t\t<<else>>",
+          "replace": "</span><<elseif $terra_accessories_slots.includes.(\"Ice_Skates\")>>风越来越大，但<span class=\"green\">还好你装备着<<icon \"accessories/Ice_Skates.png\">>溜冰鞋</span>，能很好地控制自己的身体而不至于滑倒。<<else>>",
+          "_comment": "借助溜冰鞋防止摔倒"
+        },
+        {
+          "passage": "Widgets Lake",
+          "findString": "Lake Ice Normal]]>><</link>>\n\t\t<br>",
+          "replace": "Lake Ice Normal]]>><</link>><br><<if $terra_accessories_slots.includes.(\"Ice_Skates\")>><<link [[溜冰鞋滑过去|Lake Ice Skating]]>><</link>><<terraHint>><br><</if>>",
+          "_comment": "借助溜冰鞋脱离险境"
+        },
+        {
+          "passage": "Widgets Lake",
+          "findString": "<<destination_lake_ice>>\n\t<<else>>",
+          "replace": "<<destination_lake_ice>><<elseif $terra_accessories_slots.includes.(\"Ice_Skates\")>>你险些滑倒，但<span class=\"green\">还好你装备着<<icon \"accessories/Ice_Skates.png\">>溜冰鞋</span>，能很好地控制自己的身体。<<else>>",
+          "_comment": "借助溜冰鞋防止摔倒"
+        },
+        {
+          "passage": "Manor Lab",
+          "findString": "<</if>>",
+          "replace": "<</if>><<terra_manor_lab_spray>>",
+          "_comment": "凯拉尔庄园内制备防狼喷雾"
+        },
+        {
+          "passage": "Widgets Forest",
+          "findString": "<</link>>\n\t<</addinlineevent>>",
+          "replace": "<</link>><</addinlineevent>><<terra_halloween_crow_forest>>",
+          "_comment": "万圣节森林出现乌鸦"
+        },
+        {
+          "passage": "Widgets Forest",
+          "findString": "<<addevent \"fox_grudge\" 0.33>>\n\t\t<</if>>",
+          "replace": "<<addevent \"fox_grudge\" 0.33>><</if>><<terra_halloween_crow_forest>>",
+          "_comment": "万圣节森林出现乌鸦"
+        },
+        {
+          "passage": "Widgets Island",
+          "findString": "<<hunger _args[0]>>",
+          "replace": "<<hunger _args[0]>><<set $island_campfire_countdown -= _args[0]>><<set $island_campfire_countdown to $island_campfire_countdown lt 0 ? 0 : $island_campfire_countdown>>",
+          "_comment": "在海岛上计算篝火燃烧时间的减少"
+        }
       ]
     },
     {
@@ -634,61 +1182,61 @@
       "modVersion": "1.0.0",
       "params": {
         "js": [
-		  {
-			"from": "delete V.robin_kicked_out;",
-			"to": "delete V.robin_kicked_out;fragment.append(wikifier(\"terra_daily_reset\"));",
-			"fileName": "time.js",
-			"_comment":"每天6点时刷新任务鱼种类，森林商店小动物家具小种类，以及重置血泪使用后的血月"
+          {
+            "from": "delete V.robin_kicked_out;",
+            "to": "delete V.robin_kicked_out;fragment.append(wikifier(\"terra_daily_reset\"));",
+            "fileName": "time.js",
+            "_comment": "每天6点时刷新任务鱼种类，森林商店小动物家具小种类，以及重置血泪使用后的血月"
           },
-		  {
+          {
             "from": "statChange.worldCorruption(\"soft\", V.world_corruption_hard);",
             "to": "statChange.worldCorruption(\"soft\", V.world_corruption_hard);fragment.append(wikifier(\"terra_weekly_reset\"));",
-			"fileName": "time.js",
-			"_comment":"每周重置森林商店摆放的小动物家具大种类"
+            "fileName": "time.js",
+            "_comment": "每周重置森林商店摆放的小动物家具大种类"
           },
-		  {
+          {
             "from": "statChange.pain(minutes, -1);",
             "to": "statChange.pain(minutes, -1);if (V.Fishing_Potion_countdown > 0) V.Fishing_Potion_countdown -= minutes;if (V.Sonar_Potion_countdown > 0) V.Sonar_Potion_countdown -= minutes;if (V.Crate_Potion_countdown > 0) V.Crate_Potion_countdown -= minutes;",
-			"fileName": "time.js",
-			"_comment":"计算药水剩余时间"
+            "fileName": "time.js",
+            "_comment": "计算药水剩余时间"
           },
-		  {
+          {
             "from": "(\"Majordomo\");",
             "to": "(\"Majordomo\");if (V.fishingskill >= 1000) earnFeat(\"Kong Jun\");",
-			"fileName": "feats.js",
-			"_comment":"解锁垂钓S成就"
+            "fileName": "feats.js",
+            "_comment": "解锁垂钓S成就"
           },
-		  {
+          {
             "from": "(Time.date.day === 1 && Time.date.hour < sunSet)",
             "to": "(Time.date.day === 1 && Time.date.hour < sunSet) || (V.blood_moon_monolith && (Time.hour < 6 || Time.hour >= 20)) || V.Bloody_Tear_used",
-			"fileName": "01-weather.js",
-			"_comment":"血月天塔柱启用时，或使用血泪后，侧边栏天气背景转为血月背景"
+            "fileName": "01-weather.js",
+            "_comment": "血月天塔柱启用时，或使用血泪后，侧边栏天气背景转为血月背景"
           },
-		  {
+          {
             "from": "(date.day === 1 && date.hour < 6)",
             "to": "(date.day === 1 && date.hour < 6) || V.Bloody_Tear_used",
-			"fileName": "time.js",
-			"_comment":"使用血泪后，当晚变为血月"
+            "fileName": "time.js",
+            "_comment": "使用血泪后，当晚变为血月"
           },
-		  {
+          {
             "from": "updateOptions();",
             "to": "updateOptions();updateVoidbag();",
-			"fileName": "ui.js",
-			"_comment":"虚空袋内切换鱼竿后，刷新页面"
+            "fileName": "ui.js",
+            "_comment": "虚空袋内切换鱼竿后，刷新页面"
           }
         ]
       }
     },
-	{
-		"modName": "ModdedFeatsAddon",
-		"addonName": "ModdedFeatsAddon",
-		"modVersion": "^1.0.0",
-		"params": {
-			"feats": [
-				"game/terra_feats.json"
-			]
-		}
-	}
+    {
+      "modName": "ModdedFeatsAddon",
+      "addonName": "ModdedFeatsAddon",
+      "modVersion": "^1.0.0",
+      "params": {
+        "feats": [
+          "game/terra_feats.json"
+        ]
+      }
+    }
   ],
   "dependenceInfo": [
     {
@@ -707,10 +1255,10 @@
       "modName": "ReplacePatcher",
       "version": "^1.0.0"
     },
-	{
-	  "modName": "ModdedFeatsAddon",
-	  "version": "^1.0.0"
-	},
+    {
+      "modName": "ModdedFeatsAddon",
+      "version": "^1.0.0"
+    },
     {
       "modName": "GameVersion",
       "version": ">=0.5.1.0"

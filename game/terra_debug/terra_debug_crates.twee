@@ -1,28 +1,22 @@
 :: Terra Debug Crates
+<<run initializeTooltips()>>
 请选择获得的宝匣。<br>
-<br>
-/*
 <<set _allCrateList to getAllCrateList()>>
-<<for _t to 0; _t lt _allCrateList.length; _t++>>
-	<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
-	<<capture _crate>>
-		<<set _crateName to _crate.cn_name>>
-		<<icon `_crate.icon`>>
-		<<link [[来5个_crateName|Terra Debug Crates]]>><</link>><br>
-	<</capture>>
-<</for>>
-*/
-<<icon "fishing/crates/Golden_Crate.png">><<link [[来5个金匣|Terra Debug Crates]]>><<set $Golden_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Iron_Crate.png">><<link [[来5个铁匣|Terra Debug Crates]]>><<set $Iron_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Wooden_Crate.png">><<link [[来5个木匣|Terra Debug Crates]]>><<set $Wooden_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Ocean_Crate.png">><<link [[来5个海洋匣|Terra Debug Crates]]>><<set $Ocean_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Oasis_Crate.png">><<link [[来5个绿洲匣|Terra Debug Crates]]>><<set $Oasis_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Jungle_Crate.png">><<link [[来5个丛林匣|Terra Debug Crates]]>><<set $Jungle_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Hallowed_Crate.png">><<link [[来5个神圣匣|Terra Debug Crates]]>><<set $Hallowed_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Sky_Crate.png">><<link [[来5个天空匣|Terra Debug Crates]]>><<set $Sky_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Sunken_Crate.png">><<link [[来5个沉沦匣|Terra Debug Crates]]>><<set $Sunken_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Sulphurous_Crate.png">><<link [[来5个硫海匣|Terra Debug Crates]]>><<set $Sulphurous_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Brimstone_Crate.png">><<link [[来5个硫火匣|Terra Debug Crates]]>><<set $Brimstone_Crate += 5>><</link>><br>
-<<icon "fishing/crates/Oyster.png">><<link [[来5个牡蛎|Terra Debug Crates]]>><<set $Oyster += 5>><</link>><br>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<for _t to 0; _t lt _allCrateList.length; _t++>>
+			<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
+			<<capture _crate>>
+				<div class="item">
+					<div @tooltip="`${_crate.cn_name}`">
+						<<icon `_crate.icon`>>
+					</div>
+					<hr>
+					<<link [[来5个|Terra Debug Crates]]>><<set V[_crate.name] += 5>><</link>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
 <br>
 <<getouticon>><<link [[返回|Terra Debug]]>><</link>>

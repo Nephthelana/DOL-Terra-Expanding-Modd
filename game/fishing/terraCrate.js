@@ -63,6 +63,22 @@ setup.terraCrate = {
         icon: "fishing/crates/Sky_Crate.png",
 		unload: "<<Sky_Crate_unload>>"
     },
+	"Frozen_Crate": {
+        name: "Frozen_Crate",
+        cn_name: "冰冻匣",
+        type: "crate",
+        amount: V.Frozen_Crate || 0,
+        icon: "fishing/crates/Frozen_Crate.png",
+		unload: "<<Frozen_Crate_unload>>"
+    },
+	"Obsidian_Crate": {
+        name: "Obsidian_Crate",
+        cn_name: "黑曜石匣",
+        type: "crate",
+        amount: V.Obsidian_Crate || 0,
+        icon: "fishing/crates/Obsidian_Crate.png",
+		unload: "<<Obsidian_Crate_unload>>"
+    },
 	"Sunken_Crate": {
         name: "Sunken_Crate",
         cn_name: "富养匣",

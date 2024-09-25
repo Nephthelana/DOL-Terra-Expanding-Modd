@@ -1,17 +1,31 @@
 :: Terra Debug Request Fish
-<<link [[返回|Terra Debug]]>><</link>><br>
-<br>
+<<run initializeTooltips()>>
 请选择获得/丢弃任务鱼。<br>
 <<set _allRequestFishList to getAllRequestFishList()>>
-<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
-	<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
-	<<capture _requestFish>>
-		<<if $fishing_request_fish.includes(_requestFish.name)>>
-			<<icon `_requestFish.icon`>><<link [[丢弃_requestFish.cn_name|Terra Debug Request Fish]]>><<set $fishing_request_fish.delete(_requestFish.name)>><</link>><br>
-		<<else>>
-			<span class="fading"><<icon `_requestFish.icon`>></span><<link [[获得_requestFish.cn_name|Terra Debug Request Fish]]>><<set $fishing_request_fish.pushUnique(_requestFish.name)>><</link>><br>
-		<</if>>
-	<</capture>>
-<</for>>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
+			<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
+			<<capture _requestFish>>
+				<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
+				<div class="item">
+					<div @tooltip="_tooltip">
+						<<if $fishing_request_fish.includes(_requestFish.name)>>
+							<<icon `_requestFish.icon`>>
+						<<else>>
+							<span class="terraFading"><<icon `_requestFish.icon`>></span>
+						<</if>>
+					</div>
+					<hr>
+					<<if $fishing_request_fish.includes(_requestFish.name)>>
+						<<link [[丢弃|Terra Debug Request Fish]]>><<set $fishing_request_fish.delete(_requestFish.name)>><</link>>
+					<<else>>
+						<<link [[获得|Terra Debug Request Fish]]>><<set $fishing_request_fish.pushUnique(_requestFish.name)>><</link>>
+					<</if>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
 <br>
 <<link [[返回|Terra Debug]]>><</link>><br>

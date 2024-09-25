@@ -1,76 +1,71 @@
 :: Terra Debug Equipment
+<<run initializeTooltips()>>
 请选择获得/丢弃装备。<br>
-<<if $Angler_Hat>>
-	<<icon "armor/Angler_Hat.png">><<link [[丢弃渔夫帽|Terra Debug Equipment]]>><<set $Angler_Hat to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "armor/Angler_Hat.png">></span><<link [[获得渔夫帽|Terra Debug Equipment]]>><<set $Angler_Hat to true>><</link>>
-<</if>>
-<br>
-<<if $Angler_Vest>>
-	<<icon "armor/Angler_Vest.png">><<link [[丢弃渔夫背心|Terra Debug Equipment]]>><<set $Angler_Vest to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "armor/Angler_Vest.png">></span><<link [[获得渔夫背心|Terra Debug Equipment]]>><<set $Angler_Vest to true>><</link>>
-<</if>>
-<br>
-<<if $Angler_Pants>>
-	<<icon "armor/Angler_Pants.png">><<link [[丢弃渔夫裤|Terra Debug Equipment]]>><<set $Angler_Pants to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "armor/Angler_Pants.png">></span><<link [[获得渔夫裤|Terra Debug Equipment]]>><<set $Angler_Pants to true>><</link>>
-<</if>>
-<br>
-<<if $Fishing_Bobber>>
-	<<icon "fishing/fishing_accessories/Fishing_Bobber.png">><<link [[丢弃钓鱼浮标|Terra Debug Equipment]]>><<set $Fishing_Bobber to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Fishing_Bobber.png">></span><<link [[获得钓鱼浮标|Terra Debug Equipment]]>><<set $Fishing_Bobber to true>><</link>>
-<</if>>
-<br>
-<<if $Angler_Earring>>
-	<<icon "fishing/fishing_accessories/Angler_Earring.png">><<link [[丢弃渔夫耳环|Terra Debug Equipment]]>><<set $Angler_Earring to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Angler_Earring.png">></span><<link [[获得渔夫耳环|Terra Debug Equipment]]>><<set $Angler_Earring to true>><</link>>
-<</if>>
-<br>
-<<if $High_Test_Fishing_Line>>
-	<<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">><<link [[丢弃优质钓鱼线|Terra Debug Equipment]]>><<set $High_Test_Fishing_Line to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/High_Test_Fishing_Line.png">></span><<link [[获得优质钓鱼线|Terra Debug Equipment]]>><<set $High_Test_Fishing_Line to true>><</link>>
-<</if>>
-<br>
-<<if $Tackle_Box>>
-	<<icon "fishing/fishing_accessories/Tackle_Box.png">><<link [[丢弃钓具箱|Terra Debug Equipment]]>><<set $Tackle_Box to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Tackle_Box.png">></span><<link [[获得钓具箱|Terra Debug Equipment]]>><<set $Tackle_Box to true>><</link>>
-<</if>>
-<br>
-<<if $Enchanted_Pearl>>
-	<<icon "fishing/fishing_accessories/Enchanted_Pearl.png">><<link [[丢弃附魔珍珠|Terra Debug Equipment]]>><<set $Enchanted_Pearl to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Enchanted_Pearl.png">></span><<link [[获得附魔珍珠|Terra Debug Equipment]]>><<set $Enchanted_Pearl to true>><</link>>
-<</if>>
-<br>
-<<if $Lavaproof_Fishing_Hook>>
-	<<icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">><<link [[丢弃防熔岩钓钩|Terra Debug Equipment]]>><<set $Lavaproof_Fishing_Hook to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">></span><<link [[获得防熔岩钓钩|Terra Debug Equipment]]>><<set $Lavaproof_Fishing_Hook to true>><</link>>
-<</if>>
-<br>
-<<if $Fishermans_Pocket_Guide>>
-	<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">><<link [[丢弃渔民袖珍宝典|Terra Debug Equipment]]>><<set $Fishermans_Pocket_Guide to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">></span><<link [[获得渔民袖珍宝典|Terra Debug Equipment]]>><<set $Fishermans_Pocket_Guide to true>><</link>>
-<</if>>
-<br>
-<<if $Weather_Radio>>
-	<<icon "fishing/fishing_accessories/Weather_Radio.png">><<link [[丢弃天气收音机|Terra Debug Equipment]]>><<set $Weather_Radio to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Weather_Radio.png">></span><<link [[获得天气收音机|Terra Debug Equipment]]>><<set $Weather_Radio to true>><</link>>
-<</if>>
-<br>
-<<if $Sextant>>
-	<<icon "fishing/fishing_accessories/Sextant.png">><<link [[丢弃六分仪|Terra Debug Equipment]]>><<set $Sextant to false>><</link>>
-<<else>>
-	<span class="fading"><<icon "fishing/fishing_accessories/Sextant.png">></span><<link [[获得六分仪|Terra Debug Equipment]]>><<set $Sextant to true>><</link>>
-<</if>>
-<br>
+盔甲<br>
+<<set _allArmorList to getAllArmorList()>>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<for _i to 0; _i lt _allArmorList.length; _i++>>
+			<<set _armor to setup.terraArmor[_allArmorList[_i]]>>
+			<<capture _armor>>
+				<div class="item">
+					<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
+						<<if V[_armor.name]>>
+							<<icon `_armor.icon`>>
+						<<else>>
+							<span class="terraFading"><<icon `_armor.icon`>></span>
+						<</if>>
+					</div>
+					<hr>
+					<<if V[_armor.name]>>
+						<<link [[丢弃|Terra Debug Equipment]]>>
+							<<set V[_armor.name] to undefined>>
+							<<switch _armor.type>>
+								<<case "helmet">>
+									<<set $terra_armor_slots[0] to "Armor_Helmet">>
+								<<case "shirt">>
+									<<set $terra_armor_slots[1] to "Armor_Shirt">>
+								<<case "pants">>
+									<<set $terra_armor_slots[2] to "Armor_Pants">>
+							<</switch>>
+						<</link>>
+					<<else>>
+						<<link [[获得|Terra Debug Equipment]]>><<set V[_armor.name] to true>><</link>>
+					<</if>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
+饰品
+<<set _allAccessoryList to getAllAccessoriesList()>>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<<for _j to 0; _j lt _allAccessoryList.length; _j++>>
+			<<set _accessory to setup.terraAccessories[_allAccessoryList[_j]]>>
+			<<capture _accessory>>
+				<div class="item">
+					<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}`">
+						<<if V[_accessory.name]>>
+							<<icon `_accessory.icon`>>
+						<<else>>
+							<span class="terraFading"><<icon `_accessory.icon`>></span>
+						<</if>>
+					</div>
+					<hr>
+					<<if V[_accessory.name]>>
+						<<link [[丢弃|Terra Debug Equipment]]>>
+							<<set V[_accessory.name] to undefined>>
+							<<set $terra_accessories_slots.delete(_accessory.name)>>
+						<</link>>
+					<<else>>
+						<<link [[获得|Terra Debug Equipment]]>><<set V[_accessory.name] to true>><</link>>
+					<</if>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
 <br>
 <<getouticon>><<link [[返回|Terra Debug]]>><</link>>

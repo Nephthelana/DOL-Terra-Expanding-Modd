@@ -27,3 +27,13 @@ function hasNPCAvatarsModsInfo() {
     return false;
 }
 window.hasNPCAvatarsModsInfo = hasNPCAvatarsModsInfo;
+
+// 判断是否加载了鲤鱼旗(koooooiCarp)的鹰宝宝模组
+function hasBabyHawkModInfo() {
+    const BabyHawkModInfo = window.modUtils.getMod('BabyHawk');
+    if (BabyHawkModInfo) {
+        return true;
+    }
+    return false;
+}
+window.hasBabyHawkModInfo = hasBabyHawkModInfo;

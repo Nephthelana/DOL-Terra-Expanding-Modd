@@ -176,6 +176,17 @@ setup.terraRequestFish = {
 		cute_angler_des: "\"不知道哪种情况更吓人：骷髅鱼还是长手的骷髅鱼。这条深藏在洞穴中的骷髅王鱼真把我吓了一跳！我合理怀疑它和旧下水道的那个老人被同一个恶魔掌控着！能请你把它抓过来吗？或许我们可以一起研究一下它。\"",
 		catching_place_des: "<<fishing_request_place_wolf_cave_clearing>>"
     },
+	"Fishron": {
+        name: "Fishron",
+        cn_name: "猪龙鱼",
+        type: "request",
+        obtained: V.Fishron,
+		catching_place: ["ice"],
+        icon: "fishing/quest_fish/Fishron.png",
+		angler_des: "\"有一个名为猪龙鱼的传奇生物！它一部分是猪，一部分是龙，还有一部分是鱼！我听说，它在世界最寒冷的冰封地下湖中游荡！我不会去那里，因此你去抓它，一定要到我的手里！我太激动了！\"",
+		cute_angler_des: "\"你听说过一种名为猪龙鱼的传奇生物吗？它一部分是猪，一部分是龙，还有一部分是鱼！我听说，它在世界最寒冷的冰封地下湖中游荡！你想体验到一头生物吃出三种味道的感觉吗？那去抓一只回来吧！我来下厨，保证你满意！\"",
+		catching_place_des: "<<fishing_request_place_ice>>"
+    },
 	"Guide_Voodoo_Fish": {
         name: "Guide_Voodoo_Fish",
         cn_name: "向导巫毒鱼",
@@ -242,6 +253,28 @@ setup.terraRequestFish = {
 		cute_angler_des: "\"经过丛林的水域时，要注意脚下！不，我说的不是食人鱼，它们还比较好发现，我说的是泥鱼！听名字就知道了，它们长得跟泥土一模一样，很滑，还会咬人！能拜托你帮我带一条回来吗？我很好奇它们吃起来是不是也是泥味的。\"",
 		catching_place_des: "<<fishing_request_place_farm_woodland>>"
     },
+	"Mutant_Flinxfin": {
+        name: "Mutant_Flinxfin",
+        cn_name: "突变雪怪鱼",
+        type: "request",
+        obtained: V.Mutant_Flinxfin,
+		catching_place: ["ice"],
+        icon: "fishing/quest_fish/Mutant_Flinxfin.png",
+		angler_des: "\"棕白色、毛茸茸，住在冰冻地下湖中，是什么鱼？突变雪怪鱼！我没有开玩笑，确实有一种更适应水生生活的突变雪怪鱼！我希望它能够适应我的鱼缸，一定要抓一条！\"",
+		cute_angler_des: "\"我想考考你，棕体白毛，住在苔原地下，是什么动物？小雪怪？错啦！答案是突变雪怪鱼！好吧其实小雪怪也没错...总之！我请求你帮我抓一条回来！希望它能适应我的鱼缸...\"",
+		catching_place_des: "<<fishing_request_place_ice>>"
+    },
+	"Pengfish": {
+        name: "Pengfish",
+        cn_name: "企鹅鱼",
+        type: "request",
+        obtained: V.Pengfish,
+		catching_place: ["ice"],
+        icon: "fishing/quest_fish/Pengfish.png",
+		angler_des: "\"是鲸鱼！是海豚！不，是企鹅鱼！瞧瞧，该你出马了！你去给我抓一条！你知道它们只喜欢冷水吧？\"",
+		cute_angler_des: "\"黑白相间？会游泳？生活在极寒地带？你知道我说的是什么吧？错啦！不是企鹅，是企鹅鱼！一种长得像企鹅的鱼！好啦好啦，我知道企鹅也完全符合描述啦...那这次也拜托啦！\"",
+		catching_place_des: "<<fishing_request_place_ice>>"
+    },
 	"Pixiefish": {
         name: "Pixiefish",
         cn_name: "妖精鱼",
@@ -307,6 +340,17 @@ setup.terraRequestFish = {
 		angler_des: "\"食人鱼和鲨鱼都很丑！太太太丑了！你知道吗？有一种鱼长得很漂亮，但可以把你的脸咬掉。顺便说，我愿意付两铂金币来让这事发生。不过关键是，你要抓一条给我。一定要在你的脸被咬掉之前，把它交给我！\"",
 		cute_angler_des: "\"在狠鱼里，食人鱼和鲨鱼都很丑！太丑了！但是你知道吗？有一种狠鱼长得很漂亮！热带梭鱼！非常凶狠！但是非常漂亮！这种鱼我对付不了，只能交给强大的你了，能请你带一条给我吗？抓鱼的时候小心，就像我说的，它们能把人的脸咬掉！\"",
 		catching_place_des: "<<fishing_request_place_farm_woodland>>"
+    },
+	"Tundra_Trout": {
+        name: "Tundra_Trout",
+        cn_name: "苔原鳟鱼",
+        type: "request",
+        obtained: V.Tundra_Trout,
+		catching_place: ["ice"],
+        icon: "fishing/quest_fish/Tundra_Trout.png",
+		angler_des: "\"你知道位于 <<if $saveName isnot \"\">>$saveName<<else>>$saveId<</if>> 雪域表面上的湖泊为什么从不结冰吗？什么？你说它们在冬天会结冰？我说的是一个位于地下的冻湖！我不知道。但鱼知道！用冰制成的鱼会作为上佳的祭品进贡给伟大且神奇的我！去吧，我的忠诚仆人，赶快把这条苔原鳟鱼带给我！\"",
+		cute_angler_des: "\"你知道位于 <<if $saveName isnot \"\">>$saveName<<else>>$saveId<</if>> 雪域表面上的湖泊为什么从不结冰吗？你说它们在冬天会结冰？哦，抱歉我没说清楚：那是一个位于地下的冻湖。这据说是苔原鳟鱼的功劳！它们喜欢破坏水面的浮冰，但是一片水域只会有两到三条，所以我总是钓不到，如果可以的话能请你帮我抓一条回来吗？喜欢破冰的鱼太酷了！\"",
+		catching_place_des: "<<fishing_request_place_ice>>"
     },
 	"Unicorn_Fish": {
         name: "Unicorn_Fish",

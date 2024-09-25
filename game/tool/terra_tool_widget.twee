@@ -2,8 +2,8 @@
 <<widget "void_bag_Tool">>
 <<if getToolObtained().length gt 0>>
 	<span class="gold bold">工具</span>
+	<<set _toolObtainedList to getToolObtained()>>
 	<div class="itemTerraTool">
-		<<set _toolObtainedList to getToolObtained()>>
 		<<for _t to 0; _t lt _toolObtainedList.length; _t++>>
 			<<set _tool to setup.terraTool[_toolObtainedList[_t]]>>
 			<<capture _tool>>
@@ -24,6 +24,8 @@
 <<widget "terra_tool_use_Magic_Conch">>
 <<if $daily.Magic_Conch>>
 	<mouse class="tooltip linkBlue">不可用<span>你今天使用过魔法海螺了</span></mouse>
+<<elseif !(setup.majorAreas.includes($passage) and $event is undefined)>>
+	<mouse class="tooltip linkBlue">不可用<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
 <<else>>
 	<<link [[使用|Beach]]>><<set $daily.Magic_Conch to true>><</link>>
 <</if>>
@@ -32,9 +34,15 @@
 <<widget "terra_tool_use_Demon_Conch">>
 <<if $daily.Demon_Conch>>
 	<mouse class="tooltip linkBlue">不可用<span>你今天使用过恶魔海螺了</span></mouse>
+<<elseif !(setup.majorAreas.includes($passage) and $event is undefined)>>
+	<mouse class="tooltip linkBlue">不可用<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
 <<else>>
 	<<link [[使用|Beach]]>><<set $daily.Demon_Conch to true>><</link>>
 <</if>>
+<</widget>>
+
+<<widget "terra_tool_use_Ice_Mirror">>
+不可用
 <</widget>>
 
 <<widget "terra_tool_use_Snake_Charmers_Flute">>
@@ -114,7 +122,41 @@
 		<span class="blue">你往自己身上泼了一桶水。</span><br>
 		<br>
 	<</replace>>
+	<<updatesidebarimg>>
 <</link>>
+<</widget>>
+
+<<widget "terra_tool_use_Bottomless_Lava_Bucket">>
+<<link "使用">>
+	<<arousal 1000>>
+	<<drugs 60>>
+	<<replace #hint_item_use>>
+		<span class="blue">你往自己身上倒了一些岩浆。</span><<ggarousal>><<gdrugged>><br>
+		<br>
+	<</replace>>
+<</link>>
+<</widget>>
+
+<<widget "terra_tool_use_Bottomless_Honey_Bucket">>
+不可用
+<</widget>>
+
+<<widget "terra_tool_use_Super_Absorbant_Sponge">>
+	<<set _cl_slots to ["upper", "lower", "under_upper", "under_lower", "over_upper", "over_lower", "genitals"]>>
+	<<link "使用">>
+		<<dry_full>>
+		<<run _cl_slots.slice(0, 4).forEach((slot) => {
+			if (V.worn[slot].name === 'naked') return;
+			const wetnessProp = slot.replace('_', '') + 'wet';
+			V[wetnessProp + 'stage'] = 0;
+			cheatsUpdateSlider(`#numberslider-input-${wetnessProp}`, V[wetnessProp]);
+		})>>
+		<<updatesidebarimg>>
+		<<replace #hint_item_use>>
+			<span class="green">你擦干了衣服里的水。</span><br>
+			<br>
+		<</replace>>	
+	<</link>>
 <</widget>>
 
 <<widget "terra_tool_use_Gravediggers_Shovel">>

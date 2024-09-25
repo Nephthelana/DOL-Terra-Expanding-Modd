@@ -95,7 +95,8 @@
 					<<set _bait to setup.terraBait[_baitObtained[_t]]>>
 					<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
 					<<set _amount = _formatter.format(_bait.amount)>>
-					<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_bait.cn_name}<br>▶ ${_bait.fishing_power}渔力`>>
+					<<set _isMaterial to _bait.material ? "<br><i>材料</i>" : "">>
+					<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_bait.cn_name}${_isMaterial}<br><br>▶ ${_bait.fishing_power}渔力`>>
             		<div class="item" @tooltip="_tooltip">
 						<label><<icon `_bait.icon`>>
 						<hr>
@@ -160,8 +161,6 @@
 	<span id="foodList">
 		<<foodList>>
 	</span>
-	<br>
-	/ 材料栏正在施工中 /<br>
 	<<set _materialObtained to getMaterialObtainedList()>>
 	<span class="gold bold">材料</span><mouse class="tooltip linkBlue">(?)<span>一部分物品并不能直接发挥特别的用处，但它们可以作为合成的材料。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到提示。</span></mouse><br>
 	<<if _materialObtained.length gt 0>>
@@ -236,7 +235,6 @@
 					<hr>
 					<<link "打开">>
 						<<set $void_bag_unload_crate to _crate.name>>
-						<<set _optionsRefresh to true>>
 						<<replace #unloadCrateHint>>
 							<<UnloadCrateHint>>
 						<</replace>>
@@ -265,7 +263,8 @@
 			<<set _food to setup.terraFood[_foodObtained[_j]]>>
 			<<capture _food>>
 				<div class="item">
-					<div @tooltip="`${_food.cn_name}<br><br>${_food.des}`">
+					<<set _isMaterial to _food.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_food.cn_name}${_isMaterial}<br><br>${_food.des}`">
 						<<icon `_food.icon`>>
 					</div>
 					<hr>
@@ -273,6 +272,7 @@
 					<hr>
 					<<link "吃">>
 						_food.use
+						<<earnFeat "Don't Starve">>
 						<<replace #hunger_description>>
 							<<hunger_description>><br>
 							你吃了一份<<icon `_food.icon`>>_food.cn_name。_food.use_hint<br>

@@ -4,31 +4,31 @@
 <<if $pylon_collected.includes("Bedroom")>>
 	<<icon "pylon/Forest_Pylon.png">><<link [[锁定孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_collected.delete("Bedroom")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Forest_Pylon.png">></span><<link [[解锁孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Bedroom")>><</link>>
+	<span class="terraFading"><<icon "pylon/Forest_Pylon.png">></span><<link [[解锁孤儿院卧室晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Bedroom")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Eden Cabin")>>
 	<<icon "pylon/Jungle_Pylon.png">><<link [[锁定伊甸小屋晶塔|Terra Debug]]>><<set $pylon_collected.delete("Eden Cabin")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Jungle_Pylon.png">></span><<link [[解锁伊甸小屋晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Eden Cabin")>><</link>>
+	<span class="terraFading"><<icon "pylon/Jungle_Pylon.png">></span><<link [[解锁伊甸小屋晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Eden Cabin")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Farm Bedroom")>>
 	<<icon "pylon/Universal_Pylon.png">><<link [[锁定农场卧室晶塔|Terra Debug]]>><<set $pylon_collected.delete("Farm Bedroom")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Universal_Pylon.png">></span><<link [[解锁农场卧室晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Farm Bedroom")>><</link>>
+	<span class="terraFading"><<icon "pylon/Universal_Pylon.png">></span><<link [[解锁农场卧室晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Farm Bedroom")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Hawks Tower")>>
 	<<icon "pylon/Sunken_Pylon.png">><<link [[锁定鹰塔晶塔|Terra Debug]]>><<set $pylon_collected.delete("Hawks Tower")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Sunken_Pylon.png">></span><<link [[解锁鹰塔晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Hawks Tower")>><</link>>
+	<span class="terraFading"><<icon "pylon/Sunken_Pylon.png">></span><<link [[解锁鹰塔晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Hawks Tower")>><</link>>
 <</if>>
 <br>
 <<if $pylon_collected.includes("Wolfcave")>>
 	<<icon "pylon/Mushroom_Pylon.png">><<link [[锁定狼窝晶塔|Terra Debug]]>><<set $pylon_collected.delete("Wolfcave")>><</link>>
 <<else>>
-	<span class="fading"><<icon "pylon/Mushroom_Pylon.png">></span><<link [[解锁狼窝晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Wolfcave")>><</link>>
+	<span class="terraFading"><<icon "pylon/Mushroom_Pylon.png">></span><<link [[解锁狼窝晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Wolfcave")>><</link>>
 <</if>>
 <br>
 以下几个传送选项，如在正常解锁对应地点前使用，可能会导致问题，请注意。<br>
@@ -42,9 +42,11 @@
 <<link [[获得/丢弃鱼竿|Terra Debug Fishing Pole]]>><</link>><br>
 <<link [[获得/丢弃装备|Terra Debug Equipment]]>><</link>><br>
 <<link [[获得/丢弃任务鱼|Terra Debug Request Fish]]>><</link>><br>
-<<link [[获得宝匣|Terra Debug Crates]]>><</link>><br>
 <<link [[获得鱼饵|Terra Debug Baits]]>><</link>><br>
+<<link [[获得鱼|Terra Debug Fish]]>><</link>><br>
+<<link [[获得宝匣|Terra Debug Crates]]>><</link>><br>
 <<link [[获得药水|Terra Debug Potions]]>><</link>><br>
+<span class="no-numberify">
 <<link "<<<">><<set $fishingskill -= 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
 <<link "<<">><<set $fishingskill -= 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
 <<link "<">><<set $fishingskill -= 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
@@ -52,6 +54,7 @@
 | <<link ">">><<set $fishingskill += 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
 | <<link ">>">><<set $fishingskill += 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
 | <<link ">>>">><<set $fishingskill += 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+</span>
 <br>
 <br>
 血月天塔柱相关<br>

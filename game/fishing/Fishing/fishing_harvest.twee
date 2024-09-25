@@ -7,28 +7,46 @@
 		/* 宝匣 */
 		<<case "Golden_Crate">><<icon "fishing/crates/Golden_Crate.png">>金匣
 			<<set $Golden_Crate += 1>>
+			<<set $fishing_crate_count.Golden_Crate += 1>>
 		<<case "Iron_Crate">><<icon "fishing/crates/Iron_Crate.png">>铁匣
 			<<set $Iron_Crate += 1>>
+			<<set $fishing_crate_count.Iron_Crate += 1>>
 		<<case "Wooden_Crate">><<icon "fishing/crates/Wooden_Crate.png">>木匣
 			<<set $Wooden_Crate += 1>>
+			<<set $fishing_crate_count.Wooden_Crate += 1>>
 		<<case "Ocean_Crate">><<icon "fishing/crates/Ocean_Crate.png">>海洋匣
 			<<set $Ocean_Crate += 1>>
+			<<set $fishing_crate_count.Ocean_Crate += 1>>
 		<<case "Oyster">><<icon "fishing/crates/Oyster.png">>牡蛎
 			<<set $Oyster += 1>>
+			<<set $fishing_crate_count.Oyster += 1>>
 		<<case "Oasis_Crate">><<icon "fishing/crates/Oasis_Crate.png">>绿洲匣
 			<<set $Oasis_Crate += 1>>
+			<<set $fishing_crate_count.Oasis_Crate += 1>>
 		<<case "Jungle_Crate">><<icon "fishing/crates/Jungle_Crate.png">>丛林匣
 			<<set $Jungle_Crate += 1>>
+			<<set $fishing_crate_count.Jungle_Crate += 1>>
 		<<case "Hallowed_Crate">><<icon "fishing/crates/Hallowed_Crate.png">>神圣匣
 			<<set $Hallowed_Crate += 1>>
+			<<set $fishing_crate_count.Hallowed_Crate += 1>>
 		<<case "Sky_Crate">><<icon "fishing/crates/Sky_Crate.png">>天空匣
 			<<set $Sky_Crate += 1>>
+			<<set $fishing_crate_count.Sky_Crate += 1>>
+		<<case "Frozen_Crate">><<icon "fishing/crates/Frozen_Crate.png">>冰冻匣
+			<<set $Frozen_Crate += 1>>
+			<<set $fishing_crate_count.Frozen_Crate += 1>>
+		<<case "Obsidian_Crate">><<icon "fishing/crates/Obsidian_Crate.png">>黑曜石匣
+			<<set $Obsidian_Crate += 1>>
+			<<set $fishing_crate_count.Obsidian_Crate += 1>>
 		<<case "Sunken_Crate">><<icon "fishing/crates/Sunken_Crate.png">>富养匣
 			<<set $Sunken_Crate += 1>>
+			<<set $fishing_crate_count.Sunken_Crate += 1>>
 		<<case "Sulphurous_Crate">><<icon "fishing/crates/Sulphurous_Crate.png">>硫海匣
 			<<set $Sulphurous_Crate += 1>>
+			<<set $fishing_crate_count.Sulphurous_Crate += 1>>
 		<<case "Brimstone_Crate">><<icon "fishing/crates/Brimstone_Crate.png">>焦炭匣
 			<<set $Brimstone_Crate += 1>>
+			<<set $fishing_crate_count.Brimstone_Crate += 1>>
 		/* 普通鱼 */
 		<<case "Salmon">><<icon "fishing/fish/Salmon.png">>三文鱼
 			<<set $Salmon += 1>>
@@ -72,6 +90,14 @@
 			<<set $Princess_Fish += 1>>
 		<<case "Chaos_Fish">><<icon "fishing/fish/Chaos_Fish.png">>混沌鱼
 			<<set $Chaos_Fish += 1>>
+		<<case "Frost_Minnow">><<icon "fishing/fish/Frost_Minnow.png">>寒霜绦鱼
+			<<set $Frost_Minnow += 1>>
+		<<case "Atlantic_Cod">><<icon "fishing/fish/Atlantic_Cod.png">>大西洋鳕鱼
+			<<set $Atlantic_Cod += 1>>
+		<<case "Flarefin_Koi">><<icon "fishing/fish/Flarefin_Koi.png">>闪鳍锦鲤
+			<<set $Flarefin_Koi += 1>>
+		<<case "Obsidifish">><<icon "fishing/fish/Obsidifish.png">>黑曜石鱼
+			<<set $Obsidifish += 1>>
 		<<case "Greenwave_Loach">><<icon "fishing/fish/Greenwave_Loach.png">>绿波泥鳅
 			<<set $Greenwave_Loach += 1>>
 		<<case "Sunken_Sailfish">><<icon "fishing/fish/Sunken_Sailfish.png">>沉沦帆鱼
@@ -99,6 +125,11 @@
 		<<case "swim_underwear">>
 			<<set _colour to either("蓝色", "绿色", "红色", "黑色", "粉色", "紫色", "黄色", "白色", "橙色", "条纹", "波点")>>
 			一条_colour的$swimUnderwear<<set $panties_held += 1>>
+		<!-- 工具 -->
+		<<case "Bottomless_Lava_Bucket">><<icon "tool/Bottomless_Lava_Bucket.png">>无底熔岩桶
+			<<set $Bottomless_Lava_Bucket to true>>
+		<<case "Demon_Conch">><<icon "tool/Demon_Conch.png">>恶魔海螺
+			<<set $Demon_Conch to true>>
 	<</switch>>
 <</widget>>
 	

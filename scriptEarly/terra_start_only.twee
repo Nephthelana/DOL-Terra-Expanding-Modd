@@ -19,18 +19,22 @@
 	"Fallen_Starfish",
 	"Fish_of_Cthulhu",
 	"Fishotron",
+	"Fishron",
 	"Guide_Voodoo_Fish",
 	"Harpyfish",
 	"Hungerfish",
 	"Jewelfish",
 	"Mirage_Fish",
 	"Mudfish",
+	"Mutant_Flinxfin",
+	"Pengfish",
 	"Pixiefish",
 	"Scarab_Fish",
 	"Scorpio_Fish",
 	"Slimefish",
 	"Spiderfish",
 	"Tropical_Barracuda",
+	"Tundra_Trout",
 	"Unicorn_Fish",
 	"Wyverntail",
 	"Zombie_Fish",
@@ -102,6 +106,8 @@
 <<set $Jungle_Crate = 0>>
 <<set $Hallowed_Crate = 0>>
 <<set $Sky_Crate = 0>>
+<<set $Frozen_Crate = 0>>
+<<set $Obsidian_Crate = 0>>
 <<set $Sunken_Crate = 0>>
 <<set $Sulphurous_Crate = 0>>
 <<set $Brimstone_Crate = 0>>
@@ -127,6 +133,10 @@
 <<set $Prismite = 0>>
 <<set $Princess_Fish = 0>>
 <<set $Chaos_Fish = 0>>
+<<set $Frost_Minnow = 0>>
+<<set $Atlantic_Cod = 0>>
+<<set $Flarefin_Koi = 0>>
+<<set $Obsidifish = 0>>
 <<set $Greenwave_Loach = 0>>
 <<set $Sunken_Sailfish = 0>>
 <<set $Prismatic_Guppy = 0>>
@@ -149,9 +159,10 @@
 
 /* dom罗宾拓展联动 */
 <<set $fishing_request_robin to []>>
+<<set $robin_fishing_place_unlocked to []>>
 
 /* 宝匣内容物数量 */
-<<set $redemption_voucher to 0>>
+<<set $redemption_voucher = 0>>
 <<set $Sea_Prism = 0>>
 <<set $Sea_Minnow = 0>>
 <<set $Demonic_Bone_Ash = 0>>
@@ -160,6 +171,7 @@
 <<set $Pink_Pearl = 0>>
 <<set $Iron_Bar = 0>>
 <<set $Sea_Remains = 0>>
+<<set $Fallen_Star = 0>>
 
 /* 盔甲栏 */
 <<set $terra_armor_slots to ["Armor_Helmet","Armor_Shirt","Armor_Pants"]>>
@@ -172,9 +184,6 @@
 /* 血月 */
 <<set $Bloody_Tear = 0>>
 
-/* dom罗宾拓展联动 */
-<<set $robin_fishing_place_unlocked to []>>
-
 /* 食物 */
 <<set $Sashimi to 0>>
 <<set $Cooked_Fish to 0>>
@@ -185,5 +194,62 @@
 
 /* 海岛 */
 <<set $island_build_cooking to []>>
+
+/* 统计数据 */
+<<set $fishing_bitten_count to 0>>
+<<set $fishing_harvest_count to 0>>
+<<set $fishing_failed_count to 0>>
+<<set $RPS_win_count to 0>>
+<<set $RPS_none_count to 0>>
+<<set $PRS_lose_count to 0>>
+<<set $pylon_teleport_count to 0>>
+<<set $fishing_crate_count to {
+	Golden_Crate: 0,
+	Iron_Crate: 0,
+	Wooden_Crate: 0,
+	Ocean_Crate: 0,
+	Oyster: 0,
+	Oasis_Crate: 0,
+	Jungle_Crate: 0,
+	Hallowed_Crate: 0,
+	Sky_Crate: 0,
+	Sunken_Crate: 0,
+	Sulphurous_Crate: 0,
+	Brimstone_Crate: 0,
+}>>
+<<set $unload_crate_count to {
+	Golden_Crate: 0,
+	Iron_Crate: 0,
+	Wooden_Crate: 0,
+	Ocean_Crate: 0,
+	Oyster: 0,
+	Oasis_Crate: 0,
+	Jungle_Crate: 0,
+	Hallowed_Crate: 0,
+	Sky_Crate: 0,
+	Sunken_Crate: 0,
+	Sulphurous_Crate: 0,
+	Brimstone_Crate: 0,
+}>>
+<<set $crafting_count to {
+	Work_Bench: 0,
+	Iron_Anvil: 0,
+	Cooking_Pot: 0,
+}>>
+
+/* 阁楼制作站初始化 */
+<<set $orphanage_loft_crafting_station to []>>
+
+<!-- 落星概率初始化 -->
+<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
+<<fallen_star_rate_set>>
+
+<!-- 发光地衣数量初始化 -->
+<<set $Argon_Moss to 0>>
+<<set $Krypton_Moss to 0>>
+<<set $Lava_Moss to 0>>
+<<set $Neon_Moss to 0>>
+<<set $Xenon_Moss to 0>>
+<<set $Helium_Moss to 0>>
 
 <</widget>>

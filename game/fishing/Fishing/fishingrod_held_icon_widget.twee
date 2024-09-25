@@ -15,10 +15,20 @@
 
 <<widget "fishingrod_bobber">>
 
-<<if $terra_accessories_slots.includes("Glowing_Fishing_Bobber")>>
-	<<icon "fishing/bobber/Glowing_Fishing_Bobber.png">>
-<<elseif $terra_accessories_slots.includes("Fishing_Bobber")>>
-	<<icon "fishing/bobber/Fishing_Bobber.png">>
+<!-- 判断是否装备着钓鱼浮标及其升级物 -->
+<<set $_accessory_Fishing_Bobber to false>>
+<<for _i to 0; _i lt $terra_accessories_slots.length; _i++>>
+	<<if setup.terraAccessories[$terra_accessories_slots[_i]].type is "bobber">>
+		<<set $_accessory_Fishing_Bobber to true>>
+		<<break>>
+	<</if>>
+<</for>>
+<<if $_accessory_Fishing_Bobber>>
+	<<if $terra_accessories_slots[_i] is "Helium_Moss_Fishing_Bobber">>
+		<<icon "fishing/bobber/Helium_Moss_Fishing_Bobber.gif">>
+	<<else>>
+		<img @src="'img/misc/icon/fishing/bobber' + $terra_accessories_slots[_i] + '.png'">
+	<</if>>
 <<else>>
 	<<switch $options.fishingrod_held>>
 		<<case "Golden_Fishing_Rod">><<icon "fishing/bobber/Bobber_(Golden).png">>

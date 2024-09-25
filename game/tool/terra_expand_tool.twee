@@ -20,7 +20,7 @@
 	<<closeButton>>
 <</widget>>
 
-/* 工具标签页信息 */
+<!-- 工具标签页信息 -->
 <<widget "terraExpandTool">>
 	<<setupOptions>>
 	<span id="hint_item_use"></span>

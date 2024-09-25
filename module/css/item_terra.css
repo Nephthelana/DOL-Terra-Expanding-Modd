@@ -30,3 +30,29 @@
   .blinking-text {
 	animation: blink 1.5s infinite; /* 每秒闪烁一次，无限循环 */
   }
+
+@keyframes terraFading {
+	0% {
+		opacity: 1;
+	}
+
+	60% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0.3;
+	}
+}
+
+.terraFading {
+	background: var(--150);
+	text-shadow: 0 0 32px var(--purple);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	animation-name: terraFading;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	opacity: 0.3;
+}

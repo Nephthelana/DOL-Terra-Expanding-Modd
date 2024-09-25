@@ -2,6 +2,7 @@ setup.terraFood = {
 	"Shucked_Oyster": {
         name: "Shucked_Oyster",
         cn_name: "去壳牡蛎",
+		material: false,
         type: "food",
         amount: V.Shucked_Oyster || 0,
         icon: "food/Shucked_Oyster.png",
@@ -12,6 +13,7 @@ setup.terraFood = {
 	"Sashimi": {
         name: "Sashimi",
         cn_name: "生鱼片",
+		material: true,
         type: "food",
         obtained: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -22,6 +24,7 @@ setup.terraFood = {
 	"Cooked_Shrimp": {
         name: "Cooked_Shrimp",
         cn_name: "熟虾",
+		material: false,
         type: "food",
         amount: V.Cooked_Shrimp || 0,
         icon: "food/Cooked_Shrimp.png",
@@ -32,6 +35,7 @@ setup.terraFood = {
 	"Cooked_Fish": {
         name: "Cooked_Fish",
         cn_name: "熟鱼",
+		material: false,
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -42,6 +46,7 @@ setup.terraFood = {
 	"Lobster_Tail": {
         name: "Lobster_Tail",
         cn_name: "龙虾尾",
+		material: false,
         type: "food",
         amount: V.Lobster_Tail || 0,
         icon: "food/Lobster_Tail.png",
@@ -52,6 +57,7 @@ setup.terraFood = {
 	"Seafood_Dinner": {
         name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
+		material: false,
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",

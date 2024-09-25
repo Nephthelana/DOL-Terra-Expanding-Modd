@@ -29,7 +29,6 @@
 		<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Work Bench")>><</link>>
 	<</if>>
 </div>
-/*
 <div>
 	<<if !$island_build_cooking.includes("Campfire")>>
 		<<set $_disableBuild_Campfire to false>>
@@ -63,6 +62,7 @@
 		<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Campfire")>><</link>>
 	<</if>>
 </div>
+<!--
 <<if $island_build_cooking.includes("Work Bench")>>
 	<div>
 		<<if !$island_build_cooking.includes("Cooking Pot")>>
@@ -112,7 +112,7 @@
 		<</if>>
 	</div>
 <</if>>
-*/
+-->
 <</widget>>
 
 :: Island Build Cooking Work Bench

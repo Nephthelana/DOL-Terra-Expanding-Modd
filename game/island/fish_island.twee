@@ -1,4 +1,7 @@
 :: Fish Island
+<<if $island_campfire_countdown is undefined>>
+	<<set $island_campfire_countdown to 0>>
+<</if>>
 / 本页面正在施工中，内容将在后续完善 /<br>
 <br>
 这里是你临时存放渔获的地点，距离你的营地不远。原住民不会到这儿来，但你要小心野猫的盗窃。<br>
@@ -10,12 +13,22 @@
 <<link [[查看晾肉架|Fish Island Drying Rack]]>><</link>><br>
 */
 <<if $island_build_cooking.includes("Work Bench")>>
+	<br>
+	你可以用工作台来简单处理鱼类。<br>
+	<<icon "furniture_placed/Work_Bench_(placed).png">>
 	<<link [[查看工作台|Fish Island Work Bench]]>><</link>><br>
 <</if>>
-/*
 <<if $island_build_cooking.includes("Campfire")>>
+	<br>
+	篝火现在处于<<campfire_info>>的状态。<br>
+	<<if $island_campfire_countdown lte 0>>
+		<<icon "furniture_placed/campfire_(placed)_off.png">>
+	<<else>>
+		<<icon "furniture_placed/Campfire_(placed).gif">>
+	<</if>>
 	<<link [[查看篝火|Fish Island Campfire]]>><</link>><br>
 <</if>>
+/*
 <<if $island_build_cooking.includes("Cooking Pot")>>
 	<<link [[查看烹饪锅|Fish Island Cooking Pot]]>><</link>><br>
 <</if>>
@@ -116,6 +129,7 @@
 						<hr>
 						<<link "制作">>
 							_recipe.craft
+							<<set $crafting_count.Work_Bench += 1>>
 							<<if _recipe.type is "food">>
 								<<housekeeping 1 600>>
 							<</if>>
@@ -141,3 +155,108 @@
 <</widget>>
 
 :: Fish Island Campfire
+<!-- 0:已经熄灭 (0,180]:只有火苗了 (180,360]:火势微弱) (360,540]:平稳燃烧 (540,720]:火势旺盛 -->
+篝火现在处于<<campfire_info>>的状态。你有$island.wood块木头。
+<<if $island_campfire_countdown lte 0>>
+	<<icon "furniture_placed/campfire_(placed)_off.png">>
+<<else>>
+	<<icon "furniture_placed/Campfire_(placed).gif">>
+<</if>><br>
+<br>
+<<if $island.wood gte 1>>
+	<<if $island_campfire_countdown lte 0>>
+		<<link [[点燃篝火 (0:05)|Fish Island Campfire Fuel]]>><<island_pass 5>><</link>><br>
+	<<else>>
+		<<link [[添加柴火 (0:05)|Fish Island Campfire Fuel]]>><<island_pass 5>><</link>><br>
+	<</if>>
+<<else>>
+	<span class="blue">你没有木头，无法为篝火添加燃料。</span><br>
+<</if>>
+<<if $island_campfire_countdown gt 360>>
+	<<link [[烤鱼 (0:20)|Fish Island Campfire Roast 1]]>><</link>>
+<<else>>
+	<i>篝火需要达到<span class="teal">平稳燃烧</span>的状态才能烤鱼。</i><br>
+<</if>>
+<br>
+<<link [[返回|Fish Island]]>><</link>>
+
+:: Fish Island Campfire Fuel
+<<set $island.wood -= 1>>
+<<set $island_campfire_countdown += 180>>
+<<set $island_campfire_countdown to $island_campfire_countdown gte 720 ? 720 : $island_campfire_countdown>>
+<<if $island_campfire_countdown lte 0>>
+	你点燃了一些干草和干燥的树枝，待火苗慢慢稍大之后，再把它小心地放在篝火上。最后往其中继续添加树枝和木头。不久后，篝火重新燃烧起来了。<br>
+<<else>>
+	你拿起一块木头，先放在篝火边上烤了烤，然后将它小心地推了进去。<br>
+<</if>>
+<br>
+篝火现在处于<<campfire_info>>的状态。<br>
+<br>
+<<link [[继续|Fish Island Campfire]]>><</link>>
+
+:: Fish Island Campfire Info [widget]
+<<widget "campfire_info">>
+	<<if $island_campfire_countdown lte 0>>
+		<span class="red">已经熄灭</span>
+	<<elseif $island_campfire_countdown lte 180>>
+		<span class="purple">只有火苗了</span>
+	<<elseif $island_campfire_countdown lte 360>>
+		<span class="blue">火势微弱</span>
+	<<elseif $island_campfire_countdown lte 540>>
+		<span class="teal">平稳燃烧</span>
+	<<elseif $island_campfire_countdown lte 720>>
+		<span class="green">火势旺盛</span>
+	<<else>>
+		<span class="red">"你的篝火燃烧太旺了！请联系模组作者以修复此问题！"</span>
+	<</if>>
+<</widget>>
+
+:: Fish Island Campfire Roast 1
+你打算烤哪条鱼？<br><<housekeepingdifficulty 400 600>>
+<span class="no_numberify">
+	<<set _fishObtained to getFishObtainedList()>>
+	<div class="itemTerra">
+		<<for _t to 0; _t lt _fishObtained.length; _t++>>
+			<<set _fish to setup.terraFish[_fishObtained[_t]]>>
+			<<if _fish.type is "cookable">>
+				<<capture _fish>>
+					<div class="item">
+						<div @tooltip="`${_fish.cn_name}`">
+							<<icon `_fish.icon`>>
+						</div>
+						<hr>
+						<<print _fish.amount>>
+						<hr>
+						<<link "⬆" "Fish Island Campfire Roast 2">>
+							<<set V[_fish.name] -= 1>>
+							<<island_pass 20>>
+							<<set $island_campfire_roast to setup.terraFish[_fish.name]>>
+						<</link>>
+					</div>
+				<</capture>>
+			<</if>>
+		<</for>>
+	</div>
+</span>
+<<link [[返回|Fish Island Campfire]]>><</link>>
+
+:: Fish Island Campfire Roast 2
+你决定烤一条<<icon `$island_campfire_roast.icon`>><<print $island_campfire_roast.cn_name>>。<br>
+<br>
+你在篝火旁坐下，将处理好的鱼穿在一根干净的树枝上，然后举着它在篝火上烤。<br>
+<br>
+<<if $housekeepingSuccess>>
+	油脂在炙烤之下不断渗出，滴在火焰中发出劈里啪啦的声音，香味也飘了出来。你适时地翻面，保证两面均匀受热。<br>
+	<br>
+	过了一会儿，鱼的表皮呈现出令人满意的颜色。这条鱼差不多可以吃了。<br>
+	<br>
+	外脆里嫩，鲜美可口。享用完这顿美餐后，你感到很幸福。<<lstress>><<stress -5>><<llhunger>><<hunger -350>><br>
+<<else>>
+	当你发觉自己已经一段时间没有翻面的时候，已经太晚了。<br>
+	<br>
+	你赶紧把鱼翻了过来，却发现那一面已经完全焦了，而这一面甚至还是生的！<br>
+	<br>
+	看来你还需要学着把控火候。<<gstress>><<stress 5>><<lhunger>><<hunger -250>><<housekeeping 1 600>><<ghousekeeping 600>><br>
+<</if>>
+<br>
+<<link [[继续|Fish Island Campfire]]>><<unset $island_campfire_roast>><</link>>

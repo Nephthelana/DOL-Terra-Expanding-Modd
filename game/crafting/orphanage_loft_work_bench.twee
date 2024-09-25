@@ -1,13 +1,10 @@
 :: Orphanage Loft Work Bench Unlock [widget]
 <<widget "orphanage_loft_work_bench">>
 
-<<if $orphanage_loft_crafting_station is undefined>>
-	<<set $orphanage_loft_crafting_station to []>>
-<</if>>
 <<if !$orphanage_loft_crafting_station.includes("Work_Bench")>>
 	<<if currentSkillValue('housekeeping') gte 200>>
 		有一张小木桌子上同样堆满了箱子。你注意到箱底压着几张放在桌上的图纸。<br>
-		<<link [[搬走上面的箱子|Orphanage Loft Work Bench 1]]>><</link>>
+		<<ind>><<link [[搬走上面的箱子|Orphanage Loft Work Bench 1]]>><</link>><br>
 	<</if>>
 <<else>>
 	<<icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Orphanage Loft Work Bench]]>><</link>><br>
@@ -83,6 +80,7 @@
 						<hr>
 						<<link "制作">>
 							_recipe.craft
+							<<set $crafting_count.Work_Bench += 1>>
 							<<if _recipe.type is "food">>
 								<<housekeeping 1 600>>
 							<</if>>
