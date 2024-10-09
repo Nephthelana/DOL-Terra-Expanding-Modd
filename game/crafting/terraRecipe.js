@@ -693,7 +693,26 @@ setup.terraRecipe = {
 		craftable: "<<set _craftable to ($Sashimi gte 2 and $Master_Bait gte 3) ? true : false>>",
 		craft: "<<set $Sashimi -= 2>><<set $Master_Bait -= 3>><<set $fertiliser.current += 1>>",
 		crafting_info: "你制作了1袋<<icon \"fertiliser.png\">>肥料。<br>你有<<icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<icon \"fishing/bait/Master_Bait.png\">>大师诱饵($Master_Bait)。",
+<<<<<<< Updated upstream
 	}
+=======
+	},
+	//鱼饵
+	"Enchanted_Nightcrawler": {
+		name: "Enchanted_Nightcrawler",
+        cn_name: "附魔夜行者",
+		des: "35渔力",
+        type: "bait",
+        icon: "fishing/bait/Enchanted_Nightcrawler.png",
+		required_material: ["Worm","Fallen_Star"],
+		required_material_info: "<<icon \"fishing/bait/Worm.png\">>蠕虫(1)<br><<icon \"material/Fallen_Star.png\">>坠落之星(1)",
+		required_crafting_station: "Work_Bench",
+		required_crafting_station_info: "<<icon \"furniture_item/Work_Bench.png\">>工作台",
+		craftable: "<<set _craftable to ($Worm gte 1 and $Fallen_Star gte 1) ? true : false>>",
+		craft: "<<set $Worm -= 1>><<set $Fallen_Star -= 1>><<set $Enchanted_Nightcrawler += 1>>",
+		crafting_info: "你制作了1只<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者。<br>你有<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者($Enchanted_Nightcrawler)，你还有<<icon \"fishing/bait/Worm.png\">>蠕虫($Worm)和<<icon \"material/Fallen_Star.png\">>坠落之星($Fallen_Star)。",
+	},
+>>>>>>> Stashed changes
 }
 
 function getAllRecipeList() {

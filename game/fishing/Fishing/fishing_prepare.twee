@@ -27,5 +27,7 @@
 	<</switch>>
 
 	<<set $fishingphase to 0>>
+	<<set $fish_relax_count to 0>>
+	<<set $fish_struggle_count to 0>>
 
 <</widget>>

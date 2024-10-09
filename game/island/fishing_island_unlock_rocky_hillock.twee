@@ -1,0 +1,68 @@
+:: Fishing Island Unlock Rocky Hillock 1
+你沿着鞍部小心地走下去，又顺着山脊向上而行。你感觉身边的风越来越大，天色越来越阴沉。抬头一看，云雾仿佛触手可及。<br>
+<br>
+又走了一段时间，你发现山上开始下起了雨。你的额头和后背也流下了汗水，低沉的雷鸣环绕着你。<br>
+<br>
+<<if $trauma gte (($traumamax / 10) * 8)>>
+	远处的视野开始变得模糊，白雾像蜘蛛丝一样挂在树间。你只能看清身边的东西，担心有危险潜伏在迷雾之中。你感到十分不安。<<gstress>><<stress 5>><br>
+<<else>>
+	远处的视野开始变得模糊，迷人的白雾填满了树林的每个孔隙。你只能看清身边的东西。你从没见过如此奇妙的景色，怀疑自己误入了仙境。<<lstress>><<stress -5>><br>
+<</if>>
+<br>
+<<link [[继续|Fishing Island Unlock Rocky Hillock 2]]>><</link>>
+
+:: Fishing Island Unlock Rocky Hillock 2
+又走了一段路，你觉得雨渐渐小了。抬头时，忽然有耀眼的阳光照在你的脸上。<br>
+<br>
+你眯起眼睛环顾四周，发现面前是一片美丽的湖泊。你来到一处较高的地方眺望整片湖泊，湖水清澈纯洁，
+<<if Time.dayState is "night">>
+	月光和星星也无法掀起一点波澜。
+<<else>>
+	日轮那光辉的倒影被恬静的蓝色温柔地怀抱着。
+<</if>>
+湖的四周被云雾环绕，但湖面上却天清云淡，就好像这里是被青云托起的天空湖。<br>
+<br>
+看来你刚刚确实穿过了云层。<br>
+<br>
+你的心里被美妙的景色治愈了。<<lstress>><<stress -5>><<ltrauma>><<trauma -3>><br>
+<br>
+<<link [[继续 (0:10)|Fishing Island Unlock Rocky Hillock 3]]>><<island_pass 10>><</link>>
+
+:: Fishing Island Unlock Rocky Hillock 3
+你沿着湖走了一圈，这里似乎很安全，没有野兽出没的痕迹，也没有原住民活动的迹象。你想在这里洗个澡，但是忽然发现了一个插在岸边的金属告示牌。
+<<if $islander_language gte 80>>
+	你仔细查看，发现上面用岛民语写着"禁止游泳"，还配上了一个图标。<br>
+<<else>>
+	你仔细查看，发现上面写着你无法理解的文字。不过下面还有一个标志，很明显是禁止游泳的意思。<<gcomprehension>><<islander_language 1>><br>
+<</if>>
+<br>
+<<if $sciencetrait gte 3>>
+	这时你才察觉到这片湖泊的诡异之处。你刚刚已经绕湖一周，既没有发现汇入它的河流，也没有发现其中的去向，然而它水体清澈、水位稳定，并不像个死湖。你想起西里斯在科学课上的内容——恐怕是因为这片湖与地下河相连，水下必然是暗流涌动，非常危险。<br>
+	<br>
+	想到这里，你恍然大悟，你现在知道为什么会有禁止游泳的牌子了。但你仍然有些疑惑，因为这块牌子不像是岛民能够制作的东西。<br>
+<<else>>
+	你感到很疑惑。这个金属告示牌明显不是岛民能制作的，但你还是决定遵守它的要求。<br>
+<</if>>
+<br>
+<<if $fishing_island_unlock.length is 0>>
+	<<link [[继续 (0:30)|Fishing Island Unlock Rocky Hillock 4]]>><<island_pass 30>><</link>>
+<<else>>
+	<<link [[继续|Fishing Island Unlock Rocky Hillock]]>><</link>>
+<</if>>
+
+:: Fishing Island Unlock Rocky Hillock 4
+你正要转身离开。忽然，你灵光一现：虽然不能在这里游泳或者洗澡，但是钓鱼应该没有问题吧？<br>
+<br>
+你掏出鱼竿。经过近三十分钟的等待，有鱼咬钩了！你惊喜得跳了起来，一边稳住钓竿、小心收线，一边祈祷鱼线不要断掉。<br>
+<br>
+经过几分钟的斗争，那条倒霉鱼儿失败了，落入了你的手中。<br>
+<br>
+<<link [[继续|Fishing Island Unlock General 1]]>><</link>>
+
+:: Fishing Island Unlock Rocky Hillock
+<<set $fishing_island_unlock.pushUnique("rocky_hillock")>>
+虽然不能下水游泳或者洗澡，但这里毫无疑问是个钓鱼的好地方。你觉得以后可以来此处钓鱼。<br>
+<br>
+<span class="gold">你现在可以前往天湖钓鱼了！</span><br>
+<br>
+<<link [[返回 (0:20)|Island]]>><<island_pass 20>><<set $island_fishing_place_unlock to undefined>><</link>>

@@ -5,5 +5,20 @@
 	<br>
 	<<icon "Royal_Delight.png">><span class="teal">"适合国王的甜点！"</span><span class="gold"><i>感谢游玩泰拉瑞亚拓展模组！</i></span>
 <</if>>
+<<<<<<< Updated upstream
+=======
+<<if $Zephyr_Fish>>
+	<br>
+	<<icon "Zephyr_Fish.png">>"它喜欢在你周围游泳。"
+<</if>>
+<<if $Rusted_Jingle_Bell>>
+	<br>
+	<<icon "Rusted_Jingle_Bell.png">>"敲响后会发出悦耳的声音。"
+<</if>>
+<<if $Shark_Bait>>
+	<br>
+	<<icon "Shark_Pup_in_Bubble.gif">>"嘟嘟嘟嘟嘟嘟"
+<</if>>
+>>>>>>> Stashed changes
 
 <</widget>>

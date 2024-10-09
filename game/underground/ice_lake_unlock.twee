@@ -1,0 +1,119 @@
+:: Ice Lake Unlock [widget]
+<<widget "terra_underground_ice_lake_unlock">>
+
+<<if $underground_ice_lake_unlock is undefined and $sciencetrait gte 2>>
+	<br>
+	这里位于洞穴之中，但你注意到此地的水流声表明附近存在一处有着很大落差的地方。你循着水声，找到这个由落差产生特别的水流声的源头。<span class="gold">附近存在着一条暗河，你可以从这里进去一探究竟。</span><<terraHint>><br>
+	<br>
+	<<ind>><<link [[顺流而下 (0:20)|Underground Ice Lake Intro 1]]>><<pass 20>><</link>><br>
+<<elseif $underground_ice_lake_unlock>>
+	<br>
+	你可以从这里前往地下永冻湖。<br>
+	<<icon "location/underground_ice_lake.png">><<link [[顺流而下 (0:20)|Underground Ice Lake Trip]]>><<pass 20>><</link>><br>
+<</if>>
+
+<</widget>>
+
+:: Underground Ice Lake Intro 1
+<<set $underground_ice_lake_unlock to true>>
+<<location "underground_ice_lake">>
+<<handheldon>>
+你沿着暗河而下。四周的空气越发寒冷。<br>
+<br>
+<<if $terra_accessories_slots.includes("Magiluminescence")>>
+	<span class="gold"><<icon "accessories/Magiluminescence.png">>魔光护符照亮着你前进的路。</span>这个隐蔽的洞穴顶部长有结实的冰锥，看着十分尖利，但没有掉下来的迹象。
+<<elseif $catacombs_torch gt 0>>
+	<<catacombs_torch_text>>这个隐蔽的洞穴顶部似乎长有结实的冰锥。你试图举起火把仔细查看，但火把的热量，再加上曳动的火光，使它们显得摇摇欲坠。你赶紧把火把重新抱在胸前。
+<<else>>
+	<span class="black">你眼前一片漆黑，但你仍尝试着努力地摸索着冰凉的洞壁。</span>
+<</if>><br>
+<br>
+脚下坚硬的岩石，逐渐被光滑的冰面所覆盖。你小心翼翼地在冰梯上行走，以免滑倒。<br>
+<br>
+不多时，你在经过一个转角处后，发现隧道的末端有光线照了进来。你加快了脚步，顶着越发渗入骨髓的寒意，到达了通道的尽头。<br>
+<br>
+<<if $catacombs_torch gt 0>>
+	<<set $catacombs_torch to 0>>
+	<span class="red">你手中的火把在这次短途旅行中熄灭了。</span><br>
+	<br>
+<</if>>
+<<link [[继续|Underground Ice Lake Intro 2]]>><</link>>
+
+:: Underground Ice Lake Intro 2
+映入眼帘的是一片洞穴中的冰天雪地。正中央有一片和森林湖面积一半大的冰面，平滑地反射出顶上悬垂下来的巨大冰锥。<br>
+<br>
+四周的壁面插着一些火把。奇特的是，这些火把发出明亮的白光，寥寥几支便将整个洞穴照亮得如同白昼。它们看起来不需要燃料作为供给，但也不会给人带来任何温暖。<br>
+<br>
+你走到冻结的湖边，用脚试探了一下。冰面十分结实，也看不出下方是否有水。不过很快，冰面下一条身影逐渐清晰的游鱼回答了你的疑惑：显然它是从水中上浮来的。这里生活着能抵抗这种严寒的鱼类。<br>
+<br>
+<span class="teal">如果你带着合适的工具，可以敲开冰面看看水里到底能钓上来什么东西。</span><br>
+<br>
+<<link [[继续|Underground Ice Lake]]>><</link>>
+
+:: Underground Ice Lake Trip
+<<location "underground_ice_lake">><<handheldon>>
+你沿着先前探索的路，来到了这片地下永冻湖的入口处。<br>
+<br>
+<<if $catacombs_torch gt 0>>
+	<<set $catacombs_torch to 0>>
+	<span class="red">你手中的火把在这次短途旅行中熄灭了。</span><br>
+	<br>
+<</if>>
+<<link [[继续|Underground Ice Lake]]>><</link>>
+
+:: Underground Ice Lake
+<<location "underground_ice_lake">>
+你站在这片地下永冻湖前。周围的银装素裹让你感觉这里像是一片静谧的桃花源——除了冷之外什么都好。<br>
+<br>
+你可以在这里练习滑冰。<br>
+<<lakeicon "skate">><<link [[滑冰 (0:30)|Underground Ice Lake Skate]]>><<pass 30>><<tiredness 5>><<danceskill 5>><</link>><<gtiredness>><<gdanceskill>><br>
+<br>
+附近的一片地面上生长着几株盛开着白色花朵的植物。蓝色的茎干看起来柔弱，但和花朵一样，在这个严寒的环境中没有一丝退却。<br>
+<span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
+<br>
+坚固的冰面下隐约可以见到几条正在游动的鱼。
+<<if $underground_ice_lake_broken gte 1>>
+	<<print $underground_ice_lake_broken gte 2 ? "你可以在新凿开的冰洞里钓鱼了。" : "冰洞开始重新冻结，但目前还是可以钓鱼的。">><br>
+	<<fishingrod_held_icon>><<link [[在永冻湖钓鱼|Fishing Bitten]]>><<set $fishing_place to "ice">><<fishing_cast_time>><</link>><br>
+<<elseif $Gravediggers_Shovel>>
+	<span class="teal">你可以用<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子敲出一个足够大的冰洞。</span><br>
+	<<swimicon "break">><<link [[破冰 (0:30)|Underground Ice Lake Break]]>><<pass 30>><<set $underground_ice_lake_broken to 2>><<tiredness 10>><</link>><<ggtiredness>><br>
+<<else>>
+	<span class="blue">面对这个厚实的冰面，你需要借助工具才能敲开它。如果你向博物馆捐赠足够多的古董，温特会给你一把的。</span><br>
+<</if>>
+<br>
+<span class="teal">湖对岸似乎还有另一个洞口，但是作者还没写()所以之后更新了再来看看吧！</span><br>
+<br>
+<<getouticon>><<link [[返回老教堂墓地 (0:20)|Underground Ice Lake Leave]]>><<pass 20>><</link>>
+
+:: Underground Ice Lake Skate
+<<effects>>
+你站在冰面上。
+<<if currentSkillValue('danceskill') gte 1000>>
+	你优雅地滑过、跳跃和旋转。
+<<elseif currentSkillValue('danceskill') gte 800>>
+	你以良好的速度滑行，并练习更高级的技巧。
+<<elseif currentSkillValue('danceskill') gte 600>>
+	你以良好的速度滑过。
+<<elseif currentSkillValue('danceskill') gte 400>>
+	你的步伐很好，很少摇晃。
+<<elseif currentSkillValue('danceskill') gte 200>>
+	你有点摇摇晃晃，但设法将一只脚放在另一只脚前面而不会摔倒。
+<<elseif currentSkillValue('danceskill') gte 100>>
+	你可以保持直立，但仅此而已。
+<<else>>
+	你甚至很难保持直立。<<gpain>><<pain 4>>
+<</if>><br>
+<br>
+<<link [[继续|Underground Ice Lake]]>><</link>>
+
+:: Underground Ice Lake Break
+你用<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子对冰面一阵敲打和开凿。尽管十分费力，你还是挖出了一个足够用于钓鱼的冰洞。<br>
+<br>
+<<link [[继续|Underground Ice Lake]]>><</link>>
+
+:: Underground Ice Lake Leave
+<<location "sepulchre">><<set $bus to "catacombs">><<set $catacombs_torch to 0>><<wearProp "torch">><<effects>>
+沿着来时的路，你回到了老教堂墓地。<br>
+<br>
+<<link [[继续|Catacombs Stream]]>><</link>>

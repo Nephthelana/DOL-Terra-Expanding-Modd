@@ -78,13 +78,22 @@
 <<set $Red_Admiral_Butterfly = 0>>
 <<set $Purple_Emperor_Butterfly = 0>>
 <<set $Tree_Nymph_Butterfly = 0>>
+<<set $Red_Dragonfly = 0>>
+<<set $Orange_Dragonfly = 0>>
+<<set $Yellow_Dragonfly = 0>>
+<<set $Green_Dragonfly = 0>>
+<<set $Blue_Dragonfly = 0>>
+<<set $Black_Dragonfly = 0>>
+<<set $Gold_Dragonfly = 0>>
 <<set $Stinkbug = 0>>
 <<set $Worm = 0>>
 <<set $Gold_Worm = 0>>
 <<set $Firefly = 0>>
 <<set $Lightning_Bug = 0>>
+<<set $Lavafly = 0>>
 <<set $Snail = 0>>
 <<set $Glow_Snail = 0>>
+<<set $Magma_Snail = 0>>
 <<set $Grasshopper = 0>>
 <<set $Gold_Grasshopper = 0>>
 <<set $Maggot = 0>>
@@ -141,6 +150,9 @@
 <<set $Coastal_Demonfish = 0>>
 <<set $Crag_Bullhead = 0>>
 /* 垃圾数量 */
+<<set $Old_Shoe = 0>>
+<<set $Seaweed_junk = 0>>
+<<set $Tin_Can = 0>>
 <<set $Joja_Cola = 0>>
 
 /* 森林商店鱼饵初始化 */
@@ -223,9 +235,47 @@
 	Work_Bench: 0,
 	Iron_Anvil: 0,
 	Cooking_Pot: 0,
+	Tinkerers_Workshop: 0,
 }>>
 
 /* 阁楼制作站初始化 */
 <<set $orphanage_loft_crafting_station to []>>
 
+<<<<<<< Updated upstream
+=======
+<!-- 落星概率初始化 -->
+<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
+<<fallen_star_rate_set>>
+
+<!-- 落星可能掉落的区域 -->
+<<set setup.fallenStarAreas to [
+	"Barb Street", "Cliff Street", "Connudatus Street", "Danube Street", "Domus Street", "Elk Street",
+	"Harvest Street", "High Street", "Mer Street", "Nightingale Street", "Oxford Street", "Starfish Street", "Wolf Street",
+
+	"Residential alleyways", "Commercial alleyways", "Industrial alleyways", "Park",
+
+	"Flats", "Coast Path", "Bus Station", "School Front Courtyard", "School Roof", "School Rear Courtyard", "Commercial rooftops",
+	"Trash", "Temple Garden", "Manor Garden", "Manor Grounds", "Lake Shore", "Lake Firepit", "Lake Waterfall", "Forest Brook", 
+	"Lake Fishing Rock", "Lake Campsite", "Beach",
+	
+	"Forest", "Churchyard", "Moor", "Farmland", "Farm Road 1", "Farm Road 2", "Farm Road 3", "Farm Road 4", "Farm Road 5", "Farm Road 6",
+	"Bog", "Meadow",
+
+	"Wolf Cave Clearing", "Wolf Cave Plots", "Eden Clearing", "Eden Plots", "Farm Work", "Farm Fields", "Farm Woodland", "Bird Tower",
+
+	"Island", 
+]>>
+
+<!-- 发光地衣数量初始化 -->
+<<set $Argon_Moss to 0>>
+<<set $Krypton_Moss to 0>>
+<<set $Lava_Moss to 0>>
+<<set $Neon_Moss to 0>>
+<<set $Xenon_Moss to 0>>
+<<set $Helium_Moss to 0>>
+
+<!-- 计算魔光护符降低意识的变量 -->
+<<set $Magiluminescence_timer to 0>>
+
+>>>>>>> Stashed changes
 <</widget>>

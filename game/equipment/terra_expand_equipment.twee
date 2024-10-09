@@ -66,7 +66,9 @@
 						<div class="item">
 							<<set _isArmorSet to $armor_set_bonus is undefined ? "" : "<br>_armor.set_bonus">>
 							<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
-								<<icon `_armor.icon_item`>>
+								<div class="itemTerraGeneral">
+									<<icon `_armor.icon_item`>>
+								</div>
 							</div>
 							<hr>
 							<<link "卸下">>
@@ -90,7 +92,9 @@
 				<</for>>
 			<<else>>
 				<div class="item">
-					<img @src="'img/misc/icon/armor/' + $terra_armor_slots[_i] + '.png'">
+					<div class="itemTerraGeneral">
+						<img @src="'img/misc/icon/armor/' + $terra_armor_slots[_i] + '.png'">
+					</div>
 					<hr>
 					空
 				</div>
@@ -114,7 +118,9 @@
 			<<if !$terra_armor_slots.includes(_armor.name)>>
 				<div class="item">
 					<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
-						<<icon `_armor.icon_item`>>
+						<div class="itemTerraGeneral">
+							<<icon `_armor.icon_item`>>
+						</div>
 					</div>
 					<hr>
 					<<link "装备">>
@@ -156,7 +162,9 @@
 				<div class="item">
 					<<set _isMaterial to _accessory_equipped.material ? "<br><i>材料</i>" : "">>
 					<div @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}`">
-						<<icon `_accessory_equipped.icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_accessory_equipped.icon`>>
+						</div>
 					</div>
 					<hr>
 					<<link "卸下">>
@@ -197,7 +205,9 @@
        			<div class="item">
 					<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
 					<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}`">
-						<<icon `_accessory.icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_accessory.icon`>>
+						</div>
 					</div>
 					<<if $terra_accessories_slots.length lt 6>>
 						<hr>

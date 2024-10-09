@@ -81,6 +81,14 @@
 	<</if>>
 
 	你们今天去哪里钓鱼？<br>
+	<<if $fishing_place_lake_fishing_rock_unlock isnot true and $fishing_place_beach_unlock isnot true and $fishing_place_barb_street_unlock isnot true>>
+		<br>
+		你回想了一下，你还没有发现合适的钓鱼点来和罗宾一起钓鱼。<br>
+		<br>
+		<span class="black">你看起来还没有解锁合适的钓鱼点！我知道你是怎么看到这则提示的(被我抓到啦哈哈)。所以请你在解锁了<i>森林湖的钓鱼岩</i>、<i>海滩</i>、<i>倒钩街</i>这三处钓鱼点中的至少一处后，再来找罗宾一起钓鱼。</span><br>
+		<br>
+		<<link [[返回|Robin's Room Entrance]]>>'<</link>>
+	<</if>>
 	<<if $fishing_place_lake_fishing_rock_unlock>>
 		<<lakeicon>><<link [[森林湖|Robin Fishing Bait Give]]>>
 			<<set $fishing_place to "lake_fishing_rock">>

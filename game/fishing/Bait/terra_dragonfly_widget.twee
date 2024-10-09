@@ -1,0 +1,168 @@
+:: Terra Dragonfly [widget]
+<<widget "terraDragonflyEstate">>
+	<<if $daily.estate_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds")>>
+		<<if random(1,400) is 1>>
+			<<set $random_dragonfly to "Gold_Dragonfly">>
+		<<else>>
+			<<set $random_dragonfly to ["Orange_Dragonfly","Yellow_Dragonfly","Black_Dragonfly"].random()>>
+		<</if>>
+		<img @src="'img/misc/icon/fishing/bait/bait_animation/' + $random_dragonfly + '.gif'">
+		你看到有几只蜻蜓在沙地的水池边打转。<br>
+		<<if $Bug_Net or $Golden_Bug_Net>>
+			<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>" : "<<icon \"tool/Bug_Net.png\">>">>
+			<<link [[试着抓住它们|Terra Dragonfly Estate Catch]]>><</link>>
+			<<if $Golden_Bug_Net>>
+				<<athleticsdifficulty 500 1200>>
+			<<else>>
+				<<athleticsdifficulty 500 1500>>
+			<</if>>
+			<br>
+		<<else>>
+			<<ind>><<link [[试着追上它们|Terra Dragonfly Estate Chase]]>><</link>><<athleticsdifficulty 500 1800>><br>
+		<</if>>
+		<br>
+	<</if>>
+<</widget>>
+
+<<widget "terraDragonflyLake">>
+	<<if $daily.lake_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds")>>
+		<<if random(1,400) is 1>>
+			<<set $random_dragonfly to "Gold_Dragonfly">>
+		<<else>>
+			<<set $random_dragonfly to ["Red_Dragonfly","Green_Dragonfly","Blue_Dragonfly"].random()>>
+		<</if>>
+		<img @src="'img/misc/icon/fishing/bait/bait_animation/' + $random_dragonfly + '.gif'">
+		你看到有几只蜻蜓在森林湖边打转。<br>
+		<<if $Bug_Net or $Golden_Bug_Net>>
+			<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>" : "<<icon \"tool/Bug_Net.png\">>">>
+			<<link [[试着抓住它们|Terra Dragonfly Lake Catch]]>><</link>>
+			<<if $Golden_Bug_Net>>
+				<<athleticsdifficulty 500 1200>>
+			<<else>>
+				<<athleticsdifficulty 500 1500>>
+			<</if>>
+			<br>
+		<<else>>
+			<<ind>><<link [[试着追上它们|Terra Dragonfly Lake Chase]]>><</link>><<athleticsdifficulty 500 1800>><br>
+		<</if>>
+		<br>
+	<</if>>
+<</widget>>
+
+:: Terra Dragonfly Estate Catch
+<<if $Golden_Bug_Net>>
+	<<silently>><<athleticsdifficulty 800 1200>><</silently>>
+<<else>>
+	<<silently>><<athleticsdifficulty 800 1500>><</silently>>
+<</if>>
+你蹑手蹑脚地靠近这些蜻蜓。在移动到被它们察觉之前的最短距离时，你用最快的速度向它们冲了过去。<<gathletics>><<athletics 2>><<physique 2>><br>
+<br>
+<<if $athleticsSuccess>>
+	<<set $daily.estate_dragonfly to true>>
+	<<set _Estate_Dragonfly to ["Gold_Dragonfly","Orange_Dragonfly","Yellow_Dragonfly","Black_Dragonfly"]>>
+	<<set _caught to {
+		Gold_Dragonfly: 0,
+		Orange_Dragonfly: 0,
+		Yellow_Dragonfly: 0,
+		Black_Dragonfly: 0,
+	}>>
+	<<set _bait to random(2,4)>>
+	<<set _dragonfly_catch to [$random_dragonfly]>>
+	<<for _i to 1; _i lt _bait; _i++>>
+		<<if random(1,400) is 1>>
+			<<set _dragonfly_catch.push("Gold_Dragonfly")>>
+		<<else>>
+			<<set _dragonfly_catch.push(["Orange_Dragonfly","Yellow_Dragonfly","Black_Dragonfly"].random())>>
+		<</if>>
+	<</for>>
+	<<for _j to 0; _j lt 4; _j++>>
+		<<set _caught[_Estate_Dragonfly[_j]] to _dragonfly_catch.count(_Estate_Dragonfly[_j])>>
+	<</for>>
+	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
+	<br>
+	你抓到了：<br>
+	<<for _k to 0; _k lt 4; _k++>>
+		<<set _caught_amount to _caught[_Estate_Dragonfly[_k]]>>
+		<<if _caught_amount gt 0>>
+			<<set _caught_dragonfly to setup.terraBait[_Estate_Dragonfly[_k]]>>
+			<<print "<<icon `_caught_dragonfly.icon`>>_caught_amount只_caught_dragonfly.cn_name<br>">>
+			<<set V[_Estate_Dragonfly[_k]] += _caught_amount>>
+		<</if>>
+	<</for>>
+<<else>>
+	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>
+<</if>>
+<br>
+<<link [[返回|Moor]]>><</link>>
+
+:: Terra Dragonfly Estate Chase
+你蹑手蹑脚地靠近这些蜻蜓。在移动到被它们察觉之前的最短距离时，你用最快的速度向它们冲了过去。<<gathletics>><<athletics 2>><<physique 2>><br>
+<br>
+<<if $athleticsSuccess>>
+	<span class="green">你勉强追上了</span>，而当你试着伸手去够到其中一只时，它们灵活地一转方向，然后溜了。<br>
+<<else>>
+	<span class="red">你根本追不上</span>，它们实在是又快又灵活。<br>
+<</if>>
+<br>
+如果你有一个<span class="gold">虫网</span>，兴许就能抓住它们。<br>
+<br>
+<<link [[返回|Moor]]>><</link>>
+
+:: Terra Dragonfly Lake Catch
+<<if $Golden_Bug_Net>>
+	<<silently>><<athleticsdifficulty 800 1200>><</silently>>
+<<else>>
+	<<silently>><<athleticsdifficulty 800 1500>><</silently>>
+<</if>>
+你蹑手蹑脚地靠近这些蜻蜓。在移动到被它们察觉之前的最短距离时，你用最快的速度向它们冲了过去。<<gathletics>><<athletics 2>><<physique 2>><br>
+<br>
+<<if $athleticsSuccess>>
+	<<set $daily.estate_dragonfly to true>>
+	<<set _Lake_Dragonfly to ["Gold_Dragonfly","Red_Dragonfly","Green_Dragonfly","Blue_Dragonfly"]>>
+	<<set _caught to {
+		Gold_Dragonfly: 0,
+		Red_Dragonfly: 0,
+		Green_Dragonfly: 0,
+		Blue_Dragonfly: 0,
+	}>>
+	<<set _bait to random(2,4)>>
+	<<set _dragonfly_catch to [$random_dragonfly]>>
+	<<for _i to 1; _i lt _bait; _i++>>
+		<<if random(1,400) is 1>>
+			<<set _dragonfly_catch.push("Gold_Dragonfly")>>
+		<<else>>
+			<<set _dragonfly_catch.push(["Red_Dragonfly","Green_Dragonfly","Blue_Dragonfly"].random())>>
+		<</if>>
+	<</for>>
+	<<for _j to 0; _j lt 4; _j++>>
+		<<set _caught[_Lake_Dragonfly[_j]] to _dragonfly_catch.count(_Lake_Dragonfly[_j])>>
+	<</for>>
+	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
+	<br>
+	你抓到了：<br>
+	<<for _k to 0; _k lt 4; _k++>>
+		<<set _caught_amount to _caught[_Lake_Dragonfly[_k]]>>
+		<<if _caught_amount gt 0>>
+			<<set _caught_dragonfly to setup.terraBait[_Lake_Dragonfly[_k]]>>
+			<<print "<<icon `_caught_dragonfly.icon`>>_caught_amount只_caught_dragonfly.cn_name<br>">>
+			<<set V[_Lake_Dragonfly[_k]] += _caught_amount>>
+		<</if>>
+	<</for>>
+<<else>>
+	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>
+<</if>>
+<br>
+<<link [[返回|Lake Shore]]>><</link>>
+
+:: Terra Dragonfly Lake Chase
+你蹑手蹑脚地靠近这些蜻蜓。在移动到被它们察觉之前的最短距离时，你用最快的速度向它们冲了过去。<<gathletics>><<athletics 2>><<physique 2>><br>
+<br>
+<<if $athleticsSuccess>>
+	<span class="green">你勉强追上了</span>，而当你试着伸手去够到其中一只时，它们灵活地一转方向，然后溜了。<br>
+<<else>>
+	<span class="red">你根本追不上</span>，它们实在是又快又灵活。<br>
+<</if>>
+<br>
+如果你有一个<span class="gold">虫网</span>，兴许就能抓住它们。<br>
+<br>
+<<link [[返回|Lake Shore]]>><</link>>

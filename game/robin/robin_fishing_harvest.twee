@@ -2,6 +2,14 @@
 /* 专属罗宾的渔获池 */
 <<widget "robin_fishing_harvest">>
 
+	/* 当前钓鱼点是否钓到当日任务鱼 */
+	<<set _requestFish to setup.terraRequestFish[$fishing_request_selection]>>
+	<<if !$fishing_request_fish.includes($fishing_request_selection) and _requestFish.catching_place.includes($fishing_place) and random(1,5) is 1>>
+		<<icon `_requestFish.icon`>>_requestFish.cn_name
+		<<set $fishing_request_fish.pushUnique($fishing_request_selection)>>
+		<<exit>>
+	<</if>>
+
 	/* “极度罕见”渔获判定通过概率 */
 	<<if $robin_fishing_fishing_power gte random(1,4500)>>
 		<<set _fishing_harvest_catch_quality to "extremely_rare">>
@@ -35,20 +43,6 @@
 		<<set _fishing_harvest_crate to false>>
 	<</if>>
 
-	/* 当前钓鱼点能否钓到当日任务鱼 */
-	<<set _allRequestFishList to getAllRequestFishList()>>
-	<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
-		<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
-		<<if $fishing_request_selection is _requestFish.name>>
-			<<if _requestFish.catching_place.includes($fishing_place)>>
-				<<set _request_fish_canbe_obtained to true>>
-			<<else>>
-				<<set _request_fish_canbe_obtained to false>>
-			<</if>>
-			<<break>>
-		<</if>>
-	<</for>>
-
 	/* 各个地点渔获列表 从最高渔获稀有度开始依次判定*/
 	<<switch $fishing_place>>
 		<<case "lake_fishing_rock">>
@@ -67,8 +61,6 @@
 					<</if>>
 				<<case "uncommon">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
-					<<elseif !$fishing_request_fish.includes($fishing_request_selection) and _request_fish_canbe_obtained>>
-						<<robin_fishing_harvest_request_fish>>
 					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $Salmon += 1>>
 					<</if>>
 				<<case "common">>
@@ -96,8 +88,6 @@
 					<</if>>
 				<<case "uncommon">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
-					<<elseif !$fishing_request_fish.includes($fishing_request_selection) and _request_fish_canbe_obtained>>
-						<<robin_fishing_harvest_request_fish>>
 					<<else>><<icon "fishing/fish/Shrimp.png">>虾<<set $Shrimp += 1>>
 					<</if>>
 				<<case "common">>
@@ -128,8 +118,6 @@
 					<</if>>
 				<<case "uncommon">>
 					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $fishing_harvest to "Iron_Crate">>
-					<<elseif !$fishing_request_fish.includes($fishing_request_selection) and _request_fish_canbe_obtained>>
-						<<robin_fishing_harvest_request_fish>>
 					<<else>><<icon "fishing/fish/Armored_Cavefish.png">>装甲洞穴鱼<<set $Armored_Cavefish += 1>>
 					<</if>>
 				<<case "common">>

@@ -10,11 +10,13 @@
 				<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
 				<div class="item">
 					<div @tooltip="_tooltip">
-						<<if $fishing_request_fish.includes(_requestFish.name)>>
-							<<icon `_requestFish.icon`>>
-						<<else>>
-							<span class="terraFading"><<icon `_requestFish.icon`>></span>
-						<</if>>
+						<div class="itemTerraGeneral">
+							<<if $fishing_request_fish.includes(_requestFish.name)>>
+								<<icon `_requestFish.icon`>>
+							<<else>>
+								<span class="terraFading"><<icon `_requestFish.icon`>></span>
+							<</if>>
+						</div>
 					</div>
 					<hr>
 					<<if $fishing_request_fish.includes(_requestFish.name)>>

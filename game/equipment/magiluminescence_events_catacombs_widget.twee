@@ -1,0 +1,171 @@
+:: Magiluminescence Events Catacombs Widget [widget]
+<<widget "events_catacombs_Magiluminescence">>
+
+	<<cleareventpool>>
+	<<if _args[0] is "normal">>
+		<<addinlineevent "catacombs_normal_1" 1>>
+				前面有一根大约横在膝盖位置的绳子。<span class="green">你直接跨过了它。</span>
+				<br><br>
+
+				<<destination_catacombs skip>>
+		<</addinlineevent>>
+		<<addinlineevent "catacombs_normal_2" 1>>
+				前面的一块石板比其他的都高。<span class="green">你跨过它。</span>
+				<br><br>
+
+				<<destination_catacombs skip>>
+		<</addinlineevent>>
+	<</if>>
+	<<if _args[0] is "barrow">>
+		<<addinlineevent "catacombs_barrow_1" 1>>
+			你听到黑暗中有动静。前面有东西，越来越近了。你身后也有东西。到一边去。一切都越来越近了。
+			<br><br>
+
+				你用手托起<<icon "accessories/Magiluminescence.png">>魔光护符，<span class="green">它的光使它们无法靠近。</span>他们逃到深处。
+				<br><br>
+
+				<<destination_catacombs skip>>
+		<</addinlineevent>>
+		<<addinlineevent "catacombs_barrow_2" 1>>
+			你来到一滩白色的液体。它挡住了通道，找到另一条路可能会很困难。
+			<br><br>
+				你借助<<icon "accessories/Magiluminescence.png">>魔光护符<span class="green">看到了从液体中伸出来的几块砖石。</span>你爬上最近的，用它们穿过水池，小心不要摔倒。
+				<br><br>
+
+				<<destination_catacombs skip>>
+		<</addinlineevent>>
+		<<addinlineevent "catacombs_barrow_3" 1>>
+				在洞穴的天花板上，宝石闪闪发光。这些光帮你适应了环境。<<lstress>><<stress -6>>
+			<<destination_catacombs skip>>
+		<</addinlineevent>>
+	<</if>>
+	<<if _args[0] is "compound">>
+		<<addinlineevent "catacombs_compound_1" 1>>
+			<<generate1>><<generate2>>
+			<<person1>>
+			你听到前面有两个声音。
+			<br><br>
+
+			<<rng 5>>
+			<<if $rng is 5>>
+				"我已经要求调职，"一个<<person>>说。
+				<br>
+				"这里太吓人了，是吗？"<<person2>><<person>>笑着说。
+				<br>
+				"我的天！是蜘蛛。我从来都不喜欢他们。"
+			<<elseif $rng is 4>>
+				"在你后面！"一个<<person>>喊道。
+				<br>
+				"操！"一个<<person2>><<person>>震惊地喊道，吓了一跳，转过身来。
+				<br>
+				"让你看看。"<<person1>><<Hes>>得到了一记重击。
+			<<elseif $rng is 3>>
+				"他们要这些电缆干什么？"一个<<person>>问。
+				<br>
+				"不知道，也不在乎，"一个<<person2>><<person>>的回答。
+				<br>
+				"我想我们知道得越少越好。"
+			<<elseif $rng is 2>>
+				"你觉得下面有什么值钱的东西吗？"一个<<person>>问。
+				<br>
+				"不，"一个<<person2>><<person>>回答。"除了我们放进去的东西。我们不会侥幸得逞的。"
+				<br>
+				"可能早就被洗劫一空了。"
+			<<else>>
+				"不要到处闲逛，"一个<<person>>说。
+				<br>
+				"为什么不呢？"一个<<person2>><<person>>反问道，"黑暗吓不倒我。"
+				<br>
+				"这不是黑暗。重要的是里面有什么。"
+			<</if>>
+			<br><br>
+				他们没有注意到你。<span class="green">你溜了。</span>
+				<br><br>
+
+				<<endevent>>
+				<<destination_catacombs skip>>
+		<</addinlineevent>>
+		<<addinlineevent "catacombs_compound_2" 0.5>>
+				<span class="green">你发现前方有一个摄像头，</span>在黑暗中几乎看不见。你本要走进它的视野。你不知道它是干什么用的，但你避开了它的视线。
+				<br><br>
+
+				<<destination_catacombs skip>>
+		<</addinlineevent>>
+	<</if>>
+
+	<<addinlineevent "catacombs_1" 1>>
+		<<if $worn.face.type.includes("blindfold")>>
+			你走着，每一步都很谨慎，小心翼翼，不让自己绊倒或撞上任何东西。你仍然会碰到奇怪的硬角。破碎的陶器在你脚下进一步破碎。<<gpain>><<pain 4>><<gstress>><<stress 6>>
+			<br><br>
+
+			<<destination_catacombs skip>>
+		<<else>>
+			你发现路中间有一个一个直立的，打开的石棺。内部被黑暗笼罩，但你认为你看到一个人在里面。
+			<br><br>
+
+				你吸了一口气，用你的<<icon "accessories/Magiluminescence.png">>魔光护符照亮内部。<span class="green">里面没有尸骸。</span>
+				<<if random(1, 4) is 4>>
+					不过，你确实发现了一些破烂的布屑。你把它们加进了火炬里。<<gtorch>><<catacombs_torch 15>>
+				<</if>>
+				<br><br>
+
+				<<destination_catacombs skip>>
+		<</if>>
+	<</addinlineevent>>
+	<<addinlineevent "catacombs_2" 1>>
+		你在黑暗中听到低语。他们在呼唤你。你感到呼吸急促。
+		<br><br>
+
+			你可以调查一下，证明没什么好怕的。
+			<br><br>
+
+			<<link [[调查|Catacombs Whispers Investigate]]>><<trauma -6>><<catacombs_torch -5>><</link>><<ltorch>><<gtrauma>>
+			<br>
+		<<link [[无视|Catacombs Whispers Ignore]]>><</link>><<willpowerdifficulty 1 1000>>
+		<br>
+	<</addinlineevent>>
+	<<addinlineevent "catacombs_3" 1>>
+			你看到一个大蜘蛛网，完全覆盖了通道。你举起<<icon "accessories/Magiluminescence.png">>魔光护符，<span class="green">扯碎了这些蜘蛛网。</span>
+			<br><br>
+
+			<<destination_catacombs skip>>
+	<</addinlineevent>>
+	<<addinlineevent "catacombs_4" 1>>
+		你来到一堆瓦砾，石头砌成的砖石，没有一点土壤。这里的隧道坍塌了，但仍有裂缝。
+		<br><br>
+
+			你用<<icon "accessories/Magiluminescence.png">>魔光护符探了探这些洞的内部，找定了一个最宽敞的。<span class="green">你有能钻进去的自信。</span>
+			<br><br>
+
+			这需要一点扭动，<span class="green">但你设法把自己拉出来，</span>从瓦砾的另一边爬下来。
+			<br><br>
+
+			<<destination_catacombs skip>>
+	<</addinlineevent>>
+	<<if $spiderdisable is "f">>
+		<<addinlineevent "catacombs_5" 1>>
+				有什么东西在头顶的阴影中移动。你托起<<icon "accessories/Magiluminescence.png">>魔光护符。不管它是什么，<span class="green">它怕光。</span>
+				<br><br>
+
+				<<destination_catacombs skip>>
+		<</addinlineevent>>
+	<</if>>
+	<<addinlineevent "catacombs_6" 1>>
+			<span class="green">你的<<icon "accessories/Magiluminescence.png">>魔光护符照亮了倒下的柱子。</span>你站起来跨过它。
+		<br><br>
+
+		<<destination_catacombs skip>>
+	<</addinlineevent>>
+	<<addinlineevent "catacombs_7" 1>>
+		<<if $worn.feet.type.includes("naked")>>
+				<span class="green">你的<<icon "accessories/Magiluminescence.png">>魔光护符</span>照亮了前方的陶器碎片。你绕过他们。
+		<<else>>
+			破碎的陶器<span class="green">在脚下嘎吱作响</span>。
+		<</if>>
+		<br><br>
+
+		<<destination_catacombs skip>>
+	<</addinlineevent>>
+	<<runeventpool>>
+
+<</widget>>

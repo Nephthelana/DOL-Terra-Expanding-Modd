@@ -86,6 +86,18 @@
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
 	<</if>>
+<<<<<<< Updated upstream
+=======
+	<<if random(1,10) is 1>>
+		、<<icon "furniture_item/Extractinator.png">>提炼机<mouse class="tooltip linkBlue">(?)<span>可以将钓鱼垃圾转换为低级鱼饵，还可以将鹰塔的垃圾转换为鹰塔建造所需的材料。</span></mouse>
+		<<set $Extractinator to true>>
+	<</if>>
+	<<if random(1,10) is 1>>
+		<<set _unload_crate_Iron_Bar = random(2,5)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
+>>>>>>> Stashed changes
 	<<if random(1,3) is 1>>
 		<<if random(1,3) is 1>>
 			<<set _unload_crate_Bait = random(1,4)>>
@@ -107,6 +119,18 @@
 	<<set $Ocean_Crate -= 1>>
 	<<set $unload_crate_count.Ocean_Crate += 1>>
 	<<moneyGain random(500,1200)>>
+<<<<<<< Updated upstream
+=======
+	<<if random(1,10) is 1>>
+		、<<icon "Shark_Bait.png">>鲨鱼鱼饵<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
+		<<set $Shark_Bait to true>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
+>>>>>>> Stashed changes
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Sea_Remains to random(1,2)>>
 		、<<icon "material/Sea_Remains.png">>海洋残渣(_unload_crate_Sea_Remains)
@@ -158,6 +182,9 @@
 			<<set $Dunerider_Boots to true>>
 >>>>>>> Stashed changes
 	<</switch>>
+	<<if random(1,20) is 1>>
+		、<<icon "accessories/Sandstorm_in_a_Bottle.png">>沙暴瓶<<set $Sandstorm_in_a_Bottle to true>>
+	<</if>>
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>
 	<</if>>
@@ -276,7 +303,7 @@
 <<widget "Frozen_Crate_unload">>
 	<<set $Frozen_Crate -= 1>>
 	<<set $unload_crate_count.Frozen_Crate += 1>>
-	<<switch random(1,3)>>
+	<<switch random(1,4)>>
 		<<case 1>>
 			<<icon "accessories/Flurry_Boots.png">>疾风雪靴
 			<<set $Flurry_Boots to true>>
@@ -286,6 +313,9 @@
 		<<case 3>>
 			<<icon "accessories/Ice_Skates.png">>溜冰鞋
 			<<set $Ice_Skates to true>>
+		<<case 4>>
+			<<icon "accessories/Blizzard_in_a_Bottle.png">>暴雪瓶
+			<<set $Blizzard_in_a_Bottle to true>>
 	<</switch>>
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>

@@ -7,6 +7,75 @@ setup.terraAccessories = {
         icon: "fishing/fishing_accessories/Fishing_Bobber.png",
 		des: "增加10点渔力",
     },
+<<<<<<< Updated upstream:game/accessories/terraAccessories.js
+=======
+	"Glowing_Fishing_Bobber": {
+        name: "Glowing_Fishing_Bobber",
+        cn_name: "发光钓鱼浮标",
+		material: true,
+        type: "bobber",
+        obtained: V.Glowing_Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Glowing_Fishing_Bobber.png",
+		des: "增加10点渔力。你的浮标现在会发光",
+    },
+	/*
+	"Helium_Moss_Fishing_Bobber": {
+        name: "Helium_Moss_Fishing_Bobber",
+        cn_name: "氦地衣钓鱼浮标",
+		material: false,
+        type: "bobber",
+        obtained: V.Helium_Moss_Fishing_Bobber,
+		虽然现在用不上了，但还是感谢动车之前帮我制作的合适尺寸的gif图像！！ 
+        icon: "fishing/fishing_accessories/Helium_Moss_Fishing_Bobber.gif",
+		des: "增加10点渔力。你的浮标现在会发光",
+    },
+	"Neon_Moss_Fishing_Bobber": {
+        name: "Neon_Moss_Fishing_Bobber",
+        cn_name: "氖地衣钓鱼浮标",
+		material: false,
+        type: "bobber",
+        obtained: V.Neon_Moss_Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Neon_Moss_Fishing_Bobber.png",
+		des: "增加10点渔力。你的浮标现在会发光",
+    },
+	"Argon_Moss_Fishing_Bobber": {
+        name: "Argon_Moss_Fishing_Bobber",
+        cn_name: "氩地衣钓鱼浮标",
+		material: false,
+        type: "bobber",
+        obtained: V.Argon_Moss_Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Argon_Moss_Fishing_Bobber.png",
+		des: "增加10点渔力。你的浮标现在会发光",
+    },
+	"Krypton_Moss_Fishing_Bobber": {
+        name: "Krypton_Moss_Fishing_Bobber",
+        cn_name: "氪地衣钓鱼浮标",
+		material: false,
+        type: "bobber",
+        obtained: V.Krypton_Moss_Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Krypton_Moss_Fishing_Bobber.png",
+		des: "增加10点渔力。你的浮标现在会发光",
+    },
+	"Xenon_Moss_Fishing_Bobber": {
+        name: "Xenon_Moss_Fishing_Bobber",
+        cn_name: "氙地衣钓鱼浮标",
+		material: false,
+        type: "bobber",
+        obtained: V.Xenon_Moss_Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Xenon_Moss_Fishing_Bobber.png",
+		des: "增加10点渔力。你的浮标现在会发光",
+    },
+	"Lava_Moss_Fishing_Bobber": {
+        name: "Lava_Moss_Fishing_Bobber",
+        cn_name: "熔岩地衣钓鱼浮标",
+		material: false,
+        type: "bobber",
+        obtained: V.Lava_Moss_Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Lava_Moss_Fishing_Bobber.png",
+		des: "增加10点渔力。你的浮标现在会发光",
+    },
+	*/
+>>>>>>> Stashed changes:game/equipment/terraAccessories.js
 	"Angler_Earring": {
         name: "Angler_Earring",
         cn_name: "渔夫耳环",
@@ -111,6 +180,24 @@ setup.terraAccessories = {
         icon: "accessories/Fledgling_Wings.png",
 		des: "使你能从高处滑翔",
     },
+	"Blizzard_in_a_Bottle": {
+        name: "Blizzard_in_a_Bottle",
+        cn_name: "暴雪瓶",
+		material: false,
+        type: "bottle",
+        obtained: V.Blizzard_in_a_Bottle,
+        icon: "accessories/Blizzard_in_a_Bottle.png",
+		des: "在一定限度内防止过热",
+    },
+	"Sandstorm_in_a_Bottle": {
+        name: "Sandstorm_in_a_Bottle",
+        cn_name: "沙暴瓶",
+		material: false,
+        type: "bottle",
+        obtained: V.Sandstorm_in_a_Bottle,
+        icon: "accessories/Sandstorm_in_a_Bottle.png",
+		des: "在一定限度内防止过冷",
+    },
 	"Lucky_Horseshoe": {
         name: "Lucky_Horseshoe",
         cn_name: "幸运马掌",
@@ -160,6 +247,28 @@ setup.terraAccessories = {
         icon: "accessories/Ice_Skates.png",
 		des: "在冰面上行走时更加安全",
     },
+<<<<<<< Updated upstream:game/accessories/terraAccessories.js
+=======
+	"Magiluminescence": {
+        name: "Magiluminescence",
+        cn_name: "魔光护符",
+		material: false,
+        type: "none",
+        obtained: V.Magiluminescence,
+        icon: "accessories/Magiluminescence.png",
+		des: "可在特定地点提供照明，随时间降低<span class='lblue'>意识</span>(\"选项-模组设置\"中开启)<br>▶<i>\"我黑暗生命中的一道短暂曙光。\"</i>",
+    },
+	/*
+	"Lava_Charm": {
+        name: "Lava_Charm",
+        cn_name: "熔岩护身符",
+		material: false,
+        type: "none",
+        obtained: V.Lava_Charm,
+        icon: "accessories/Lava_Charm.png",
+		des: "对熔岩免疫",
+    },
+>>>>>>> Stashed changes:game/equipment/terraAccessories.js
 	*/
 }
 

@@ -9,7 +9,9 @@
 			<<capture _potion>>
 				<div class="item">
 					<div @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
-						<<icon `_potion.item_icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_potion.item_icon`>>
+						</div>
 					</div>
 					<hr>
 					<<link [[来5瓶|Terra Debug Potions]]>><<set V[_potion.name] += 5>><</link>>

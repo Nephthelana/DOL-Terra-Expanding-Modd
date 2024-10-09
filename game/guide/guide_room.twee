@@ -1,4 +1,5 @@
 :: Guide Room
+<<set $outside to 0>>
 <<if $guide_intro isnot true>>
 	"你好。我知道你是谁，但你也许还不认识我：我是向导。正如我的名字，我可以给你提供一些关于DoL，或者泰拉瑞亚拓展模组的提示。<br>
 	<br>

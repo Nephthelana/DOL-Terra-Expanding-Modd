@@ -151,6 +151,9 @@
 <<if $Coastal_Demonfish is undefined>><<set $Coastal_Demonfish = 0>><</if>>
 <<if $Crag_Bullhead is undefined>><<set $Crag_Bullhead = 0>><</if>>
 /* 垃圾数量 */
+<<set $Old_Shoe to $Old_Shoe is undefined ? 0 : $Old_Shoe>>
+<<set $Seaweed_junk to $Seaweed_junk is undefined ? 0 : $Seaweed_junk>>
+<<set $Tin_Can to $Tin_Can is undefined ? 0 : $Tin_Can>>
 <<if $Joja_Cola is undefined>><<set $Joja_Cola = 0>><</if>>
 
 /* 鱼饵数量 */
@@ -202,6 +205,13 @@
 <<if $Tree_Nymph_Butterfly is undefined>>
 	<<set $Tree_Nymph_Butterfly = 0>>
 <</if>>
+<<set $Red_Dragonfly to $Red_Dragonfly is undefined ? 0 : $Red_Dragonfly>>
+<<set $Orange_Dragonfly to $Orange_Dragonfly is undefined ? 0 : $Orange_Dragonfly>>
+<<set $Yellow_Dragonfly to $Yellow_Dragonfly is undefined ? 0 : $Yellow_Dragonfly>>
+<<set $Green_Dragonfly to $Green_Dragonfly is undefined ? 0 : $Green_Dragonfly>>
+<<set $Blue_Dragonfly to $Blue_Dragonfly is undefined ? 0 : $Blue_Dragonfly>>
+<<set $Black_Dragonfly to $Black_Dragonfly is undefined ? 0 : $Black_Dragonfly>>
+<<set $Gold_Dragonfly to $Gold_Dragonfly is undefined ? 0 : $Gold_Dragonfly>>
 <<if $Stinkbug is undefined>>
 	<<set $Stinkbug = 0>>
 <</if>>
@@ -217,12 +227,14 @@
 <<if $Lightning_Bug is undefined>>
 	<<set $Lightning_Bug = 0>>
 <</if>>
+<<set $Lavafly to $Lavafly is undefined ? 0 : $Lavafly>>
 <<if $Snail is undefined>>
 	<<set $Snail = 0>>
 <</if>>
 <<if $Glow_Snail is undefined>>
 	<<set $Glow_Snail = 0>>
 <</if>>
+<<set $Magma_Snail to $Magma_Snail is undefined ? 0 : $Magma_Snail>>
 <<if $Grasshopper is undefined>>
 	<<set $Grasshopper = 0>>
 <</if>>
@@ -393,7 +405,11 @@
 		Work_Bench: 0,
 		Iron_Anvil: 0,
 		Cooking_Pot: 0,
+		Tinkerers_Workshop: 0,
 	}>>
+<</if>>
+<<if $crafting_count.Tinkerers_Workshop is undefined>>
+	<<set $crafting_count.Tinkerers_Workshop = 0>>
 <</if>>
 
 /* 阁楼制作站初始化 */
@@ -401,4 +417,43 @@
 	<<set $orphanage_loft_crafting_station to []>>
 <</if>>
 
+<<<<<<< Updated upstream
+=======
+<!-- 落星概率初始化 -->
+<<if $Meteor_Shower is undefined>>
+	<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
+	<<fallen_star_rate_set>>
+<</if>>
+
+<!-- 落星可能掉落的区域 -->
+<<set setup.fallenStarAreas to [
+	"Barb Street", "Cliff Street", "Connudatus Street", "Danube Street", "Domus Street", "Elk Street",
+	"Harvest Street", "High Street", "Mer Street", "Nightingale Street", "Oxford Street", "Starfish Street", "Wolf Street",
+
+	"Residential alleyways", "Commercial alleyways", "Industrial alleyways", "Park",
+
+	"Flats", "Coast Path", "Bus Station", "School Front Courtyard", "School Roof", "School Rear Courtyard", "Commercial rooftops",
+	"Trash", "Temple Garden", "Manor Garden", "Manor Grounds", "Lake Shore", "Lake Firepit", "Lake Waterfall", "Forest Brook", 
+	"Lake Fishing Rock", "Lake Campsite",
+	
+	"Forest", "Churchyard", "Moor", "Farmland", "Farm Road 1", "Farm Road 2", "Farm Road 3", "Farm Road 4", "Farm Road 5", "Farm Road 6",
+	"Bog", "Meadow", "Beach",
+
+	"Wolf Cave Clearing", "Wolf Cave Plots", "Eden Clearing", "Eden Plots", "Farm Work", "Farm Fields", "Farm Woodland", "Bird Tower",
+
+	"Island", 
+]>>
+
+<!-- 发光地衣数量初始化 -->
+<<set $Argon_Moss to $Argon_Moss is undefined ? 0 : $Argon_Moss>>
+<<set $Krypton_Moss to $Krypton_Moss is undefined ? 0 : $Krypton_Moss>>
+<<set $Lava_Moss to $Lava_Moss is undefined ? 0 : $Lava_Moss>>
+<<set $Neon_Moss to $Neon_Moss is undefined ? 0 : $Neon_Moss>>
+<<set $Xenon_Moss to $Xenon_Moss is undefined ? 0 : $Xenon_Moss>>
+<<set $Helium_Moss to $Helium_Moss is undefined ? 0 : $Helium_Moss>>
+
+<!-- 计算魔光护符降低意识的变量 -->
+<<set $Magiluminescence_timer to $Magiluminescence_timer is undefined ? 0 : $Magiluminescence_timer>>
+
+>>>>>>> Stashed changes
 <</widget>>

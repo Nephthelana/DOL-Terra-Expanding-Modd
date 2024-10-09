@@ -61,7 +61,7 @@
 <<ind>><<link [[重置初遇恐惧鹦鹉螺|Terra Debug]]>><<set $Dreadnautilus_intro to undefined>><</link>><br>
 <<icon "tool/Bloody_Tear.png">><<link [[获得一颗血泪|Terra Debug]]>><<set $Bloody_Tear += 1>><</link>><br>
 <<if $blood_moon_monolith is undefined>>
-	<span class="fading"><<icon "blood_moon_monolith/Blood_Moon_Monolith.png">></span><<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to "get">><</link>><br>
+	<span class="terraFading"><<icon "blood_moon_monolith/Blood_Moon_Monolith.png">></span><<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to "get">><</link>><br>
 <<else>>
 	<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[丢弃血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to undefined>><</link>><br>
 <</if>>

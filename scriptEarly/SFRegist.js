@@ -17,4 +17,10 @@ simpleFrameworks.addto('iModOptions', 'terraOptions');
 simpleFrameworks.addto('iModStatist', 'terraStatistics');
 
 simpleFrameworks.addto('ModSkillsBox', 'fishingskill');
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+
+simpleFrameworks.addto('iModHeader', 'terra_header');
+simpleFrameworks.addto('iModFooter', 'terra_footer');
 >>>>>>> Stashed changes

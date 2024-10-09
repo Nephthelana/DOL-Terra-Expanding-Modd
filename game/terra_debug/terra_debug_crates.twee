@@ -9,7 +9,9 @@
 			<<capture _crate>>
 				<div class="item">
 					<div @tooltip="`${_crate.cn_name}`">
-						<<icon `_crate.icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_crate.icon`>>
+						</div>
 					</div>
 					<hr>
 					<<link [[来5个|Terra Debug Crates]]>><<set V[_crate.name] += 5>><</link>>

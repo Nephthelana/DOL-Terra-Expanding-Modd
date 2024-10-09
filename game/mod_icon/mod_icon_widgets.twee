@@ -35,6 +35,10 @@
 		<<set _message to hasBabyHawkModInfo() ? "鹰塔里的小鸡崽们今天吃饱了吗？" : "试试 <i>鹰宝宝</i> 模组！">>
 	<</addinlineevent>>
 
+	<<addinlineevent "HotKey" 0.1>>
+		<<set _message to hasBabyHawkModInfo() ? "说到底为什么本游戏会没有快捷键绑定？——鲤鱼旗" : "试试 <i>快捷键绑定</i> 模组！">>
+	<</addinlineevent>>
+
 	<<addinlineevent "Terraria" 0.05>>
 		<<set _message to "试试泰拉瑞亚(Terraria)！你可以在Steam/谷歌商店里买到它。">>
 	<</addinlineevent>>

@@ -5,24 +5,48 @@
 /* 显示钓鱼地点 */
 你们现在在
 <<switch $fishing_place>>
-	<<case "lake_fishing_rock">>森林湖钓鱼岩
-	<<case "beach">>海滩
-	<<case "barb_street">>倒钩街的运河
+	<<case "lake_fishing_rock">><<lakeicon "fishing">>森林湖钓鱼岩
+	<<case "beach">><<icon "beach.gif">>海滩
+	<<case "barb_street">><<barbicon>>倒钩街的运河
 <</switch>>
 钓鱼。<br>
 <br>
+<!-- 生成难度系数 -->
+<<if $fishing_difficulty is undefined>>
+	<<switch $fishing_harvest>>
+		<<case "Zephyr_Fish" "Rusted_Jingle_Bell" "Bottomless_Lava_Bucket" "Demon_Conch" "Dreadnautilus">>
+			<<set $fishing_difficulty to 1.5>>
+		<<case "request_fish">>
+			<<set $fishing_difficulty to 0.75>>
+		<<case "swim_underwear" "Old_Shoe" "Seaweed_(junk)" "Tin_Can" "Joja_Cola">>
+			<<set $fishing_difficulty to 0.25>>
+		<<default>>
+			<<set _allFishList to getAllFishList()>>
+			<<set _allCrateList to getAllCrateList()>>
+			<<set _allBaitList to getAllBaitList()>>
+			<<if _allFishList.includes($fishing_harvest)>>
+				<<set $fishing_difficulty to setup.terraFish[$fishing_harvest].difficulty>>
+			<<elseif _allCrateList.includes($fishing_harvest)>>
+				<<set $fishing_difficulty to setup.terraCrate[$fishing_harvest].difficulty>>
+			<<elseif _allBaitList.includes($fishing_harvest)>>
+				<<set $fishing_difficulty to setup.terraBait[$fishing_harvest].difficulty>>
+			<<else>>
+				<span class="red">错误：在计算渔获难度系数时出现错误，请反馈给模组作者。</span><br>
+			<</if>>
+	<</switch>>
+<</if>>
 /* 显示罗宾的钓鱼状态。钓鱼状态机制详见<<widget "robin_fishing_phase">> */
 <<robin_fishing_phase>><br>
-/* 调试页面，显示罗宾钓鱼状态的相关参数 
-<i>
-DEBUG：<br>
-罗宾等待咬钩所需时间+与鱼搏斗时间：$robin_fishing_cast_time+2(固定为2min)<br>
-已钓鱼时间：<<print ($robin_fishing_date_time_passed/60)>><br>
-罗宾收杆次数：$robin_fishing_harvest_times<br>
-罗宾状态：$robin_fishing_phase<br>
-</i>
-<br>
-*/
+<<if $debug is 1>>
+	<i>
+		DEBUG：<br>
+		罗宾等待咬钩所需时间+与鱼搏斗时间：$robin_fishing_cast_time+2(固定为2min)<br>
+		已钓鱼时间：<<print ($robin_fishing_date_time_passed/60)>><br>
+		罗宾收杆次数：$robin_fishing_harvest_times<br>
+		罗宾状态：$robin_fishing_phase<br>
+	</i>
+	<br>
+<</if>>
 /* 显示钓鱼结果 */
 <<if $fishing_distance lte 0>>
 	<<if !($terra_accessories_slots.includes("High_Test_Fishing_Line") or $terra_accessories_slots.includes("Angler_Tackle_Bag") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")) and random(1,7) is 1>>
@@ -136,10 +160,15 @@ DEBUG：<br>
 			<<exitAll>>
 		<</if>>
 	<</if>>
-	<<if random(1,2) is 1>>
+	<<if $fish_relax_count lte 0>>
 		<<set $fish_relax to true>>
+		<<set $fish_relax_count += 1>>
+	<<elseif random(1,100) lte Math.round($fish_struggle_count / ($fish_struggle_count + $fish_relax_count * $fishing_difficulty) * 100)>>
+		<<set $fish_relax to true>>
+		<<set $fish_relax_count += 1>>
 	<<else>>
 		<<set $fish_relax to false>>
+		<<set $fish_struggle_count += 1>>
 	<</if>>
 	<<if ($fishingskill * 0.8 + 200) gte random(1,1000)>>
 		你可以准确地看出来

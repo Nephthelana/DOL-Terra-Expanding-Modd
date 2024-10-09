@@ -2,8 +2,15 @@
 <<widget "fishing_harvest">>
 	<<switch $fishing_harvest>>
 		/* 宠物 */
+<<<<<<< Updated upstream
 		<<case "Zephyr_Fish">><<icon "Zephyr_Fish.png">>和风鱼
 		<<case "Rusted_Jingle_Bell">><<icon "Rusted_Jingle_Bell.png">>锈蚀铃铛
+=======
+		<<case "Zephyr_Fish">><<icon "Zephyr_Fish.png">>和风鱼<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
+			<<set $Zephyr_Fish to true>>
+		<<case "Rusted_Jingle_Bell">><<icon "Rusted_Jingle_Bell.png">>锈蚀铃铛<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
+			<<set $Rusted_Jingle_Bell to true>>
+>>>>>>> Stashed changes
 		/* 宝匣 */
 		<<case "Golden_Crate">><<icon "fishing/crates/Golden_Crate.png">>金匣
 			<<set $Golden_Crate += 1>>
@@ -122,13 +129,14 @@
 			<<set $Crag_Bullhead += 1>>
 		/* 任务鱼 */
 		<<case "request_fish">>
-			<<fishing_harvest_request_fish>><<set $fishing_request_fish.pushUnique($fishing_request_selection)>>
+			<<set _requestFish to setup.terraRequestFish[$fishing_request_selection]>>
+			<<icon `_requestFish.icon`>>_requestFish.cn_name
+			<<set $fishing_request_fish.pushUnique($fishing_request_selection)>>
 		/* 垃圾 */
-		<<case "Old_Shoe">><<icon "fishing/fish/Old_Shoe.png">>旧鞋
-		<<case "Seaweed_(junk)">><<icon "fishing/fish/Seaweed_(junk).png">>海草
-		<<case "Tin_Can">><<icon "fishing/fish/Tin_Can.png">>锡罐
-		<<case "Joja_Cola">><<icon "fishing/fish/Joja_Cola.png">>Joja可乐
-			<<set $Joja_Cola += 1>>
+		<<case "Old_Shoe">><<icon "fishing/fish/Old_Shoe.png">>旧鞋<<set $Old_Shoe += 1>>
+		<<case "Seaweed_junk">><<icon "fishing/fish/Seaweed_junk.png">>海草<<set $Seaweed_junk += 1>>
+		<<case "Tin_Can">><<icon "fishing/fish/Tin_Can.png">>锡罐<<set $Tin_Can += 1>>
+		<<case "Joja_Cola">><<icon "fishing/fish/Joja_Cola.png">>Joja可乐<<set $Joja_Cola += 1>>
 		/* 泳池的内裤、泳装 */
 		<<case "swim_underwear">>
 			<<set _colour to either("蓝色", "绿色", "红色", "黑色", "粉色", "紫色", "黄色", "白色", "橙色", "条纹", "波点")>>

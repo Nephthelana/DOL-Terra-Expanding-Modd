@@ -1,13 +1,15 @@
 :: Fishing
+<!-- 每回合耗时10s -->
 <<pass 10 seconds>>
-/* 显示钓鱼地点 */
+<!-- 显示钓鱼地点 -->
 你现在在
 <<switch $fishing_place>>
-	<<case "lake_fishing_rock">>森林湖钓鱼岩
-	<<case "beach">>海滩
-	<<case "barb_street">>倒钩街的运河
-	<<case "moor">>雷米庄园门口的沙地
+	<<case "lake_fishing_rock">><<lakeicon "fishing">>森林湖钓鱼岩
+	<<case "beach">><<icon "beach.gif">>海滩
+	<<case "barb_street">><<barbicon>>倒钩街的运河
+	<<case "moor">><<mooricon "remy">>雷米庄园门口的沙地
 	<<case "honey">>森林蜂蜜池
+<<<<<<< Updated upstream
 	<<case "farm_woodland">>农场的林地
 	<<case "temple_garden">>神殿的花园
 	<<case "temple_garden_artificial">>老教堂墓地庭院的人工钓鱼池
@@ -24,23 +26,72 @@
 	<<case "rocky_hillock">>海岛的山顶营地
 	<<case "waterfall">>海岛的河流营地
 	<<case "gulch">>海岛的峡谷营地
+=======
+	<<case "farm_woodland">><<farmicon "barn">>农场
+	<<case "temple_garden">><<templeicon "garden">>神殿的花园
+	<<case "temple_garden_artificial">><<foresticon "churchyard">>老教堂墓地庭院的人工钓鱼池
+	<<case "wolf_cave_clearing">><<wolfcaveicon "stream">>狼窝的溪流
+	<<case "wolf_cave_clearing_artificial">><<foresticon>>狼穴洞口附近的人工钓鱼池
+	<<case "bird_tower">><<birdicon "rainwater">>鹰塔的雨水池
+	<<case "bird_tower_artificial">><<birdicon "tower">>高塔塔底的人工钓鱼池
+	<<case "eden_clearing">><<lakeicon "pond">>伊甸小屋的泉水
+	<<case "eden_clearing_artificial">><<foresticon>>猎人小屋附近的人工钓鱼池
+	<<case "bog">><<foresticon "bog">>沼泽
+	<<case "trash">><<landfillicon>>垃圾场深处的沸水池
+	<<case "park">><<parkicon "fountain">>公园喷泉
+	<<case "school_pool">><<swimmingicon>>学校泳池
+	<<case "ice">>地下永冻湖
+	<<case "rocky_hillock">>海岛的天湖
+	<<case "waterfall">>海岛的瀑布湖
+	<<case "gulch">>海岛的洞穴湖
+>>>>>>> Stashed changes
 <</switch>>
 钓鱼。<br>
-/* 上学日8:59时自动退出钓鱼小游戏 */
+<!-- 上学日8:59时自动退出钓鱼小游戏 -->
 <<if $fishing_place is "school_pool" and Time.schoolDay and Time.hour is 8 and Time.minute is 59>>
 	你听到更衣室传来了嬉笑打闹声。你在梅森和学生们进来之前快速收拾好了渔具。<br>
 	<br>
 	<<fishing_finished_back>>
 	<<exitAll>>
 <</if>>
-/* 显示钓鱼结果 */
+<!-- 生成难度系数 -->
+<<if $fishing_difficulty is undefined>>
+	<<switch $fishing_harvest>>
+		<<case "Zephyr_Fish" "Rusted_Jingle_Bell" "Bottomless_Lava_Bucket" "Demon_Conch" "Dreadnautilus">>
+			<<set $fishing_difficulty to 1.5>>
+		<<case "request_fish">>
+			<<set $fishing_difficulty to 0.75>>
+		<<case "swim_underwear" "Old_Shoe" "Seaweed_junk" "Tin_Can" "Joja_Cola">>
+			<<set $fishing_difficulty to 0.25>>
+		<<default>>
+			<<set _allFishList to getAllFishList()>>
+			<<set _allCrateList to getAllCrateList()>>
+			<<set _allBaitList to getAllBaitList()>>
+			<<if _allFishList.includes($fishing_harvest)>>
+				<<set $fishing_difficulty to setup.terraFish[$fishing_harvest].difficulty>>
+			<<elseif _allCrateList.includes($fishing_harvest)>>
+				<<set $fishing_difficulty to setup.terraCrate[$fishing_harvest].difficulty>>
+			<<elseif _allBaitList.includes($fishing_harvest)>>
+				<<set $fishing_difficulty to setup.terraBait[$fishing_harvest].difficulty>>
+			<<else>>
+				<span class="red">错误：在计算渔获难度系数时出现错误，请反馈给模组作者。</span><br>
+			<</if>>
+	<</switch>>
+<</if>>
+<!-- 显示钓鱼结果 -->
 <<if $fishing_distance lte 0>>
 	<<if !($terra_accessories_slots.includes("High_Test_Fishing_Line") or $terra_accessories_slots.includes("Angler_Tackle_Bag") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")) and random(1,7) is 1>>
 		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><span class="red">但是你的鱼线断了......</span>也许你需要一个优质钓鱼线。<<ggstress>><<stress 6>><br>
 		<<set $fishing_failed_count += 1>>
+		<<unset $fish_relax_count>>
+		<<unset $fish_struggle_count>>
+		<<unset $fishing_difficulty>>
 	<<else>>
 		<span class="green">最后你猛地一收竿，宣示着你的胜利！</span><<llstress>><<stress -6>><br>
 		<<set $fishing_harvest_count += 1>>
+		<<unset $fish_relax_count>>
+		<<unset $fish_struggle_count>>
+		<<unset $fishing_difficulty>>
 		<<switch $fishing_harvest>>
 			<<case "Dreadnautilus">>
 				<<fishing_Dreadnautilus>>
@@ -60,12 +111,15 @@
 <<elseif $fishing_integrity is 0>>
 	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><<ggstress>><<stress 6>><br>
 	<<set $fishing_failed_count += 1>>
+		<<unset $fish_relax_count>>
+		<<unset $fish_struggle_count>>
+		<<unset $fishing_difficulty>>
 	<br>
 	<<fishing_bait_consumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<set $fishing_harvest to undefined>><<fishing_cast_time>><</link>><br>
 	<<fishing_finished_back>>
-/* 显示每回合的结果 */
+<!-- 显示每回合的结果 -->
 <<else>>	
 	<<switch $fishingphase>>
 	<<case 1>>
@@ -108,10 +162,10 @@
 			<span class="green">鱼线耐久：$fishing_integrity/<<print $High_Test_Fishing_Line ? 5 : 3>></span>
 	<</switch>>
 	<br>
-	/* 渔获距离大于66时开始有概率落水 */
+	<!-- 渔获距离大于66时开始有概率落水 -->
 	<<if random(1,100) lt (3 * $fishing_distance - 200)>>
 		渔获距离太远了！
-		<<if ($danceskill * 0.5) gte random(1,1000)>>
+		<<if ($danceskill * 0.75) gte random(1,1000)>>
 			<span class="green">但你设法维持住了身体的平衡。</span><br>
 		<<else>>
 			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...你被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>>
@@ -125,11 +179,30 @@
 			<<exitAll>>
 		<</if>>
 	<</if>>
+	<!--
+	计算本回合渔获行为是挣扎还是休息
+	挣扎/休息=系数 ==> 挣扎=休息*系数
+	则：休息概率 = 挣扎/(挣扎+休息*难度系数)
+	-->
+	<<if $fish_relax_count lte 0>>
+		<<set $fish_relax to true>>
+		<<set $fish_relax_count += 1>>
+	<<elseif random(1,100) lte Math.round($fish_struggle_count / ($fish_struggle_count + $fish_relax_count * $fishing_difficulty) * 100)>>
+		<<set $fish_relax to true>>
+		<<set $fish_relax_count += 1>>
+	<<else>>
+		<<set $fish_relax to false>>
+		<<set $fish_struggle_count += 1>>
+	<</if>>
+	<!--
+	⬇致敬旧版本传奇五五开概率o7
 	<<if random(1,2) is 1>>
 		<<set $fish_relax to true>>
 	<<else>>
 		<<set $fish_relax to false>>
-	<</if>><br>
+	<</if>>
+	-->
+	<br>
 	<<if ($fishingskill * 0.8 + 200) gte random(1,1000)>>
 		你可以准确地看出来
 		<<if $fish_relax>>
@@ -155,4 +228,15 @@
 			<<fishingskill 2>><<set $fishingphase to 4>>
 		<</if>>
 	<</link>>
+<</if>>
+<<if $debug is 1>>
+	<br><br>
+	*[DEBUG模式]调试信息<br>
+	*最后一回合不显示数据为正常现象<br>
+	*当前渔获：$fishing_harvest<br>
+	*难度系数：$fishing_difficulty<br>
+	*休息次数：$fish_relax_count<br>
+	*挣扎次数：$fish_struggle_count<br>
+	<<set _relax_rate to Math.round($fish_struggle_count / ($fish_struggle_count + $fish_relax_count * $fishing_difficulty) * 100)>>
+	*下次休息概率：_relax_rate%<br>
 <</if>>

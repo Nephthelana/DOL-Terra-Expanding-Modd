@@ -6,7 +6,8 @@ setup.terraFish = {
         price: 7.5,
         amount: V.Salmon || 0,
         icon: "fishing/fish/Salmon.png",
-        consumed: "<<set $Salmon -= 1>>"
+        consumed: "<<set $Salmon -= 1>>",
+		difficulty: 0.75,
     },
     "Bass": {
         name: "Bass",
@@ -15,7 +16,8 @@ setup.terraFish = {
         price: 5,
         amount: V.Bass || 0,
         icon: "fishing/fish/Bass.png",
-        consumed: "<<set $Bass -= 1>>"
+        consumed: "<<set $Bass -= 1>>",
+		difficulty: 0.25,
     },
 	"Shrimp": {
         name: "Shrimp",
@@ -24,7 +26,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Shrimp || 0,
         icon: "fishing/fish/Shrimp.png",
-        consumed: "<<set $Shrimp -= 1>>"
+        consumed: "<<set $Shrimp -= 1>>",
+		difficulty: 0.75,
     },
 	"Tuna": {
         name: "Tuna",
@@ -33,7 +36,8 @@ setup.terraFish = {
         price: 7.5,
         amount: V.Tuna || 0,
         icon: "fishing/fish/Tuna.png",
-        consumed: "<<set $Tuna -= 1>>"
+        consumed: "<<set $Tuna -= 1>>",
+		difficulty: 0.5,
     },
 	"Red_Snapper": {
         name: "Red_Snapper",
@@ -42,7 +46,8 @@ setup.terraFish = {
         price: 7.5,
         amount: V.Red_Snapper || 0,
         icon: "fishing/fish/Red_Snapper.png",
-        consumed: "<<set $Red_Snapper -= 1>>"
+        consumed: "<<set $Red_Snapper -= 1>>",
+		difficulty: 0.5,
     },
 	"Trout": {
         name: "Trout",
@@ -51,7 +56,8 @@ setup.terraFish = {
         price: 5,
         amount: V.Trout || 0,
         icon: "fishing/fish/Trout.png",
-        consumed: "<<set $Trout -= 1>>"
+        consumed: "<<set $Trout -= 1>>",
+		difficulty: 0.25,
     },
 	"Golden_Carp": {
         name: "Golden_Carp",
@@ -60,7 +66,8 @@ setup.terraFish = {
         price: 1000,
         amount: V.Golden_Carp || 0,
         icon: "fishing/fish/Golden_Carp.png",
-        consumed: "<<set $Golden_Carp -= 1>>"
+        consumed: "<<set $Golden_Carp -= 1>>",
+		difficulty: 1.5,
     },
 	"Stinkfish": {
         name: "Stinkfish",
@@ -69,7 +76,8 @@ setup.terraFish = {
         price: 25,
         amount: V.Stinkfish || 0,
         icon: "fishing/fish/Stinkfish.png",
-        consumed: "<<set $Stinkfish -= 1>>"
+        consumed: "<<set $Stinkfish -= 1>>",
+		difficulty: 1,
     },
 	"Armored_Cavefish": {
         name: "Armored_Cavefish",
@@ -78,7 +86,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Armored_Cavefish || 0,
         icon: "fishing/fish/Armored_Cavefish.png",
-        consumed: "<<set $Armored_Cavefish -= 1>>"
+        consumed: "<<set $Armored_Cavefish -= 1>>",
+		difficulty: 0.75,
     },
 	"Specular_Fish": {
         name: "Specular_Fish",
@@ -87,7 +96,8 @@ setup.terraFish = {
         price: 7.5,
         amount: V.Specular_Fish || 0,
         icon: "fishing/fish/Specular_Fish.png",
-        consumed: "<<set $Specular_Fish -= 1>>"
+        consumed: "<<set $Specular_Fish -= 1>>",
+		difficulty: 0.5,
     },
 	"Flounder": {
         name: "Flounder",
@@ -96,7 +106,8 @@ setup.terraFish = {
         price: 1.5,
         amount: V.Flounder || 0,
         icon: "fishing/fish/Flounder.png",
-        consumed: "<<set $Flounder -= 1>>"
+        consumed: "<<set $Flounder -= 1>>",
+		difficulty: 0.25,
     },
 	"Rock_Lobster": {
         name: "Rock_Lobster",
@@ -105,7 +116,8 @@ setup.terraFish = {
         price: 10,
         amount: V.Rock_Lobster || 0,
         icon: "fishing/fish/Rock_Lobster.png",
-        consumed: "<<set $Rock_Lobster -= 1>>"
+        consumed: "<<set $Rock_Lobster -= 1>>",
+		difficulty: 0.5,
     },
 	"Honeyfin": {
         name: "Honeyfin",
@@ -114,7 +126,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Honeyfin || 0,
         icon: "fishing/fish/Honeyfin.png",
-        consumed: "<<set $Honeyfin -= 1>>"
+        consumed: "<<set $Honeyfin -= 1>>",
+		difficulty: 0.75,
     },
 	"Double_Cod": {
         name: "Double_Cod",
@@ -123,7 +136,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Double_Cod || 0,
         icon: "fishing/fish/Double_Cod.png",
-        consumed: "<<set $Double_Cod -= 1>>"
+        consumed: "<<set $Double_Cod -= 1>>",
+		difficulty: 0.75,
     },
 	"Variegated_Lardfish": {
         name: "Variegated_Lardfish",
@@ -132,7 +146,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Variegated_Lardfish || 0,
         icon: "fishing/fish/Variegated_Lardfish.png",
-        consumed: "<<set $Variegated_Lardfish -= 1>>"
+        consumed: "<<set $Variegated_Lardfish -= 1>>",
+		difficulty: 0.75,
     },
 	"Neon_Tetra": {
         name: "Neon_Tetra",
@@ -141,7 +156,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Neon_Tetra || 0,
         icon: "fishing/fish/Neon_Tetra.png",
-        consumed: "<<set $Neon_Tetra -= 1>>"
+        consumed: "<<set $Neon_Tetra -= 1>>",
+		difficulty: 0.5,
     },
 	"Chaos_Fish": {
         name: "Chaos_Fish",
@@ -150,7 +166,8 @@ setup.terraFish = {
         price: 300,
         amount: V.Chaos_Fish || 0,
         icon: "fishing/fish/Chaos_Fish.png",
-        consumed: "<<set $Chaos_Fish -= 1>>"
+        consumed: "<<set $Chaos_Fish -= 1>>",
+		difficulty: 1.25,
     },
 	"Prismite": {
         name: "Prismite",
@@ -159,7 +176,8 @@ setup.terraFish = {
         price: 100,
         amount: V.Prismite || 0,
         icon: "fishing/fish/Prismite.png",
-        consumed: "<<set $Prismite -= 1>>"
+        consumed: "<<set $Prismite -= 1>>",
+		difficulty: 1,
     },
 	"Princess_Fish": {
         name: "Princess_Fish",
@@ -168,17 +186,19 @@ setup.terraFish = {
         price: 25,
         amount: V.Princess_Fish || 0,
         icon: "fishing/fish/Princess_Fish.png",
-        consumed: "<<set $Princess_Fish -= 1>>"
+        consumed: "<<set $Princess_Fish -= 1>>",
+		difficulty: 0.75,
     },
 	"Damselfish": {
         name: "Damselfish",
         cn_name: "雀鲷",
 		material: false,
         type: "fish",
-        price: 1000,
+        price: 30,
         amount: V.Damselfish || 0,
         icon: "fishing/fish/Damselfish.png",
-        consumed: "<<set $Damselfish -= 1>>"
+        consumed: "<<set $Damselfish -= 1>>",
+		difficulty: 0.75,
     },
 	/*
 	"Frost_Minnow": {
@@ -189,7 +209,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Frost_Minnow || 0,
         icon: "fishing/fish/Frost_Minnow.png",
-        consumed: "<<set $Frost_Minnow -= 1>>"
+        consumed: "<<set $Frost_Minnow -= 1>>",
+		difficulty: 0.75,
     },
 	"Atlantic_Cod": {
         name: "Atlantic_Cod",
@@ -199,8 +220,10 @@ setup.terraFish = {
         price: 7.5,
         amount: V.Atlantic_Cod || 0,
         icon: "fishing/fish/Atlantic_Cod.png",
-        consumed: "<<set $Atlantic_Cod -= 1>>"
+        consumed: "<<set $Atlantic_Cod -= 1>>",
+		difficulty: 0.25,
     },
+	/*
 	"Flarefin_Koi": {
         name: "Flarefin_Koi",
         cn_name: "闪鳍锦鲤",
@@ -209,7 +232,8 @@ setup.terraFish = {
         price: 50,
         amount: V.Flarefin_Koi || 0,
         icon: "fishing/fish/Flarefin_Koi.png",
-        consumed: "<<set $Flarefin_Koi -= 1>>"
+        consumed: "<<set $Flarefin_Koi -= 1>>",
+		difficulty: 1.25,
     },
 	"Obsidifish": {
         name: "Obsidifish",
@@ -219,7 +243,8 @@ setup.terraFish = {
         price: 15,
         amount: V.Obsidifish || 0,
         icon: "fishing/fish/Obsidifish.png",
-        consumed: "<<set $Obsidifish -= 1>>"
+        consumed: "<<set $Obsidifish -= 1>>",
+		difficulty: 1,
     },
 	*/
 	"Greenwave_Loach": {
@@ -229,7 +254,8 @@ setup.terraFish = {
         price: 1000,
         amount: V.Greenwave_Loach || 0,
         icon: "fishing/fish/Greenwave_Loach.png",
-        consumed: "<<set $Greenwave_Loach -= 1>>"
+        consumed: "<<set $Greenwave_Loach -= 1>>",
+		difficulty: 1.25,
     },
 	"Sunken_Sailfish": {
         name: "Sunken_Sailfish",
@@ -238,7 +264,8 @@ setup.terraFish = {
         price: 70,
         amount: V.Sunken_Sailfish || 0,
         icon: "fishing/fish/Sunken_Sailfish.png",
-        consumed: "<<set $Sunken_Sailfish -= 1>>"
+        consumed: "<<set $Sunken_Sailfish -= 1>>",
+		difficulty: 0.75,
     },
 	"Prismatic_Guppy": {
         name: "Prismatic_Guppy",
@@ -247,7 +274,8 @@ setup.terraFish = {
         price: 5,
         amount: V.Prismatic_Guppy || 0,
         icon: "fishing/fish/Prismatic_Guppy.png",
-        consumed: "<<set $Prismatic_Guppy -= 1>>"
+        consumed: "<<set $Prismatic_Guppy -= 1>>",
+		difficulty: 0.25,
     },
 	"Charred_Lasher": {
         name: "Charred_Lasher",
@@ -256,7 +284,8 @@ setup.terraFish = {
         price: 1000,
         amount: V.Charred_Lasher || 0,
         icon: "fishing/fish/Charred_Lasher.png",
-        consumed: "<<set $Charred_Lasher -= 1>>"
+        consumed: "<<set $Charred_Lasher -= 1>>",
+		difficulty: 1.5,
     },
 	"Coastal_Demonfish": {
         name: "Coastal_Demonfish",
@@ -265,7 +294,8 @@ setup.terraFish = {
         price: 8,
         amount: V.Coastal_Demonfish || 0,
         icon: "fishing/fish/Coastal_Demonfish.png",
-        consumed: "<<set $Coastal_Demonfish -= 1>>"
+        consumed: "<<set $Coastal_Demonfish -= 1>>",
+		difficulty: 0.75,
     },
 	"Crag_Bullhead": {
         name: "Crag_Bullhead",
@@ -274,14 +304,17 @@ setup.terraFish = {
         price: 5,
         amount: V.Crag_Bullhead || 0,
         icon: "fishing/fish/Crag_Bullhead.png",
+<<<<<<< Updated upstream
         consumed: "<<set $Crag_Bullhead -= 1>>"
     }
+=======
+        consumed: "<<set $Crag_Bullhead -= 1>>",
+		difficulty: 0.25,
+    },
+>>>>>>> Stashed changes
 }
 
 function getAllFishList() {
-	for (let fish in setup.terraFish) {
-        setup.terraFish[fish].amount = V[fish] || 0;
-    }
     let all_fish_list = Object.keys(setup.terraFish);
 	return all_fish_list;
 }

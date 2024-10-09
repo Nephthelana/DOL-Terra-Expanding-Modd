@@ -49,14 +49,66 @@ setup.terraMaterial = {
         amount: V.Demonic_Bone_Ash || 0,
         icon: "material/Demonic_Bone_Ash.png",
     },
+<<<<<<< Updated upstream
 
+=======
+	"Fallen_Star": {
+        name: "Fallen_Star",
+        cn_name: "坠落之星<br><i>材料</i>",
+        type: "material",
+        amount: V.Fallen_Star || 0,
+        icon: "material/Fallen_Star.png",
+    },
+	"Helium_Moss": {
+        name: "Helium_Moss",
+        cn_name: "氦地衣<br><i>材料</i>",
+        type: "material",
+        amount: V.Helium_Moss || 0,
+        icon: "material/Helium_Moss.gif",
+    },
+	"Neon_Moss": {
+        name: "Neon_Moss",
+        cn_name: "氖地衣<br><i>材料</i>",
+        type: "material",
+        amount: V.Neon_Moss || 0,
+        icon: "material/Neon_Moss.png",
+    },
+	"Argon_Moss": {
+        name: "Argon_Moss",
+        cn_name: "氩地衣<br><i>材料</i>",
+        type: "material",
+        amount: V.Argon_Moss || 0,
+        icon: "material/Argon_Moss.png",
+    },
+	"Krypton_Moss": {
+        name: "Krypton_Moss",
+        cn_name: "氪地衣<br><i>材料</i>",
+        type: "material",
+        amount: V.Krypton_Moss || 0,
+        icon: "material/Krypton_Moss.png",
+    },
+	"Xenon_Moss": {
+        name: "Xenon_Moss",
+        cn_name: "氙地衣<br><i>材料</i>",
+        type: "material",
+        amount: V.Xenon_Moss || 0,
+        icon: "material/Xenon_Moss.png",
+    },
+	"Lava_Moss": {
+        name: "Lava_Moss",
+        cn_name: "熔岩地衣<br><i>材料</i>",
+        type: "material",
+        amount: V.Lava_Moss || 0,
+        icon: "material/Lava_Moss.png",
+    },
+>>>>>>> Stashed changes
 	//工具
 	"Magic_Conch": {
         name: "Magic_Conch",
         cn_name: "魔法海螺<br><i>材料</i>",
         type: "tool",
         obtained: V.Magic_Conch,
-        icon: "tool/Magic_Conch_material.png",
+        icon: "tool/Magic_Conch.png",
     },
 
 	//饰品
@@ -300,34 +352,46 @@ setup.terraMaterial = {
         amount: V.Crag_Bullhead || 0,
         icon: "fishing/fish/Crag_Bullhead.png",
     },
-	"Apprentice_Bait": {
-        name: "Apprentice_Bait",
-        cn_name: "学徒诱饵<br><i>材料</i>",
-        type: "bait",
-        amount: V.Apprentice_Bait || 0,
-        icon: "fishing/bait/Apprentice_Bait_material.png",
-    },
-	"Journeyman_Bait": {
-        name: "Journeyman_Bait",
-        cn_name: "熟手诱饵<br><i>材料</i>",
-        type: "bait",
-        amount: V.Journeyman_Bait || 0,
-        icon: "fishing/bait/Journeyman_Bait_material.png",
-    },
-	"Master_Bait": {
-        name: "Master_Bait",
-        cn_name: "大师诱饵<br><i>材料</i>",
-        type: "bait",
-        amount: V.Master_Bait || 0,
-        icon: "fishing/bait/Master_Bait_material.png",
-    },
 	"Sashimi": {
         name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
+<<<<<<< Updated upstream
     }
+=======
+    },
+	//鱼饵
+	"Apprentice_Bait": {
+        name: "Apprentice_Bait",
+        cn_name: "学徒诱饵<br><i>材料</i>",
+        type: "bait",
+        amount: V.Apprentice_Bait || 0,
+        icon: "fishing/bait/Apprentice_Bait.png",
+    },
+	"Journeyman_Bait": {
+        name: "Journeyman_Bait",
+        cn_name: "熟手诱饵<br><i>材料</i>",
+        type: "bait",
+        amount: V.Journeyman_Bait || 0,
+        icon: "fishing/bait/Journeyman_Bait.png",
+    },
+	"Master_Bait": {
+        name: "Master_Bait",
+        cn_name: "大师诱饵<br><i>材料</i>",
+        type: "bait",
+        amount: V.Master_Bait || 0,
+        icon: "fishing/bait/Master_Bait.png",
+    },
+	"Worm": {
+        name: "Worm",
+        cn_name: "蠕虫<br><i>材料</i>",
+        type: "bait",
+        amount: V.Worm || 0,
+        icon: "fishing/bait/Worm.png",
+    },
+>>>>>>> Stashed changes
 }
 
 function getAllMaterialList() {

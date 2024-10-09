@@ -1,16 +1,28 @@
 :: Furniture Painting Angler Cabin Switch
+<<run initializeTooltips()>>
 放什么呢？<br>
-<<set _allAnglerFurnitureList to getAllAnglerFurnitureList()>>
-<<for _t to 0; _t lt _allAnglerFurnitureList.length; _t++>>
-	<<set _anglerFurniture to setup.terraAnglerFurniture[_allAnglerFurnitureList[_t]]>>
-	<<capture _anglerFurniture>>
-		<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
-			<<icon `_anglerFurniture.item_icon`>>
-			<<link [[_anglerFurniture.cn_name|Fishing Angler Cabin]]>>
-				<<set $furniture_painting_angler_cabin to _anglerFurniture.name>>
-			<</link>><br>
-		<</if>>
-	<</capture>>
-<</for>>
+<<set _AnglerFurnitureObtainedList to $debug is 1 ? getAllAnglerFurnitureList() : getAnglerFurnitureObtained()>>
+<<print $debug is 1 ? "[DEBUG模式]你可以查看并使用全部的渔夫小屋家具" : "">><br>
+<<if _AnglerFurnitureObtainedList.length gt 0>>
+	<span class="no-numberify">
+		<div class="itemTerra_Tool">
+			<<for _t to 0; _t lt _AnglerFurnitureObtainedList.length; _t++>>
+				<<set _anglerFurniture to setup.terraAnglerFurniture[_AnglerFurnitureObtainedList[_t]]>>
+				<<capture _anglerFurniture>>
+					<<set _tooltip to `${_anglerFurniture.cn_name}`>>
+					<div class="item">
+						<div @tooltip="_tooltip">
+							<div class="itemTerraGeneral">
+								<<icon `_anglerFurniture.item_icon`>>
+							</div>
+						</div>
+						<hr>
+						<<link [[⬆|Fishing Angler Cabin]]>><<set $furniture_painting_angler_cabin to _anglerFurniture.name>><</link>>
+					</div>
+				<</capture>>
+			<</for>>
+		</div>
+	</span>
+<</if>>
 <br>
 <<link [[收起家具|Fishing Angler Cabin]]>><<set $furniture_painting_angler_cabin to "none">><</link>>

@@ -1,19 +1,29 @@
 :: Void Bag Tool [widget]
 <<widget "void_bag_Tool">>
-<<if getToolObtained().length gt 0>>
-	<span class="gold bold">工具</span>
-	<<set _toolObtainedList to getToolObtained()>>
-	<div class="itemTerraTool">
+<<if getToolObtained().length gt 0 or $debug is 1>>
+	<span class="gold bold">工具</span><mouse class="tooltip linkBlue">(?)<span>部分工具可以主动使用，它们下方会显示蓝色链接字可供使用，或显示暂时不可用的原因；<br>另一部分工具只能在特定场景中使用，或是还未实装，它们下方会显示黑白的"不可用"字样</span></mouse><br>
+	<<print $debug is 1 ? "[DEBUG模式]你可以查看并使用全部的工具<br>" : "">>
+	<<set _toolObtainedList to $debug is 1 ? getAllToolList() : getToolObtained()>>
+	<div class="itemTerra_Tool">
 		<<for _t to 0; _t lt _toolObtainedList.length; _t++>>
 			<<set _tool to setup.terraTool[_toolObtainedList[_t]]>>
 			<<capture _tool>>
 				<div class="item">
+<<<<<<< Updated upstream:game/void_bag/void_bag_tool_widget.twee
 					<mouse class="tooltip">
 						<<icon `_tool.icon`>>
 						<span>
 							_tool.cn_name<br>▶_tool.des
 						</span>
 					</mouse>
+=======
+					<<set _isMaterial to _tool.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_tool.cn_name}${_isMaterial}<br><br>▶${_tool.des}`">
+						<div class="itemTerraTool">
+							<<icon `_tool.icon`>>
+						</div>
+					</div>
+>>>>>>> Stashed changes:game/tool/terra_tool_widget.twee
 					<hr>
 					_tool.use
 				</div>
@@ -44,7 +54,13 @@
 <</widget>>
 
 <<widget "terra_tool_use_Ice_Mirror">>
-不可用
+<<if $daily.Ice_Mirror>>
+	<mouse class="tooltip linkBlue">不可用<span>你今天使用过冰雪镜了</span></mouse>
+<<elseif !(setup.majorAreas.includes($passage) and $event is undefined)>>
+	<mouse class="tooltip linkBlue">不可用<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
+<<else>>
+	<<link [[使用|Underground Ice Lake]]>><<set $daily.Ice_Mirror to true>><</link>>
+<</if>>
 <</widget>>
 
 <<widget "terra_tool_use_Snake_Charmers_Flute">>
@@ -111,7 +127,7 @@
 				<br>
 			<</replace>>
 		<</link>> |
-		<br>
+		<br><br>
 		</span>
 	<</replace>>
 <</link>>
@@ -135,6 +151,9 @@
 	<<replace #hint_item_use>>
 		<span class="blue">你往自己身上倒了一些岩浆。</span><<ggarousal>><<gdrugged>><br>
 		<br>
+	<</replace>>
+	<<replace #buff>>
+		<<buffList>>
 	<</replace>>
 <</link>>
 <</widget>>

@@ -1,0 +1,64 @@
+:: Bird Tower Extract
+<span id="birdTowerExtractHint"></span>
+<span id="birdTowerMaterial">
+	<<birdTowerMaterial>>
+</span>
+<br>
+<<link [[返回|Bird Tower Build]]>><</link>>
+
+:: Bird Tower Extracting [widget]
+<<widget "birdTowerMaterial">>
+	材料：<br>
+	<<birdicon "sticks">>$bird.materials.sticks根木棍<br>
+	<<birdicon "leaves">>$bird.materials.leaves片大树叶<br>
+	<<birdicon "fabric">>$bird.materials.fabric块布料<br>
+	<<birdicon "leather">>$bird.materials.leather块皮革<br>
+	<br>
+	<<icon "furniture_placed/Extractinator_(placed).gif">><br>
+	<<print $bird.materials.junk gt 0 ? "你有<<birdicon \"junk\">><span class='green'>$bird.materials.junk</span>个闪闪发光的小垃圾。" : "<span class='black'>你没有<<birdicon \"junk\">>闪闪发光的小垃圾了。</span>">><br>
+	<<if $bird.materials.junk gt 0>>
+		<<link "提炼一个">>
+			<<replace #birdTowerExtractHint>>
+				<<birdTowerExtracting 1>>
+			<</replace>>
+			<<replace #birdTowerMaterial>>
+				<<birdTowerMaterial>>
+			<</replace>>
+		<</link>><br>
+	<</if>>
+	<<if $bird.materials.junk gt 1>>
+		<<link "提炼全部">>
+			<<replace #birdTowerExtractHint>>
+				<<birdTowerExtracting $bird.materials.junk>>
+			<</replace>>
+			<<replace #birdTowerMaterial>>
+				<<birdTowerMaterial>>
+			<</replace>>
+		<</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "birdTowerExtracting">>
+	<<set _extracting to {
+		sticks: 0,
+		leaves: 0,
+		fabric: 0,
+		leather: 0,
+	}>>
+	<<for _i to 0; _i lt _args[0]; _i++>>
+		<<set $bird.materials.junk -= 1>>
+		<<switch random(1,10)>>
+			<<case 1 2 3>><<set _extracting.sticks += 1>>
+			<<case 4 5 6>><<set _extracting.leaves += 1>>
+			<<case 7 8 9>><<set _extracting.fabric += 1>>
+			<<case 10>><<set _extracting.leather += 1>>
+			<<default>><span class="red">出错了，请反馈给模组作者。</span>
+		<</switch>>
+	<</for>>
+	你提炼了<<birdicon "junk">><span class='green'>_i</span>个闪闪发光的小垃圾，得到：<br>
+	<<print _extracting.sticks gt 0 ? "<<birdicon \"sticks\">><span class='green'>_extracting.sticks</span>根木棍<br>" : "">><<set $bird.materials.sticks += _extracting.sticks>>
+	<<print _extracting.leaves gt 0 ? "<<birdicon \"leaves\">><span class='green'>_extracting.leaves</span>片大树叶<br>" : "">><<set $bird.materials.leaves += _extracting.leaves>>
+	<<print _extracting.fabric gt 0 ? "<<birdicon \"fabric\">><span class='green'>_extracting.fabric</span>块布料<br>" : "">><<set $bird.materials.fabric += _extracting.fabric>>
+	<<print _extracting.leather gt 0 ? "<<birdicon \"leather\">><span class='green'>_extracting.leather</span>块皮革<br>" : "">><<set $bird.materials.leather += _extracting.leather>>
+	<br>
+<</widget>>

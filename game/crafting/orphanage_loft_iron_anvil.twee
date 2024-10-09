@@ -38,7 +38,9 @@
 					<<set _recipe_avalible to true>>
 					<div class="item">
 						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-							<<icon `_recipe.icon`>>
+							<div class="itemTerraGeneral">
+								<<icon `_recipe.icon`>>
+							</div>
 						</div>
 						<hr>
 						<mouse class="tooltip">

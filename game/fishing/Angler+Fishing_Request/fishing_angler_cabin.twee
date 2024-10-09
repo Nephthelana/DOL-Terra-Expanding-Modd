@@ -1,4 +1,5 @@
 :: Fishing Angler Cabin
+<<set $outside to 0>>
 <<npc Angler>><<person1>>
 <<if $options.cute_angler>>
 	<<earnFeat "Blue Sunflower">>
@@ -241,7 +242,7 @@
 		<br>
 	<</if>>
 	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
-	<<if $angler_furniture_obtained.length gte 1>>
+	<<if getAnglerFurnitureObtained().length gte 1 or $debug is 1>>
 		<<if $furniture_painting_angler_cabin is undefined or $furniture_painting_angler_cabin is "none">>
 			<<ind>><<link [[放一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
 		<<else>>

@@ -37,3 +37,13 @@ function hasBabyHawkModInfo() {
     return false;
 }
 window.hasBabyHawkModInfo = hasBabyHawkModInfo;
+
+// 判断是否加载了鲤鱼旗(koooooiCarp)的快捷键绑定模组
+function hasHotKeyModInfo() {
+    const HotKeyModInfo = window.modUtils.getMod('HotKey');
+    if (HotKeyModInfo) {
+        return true;
+    }
+    return false;
+}
+window.hasHotKeyModInfo = hasHotKeyModInfo;

@@ -99,6 +99,7 @@
 <br>
 未展示过的：
 <<if $fishing_request_fish.length gte 1>>
+	<span class="no-numberify">
 	<div class="itemTerra">
 		<<set _allRequestFishList to getAllRequestFishList()>>
 		<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
@@ -108,7 +109,9 @@
 					<<set _requestFishName to _requestFish.cn_name>>
 					<<set _tooltip to ` <span class="gold">${_requestFishName}</span>`>>
 					<div class="item" @tooltip="_tooltip">
-						<<icon `_requestFish.icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_requestFish.icon`>>
+						</div>
 						<hr>
 						<<link [[⬆|Fishing Request Robin Showing]]>><<set $fishing_request_robin_show to _requestFish.name>><</link>>
 					</div>
@@ -116,6 +119,7 @@
 			<</capture>>
 		<</for>>
 	</div>
+	</span>
 <<else>>
 	<br>
 	<span class="blue">你的虚空袋里没有任务鱼。</span><br>
@@ -131,7 +135,9 @@
 				<<set _requestFishName to _requestFish.cn_name>>
 				<<set _tooltip to ` <span class="gold">${_requestFishName}</span>`>>
 				<div class="item" @tooltip="_tooltip">
-					<<icon `_requestFish.icon`>>
+					<div class="itemTerraGeneral">
+						<<icon `_requestFish.icon`>>
+					</div>
 				</div>
 			<</if>>
 		<</for>>

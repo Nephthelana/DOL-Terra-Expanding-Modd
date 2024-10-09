@@ -20,7 +20,7 @@
 <<set _materialObtained to getAllMaterialList()>>
 <div class="no-numberify">
 	<details class="journal">
-		<summary class="journal">材料列表</summary>
+		<summary class="journal">材料列表<<print $debug is 1 ? "（[DEBUG模式]你可以查看模组内所有的合成配方）" : "">></summary>
 		<div class="itemTerra">
 			<<for _i to 0; _i lt _materialObtained.length; _i++>>
 				<<set _material to setup.terraMaterial[_materialObtained[_i]]>>
@@ -28,7 +28,9 @@
 					<<if _material_ask isnot _material.name>>
 						<div class="item">
 							<div @tooltip="`${_material.cn_name}`">
-								<<icon `_material.icon`>>
+								<div class="itemTerraGeneral">
+									<<icon `_material.icon`>>
+								</div>
 							</div>
 							<hr>
 							<<link "⬇">>
@@ -53,7 +55,9 @@
 			<<if _material_ask is _material.name>>
 				<div class="item">
 					<div @tooltip="`${_material.cn_name}`">
-						<<icon `_material.icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_material.icon`>>
+						</div>
 					</div>
 				</div>
 				<<break>>
@@ -61,7 +65,9 @@
 		<</for>>
 	<<else>>
 		<div class="item">
-			空
+			<div class="itemTerraGeneral">
+				空
+			</div>
 		</div>
 	<</if>>
 </div>
@@ -73,8 +79,10 @@
 		<<set _recipe to setup.terraRecipe[_recipeList[_k]]>>
 		<<if _recipe.required_material.includes(_material_ask)>>
 			<div class="item">
-				<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-					<<icon `_recipe.icon`>>
+				<div @tooltip="`${_recipe.cn_name}<br><br>▶ ${_recipe.des}`">
+					<div class="itemTerraGeneral">
+						<<icon `_recipe.icon`>>
+					</div>
 				</div>
 				<hr>
 				<mouse class="tooltip">

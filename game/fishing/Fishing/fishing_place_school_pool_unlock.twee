@@ -1,0 +1,32 @@
+:: Fishing Place School Pool Unlock 1
+你脱掉鞋袜，在安静的泳池旁边坐下，将小腿伸进清凉的水里，让水流牵着它们轻轻地晃动。空旷的游泳馆和这片恬静的水池令你倍感安心。<<llstress>><<stress -12>><br>
+<br>
+忽然，你的脑海里响起了一个温柔男孩的声音："有水的地方就能钓鱼！"你不记得这是谁，也不记得自己什么时候听过这句话。但这个声音就像涟漪，在你脑中回荡着。你抬起头，看着面前平静的水面，萌生了一个奇妙的想法。<br>
+<br>
+<<link [[掏出鱼竿|Fishing Place School Pool Unlock 2]]>><</link>>
+
+:: Fishing Place School Pool Unlock 2
+你手持鱼竿，你在水面上的倒影露出的疑惑的表情。是的，泳池的水太清澈了，这个时间也不会有人，这里除了水什么都没有！<br>
+<br>
+你有些犹豫，你确信这儿什么也钓不到，但是你的好奇心依旧蠢蠢欲动，令你心里一阵瘙痒。最终，你抛出了鱼竿。<br>
+<br>
+<<link [[继续|Fishing Place School Pool Unlock 3]]>><</link>>
+
+:: Fishing Place School Pool Unlock 3
+一段时间的等待后，水面依旧平静如初，浮标也没有一点动静，你的期待一点点落空，逐渐确信自己做了一个愚蠢的决定。<br>
+<br>
+就在你准备结束这荒唐的垂钓时，你的浮标猛烈地抖动了一下。你怀疑自己眼花了，但紧接着你手中的鱼竿突然变得沉重——真的有什么东西咬钩了！<br>
+<br>
+<<if $Sonar_Potion_countdown gt 0>>
+	<span class="green">你的声呐药水显示，这是</span><span class="lewd">一条内裤</span><span class="green">!</span><br>
+	<br>
+<</if>>
+你又惊又喜，不敢相信眼前发生的一切，只是小心地收竿，迫不及待地查看自己钓到的东西。<br>
+<br>
+<span class="lewd"><<print $Sonar_Potion_countdown ? "果然是" : "是">>一条内裤，私部处还残留着一些白色粘液，浓稠到在水里泡了不知多久也没有被完全冲掉。</span><br>
+<br>
+你的脸红了，你不明白它和它的主人究竟遭遇了什么，以至于它会以这样羞耻的模样被你钓上来。你回想起自己在游泳课上的遭遇和见闻，不可避免地对校园生活有了更深刻的认识。<<gawareness>><<awareness 1>><<gstress>><<stress 3>><br>
+<br>
+<span class="green">你现在可以在课余时间来到游泳池里钓</span><span class="lewd">...内裤</span><span class="green">了...</span><<set $fishing_place_school_pool_unlock to true>><br>
+<br>
+<<link [[继续|School Pool]]>><</link>>

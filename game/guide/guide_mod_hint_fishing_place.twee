@@ -10,5 +10,128 @@
 "此外，还有些钓鱼点并不出产任务鱼，因此不会出现在渔夫的任务提示中。这些钓鱼点可以自己探索发现，也可以参考模组更新日志。<br>
 <br>
 "还有什么问题吗？"<br>
+<br>
+<<link [[具体都有哪些钓鱼点？如何解锁它们？|Guide Mod Hint Fishing Place 2]]>><</link>><br>
 <<link [[有些钓鱼点我实在不想去|Guide Mod Hint Fishing Place 1]]>><</link>><br>
 <<link [[返回|Guide Mod Hint]]>><</link>><br>
+
+:: Guide Mod Hint Fishing Place 1
+"哦，这样吗？确实有让你避免深入那些地点的方法，但你需要做好另外的准备。<br>
+<br>
+"这个方法是建造<span class="green">人工钓鱼池</span>。顾名思义，你需要自己在那个地点附近人工建造一个钓鱼池。这样可以钓到相同的渔获，同时能避免和钓鱼点的主人建立关系。<br>
+<br>
+"首先，你需要在 选项 - 模组设置 中启用'人工钓鱼池'功能。<br>
+<br>
+遭遇了对应NPC的追杀后，如果已经达到了足够的垂钓等级，伊甸小屋入口、狼窝入口、鹰塔塔底的位置会新增'建造人工钓鱼池'的选项，这样可以避免与他们的深入接触。<br>
+<br>
+在施粥所提供一次帮助后，如果已经达到了足够的垂钓等级，老教堂墓地的院子里会新增'建造人工钓鱼池'的选项，这样可以避免加入神殿。<br>
+<br>
+"接下来要想建造人工钓鱼池，你需要准备两样工具：
+<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子，用于挖出足够大小的水池。你可以在捐赠足够文物后，从博物馆馆长那里得到；<br>
+<<icon "tool/Bottomless_Water_Bucket.png">>无底水桶，用于给水池倒入足够的水。它是渔夫任务的奖励之一。<br>
+有了这两样工具，再加上一些时间，你就可以在'建造人工钓鱼池'页面完成任务。"<br>
+<br>
+<<link [[返回|Guide Mod Hint Fishing Place]]>><</link>><br>
+
+:: Guide Mod Hint Fishing Place 2
+"我不得不承认，这是很多人提到的问题。作者需要在这方面的引导做出改进，但在我这里作为补充说明也是必要的。<br>
+<br>
+"游戏内目前有以下钓鱼点，你可以点击对应的钓鱼点来查看需求的垂钓等级和对应地点：<br>
+天然钓鱼池<mouse class="tooltip linkBlue">(?)<span>与下文的"人工钓鱼池"相对的概念</span></mouse><br>
+<<lakeicon "fishing">><mouse class="tooltip linkBlue">
+	森林湖钓鱼岩
+	<span>垂钓<<fishingskillRank 0>>，森林湖钓鱼岩</span>
+</mouse><br>
+<<icon "beach.gif">><mouse class="tooltip linkBlue">
+	海滩
+	<span>垂钓<<fishingskillRank 0>>，海滩</span>
+</mouse><br>
+<<barbicon>><mouse class="tooltip linkBlue">
+	倒钩街的运河
+	<span>垂钓<<fishingskillRank 100>>，倒钩街</span>
+</mouse><br>
+<<mooricon "remy">><mouse class="tooltip linkBlue">
+	雷米庄园门口的沙地
+	<span>垂钓<<fishingskillRank 200>>，荒原中深入至雷米庄园的位置</span>
+</mouse><br>
+<<ind>><mouse class="tooltip linkBlue">
+	森林蜂蜜池
+	<span>垂钓<<fishingskillRank 300>>，森林中摘取野蜂巢的事件中，或森林中足够深入的地方(比森林湖更远，但不到尽头)</span>
+</mouse><br>
+<<farmicon "barn">><mouse class="tooltip linkBlue">
+	农场
+	<span>垂钓<<fishingskillRank 400>>，艾利克斯的农场(需要已解锁安全屋)</span>
+</mouse><br>
+<<templeicon "garden">><mouse class="tooltip linkBlue">
+	神殿的花园
+	<span>垂钓<<fishingskillRank 400>>，神殿的花园(需要加入神殿)</span>
+</mouse><br>
+<<wolfcaveicon "stream">><mouse class="tooltip linkBlue">
+	狼窝的溪流
+	<span>垂钓<<fishingskillRank 500>>，狼洞外面的空地(需要获得<<print $bestialitydisable is "f" ? "斯德哥尔摩综合征：狼群" : "斯德哥尔摩综合征：狼人">>)</span>
+</mouse><br>
+<<birdicon "rainwater">><mouse class="tooltip linkBlue">
+	鹰塔的雨水池
+	<span>垂钓<<fishingskillRank 600>>，鹰塔(需要获得斯德哥尔摩综合征：巨鹰)</span>
+</mouse><br>
+<<lakeicon "pond">><mouse class="tooltip linkBlue">
+	伊甸小屋的泉水
+	<span>垂钓<<fishingskillRank 700>>，伊甸小屋外的空地(需要获得斯德哥尔摩综合征：伊甸)</span>
+</mouse><br>
+<<foresticon "bog">><mouse class="tooltip linkBlue">
+	沼泽
+	<span>垂钓<<fishingskillRank 800>>，沼泽(需要发现沼泽)</span>
+</mouse><br>
+<<landfillicon>><mouse class="tooltip linkBlue">
+	垃圾场深处的沸水池
+	<span>垂钓<<fishingskillRank 900>>，垃圾填埋场足够深入的地方</span>
+</mouse><br>
+<<parkicon "fountain">><mouse class="tooltip linkBlue">
+	公园喷泉
+	<span>垂钓<<fishingskillRank 1000>>，公园</span>
+</mouse><br>
+<<swimmingicon>><mouse class="tooltip linkBlue">
+	学校泳池
+	<span>垂钓<<fishingskillRank 100>>，学校游泳池，未在上课期间</span>
+</mouse><br>
+<<icon "location/underground_ice_lake.png">><mouse class="tooltip linkBlue">
+	地下永冻湖
+	<span>垂钓<<fishingskillRank 0>>，科学 <a class="lblue">B</a> ，老教堂墓穴中"小溪流淌"字样的位置。</span>
+</mouse><br>
+<br>
+人工钓鱼池<mouse class="tooltip linkBlue">(?)<span>通过在"选项-模组设置-人工钓鱼池"开启此功能。一部分天然钓鱼点需要与NPC交互作为前置条件来解锁，而人工钓鱼点可以避免与这些NPC的深入接触。</span></mouse><br>
+<<foresticon "churchyard">><mouse class="tooltip linkBlue">
+	老教堂墓地庭院的人工钓鱼池
+	<span>垂钓<<fishingskillRank 400>>，在施粥所工作一次后，前往老教堂墓地完成建造</span>
+</mouse><br>
+<<foresticon>><mouse class="tooltip linkBlue">
+	狼穴洞口附近的人工钓鱼池
+	<span>垂钓<<fishingskillRank 500>>，被黑狼追杀一次后，前往森林深处完成建造</span>
+</mouse><br>
+<<birdicon "tower">><mouse class="tooltip linkBlue">
+	高塔塔底的人工钓鱼池
+	<span>垂钓<<fishingskillRank 600>>，被巨鹰追杀一次后，前往荒原最深处，高塔塔底完成建造</span>
+</mouse><br>
+<<foresticon>><mouse class="tooltip linkBlue">
+	猎人小屋附近的人工钓鱼池
+	<span>垂钓<<fishingskillRank 700>>，被猎人追杀一次后，前往森林深处完成建造</span>
+</mouse><br>
+<br>
+<<link [[返回|Guide Mod Hint Fishing Place]]>><</link>>
+
+:: Fishing Skill Rank Widget [widget]
+<<widget "fishingskillRank">>
+	<<switch _args[0]>>
+		<<case 0>><a class="red">无</a>
+		<<case 100>><a class="pink">F+</a>
+		<<case 200>><a class="purple">D</a>
+		<<case 300>><a class="purple">D+</a>
+		<<case 400>><a class="blue">C</a>
+		<<case 500>><a class="blue">C+</a>
+		<<case 600>><a class="lblue">B</a>
+		<<case 700>><a class="lblue">B+</a>
+		<<case 800>><a class="teal">A</a>
+		<<case 900>><a class="teal">A+</a>
+		<<case 1000>><a class="green">S</a>
+	<</switch>>
+<</widget>>

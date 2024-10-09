@@ -6,7 +6,7 @@
 		<<case "barb_street">><<getouticon>><<link [[返回倒钩街|Barb Street]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "moor">><<getouticon>><<link [[返回雷米庄园大门|Moor]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "honey">><<getouticon>><<link [[返回森林|Forest]]>><<set $fishing_harvest to undefined>><</link>>
-		<<case "farm_woodland">><<getouticon>><<link [[返回林地|Farm Woodland]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "farm_woodland">><<getouticon>><<link [[返回农场|Farm Work]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "temple_garden">><<getouticon>><<link [[返回花园|Temple Garden]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "temple_garden_artificial">><<getouticon>><<link [[返回老教堂墓地门口|Churchyard]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "wolf_cave_clearing">><<getouticon>><<link [[返回狼窝|Wolf Cave Clearing]]>><<set $fishing_harvest to undefined>><</link>>
@@ -19,5 +19,12 @@
 		<<case "trash">><<getouticon>><<link [[返回垃圾填埋场|Trash]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "park">><<getouticon>><<link [[返回公园|Park]]>><<set $fishing_harvest to undefined>><</link>>
 		<<case "school_pool">><<getouticon>><<link [[返回学校泳池|School Pool]]>><<set $fishing_harvest to undefined>><</link>>
+<<<<<<< Updated upstream
+=======
+		<<case "ice">><<getouticon>><<link [[返回地下永冻湖|Underground Ice Lake]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "rocky_hillock">><<getouticon>><<link [[返回海岛的山顶营地|Island]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "waterfall">><<getouticon>><<link [[返回海岛的河流营地|Island]]>><<set $fishing_harvest to undefined>><</link>>
+		<<case "gulch">><<getouticon>><<link [[返回海岛的峡谷营地|Island]]>><<set $fishing_harvest to undefined>><</link>>
+>>>>>>> Stashed changes
 	<</switch>>
 <</widget>>

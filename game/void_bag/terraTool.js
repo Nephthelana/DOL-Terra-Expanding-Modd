@@ -4,7 +4,7 @@ setup.terraTool = {
         cn_name: "魔法海螺",
         type: "tool",
         obtained: V.Magic_Conch,
-        icon: "tool/Magic_Conch_item.png",
+        icon: "tool/Magic_Conch.png",
 		des: "每日可使用一次，将你传送至海滩",
 		use: "<<terra_tool_use_Magic_Conch>>"
     },
@@ -13,7 +13,7 @@ setup.terraTool = {
         cn_name: "恶魔海螺",
         type: "tool",
         obtained: V.Demon_Conch,
-        icon: "tool/Demon_Conch_item.png",
+        icon: "tool/Demon_Conch.png",
 		des: "每日可使用一次，将你传送至地下熔岩湖(暂未实装，目前为传送至海滩)",
 		use: "<<terra_tool_use_Demon_Conch>>"
     },
@@ -23,8 +23,8 @@ setup.terraTool = {
 		material: false,
         type: "tool",
         obtained: V.Ice_Mirror,
-        icon: "tool/Ice_Mirror_item.png",
-		des: "每日可使用一次，将你传送至地下永冻湖(暂未实装)",
+        icon: "tool/Ice_Mirror.png",
+		des: "每日可使用一次，将你传送至地下永冻湖",
 		use: "<<terra_tool_use_Ice_Mirror>>"
     },
 	"Snake_Charmers_Flute": {
@@ -32,7 +32,7 @@ setup.terraTool = {
         cn_name: "耍蛇者长笛",
         type: "tool",
         obtained: V.Snake_Charmers_Flute,
-        icon: "tool/Snake_Charmers_Flute_item.png",
+        icon: "tool/Snake_Charmers_Flute.png",
 		des: "使用后生成一条蛇可供攀爬。",
 		use: "<<terra_tool_use_Snake_Charmers_Flute>>"
     },
@@ -41,7 +41,7 @@ setup.terraTool = {
         cn_name: "洪流之泪",
         type: "tool",
         obtained: V.Torrential_Tear,
-        icon: "tool/Torrential_Tear_item.png",
+        icon: "tool/Torrential_Tear.png",
 		des: "使用以控制在接下来至少六小时内的天气，在那之后会回到原本的天气模拟。",
 		use: "<<terra_tool_use_Torrential_Tear>>"
     },
@@ -50,7 +50,7 @@ setup.terraTool = {
         cn_name: "无底水桶",
         type: "tool",
         obtained: V.Bottomless_Water_Bucket,
-        icon: "tool/Bottomless_Water_Bucket_item.png",
+        icon: "tool/Bottomless_Water_Bucket.png",
 		des: "可以倒出无限的水。谁会想用这个来把自己浇成落汤鸡呢？",
 		use: "<<terra_tool_use_Bottomless_Water_Bucket>>"
     },
@@ -60,7 +60,7 @@ setup.terraTool = {
 		material: false,
         type: "tool",
         obtained: V.Bottomless_Lava_Bucket,
-        icon: "tool/Bottomless_Lava_Bucket_item.png",
+        icon: "tool/Bottomless_Lava_Bucket.png",
 		des: "可以倒出无限的熔岩。你能感觉到它十分滚烫，但同时也散发着一种奇异的芳香。",
 		use: "<<terra_tool_use_Bottomless_Lava_Bucket>>"
     },
@@ -70,7 +70,7 @@ setup.terraTool = {
 		material: false,
         type: "tool",
         obtained: V.Bottomless_Honey_Bucket,
-        icon: "tool/Bottomless_Honey_Bucket_item.png",
+        icon: "tool/Bottomless_Honey_Bucket.png",
 		des: "可以倒出无限的蜂蜜。孩子们一定非常喜欢。(功能未实装)",
 		use: "<<terra_tool_use_Bottomless_Honey_Bucket>>"
     },
@@ -80,7 +80,7 @@ setup.terraTool = {
 		material: false,
         type: "tool",
         obtained: V.Super_Absorbant_Sponge,
-        icon: "tool/Super_Absorbant_Sponge_item.png",
+        icon: "tool/Super_Absorbant_Sponge.png",
 		des: "能够吸收无限多的水。可以快速吸干衣物中的水分。",
 		use: "<<terra_tool_use_Super_Absorbant_Sponge>>"
     },
@@ -89,8 +89,8 @@ setup.terraTool = {
         cn_name: "掘墓者铲子",
         type: "tool",
         obtained: V.Gravediggers_Shovel,
-        icon: "tool/Gravediggers_Shovel_item.png",
-		des: "只有在建造人工钓鱼池时才用得到它。<i>\"你明白了吗？\"</i>",
+        icon: "tool/Gravediggers_Shovel.png",
+		des: "可以用于建造人工钓鱼池，或者更高效的开垦农田。<i>\"你明白了吗？\"</i>",
 		use: "<<terra_tool_use_Gravediggers_Shovel>>"
     },
 	"Bug_Net": {
@@ -98,8 +98,8 @@ setup.terraTool = {
         cn_name: "虫网",
         type: "tool",
         obtained: V.Bug_Net,
-        icon: "tool/Bug_Net_item.png",
-		des: "完成前置任务后，可以用来和罗宾在森林捕捉小动物。",
+        icon: "tool/Bug_Net.png",
+		des: "可以用来和罗宾在森林捕捉小动物，还可以在森林湖边、雷米庄园门口抓蜻蜓。",
 		use: "<<terra_tool_use_Bug_Net>>"
     },
 	"Golden_Bug_Net": {
@@ -107,8 +107,8 @@ setup.terraTool = {
         cn_name: "金虫网",
         type: "tool",
         obtained: V.Golden_Bug_Net,
-        icon: "tool/Golden_Bug_Net_item.png",
-		des: "完成前置任务后，可以用来和罗宾在森林捕捉小动物。也可以捕捉熔岩小动物(未实装)！",
+        icon: "tool/Golden_Bug_Net.png",
+		des: "可以用来和罗宾在森林捕捉小动物，还可以在森林湖边、雷米庄园门口抓蜻蜓。也可以捕捉熔岩小动物(未实装)！",
 		use: "<<terra_tool_use_Golden_Bug_Net>>"
     },
 	"Staff_of_Regrowth": {
@@ -116,7 +116,7 @@ setup.terraTool = {
         cn_name: "再生法杖",
         type: "tool",
         obtained: V.Staff_of_Regrowth,
-        icon: "tool/Staff_of_Regrowth_item.png",
+        icon: "tool/Staff_of_Regrowth.png",
 		des: "用它进行采集可提高炼金植物的采集量(相关功能未实装)",
 		use: "<<terra_tool_use_Staff_of_Regrowth>>"
     },
@@ -125,8 +125,8 @@ setup.terraTool = {
         cn_name: "星怒",
         type: "tool",
         obtained: V.Starfury,
-        icon: "tool/Starfury_item.png",
-		des: "这不该算工具吧？",
+        icon: "tool/Starfury.png",
+		des: "这不该算工具吧？(暂无任何用处)",
 		use: "<<terra_tool_use_Starfury>>"
     },
 }

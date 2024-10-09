@@ -5,13 +5,34 @@
 	padding: 0.5rem;
 }
 
-.itemTerraTool {
+.itemTerra_Tool {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 60px);
 	gap: 5px;
 	padding: 0.5rem;
 <<<<<<< Updated upstream
 =======
+}
+
+.itemTerraGeneral {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 40px;
+}
+
+.itemTerraTool {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 50px;
+}
+
+.itemTerraBait {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 32px;
 }
 
 .terraMod {

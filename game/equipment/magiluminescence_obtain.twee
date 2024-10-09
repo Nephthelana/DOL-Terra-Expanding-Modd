@@ -1,0 +1,74 @@
+:: Magiluminescence Obtain [widget]
+<<widget "MagiluminescenceObtained">>
+	
+	<<if $Magiluminescence isnot true>>
+		车厢的地板上，一个刻有华丽花纹的盒子引起了你的注意。你不知道为何一个如此精致的工艺品，会被这样随意地放在地上。<br>
+		<br>
+		但诡异的是，每当你想集中精神来观察其上的纹路时，你眼前的事物就变得越发失去原本的颜色。<<gggawareness>><<awareness 24>><br>
+		<br>
+		<<link [[上前查看|Magiluminescence Obtain 1]]>><<estate_end>><<endevent>><</link>><<willpowerdifficulty 200 1000>><br>
+		<<link [[无视|Elk Compound Station]]>><<estate_end>><<endevent>><</link>>
+	<</if>>
+
+<</widget>>
+
+:: Magiluminescence Obtain 1
+你试探着向那个盒子所在的方向移动，避免直视那些花纹。<br>
+<br>
+尽管隧道里比较昏暗，但你仍能感到随着你不断地靠近它，一种无形的力会尝试扭曲你的视野，混淆你的视线。杂乱无章的声音片段在最初几乎难以察觉，但它逐渐变得不容忽视了。<<gstress>><<stress 7>><br>
+<br>
+<<if $willpowerSuccess is 1>>
+	你尝试让自己不被那些杂音所干扰。<span class="green">你成功了。</span>你蹲下来用手一阵摸索，将盒子抓在了手里。<br>
+	<br>
+	接触到盒子的一瞬间，你开始感觉到似乎周围的暗处有什么东西在觊觎着你<!-- 设想的是暗影之手 -->。每当有光圈掠过，它就像被驱逐了一般；而一旦黑暗再次笼罩车厢，它又会不怀好意的步步向你逼近。<<ggstress>><<stress 15>><br>
+	<br>
+	看起来它喜欢在黑暗中行动。而隧道里间歇性的光圈很好地将其抑制住了。<br>
+	<br>
+	目前来看你是安全的。但你可以试着打开这个盒子，看看里面装着什么。<br>
+	<br>
+	<<link [[打开|Magiluminescence Obtain 2]]>><<willpowerdifficulty 400 1000>><</link>><br>
+	<<link [[无视|Elk Compound Station]]>><</link>><br>
+<<else>>
+	你尝试让自己不被那些杂音所干扰。<span class="red">但它们很快占据了你的脑海。</span> 你不得不屈服于这股阻碍着你的力量，打消对那个盒子的主意。<br>
+	<br>
+	<<link [[继续|Elk Compound Station]]>><</link>><br>
+<</if>>
+
+:: Magiluminescence Obtain 2
+这个盒子使用的是滑盖结构。你用大拇指按住了盒盖，准备将其推出。<br>
+<br>
+光滑的金属触感<!-- 设想的是铥矿？还是邪恶锭？ -->，但又能感受到下面有什么在游走<!-- 设想的是噩梦燃料 -->：这是你把手指放在盒盖上时的感受。<span class="green">你眼前扭曲的花纹、耳边嘈杂的声音，渐渐地舒展开来。</span><<llstress>><<stress -15>><br>
+<br>
+这是一个留声机的图案。最引人注目的是那块喇叭的部分，被刻意地画成了扭曲盘绕着上升的形状。你不能确定是不是产生了幻觉，但图案里的粗略描绘的机械结构似乎在运作——好像是它在播放你听到的这段音乐。<br>
+<br>
+欢快的节奏中是苍凉的音色，你感到一种登上王座后的怅然若失之感。<<gggawareness>><<awareness 24>><br>
+<br>
+你没有注意到自己沉浸其中有多久了。当你意识到自己刚刚被困在了音乐里，手指仍然毫无动作的时候，阴影中有更庞大的物体在慢慢地靠近你。<br>
+<br>
+<<link [[继续|Magiluminescence Obtain 3]]>><</link>>
+
+:: Magiluminescence Obtain 3
+<span class="red">是两只蛰伏在暗影中的生物。</span>瘦高的那只长有夸张的尖喙，矮胖的那只生得庞大的身躯。<br>
+<br>
+见你已经意识到了它们，那只瘦高生物的尖喙张大了嘴，发出一声尖啸；矮胖生物匍匐着的身躯直立了起来，咆哮着向你示威。然后它们向你冲来。<<gggstress>><<stress 20>><<ggtrauma>><<trauma 12>><br>
+<br>
+你的视野中出现了血丝，眼前的一切又开始不停地扭曲变化。你不知道打开这个盒子能否逆转这个局面，但这是你眼下唯一能做的事了。<br>
+<br>
+<<link [[试着打开盒子|Magiluminescence Obtain 4]]>><<willpowerdifficulty 600 1000>><</link>><br>
+<<link [[什么也不做|Magiluminescence Obtain 4]]>><<set $willpowerSuccess to 0>><</link>><br>
+
+:: Magiluminescence Obtain 4
+<<set $Magiluminescence to true>>
+<<if $willpowerSuccess is 1>>
+	<span class="green">你顶住了巨大的压力</span>，推开盒盖——一缕温馨的光芒随着盒盖的打开而逐渐释放出来。它足以照亮整个车厢。<<llstress>><<stress -10>><<ltrauma>><<trauma -3>><br>
+<<else>>
+	恍惚间，<span class="red">你的手指打滑</span>，盒子掉在了地上。盒盖被意外的撞击打开，一缕温馨的光芒渐释放出来。它足以照亮整个车厢。<<llstress>><<stress -10>><<lstrauma>><<trauma -3>><br>
+<</if>>
+<br>
+晕眩感逐渐消失，你感到生命力又重新回到了你的体内。你重新看向那两个暗影生物的方向，但它们已经无影无踪了。<br>
+<br>
+盒子里静静地躺着一块护符，发出不寻常的暖光。看起来它救了你一命。<br>
+<br>
+<span class="gold">你获得了<<icon "accessories/Magiluminescence.png">>魔光护符！</span><br>
+<br>
+<<link [[继续|Elk Compound Station]]>><</link>><br>
