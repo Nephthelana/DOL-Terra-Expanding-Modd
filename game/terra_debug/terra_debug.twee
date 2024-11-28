@@ -30,6 +30,14 @@
 <<else>>
 	<span class="terraFading"><<icon "pylon/Mushroom_Pylon.png">></span><<link [[解锁狼窝晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Wolfcave")>><</link>>
 <</if>>
+<<if $debug is 1>>
+<br>
+<<if $pylon_collected.includes("Temple")>>
+	<<icon "pylon/Hallow_Pylon.png">><<link [[锁定神殿晶塔|Terra Debug]]>><<set $pylon_collected.delete("Temple")>><</link>>
+<<else>>
+	<span class="terraFading"><<icon "pylon/Hallow_Pylon.png">></span><<link [[解锁神殿晶塔|Terra Debug]]>><<set $pylon_collected.pushUnique("Temple")>><</link>>
+<</if>> * DEBUG功能，目前只能通过调试菜单解锁神殿晶塔
+<</if>>
 <br>
 以下几个传送选项，如在正常解锁对应地点前使用，可能会导致问题，请注意。<br>
 <<homeicon>><<link [[传送到卧室|Bedroom]]>><</link>><br>
@@ -37,11 +45,13 @@
 <<farmicon "cottage">><<link [[传送到农场卧室|Farm Bedroom]]>><</link>><br>
 <<mooricon "tower">><<link [[传送到鹰塔|Bird Tower]]>><</link>><br>
 <<wolfcaveicon>><<link [[传送到狼窝|Wolf Cave]]>><</link>><br>
+<<wolficon>><<link [[传送到神殿回廊|Temple Cloister]]>><</link>><br>
 <br>
 钓鱼相关<br>
 <<link [[获得/丢弃鱼竿|Terra Debug Fishing Pole]]>><</link>><br>
 <<link [[获得/丢弃装备|Terra Debug Equipment]]>><</link>><br>
 <<link [[获得/丢弃任务鱼|Terra Debug Request Fish]]>><</link>><br>
+<<link [[获得/丢弃渔夫家具|Terra Debug Fishing Angler Furniture]]>><</link>><br>
 <<link [[获得鱼饵|Terra Debug Baits]]>><</link>><br>
 <<link [[获得鱼|Terra Debug Fish]]>><</link>><br>
 <<link [[获得宝匣|Terra Debug Crates]]>><</link>><br>
@@ -61,7 +71,7 @@
 <<ind>><<link [[重置初遇恐惧鹦鹉螺|Terra Debug]]>><<set $Dreadnautilus_intro to undefined>><</link>><br>
 <<icon "tool/Bloody_Tear.png">><<link [[获得一颗血泪|Terra Debug]]>><<set $Bloody_Tear += 1>><</link>><br>
 <<if $blood_moon_monolith is undefined>>
-	<span class="fading"><<icon "blood_moon_monolith/Blood_Moon_Monolith.png">></span><<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to "get">><</link>><br>
+	<span class="terraFading"><<icon "blood_moon_monolith/Blood_Moon_Monolith.png">></span><<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to 0>><</link>><br>
 <<else>>
 	<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[丢弃血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to undefined>><</link>><br>
 <</if>>

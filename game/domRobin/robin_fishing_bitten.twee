@@ -1,0 +1,117 @@
+:: Robin Fishing Bitten
+<<npc Robin>><<person1>>
+<<fishing_cast_time>>
+/* 将开始钓鱼已经过去的时间与等待鱼上钩所需的时间之和，跟对应地点的可钓鱼时间进行比较。前者较大表明已超出约会时间，该回去了，否则可以继续钓鱼 */
+<<if ($robin_fishing_date_time_passed + $fishing_cast_time * 60) gte $robin_fishing_date_time>>
+	<<if $robin_fishing_date_time_passed gte $robin_fishing_date_time>>
+		你准备再抛一竿，而罗宾提醒你是时候回去了。<<robin_bait_back>>你们收拾好渔具回到了孤儿院。<br>
+	<<else>>
+		<<set _time_remain to ($robin_fishing_date_time - $robin_fishing_date_time_passed)>>
+		<<pass _time_remain seconds>>
+		<<set $fishing_bitten_count += 1>>
+		经过<<print [Math.floor(_time_remain/60)]>>分钟的等待，你没有等到下一次咬钩。<<robin_bait_back>>你们收拾好渔具，在约定的时间回到了孤儿院。<br>
+	<</if>>
+	<br>
+	<<unset $fishing_harvest>>
+	<<robin_fishing_travel_time>>
+	<<robinoptions>>
+<<else>>
+	<<pass $fishing_cast_time>>
+	<<set $fishing_bitten_count += 1>>
+	/* 计算钓鱼约会中已钓鱼时间 */
+	<<set $robin_fishing_date_time_passed += $fishing_cast_time * 60>>
+	经过$fishing_cast_time分钟的等待，有东西上钩了！<br>
+	<<if $Sonar_Potion_countdown gt 0>>
+		<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
+	<</if>>
+	<br>
+	/* 显示罗宾的钓鱼状态。钓鱼状态机制详见<<widget "robin_fishing_phase">> */
+	<<robin_fishing_phase>>
+	<br>
+	<<link [[收竿！|Robin Fishing]]>><<fishing_prepare>><</link>><br>
+	<br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
+	<br>
+	<<link [[回家|Robin Fishing Finished]]>>
+		<<unset $fishing_harvest>>
+		<<if $robin_fishing_phase is "none" and $fishing_place is "lake_fishing_rock">>
+			<<set $robin_fishing_finished_phase to 3>>
+		<<else>>
+			<<set $robin_fishing_finished_phase to 1>>
+		<</if>>
+	<</link>><br>
+<</if>>
+<<endevent>>
+
+:: Widget Robin Fishing Phase [widget]
+<<widget "robin_fishing_phase">>
+	/* 罗宾没有鱼饵时，为空闲状态，停止钓鱼 */
+	<<if $robin_bait_amount lte 0>>
+		<<set $robin_fishing_phase to "none">>
+	<<else>>
+		/* 罗宾钓鱼状态分布，以咬钩所需时间+钓鱼小游戏时间(固定为2min)为一个周期，计算得到当下罗宾收杆次数，以及当前钓鱼状态 */
+		<<set $robin_fishing_harvest_times to Math.floor($robin_fishing_date_time_passed / 60 / ($robin_fishing_cast_time + 2))>>
+		<<if ($robin_fishing_date_time_passed - ($robin_fishing_cast_time + 2) * 60 * $robin_fishing_harvest_times) lt $robin_fishing_cast_time * 60>>
+			<<set $robin_fishing_phase to "biting">>
+		<<else>>
+			<<set $robin_fishing_phase to "fishing">>
+		<</if>>
+		/* 若与上个页面相比罗宾完成了“钓鱼小游戏”，计算每次鱼饵是否被消耗，并计算罗宾最近一次钓鱼的成果/失败情况，并覆盖等待咬竿("biting")/钓鱼小游戏("fishing")状态 */
+		<<for _t to 0 ; _t lt $robin_fishing_harvest_times - $robin_fishing_harvest_times_prev ; _t++>>
+			/* 计算鱼饵是否消耗 */
+			<<if random(1,6 + $robin_bait_fishing_power) lte 6>>
+				<<set $robin_bait_amount -= 1>>
+			<</if>>
+			/* 1/5概率断线 */
+			<<if random(1,5) is 1>>
+				<<set $robin_fishing_phase to "fail">>
+			<<else>>
+				<<set $robin_fishing_phase to "succeed">>
+			<</if>>
+		<</for>>
+	<</if>>
+	/* 记录当前页面下，罗宾收杆次数。用于在下个页面和新的收杆次数对比是否触发了收杆 */
+	<<set $robin_fishing_harvest_times_prev to $robin_fishing_harvest_times>>
+	/* 不同钓鱼状态下罗宾的描述。内容有待扩充 */
+	<<switch $robin_fishing_phase>>
+		<<case "none">>
+			罗宾用完了鱼饵，正坐在你身边。
+			<<print [
+				"<<He>>也专注地盯着你的浮标。",
+				"<<He>>打了个哈欠。",
+				"<<print $passage is \"Robin Fishing Bitten\" ? \"<<He>>用眼神询问你要不要收杆。\" : \"<<He>>在一旁为你加油打气。\">>"
+			].random()>><br>
+		<<case "biting">>
+			<<print [
+				"罗宾正在耐心地等鱼咬钩。",
+				"罗宾专注地盯着<<his>>的浮标。",
+				"罗宾打了个哈欠，但<<he>>很快又重新投入到钓鱼中。"
+			].random()>><br>
+		<<case "fishing">>
+			<<print [
+				"罗宾看起来在战术性的放长线钓大鱼。",
+				"罗宾正在自信地顺利收线。",
+				"哦不，罗宾看起来刚刚错过了一次收线的好机会。",
+				"罗宾正在铆足了劲儿地收线。\"这条鱼不太听话。\""
+			].random()>><br>
+		<<case "fail">>
+			哦不，看起来罗宾的鱼线断了。
+			<<print [
+				"\"那条鱼实在挣扎得太厉害了...\"<<He>>郁闷地挠了挠头。",
+				"\"可惜了那么大一条鱼，我只差一点就能把它钓上来了！\"<<He>>看起来很不服气。",
+				"\"天哪，刚刚差点就落水了...\"<<He>>看起来心有余悸。"
+			].random()>><br>
+		<<case "succeed">>
+			罗宾钓到了<<robin_fishing_harvest>>，并把它放进虚空袋。
+			<<print [
+				"\"嘿嘿，刚刚差点就让它跑了。还好我技高一筹。\"<<He>>还在仔细地回味刚才的胜利。",
+				"\"这就是为什么我喜欢钓鱼！\"<<He>>兴奋异常。",
+				"\"我刚刚收线的动作标不标准？\"<<He>>看起来十分得意。"
+			].random()>><br>
+	<</switch>>
+	/* 如果罗宾还有剩余鱼饵，显示剩余的鱼饵信息 */
+	<<if $robin_bait_amount gt 0>>
+		罗宾还剩$robin_bait_amount个<<icon `$robin_bait_icon`>>$robin_bait_cn_name。<br>
+	<</if>>
+
+<</widget>>

@@ -25,7 +25,18 @@
 	<br>
 <</if>>
 <<if $pylon_collected.includes("Hawks Tower")>>
-	<<icon "pylon/Sunken_Pylon.png">><<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
+	<<icon "pylon/Sunken_Pylon.png">>
+	<<if $bird.state is "hunting">>
+		<<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>>
+			<<pass 1>>
+			<<set $bird.timer to 0>>
+			<<set $pylon_teleport_count += 1>>
+		<</link>>
+	<<elseif random(1,3) lte 2>>
+		<<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><</link>>
+	<<else>>
+		<<link [[传送到鹰塔晶塔(0:01)|Pylon Bird Tower Event]]>><</link>>
+	<</if>>
 	<br>
 <</if>>
 <<if $pylon_collected.includes("Wolfcave")>>
@@ -38,6 +49,17 @@
 		<<icon "pylon/Mushroom_Pylon.png">><<link [[传送到狼窝晶塔(0:01)|Wolf Cave]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<</if>>
 	<br>
+<</if>>
+<<if $debug is 1>>
+<<if $pylon_collected.includes("Temple")>>
+	<<sydneySchedule>>
+	<<if _sydney_location is "temple">>
+		<<icon "pylon/Hallow_Pylon.png">><<link [[传送到神殿晶塔(0:01)|Temple Cloister]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
+	<<else>>
+		<span class="terraFading"><<icon "pylon/Hallow_Pylon.png">></span>悉尼现在不在神殿，你无法使用神殿晶塔。
+	<</if>>
+	<br>
+<</if>>
 <</if>>
 <br>
 <<getouticon>>

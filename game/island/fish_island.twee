@@ -84,19 +84,30 @@
 你擦去落在工作台上的杂物。由于海岛缺乏工具，你在这里使用工作台只能将鱼类加工为食物。
 <<icon "furniture_placed/Work_Bench_(placed).png">><br>
 <br>
-<<if currentSkillValue('housekeeping') lt 600>>
-	你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
-<<else>>
-	<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
-<</if>>
-<br>
-<span id="crafting_island_info"></span>
+<span id="crafting_island_info">
+	<<if $housekeeping lt 600>>
+		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
+	<<elseif $housekeeping lt 1000>>
+		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
+	<<else>>
+		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+	<</if>>
+	<br>
+</span>
 <span id="crafting_island_work_bench"><<crafting_island_work_bench>></span>
 <br>
 <<getouticon>><<link [[返回|Fish Island]]>><</link>>
 
 :: Fish Island Work Bench Crafting [widget]
 <<widget "crafting_island_info">>
+	<<if $housekeeping lt 600>>
+		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
+	<<elseif $housekeeping lt 1000>>
+		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
+	<<else>>
+		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+	<</if>>
+	<br>
 	_crafted_info
 <</widget>>
 

@@ -3,124 +3,196 @@ setup.terraCrate = {
         name: "Golden_Crate",
         cn_name: "金匣",
         type: "crate",
-        amount: V.Golden_Crate || 0,
+        rarity: ["extremely_rare","very_rare"],
+		rarity_cn: "十分罕见",
+		catching_place: ["lake_fishing_rock","waterfall","beach","barb_street","gulch","moor","farm_woodland","temple_garden","temple_garden_artificial","wolf_cave_clearing","wolf_cave_clearing_artificial","bird_tower","bird_tower_artificial","eden_clearing","eden_clearing_artificial","rocky_hillock","bog","trash","ice"],
+        catching_place_cn: "除熔岩、蜂蜜外的所有水域",
+		amount: V.Golden_Crate || 0,
         icon: "fishing/crates/Golden_Crate.png",
-		unload: "<<Golden_Crate_unload>>"
+		unload: "<<Golden_Crate_unload>>",
+		difficulty: 1.25,
     },
 	"Iron_Crate": {
         name: "Iron_Crate",
         cn_name: "铁匣",
         type: "crate",
-        amount: V.Iron_Crate || 0,
+        rarity: ["rare","uncommon"],
+		rarity_cn: "不常见",
+		catching_place: ["lake_fishing_rock","waterfall","beach","barb_street","gulch","moor","farm_woodland","temple_garden","temple_garden_artificial","wolf_cave_clearing","wolf_cave_clearing_artificial","bird_tower","bird_tower_artificial","eden_clearing","eden_clearing_artificial","rocky_hillock","bog","trash","ice"],
+        catching_place_cn: "除熔岩、蜂蜜外的所有水域",
+		amount: V.Iron_Crate || 0,
         icon: "fishing/crates/Iron_Crate.png",
-		unload: "<<Iron_Crate_unload>>"
+		unload: "<<Iron_Crate_unload>>",
+		difficulty: 0.75,
     },
 	"Wooden_Crate": {
         name: "Wooden_Crate",
         cn_name: "木匣",
         type: "crate",
+        rarity: ["common","plentiful"],
+		rarity_cn: "丰富",
+		catching_place: ["lake_fishing_rock","waterfall","beach","barb_street","gulch","moor","farm_woodland","temple_garden","temple_garden_artificial","wolf_cave_clearing","wolf_cave_clearing_artificial","bird_tower","bird_tower_artificial","eden_clearing","eden_clearing_artificial","rocky_hillock","bog","trash","ice"],
+        catching_place_cn: "除熔岩、蜂蜜外的所有水域",
         amount: V.Wooden_Crate || 0,
         icon: "fishing/crates/Wooden_Crate.png",
-		unload: "<<Wooden_Crate_unload>>"
+		unload: "<<Wooden_Crate_unload>>",
+		difficulty: 0.25,
     },
 	"Ocean_Crate": {
         name: "Ocean_Crate",
         cn_name: "海洋匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["beach"],
+        catching_place_cn: "<<icon 'beach.gif'>>海滩",
         amount: V.Ocean_Crate || 0,
         icon: "fishing/crates/Ocean_Crate.png",
-		unload: "<<Ocean_Crate_unload>>"
+		unload: "<<Ocean_Crate_unload>>",
+		difficulty: 1,
     },
 	"Oasis_Crate": {
         name: "Oasis_Crate",
         cn_name: "绿洲匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["moor"],
+		catching_place_cn: "<<mooricon 'remy'>>雷米庄园门口的沙地",
         amount: V.Oasis_Crate || 0,
         icon: "fishing/crates/Oasis_Crate.png",
-		unload: "<<Oasis_Crate_unload>>"
+		unload: "<<Oasis_Crate_unload>>",
+		difficulty: 1,
     },
 	"Jungle_Crate": {
         name: "Jungle_Crate",
         cn_name: "丛林匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["farm_woodland"],
+		catching_place_cn: "<<farmicon 'barn'>>农场",
         amount: V.Jungle_Crate || 0,
         icon: "fishing/crates/Jungle_Crate.png",
-		unload: "<<Jungle_Crate_unload>>"
+		unload: "<<Jungle_Crate_unload>>",
+		difficulty: 1,
     },
 	"Hallowed_Crate": {
         name: "Hallowed_Crate",
         cn_name: "神圣匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["temple_garden","temple_garden_artificial"],
+		catching_place_cn: "<<templeicon 'garden'>>神殿的花园<<print $options.artificial_fishing_pond ? '<br><<foresticon \"churchyard\">>老教堂墓地庭院的人工钓鱼池' : ''>>",
         amount: V.Hallowed_Crate || 0,
         icon: "fishing/crates/Hallowed_Crate.png",
-		unload: "<<Hallowed_Crate_unload>>"
+		unload: "<<Hallowed_Crate_unload>>",
+		difficulty: 1,
     },
 	"Sky_Crate": {
         name: "Sky_Crate",
         cn_name: "天空匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["eden_clearing","eden_clearing_artificial","rocky_hillock"],
+		catching_place_cn: "<<lakeicon 'pond'>>伊甸小屋的泉水<<print $options.artificial_fishing_pond ? '<br><<foresticon>>猎人小屋附近的人工钓鱼池' : ''>><<print $island.explore_locations.includes('battleground') ? '<br><<ind>>海岛的天湖' : ''>>",
         amount: V.Sky_Crate || 0,
         icon: "fishing/crates/Sky_Crate.png",
-		unload: "<<Sky_Crate_unload>>"
+		unload: "<<Sky_Crate_unload>>",
+		difficulty: 1,
     },
 	"Frozen_Crate": {
         name: "Frozen_Crate",
         cn_name: "冰冻匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["ice"],
+		catching_place_cn: "<<icon 'location/underground_ice_lake.png'>>地下永冻湖",
         amount: V.Frozen_Crate || 0,
         icon: "fishing/crates/Frozen_Crate.png",
-		unload: "<<Frozen_Crate_unload>>"
+		unload: "<<Frozen_Crate_unload>>",
+		difficulty: 1,
     },
 	"Obsidian_Crate": {
         name: "Obsidian_Crate",
         cn_name: "黑曜石匣",
         type: "crate",
+        rarity: ["extremely_rare","very_rare","rare"],
+		rarity_cn: "罕见",
+		catching_place: ["lava"],
+		catching_place_cn: "<<icon 'location/underground_lava_lake.png'>>地下熔岩湖(暂未实装)",
         amount: V.Obsidian_Crate || 0,
         icon: "fishing/crates/Obsidian_Crate.png",
-		unload: "<<Obsidian_Crate_unload>>"
+		unload: "<<Obsidian_Crate_unload>>",
+		difficulty: 1,
     },
 	"Sunken_Crate": {
         name: "Sunken_Crate",
         cn_name: "富养匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["bird_tower","bird_tower_artificial"],
+		catching_place_cn: "<<birdicon 'rainwater'>>鹰塔的雨水池<<print $options.artificial_fishing_pond ? '<br><<birdicon \"tower\">>高塔塔底的人工钓鱼池' : ''>>",
         amount: V.Sunken_Crate || 0,
         icon: "fishing/crates/Sunken_Crate.png",
-		unload: "<<Sunken_Crate_unload>>"
+		unload: "<<Sunken_Crate_unload>>",
+		difficulty: 1,
     },
 	"Sulphurous_Crate": {
         name: "Sulphurous_Crate",
         cn_name: "硫海匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["bog"],
+		catching_place_cn: "<<foresticon 'bog'>>沼泽",
         amount: V.Sulphurous_Crate || 0,
         icon: "fishing/crates/Sulphurous_Crate.png",
-		unload: "<<Sulphurous_Crate_unload>>"
+		unload: "<<Sulphurous_Crate_unload>>",
+		difficulty: 1,
     },
 	"Brimstone_Crate": {
         name: "Brimstone_Crate",
         cn_name: "焦炭匣",
         type: "crate",
+        rarity: ["rare"],
+		rarity_cn: "罕见",
+		catching_place: ["trash"],
+		catching_place_cn: "<<landfillicon>>垃圾场深处的沸水池",
         amount: V.Brimstone_Crate || 0,
         icon: "fishing/crates/Brimstone_Crate.png",
-		unload: "<<Brimstone_Crate_unload>>"
+		unload: "<<Brimstone_Crate_unload>>",
+		difficulty: 1,
     },
 	"Oyster": {
         name: "Oyster",
         cn_name: "牡蛎",
-        type: "crate",
+        type: "grab_bag",
         amount: V.Oyster || 0,
         icon: "fishing/crates/Oyster.png",
-		unload: "<<Oyster_unload>>"
+		unload: "<<Oyster_unload>>",
+		difficulty: 0.75,
+    },
+	"Can_Of_Worms": {
+        name: "Can_Of_Worms",
+        cn_name: "蠕虫罐头",
+        type: "grab_bag",
+        amount: V.Can_Of_Worms || 0,
+        icon: "fishing/crates/Can_Of_Worms.png",
+		unload: "<<Can_Of_Worms_unload>>",
+		difficulty: 0,
     },
 }
 
 function getAllCrateList() {
-	for (let crate in setup.terraCrate) {
-        setup.terraCrate[crate].amount = V[crate] || 0;
-    }
     let all_crate_list = Object.keys(setup.terraCrate);
 	return all_crate_list;
 }
-window.getAllCrateList = getAllCrateList
+window.getAllCrateList = getAllCrateList;
 
 function getCrateObtainedList() {
 	for (let crate in setup.terraCrate) {

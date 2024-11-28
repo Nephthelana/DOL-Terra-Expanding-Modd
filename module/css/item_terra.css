@@ -5,11 +5,56 @@
 	padding: 0.5rem;
 }
 
-.itemTerraTool {
+/* 新行的平移动画 */
+@keyframes slide-down {
+	0% {
+	  opacity: 0;
+	  transform: translateY(-20px);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+
+.new-row {
+	grid-column: 1 / -1;
+	padding: 10px;
+	border: 1px solid var(--200);
+	animation: slide-down 0.5s ease-out;
+}
+
+.new-row hr {
+	border-top: 1px solid var(--600);
+	width: 100%;
+}
+
+.itemTerra_Tool {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 60px);
 	gap: 5px;
 	padding: 0.5rem;
+}
+
+.itemTerraGeneral {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 40px;
+}
+
+.itemTerraTool {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 50px;
+}
+
+.itemTerraBait {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 32px;
 }
 
 .terraMod {
@@ -55,4 +100,8 @@
 	animation-duration: 2s;
 	animation-iteration-count: 1;
 	opacity: 0.3;
+}
+
+.terraItemLocked {
+	filter: contrast(0);
 }

@@ -69,6 +69,19 @@
 		<<else>>
 			<<set $bait_forest_shop to "Ladybug">>
 		<</if>>
+	<<case "Dragonfly">>
+		<<if random(1,400) is 1>>
+			<<set $bait_forest_shop to "Gold_Dragonfly">>
+		<<else>>
+			<<set $bait_forest_shop to [
+				"Black_Dragonfly",
+				"Blue_Dragonfly",
+				"Green_Dragonfly",
+				"Orange_Dragonfly",
+				"Red_Dragonfly",
+				"Yellow_Dragonfly"
+			].random()>>
+		<</if>>
 	<<case "Stinkbug">>
 		<<set $bait_forest_shop to "Stinkbug">>
 	<<case "Worm">>
@@ -106,14 +119,36 @@
 <<clearWraith>>
 
 <!-- 流星雨事件概率：1/10 -->
-<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
 <<fallen_star_rate_set>>
+
+<!-- 老教堂墓地生长阿比盖尔之花 -->
+<<if $Abigails_Flower_grown is undefined and Time.days gte random(1,100)>>
+	<<set $Abigails_Flower_grown to true>>
+<</if>>
+
+<!-- 地下永冻湖的冰洞重新结冰 -->
+<<if $underground_ice_lake_broken gt 0>>
+	<<set $underground_ice_lake_broken -= 1>>
+<<else>>
+	<<unset $underground_ice_lake_broken>>
+<</if>>
+
+<!-- 旅商到达 -->
+<<if random(1,5) is 1>>
+	<<set $Traveling_Merchant_arrive to true>>
+	<<travelingMerchantShopListSetup>>
+	<<set $Traveling_Merchant_arrive_message to true>>
+<<else>>
+	<<unset $Traveling_Merchant_arrive>>
+	<<unset $traveling_merchant_shop_list>>
+<</if>>
 
 <</widget>>
 
 :: Fallen Star Rate Set [widget]
 <!-- 坠落之星倍率 -->
 <<widget "fallen_star_rate_set">>
+	<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
 	<<if $Meteor_Shower>>
 		<<set $fallen_star_rate to random(300,500)>>
 	<<else>>

@@ -1,11 +1,8 @@
 :: Fishing Bitten
-<<if ($trash gte 50 and $fishing_place is "trash") and ($options.fishingrod_held is "Hotline_Fishing_Hook" or $Bait is "Hell_Butterfly" or ($terra_accessories_slots.includes("Lavaproof_Fishing_Hook") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")))>>
+<<if ["trash","lava"].includes($fishing_place) and (["Hotline_Fishing_Hook","Slurper_Pole"].includes($options.fishingrod_held) or ["Lavafly","Magma_Snail","Hell_Butterfly"].includes($Bait) or $terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag"))>>
 	<<earnFeat "Hot Reels!">>
 <</if>>
-<<if ($trash gte 50 and $fishing_place is "trash") and $options.fishingrod_held isnot "Hotline_Fishing_Hook" and $Bait isnot "Hell_Butterfly" and !($terra_accessories_slots.includes("Lavaproof_Fishing_Hook") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag"))>>
-	<<pass 30>>
-	经过30分钟的等待，你什么都没等到。也许不惧高温的小动物或渔具能解决这个问题。<br>
-<<elseif $Bait is "Truffle_Worm">>
+<<if $Bait is "Truffle_Worm">>
 	<<if $fishing_place is "beach">>
 		<<pass 3>>
 		经过3分钟的等待，海面逐渐泛起猛烈的波纹。你隐约看到一只巨大的绿色生物从海中向你冲撞而来。但它在撕咬下松露虫后，便掉头扬长而去。<<ggstress>><<stress 12>><br>
@@ -29,24 +26,44 @@
 		<br>
 		你扭头看向四周，却什么也没看见。<<gtrauma>><<trauma 2>><br>
 	<</if>>
+<<elseif ["trash","lava"].includes($fishing_place) and !["Hotline_Fishing_Hook","Slurper_Pole"].includes($options.fishingrod_held) and !["Lavafly","Magma_Snail","Hell_Butterfly"].includes($Bait) and !$terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag")>>
+	<<pass 45>>
+	经过45分钟的等待，你什么都没等到。也许不惧高温的小动物或渔具能解决这个问题。<mouse class="tooltip linkBlue">(?)<span>目前模组中仅有两种可正常获得的防熔岩渔具：完成渔夫任务获得的"熔线钓钩"和旅商出售的"饮食者钓竿"</span></mouse><br>
+<<elseif $fishing_place is "school_pool" and Time.schoolDay and Time.hour is 8 and ($fishing_cast_time + Time.minute) gte 59>>
+	经过一段时间的等待，你听到更衣室传来了嬉笑打闹声。你在梅森和学生们进来之前快速收拾好了渔具。<br>
+	<<set _time_left to (59 - Time.minute)>>
+	<<pass _time_left>>
 <<else>>
-	<<if $fishing_place is "school_pool" and Time.schoolDay and Time.hour is 8 and ($fishing_cast_time + Time.minute) gte 59>>
-		经过一段时间的等待，你听到更衣室传来了嬉笑打闹声。你在梅森和学生们进来之前快速收拾好了渔具。<br>
-		<<set _time_left to (59 - Time.minute)>>
-		<<pass _time_left>>
+	<<fishing_cast_time>>
+	<<if $fishing_harvest is "None">>
+		<span class="red">生成渔获时出现了问题。请将本页面截图并报告给模组作者</span>
+		钓鱼点：$fishing_place<br>
+		渔力：$fishing_power<br>
+		渔获品位：_fishing_harvest_catch_quality<br>
+		宝匣概率：_fishing_crate_chance<br>
+		血月敌怪概率：_bloodMoonEnemyChance<br>
+		难度系数：$fishing_difficulty<br>
+	<<elseif $fishing_harvest is undefined>>
+		经过$fishing_cast_time分钟的等待，你什么都没等到。<mouse class="tooltip linkBlue">(?)<span>可以尝试选用更好的渔具，挑选合适的时机提高渔力再来钓鱼。</span></mouse><br>
 	<<else>>
 		<<pass $fishing_cast_time>>
 		<<set $fishing_bitten_count += 1>>
 		经过$fishing_cast_time分钟的等待，有东西上钩了！<br>
-		<<silently>><<fishing_harvest_pre>><</silently>>
 		<<if $Sonar_Potion_countdown gt 0>>
-			<span class="green">你的声呐药水显示，这是</span><<fishing_harvest_pre>><span class="green">!</span><br>
+			<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
+			<br>
 		<</if>>
-		<br>
-		<<link [[收竿！|Fishing]]>><<fishing_prepare>><</link>><br>
-		<br>
-		<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<fishing_cast_time>><</link>><br>
+		<<icon "hint/Emote_Item_Fishing_Rod.gif">><<link [[收竿！|Fishing]]>><<fishing_prepare>><</link>><br>
 	<</if>>
+	<br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 <</if>>
 <br>
 <<fishing_finished_back>>
+
+<!-- 日落伊甸园联动 -->
+<<if $fishing_place is "eden_clearing" and hasInTheEdenAfterSunsetModInfo()>>
+	<br><br>
+	<<Eden_Cabin_Map>>
+	<<Eden_Map_Actions>>
+<</if>>

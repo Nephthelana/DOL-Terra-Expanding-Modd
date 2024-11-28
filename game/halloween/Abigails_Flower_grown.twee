@@ -1,0 +1,18 @@
+:: Abigails Flower Grown [widget]
+<<widget "Abigails_Flower_grown">>
+	<<if $Abigails_Flower isnot true>>
+		<<if $Abigails_Flower_grown>>
+			墓地里生长着一朵与众不同的花。也许是你之前没有注意到它，它已经生长到想要怒放的状态了。<br>
+			<br>
+			与其它花草不同，<i>它美得摄人心魄。</i><br>
+			<<icon "Abigails_Flower_(placed).png">><<link [[接近|Abigails Flower Pick 1]]>><</link>><br>
+			<br>
+		<</if>>
+	<</if>>
+<</widget>>
+
+:: Abigails Flower Pick 1
+/ 未完成 /<br>
+你越接近这朵花，越能感到它散发出平和的气息。它好像在邀请着你，一个来自"栖息于花中的灵魂"的邀请。<br>
+<br>
+<<link [[继续|Churchyard]]>><</link>>

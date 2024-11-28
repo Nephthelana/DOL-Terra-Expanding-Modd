@@ -1,17 +1,102 @@
-:: Terra Fallen Star [widget]
-<<widget "terra_fallen_star">>
+:: Terra Header [widget]
+<<widget "terra_header">>
+	<<if $passage isnot "Start">>
+		<<if $debug is 1>>
+			[DEBUG模式]坠落之星调试信息<br>
+			<span id="fallenStarDebugInfo">
+				<<link "显示">>
+					<<replace #fallenStarDebugInfo>>
+						<<fallenStarDebugInfo>>
+					<</replace>>
+				<</link>><br>
+				<br>
+			</span>
+		<</if>>
+		<span id="terra_fallen_star">
+			<<if Time.dayState is "night" and random(1 , Math.round(2000 / $fallen_star_rate)) is 1 and (setup.fallenStarAreas.includes($passage) and $event is undefined)>>
+				你听到一个不寻常的声音。它离你越来越近，然后在一声撞击后戛然而止。你沿着声音的来源上前查看：是一颗落在地上的星星！<<terraHint>><br>
+				<<link "捡起">>
+					<<set $Fallen_Star += 1>>
+					<<replace #terra_fallen_star>>
+						你捡起了一颗<<icon "material/Fallen_Star.png">>坠落之星。<br>
+						<br>
+					<</replace>>
+				<</link>><br>
+				<br>
+			<</if>>
+		</span>
+	<</if>>
+<</widget>>
 
-<span id="terra_fallen_star">
-<<if Time.dayState is "night" and random(1 , Math.round(2000 / $fallen_star_rate)) is 1 and (setup.majorAreas.includes($passage) and $event is undefined)>>
-	你听到一个不寻常的声音。它离你越来越近，然后在一声撞击后戛然而止。你沿着声音的来源上前查看：是一颗落在地上的星星！<<terraHint>><br>
-	<<link "捡起">>
-		<<set $Fallen_Star += 1>>
-		<<replace #terra_fallen_star>>
-			你捡起了一颗<<icon "material/Fallen_Star.png">>坠落之星。<br><br>
+<<widget "fallenStarDebugInfo">>
+	*当前页面名称：$passage<br>
+	*当前是否为可以落星的地点：<<print setup.fallenStarAreas.includes($passage) ? "是" : "否">><br>
+	*当前是否未在进行某项事件：<<print $event is undefined ? "是" : "否">><br>
+	*仅当夜晚、位于可以落星的地点、未在进行某项事件时，有概率捡到落星。<br>
+	*如对当前可落星地点与是否正在进行某项事件有疑问，请反馈交流。<br>
+	<<link "隐藏">>
+		<<replace #fallenStarDebugInfo>>
+			<<link "显示">>
+				<<replace #fallenStarDebugInfo>>
+					<<fallenStarDebugInfo>>
+				<</replace>>
+			<</link>><br>
+			<br>
 		<</replace>>
-	<</link>><br>
-	<br>
-<</if>>
-</span>
+	<</link>>
+	<br><br>
+<</widget>>
 
+:: Terra Footer [widget]
+<<widget "terra_temperature">>
+	<!-- 外界温度，IF：influencing factor，影响因素 -->
+	<<set _terraTemperatureIncreaseIF to "">>
+	<<set _terraTemperatureIncreaseIF_amount to 0>>
+	<<set _terraTemperatureDecreaseIF to "">>
+	<<set _terraTemperatureDecreaseIF_amount to 0>>
+	<!-- 魔光护符提高外界温度 -->
+	<<if $terra_accessories_slots.includes("Magiluminescence")>>
+		<<set _terraTemperatureIncreaseIF += "魔光护符的光芒使你感到一丝温暖。<br>">>
+		<<set _terraTemperatureIncreaseIF_amount += 1>>
+	<</if>>
+	<!-- 沙暴瓶提高外界温度 -->
+	<<if $terra_accessories_slots.includes("Sandstorm_in_a_Bottle") and $player.bodyTemperature lt 35>>
+		<<set _terraTemperatureIncreaseIF += "沙暴瓶中躁动的沙尘帮你抵御严寒。<br>">>
+		<<set _terraTemperatureIncreaseIF_amount += 10>>
+	<</if>>
+	<!-- 保暖药水效果在每个页面尝试将体温设定为37度 -->
+	<<if $Warmth_Potion_countdown gt 0>>
+		<<set _terraTemperatureIncreaseIF += "保暖药水保护你免受低体温的影响。<br>">>
+		<<set $player.bodyTemperature to 37>>
+	<</if>>
+	<!-- 暴雪瓶降低外界温度 -->
+	<<if $terra_accessories_slots.includes("Blizzard_in_a_Bottle") and $player.bodyTemperature gt 39>>
+		<<set _terraTemperatureDecreaseIF += "暴雪瓶中冷峻的霜雪帮你抵御酷热。<br>">>
+		<<set _terraTemperatureDecreaseIF_amount += 10>>
+	<</if>>
+	<!-- 显示体温影响因素 -->
+	<<if _terraTemperatureIncreaseIF_amount gt 0 or $Warmth_Potion_countdown gt 0>>
+		<<if _inWater>>
+			<<set Weather.Temperature.override.increase.water(_terraTemperatureIncreaseIF_amount, _terraTemperatureIncreaseIF)>>
+		<<elseif $outside is 1>>
+			<<set Weather.Temperature.override.increase.outside(_terraTemperatureIncreaseIF_amount, _terraTemperatureIncreaseIF)>>
+		<<else>>
+			<<set Weather.Temperature.override.increase.inside(_terraTemperatureIncreaseIF_amount, _terraTemperatureIncreaseIF)>>
+		<</if>>
+	<</if>>
+	<<if _terraTemperatureDecreaseIF_amount gt 0>>
+		<<if _inWater>>
+			<<set Weather.Temperature.override.decrease.water(_terraTemperatureDecreaseIF_amount, _terraTemperatureDecreaseIF)>>
+		<<elseif $outside is 1>>
+			<<set Weather.Temperature.override.decrease.outside(_terraTemperatureDecreaseIF_amount, _terraTemperatureDecreaseIF)>>
+		<<else>>
+			<<set Weather.Temperature.override.decrease.inside(_terraTemperatureDecreaseIF_amount, _terraTemperatureDecreaseIF)>>
+		<</if>>
+	<</if>>
+
+	<!-- 未开启DEBUG模式时禁用万圣节事件 -->
+	<<if $debug isnot 1>>
+		<<unset $options.terra_halloween>>
+	<</if>>
+	
 <</widget>>

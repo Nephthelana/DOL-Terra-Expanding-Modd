@@ -1,6 +1,7 @@
 :: Fishing Angler Intro
 /* 初见渔夫 */
 <<npc Angler>><<person1>>
+<<set $fishing_anglerintro to true>>
 你将<<he>>从沉睡中唤醒。<br>
 <br>
 <<if $options.cute_angler>>
@@ -23,5 +24,4 @@
 	<<He>>挥手叫你离开："够了，我还想再躺一会。你应该能看出来我是个渔夫。我的小(jian)屋(yu)就在海滩，如果你也对鱼感兴趣的话可以来找我：这个世界到处都是各种稀奇古怪的鱼！"<br>
 <</if>>
 <br>
-<<set $fishing_anglerintro to true>>
 <<getouticon>><<link [[离开|Sea]]>><<endevent>><</link>>

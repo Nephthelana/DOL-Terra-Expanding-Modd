@@ -12,5 +12,7 @@
 		<<link [[返回|Bird Tower]]>><</link>>
 	<<case "wolfcave">>
 		<<link [[返回|Wolf Cave]]>><</link>>
+	<<case "temple">>
+		<<link [[返回|Temple Cloister]]>><</link>>
 	<</switch>>	
 <</widget>>

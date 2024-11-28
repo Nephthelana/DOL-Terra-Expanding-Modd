@@ -39,7 +39,7 @@
 :: Fishing Request Reward [widget]
 <<widget "fishing_request_reward">>
 
-/* 计算“罕见度降低量”，具体参考泰拉瑞亚wiki */
+<!-- 计算“罕见度降低量”，具体参考泰拉瑞亚wiki -->
 <<if $fishing_requests_finished_count lte 50>>
 	<<set _fishing_rarity_reduction = 1 - $fishing_requests_finished_count * 0.01>>
 <<elseif $fishing_requests_finished_count lte 100>>
@@ -67,7 +67,7 @@
 <<elseif $Angler_Pants isnot true and $fishing_requests_finished_count gte 20>>
 	<<icon "armor/Angler_Pants.png">>渔夫裤
 	<<set $Angler_Pants to true>>
-<<elseif $Bottomless_Honey_Bucket isnot true and $fishing_request_selection is "Bumblebee_Tuna" and random(1,4) is 1>>
+<<elseif $Bottomless_Honey_Bucket is undefined and $fishing_request_selection is "Bumblebee_Tuna" and random(1,4) is 1>>
 	<<icon "tool/Bottomless_Honey_Bucket.png">>无底蜂蜜桶
 	<<set $Bottomless_Honey_Bucket to true>>
 <<elseif $Golden_Fishing_Rod isnot true and ($fishing_requests_finished_count is 30 or random(1 , Math.round(250 * _fishing_rarity_reduction)) is 1)>>
@@ -125,9 +125,7 @@
 <</if>>
 /* 家具奖励 */
 <<if $fishing_requests_finished_count gte random(1,100)>>
-	<<set _allAnglerFurnitureList to getAllAnglerFurnitureList()>>
-	<<set _t to random(0,_allAnglerFurnitureList.length-1)>>
-	<<set _anglerFurniture to setup.terraAnglerFurniture[_allAnglerFurnitureList[_t]]>>
+	<<set _anglerFurniture to setup.terraAnglerFurniture[getAllAnglerFurnitureList().random()]>>
 	<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
 	、<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name
 <</if>>	
@@ -154,11 +152,20 @@
 	<</if>>
 	、
 	<<if random(1,15) is 1>>
-		<<icon "fishing/bait/Master_Bait.png">>大师诱饵<<set $Master_Bait += _fishing_reward_bait>>
+		<<set $Master_Bait += _fishing_reward_bait>>
+		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+		<<set $bestiary_bait_catch_count.Master_Bait += _fishing_reward_bait>>
+		<<icon "fishing/bait/Master_Bait.png">>大师诱饵
 	<<elseif random(1,5) is 1>>
-		<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵<<set $Journeyman_Bait += _fishing_reward_bait>>
+		<<set $Journeyman_Bait += _fishing_reward_bait>>
+		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+		<<set $bestiary_bait_catch_count.Journeyman_Bait += _fishing_reward_bait>>
+		<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵
 	<<else>>
-		<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵<<set $Apprentice_Bait += _fishing_reward_bait>>
+		<<set $Apprentice_Bait += _fishing_reward_bait>>
+		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
+		<<set $bestiary_bait_catch_count.Apprentice_Bait += _fishing_reward_bait>>
+		<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵
 	<</if>>(_fishing_reward_bait)
 <</if>>
 。

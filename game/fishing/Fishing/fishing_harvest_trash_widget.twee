@@ -1,9 +1,0 @@
-:: Fishing Harvest Trash [widget]
-<<widget "fishing_harvest_trash">>
-<<print [
-	"<<icon \"fishing/fish/Old_Shoe.png\">>旧鞋...<<set $fishing_harvest to \"Old_Shoe\">>",
-	"<<icon \"fishing/fish/Seaweed_(junk).png\">>海草...<<set $fishing_harvest to \"Seaweed_(junk)\">>",
-	"<<icon \"fishing/fish/Tin_Can.png\">>锡罐...<<set $fishing_harvest to \"Tin_Can\">>",
-	"<<icon \"fishing/fish/Joja_Cola.png\">>Joja可乐！<<set $fishing_harvest to \"Joja_Cola\">>"
-].random()>>
-<</widget>>

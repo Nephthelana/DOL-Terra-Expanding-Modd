@@ -1,0 +1,73 @@
+:: Orphanage Loft Tinkerers Workshop Widget [widget]
+<<widget "orphanage_loft_tinkerers_workshop">>
+	<<if $orphanage_loft_crafting_station.includes("Tinkerers_Workshop")>>
+		<<icon "furniture_placed/Tinkerers_Workshop_(placed).png">><<link [[使用工匠作坊|Orphanage Loft Tinkerers Workshop]]>><</link>><br>
+	<</if>>
+<</widget>>
+
+:: Orphanage Loft Tinkerers Workshop
+工匠作坊里有专门将配饰组合在一起的工具。
+<<icon "furniture_placed/Tinkerers_Workshop_(placed).png">><br>
+<br>
+<span id="crafting_orphanage_loft_tinkerers_workshop_info"></span>
+<span id="crafting_orphanage_loft_tinkerers_workshop"><<crafting_orphanage_loft_tinkerers_workshop>></span>
+<br>
+<<getouticon>><<link [[返回|Orphanage Loft]]>><</link>>
+
+:: Orphanage Loft Tinkerers Workshop Crafting [widget]
+<<widget "crafting_orphanage_loft_tinkerers_workshop_info">>
+	_crafted_info
+<</widget>>
+
+<<widget "crafting_orphanage_loft_tinkerers_workshop">>
+
+<<run initializeTooltips()>>
+
+<span class="no-numberify">
+<<set _recipe_list to getAllRecipeList()>>
+<<set _recipe_avalible to false>>
+<div class="itemTerra">
+	<<for _t to 0; _t lt _recipe_list.length; _t++>>
+		<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
+		<<if _recipe.required_crafting_station is "Tinkerers_Workshop">>
+			<<capture _recipe>>
+				_recipe.craftable
+				<<if _craftable>>
+					<<set _recipe_avalible to true>>
+					<div class="item">
+						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+							<div class="itemTerraGeneral">
+								<<icon `_recipe.icon`>>
+							</div>
+						</div>
+						<hr>
+						<mouse class="tooltip">
+							配方
+							<span>
+								_recipe.required_material_info
+							</span>
+						</mouse>
+						<hr>
+						<<link "制作">>
+							_recipe.craft
+							<<set $crafting_count.Tinkerers_Workshop += 1>>
+							<<set _crafted_info to _recipe.crafting_info>>
+							<<replace #crafting_orphanage_loft_tinkerers_workshop_info>>
+								<<crafting_orphanage_loft_tinkerers_workshop_info>>
+							<</replace>>
+							<<replace #crafting_orphanage_loft_tinkerers_workshop>>
+								<<crafting_orphanage_loft_tinkerers_workshop>>
+							<</replace>>
+						<</link>>
+					</div>
+				<</if>>
+			<</capture>>
+		<</if>>
+	<</for>>
+</div>
+<<if !_recipe_avalible>>
+	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
+<</if>>
+</span>
+
+<</widget>>

@@ -23,7 +23,7 @@ setup.terraAccessories = {
 		material: false,
         type: "bobber",
         obtained: V.Helium_Moss_Fishing_Bobber,
-		/* 感谢动车帮我制作了这个合适尺寸的gif图像！！ */
+		/* 虽然现在用不上了，但还是感谢动车之前帮我制作的合适尺寸的gif图像！！ */
         icon: "fishing/fishing_accessories/Helium_Moss_Fishing_Bobber.gif",
 		des: "增加10点渔力。你的浮标现在会发光",
     },
@@ -189,6 +189,24 @@ setup.terraAccessories = {
         icon: "accessories/Fledgling_Wings.png",
 		des: "使你能从高处滑翔",
     },
+	"Blizzard_in_a_Bottle": {
+        name: "Blizzard_in_a_Bottle",
+        cn_name: "暴雪瓶",
+		material: false,
+        type: "bottle",
+        obtained: V.Blizzard_in_a_Bottle,
+        icon: "accessories/Blizzard_in_a_Bottle.png",
+		des: "在一定限度内防止过热",
+    },
+	"Sandstorm_in_a_Bottle": {
+        name: "Sandstorm_in_a_Bottle",
+        cn_name: "沙暴瓶",
+		material: false,
+        type: "bottle",
+        obtained: V.Sandstorm_in_a_Bottle,
+        icon: "accessories/Sandstorm_in_a_Bottle.png",
+		des: "在一定限度内防止过冷",
+    },
 	"Lucky_Horseshoe": {
         name: "Lucky_Horseshoe",
         cn_name: "幸运马掌",
@@ -234,6 +252,44 @@ setup.terraAccessories = {
         icon: "accessories/Ice_Skates.png",
 		des: "在冰面上行走时更加安全",
     },
+	"Magiluminescence": {
+        name: "Magiluminescence",
+        cn_name: "魔光护符",
+		material: false,
+        type: "none",
+        obtained: V.Magiluminescence,
+        icon: "accessories/Magiluminescence.png",
+		des: "可在特定地点提供照明，随时间降低<span class='lblue'>意识</span>(\"选项-模组设置\"中开启)<br>▶<i>\"我黑暗生命中的一道短暂曙光。\"</i>",
+    },
+	"Angel_Halo": {
+        name: "Angel_Halo",
+        cn_name: "天使光环",
+		material: false,
+        type: "transformation",
+        obtained: V.Angel_Halo,
+        icon: "vanity_accessories/Angel_Halo.png",
+		des: "一个天使的光环！装备后获得仅自己可见的天使光环，并防止天使转化点数衰退(时装栏内不生效)",
+    },
+	"Demon_Horns": {
+        name: "Demon_Horns",
+        cn_name: "恶魔角",
+		material: false,
+        type: "transformation",
+        obtained: V.Demon_Horns,
+        icon: "vanity_accessories/Demon_Horns.png",
+		des: "一对恶魔的犄角！装备后获得仅自己可见的恶魔犄角，并防止恶魔转化点数衰退(时装栏内不生效)(不会防止对应的惩罚)",
+    },
+	/*
+	"Lava_Charm": {
+        name: "Lava_Charm",
+        cn_name: "熔岩护身符",
+		material: false,
+        type: "none",
+        obtained: V.Lava_Charm,
+        icon: "accessories/Lava_Charm.png",
+		des: "对熔岩免疫",
+    },
+	*/
 }
 
 function getAllAccessoriesList() {

@@ -1,15 +1,13 @@
 :: Orphanage Loft Work Bench Unlock [widget]
 <<widget "orphanage_loft_work_bench">>
-
-<<if !$orphanage_loft_crafting_station.includes("Work_Bench")>>
-	<<if currentSkillValue('housekeeping') gte 200>>
-		有一张小木桌子上同样堆满了箱子。你注意到箱底压着几张放在桌上的图纸。<br>
-		<<ind>><<link [[搬走上面的箱子|Orphanage Loft Work Bench 1]]>><</link>><br>
+	<<if !$orphanage_loft_crafting_station.includes("Work_Bench")>>
+		<<if currentSkillValue('housekeeping') gte 200>>
+			有一张小木桌子上同样堆满了箱子。你注意到箱底压着几张放在桌上的图纸。<br>
+			<<ind>><<link [[搬走上面的箱子|Orphanage Loft Work Bench 1]]>><</link>><br>
+		<</if>>
+	<<else>>
+		<<icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Orphanage Loft Work Bench]]>><</link>><br>
 	<</if>>
-<<else>>
-	<<icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Orphanage Loft Work Bench]]>><</link>><br>
-<</if>>
-
 <</widget>>
 
 :: Orphanage Loft Work Bench 1
@@ -23,9 +21,9 @@
 <<icon "furniture_placed/Work_Bench_(placed).png">><br>
 <br>
 <span id="crafting_orphanage_loft_work_bench_info">
-	<<if currentSkillValue('housekeeping') lt 600>>
+	<<if $housekeeping lt 600>>
 		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
-	<<elseif currentSkillValue('housekeeping') lt 1000>>
+	<<elseif $housekeeping lt 1000>>
 		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
@@ -40,9 +38,9 @@
 
 :: Orphanage Loft Work Bench Crafting [widget]
 <<widget "crafting_orphanage_loft_work_bench_info">>
-	<<if currentSkillValue('housekeeping') lt 600>>
+	<<if $housekeeping lt 600>>
 		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
-	<<elseif currentSkillValue('housekeeping') lt 1000>>
+	<<elseif $housekeeping lt 1000>>
 		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
@@ -68,7 +66,9 @@
 					<<set _recipe_avalible to true>>
 					<div class="item">
 						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-							<<icon `_recipe.icon`>>
+							<div class="itemTerraGeneral">
+								<<icon `_recipe.icon`>>
+							</div>
 						</div>
 						<hr>
 						<mouse class="tooltip">

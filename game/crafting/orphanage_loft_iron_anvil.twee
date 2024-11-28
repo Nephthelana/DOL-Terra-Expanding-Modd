@@ -1,10 +1,8 @@
 :: Orphanage Loft Iron Anvil Widget [widget]
 <<widget "orphanage_loft_iron_anvil">>
-
-<<if $orphanage_loft_crafting_station.includes("Iron_Anvil")>>
-	<<icon "furniture_placed/Iron_Anvil_(placed).png">><<link [[使用铁砧|Orphanage Loft Iron Anvil]]>><</link>><br>
-<</if>>
-
+	<<if $orphanage_loft_crafting_station.includes("Iron_Anvil")>>
+		<<icon "furniture_placed/Iron_Anvil_(placed).png">><<link [[使用铁砧|Orphanage Loft Iron Anvil]]>><</link>><br>
+	<</if>>
 <</widget>>
 
 :: Orphanage Loft Iron Anvil
@@ -38,7 +36,9 @@
 					<<set _recipe_avalible to true>>
 					<div class="item">
 						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-							<<icon `_recipe.icon`>>
+							<div class="itemTerraGeneral">
+								<<icon `_recipe.icon`>>
+							</div>
 						</div>
 						<hr>
 						<mouse class="tooltip">

@@ -1,4 +1,5 @@
 :: Fishing Angler Cabin
+<<set $outside to 0>>
 <<npc Angler>><<person1>>
 <<if $options.cute_angler>>
 	<<earnFeat "Blue Sunflower">>
@@ -21,6 +22,11 @@
 <br>
 /* 初次见面获得鱼竿 */
 <<if $fishingrod isnot true>>
+	<<set $fishingrod to true>>
+	<<set $Wood_Fishing_Pole to true>>
+	<<set $options.fishingrod_held to "Wood_Fishing_Pole">>
+	<<set $Bait to "None">>
+	<<set $fishingskill to 0>>
 	<<if $options.cute_angler>>
 		渔夫放下了手中的鳟鱼。"哦，是你来啦！再次谢谢你救了我...我记得我当时还在和一条金枪鱼搏斗呢！"<<He>>用手比划着那条金枪鱼的尺寸，碰倒了一根靠在墙上的鱼竿，差点砸到你的脚。<br>
 		<br>
@@ -39,11 +45,6 @@
 		"忘了告诉你，我<span class="gold">每天早上6点</span>后也许就会想要别的鱼了，所以你最好早早把它交给我！"<br>
 	<</if>>
 	<br>
-	<<set $fishingrod to true>>
-	<<set $Wood_Fishing_Pole to true>>
-	<<set $options.fishingrod_held to "Wood_Fishing_Pole">>
-	<<set $Bait to "None">>
-	<<set $fishingskill to 0>>
 	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
 	<br>
 	<<getouticon>><<link [[离开|Beach]]>><</link>>
@@ -230,18 +231,11 @@
 	<br>
 	/* 放置渔夫任务奖励家具 */
 	<<if $furniture_painting_angler_cabin isnot undefined and $furniture_painting_angler_cabin isnot "none">>
-		<<set _allAnglerFurnitureList to getAllAnglerFurnitureList()>>
-		<<for _t to 0; _t lt _allAnglerFurnitureList.length; _t++>>
-			<<set _anglerFurniture to setup.terraAnglerFurniture[_allAnglerFurnitureList[_t]]>>
-			<<if $furniture_painting_angler_cabin is _anglerFurniture.name>>
-				<<icon `_anglerFurniture.placed_icon`>>
-				<<break>>
-			<</if>>
-		<</for>><br>
+		<<icon `setup.terraAnglerFurniture[$furniture_painting_angler_cabin].placed_icon`>><br>
 		<br>
 	<</if>>
 	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
-	<<if $angler_furniture_obtained.length gte 1>>
+	<<if $angler_furniture_obtained.length gte 1 or $debug is 1>>
 		<<if $furniture_painting_angler_cabin is undefined or $furniture_painting_angler_cabin is "none">>
 			<<ind>><<link [[放一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
 		<<else>>
@@ -249,7 +243,7 @@
 		<</if>><br>
 	<</if>>
 	<<if $Angler_RPS_daily>>
-		<span class="blue">你今天和渔夫猜过拳了。</span><br>
+		<<ind>><span class="blue">你今天和渔夫猜过拳了。</span><br>
 	<<else>>
 		<<ind>><<link [[猜拳(测试功能)|RPS Start]]>><</link>><br>
 	<</if>>

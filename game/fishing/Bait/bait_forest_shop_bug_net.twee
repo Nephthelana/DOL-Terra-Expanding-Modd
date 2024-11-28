@@ -1,5 +1,6 @@
 :: Bait Forest Shop Bug Net
 <<npc Gwylan>><<person1>>
+<<set $Bug_Net to true>>
 "看来你也想试着自己抓几只虫子吗？"格威岚显得十分自信，"你算是问对人了！"<br>
 <br>
 "每种昆虫有自己的行为模式：比如蚱蜢，它们喜欢在草丛里觅食，同时与周围的环境浑然一体，很难察觉。但如果能够趁其专注于食物时，就能比较轻松的用拇指和食指抓住它；"<br>
@@ -20,5 +21,5 @@
 <br>
 <span class="gold">你获得了<<icon "tool/Bug_Net.png">>虫网。试着用它在森林里抓些什么吧。</span><br>
 <br>
-<<link [[返回|Forest Shop]]>><<set $Bug_Net to true>><</link>><br>
+<<link [[返回|Forest Shop]]>><</link>><br>
 <<endevent>>

@@ -12,6 +12,12 @@
 	<span class="fading"><<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">></span><<link [[获得熔线钓钩|Terra Debug Fishing Pole]]>><<set $Hotline_Fishing_Hook to true>><</link>>
 <</if>>
 <br>
+<<if $Sitting_Ducks_Fishing_Pole>>
+	<<icon "fishing/fishing_pole/Sitting_Ducks_Fishing_Pole.png">><<link [[丢弃冤大头钓竿|Terra Debug Fishing Pole]]>><<set $Sitting_Ducks_Fishing_Pole to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Sitting_Ducks_Fishing_Pole.png">></span><<link [[获得冤大头钓竿|Terra Debug Fishing Pole]]>><<set $Sitting_Ducks_Fishing_Pole to true>><</link>>
+<</if>>
+<br>
 <<if $Fiberglass_Fishing_Pole>>
 	<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">><<link [[丢弃玻璃钢钓竿|Terra Debug Fishing Pole]]>><<set $Fiberglass_Fishing_Pole to false>><</link>>
 <<else>>
@@ -22,6 +28,12 @@
 	<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">><<link [[丢弃甲虫钓竿|Terra Debug Fishing Pole]]>><<set $Scarab_Fishing_Rod to false>><</link>>
 <<else>>
 	<span class="fading"><<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">></span><<link [[获得甲虫钓竿|Terra Debug Fishing Pole]]>><<set $Scarab_Fishing_Rod to true>><</link>>
+<</if>>
+<br>
+<<if $Slurper_Pole>>
+	<<icon "fishing/fishing_pole/Slurper_Pole.png">><<link [[丢弃饮食者钓竿|Terra Debug Fishing Pole]]>><<set $Slurper_Pole to false>><</link>>
+<<else>>
+	<span class="fading"><<icon "fishing/fishing_pole/Slurper_Pole.png">></span><<link [[获得饮食者钓竿|Terra Debug Fishing Pole]]>><<set $Slurper_Pole to true>><</link>>
 <</if>>
 <br>
 <<if $Chum_Caster>>

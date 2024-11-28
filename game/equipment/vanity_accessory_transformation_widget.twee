@@ -1,0 +1,36 @@
+:: Vanity Accessory Transformation [widget]
+<<widget "vanityAccessoryTransformation">>
+	<<if $passage isnot "Start">>
+		<<set _terra_vanity_angelHalo to (($terra_vanity_accessories_slots.includes("Angel_Halo") or $terra_accessories_slots.includes("Angel_Halo")) and $angel lt 4) ? true : false>>
+		<<set _terra_vanity_demonHorns to (($terra_vanity_accessories_slots.includes("Demon_Horns") or $terra_accessories_slots.includes("Demon_Horns")) and $demon lt 2) ? true : false>>
+		<<set $transformationParts.angel.halo to $angel gte 4 ? $transformationParts.angel.halo : !_terra_vanity_angelHalo ? "disabled" : $transformationParts.angel.halo is "disabled" ? "default" : $transformationParts.angel.halo>>
+		<<set $transformationParts.demon.horns to $demon gte 2 ? $transformationParts.demon.horns : !_terra_vanity_demonHorns ? "disabled" : $transformationParts.demon.horns is "disabled" ? "default" : $transformationParts.demon.horns>>
+	<</if>>
+<</widget>>
+
+<<widget "vanityAccessoryTransformationToggle">>
+	<br>
+	<<if _terra_vanity_angelHalo>>
+		<div class='tf-angel'>
+			<<icon "vanity_accessories/Angel_Halo.png">>天使光环：
+			<<listbox "_angel.halo" autoselect>>
+				<<option "隐藏" "hidden">>
+				<<option "默认" "default">>
+				<<option "传统的" "traditional">>
+			<</listbox>>
+		</div>
+	<</if>>
+	<<if _terra_vanity_demonHorns>>
+		<div class='tf-demon'>
+			<<icon "vanity_accessories/Demon_Horns.png">>恶魔角：
+			<<listbox "_demon.horns" autoselect>>
+				<<option "隐藏" "hidden">>
+				<<option "默认" "default">>
+				<<option "经典" "classic">>
+				<<option "魅魔" "succubus">>
+			<</listbox>>
+			<<gencolourselector "_demon.horns_colour">>
+		</div>
+		<br>
+	<</if>>
+<</widget>>

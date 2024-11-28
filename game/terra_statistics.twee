@@ -56,6 +56,7 @@
 			工作台：$crafting_count.Work_Bench<br>
 			铁砧：$crafting_count.Iron_Anvil<br>
 			烹饪锅：$crafting_count.Cooking_Pot<br>
+			工匠作坊：$crafting_count.Tinkerers_Workshop<br>
 			<br>
 		<</foldout>>
 	<</foldout>>

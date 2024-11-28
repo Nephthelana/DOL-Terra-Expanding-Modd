@@ -27,8 +27,8 @@
 	<span id="void_bag_Tool">
 		<<void_bag_Tool>>
 	</span>
-	<span id="void_bag_Bloody_Tear">
-		<<void_bag_Bloody_Tear>>
+	<span id="void_bag_Consumable">
+		<<void_bag_Consumable>>
 	</span>
 	<span id="void_bag_Potion">
 		<<void_bag_Potion>>
@@ -45,7 +45,7 @@
 					<<set $options.fishingrod_held to "Golden_Fishing_Rod">>
 					<<set _optionsRefresh to true>>
 				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>50渔力，每次收线减少15距离</span></mouse>
+				<mouse class="tooltip linkBlue">(?)<span>50渔力，每次收线减少16距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Hotline_Fishing_Hook>>
@@ -54,7 +54,16 @@
 					<<set $options.fishingrod_held to "Hotline_Fishing_Hook">>
 					<<set _optionsRefresh to true>>
 				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>45渔力，每次收线减少14距离</span></mouse>
+				<mouse class="tooltip linkBlue">(?)<span>45渔力，每次收线减少15距离。允许在沸水/熔岩中钓鱼</span></mouse>
+				<br>
+			<</if>>
+			<<if $Sitting_Ducks_Fishing_Pole>>
+				<<icon "fishing/fishing_pole/Sitting_Ducks_Fishing_Pole.png">>冤大头钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Sitting_Ducks_Fishing_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>40渔力，每次收线减少14距离</span></mouse>
 				<br>
 			<</if>>
 			<<if $Fiberglass_Fishing_Pole>>
@@ -75,13 +84,22 @@
 				<mouse class="tooltip linkBlue">(?)<span>30渔力，每次收线减少13距离</span></mouse>
 				<br>
 			<</if>>
+			<<if $Slurper_Pole>>
+				<<icon "fishing/fishing_pole/Slurper_Pole.png">>饮食者钓竿
+				<<link "使用">>
+					<<set $options.fishingrod_held to "Slurper_Pole">>
+					<<set _optionsRefresh to true>>
+				<</link>>
+				<mouse class="tooltip linkBlue">(?)<span>25渔力，每次收线减少12距离。允许在沸水/熔岩中钓鱼</span></mouse>
+				<br>
+			<</if>>
 			<<if $Chum_Caster>>
 				<<icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者
 				<<link "使用">>
 					<<set $options.fishingrod_held to "Chum_Caster">>
 					<<set _optionsRefresh to true>>
 				<</link>>
-				<mouse class="tooltip linkBlue">(?)<span>25渔力，每次收线减少12距离</span></mouse>
+				<mouse class="tooltip linkBlue">(?)<span>25渔力，每次收线减少12距离。增加血月期间钓到敌怪的概率</span></mouse>
 				<br>
 			<</if>>
 			<<if $Reinforced_Fishing_Pole>>

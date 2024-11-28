@@ -48,6 +48,7 @@
 	<<link [[继续 (0:30)|Fishing Island Unlock Rocky Hillock 4]]>><<island_pass 30>><</link>>
 <<else>>
 	<<link [[继续|Fishing Island Unlock Rocky Hillock]]>><</link>>
+<</if>>
 
 :: Fishing Island Unlock Rocky Hillock 4
 你正要转身离开。忽然，你灵光一现：虽然不能在这里游泳或者洗澡，但是钓鱼应该没有问题吧？<br>
@@ -57,7 +58,6 @@
 经过几分钟的斗争，那条倒霉鱼儿失败了，落入了你的手中。<br>
 <br>
 <<link [[继续|Fishing Island Unlock General 1]]>><</link>>
-<</if>>
 
 :: Fishing Island Unlock Rocky Hillock
 <<set $fishing_island_unlock.pushUnique("rocky_hillock")>>

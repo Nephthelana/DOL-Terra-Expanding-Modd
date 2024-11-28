@@ -1,29 +1,21 @@
-/*晶塔伊甸小屋*/
 :: Pylon Eden Cabin [widget]
 <<widget "pylon_eden_cabin">>
-
-<<if $historytrait gte 2 and $pylon_museum_asked isnot true>>
-	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
-<</if>>
-<<if $pylon_museum_asked>>
-	<<if !$pylon_collected.includes("Eden Cabin")>>
-		为了激活这个晶塔，你需要找到那块水晶。
-		<<if C.npc.Eden.love gte 180>>
-			<span class="teal">让伊甸帮忙搜寻森林吧。</span>
+	<<if $historytrait gte 2>>
+		<<if $pylon_museum_asked>>
+			<<if $pylon_collected.includes("Eden Cabin")>>
+				这块充满魔力的水晶可以将你传送至别的地方。
+				<<if Time.hour lt 11 or Time.hour gt 14>>
+					<br>
+					<<icon "pylon/Jungle_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "edencabin">><</link>>
+				<<else>>
+					但是现在伊甸不在小屋，你无法使用它。
+				<</if>>
+			<<else>>
+				为了激活这个晶塔，你需要找到那块水晶。<<print $syndromeeden is undefined ? "<span class='purple'>但你现在无法完全信任这个人。</span>" : C.npc.Eden.love gte 180 ? "<span class='teal'>让伊甸帮忙搜寻森林吧。</span>" : "<span class='blue'>如果伊甸对你有足够的好感，你将会得到提示。</span>">>
+			<</if>>
 		<<else>>
-			<span class="blue">如果伊甸对你有足够的好感，你将会得到提示。</span>
-		<</if>>
-	<<else>>
-	这块充满魔力的水晶可以将你传送至别的地方。
-		<<if Time.hour lt 11 or Time.hour gt 14>>
-			<br>
-			<<icon "pylon/Jungle_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "edencabin">><</link>>
-		<<else>>
-			但是现在伊甸不在小屋，你无法使用它。
-		<</if>>
+			<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+		<</if>><br>
+		<br>
 	<</if>>
-<</if>>
-<br>
-<br>
-
 <</widget>>

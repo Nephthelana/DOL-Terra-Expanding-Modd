@@ -3,18 +3,20 @@
 请选择获得/丢弃任务鱼。<br>
 <<set _allRequestFishList to getAllRequestFishList()>>
 <span class="no-numberify">
-	<div class="itemTerra">
+	<div class="itemTerra" id="test2">
 		<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
 			<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
 			<<capture _requestFish>>
 				<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
 				<div class="item">
 					<div @tooltip="_tooltip">
-						<<if $fishing_request_fish.includes(_requestFish.name)>>
-							<<icon `_requestFish.icon`>>
-						<<else>>
-							<span class="terraFading"><<icon `_requestFish.icon`>></span>
-						<</if>>
+						<div class="itemTerraGeneral">
+							<<if $fishing_request_fish.includes(_requestFish.name)>>
+								<<icon `_requestFish.icon`>>
+							<<else>>
+								<span class="terraFading"><<icon `_requestFish.icon`>></span>
+							<</if>>
+						</div>
 					</div>
 					<hr>
 					<<if $fishing_request_fish.includes(_requestFish.name)>>

@@ -1,0 +1,55 @@
+:: Robin Forest Bait Overcast [widget]
+<<widget "robin_forest_bait_overcast">>
+
+<br>
+<<link [[在附近寻找野餐篮|Robin Forest Bait Overcast Catch]]>><</link>>
+
+<</widget>>
+
+:: Robin Forest Bait Overcast Catch
+<<npc Robin>><<person1>>
+/* 大风天抓瓢虫 */
+担心森林深处的危险，你们决定先在附近的区域搜索野餐篮的踪迹。但很快你们就有了意外收获。<br>
+<br>
+"快看，那里有好多瓢虫！"罗宾兴奋地跳了起来，完全忘记了野餐篮的事情。"看吧，这就是我说的'欧气守恒定律'！接下来我要幸运一整天了！"<br>
+<br>
+罗宾伸出<<he>>的双手，期待着有一只瓢虫能够降落在<<he>>手上。但看起来它们不想给这个面子。<br>
+<br>
+"看起来今天的运气还是不够好呢，嘿嘿。我们回去吧。"你能听出<<he>>有些失望。<br>
+<br>
+<<if $Golden_Bug_Net isnot true and $Bug_Net isnot true>>
+	<span class="blue">你需要一个工具来安全地捕捉小动物。一个住在森林，且喜爱昆虫的人应该有办法。</span>
+<<else>>
+	<span class="green">你拿出你的
+	<<if $Golden_Bug_Net>>
+		<<icon "tool/Golden_Bug_Net.png">>金虫网
+	<<elseif $Bug_Net>>
+		<<icon "tool/Bug_Net.png">>虫网
+	<</if>>
+	</span>
+	，网住了这些瓢虫。<br>
+	<br>
+	<<set _bait to random(4,6)>>
+	你获得了_bait只<<icon "fishing/bait/Ladybug.png">>瓢虫。<br>
+	<<if random(1,400) is 1>>
+		<br>
+		<span class="gold">你还发现其中一条是<<icon "fishing/bait/Gold_Ladybug.png">>金瓢虫！</span><br>
+		<<set $Ladybug += _bait>>
+		<<set $Ladybug -= 1>>
+		<<set $Gold_Ladybug += 1>>
+		<<set $bestiary_bait_catch_count.Ladybug += (_bait-1)>>
+		<<set $bestiary_bait_list.pushUnique("Ladybug")>>
+		<<set $bestiary_bait_catch_count.Gold_Ladybug += 1>>
+		<<set $bestiary_bait_list.pushUnique("Gold_Ladybug")>>
+	<<else>>
+		<<set $Ladybug += _bait>>
+		<<set $bestiary_bait_catch_count.Ladybug += _bait>>
+		<<set $bestiary_bait_list.pushUnique("Ladybug")>>
+	<</if>>
+	<br>
+	"幸运的是我们有这个虫网。"你从虫网里挑出来一只最漂亮的瓢虫，放在罗宾手里。能认识彼此，也是一种命运的眷顾。<br>
+	<br>
+<</if>>
+你们一起回到孤儿院。
+<br><br>
+<<robinoptions>>

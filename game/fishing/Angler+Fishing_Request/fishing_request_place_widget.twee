@@ -11,7 +11,7 @@
 
 <<widget "fishing_request_place_beach">>
 	<<if $fishing_place_beach_unlock isnot true>>
-		你能听着屋外的海风声无动于衷么
+		你能听着沙滩上的海风声无动于衷么
 	<<else>>
 		海滩
 	<</if>>
@@ -51,9 +51,9 @@
 	<<if $fishingskill lt 400>>
 		？？？
 	<<elseif $fishing_place_farm_woodland_unlock isnot true>>
-		一些上流人士在交流时，会提到他们曾在小镇外的农场林地里见过这种奇特的鱼类。没人知道这是事实，还是他们为了夸耀阅历的杜撰——但无论如何，这是上流社会的共识。不知现在那里是否得到了开发利用
+		一些上流人士在交流时，会提到他们曾在小镇外的农场里见过这种奇特的鱼类。没人知道这是事实，还是他们为了夸耀阅历的杜撰——但无论如何，这是上流社会的共识。不知现在那里是否得到了开发利用
 	<<else>>
-		农场的林地
+		农场
 	<</if>>
 <</widget>>
 
@@ -116,11 +116,9 @@
 <</widget>>
 
 <<widget "fishing_request_place_ice">>
-	<<if $fishingskill lt 900>>
-		？？？
-	<<elseif $fishing_place_trash_unlock isnot true>>
-		学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加"宏伟"。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景
+	<<if $fishing_place_ice_unlock isnot true>>
+		尽管传闻中森林的墓穴里有不少有价值的古董，但此地仍鲜少有人踏足，不仅是因为墓穴里有阻碍外人深入探索的机关陷阱。盗墓团伙中有这样的一套理论：从墓穴中的水流声，可以推断出其下方还存在着更大的密闭空间。但没人知道入口在何处，更不知道下面还埋藏着什么秘密。
 	<<else>>
-		垃圾场深处的沸水池
+		老教堂墓地地下的永冻湖
 	<</if>>
 <</widget>>

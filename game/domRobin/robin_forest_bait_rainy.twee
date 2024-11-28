@@ -1,0 +1,44 @@
+:: Robin Forest Bait Rainy
+<<npc Robin>><<person1>>
+/* 雨天抓蠕虫 */
+你们在返回孤儿院的途中，玩起了"躲水坑"的游戏。<br>
+<br>
+罗宾突然定在了一处水坑前，缓缓地蹲了下来，专注观察着地上的什么东西。你凑上前去，发现是几只蠕虫。雨天它们需要到地面来呼吸空气。<br>
+<br>
+"鱼儿肯定喜欢这个，对吧？咱们可以带几只回去。"说完，罗宾就准备伸手去抓。<br>
+<br>
+你提醒<<he>>最好不要直接用手去碰它们。
+<<if $Golden_Bug_Net isnot true and $Bug_Net isnot true>>
+	<span class="blue">你需要一个工具来更安全地捕捉小动物。一个住在森林，且喜爱昆虫的人应该有办法。</span>
+<<else>>
+	<span class="green">你拿出你的
+		<<if $Golden_Bug_Net>>
+			<<icon "tool/Golden_Bug_Net.png">>金虫网
+		<<elseif $Bug_Net>>
+			<<icon "tool/Bug_Net.png">>虫网
+		<</if>>
+	</span>
+	，网住了这些蠕虫。<br>
+	<br>
+	<<set _bait to random(2,4)>>
+	你获得了_bait只<<icon "fishing/bait/Worm.png">>蠕虫。<br>
+	<<if random(1,400) is 1>>
+		<br>
+		<span class="gold">你还发现其中一条是<<icon "fishing/bait/Gold_Worm.png">>金蠕虫！</span><br>
+		<<set $Worm += _bait>>
+		<<set $Worm -= 1>>
+		<<set $Gold_Worm += 1>>
+		<<set $bestiary_bait_catch_count.Worm += (_bait-1)>>
+		<<set $bestiary_bait_list.pushUnique("Worm")>>
+		<<set $bestiary_bait_catch_count.Gold_Worm += 1>>
+		<<set $bestiary_bait_list.pushUnique("Gold_Worm")>>
+	<<else>>
+		<<set $Worm += _bait>>
+		<<set $bestiary_bait_catch_count.Worm += _bait>>
+		<<set $bestiary_bait_list.pushUnique("Worm")>>
+	<</if>>
+<</if>>
+<br>
+你们一起回到孤儿院。
+<br><br>
+<<robinoptions>>

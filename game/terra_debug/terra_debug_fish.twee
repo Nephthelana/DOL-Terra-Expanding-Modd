@@ -10,7 +10,9 @@
 				<div class="item">
 					<<set _isMaterial to _fish.material ? "<br><i>材料</i>" : "">>
 					<div @tooltip="`${_fish.cn_name}${_isMaterial}`">
-						<<icon `_fish.icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_fish.icon`>>
+						</div>
 					</div>
 					<hr>
 					<<link [[来5条|Terra Debug Fish]]>><<set V[_fish.name] += 5>><</link>>

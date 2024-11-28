@@ -8,4 +8,6 @@ simpleFrameworks.addto('iModStatist', 'terraStatistics');
 
 simpleFrameworks.addto('ModSkillsBox', 'fishingskill');
 
-simpleFrameworks.addto('iModHeader', 'terra_fallen_star');
+simpleFrameworks.addto('iModHeader', 'terra_header');
+simpleFrameworks.addto('iModFooter', 'terra_temperature');
+simpleFrameworks.addto('iModHeader', 'vanityAccessoryTransformation');

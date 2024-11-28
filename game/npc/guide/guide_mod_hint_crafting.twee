@@ -1,0 +1,100 @@
+:: Guide Mod Hint Crafting
+"身上有材料却不知道用它们做些什么？那你算是问对人了！<br>
+<br>
+"如果物品描述中被标记为'<i>材料</i>'，说明它可以用于制作物品——而我能告诉你它可以用来做什么。
+<<if !$orphanage_loft_crafting_station.includes("Work_Bench")>>
+	<br><br>
+	"另外，如果你找不到<<icon "furniture_item/Work_Bench.png">>工作台，它可能藏在阁楼的一个角落，需要你用足够的<span class="gold">家务技能</span>来找到它。"
+<</if>>
+<span id="guide_mod_hint_recipe">
+	<<guide_mod_hint_recipe>>
+</span>
+<br>
+<<link [[返回|Guide Mod Hint]]>><</link>>
+
+:: Guide Mod Hint Recipe [widget]
+<<widget "guide_mod_hint_recipe">>
+
+<<run initializeTooltips()>>
+
+<<set _materialObtained to $debug is 1 ? getAllMaterialList() : getMaterialObtainedList()>>
+<div class="no-numberify">
+	<details class="journal">
+		<summary class="journal">材料列表<<print $debug is 1 ? "（[DEBUG模式]你可以查看模组内所有的合成配方）" : "">></summary>
+		<div class="itemTerra">
+			<<for _i to 0; _i lt _materialObtained.length; _i++>>
+				<<set _material to setup.terraMaterial[_materialObtained[_i]]>>
+				<<capture _material>>
+					<<if _material_ask isnot _material.name>>
+						<div class="item">
+							<div @tooltip="`${_material.cn_name}`">
+								<div class="itemTerraGeneral">
+									<<icon `_material.icon`>>
+								</div>
+							</div>
+							<hr>
+							<<link "⬇">>
+								<<set _material_ask to _material.name>>
+								<<replace #guide_mod_hint_recipe>>
+									<<guide_mod_hint_recipe>>
+								<</replace>>
+							<</link>>
+						</div>
+					<</if>>
+				<</capture>>
+			<</for>>
+		</div>
+	</details>
+</div>
+<br>
+⬇在此放置物品,显示它可用于制作什么
+<div class="itemTerra">
+	<<if _material_ask isnot undefined>>
+		<<for _j to 0; _j lt _materialObtained.length; _j++>>
+			<<set _material to setup.terraMaterial[_materialObtained[_j]]>>
+			<<if _material_ask is _material.name>>
+				<div class="item">
+					<div @tooltip="`${_material.cn_name}`">
+						<div class="itemTerraGeneral">
+							<<icon `_material.icon`>>
+						</div>
+					</div>
+				</div>
+				<<break>>
+			<</if>>
+		<</for>>
+	<<else>>
+		<div class="item">
+			<div class="itemTerraGeneral">
+				空
+			</div>
+		</div>
+	<</if>>
+</div>
+<br>
+可制作物品列表(查看<i>制作</i>以获取配方信息)
+<div class="itemTerra">
+	<<set _recipeList to getAllRecipeList()>>
+	<<for _k to 0; _k lt _recipeList.length; _k++>>
+		<<set _recipe to setup.terraRecipe[_recipeList[_k]]>>
+		<<if _recipe.required_material.includes(_material_ask)>>
+			<div class="item">
+				<div @tooltip="`${_recipe.cn_name}<br><br>▶ ${_recipe.des}`">
+					<div class="itemTerraGeneral">
+						<<icon `_recipe.icon`>>
+					</div>
+				</div>
+				<hr>
+				<mouse class="tooltip">
+					制作
+					<span>
+						在_recipe.required_crafting_station_info上制作<br>
+						_recipe.required_material_info
+					</span>
+				</mouse>
+			</div>
+		<</if>>
+	<</for>>
+</div>
+
+<</widget>>

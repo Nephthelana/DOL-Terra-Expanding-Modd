@@ -1,0 +1,101 @@
+:: Guide Room
+<<set $outside to 0>>
+<<if $guide_intro isnot true>>
+	"你好。我知道你是谁，但你也许还不认识我：我是向导。正如我的名字，我可以给你提供一些关于DoL，或者泰拉瑞亚拓展模组的提示。<br>
+	<br>
+	"这个世界与我之前所体验的大为不同，但以我的学习能力，为你提供一些关于在这个小镇生活的提示可以说绰绰有余。但也因为这翻天覆地的变化，我需要几样关键的物品，以及一些时间，来适应这个模组对我先前已经掌握的知识做出的改动。<br>
+	<br>
+	"虽然还没有房子，但我在这里定居了下来。森林商店的店主给了我许多帮助——我能如此了解这个小镇，此人功不可没。<br>
+	<br>
+	"如果你有什么问题，欢迎来找我聊聊。"<br>
+	<br>
+	<<link [[继续|Guide Room]]>><<set $guide_intro to true>><</link>><br>
+<<elseif !$pet_list.includes("Royal_Delight") and $guide_mod_hint>>
+	<<set $pet_list.pushUnique("Royal_Delight")>>
+	"谢谢你之前帮我找到的净化粉和铜短剑，请收下这个。"<br>
+	<<icon "pet/pet_item/Royal_Delight.png">>
+	<br>
+	他将一碟蓝色果冻状的东西递了过来。你最初以为这是某种甜品，直到你亲眼看到它蠕动起来。它慢慢地融化、变形，然后突然冒出两只豆豆眼。它好奇地看了看你，脸上浮现出了两团可疑的红晕。<br>
+	<br>
+	"别担心，它只是一团无害的史菜姆。<span class="teal">你可以把这份'皇家美味'放在卧室里。</span>"向导微笑着说，<span class="gold">"感谢游玩泰拉瑞亚模组，祝你玩得开心。"</span>他向你友好地眨眨眼。<br>
+	<br>
+	<<icon "pet/pet_projectile/Slime_Prince.gif">><br>
+	<br>
+	<<link [[继续|Guide Room]]>><</link>><br>
+<<else>>
+	<<set _guide_daily_dialog_set to ["Daily"]>>
+	<<if Time.dayState is "night">>
+		<<set _guide_daily_dialog_set.pushUnique("Night")>>
+	<</if>>
+	<<if Weather.precipitation is "rain" or Weather.name is "heavyClouds" or Weather.name is "thunderStorm">>
+		<<set _guide_daily_dialog_set.pushUnique("Weather")>>
+	<</if>>
+	<<if Time.isBloodMoon()>>
+		<<set _guide_daily_dialog_set.pushUnique("Bloodmoon")>>
+	<</if>>
+	<<if $exposed gte 1>>
+		<<set _guide_daily_dialog_set.pushUnique("Exposure")>>
+	<</if>>
+	<<switch _guide_daily_dialog_set.random()>>
+		<<case "Daily">>
+			<<guide_daily_dialog>>
+		<<case "Night">>
+			"晚上你应该呆在家里。黑夜在外面转悠非常危险。"
+		<<case "Weather">>
+			<<if Weather.precipitation is "rain">>
+				<<print [
+					`"注意，如果你在雨中全身湿透，你将不得不在隐秘的地方穿行：直到你找到一个更衣室，或者等衣服重新晾干。"`,
+					`"不要惊慌，这只是水而已。我听说某些事件只在下雨的时候发生。！"`
+				].random()>>
+			<<elseif Weather.name is "heavyClouds">>
+				<<print [
+					`"不要被持续的大风刮走了！"`,
+					`"外面起风了！现在是放风筝的最佳时机。"`
+				].random()>>
+			<<elseif Weather.name is "thunderStorm">>
+				<<print [
+					`"雷雨时在外面很危险。找个地方躲起来，孩子。"`,
+					`"闪电可不是闹着玩的，这种天气下会产生非常强大的恶魔。"`
+				].random()>>
+			<</if>>
+		<<case "Bloodmoon">>
+			<<print [
+				`"如果你向上看，你就能看到此刻月亮是红色的。"`,
+				`"天空变红的时候，你就知道血月升起来了。血月有一种魔力，能吸引超然之物。"`
+			].random()>>
+		<<case "Exposure">>
+			<<print [
+				`"欢迎光...啊，这...\"向导想说的话卡在了喉咙里。他眨了眨眼睛，不好意思地偏过头去，\"咳咳，你的衣着让我想起了一位朋友，她总是穿着藤条和树叶编织的...衣服。哦，我不知道你和她一样是一位自然主义者。"`,
+				`"你是遇到什么麻烦了吗？快进来吧，把门关好，这里是安全的。\"他用你几乎听不到的声音补充道，\"我想这里应该没有会开门的僵尸..."`,
+				/*
+					`"在我以前住的地方，防护十分重要，像你这样几乎什么都没穿是非常危险的。如果你囊中羞涩买不起防具的话，我可以教你用丝绸——嗯，小镇上的人称这种东西为布料——制作衣服。不过前提是你得找到织布机..."`
+				*/
+			].random()>>
+	<</switch>><br>
+	<br>
+	<<if $guide_mod_hint>>
+		<<askicon>><<link [[关于本模组的提示|Guide Mod Hint]]>><</link>><br>
+	<<else>>
+		<<askicon>><<link [[关于本模组的提示|Guide Mod Hint Pre]]>><</link>><br>
+	<</if>>
+	<<ind>><<link [[失物招领处|Guide Lost And Found]]>><</link>><br>
+	<br>
+	<<getouticon>><<link [[离开|Forest]]>><</link>><br>
+<</if>>
+
+:: Guide Daily Dialog [widget]
+<<widget "guide_daily_dialog">>
+	<<if $fishing_anglerintro isnot true and random(1,2) is 1>>
+		"钓到了一条怪鱼，但不知道如何处置？！我听说海边住着一位捕鱼大师，也许他知道这些鱼有什么用..."
+	<<elseif $fishing_requests_finished_count lte 0 and random(1,2) is 1>>
+		"如果你累了，想要休息一下，随时可以去试试好玩的老式钓鱼活动。"
+	<<else>>
+		<<print [
+			`"嗨。有什么可以帮你？"`,
+			`"我的工作是为你接下来的任务提供建议。建议你遇到任何困难时都来和我谈谈。"`,
+			`"他们说，有个人会告诉你如何在这地方上生存……哦等下。那个人就是我。"`,
+			`"我很喜欢在森林闲逛。我喜欢这里。"`,
+			`"当月亮变红时，水也会被染红。潜伏在水中的生物会变得奇形怪状，凶恶残暴。"`
+		].random()>>
+	<</if>>
+<</widget>>

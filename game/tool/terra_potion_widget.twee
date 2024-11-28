@@ -2,7 +2,10 @@
 <<widget "void_bag_Potion">>
 
 <<if getPotionObtained().length gt 0>>
-	<span class="gold bold">药水</span><mouse class="tooltip linkBlue">(?)<span>给予持续一段时间的增益。使用后在下一个页面生效。</span></mouse>
+	<span class="gold bold">药水</span><mouse class="tooltip linkBlue">(?)<span>给予持续一段时间的增益。使用后在下一个页面生效。激活增益后，可在"展开增益追踪器"中选择取消增益</span></mouse><br>
+	<span id="buff">
+		<<buff>>
+	</span>
 	<div class="itemTerra">
 		<<set _potionObtainedList to getPotionObtained()>>
 		<<for _t to 0; _t lt _potionObtainedList.length; _t++>>
@@ -10,10 +13,12 @@
 			<<capture _potion>>
 				<div class="item">
 					<div @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
-						<<icon `_potion.item_icon`>>
+						<div class="itemTerraGeneral">
+							<<icon `_potion.item_icon`>>
+						</div>
 					</div>
 					<hr>
-					_potion.obtained
+					_potion.amount
 					<hr>
 					<<link "使用">>
 						_potion.use
@@ -22,6 +27,9 @@
 							<br>
 						<</replace>>
 						<<replace #void_bag_Potion>><<void_bag_Potion>><</replace>>
+						<<replace #buff>>
+							<<buffList>>
+						<</replace>>
 					<</link>>
 				</div>
 			<</capture>>
@@ -29,4 +37,59 @@
 	</div>
 <</if>>
 
+<</widget>>
+
+<<widget "buff">>
+	<<if getBuffActivated().length gt 0>>
+		<<icon "buff_icon/Empty.png">><<link "展开增益追踪器">>
+			<<replace #buff>>
+				<<buffList>>
+			<</replace>>
+		<</link>>
+	<</if>>
+<</widget>>
+
+<<widget "buffList">>
+	<<if getBuffActivated().length gt 0>>
+		<<run initializeTooltips()>>
+		<<icon "buff_icon/Empty.png">><<link "收起增益追踪器">>
+			<<replace #buff>>
+				<<if getBuffActivated().length gt 0>>
+					<<icon "buff_icon/Empty.png">><<link "展开增益追踪器">>
+						<<replace #buff>>
+							<<buffList>>
+						<</replace>>
+					<</link>>
+				<</if>>
+			<</replace>>
+		<</link>>
+		<<set _buffActivatedList to getBuffActivated()>>
+		<div class="itemTerra">
+			<<for _t to 0; _t lt _buffActivatedList.length; _t++>>
+				<<set _buff to setup.terraBuff[_buffActivatedList[_t]]>>
+				<<capture _buff>>
+					<<set _activated_hours_countdown to Math.floor(_buff.activated / 60)>>
+					<<set _activated_minutes_countdown to (_buff.activated - _activated_hours_countdown * 60)>>
+					<div class="item">
+						<div @tooltip="`${_buff.cn_name}<br><br>▶${_buff.des}`">
+							<<icon `_buff.icon`>>
+						</div>
+						<hr>
+						<<print _activated_hours_countdown gt 0 ? _activated_minutes_countdown gt 0 ? `${_activated_hours_countdown}h${_activated_minutes_countdown}m` : `${_activated_hours_countdown}h` : `${_activated_minutes_countdown}m`>>
+						<hr>
+						<<if _buff.type is "positive">>
+							<<link "取消">>
+								<<set V[_buff.variable_name] to 0>>
+								<<replace #buff>>
+									<<buffList>>
+								<</replace>>
+							<</link>>
+						<<else>>
+							/
+						<</if>>
+					</div>
+				<</capture>>
+			<</for>>
+		</div>
+	<</if>>
 <</widget>>

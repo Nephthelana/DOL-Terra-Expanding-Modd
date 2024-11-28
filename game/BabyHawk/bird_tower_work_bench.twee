@@ -1,6 +1,5 @@
 :: Bird Tower Work Bench Link [widget]
 <<widget "BirdTowerWorkBenchLink">>
-
 	<<birdicon "tools">>
 	<<if $bird.upgrades.tools>>
 		<<link [[制作生鱼片|Bird Tower Work Bench]]>><</link>><br>
@@ -8,7 +7,6 @@
 		<span class="blue">你可以将鱼类加工成食物，但在这之前你需要获得一个工具箱。</span><br>
 	<</if>>
 	<br>
-	
 <</widget>>
 
 :: Bird Tower Work Bench
@@ -16,9 +14,9 @@
 <<birdicon "tools">><br>
 <br>
 <span id="crafting_bird_tower_work_bench_info">
-	<<if currentSkillValue('housekeeping') lt 600>>
+	<<if $housekeeping lt 600>>
 		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
-	<<elseif currentSkillValue('housekeeping') lt 1000>>
+	<<elseif $housekeeping lt 1000>>
 		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
@@ -35,9 +33,9 @@
 
 :: Bird Tower Work Bench Crafting [widget]
 <<widget "crafting_bird_tower_work_bench_info">>
-	<<if currentSkillValue('housekeeping') lt 600>>
+	<<if $housekeeping lt 600>>
 		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
-	<<elseif currentSkillValue('housekeeping') lt 1000>>
+	<<elseif $housekeeping lt 1000>>
 		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
