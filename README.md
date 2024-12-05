@@ -216,7 +216,7 @@
 - 十分感谢 [狐千月(emicoto)](https://github.com/emicoto) 的简易框架模组，使侧边栏渔获按钮的功能在模组里成为了现实！
 - 感谢 [零环零理想(ZeroRing233)](https://github.com/ZeroRing233) 的多处代码帮助与支持，以及与 [dom罗宾拓展模组](https://github.com/ZeroRing233/Degrees-of-Lewdity-RobinMod) 的联动！
 - 感谢 [鲤鱼旗(koooooiCarp)](https://github.com/koooooiCarp) 在模组起步与后续发展一路以来的支持，以及与 [鹰宝宝模组](https://github.com/koooooiCarp/DOL-BabyHawk-Mod) 的联动！
-- 感谢 [再三棘](https://github.com/LooopSpiner) 在代码上的帮助和作为泰拉瑞亚同好的扶持，以及与 [日落伊甸园模组](https://github.com/LooopSpiner/In-The-Eden-After-Sunset) 的联动！
+- 感谢 [再三棘(LooopSpiner)](https://github.com/LooopSpiner) 在代码上的帮助和作为泰拉瑞亚同好的扶持，以及与 [日落伊甸园模组](https://github.com/LooopSpiner/In-The-Eden-After-Sunset) 的联动！
 - 感谢 [动车(Eudemonism00)](https://github.com/Eudemonism00) 在内的多位大佬给予代码上的帮助与支持！
 - 感谢 Dusty 提供的增加学校泳池作为钓鱼点的想法，博物馆处获得掘墓者铲子，血月初遇恐惧鹦鹉螺等等，无法一一列举的大量剧情文本！
 - 感谢 酱油瓶j 提供的大量想法和模组测试反馈！
