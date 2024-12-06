@@ -22,6 +22,7 @@
 		"Snail",
 		"Grasshopper",
 		"Maggot",
+		"Dragonfly"
 	].random()>>
 <</if>>
 <<set $bait_forest_shop_received to false>>

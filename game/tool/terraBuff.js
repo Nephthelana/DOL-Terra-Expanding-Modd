@@ -26,6 +26,15 @@ setup.terraBuff = {
         activated: V.Crate_Potion_countdown || 0,
 		icon: "buff_icon/Crate_(buff).png",
     },
+	"Warmth": {
+        name: "Warmth",
+        cn_name: "保暖",
+		variable_name: "Warmth_Potion_countdown",
+		des: "体温低于37摄氏度时，尝试将你的体温调整为37度",
+        type: "positive",
+        activated: V.Warmth_Potion_countdown || 0,
+		icon: "buff_icon/Warmth_(buff).png",
+    },
 	"Drunk": {
         name: "Drunk",
         cn_name: "醉酒",

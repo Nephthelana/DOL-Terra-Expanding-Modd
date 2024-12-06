@@ -1,0 +1,143 @@
+:: Robin Fishing Bait Give
+<<npc Robin>><<person1>>
+<<set $daily.robin.fishing to true>>
+<<robin_fishing_travel_time>>
+<<switch $fishing_place>>
+	<<case "lake_fishing_rock">>
+		<<set $outside to 1>><<set $location to "lake">>
+		<<if !$robin_fishing_place_unlocked.includes("lake_fishing_rock")>>
+			你提议去森林湖钓鱼。<br>
+			<br>
+			"森林湖确实是个钓鱼的好地方！"罗宾恍然大悟，但<<he>>很快又陷入沉思，"那之前怎么没见到有人在那钓鱼呢？"<br>
+			<br>
+			你解释说，森林湖附近有块非常适合钓鱼的岩石。那里风景不错，但知道的人不多，钓鱼的时候不容易被打扰。<br>
+			<<set $robin_fishing_place_unlocked.pushUnique("lake_fishing_rock")>>
+		<<else>>
+			你们决定去森林湖钓鱼。<br>
+		<</if>>
+		<br>
+		<<if $town_projects.road gte 4>>
+			<span class="green">得益于市政厅建设的这条道路，你们很快就到达了森林湖边的钓鱼岩。</span><br>
+		<<else>>
+			<span class="blue">在森林中小心地穿梭，你们到达了森林湖边的钓鱼岩。</span><br>
+		<</if>>
+		<br>
+		你帮罗宾取出了钓竿。<br>
+		<br>
+		<<robin_bait_give>>
+		<br>
+		<<link [[一起在森林湖钓鱼|Robin Fishing Prepare]]>><</link>>
+	<<case "beach">>
+		<<set $outside to 1>><<location "beach">>
+		<<if !$robin_fishing_place_unlocked.includes("beach")>>
+			你提议去海滩钓鱼。<br>
+			<br>
+			你向罗宾介绍着海面下的居民："海洋里生活着各种鱼类，其中不乏危险的生物。很多人会为了赚大钱，冒险远赴几公里外的海域。我们只是在海岸钓鱼，也能钓到许多鲜美的鱼类：比如金枪鱼、鲷鱼之类的。"<br>
+			<br>
+			<<if $hasGivenFish>>
+				"这就是为什么我们的烤鱼大获成功！"罗宾看起来十分兴奋，"我已经等不及钓更多的鱼了！"<br>
+			<<else>>
+				"哦！我想到了一个好主意。"罗宾看起来十分兴奋，"柠檬水配烤鱼，一定会很畅销。"<br>
+				<br>
+				你也觉得这是个很棒的点子。<span class="teal">你可以把你的鱼带到柠檬水摊给罗宾看看。</span><br>
+			<</if>>
+			<<set $robin_fishing_place_unlocked.pushUnique("beach")>>
+		<<else>>
+			你们决定去海滩钓鱼。<br>
+		<</if>>
+		<br>
+		一路上讨论着<<print ["海洋生物","钓鱼技巧","今天有趣的见闻"].random()>>，你们很快就到了海边。<br>
+		<br>
+		你帮罗宾取出了钓竿。<br>
+		<br>
+		<<robin_bait_give>>
+		<br>
+		<<link [[一起在海滩钓鱼|Robin Fishing Prepare]]>><</link>>
+	<<case "barb_street">>
+		<<set $outside to 1>><<set $location to "town">>
+		<<if !$robin_fishing_place_unlocked.includes("barb_street")>>
+			你提议去倒钩街钓鱼。<br>
+			<br>
+			罗宾十分困惑："倒钩街？我记得温特提到过那条河，但它在上个世纪末就已经完全干涸了。"<br>
+			<br>
+			你告诉<<he>>由于近年来的降水，河床开始会积起一些小水池。里面生活着一些奇异的鱼类，也许没人品尝过它们的味道。<br>
+			<<set $robin_fishing_place_unlocked.pushUnique("barb_street")>>
+		<<else>>
+			你们决定去倒钩街钓鱼。<br>
+		<</if>>
+		一路上讨论着<<print ["钓鱼技巧","今天有趣的见闻"].random()>>，你们很快就到了倒钩街。<br>
+		<br>
+		你帮罗宾取出了钓竿。<br>
+		<br>
+		<<robin_bait_give>>
+		<br>
+		<<link [[一起在倒钩街钓鱼|Robin Fishing Prepare]]>><</link>>
+<</switch>>
+<<endevent>>
+
+:: Widgets Robin Fishing [widget]
+<<widget "robin_bait_give">>
+/* 如果钓鱼约会途中，罗宾没有鱼饵，会坐在pc身边。此时pc如果触发落水惩罚，罗宾会从身后抱住pc，取消落水惩罚(取材自高木同学) */
+/* 如果在森林湖的钓鱼约会途中，罗宾没有鱼饵，而pc想回家时，罗宾有概率提议玩“打水漂”，罗宾捡石头时起身不小心碰到pc，在pc即将落水之际手拉住pc，根据pc体型不同触发相应剧情[将pc拉回来/极限一换一(取材自高木同学)/两人一起落水] */
+
+/* 生成持有的鱼饵选项列表，用于交给罗宾 */
+<<set _robin_bait_list to {}>>
+<<set _baitObtained to getBaitObtainedList()>>
+<<for _t to 0; _t lt _baitObtained.length; _t++>>
+	<<set _bait to setup.terraBait[_baitObtained[_t]]>>
+	<<capture _bait>>
+		<<set _robin_bait_list[_bait.cn_name+'('+_bait.amount+')'] to _bait.name>>
+	<</capture>>
+<</for>>
+/* 给予鱼饵的列表框 */
+你准备给罗宾
+<<listbox "$options.robin_bait_amount" autoselect>>
+	<<option "1" "1">>
+	<<option "2" "2">>
+	<<option "3" "3">>
+	<<option "4" "4">>
+	<<option "5" "5">>
+<</listbox>>
+个
+<<listbox "$options.robin_bait_type" autoselect>>
+    <<optionsfrom _robin_bait_list>>
+<</listbox>><br>
+<</widget>>
+
+<<widget "robin_bait_back">>
+/* 返程时，如有剩余的鱼饵，则返还。同时清除相关的变量 */
+<<if $robin_bait_amount lte 0>>
+	罗宾用完了你给他的<<icon `$robin_bait_icon`>>$robin_bait_cn_name。
+<<else>>
+	<<set V[$robin_bait_type] += $robin_bait_amount>>
+	"我这还有剩下的鱼饵。"罗宾把<<icon `$robin_bait_icon`>>$robin_bait_cn_name($robin_bait_amount)还给了你。
+<</if>>
+<<set $robin_bait_amount to undefined>>
+<<set $robin_bait_type to undefined>>
+<<set $robin_bait_icon to undefined>>
+<<set $robin_bait_cn_name to undefined>>
+<<set $robin_bait_fishing_power to undefined>>
+<<set $robin_fishing_fishing_power to undefined>>
+<<set $robin_fishing_cast_time to undefined>>
+<<set $robin_fishing_date_time to undefined>>
+<<set $robin_fishing_date_time_passed to undefined>>
+<<set $robin_fishing_harvest_times to undefined>>
+<<set $robin_fishing_phase to undefined>>
+<<set $robin_fishing_harvest_times to undefined>>
+<<set $robin_fishing_harvest_times_prev to undefined>>
+<</widget>>
+
+<<widget "robin_fishing_travel_time">>
+	<<switch $fishing_place>>
+		<<case "lake_fishing_rock">>
+			<<if $town_projects.road gte 4>>
+				<<pass 15>>
+			<<else>>
+				<<pass 30>>
+			<</if>>
+		<<case "beach">>
+			<<pass 15>>
+		<<case "barb_street">>
+			<<pass 5>>
+	<</switch>>
+<</widget>>

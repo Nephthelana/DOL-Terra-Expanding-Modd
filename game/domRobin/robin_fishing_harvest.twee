@@ -1,0 +1,135 @@
+:: Robin Fishing Harvest [widget]
+/* 专属罗宾的渔获池 */
+<<widget "robin_fishing_harvest">>
+
+	/* 当前钓鱼点是否钓到当日任务鱼 */
+	<<set _requestFish to setup.terraRequestFish[$fishing_request_selection]>>
+	<<if !$fishing_request_fish.includes($fishing_request_selection) and _requestFish.catching_place.includes($fishing_place) and random(1,5) is 1>>
+		<<icon `_requestFish.icon`>>_requestFish.cn_name
+		<<set $fishing_request_fish.pushUnique($fishing_request_selection)>>
+		<<exit>>
+	<</if>>
+
+	/* “极度罕见”渔获判定通过概率 */
+	<<if $robin_fishing_fishing_power gte random(1,4500)>>
+		<<set _fishing_harvest_catch_quality to "extremely_rare">>
+	/* “非常罕见”渔获判定通过概率 */
+	<<elseif $robin_fishing_fishing_power gte random(1,2250)>>
+		<<set _fishing_harvest_catch_quality to "very_rare">>
+	/* “罕见”渔获判定通过概率，上限1/4 */
+	<<elseif $robin_fishing_fishing_power gt 262.5 and random(1,4) is 1>>
+		<<set _fishing_harvest_catch_quality to "rare">>
+	<<elseif $robin_fishing_fishing_power gte random(1,1050)>>
+		<<set _fishing_harvest_catch_quality to "rare">>
+	/* “不常见”渔获判定通过概率，上限1/3 */
+	<<elseif $robin_fishing_fishing_power gt 100 and random(1,3) is 1>>
+		<<set _fishing_harvest_catch_quality to "uncommon">>
+	<<elseif $robin_fishing_fishing_power gte random(1,300)>>
+		<<set _fishing_harvest_catch_quality to "uncommon">>
+	/* “常见”渔获判定通过概率，上限1/2 */
+	<<elseif $robin_fishing_fishing_power gt 75 and random(1,2) is 1>>
+		<<set _fishing_harvest_catch_quality to "common">>
+	<<elseif $robin_fishing_fishing_power gte random(1,150)>>
+		<<set _fishing_harvest_catch_quality to "common">>
+	/* 以上都不通过时，稀有度为“丰富” */
+	<<else>>
+		<<set _fishing_harvest_catch_quality to "plentiful">>
+	<</if>>
+
+	/* “宝匣”判定通过概率，10% */
+	<<if random(1,100) lte 10>>
+		<<set _fishing_harvest_crate to true>>
+	<<else>>
+		<<set _fishing_harvest_crate to false>>
+	<</if>>
+
+	/* 各个地点渔获列表 从最高渔获稀有度开始依次判定*/
+	<<switch $fishing_place>>
+		<<case "lake_fishing_rock">>
+			<<switch _fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if _fishing_harvest_crate>>
+						<<icon "fishing/crates/Golden_Crate.png">>金匣<<set $Golden_Crate +=1>><<set $bestiary_crate_catch_count["Golden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $Salmon += 1>><<set $bestiary_fish_catch_count["Salmon"] += 1>>
+					<</if>>
+				<<case "very_rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $Golden_Crate +=1>><<set $bestiary_crate_catch_count["Golden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $Salmon += 1>><<set $bestiary_fish_catch_count["Salmon"] += 1>>
+					<</if>>
+				<<case "rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $Iron_Crate +=1>><<set $bestiary_crate_catch_count["Iron_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $Salmon += 1>><<set $bestiary_fish_catch_count["Salmon"] += 1>>
+					<</if>>
+				<<case "uncommon">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $Iron_Crate +=1>><<set $bestiary_crate_catch_count["Iron_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Salmon.png">>三文鱼<<set $Salmon += 1>><<set $bestiary_fish_catch_count["Salmon"] += 1>>
+					<</if>>
+				<<case "common">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $Wooden_Crate +=1>><<set $bestiary_crate_catch_count["Wooden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $Bass += 1>><<set $bestiary_fish_catch_count["Bass"] += 1>>
+					<</if>>
+				<<case "plentiful">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $Wooden_Crate +=1>><<set $bestiary_crate_catch_count["Wooden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $Bass += 1>><<set $bestiary_fish_catch_count["Bass"] += 1>>
+					<</if>>
+			<</switch>>
+		<<case "beach">>
+			<<switch _fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $Golden_Crate +=1>><<set $bestiary_crate_catch_count["Golden_Crate"] += 1>>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $Pink_Jellyfish_bait += 1>><<set $bestiary_bait_catch_count["Pink_Jellyfish_bait"] += 1>>
+					<</if>>
+				<<case "very_rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $Golden_Crate +=1>><<set $bestiary_crate_catch_count["Golden_Crate"] += 1>>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $Pink_Jellyfish_bait += 1>><<set $bestiary_bait_catch_count["Pink_Jellyfish_bait"] += 1>>
+					<</if>>
+				<<case "rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Ocean_Crate.png">>海洋匣<<set $Ocean_Crate +=1>><<set $bestiary_crate_catch_count["Ocean_Crate"] += 1>>
+					<<else>><<icon "fishing/bait/Pink_Jellyfish_bait.png">>粉水母<<set $Pink_Jellyfish_bait += 1>><<set $bestiary_bait_catch_count["Pink_Jellyfish_bait"] += 1>>
+					<</if>>
+				<<case "uncommon">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $Iron_Crate +=1>><<set $bestiary_crate_catch_count["Iron_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Shrimp.png">>虾<<set $Shrimp += 1>><<set $bestiary_fish_catch_count["Shrimp"] += 1>>
+					<</if>>
+				<<case "common">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $Wooden_Crate +=1>><<set $bestiary_crate_catch_count["Wooden_Crate"] += 1>>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Tuna.png">>金枪鱼<<set $Tuna += 1>><<set $bestiary_fish_catch_count["Tuna"] += 1>>
+					<<else>><<icon "fishing/fish/Red_Snapper.png">>红鲷鱼<<set $Red_Snapper += 1>><<set $bestiary_fish_catch_count["Red_Snapper"] += 1>>
+					<</if>>
+				<<case "plentiful">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $Wooden_Crate +=1>><<set $bestiary_crate_catch_count["Wooden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Trout.png">>鳟鱼<<set $Trout += 1>><<set $bestiary_fish_catch_count["Trout"] += 1>>
+					<</if>>
+			<</switch>>
+		<<case "barb_street">>
+			<<switch _fishing_harvest_catch_quality>>
+				<<case "extremely_rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $Golden_Crate +=1>><<set $bestiary_crate_catch_count["Golden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Golden_Carp.png">>金鲤鱼<<set $Golden_Carp += 1>><<set $bestiary_fish_catch_count["Golden_Carp"] += 1>>
+					<</if>>
+				<<case "very_rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Golden_Crate.png">>金匣<<set $Golden_Crate +=1>><<set $bestiary_crate_catch_count["Golden_Crate"] += 1>>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $Stinkfish += 1>><<set $bestiary_fish_catch_count["Stinkfish"] += 1>>
+					<<else>><<icon "fishing/bait/Blue_Jellyfish_bait.png">>蓝水母<<set $Blue_Jellyfish_bait += 1>><<set $bestiary_bait_catch_count["Blue_Jellyfish_bait"] += 1>>
+					<</if>>
+				<<case "rare">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $Iron_Crate +=1>><<set $bestiary_crate_catch_count["Iron_Crate"] += 1>>
+					<<elseif random(1,2) is 1>><<icon "fishing/fish/Stinkfish.png">>臭味鱼<<set $Stinkfish += 1>><<set $bestiary_fish_catch_count["Stinkfish"] += 1>>
+					<<else>><<icon "fishing/bait/Blue_Jellyfish_bait.png">>蓝水母<<set $Blue_Jellyfish_bait += 1>><<set $bestiary_bait_catch_count["Blue_Jellyfish_bait"] += 1>>
+					<</if>>
+				<<case "uncommon">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Iron_Crate.png">>铁匣<<set $Iron_Crate +=1>><<set $bestiary_crate_catch_count["Iron_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Armored_Cavefish.png">>装甲洞穴鱼<<set $Armored_Cavefish += 1>><<set $bestiary_fish_catch_count["Armored_Cavefish"] += 1>>
+					<</if>>
+				<<case "common">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $Wooden_Crate +=1>><<set $bestiary_crate_catch_count["Wooden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Specular_Fish.png">>镜面鱼<<set $Specular_Fish += 1>><<set $bestiary_fish_catch_count["Specular_Fish"] += 1>>
+					<</if>>
+				<<case "plentiful">>
+					<<if _fishing_harvest_crate>><<icon "fishing/crates/Wooden_Crate.png">>木匣<<set $Wooden_Crate +=1>><<set $bestiary_crate_catch_count["Wooden_Crate"] += 1>>
+					<<else>><<icon "fishing/fish/Bass.png">>鲈鱼<<set $Bass += 1>><<set $bestiary_fish_catch_count["Bass"] += 1>>
+					<</if>>
+			<</switch>>
+	<</switch>>
+
+<</widget>>

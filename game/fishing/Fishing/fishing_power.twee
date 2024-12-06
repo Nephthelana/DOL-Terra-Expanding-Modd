@@ -3,32 +3,42 @@
 <<widget "fishing_power">>
 	<<set $fishing_power = 0>>
 	/* 不同鱼竿提供不同渔力 */
-	<<switch $fishingrod_held>>
+	<<switch $options.fishingrod_held>>
 		<<case "Golden_Fishing_Rod">><<set $fishing_power += 50>>/* 金钓竿：50渔力 */
 		<<case "Hotline_Fishing_Hook">><<set $fishing_power += 45>>/* 熔线钓钩：45渔力 */
+		<<case "Sitting_Ducks_Fishing_Pole">><<set $fishing_power += 40>>/* 冤大头钓竿：40渔力 */
 		<<case "Fiberglass_Fishing_Pole">><<set $fishing_power += 30>>/* 玻璃钢钓竿：30渔力 */
 		<<case "Scarab_Fishing_Rod">><<set $fishing_power += 30>>/* 甲虫钓竿：30渔力 */
+		<<case "Slurper_Pole">><<set $fishing_power += 25>>/* 饮食者钓竿：25渔力 */
 		<<case "Chum_Caster">><<set $fishing_power += 25>>/* 鱼饵投掷者：25渔力 */
 		<<case "Reinforced_Fishing_Pole">><<set $fishing_power += 20>>/* 强化钓竿：20渔力，额外+5 */
 		<<case "Wood_Fishing_Pole">><<set $fishing_power += 15>>/* 木钓竿：15渔力，额外+10 */
 	<</switch>>
 	/* 不同鱼饵提供不同渔力 */
-	<<set _allBaitList to getAllBaitList()>>
-	<<for _t to 0; _t lt _allBaitList.length; _t++>>
-		<<set _bait to setup.terraBait[_allBaitList[_t]]>>
-		<<if _bait.name is $Bait>>
-			<<set $fishing_power += _bait.fishing_power>>
-			<<break>>
-		<</if>>
-	<</for>>
+	<<if $Bait isnot "None">>
+		<<set $fishing_power += setup.terraBait[$Bait].fishing_power>>
+	<</if>>
+	/* 装备渔夫盔甲部件，每件提供5渔力 */
+	<<if $terra_armor_slots.includes("Angler_Hat")>>
+		<<set $fishing_power += 5>>
+	<</if>>
+	<<if $terra_armor_slots.includes("Angler_Vest")>>
+		<<set $fishing_power += 5>>
+	<</if>>
+	<<if $terra_armor_slots.includes("Angler_Pants")>>
+		<<set $fishing_power += 5>>
+	<</if>>
 	/* 使用钓鱼药水提供15渔力 */
 	<<if $Fishing_Potion_countdown gt 0>>
 		<<set $fishing_power += 15>>
 	<</if>>
-	/* 装备钓鱼浮标或发光钓鱼浮标提供10渔力 */
-	<<if $terra_accessories_slots.includes("Fishing_Bobber") or $terra_accessories_slots.includes("Glowing_Fishing_Bobber")>>
-		<<set $fishing_power += 10>>
-	<</if>>
+	/* 装备钓鱼浮标或其升级物提供10渔力 */
+	<<for _i = 0; _i lt $terra_accessories_slots.length; _i++>>
+		<<if setup.terraAccessories[$terra_accessories_slots[_i]].type is "bobber">>
+			<<set $fishing_power += 10>>
+			<<break>>
+		<</if>>
+	<</for>>
 	/* 装备渔夫耳环提供10渔力 */
 	<<if $terra_accessories_slots.includes("Angler_Earring")>>
 		<<set $fishing_power += 10>>
@@ -40,6 +50,10 @@
 	/* 装备防熔岩渔具袋提供10渔力 */
 	<<if $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")>>
 		<<set $fishing_power += 10>>
+	<</if>>
+	/* 装备浮游圈提供5渔力 */
+	<<if $terra_accessories_slots.includes("Inner_Tube")>>
+		<<set $fishing_power += 5>>
 	<</if>>
 	/* 醉酒状态提供5渔力 */
 	<<if $drunk gt 0>>

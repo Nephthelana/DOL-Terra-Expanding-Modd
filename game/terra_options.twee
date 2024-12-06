@@ -9,8 +9,31 @@
 	<div class="settingsToggleItem">
 		<label><<checkbox "$options.artificial_fishing_pond" false true autocheck>>人工钓鱼池</label><mouse class="tooltip linkBlue">(?)<span>开启后，可建造并使用某些原本以NPC交互作为前置条件的钓鱼点。详情请询问向导。</span></mouse>
 	</div>
-	<div class="settingsToggleItemWide">
+	<div class="settingsToggleItem">
 		<label><<checkbox "$options.Magiluminescence_awareness_effect" false true autocheck>>魔光护符降低"意识"</label><mouse class="tooltip linkBlue">(?)<span>开启后，佩戴魔光护符时，"意识"属性会随着时间的流逝而降低。</span></mouse>
+	</div>
+	<div class="settingsToggleItem">
+		<label><<checkbox "$options.bestiaryHint" false true autocheck>>图鉴收集提示</label><mouse class="tooltip linkBlue">(?)<span>开启后，可点击图鉴内未点亮的图标以查看获取方式。</span></mouse>
+	</div>
+	<div class="settingsToggleItemWide">
+		<label><<checkbox "$options.dragModeTEM" false true autocheck>>拖拽模式</label><mouse class="tooltip linkBlue">(?)<span>开启后，将一些内容的交互修改为拖拽操作（目前仅支持装备、宠物家具界面）</span></mouse>
+	</div>
+	<div class="settingsToggleItemWide">
+		<label>传送工具每日使用次数：
+			<<listbox "$options.terraTransportLimit" autoselect>>
+				<<option "1" "1">>
+				<<option "2" "2">>
+				<<option "3" "3">>
+				<<option "4" "4">>
+				<<option "5" "5">>
+				<<option "6" "6">>
+				<<option "7" "7">>
+				<<option "8" "8">>
+				<<option "9" "9">>
+				<<option "无限制" "Unlimited">>
+			<</listbox>>
+		</label>
+		<mouse class="tooltip linkBlue">(?)<span>设定传送工具的使用限制</span></mouse>
 	</div>
 	<<if $debug is 1>>
 		<!-- 游戏内用V.halloween是否为1来记录当前是否为万圣节 -->
@@ -25,16 +48,37 @@
 			<mouse class="tooltip linkBlue">(?)<span>[DEBUG模式]生效期间，会随机发生泰拉瑞亚拓展模组新增的万圣节事件。</span></mouse>
 		</div>
 	<</if>>
+	<span id="terraHotKeysOption">
+		<<terraHotKeysOption>>
+	</span>
+</div>
+<hr>
+
+<</widget>>
+
+<<widget "terraHotKeysOption">>
 	<div class="settingsToggleItemWide">
-		<span class="gold">快捷键设置</span><mouse class="tooltip linkBlue">(?)<span>可以自定义控制侧边栏按钮的开关的键位。请不要设置为数字键。</span></mouse><br>
-		虚空袋：<<textbox "$options.voidBagKey" $options.voidBagKey>><br>
-		装备　：<<textbox "$options.equipmentKey" $options.equipmentKey>><br>
-		工具　：<<textbox "$options.toolKey" $options.toolKey>><br>
+		快捷键设置<mouse class="tooltip linkBlue">(?)<span>可以自定义控制侧边栏按钮的开关的键位。请不要设置为数字键。</span></mouse>
+		<<if $terraHotKeys>>
+			<<link "禁用快捷键">>
+				<<set $terraHotKeys to false>>
+				<<replace #terraHotKeysOption>>
+					<<terraHotKeysOption>>
+				<</replace>>
+			<</link>><br>
+			虚空袋：<<textbox "$options.voidBagKey" $options.voidBagKey>><br>
+			装　备：<<textbox "$options.equipmentKey" $options.equipmentKey>><br>
+			工　具：<<textbox "$options.toolKey" $options.toolKey>><br>
+		<<else>>
+			<<link "启用快捷键">>
+				<<set $terraHotKeys to true>>
+				<<replace #terraHotKeysOption>>
+					<<terraHotKeysOption>>
+				<</replace>>
+			<</link>><br>
+		<</if>>
 		<<if !hasHotKeyModInfo()>>
 			如果你需要控制原版按钮的键位，<a href="https://tieba.baidu.com/p/9192223044" target="_blank">不妨看看这个</a><br>
 		<</if>>
 	</div>
-</div>
-<hr>
-
 <</widget>>

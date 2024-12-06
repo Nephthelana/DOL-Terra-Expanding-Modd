@@ -1,6 +1,8 @@
 :: Orphanage Loft Tinkerers Workshop Widget [widget]
 <<widget "orphanage_loft_tinkerers_workshop">>
-	<<icon "furniture_placed/Tinkerers_Workshop_(placed).png">><<link [[使用工匠作坊|Orphanage Loft Tinkerers Workshop]]>><</link>><br>
+	<<if $orphanage_loft_crafting_station.includes("Tinkerers_Workshop")>>
+		<<icon "furniture_placed/Tinkerers_Workshop_(placed).png">><<link [[使用工匠作坊|Orphanage Loft Tinkerers Workshop]]>><</link>><br>
+	<</if>>
 <</widget>>
 
 :: Orphanage Loft Tinkerers Workshop

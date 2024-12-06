@@ -5,7 +5,6 @@ setup.terraTrash = {
         type: "trash",
         amount: V.Old_Shoe || 0,
         icon: "fishing/fish/Old_Shoe.png",
-		difficulty: 0.25,
     },
 	"Seaweed_junk": {
         name: "Seaweed_junk",
@@ -13,7 +12,6 @@ setup.terraTrash = {
         type: "trash",
         amount: V.Seaweed_junk || 0,
         icon: "fishing/fish/Seaweed_junk.png",
-		difficulty: 0.25,
     },
 	"Tin_Can": {
         name: "Tin_Can",
@@ -21,7 +19,6 @@ setup.terraTrash = {
         type: "trash",
         amount: V.Tin_Can || 0,
         icon: "fishing/fish/Tin_Can.png",
-		difficulty: 0.25,
     },
 	"Joja_Cola": {
         name: "Joja_Cola",
@@ -29,7 +26,6 @@ setup.terraTrash = {
         type: "trash",
         amount: V.Joja_Cola || 0,
         icon: "fishing/fish/Joja_Cola.png",
-		difficulty: 0.25,
     },
 }
 

@@ -57,11 +57,11 @@
     },
 	"Don't Dread on Me": {
         "title": "不要怕我",
-        "desc": "得到了血月天塔柱。",
+        "desc": "直面恐惧鹦鹉螺，并从它那里得到血泪。",
         "difficulty": 3,
         "series": "",
         "filter": ["All", "Special"],
-		"hint": "提示：血月的森林湖畔，有时可以听见某物的诉求。"
+		"hint": "提示：在血月的水面之下，会不会隐藏着什么用鱼饵才能勾引上来的东西。"
     },
 	"Hot Reels!": {
         "title": "火热渔线轮！",

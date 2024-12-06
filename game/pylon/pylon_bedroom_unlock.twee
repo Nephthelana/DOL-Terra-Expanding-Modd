@@ -8,11 +8,5 @@
 <br>
 你忽然想到卧室里的水晶基座上，零星生长着不会枯萎的枝条与树叶。<span class="green">这应该就是晶塔需要的水晶。</span>你提议把它摆在卧室里，这是比被不合时宜的大风打扰的野餐更加值得记忆的事情。<br>
 <br>
-<<<<<<< Updated upstream
-(文笔不好，期待大佬能给我这个小mod写个剧情)<br>
-<br>
-<<set $pylon_bedroom_unlock to true>><<set $pylon_collected.pushUnique("Bedroom")>>
-=======
 <<set $pylon_collected.pushUnique("Bedroom")>>
->>>>>>> Stashed changes
 <<link[[返回孤儿院|Pylon Bedroom Unlocked]]>><</link>>

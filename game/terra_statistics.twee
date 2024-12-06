@@ -21,25 +21,14 @@
 		<i>大部分数据在v0.1.7及更早的版本中不被追踪。</i><br>
 		<<foldout false "_terraFishingCrateFoldout">>
 			<span class="gold">钓上来的宝匣数</span>
-			金匣：$fishing_crate_count.Golden_Crate<br>
-			铁匣：$fishing_crate_count.Iron_Crate<br>
-			木匣：$fishing_crate_count.Wooden_Crate<br>
-			海洋匣：$fishing_crate_count.Ocean_Crate<br>
-			绿洲匣：$fishing_crate_count.Oasis_Crate<br>
-			丛林匣：$fishing_crate_count.Jungle_Crate<br>
-			神圣匣：$fishing_crate_count.Hallowed_Crate<br>
-			天空匣：$fishing_crate_count.Sky_Crate<br>
-			富养匣：$fishing_crate_count.Sunken_Crate<br>
-			硫海匣：$fishing_crate_count.Sulphurous_Crate<br>
-			焦炭匣：$fishing_crate_count.Brimstone_Crate<br>
-			牡蛎：$fishing_crate_count.Oyster<br>
+			<i>该部分数据改为在图鉴中记录并显示</i>
 			<br>
 		<</foldout>>
 		<<foldout false "_terraUnloadCrateFoldout">>
 			<span class="gold">打开的宝匣数</span>
-			金匣：$unload_crate_count.Golden_Crate<br>
-			铁匣：$unload_crate_count.Iron_Crate<br>
-			木匣：$unload_crate_count.Wooden_Crate<br>
+			金　匣：$unload_crate_count.Golden_Crate<br>
+			铁　匣：$unload_crate_count.Iron_Crate<br>
+			木　匣：$unload_crate_count.Wooden_Crate<br>
 			海洋匣：$unload_crate_count.Ocean_Crate<br>
 			绿洲匣：$unload_crate_count.Oasis_Crate<br>
 			丛林匣：$unload_crate_count.Jungle_Crate<br>
@@ -48,13 +37,12 @@
 			富养匣：$unload_crate_count.Sunken_Crate<br>
 			硫海匣：$unload_crate_count.Sulphurous_Crate<br>
 			焦炭匣：$unload_crate_count.Brimstone_Crate<br>
-			牡蛎：$unload_crate_count.Oyster<br>
 			<br>
 		<</foldout>>
 		<<foldout false "_terraCraftingFoldout">>
 			<span class="gold">制作物品次数</span>
 			工作台：$crafting_count.Work_Bench<br>
-			铁砧：$crafting_count.Iron_Anvil<br>
+			铁　砧：$crafting_count.Iron_Anvil<br>
 			烹饪锅：$crafting_count.Cooking_Pot<br>
 			工匠作坊：$crafting_count.Tinkerers_Workshop<br>
 			<br>

@@ -22,16 +22,24 @@
 
 <<widget "terraExpandEquipment">>
 
+	<span class="gold bold">盔甲栏</span><mouse class="tooltip linkBlue">(?)<span>装备同一盔甲类型的全部三个部件时，会提供独特的套装奖励</span></mouse><br>
 	<span id="terra_armor_slots">
 		<<terra_armor_slots>>
 	</span>
+	<span class="gold bold">盔甲</span><br>
 	<span id="terra_armor">
 		<<terra_armor>>
 	</span>
-
+	<hr>
+	<span class="gold bold">饰品栏</span><mouse class="tooltip linkBlue">(?)<span>除特殊说明外，饰品需要装备在饰品栏内才能发挥完整效果。<br>饰品栏中某些种类的饰品同时只能装备其中一个，如翅膀、鞋子、钓鱼浮标。</span></mouse><br>
 	<span id="terra_accessories_slots">
 		<<terra_accessories_slots>>
 	</span>
+	<span class="gold bold">时装栏</span><mouse class="tooltip linkBlue">(?)<span>对于装备在时装栏的物品，只有<i>时装</i>标签内的内容会生效（如果有<i>时装</i>标签的话）。</span></mouse><br>
+	<span id="terra_vanity_accessories_slots">
+		<<terra_vanity_accessories_slots>>
+	</span>
+	<span class="gold bold">饰品</span><br>
 	<span id="terra_accessories">
 		<<terra_accessories>>
 	</span>
@@ -40,128 +48,234 @@
 
 :: Terra Armor Operate [widget]
 <<widget "terra_armor_slots">>
-
-<<run initializeTooltips()>>
-
-<<switch $terra_armor_slots[0]>>
-	<<case "Angler_Hat">>
-		<<if $terra_armor_slots[1] is "Angler_Vest" and $terra_armor_slots[2] is "Angler_Pants">>
-			<<set $armor_set_bonus to "Angler">>
-		<<else>>
-			<<set $armor_set_bonus to undefined>>
-		<</if>>
-	<<default>>
-		<<set $armor_set_bonus to undefined>>
-<</switch>>
-<<updateallure>>
-<span class="gold bold">盔甲栏</span><mouse class="tooltip linkBlue">(?)<span>装备同一盔甲类型的全部三个部件时，会提供独特的套装奖励</span></mouse><br>
-<div class="itemTerra">
-	<<for _i to 0; _i lt 3; _i++>>
-		<<capture _i>>
-			<<set _armorList to getAllArmorList()>>
-			<<if _armorList.includes($terra_armor_slots[_i])>>
-				<<for _j to 0; _j lt _armorList.length; _j++>>
-					<<set _armor to setup.terraArmor[_armorList[_j]]>>
-					<<if $terra_armor_slots[_i] is _armor.name>>
-						<div class="item">
-							<<set _isArmorSet to $armor_set_bonus is undefined ? "" : "<br>_armor.set_bonus">>
-							<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
-								<div class="itemTerraGeneral">
-									<<icon `_armor.icon_item`>>
-								</div>
-							</div>
-							<hr>
-							<<link "卸下">>
-								<<switch _armor.type>>
-									<<case "helmet">>
-										<<set $terra_armor_slots[0] to "Armor_Helmet">>
-									<<case "shirt">>
-										<<set $terra_armor_slots[1] to "Armor_Shirt">>
-									<<case "pants">>
-										<<set $terra_armor_slots[2] to "Armor_Pants">>
-								<</switch>>
-								<<replace #terra_armor_slots>>
-									<<terra_armor_slots>>
-								<</replace>>
-								<<replace #terra_armor>>
-									<<terra_armor>>
-								<</replace>>
-							<</link>>
-						</div>
-					<</if>>
-				<</for>>
+	<<run initializeTooltips()>>
+	<<switch $terra_armor_slots[0]>>
+		<<case "Angler_Hat">>
+			<<if $terra_armor_slots[1] is "Angler_Vest" and $terra_armor_slots[2] is "Angler_Pants">>
+				<<set $armor_set_bonus to "Angler">>
 			<<else>>
-				<div class="item">
-					<div class="itemTerraGeneral">
-						<img @src="'img/misc/icon/armor/' + $terra_armor_slots[_i] + '.png'">
-					</div>
-					<hr>
-					空
-				</div>
+				<<set $armor_set_bonus to undefined>>
 			<</if>>
-		<</capture>>
-	<</for>>
-</div>
-
+		<<default>>
+			<<set $armor_set_bonus to undefined>>
+	<</switch>>
+	<<updateallure>>
+	<<if $options.dragModeTEM>>
+		<div class="itemTerra" ondragover="allowDropTEM(event)" ondrop="dropArmorSlots(event)">
+			<<terra_armor_slots_UI>>
+		</div>
+	<<else>>
+		<div class="itemTerra">
+			<<terra_armor_slots_UI>>
+		</div>
+	<</if>>
 <</widget>>
 
 <<widget "terra_armor">>
+	<<if $options.dragModeTEM>>
+		<div ondragover="allowDropTEM(event)" ondrop="dropArmorList(event)">
+			<<if getArmorObtained().length lte 0>>
+				<i>你还没有获得盔甲</i><br>
+			<<elseif ($terra_armor_slots.count("Armor_Helmet")+$terra_armor_slots.count("Armor_Shirt")+$terra_armor_slots.count("Armor_Pants")+getArmorObtained().length-3) lte 0>>
+				<i>你没有多余的盔甲</i><br>
+			<<else>>
+				<<run initializeTooltips()>>
+				<div class="itemTerra">
+					<<terra_armor_UI>>
+				</div>
+			<</if>>
+		</div>
+	<<else>>
+		<<if getArmorObtained().length lte 0>>
+			<i>你还没有获得盔甲</i><br>
+		<<elseif ($terra_armor_slots.count("Armor_Helmet")+$terra_armor_slots.count("Armor_Shirt")+$terra_armor_slots.count("Armor_Pants")+getArmorObtained().length-3) lte 0>>
+			<i>你没有多余的盔甲</i><br>
+		<<else>>
+			<<run initializeTooltips()>>
+			<div class="itemTerra">
+				<<terra_armor_UI>>
+			</div>
+		<</if>>
+	<</if>>
+<</widget>>
 
-<<run initializeTooltips()>>
+<<widget "terra_armor_slots_UI">>
+	<<for _i to 0; _i lt 3; _i++>>
+		<<if getAllArmorList().includes($terra_armor_slots[_i])>>
+			<<set _armor to setup.terraArmor[$terra_armor_slots[_i]]>>
+			<<capture _armor>>
+				<<set _isArmorSet to $armor_set_bonus is undefined ? "" : "<br>_armor.set_bonus">>
+				<<if $options.dragModeTEM>>
+					<div class="item" @id="_armor.name" draggable="true" ondragstart="dragTEM(event)">
+						<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
+							<div class="itemTerraGeneral" style="pointer-events: none">
+								<<icon `_armor.icon_item`>>
+							</div>
+						</div>
+					</div>
+				<<else>>
+					<div class="item">
+						<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
+							<div class="itemTerraGeneral">
+								<<icon `_armor.icon_item`>>
+							</div>
+						</div>
+						<hr>
+						<<link "卸下">>
+							<<switch _armor.type>>
+								<<case "helmet">>
+									<<set $terra_armor_slots[0] to "Armor_Helmet">>
+								<<case "shirt">>
+									<<set $terra_armor_slots[1] to "Armor_Shirt">>
+								<<case "pants">>
+									<<set $terra_armor_slots[2] to "Armor_Pants">>
+							<</switch>>
+							<<UpdateArmorSlots>>
+							<<UpdateArmorList>>
+						<</link>>
+					</div>
+				<</if>>
+			<</capture>>
+		<<else>>
+			<div class="item">
+				<div class="itemTerraGeneral">
+					<img @src="'img/misc/icon/armor/' + $terra_armor_slots[_i] + '.png'">
+				</div>
+				<<if !$options.dragModeTEM>>
+					<hr>
+					空
+				<</if>>
+			</div>
+		<</if>>
+	<</for>>
+<</widget>>
 
-<span class="gold bold">盔甲</span><br>
-<<set _armorObtained to getArmorObtained()>>
-<div class="itemTerra">
+<<widget "terra_armor_UI">>
+	<<set _armorObtained to getArmorObtained()>>
 	<<for _t to 0; _t lt _armorObtained.length; _t++>>
 		<<set _armor to setup.terraArmor[_armorObtained[_t]]>>
 		<<capture _armor>>
 			<<if !$terra_armor_slots.includes(_armor.name)>>
-				<div class="item">
-					<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
-						<div class="itemTerraGeneral">
-							<<icon `_armor.icon_item`>>
+				<<if $options.dragModeTEM>>
+					<div class="item" @id="_armor.name" draggable="true" ondragstart="dragTEM(event)">
+						<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
+							<div class="itemTerraGeneral" style="pointer-events: none">
+								<<icon `_armor.icon_item`>>
+							</div>
 						</div>
 					</div>
-					<hr>
-					<<link "装备">>
-						<<switch _armor.type>>
-							<<case "helmet">>
-								<<set $terra_armor_slots[0] to _armor.name>>
-							<<case "shirt">>
-								<<set $terra_armor_slots[1] to _armor.name>>
-							<<case "pants">>
+				<<else>>
+					<div class="item">
+						<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
+							<div class="itemTerraGeneral">
+								<<icon `_armor.icon_item`>>
+							</div>
+						</div>
+						<hr>
+						<<link "装备">>
+							<<switch _armor.type>>
+								<<case "helmet">>
+									<<set $terra_armor_slots[0] to _armor.name>>
+								<<case "shirt">>
+									<<set $terra_armor_slots[1] to _armor.name>>
+								<<case "pants">>
 								<<set $terra_armor_slots[2] to _armor.name>>
-						<</switch>>
-						<<replace #terra_armor_slots>>
-							<<terra_armor_slots>>
-						<</replace>>
-						<<replace #terra_armor>>
-							<<terra_armor>>
-						<</replace>>
-					<</link>>
-				</div>
+							<</switch>>
+							<<UpdateArmorSlots>>
+							<<UpdateArmorList>>
+						<</link>>
+					</div>
+				<</if>>
 			<</if>>
 		<</capture>>
 	<</for>>
-</div>
+<</widget>>
 
+<<widget "UpdateArmorSlots">>
+	<<replace #terra_armor_slots>>
+		<<terra_armor_slots>>
+	<</replace>>
+<</widget>>
+<<widget "UpdateArmorList">>
+	<<replace #terra_armor>>
+		<<terra_armor>>
+	<</replace>>
 <</widget>>
 
 :: Terra Accessories Operate [widget]
 <<widget "terra_accessories_slots">>
+	<<run initializeTooltips()>>
+	<<if $options.dragModeTEM>>
+		<div class="itemTerra" ondragover="allowDropTEM(event)" ondrop="dropAccessoriesSlots(event)">
+			<<terra_accessories_slots_UI>>
+		</div>
+	<<else>>
+		<div class="itemTerra">
+			<<terra_accessories_slots_UI>>
+		</div>
+	<</if>>
+<</widget>>
 
-<<run initializeTooltips()>>
+<<widget "terra_vanity_accessories_slots">>
+	<<run initializeTooltips()>>
+	<<if $options.dragModeTEM>>
+		<div class="itemTerra" ondragover="allowDropTEM(event)" ondrop="dropVanityAccessoriesSlots(event)">
+			<<terra_vanity_accessories_slots_UI>>
+		</div>
+	<<else>>
+		<div class="itemTerra">
+			<<terra_vanity_accessories_slots_UI>>
+		</div>
+	<</if>>
+<</widget>>
 
-<span class="gold bold">饰品栏</span><mouse class="tooltip linkBlue">(?)<span>大部分饰品需要装备在饰品栏内才会生效</span></mouse><br>
-<div class="itemTerra">
-	<<set _accessoryObtained to getAccessoriesObtained()>>
-	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
-		<<set _accessory_equipped to setup.terraAccessories[_accessoryObtained[_t]]>>
+<<widget "terra_accessories">>
+	<<if $options.dragModeTEM>>
+		<div ondragover="allowDropTEM(event)" ondrop="dropAccessoryList(event)">
+			<<if getAccessoriesObtained().length lte 0>>
+				<i>你还没有获得饰品</i><br>
+			<<elseif ($terra_accessories_slots.length + $terra_vanity_accessories_slots.length) gte getAccessoriesObtained().length>>
+				<i>你没有多余的饰品</i><br>
+			<<else>>
+				<<run initializeTooltips()>>
+				<div class="itemTerra">
+					<<terra_accessories_UI>>
+				</div>
+			<</if>>
+		</div>
+	<<else>>
+		<<if getAccessoriesObtained().length lte 0>>
+			<i>你还没有获得饰品</i><br>
+		<<elseif ($terra_accessories_slots.length + $terra_vanity_accessories_slots.length) gte getAccessoriesObtained().length>>
+			<i>你没有多余的饰品</i><br>
+		<<else>>
+			<<run initializeTooltips()>>
+			<div class="itemTerra">
+				<<terra_accessories_UI>>
+			</div>
+		<</if>>
+	<</if>>
+<</widget>>
+
+:: Terra Accessories Operate UI [widget]
+<<widget "terra_accessories_slots_UI">>
+	<<set _accessory_equipped_type to []>>
+	<<for _t to 0; _t lt $terra_accessories_slots.length; _t++>>
+		<<set _accessory_equipped to setup.terraAccessories[$terra_accessories_slots[_t]]>>
 		<<capture _accessory_equipped>>
-			<<if $terra_accessories_slots.includes(_accessory_equipped.name)>>
+			<<if $options.dragModeTEM>>
+				<div class="item" @id="_accessory_equipped.name" draggable="true" ondragstart="dragTEM(event)" ondragover="allowDropTEM(event)" ondrop="dropAccessoriesSwitch(event)">
+					<<set _isMaterial to _accessory_equipped.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}<br>${_accessory_equipped.vanity}`">
+						<div class="itemTerraGeneral" style="pointer-events: none">
+							<<icon `_accessory_equipped.icon`>>
+						</div>
+					</div>
+				</div>
+			<<else>>
 				<div class="item">
 					<<set _isMaterial to _accessory_equipped.material ? "<br><i>材料</i>" : "">>
-					<div @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}`">
+					<div @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}<br>${_accessory_equipped.vanity}`">
 						<div class="itemTerraGeneral">
 							<<icon `_accessory_equipped.icon`>>
 						</div>
@@ -169,68 +283,179 @@
 					<hr>
 					<<link "卸下">>
 						<<set $terra_accessories_slots.delete(_accessory_equipped.name)>>
-						<<replace #terra_accessories>>
-							<<terra_accessories>>
-						<</replace>>
-						<<replace #terra_accessories_slots>>
-							<<terra_accessories_slots>>
-						<</replace>>
+						<<UpdateAccessoriesSlots>>
+						<<UpdateAccessoryList>>
 					<</link>>
+					<hr>
+					<<capture _t>>
+						<<if _t is 0>>
+							/
+						<<else>>
+							<<link "⬅">>
+								<<set _temp to $terra_accessories_slots[_t-1]>>
+								<<set $terra_accessories_slots[_t-1] to $terra_accessories_slots[_t]>>
+								<<set $terra_accessories_slots[_t] to _temp>>
+								<<UpdateAccessoriesSlots>>
+							<</link>>
+						<</if>>
+					<</capture>>
 				</div>
 			<</if>>
+			<<switch _accessory_equipped.type>>
+				<<case "wings">>
+					<<set _accessory_equipped_type.pushUnique("wings")>>
+				<<case "boots">>
+					<<set _accessory_equipped_type.pushUnique("boots")>>
+				<<case "bobber">>
+					<<set _accessory_equipped_type.pushUnique("bobber")>>
+			<</switch>>
 		<</capture>>
 	<</for>>
 	<<for _t to 0; _t lt (6-$terra_accessories_slots.length); _t++>>
 		<div class="item">
-			<<icon "Accessories.png">>
-			<hr>
-			空
+			<div class="itemTerraGeneral">
+				<<icon "Accessories_icon.png">>
+			</div>
+			<<if !$options.dragModeTEM>>
+				<hr>
+				空
+				<hr>
+				/
+			<</if>>
 		</div>
 	<</for>>
-</div>
-
 <</widget>>
 
-<<widget "terra_accessories">>
-
-<<run initializeTooltips()>>
-
-<span class="gold bold">饰品</span><br>
-<div class="itemTerra">
-	<<set _accessoryObtained to getAccessoriesObtained()>>
-	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
-		<<set _accessory to setup.terraAccessories[_accessoryObtained[_t]]>>
-		<<capture _accessory>>
-			<<if !$terra_accessories_slots.includes(_accessory.name)>>
-       			<div class="item">
-					<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
-					<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}`">
-						<div class="itemTerraGeneral">
-							<<icon `_accessory.icon`>>
+<<widget "terra_vanity_accessories_slots_UI">>
+	<<for _t to 0; _t lt $terra_vanity_accessories_slots.length; _t++>>
+		<<set _vanity_accessory_equipped to setup.terraAccessories[$terra_vanity_accessories_slots[_t]]>>
+		<<capture _vanity_accessory_equipped>>
+			<<if $options.dragModeTEM>>
+				<div class="item" @id="_vanity_accessory_equipped.name" draggable="true" ondragstart="dragTEM(event)" ondragover="allowDropTEM(event)" ondrop="dropVanityAccessoriesSwitch(event)">
+					<<set _isMaterial to _vanity_accessory_equipped.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_vanity_accessory_equipped.des}<br>${_vanity_accessory_equipped.vanity}`">
+						<div class="itemTerraGeneral" style="pointer-events: none">
+							<<icon `_vanity_accessory_equipped.icon`>>
 						</div>
 					</div>
-					<<if $terra_accessories_slots.length lt 6>>
-						<hr>
-						<<if _accessory.type is "wings" and ($terra_accessories_slots.includes("Fin_Wings") or $terra_accessories_slots.includes("Fledgling_Wings"))>>
-							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个翅膀</span></mouse>
-						<<elseif _accessory.type is "boots" and ($terra_accessories_slots.includes("Sailfish_Boots") or $terra_accessories_slots.includes("Dunerider_Boots") or $terra_accessories_slots.includes("Flurry_Boots"))>>
-							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一双靴子</span></mouse>
+				</div>
+			<<else>>
+				<div class="item">
+					<<set _isMaterial to _vanity_accessory_equipped.material ? "<br><i>材料</i>" : "">>
+					<div @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_vanity_accessory_equipped.des}<br>${_vanity_accessory_equipped.vanity}`">
+						<div class="itemTerraGeneral">
+							<<icon `_vanity_accessory_equipped.icon`>>
+						</div>
+					</div>
+					<hr>
+					<<link "卸下">>
+						<<set $terra_vanity_accessories_slots.delete(_vanity_accessory_equipped.name)>>
+						<<UpdateVanityAccessoriesSlots>>
+						<<UpdateAccessoryList>>
+					<</link>>
+					<hr>
+					<<capture _t>>
+						<<if _t is 0>>
+							/
 						<<else>>
-							<<link "装备">>
-								<<set $terra_accessories_slots.pushUnique(_accessory.name)>>
-								<<replace #terra_accessories_slots>>
-									<<terra_accessories_slots>>
-								<</replace>>
-								<<replace #terra_accessories>>
-									<<terra_accessories>>
-								<</replace>>
+							<<link "⬅">>
+								<<set _temp to $terra_vanity_accessories_slots[_t-1]>>
+								<<set $terra_vanity_accessories_slots[_t-1] to $terra_vanity_accessories_slots[_t]>>
+								<<set $terra_vanity_accessories_slots[_t] to _temp>>
+								<<UpdateVanityAccessoriesSlots>>
 							<</link>>
 						<</if>>
-					<</if>>
+					<</capture>>
 				</div>
 			<</if>>
 		<</capture>>
 	<</for>>
-</div>
+	<<for _t to 0; _t lt (6-$terra_vanity_accessories_slots.length); _t++>>
+		<div class="item">
+			<div class="itemTerraGeneral">
+				<<icon "Vanity_Accessories_icon.png">>
+			</div>
+			<<if !$options.dragModeTEM>>
+				<hr>
+				空
+				<hr>
+				/
+			<</if>>
+		</div>
+	<</for>>
+<</widget>>
 
+<<widget "terra_accessories_UI">>
+	<<set _accessoryObtained to getAccessoriesObtained()>>
+	<<for _t to 0; _t lt _accessoryObtained.length; _t++>>
+		<<set _accessory to setup.terraAccessories[_accessoryObtained[_t]]>>
+		<<capture _accessory>>
+			<<if !$terra_accessories_slots.includes(_accessory.name) and !$terra_vanity_accessories_slots.includes(_accessory.name)>>
+				<<if $options.dragModeTEM>>
+   	    			<div class="item" @id="_accessory.name" draggable="true" ondragstart="dragTEM(event)">
+						<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
+						<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}<br>${_accessory.vanity}`">
+							<div class="itemTerraGeneral" style="pointer-events: none">
+								<<icon `_accessory.icon`>>
+							</div>
+						</div>
+					</div>
+				<<else>>
+					<div class="item">
+						<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
+						<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}<br>${_accessory.vanity}`">
+							<div class="itemTerraGeneral">
+								<<icon `_accessory.icon`>>
+							</div>
+						</div>
+						<hr>
+						<<if $terra_accessories_slots.length gte 6>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">饰品栏已满</span></mouse>
+						<<elseif _accessory.type is "wings" and _accessory_equipped_type.includes("wings")>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个翅膀</span></mouse>
+						<<elseif _accessory.type is "boots" and _accessory_equipped_type.includes("boots")>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一双靴子</span></mouse>
+						<<elseif _accessory.type is "bobber" and _accessory_equipped_type.includes("bobber")>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个钓鱼浮标</span></mouse>
+						<<else>>
+							<<link "饰品栏">>
+								<<set $terra_accessories_slots.pushUnique(_accessory.name)>>
+								<<UpdateAccessoriesSlots>>
+								<<UpdateAccessoryList>>
+							<</link>>
+						<</if>>
+						<hr>
+						<<if $terra_vanity_accessories_slots.length gte 6>>
+							<mouse class="tooltip linkBlue">不可用<span class="blue">时装栏已满</span></mouse>
+						<<else>>
+							<<link "时装栏">>
+								<<set $terra_vanity_accessories_slots.pushUnique(_accessory.name)>>
+								<<UpdateVanityAccessoriesSlots>>
+								<<UpdateAccessoryList>>
+							<</link>>
+						<</if>>
+					</div>
+				<</if>>
+			<</if>>
+		<</capture>>
+	<</for>>
+<</widget>>
+
+:: Terra Accessories Update [widget]
+<<widget "UpdateAccessoriesSlots">>
+	<<replace #terra_accessories_slots>>
+		<<terra_accessories_slots>>
+	<</replace>>
+<</widget>>
+
+<<widget "UpdateVanityAccessoriesSlots">>
+	<<replace #terra_vanity_accessories_slots>>
+		<<terra_vanity_accessories_slots>>
+	<</replace>>
+<</widget>>
+
+<<widget "UpdateAccessoryList">>
+	<<replace #terra_accessories>>
+		<<terra_accessories>>
+	<</replace>>
 <</widget>>

@@ -1,0 +1,281 @@
+:: Bestiary Page [widget]
+<<widget "bestiaryPage">>
+	<<set _settingsTab to "main_page">>
+	<div id="bestiary" class="no-numberify">
+		<div id="bestiarySelect" class="containerStart">
+			<<bestiarySelect>>
+		</div>
+		<hr>
+		<div id="bestiaryType" class="solidBorderContainer">
+			<<bestiaryMainPage>>
+		</div>
+	</div>
+<</widget>>
+
+:: Bestiary Widget [widget]
+<<widget "bestiarySelect">>
+	<<bestiaryTypeButton "任务鱼" "request_fish">>
+	<<bestiaryTypeButton "普通鱼" "fish">>
+	<<bestiaryTypeButton "宝匣" "crate">>
+	<<bestiaryTypeButton "鱼饵" "bait">>
+<</widget>>
+
+<<widget "bestiaryTypeButton">>
+	<div @class="_settingsTab is _args[1] ? 'gold buttonSettingsSelected' : 'buttonSettings'">
+		<<button _args[0]>>
+			<<if _settingsTab is _args[1]>>
+				<<set _settingsTab to "main_page">>
+				<<replace #bestiaryType>><<bestiaryMainPage>><</replace>>
+			<<else>>
+				<<set _settingsTab to _args[1]>>
+				<<switch _args[1]>>
+					<<case "request_fish">>
+						<<replace #bestiaryType>><<bestiaryRequestFishPage>><</replace>>
+					<<case "fish">>
+						<<replace #bestiaryType>><<bestiaryFishPage>><</replace>>
+					<<case "crate">>
+						<<replace #bestiaryType>><<bestiaryCratePage>><</replace>>
+					<<case "bait">>
+						<<replace #bestiaryType>><<bestiaryBaitPage>><</replace>>
+				<</switch>>
+			<</if>>
+			<<replace #bestiarySelect>><<bestiarySelect>><</replace>>
+			<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>><!-- 用于在replace后的元素中生成图像。感谢杰哥！ -->
+		<</button>>
+	</div>
+<</widget>>
+
+<<widget "bestiaryMainPage">>
+	这是 <span class="terraMod">泰拉瑞亚拓展MOD</span> 相关的图鉴内容。你可以点击上方的标签页来查看各个分类下的物品收集情况，并点击已点亮的图标来查看该条目的具体内容。<br>
+	<br>
+	当前图鉴仅包含4种分类：任务鱼、普通鱼、宝匣、鱼饵，其中有2种普通鱼，1种宝匣，3种鱼饵由还未实装的地下熔岩湖产出，目前暂时无法获取。之后会加入饰品图鉴。<br>
+	如果希望在解锁条目之前就获知其获取方式，可在 <i>选项</i>-<i>模组设置</i> 中开启 <i>图鉴收集提示</i> 选项（鱼饵除外）。<br>
+	<br>
+	图鉴收集情况：<br>
+	任务鱼：<<print $bestiary_request_fish_list.length gte getAllRequestFishList().length ? "<span class='gold'>$bestiary_request_fish_list.length / 41</span>" : "$bestiary_request_fish_list.length / 41">><br>
+	普通鱼：<<print $bestiary_fish_list.length gte getAllFishList().length ? "<span class='gold'>$bestiary_fish_list.length / 30</span>" : "$bestiary_fish_list.length / 30">><br>
+	宝　匣：<<print $bestiary_crate_list.length gte (getAllCrateList().length-2) ? "<span class='gold'>$bestiary_crate_list.length / 13</span>" : "$bestiary_crate_list.length / 13">><br>
+	鱼　饵：<<print $bestiary_bait_list.length gte (getAllBaitList().length-1) ? "<span class='gold'>$bestiary_bait_list.length / 38</span>" : "$bestiary_bait_list.length / 38">><br>
+	<br>
+	<i>免责声明：图鉴内容仍在制作并完善中，更新的过程可能会出现不得不清空图鉴内容的情况，请见谅。</i>
+<</widget>>
+
+<<widget "bestiaryRequestFishPage">>
+	<<set _lastInsertedRow to undefined>><!-- _lastInsertedRow用来存储上次插入的新行 -->
+	<<run initializeTooltips()>>
+	点击图标以查看条目<br>
+	当前已收集：<<print $bestiary_request_fish_list.length gte getAllRequestFishList().length ? "<span class='gold'>$bestiary_request_fish_list.length / 41 你已获得所有种类的任务鱼！</span>" : "$bestiary_request_fish_list.length / 41">>
+	<<set _allRequestFishList to getAllRequestFishList()>>
+	<span class="no-numberify">
+		<div class="itemTerra" id="bestiaryMain">
+			<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
+				<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
+				<<capture _requestFish>>
+					<div class="item" id="bestiaryItem">
+						<<set _requestFish_icon_path to "img/misc/icon/fishing/quest_fish/">>
+						<<set _requestFish_icon_path += _requestFish.name>><!-- 好像不能在一行内用字符串相加的方式来写这个变量，所以只能这样笨笨地连加在一起了 -->
+						<<set _requestFish_icon_path += ".png">>
+						<<if $bestiary_request_fish_list.includes(_requestFish.name)>>
+							<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
+							<div class="itemTerraGeneral" @tooltip="_tooltip">
+								<<link [img[_requestFish_icon_path]]>><!-- 尝试使用style="height: 34px; display: inline-block;"来限制链接元素高度为34px以期链接图片上下居中，但未成功 -->
+									<<replace #bestiaryInfoTempSolid>>
+										<div id="bestiaryInfoTemp">
+											<<bestiaryType "requestFish" _requestFish.name "unlocked">>
+										</div>
+									<</replace>>
+									<<run bestiaryInfo(_allRequestFishList, _requestFish.name, "bestiaryMain", "bestiaryItem")>>
+								<</link>>
+							</div>
+						<<else>>
+							<div class="itemTerraGeneral terraItemLocked" tooltip="？？？">
+								<<if $options.bestiaryHint>>
+									<<link [img[_requestFish_icon_path]]>>
+										<<replace #bestiaryInfoTempSolid>>
+											<div id="bestiaryInfoTemp">
+												<<bestiaryType "requestFish" _requestFish.name "locked">>
+											</div>
+										<</replace>>
+										<<run bestiaryInfo(_allRequestFishList, _requestFish.name, "bestiaryMain", "bestiaryItem")>>
+									<</link>>
+								<<else>>
+									<<icon `_requestFish.icon`>>
+								<</if>>
+							</div>
+						<</if>>
+					</div>
+				<</capture>>
+			<</for>>
+		</div>
+	</span>
+	<template id="bestiaryInfoTempSolid"><!-- 生成被取用的临时图鉴条目信息(淦，好怪的方法) -->
+		<div id="bestiaryInfoTemp">
+		</div>
+	</template>
+<</widget>>
+
+<<widget "bestiaryFishPage">>
+	<<set _lastInsertedRow to undefined>><!-- _lastInsertedRow用来存储上次插入的新行 -->
+	<<run initializeTooltips()>>
+	点击图标以查看条目<br>
+	当前已收集：<<print $bestiary_fish_list.length gte getAllFishList().length ? "<span class='gold'>$bestiary_fish_list.length / 30 你已获得所有种类的普通鱼！</span>" : "$bestiary_fish_list.length / 30">>
+	<<set _allFishList to getAllFishList()>>
+	<span class="no-numberify">
+		<div class="itemTerra" id="bestiaryMain">
+			<<for _t to 0; _t lt _allFishList.length; _t++>>
+				<<set _fish to setup.terraFish[_allFishList[_t]]>>
+				<<capture _fish>>
+					<div class="item" id="bestiaryItem">
+						<<set _fish_icon_path to "img/misc/icon/fishing/fish/">>
+						<<set _fish_icon_path += _fish.name>>
+						<<set _fish_icon_path += ".png">>
+						<<if $bestiary_fish_list.includes(_fish.name)>>
+							<<set _tooltip to `${_fish.cn_name}`>>
+							<div class="itemTerraGeneral" @tooltip="_tooltip">
+								<<link [img[_fish_icon_path]]>>
+									<<replace #bestiaryInfoTempSolid>>
+										<div id="bestiaryInfoTemp">
+											<<bestiaryType "fish" _fish.name "unlocked">>
+										</div>
+									<</replace>>
+									<<run bestiaryInfo(_allFishList, _fish.name, "bestiaryMain", "bestiaryItem")>>
+								<</link>>
+							</div>
+						<<else>>
+							<div class="itemTerraGeneral terraItemLocked" tooltip="？？？">
+								<<if $options.bestiaryHint>>
+									<<link [img[_fish_icon_path]]>>
+										<<replace #bestiaryInfoTempSolid>>
+											<div id="bestiaryInfoTemp">
+												<<bestiaryType "fish" _fish.name "locked">>
+											</div>
+										<</replace>>
+										<<run bestiaryInfo(_allFishList, _fish.name, "bestiaryMain", "bestiaryItem")>>
+									<</link>>
+								<<else>>
+									<<icon `_fish.icon`>>
+								<</if>>
+							</div>
+						<</if>>
+					</div>
+				<</capture>>
+			<</for>>
+		</div>
+	</span>
+	<template id="bestiaryInfoTempSolid">
+		<div id="bestiaryInfoTemp">
+		</div>
+	</template>
+<</widget>>
+
+<<widget "bestiaryCratePage">>
+	<<set _lastInsertedRow to undefined>><!-- _lastInsertedRow用来存储上次插入的新行 -->
+	<<run initializeTooltips()>>
+	点击图标以查看条目<br>
+	当前已收集：<<print $bestiary_crate_list.length gte (getAllCrateList().length-2) ? "<span class='gold'>$bestiary_crate_list.length / 13 你已获得所有种类的宝匣！</span>" : "$bestiary_crate_list.length / 13">>
+	<<set _allCrateList to getAllCrateList()>>
+	<span class="no-numberify">
+		<div class="itemTerra" id="bestiaryMain">
+			<<for _t to 0; _t lt _allCrateList.length; _t++>>
+				<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
+				<<capture _crate>>
+					<<if _crate.type is "crate">>
+						<<set _tooltip to `${_crate.cn_name}`>>
+						<div class="item" id="bestiaryItem">
+							<<set _crate_icon_path to "img/misc/icon/fishing/crates/">>
+							<<set _crate_icon_path += _crate.name>>
+							<<set _crate_icon_path += ".png">>
+							<<if $bestiary_crate_list.includes(_crate.name)>>
+								<div class="itemTerraGeneral" @tooltip="_tooltip">
+									<<link [img[_crate_icon_path]]>>
+										<<replace #bestiaryInfoTempSolid>>
+											<div id="bestiaryInfoTemp">
+												<<bestiaryType "crate" _crate.name "unlocked">>
+											</div>
+										<</replace>>
+										<<run bestiaryInfo(_allCrateList, _crate.name, "bestiaryMain", "bestiaryItem")>>
+									<</link>>
+								</div>
+							<<else>>
+								<div class="itemTerraGeneral terraItemLocked" tooltip="？？？">
+									<<if $options.bestiaryHint>>
+										<<link [img[_crate_icon_path]]>>
+											<<replace #bestiaryInfoTempSolid>>
+												<div id="bestiaryInfoTemp">
+													<<bestiaryType "crate" _crate.name "locked">>
+												</div>
+											<</replace>>
+											<<run bestiaryInfo(_allCrateList, _crate.name, "bestiaryMain", "bestiaryItem")>>
+										<</link>>
+									<<else>>
+										<<icon `_crate.icon`>>
+									<</if>>
+								</div>
+							<</if>>
+						</div>
+					<</if>>
+				<</capture>>
+			<</for>>
+		</div>
+	</span>
+	<template id="bestiaryInfoTempSolid">
+		<div id="bestiaryInfoTemp">
+		</div>
+	</template>
+<</widget>>
+
+<<widget "bestiaryBaitPage">>
+	<<set _lastInsertedRow to undefined>><!-- _lastInsertedRow用来存储上次插入的新行 -->
+	<<run initializeTooltips()>>
+	点击图标以查看条目<br>
+	当前已收集：<<print $bestiary_bait_list.length gte (getAllBaitList().length-1) ? "<span class='gold'>$bestiary_bait_list.length / 38 你已获得所有种类的鱼饵！</span>" : "$bestiary_bait_list.length / 38">>
+	<<set _allBaitList to getAllBaitList()>>
+	<span class="no-numberify">
+		<div class="itemTerra" id="bestiaryMain">
+			<<for _t to 0; _t lt _allBaitList.length; _t++>>
+				<<set _bait to setup.terraBait[_allBaitList[_t]]>>
+				<<capture _bait>>
+					<<if _bait.type isnot "boss_summoner">>
+						<<set _tooltip to `${_bait.cn_name}`>>
+						<div class="item" id="bestiaryItem">
+							<<set _bait_icon_path to "img/misc/icon/fishing/bait/">>
+							<<set _bait_icon_path += _bait.name>>
+							<<set _bait_icon_path += ".png">>
+							<<if $bestiary_bait_list.includes(_bait.name)>>
+								<div class="itemTerraGeneral" @tooltip="_tooltip">
+									<<link [img[_bait_icon_path]]>>
+										<<replace #bestiaryInfoTempSolid>>
+											<div id="bestiaryInfoTemp">
+												<<bestiaryType "bait" _bait.name "unlocked">>
+											</div>
+										<</replace>>
+										<<run bestiaryInfo(_allBaitList, _bait.name, "bestiaryMain", "bestiaryItem")>>
+									<</link>>
+								</div>
+							<<else>>
+								<div class="itemTerraGeneral terraItemLocked" tooltip="？？？">
+									<<if $options.bestiaryHint>>
+										<<link [img[_bait_icon_path]]>>
+											<<replace #bestiaryInfoTempSolid>>
+												<div id="bestiaryInfoTemp">
+													<<bestiaryType "bait" _bait.name "locked">>
+												</div>
+											<</replace>>
+											<<run bestiaryInfo(_allBaitList, _bait.name, "bestiaryMain", "bestiaryItem")>>
+										<</link>>
+									<<else>>
+										<<icon `_bait.icon`>>
+									<</if>>
+								</div>
+							<</if>>
+						</div>
+					<</if>>
+				<</capture>>
+			<</for>>
+		</div>
+	</span>
+	<template id="bestiaryInfoTempSolid">
+		<div id="bestiaryInfoTemp">
+		</div>
+	</template>
+<</widget>>

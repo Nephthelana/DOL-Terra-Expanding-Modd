@@ -65,6 +65,39 @@ setup.terraFood = {
 		use: "<<set $Seafood_Dinner -= 1>><<hunger -800>>",
 		use_hint: "<<lllhunger>>"
     },
+	"Pho": {
+        name: "Pho",
+        cn_name: "越南河粉",
+		material: false,
+        type: "food",
+        amount: V.Pho || 0,
+        icon: "food/Pho.png",
+		des: "- - 饥饿值<br><i>\"粉它！\"</i>",
+		use: "<<set $Pho -= 1>><<hunger -400>>",
+		use_hint: "<<llhunger>>"
+    },
+	"Pad_Thai": {
+        name: "Pad_Thai",
+        cn_name: "泰式炒面",
+		material: false,
+        type: "food",
+        amount: V.Pad_Thai || 0,
+        icon: "food/Pad_Thai.png",
+		des: "- - 饥饿值<br><i>\"五星级辣度！\"</i>",
+		use: "<<set $Pad_Thai -= 1>><<hunger -400>>",
+		use_hint: "<<llhunger>>"
+    },
+	"Sake": {
+        name: "Sake",
+        cn_name: "清酒",
+		material: false,
+        type: "food",
+        amount: V.Sake || 0,
+        icon: "food/Sake.png",
+		des: "给予2小时的醉酒效果<br><i>\"喝多了你会变成空手道大师。\"</i>",
+		use: "<<set $Sake -= 1>><<set $drunk += 120>>",
+		use_hint: "<<ggalcohol>>"
+    },
 }
 
 function getAllFoodList() {

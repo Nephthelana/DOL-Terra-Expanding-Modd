@@ -1,43 +1,3 @@
-:: Void Bag Unload Crate
-
-<<set _allCrateList to getAllCrateList()>>
-<<for _t to 0; _t lt _allCrateList.length; _t++>>
-	<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
-	<<if $void_bag_unload_crate is _crate.name>>
-		你打开了一个<<icon `_crate.icon`>>_crate.cn_name。<br>
-		<span class="gold">
-			你得到了_crate.unload！
-		</span><br>
-		<<break>>
-	<</if>>
-<</for>>
-<<if random(1,10) is 1 and $void_bag_unload_crate is "Ocean_Crate">>
-	<br>
-	<<earnFeat "X Marks the Spot">>
-	你发现里面还有一个用蜡质细绳捆着的皮革卷轴。你把它展开，是一张保存完好的地图。这张地图描绘了一个森林旁边的沿海定居点。表示海洋的部分上，线条纵横交错，有的地方被符号标注了，可能是一些重要的地点。在地图的左上角画着一只克拉肯，右下角画着一条龙。博物馆馆长也许会知道更多关于它的信息。<br>
-	<<set $antiquemoney += 4000>>
-	<<if $museumAntiques.antiques.antiqueleathermap is "notFound">>
-		<<set $museumAntiques.antiques.antiqueleathermap to "found">>
-	<</if>>
-<</if>>
-<br>
-<<if getCrateObtainedList().length gte 1>>
-	到了激动人心的开奖环节~开哪个呢？<br>
-	<br>
-	<<set _crateObtained to getCrateObtainedList()>>
-	<<for _t to 0; _t lt _crateObtained.length; _t++>>
-		<<set _crate to setup.terraCrate[_crateObtained[_t]]>>
-		<<set _crateName to _crate.cn_name>>
-		<<capture _crate>>
-			<<icon `_crate.icon`>><<link [[`_crateName(_crate.amount）(0:01)`|Void Bag Unload Crate]]>><<set $void_bag_unload_crate to _crate.name>><<pass 1>><</link>><br>
-		<</capture>>
-	<</for>>
-<<else>>
-	哦不，你看起来没有匣子了。<br>
-<</if>>
-<br>
-<<getouticon>><<link [[返回|Void Bag Operate]]>><<set $void_bag_unload_crate to "None">><</link>>
-
 :: Crate Unload [widget]
 
 <<widget "Golden_Crate_unload">>
@@ -46,8 +6,14 @@
 	<<moneyGain random(800,2000)>>
 	<<if random(1,3) lte 2>>
 		<<set _unload_crate_Bait = random(3,7)>>
-		<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+	<</if>>
+	<<if random(1,8) is 1>>
+		、<<icon "tool/Magic_Mirror.png">>魔镜
+		<<set $Magic_Mirror to true>>
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -60,15 +26,24 @@
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
 	<</if>>
+	<<if random(1,5) is 1>>
+		<<set _unload_crate_Iron_Bar = random(4,7)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
 	<<if random(1,2) is 1>>
 		<<if random(1,3) is 1>>
 			<<set _unload_crate_Bait = random(2,4)>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set _unload_crate_Bait = random(2,4)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -86,8 +61,6 @@
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
 	<</if>>
-<<<<<<< Updated upstream
-=======
 	<<if random(1,10) is 1>>
 		、<<icon "furniture_item/Extractinator.png">>提炼机<mouse class="tooltip linkBlue">(?)<span>可以将钓鱼垃圾转换为低级鱼饵，还可以将鹰塔的垃圾转换为鹰塔建造所需的材料。</span></mouse>
 		<<set $Extractinator to true>>
@@ -97,19 +70,22 @@
 		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
->>>>>>> Stashed changes
 	<<if random(1,3) is 1>>
 		<<if random(1,3) is 1>>
 			<<set _unload_crate_Bait = random(1,4)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set _unload_crate_Bait = random(1,4)>>
-			、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 			<<set $Apprentice_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
+			<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
-	<<if random(1,2) is 1>>
+	<<if random(1,10) is 1>>
 		<<facesend 3 wardrobe>>、医用外科口罩
 	<</if>>
 	<<updatesidebarmoney>>
@@ -119,30 +95,36 @@
 	<<set $Ocean_Crate -= 1>>
 	<<set $unload_crate_count.Ocean_Crate += 1>>
 	<<moneyGain random(500,1200)>>
-<<<<<<< Updated upstream
-=======
+	<<if random(1,40) lte 9>>
+		、<<icon "accessories/Inner_Tube.png">>浮游圈
+		<<set $Inner_Tube to true>>
+	<</if>>
 	<<if random(1,10) is 1>>
-		、<<icon "Shark_Bait.png">>鲨鱼鱼饵<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
-		<<set $Shark_Bait to true>>
+		、<<icon "pet/pet_item/Shark_Bait.png">>鲨鱼鱼饵<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
+		<<set $pet_list.pushUnique("Shark_Bait")>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
 		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
->>>>>>> Stashed changes
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Sea_Remains to random(1,2)>>
 		、<<icon "material/Sea_Remains.png">>海洋残渣(_unload_crate_Sea_Remains)
 		<<set $Sea_Remains += _unload_crate_Sea_Remains>>
+	<</if>>
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -170,17 +152,12 @@
 		<<case 3>>
 			<<icon "tool/Snake_Charmers_Flute.png">>耍蛇者长笛
 			<<set $Snake_Charmers_Flute to true>>
-			<<set $tool_obtained to true>>
 		<<case 4>>
 			<<icon "tool/Magic_Conch.png">>魔法海螺
 			<<set $Magic_Conch to true>>
-<<<<<<< Updated upstream
-			<<set $tool_obtained to true>>
-=======
 		<<case 5>>
 			<<icon "accessories/Dunerider_Boots.png">>沙丘行者靴
 			<<set $Dunerider_Boots to true>>
->>>>>>> Stashed changes
 	<</switch>>
 	<<if random(1,20) is 1>>
 		、<<icon "accessories/Sandstorm_in_a_Bottle.png">>沙暴瓶<<set $Sandstorm_in_a_Bottle to true>>
@@ -188,15 +165,23 @@
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>
 	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
 	<<if random(1,2) is 1>>
+		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -220,20 +205,31 @@
 	<<if random(1,4) is 1>>
 		<span class="gold">、<<moneyGain random(500,1200)>></span>
 	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
 	<<if random(1,2) is 1>>
+		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
-	<<if random(1,2) is 1>>
-		<span class="gold"><<uppersend 33 wardrobe>><<lowersend 22 wardrobe>>、格子衬衫和牛仔裤</span>
-	<</if>>
+	<<switch random(1,3)>>
+		<<case 1>>
+			<span class="gold"><<uppersend 33 wardrobe>><<lowersend 22 wardrobe>>、格子衬衫和牛仔裤</span>
+		<<case 2>>
+			<span class="gold"><<headsend 40 wardrobe>>、玫瑰花头饰</span>
+	<</switch>>
 	<<updatesidebarmoney>>
 <</widget>>
 
@@ -245,15 +241,23 @@
 	<<if random(1,4) is 1>>
 		、<<moneyGain random(500,1200)>>
 	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
 	<<if random(1,2) is 1>>
+		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -279,7 +283,7 @@
 			<<icon "accessories/Lucky_Horseshoe.png">>幸运马掌
 			<<set $Lucky_Horseshoe to true>>
 	<</switch>>
-	<<if random(1,40) is 1>>
+	<<if random(1,20) is 1>>
 		、<<icon "accessories/Fledgling_Wings.png">>雏翼
 		<<set $Fledgling_Wings to true>>
 	<</if>>
@@ -287,14 +291,27 @@
 		、<<moneyGain random(500,1200)>>
 	<</if>>
 	<<if random(1,2) is 1>>
+		<<set _unload_crate_Fallen_Star = random(1,3)>>
+		、<<icon "material/Fallen_Star.png">>坠落之星(_unload_crate_Fallen_Star)
+		<<set $Fallen_Star += _unload_crate_Fallen_Star>>
+	<</if>>
+	<<if random(1,4) is 1>>
+		<<set _unload_crate_Iron_Bar = random(6,16)>>
+		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
+	<</if>>
+	<<if random(1,2) is 1>>
+		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -326,14 +343,17 @@
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
+		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -369,14 +389,17 @@
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
+		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
-			<<set _unload_crate_Bait = random(2,6)>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 			<<set $Master_Bait += _unload_crate_Bait>>
+			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -394,21 +417,22 @@
 	<<set _bait_chance to random(1,30)>>
 	<<if _bait_chance lte 10>>
 		<<set _unload_crate_Bait = random(2,3)>>
-		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
+		<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
-		<<if random(1,2) is 1>>
-			、<<icon "fishing/bait/Sea_Minnow.png">>海洋米诺鱼(_unload_crate_Bait)
-			<<set $Sea_Minnow += _unload_crate_Bait>>
-		<<else>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
-			<<set $Journeyman_Bait += _unload_crate_Bait>>
-		<</if>>
+		<<set $Journeyman_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+		<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
-		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -419,27 +443,32 @@
 	<<moneyGain random(200,600)>>
 	<<if random(1,4) is 1>>
 		<<if random(1,2) is 1>>
-			、<<icon "Strange_Orb.png">>奇光球
-			<<set $Strange_Orb to true>>
+			、<<icon "pet/pet_item/Strange_Orb.png">>奇光球<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
+			<<set $pet_list.pushUnique("Strange_Orb")>>
 		<<else>>
 			、<<icon "tool/Torrential_Tear.png">>洪流之泪
 			<<set $Torrential_Tear to true>>
-			<<set $tool_obtained to true>>
 		<</if>>
 	<</if>>
 	<<set _bait_chance to random(1,30)>>
 	<<if _bait_chance lte 10>>
 		<<set _unload_crate_Bait = random(2,3)>>
-		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
+		<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
-		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+		<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
-		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -454,27 +483,30 @@
 	<<set _bait_chance to random(1,30)>>
 	<<if _bait_chance lte 10>>
 		<<set _unload_crate_Bait = random(2,3)>>
-		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
+		<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
-		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+		<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
-		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<set $Master_Bait += _unload_crate_Bait>>
+		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
 
 <<widget "Oyster_unload">>
 	<<set $Oyster -= 1>>
-<<<<<<< Updated upstream
-=======
 	<<set $unload_crate_count.Oyster += 1>>
 	<<set $Shucked_Oyster += 1>>
->>>>>>> Stashed changes
 	<<icon "food/Shucked_Oyster.png">>去壳牡蛎(1)
 	<<if random(1,5) is 1>>
 		<<set _pearl_chance = random(1,45)>>
@@ -488,6 +520,29 @@
 			、<<icon "material/Pink_Pearl.png">>粉珍珠(1)
 			<<set $Pink_Pearl += 1>>
 		<</if>>
+	<</if>>
+	<<updatesidebarmoney>>
+<</widget>>
+
+<<widget "Can_Of_Worms_unload">>
+	<<set $Can_Of_Worms -= 1>>
+	<<set _unload_crate_Worm to random(5,8)>>
+	<<set $Worm += _unload_crate_Worm>>
+	<<set $bestiary_bait_list.pushUnique("Worm")>>
+	<<set $bestiary_bait_catch_count.Worm += _unload_crate_Worm>>
+	<<icon "fishing/bait/Worm.png">>蠕虫(_unload_crate_Worm)
+	<<if random(1,10) lte 3>>
+		<<set _unload_crate_Enchanted_Nightcrawler to random(1,2)>>
+		<<set $Enchanted_Nightcrawler += _unload_crate_Enchanted_Nightcrawler>>
+		<<set $bestiary_bait_list.pushUnique("Enchanted_Nightcrawler")>>
+		<<set $bestiary_bait_catch_count.Enchanted_Nightcrawler += _unload_crate_Enchanted_Nightcrawler>>
+		、<<icon "fishing/bait/Enchanted_Nightcrawler.png">>附魔夜行者(_unload_crate_Enchanted_Nightcrawler)
+	<</if>>
+	<<if random(1,20) is 1>>
+		<<set $Gold_Worm += 1>>
+		<<set $bestiary_bait_list.pushUnique("Gold_Worm")>>
+		<<set $bestiary_bait_catch_count.Worm += 1>>
+		、<<icon "fishing/bait/Enchanted_Nightcrawler.png">>金蠕虫(1)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>

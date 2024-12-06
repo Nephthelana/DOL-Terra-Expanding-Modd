@@ -1,10 +1,8 @@
 :: Orphanage Loft Cooking Pot Widget [widget]
 <<widget "orphanage_loft_cooking_pot">>
-
-<<if $orphanage_loft_crafting_station.includes("Cooking_Pot")>>
-	<<icon "furniture_placed/Cooking_Pot_(placed).png">><<link [[使用烹饪锅|Orphanage Loft Cooking Pot]]>><</link>><br>
-<</if>>
-
+	<<if $orphanage_loft_crafting_station.includes("Cooking_Pot")>>
+		<<icon "furniture_placed/Cooking_Pot_(placed).png">><<link [[使用烹饪锅|Orphanage Loft Cooking Pot]]>><</link>><br>
+	<</if>>
 <</widget>>
 
 :: Orphanage Loft Cooking Pot
@@ -12,7 +10,7 @@
 <<icon "furniture_placed/Cooking_Pot_(placed).png">><br>
 <br>
 <span id="crafting_orphanage_loft_cooking_pot_info">
-	<<if currentSkillValue('housekeeping') lt 1000>>
+	<<if $housekeeping lt 1000>>
 		你可以从<span class="teal">烹饪鱼类</span>中精进你的<span class="gold">家务技能</span>。<br>
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
@@ -27,7 +25,7 @@
 
 :: Orphanage Loft Cooking Pot Crafting [widget]
 <<widget "crafting_orphanage_loft_cooking_pot_info">>
-	<<if currentSkillValue('housekeeping') lt 1000>>
+	<<if $housekeeping lt 1000>>
 		你可以从<span class="teal">烹饪鱼类</span>中精进你的<span class="gold">家务技能</span>。<br>
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>

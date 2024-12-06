@@ -1,0 +1,26 @@
+:: Guide Mod Hint Bloody Tear
+"嗯...我确实认识这个东西。但说实话，几乎没有人拿着它来咨询我过。<br>
+<br>
+"这个晶体叫做血泪。如果在夜晚将它打碎，就可以让血月降临。如果当晚已经是血月的话，使用它就毫无意义。我很好奇你是如何得到它的。"<br>
+<br>
+你将自己与恐惧鹦鹉螺的遭遇详细地叙述了一遍。<br>
+<br>
+"你应该对此感到庆幸：从恐惧鹦鹉螺面前全身而退可不是一件简单的事情。不过，它在这个世界的攻击性降低了很多，也没有那么暴躁——这是你这笔交易能够达成的原因之一。"<br>
+<br>
+<<if $Chum_Caster>>
+	<<link [[返回|Guide Mod Hint]]>><</link>>
+<<else>>
+	<<askicon>><<link [[我还会再次见到它吗？|Guide Mod Hint Chum Caster]]>><</link>>
+<</if>>
+
+:: Guide Mod Hint Chum Caster
+<<set $Chum_Caster to true>>
+"如你所见，当你在血月钓鱼时，就有机会见到它。血月之外是无法见到恐惧鹦鹉螺的。<br>
+<br>
+"除去周期性的血月，你还可以使用和它交易得到的血泪来召唤血月。血泪并不会对固定的血月周期产生影响。<br>
+<br>
+"作为这一情报的交换，我可以送给你一根特殊的钓竿。用它在血月钓鱼，可以大大提高你遇到恐惧鹦鹉螺的概率。但我必须要警告你：尽管目前这个生物现在看上去比较友好，你仍得多加小心。"<br>
+<br>
+<span class="gold">你获得了<<icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者！</span><br>
+<br>
+<<link [[返回|Guide Mod Hint]]>><</link>>

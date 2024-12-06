@@ -1,17 +1,15 @@
 :: Ice Lake Unlock [widget]
 <<widget "terra_underground_ice_lake_unlock">>
-
-<<if $underground_ice_lake_unlock is undefined and $sciencetrait gte 2>>
-	<br>
-	这里位于洞穴之中，但你注意到此地的水流声表明附近存在一处有着很大落差的地方。你循着水声，找到这个由落差产生特别的水流声的源头。<span class="gold">附近存在着一条暗河，你可以从这里进去一探究竟。</span><<terraHint>><br>
-	<br>
-	<<ind>><<link [[顺流而下 (0:20)|Underground Ice Lake Intro 1]]>><<pass 20>><</link>><br>
-<<elseif $underground_ice_lake_unlock>>
-	<br>
-	你可以从这里前往地下永冻湖。<br>
-	<<icon "location/underground_ice_lake.png">><<link [[顺流而下 (0:20)|Underground Ice Lake Trip]]>><<pass 20>><</link>><br>
-<</if>>
-
+	<<if $underground_ice_lake_unlock is undefined and $sciencetrait gte 2>>
+		<br>
+		这里位于洞穴之中，但你注意到此地的水流声表明附近存在一处有着很大落差的地方。你循着水声，找到这个由落差产生特别的水流声的源头。<span class="gold">附近存在着一条暗河，你可以从这里进去一探究竟。</span><<terraHint>><br>
+		<br>
+		<<ind>><<link [[顺流而下 (0:20)|Underground Ice Lake Intro 1]]>><<pass 20>><</link>><br>
+	<<elseif $underground_ice_lake_unlock>>
+		<br>
+		你可以从这里前往地下永冻湖。<br>
+		<<icon "location/underground_ice_lake.png">><<link [[顺流而下 (0:20)|Underground Ice Lake Trip]]>><<pass 20>><</link>><br>
+	<</if>>
 <</widget>>
 
 :: Underground Ice Lake Intro 1
@@ -62,7 +60,7 @@
 <<link [[继续|Underground Ice Lake]]>><</link>>
 
 :: Underground Ice Lake
-<<location "underground_ice_lake">>
+<<location "underground_ice_lake">><<effects>>
 你站在这片地下永冻湖前。周围的银装素裹让你感觉这里像是一片静谧的桃花源——除了冷之外什么都好。<br>
 <br>
 你可以在这里练习滑冰。<br>
@@ -82,7 +80,12 @@
 	<span class="blue">面对这个厚实的冰面，你需要借助工具才能敲开它。如果你向博物馆捐赠足够多的古董，温特会给你一把的。</span><br>
 <</if>>
 <br>
-<span class="teal">湖对岸似乎还有另一个洞口，但是作者还没写()所以之后更新了再来看看吧！</span><br>
+<<if $Goblin_Tinkerer_intro>>
+	<<icon "fishing/house_icon.png">><<link [[进入小屋|Goblin Tinkerer Room]]>><</link>><br>
+<<elseif currentSkillValue("skulduggery") gte random(600,1000)>>
+	<span class="green">湖对岸似乎还有另一个洞口。</span>如果不仔细观察的话很难发现，看起来像是刻意隐藏起来的。<br>
+	<<investigateicon>><<link [[调查 (0:10)|Underground Ice Lake Investigate]]>><</link>><br>
+<</if>>
 <br>
 <<getouticon>><<link [[返回老教堂墓地 (0:20)|Underground Ice Lake Leave]]>><<pass 20>><</link>>
 
@@ -111,6 +114,27 @@
 你用<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子对冰面一阵敲打和开凿。尽管十分费力，你还是挖出了一个足够用于钓鱼的冰洞。<br>
 <br>
 <<link [[继续|Underground Ice Lake]]>><</link>>
+
+:: Underground Ice Lake Investigate
+你小心地在冰面上行走。虽然冰面十分牢固，但还是有滑倒的可能性。<br>
+<br>
+不断地缩小着与那个洞口的距离，你可以确信这里就是一处被人施了什么巧计，用冰锥和一些塑料填充物来隐瞒的地方。但这里人迹罕至，有什么好藏的？<br>
+<br>
+洞口旁还有被冰雪覆盖着，只露出一小块的木板。旁边的把手说明这是一扇时常被人使用的木门。你在门外静静等待了一会，里面没有传出任何动静。可能只是一个地下的贮藏室。<br>
+<br>
+你可以进一步检查它们，或者暂时先回到地下永冻湖的入口。<br>
+<br>
+<<link [[检查洞口|Underground Ice Lake Cave]]>><</link>><br>
+<<link [[推开房门|Goblin Tinkerer Room]]>><</link>><br>
+<<link [[返回|Underground Ice Lake]]>><</link>>
+
+:: Underground Ice Lake Cave
+你敲下那些冰锥，将填充的塑料取了出来。眼前是一个宽度刚好够你匍匐前行的洞口。<br>
+<br>
+<span class="black">我还没写好这个地点后续的内容，能等等吗？你可以探索一下别的内容～</span><br>
+<br>
+<<link [[推开房门|Goblin Tinkerer Room]]>><</link>><br>
+<<link [[返回|Underground Ice Lake]]>><</link>><br>
 
 :: Underground Ice Lake Leave
 <<location "sepulchre">><<set $bus to "catacombs">><<set $catacombs_torch to 0>><<wearProp "torch">><<effects>>

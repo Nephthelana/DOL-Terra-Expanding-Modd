@@ -49,9 +49,6 @@ setup.terraMaterial = {
         amount: V.Demonic_Bone_Ash || 0,
         icon: "material/Demonic_Bone_Ash.png",
     },
-<<<<<<< Updated upstream
-
-=======
 	"Fallen_Star": {
         name: "Fallen_Star",
         cn_name: "坠落之星<br><i>材料</i>",
@@ -61,47 +58,46 @@ setup.terraMaterial = {
     },
 	"Helium_Moss": {
         name: "Helium_Moss",
-        cn_name: "氦地衣<br><i>材料</i>",
+        cn_name: "氦苔藓<br><i>材料</i>",
         type: "material",
         amount: V.Helium_Moss || 0,
         icon: "material/Helium_Moss.gif",
     },
 	"Neon_Moss": {
         name: "Neon_Moss",
-        cn_name: "氖地衣<br><i>材料</i>",
+        cn_name: "氖苔藓<br><i>材料</i>",
         type: "material",
         amount: V.Neon_Moss || 0,
         icon: "material/Neon_Moss.png",
     },
 	"Argon_Moss": {
         name: "Argon_Moss",
-        cn_name: "氩地衣<br><i>材料</i>",
+        cn_name: "氩苔藓<br><i>材料</i>",
         type: "material",
         amount: V.Argon_Moss || 0,
         icon: "material/Argon_Moss.png",
     },
 	"Krypton_Moss": {
         name: "Krypton_Moss",
-        cn_name: "氪地衣<br><i>材料</i>",
+        cn_name: "氪苔藓<br><i>材料</i>",
         type: "material",
         amount: V.Krypton_Moss || 0,
         icon: "material/Krypton_Moss.png",
     },
 	"Xenon_Moss": {
         name: "Xenon_Moss",
-        cn_name: "氙地衣<br><i>材料</i>",
+        cn_name: "氙苔藓<br><i>材料</i>",
         type: "material",
         amount: V.Xenon_Moss || 0,
         icon: "material/Xenon_Moss.png",
     },
 	"Lava_Moss": {
         name: "Lava_Moss",
-        cn_name: "熔岩地衣<br><i>材料</i>",
+        cn_name: "熔岩苔藓<br><i>材料</i>",
         type: "material",
         amount: V.Lava_Moss || 0,
         icon: "material/Lava_Moss.png",
     },
->>>>>>> Stashed changes
 	//工具
 	"Magic_Conch": {
         name: "Magic_Conch",
@@ -115,60 +111,73 @@ setup.terraMaterial = {
 	"Angler_Earring": {
         name: "Angler_Earring",
         cn_name: "渔夫耳环<br><i>材料</i>",
-        type: "acc",
+        type: "accessory",
         obtained: V.Angler_Earring,
         icon: "fishing/fishing_accessories/Angler_Earring.png",
     },
 	"High_Test_Fishing_Line": {
         name: "High_Test_Fishing_Line",
         cn_name: "优质钓鱼线<br><i>材料</i>",
-        type: "tool",
+        type: "accessory",
         obtained: V.High_Test_Fishing_Line,
         icon: "fishing/fishing_accessories/High_Test_Fishing_Line.png",
     },
 	"Tackle_Box": {
         name: "Tackle_Box",
         cn_name: "钓具箱<br><i>材料</i>",
-        type: "tool",
+        type: "accessory",
         obtained: V.Tackle_Box,
         icon: "fishing/fishing_accessories/Tackle_Box.png",
     },
 	"Angler_Tackle_Bag": {
         name: "Angler_Tackle_Bag",
         cn_name: "渔夫渔具袋<br><i>材料</i>",
-        type: "tool",
+        type: "accessory",
         obtained: V.Angler_Tackle_Bag,
         icon: "fishing/fishing_accessories/Angler_Tackle_Bag.png",
     },
 	"Lavaproof_Fishing_Hook": {
         name: "Lavaproof_Fishing_Hook",
         cn_name: "防熔岩钓钩<br><i>材料</i>",
-        type: "tool",
+        type: "accessory",
         obtained: V.Lavaproof_Fishing_Hook,
         icon: "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png",
     },
 	"Fishermans_Pocket_Guide": {
         name: "Fishermans_Pocket_Guide",
         cn_name: "渔民袖珍宝典<br><i>材料</i>",
-        type: "tool",
+        type: "accessory",
         obtained: V.Fishermans_Pocket_Guide,
         icon: "fishing/fishing_accessories/Fishermans_Pocket_Guide.png",
     },
 	"Sextant": {
         name: "Sextant",
         cn_name: "六分仪<br><i>材料</i>",
-        type: "tool",
+        type: "accessory",
         obtained: V.Sextant,
         icon: "fishing/fishing_accessories/Sextant.png",
     },
 	"Weather_Radio": {
         name: "Weather_Radio",
         cn_name: "天气收音机<br><i>材料</i>",
-        type: "tool",
+        type: "accessory",
         obtained: V.Weather_Radio,
         icon: "fishing/fishing_accessories/Weather_Radio.png",
     },
-
+	"Fishing_Bobber": {
+        name: "Fishing_Bobber",
+        cn_name: "钓鱼浮标<br><i>材料</i>",
+        type: "accessory",
+        obtained: V.Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Fishing_Bobber.png",
+    },
+	"Glowing_Fishing_Bobber": {
+        name: "Glowing_Fishing_Bobber",
+        cn_name: "发光钓鱼浮标<br><i>材料</i>",
+        type: "accessory",
+        obtained: V.Glowing_Fishing_Bobber,
+        icon: "fishing/fishing_accessories/Glowing_Fishing_Bobber.png",
+    },
 	//鱼类
 	"Salmon": {
         name: "Salmon",
@@ -358,9 +367,6 @@ setup.terraMaterial = {
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
-<<<<<<< Updated upstream
-    }
-=======
     },
 	//鱼饵
 	"Apprentice_Bait": {
@@ -391,7 +397,6 @@ setup.terraMaterial = {
         amount: V.Worm || 0,
         icon: "fishing/bait/Worm.png",
     },
->>>>>>> Stashed changes
 }
 
 function getAllMaterialList() {

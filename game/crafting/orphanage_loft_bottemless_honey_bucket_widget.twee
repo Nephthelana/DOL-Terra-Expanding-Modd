@@ -1,0 +1,34 @@
+:: Orphanage Loft Bottomless Honey Bucket [widget]
+<<widget "orphanage_loft_bottemless_honey_bucket">>
+	<<if $orphanage_loft_crafting_station.includes("Bottomless_Honey_Bucket")>>
+		<<icon "tool/Bottomless_Honey_Bucket.png">><<link [[取回无底蜂蜜桶|Orphanage Loft]]>><<set $orphanage_loft_crafting_station.delete("Bottomless_Honey_Bucket")>><<set $Bottomless_Honey_Bucket to true>><</link>><br>
+	<<elseif $Bottomless_Honey_Bucket>>
+		你可以将<<icon "tool/Bottomless_Honey_Bucket.png">>无底蜂蜜桶寄存在这里，给大家供应蜂蜜饮料。<br>
+		<<ind>><<link [[留下无底蜂蜜桶|Orphanage Loft Bottomless Honey Bucket Set]]>><<set $Bottomless_Honey_Bucket to false>><<set $orphanage_loft_crafting_station.pushUnique("Bottomless_Honey_Bucket")>><</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "homeeventHoney">>
+	<<hope 1>>
+	<<generatey1>><<person1>>
+	<span class="teal">你看到一群孤儿聚集在阁楼下方的一张桌子前。是<<person1>><<person>>正在给大家分发刚刚<<print $loft_river ? "烤好的蜂蜜面包" : "配好的蜂蜜水">>。</span><<ghope>><br>
+	<br>
+	<<link [[继续|Orphanage]]>><<endevent>><</link>>
+<</widget>>
+
+:: Orphanage Loft Bottomless Honey Bucket Set
+<<icon "tool/Bottomless_Honey_Bucket.png">><br>
+<<if $orphanage_bottemless_honey_bucket is undefined>>
+	<<set $orphanage_bottemless_honey_bucket to true>>
+	你从虚空袋中取出无底蜂蜜桶，将它放在了<<print $loft_river ? "厨房中" : "阁楼的角落">>。桶中盛满了浓稠晶亮的蜂蜜，如同流动的琥珀。它沉甸甸的重量令你感到喜悦。<br>
+	<br>
+	你取出一只小勺，舀起了一些蜂蜜送入口中。甜美的味道在舌尖扩散开来，你不禁闭上眼睛，细细品味：这美好的味道让你几乎暂时忘记了生活的艰苦，和来自贝利的压迫。<<lstress>><<stress -3>><br>
+	<br>
+	你相信孤儿院里的大家都会喜欢它的味道。幸福感涌遍了你的全身。<<ltrauma>><<trauma -1>><br>
+<<else>>
+	你从虛空袋中拿出无底蜂蜜桶。桶中盛满了浓稠晶亮的蜂蜜，如同流动的琥珀。<br>
+	<br>
+	你将它放在了<<print $loft_river ? "厨房中" : "阁楼的角落">>。你相信大家都会喜欢它的味道。<br>
+<</if>>
+<br>
+<<link [[继续|Orphanage Loft]]>><</link>>

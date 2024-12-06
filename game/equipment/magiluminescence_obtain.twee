@@ -8,6 +8,8 @@
 		<br>
 		<<link [[上前查看|Magiluminescence Obtain 1]]>><<estate_end>><<endevent>><</link>><<willpowerdifficulty 200 1000>><br>
 		<<link [[无视|Elk Compound Station]]>><<estate_end>><<endevent>><</link>>
+	<<else>>
+		<<link [[继续|Elk Compound Station]]>><<estate_end>><<endevent>><</link>>
 	<</if>>
 
 <</widget>>

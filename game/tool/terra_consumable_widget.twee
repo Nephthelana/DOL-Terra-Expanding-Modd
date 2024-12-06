@@ -1,0 +1,137 @@
+:: Terra Consumable [widget]
+<<widget "void_bag_Consumable">>
+	<<run initializeTooltips()>>
+	<<if getConsumableObtained().length gt 0>>
+		<span class="gold bold">消耗品</span><mouse class="tooltip linkBlue">(?)<span>使用后会被消耗掉的物品</span></mouse><br>
+		<<set _consumableObtainedList to getConsumableObtained()>>
+		<div class="itemTerra">
+			<<for _t to 0; _t lt _consumableObtainedList.length; _t++>>
+				<<set _consumable to setup.terraConsumable[_consumableObtainedList[_t]]>>
+				<<capture _consumable>>
+					<div class="item">
+						<<set _isMaterial to _consumable.material ? "<br><i>材料</i>" : "">>
+						<div @tooltip="`${_consumable.cn_name}${_isMaterial}<br><br>▶${_consumable.des}`">
+							<div class="itemTerraGeneral">
+								<<icon `_consumable.icon`>>
+							</div>
+						</div>
+						<hr>
+						_consumable.amount
+						<hr>
+						_consumable.use
+					</div>
+				<</capture>>
+			<</for>>
+		</div>
+	<</if>>
+<</widget>>
+
+<<widget "Bloody_Tear_use">>
+	<<if Time.isBloodMoon()>>
+		<mouse class="tooltip linkBlue">不可用<span>你不能在血月期间使用血泪</span></mouse>
+	<<elseif !(Time.dayState is "night")>>
+		<mouse class="tooltip linkBlue">不可用<span>你只能在夜晚使用血泪</span></mouse>
+	<<else>>
+		<<link "使用">>
+			<<set $Bloody_Tear -= 1>>
+			<<set $Bloody_Tear_used to true>>
+			<<set $moonEvent to true>>
+			<<if Time.hour gte 21>>
+				<<set $moonstate to "evening">>
+			<<else>>
+				<<set $moonstate to "morning">>
+			<</if>>
+			<<checkWraith true>>
+			<<replace #hint_item_use>>
+				<span class="red">你使用了<<icon "tool/Bloody_Tear.png">>血泪。<i>"诅咒之夜真可怕。"</i></span><br>
+				<br>
+			<</replace>>
+			<<replace #void_bag_Consumable>>
+				<<void_bag_Consumable>>
+			<</replace>>
+		<</link>>
+	<</if>>
+<</widget>>
+
+<<widget "Mana_Crystal_use">>
+	<<if $hypnosis gt 0 or $hypnosis_traits.scream gt 0 or $hypnosis_traits.cover gt 0 or $hypnosis_traits.deviancy gt 0>>
+		<<link "使用">>
+			<<replace #hint_item_use>>
+				<<set $Mana_Crystal -= 1>>
+				<span class="teal">你使用了<<icon "tool/Mana_Crystal.png">>魔力水晶。</span>
+				<<cleareventpool>>
+				<<if $hypnosis gt 0>>
+					<<addinlineevent "Harper" 1>>
+						<<set $hypnosis -= 1>>
+						<<if $hypnosis is 0>>
+							<span class="pink">催眠暗示</span>特质消失了。<br>
+						<<else>>
+							<span class="pink">催眠暗示</span>特质等级降低到了$hypnosis级。<br>
+						<</if>>
+						<br>
+					<</addinlineevent>>
+				<</if>>
+				<<if $hypnosis_traits.scream gt 0>>
+					<<addinlineevent "scream" 1>>
+						<<set $hypnosis_traits.scream -= 1>>
+						<<switch $hypnosis_traits.scream>>
+							<<case 0>>
+								<span class="lblue">压抑的渴望</span>特质消失了。
+							<<case 1>>
+								<span class="blue">诱惑的渴望</span>特质降级为了<span class="lblue">压抑的渴望</span>。
+							<<case 2>>
+								<span class="purple">迷醉的渴望</span>特质降级为了<span class="blue">诱惑的渴望</span>。
+							<<case 3>>
+								<span class="pink">幻梦的渴望</span>特质降级为了<span class="purple">迷醉的渴望</span>。
+							<<case 4>>
+								<span class="red">极致的渴望</span>特质降级为了<span class="pink">幻梦的渴望</span>。
+						<</switch>><br>
+						<br>
+					<</addinlineevent>>
+				<</if>>
+				<<if $hypnosis_traits.cover gt 0>>
+					<<addinlineevent "cover" 1>>
+						<<set $hypnosis_traits.cover -= 1>>
+						<<switch $hypnosis_traits.cover>>
+							<<case 0>>
+								<span class="lblue">压抑的炫耀</span>特质消失了。
+							<<case 1>>
+								<span class="blue">诱惑的炫耀</span>特质降级为了<span class="lblue">压抑的炫耀</span>。
+							<<case 2>>
+								<span class="purple">迷醉的炫耀</span>特质降级为了<span class="blue">诱惑的炫耀</span>。
+							<<case 3>>
+								<span class="pink">沉溺的炫耀</span>特质降级为了<span class="purple">迷醉的炫耀</span>。
+							<<case 4>>
+								<span class="red">崇高的炫耀</span>特质降级为了<span class="pink">沉溺的炫耀</span>。
+						<</switch>><br>
+						<br>
+					<</addinlineevent>>
+				<</if>>
+				<<if $hypnosis_traits.deviancy gt 0>>
+					<<addinlineevent "deviancy" 1>>
+						<<set $hypnosis_traits.deviancy -= 1>>
+						<<switch $hypnosis_traits.deviancy>>
+							<<case 0>>
+								<span class="lblue">压抑性异种癖</span>特质消失了。
+							<<case 1>>
+								<span class="blue">异种癖吸引</span>特质降级为了<span class="lblue">压抑性异种癖</span>。
+							<<case 2>>
+								<span class="purple">异种癖迷醉</span>特质降级为了<span class="blue">异种癖吸引</span>。
+							<<case 3>>
+								<span class="pink">异种癖沉溺</span>特质降级为了<span class="purple">异种癖迷醉</span>。
+							<<case 4>>
+								<span class="red">极致性异种癖</span>特质降级为了<span class="pink">异种癖沉溺</span>。
+						<</switch>><br>
+						<br>
+					<</addinlineevent>>
+				<</if>>
+				<<runeventpool>>
+			<</replace>>
+			<<replace #void_bag_Consumable>>
+				<<void_bag_Consumable>>
+			<</replace>>
+		<</link>>
+	<<else>>
+		<mouse class="tooltip linkBlue">不可用<span>没有可消除的催眠特质</span></mouse>
+	<</if>>
+<</widget>>

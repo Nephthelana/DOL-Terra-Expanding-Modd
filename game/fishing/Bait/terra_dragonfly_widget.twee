@@ -1,6 +1,6 @@
 :: Terra Dragonfly [widget]
 <<widget "terraDragonflyEstate">>
-	<<if $daily.estate_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds")>>
+	<<if $daily.estate_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds") and random(1,4) is 1>>
 		<<if random(1,400) is 1>>
 			<<set $random_dragonfly to "Gold_Dragonfly">>
 		<<else>>
@@ -10,7 +10,7 @@
 		你看到有几只蜻蜓在沙地的水池边打转。<br>
 		<<if $Bug_Net or $Golden_Bug_Net>>
 			<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>" : "<<icon \"tool/Bug_Net.png\">>">>
-			<<link [[试着抓住它们|Terra Dragonfly Estate Catch]]>><</link>>
+			<<link [[试着抓住它们 (0:02)|Terra Dragonfly Estate Catch]]>><<pass 2>><</link>>
 			<<if $Golden_Bug_Net>>
 				<<athleticsdifficulty 500 1200>>
 			<<else>>
@@ -18,14 +18,14 @@
 			<</if>>
 			<br>
 		<<else>>
-			<<ind>><<link [[试着追上它们|Terra Dragonfly Estate Chase]]>><</link>><<athleticsdifficulty 500 1800>><br>
+			<<ind>><<link [[试着追上它们 (0:02)|Terra Dragonfly Estate Chase]]>><<pass 2>><</link>><<athleticsdifficulty 500 1800>><br>
 		<</if>>
 		<br>
 	<</if>>
 <</widget>>
 
 <<widget "terraDragonflyLake">>
-	<<if $daily.lake_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds")>>
+	<<if $daily.lake_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds") and random(1,4) is 1>>
 		<<if random(1,400) is 1>>
 			<<set $random_dragonfly to "Gold_Dragonfly">>
 		<<else>>
@@ -35,7 +35,7 @@
 		你看到有几只蜻蜓在森林湖边打转。<br>
 		<<if $Bug_Net or $Golden_Bug_Net>>
 			<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>" : "<<icon \"tool/Bug_Net.png\">>">>
-			<<link [[试着抓住它们|Terra Dragonfly Lake Catch]]>><</link>>
+			<<link [[试着抓住它们 (0:02)|Terra Dragonfly Lake Catch]]>><<pass 2>><</link>>
 			<<if $Golden_Bug_Net>>
 				<<athleticsdifficulty 500 1200>>
 			<<else>>
@@ -43,7 +43,7 @@
 			<</if>>
 			<br>
 		<<else>>
-			<<ind>><<link [[试着追上它们|Terra Dragonfly Lake Chase]]>><</link>><<athleticsdifficulty 500 1800>><br>
+			<<ind>><<link [[试着追上它们 (0:02)|Terra Dragonfly Lake Chase]]>><<pass 2>><</link>><<athleticsdifficulty 500 1800>><br>
 		<</if>>
 		<br>
 	<</if>>
@@ -87,6 +87,8 @@
 			<<set _caught_dragonfly to setup.terraBait[_Estate_Dragonfly[_k]]>>
 			<<print "<<icon `_caught_dragonfly.icon`>>_caught_amount只_caught_dragonfly.cn_name<br>">>
 			<<set V[_Estate_Dragonfly[_k]] += _caught_amount>>
+			<<set $bestiary_bait_list.pushUnique(_Estate_Dragonfly[_k])>>
+			<<set $bestiary_bait_catch_count[_Estate_Dragonfly[_k]] += _caught_amount>>
 		<</if>>
 	<</for>>
 <<else>>
@@ -117,7 +119,7 @@
 你蹑手蹑脚地靠近这些蜻蜓。在移动到被它们察觉之前的最短距离时，你用最快的速度向它们冲了过去。<<gathletics>><<athletics 2>><<physique 2>><br>
 <br>
 <<if $athleticsSuccess>>
-	<<set $daily.estate_dragonfly to true>>
+	<<set $daily.lake_dragonfly to true>>
 	<<set _Lake_Dragonfly to ["Gold_Dragonfly","Red_Dragonfly","Green_Dragonfly","Blue_Dragonfly"]>>
 	<<set _caught to {
 		Gold_Dragonfly: 0,
@@ -146,6 +148,8 @@
 			<<set _caught_dragonfly to setup.terraBait[_Lake_Dragonfly[_k]]>>
 			<<print "<<icon `_caught_dragonfly.icon`>>_caught_amount只_caught_dragonfly.cn_name<br>">>
 			<<set V[_Lake_Dragonfly[_k]] += _caught_amount>>
+			<<set $bestiary_bait_list.pushUnique(_Estate_Dragonfly[_k])>>
+			<<set $bestiary_bait_catch_count[_Estate_Dragonfly[_k]] += _caught_amount>>
 		<</if>>
 	<</for>>
 <<else>>

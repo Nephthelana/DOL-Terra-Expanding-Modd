@@ -1,7 +1,7 @@
 :: Furniture Painting Angler Cabin Switch
 <<run initializeTooltips()>>
 放什么呢？<br>
-<<set _AnglerFurnitureObtainedList to $debug is 1 ? getAllAnglerFurnitureList() : getAnglerFurnitureObtained()>>
+<<set _AnglerFurnitureObtainedList to $debug is 1 ? getAllAnglerFurnitureList() : $angler_furniture_obtained>>
 <<print $debug is 1 ? "[DEBUG模式]你可以查看并使用全部的渔夫小屋家具" : "">><br>
 <<if _AnglerFurnitureObtainedList.length gt 0>>
 	<span class="no-numberify">

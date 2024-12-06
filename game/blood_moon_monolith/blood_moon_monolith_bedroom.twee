@@ -1,22 +1,18 @@
-/*血月天塔柱卧室*/
 :: Blood Moon Monolith Bedroom [widget]
-<<widget "blood_moon_monolith_bedroom">>
-
-<<if $blood_moon_monolith isnot undefined>>
-	<<if $blood_moon_monolith is "get">>
-		你可以把这个血月天塔柱放在卧室里。
-		<br>
-		<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[放下血月天塔柱|Bedroom]]>><<set $blood_moon_monolith to false>><</link>>
-	<<else>>
-		这个从恐惧鹦鹉螺那里得来的天塔柱能维持血月的一部分。<mouse class="tooltip linkBlue">(?)<span>激活后在夜晚给予血月的纯视觉效果</span></mouse>
-		<br>
-		<<if $blood_moon_monolith>>
-			<<icon "blood_moon_monolith/Blood_Moon_Monolith_(placed)_(active).gif">><<link [[关闭血月天塔柱|Bedroom]]>><<set $blood_moon_monolith to false>><</link>>
+<<widget "blood_moon_monolith_bedroom">><!-- 卧室内与血月天塔柱互动 -->
+	<<if $blood_moon_monolith isnot undefined>>
+		<<if $blood_moon_monolith is 0>>
+			你可以把这个血月天塔柱放在卧室里。<br>
+			<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[放下血月天塔柱|Bedroom]]>><<set $blood_moon_monolith to false>><</link>>
 		<<else>>
-			<<icon "blood_moon_monolith/Blood_Moon_Monolith_(placed).png">><<link [[激活血月天塔柱|Bedroom]]>><<set $blood_moon_monolith to true>><</link>>
+			这个从恐惧鹦鹉螺那里得来的天塔柱能维持血月的一部分。<mouse class="tooltip linkBlue">(?)<span>激活后在夜晚给予血月的纯视觉效果</span></mouse>
+			<br>
+			<<if $blood_moon_monolith>>
+				<<icon "blood_moon_monolith/Blood_Moon_Monolith_(placed)_(active).gif">><<link [[关闭血月天塔柱|Bedroom]]>><<set $blood_moon_monolith to false>><</link>>
+			<<else>>
+				<<icon "blood_moon_monolith/Blood_Moon_Monolith_(placed).png">><<link [[激活血月天塔柱|Bedroom]]>><<set $blood_moon_monolith to true>><</link>>
+			<</if>>
 		<</if>>
+		<br>
 	<</if>>
-	<br>
-<</if>>
-
 <</widget>>

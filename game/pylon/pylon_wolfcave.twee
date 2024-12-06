@@ -1,33 +1,26 @@
 /*晶塔狼窝*/
 :: Pylon Wolfcave [widget]
 <<widget "pylon_wolfcave">>
-
-<br>
-<<if $historytrait gte 2 and $pylon_museum_asked isnot true>>
-	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
-<</if>>
-<<if $pylon_museum_asked>>
-	<<if !$pylon_collected.includes("Wolfcave")>>
-		为了激活这个晶塔，你需要找到那块水晶。
-		<<if statusCheck("Black Wolf").love gte 27>>
-			<span class="teal">成为头狼，带黑狼一起去河边打猎吧。</span>
+	<<if $historytrait gte 2>>
+		<br>
+		<<if $pylon_museum_asked>>
+			<<if $pylon_collected.includes("Wolfcave")>>
+				<<if Time.hour gte 6 and Time.hour lte 17>>
+					<<set $wolf_cave_hunt_request_refuse to false>>
+				<</if>>
+				这块充满魔力的水晶可以将你传送至别的地方。
+				<<if $wolf_cave_hunt_request_refuse and (Time.hour lt 6 or Time.hour gt 17) and $blackWolfNotHunting isnot true>>
+					<span class="blue">但是现在黑狼不在狼窝，你无法使用它。</span>
+				<<else>>
+					<br>
+					<<icon "pylon/Mushroom_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "wolfcave">><</link>>
+				<</if>>
+			<<else>>
+				为了激活这个晶塔，你需要找到那块水晶。<<print $syndromewolves is undefined ? "<span class='purple'>但你现在无法完全信任这群狼。</span>" : statusCheck("Black Wolf").love gte 27 ? "<span class='teal'>成为头狼，带黑狼一起去河边打猎吧。</span>" : "<span class='blue'>如果黑狼对你有足够的好感，你将会得到提示。</span>">>
+			<</if>>
 		<<else>>
-			<span class="blue">如果黑狼对你有足够的好感，你将会得到提示。</span>
-		<</if>>
-	<<else>>
-		<<if Time.hour gte 6 and Time.hour lte 17>>
-			<<set $wolf_cave_hunt_request_refuse to false>>
-		<</if>>
-		这块充满魔力的水晶可以将你传送至别的地方。
-		<<if $wolf_cave_hunt_request_refuse and (Time.hour lt 6 or Time.hour gt 17) and $blackWolfNotHunting isnot true>>
-			但是现在黑狼不在狼窝，你无法使用它。			
-		<<else>>
-			<br>
-			<<icon "pylon/Mushroom_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "wolfcave">><</link>>
-		<</if>>
+			<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+		<</if>><br>
+		<br>
 	<</if>>
-<</if>>
-<br>
-<br>
-
 <</widget>>

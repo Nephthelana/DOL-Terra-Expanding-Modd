@@ -4,58 +4,57 @@
 <<if $fishing_island_unlock is undefined>>
 	<<set $fishing_island_unlock to []>>
 <</if>>
-<<if $fishing_island_unlock gte 1 and $island_cooking_unlocked is undefined>>
+<<if $fishing_island_unlock.length gte 1 and $island_cooking_unlocked is undefined>>
 	<<set $island_cooking_unlocked to true>>
 <</if>>
 <<if $fishingrod>>
 <br>
-<<switch $island.home>>
-	<<case "rocky_hillock">>
-		<<if $fishing_island_unlock.includes("rocky_hillock")>>
-			<<fishingrod_held_icon>><<link [[前往天湖钓鱼 (0:20)|Fishing Bitten]]>>
-				<<island_pass 20>>
-				<<fishing_cast_time>>
-				<<set $fishing_place to "rocky_hillock">>
-			<</link>><br>
-		<<else>>
-			你看到不远处有个云雾缭绕的地方，你偶尔会发现有叼着鱼的海鸟从那个方向飞出来。<br>
-			<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Rocky Hillock 1]]>>
-				<<island_pass 20>>
-				<<set $island_fishing_place_unlock to "rocky_hillock">>
-				<<tiredness 10>>
-			<</link>><<gtiredness>><br>
-		<</if>>
-	<<case "waterfall">>
-		<<if $fishing_island_unlock.includes("waterfall")>>
-			<<fishingrod_held_icon>><<link [[前往瀑布湖钓鱼 (0:20)|Fishing Bitten]]>>
-				<<island_pass 20>>
-				<<fishing_cast_time>>
-				<<set $fishing_place to "waterfall">>
-			<</link>><br>
-		<<else>>
-			你的营地在瀑布附近，直觉告诉你附近很可能会有适合钓鱼的地方，这也许能够帮你收集一些食物。<br>
-			<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Waterfall 1]]>>
-				<<island_pass 20>>
-				<<set $island_fishing_place_unlock to "waterfall">>
-				<<tiredness 10>>
-			<</link>><<gtiredness>><br>
-		<</if>>
-	<<case "gulch">>
-		<<if $fishing_island_unlock.includes("gulch")>>
-			<<fishingrod_held_icon>><<link [[前往洞穴湖钓鱼 (0:20)|Fishing Bitten]]>>
-				<<island_pass 20>>
-				<<fishing_cast_time>>
-				<<set $fishing_place to "gulch">>
-			<</link>><br>
-		<<else>>
-			你经过一处幽暗的山洞，里面传来潺潺的流水声。<br>
-			<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Gulch 1]]>>
-				<<island_pass 20>>
-				<<set $island_fishing_place_unlock to "gulch">>
-				<<tiredness 10>>
-			<</link>><<gtiredness>><br>
-		<</if>>
-<</switch>>
+<<if $island.explore_locations.includes("battleground")>>
+	<<switch $island.home>>
+		<<case "rocky_hillock">>
+			<<if $fishing_island_unlock.includes("rocky_hillock")>>
+				<<fishingrod_held_icon>><<link [[前往天湖钓鱼 (0:20)|Fishing Bitten]]>>
+					<<island_pass 20>>
+					<<set $fishing_place to "rocky_hillock">>
+				<</link>><br>
+			<<else>>
+				你看到不远处有个云雾缭绕的地方，你偶尔会发现有叼着鱼的海鸟从那个方向飞出来。<br>
+				<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Rocky Hillock 1]]>>
+					<<island_pass 20>>
+					<<set $island_fishing_place_unlock to "rocky_hillock">>
+					<<tiredness 10>>
+				<</link>><<gtiredness>><br>
+			<</if>>
+		<<case "waterfall">>
+			<<if $fishing_island_unlock.includes("waterfall")>>
+				<<fishingrod_held_icon>><<link [[前往瀑布湖钓鱼 (0:20)|Fishing Bitten]]>>
+					<<island_pass 20>>
+					<<set $fishing_place to "waterfall">>
+				<</link>><br>
+			<<else>>
+				你的营地在瀑布附近，直觉告诉你附近很可能会有适合钓鱼的地方，这也许能够帮你收集一些食物。<br>
+				<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Waterfall 1]]>>
+					<<island_pass 20>>
+					<<set $island_fishing_place_unlock to "waterfall">>
+					<<tiredness 10>>
+				<</link>><<gtiredness>><br>
+			<</if>>
+		<<case "gulch">>
+			<<if $fishing_island_unlock.includes("gulch")>>
+				<<fishingrod_held_icon>><<link [[前往洞穴湖钓鱼 (0:20)|Fishing Bitten]]>>
+					<<island_pass 20>>
+					<<set $fishing_place to "gulch">>
+				<</link>><br>
+			<<else>>
+				你经过一处幽暗的山洞，里面传来潺潺的流水声。<br>
+				<<islandicon "explore">><<link [[前往 (0:20)|Fishing Island Unlock Gulch 1]]>>
+					<<island_pass 20>>
+					<<set $island_fishing_place_unlock to "gulch">>
+					<<tiredness 10>>
+				<</link>><<gtiredness>><br>
+			<</if>>
+	<</switch>>
+<</if>>
 <<if $fishing_island_unlock.length gte 1>>
 	<<ind>><<link [[查看你的渔获 (0:05)|Fish Island]]>><<island_pass 5>><</link>><br>
 <</if>>

@@ -1,0 +1,70 @@
+:: Terra Glowing Moss Link [widget]
+<<widget "terra_glowing_moss_link">>
+	<<switch $passage>>
+		<<case "Park">>
+			<<if $daily.Krypton_Moss isnot true>>
+				这里除了白色地衣外，你发现还有一些发光苔藓可以采集。
+				<<icon "material/Krypton_Moss.png">><<link [[采集发光苔藓|Terra Krypton Moss]]>><</link>><<terraHint>><br>
+			<<else>>
+				<span class="blue">你今天采集过这里的苔藓了。</span><br>
+			<</if>>
+		<<case "Temple">>
+			<<if $daily.Argon_Moss isnot true>>
+				这里除了粉红色地衣外，你发现还有一些发光苔藓可以采集。
+				<<icon "material/Argon_Moss.png">><<link [[采集发光苔藓|Terra Argon Moss]]>><</link>><<terraHint>><br>
+			<<else>>
+				<span class="blue">你今天采集过这里的苔藓了。</span><br>
+			<</if>>
+		<<case "Drain Exit">>
+			<<if $daily.Xenon_Moss isnot true>>
+				这里除了蓝紫色地衣外，你发现还有一些发光苔藓可以采集。
+				<<icon "material/Xenon_Moss.png">><<link [[采集发光苔藓|Terra Xenon Moss]]>><</link>><<terraHint>><br>
+			<<else>>
+				<span class="blue">你今天采集过这里的苔藓了。</span><br>
+			<</if>>
+		<<case "Lake Ruin">>
+			<<if $daily.Neon_Moss isnot true>>
+				这里除了紫色地衣外，你发现还有一些发光苔藓可以采集。
+				<<icon "material/Neon_Moss.png">><<link [[采集发光苔藓|Terra Neon Moss]]>><</link>><<terraHint>><br>
+			<<else>>
+				<span class="blue">你今天采集过这里的苔藓了。</span><br>
+			<</if>>
+	<</switch>>
+	<br>
+<</widget>>
+
+:: Terra Krypton Moss
+<<set $Krypton_Moss += 1>>
+<<set $daily.Krypton_Moss to true>>
+这些苔藓就生长在雕像基座的底部，只是生长得很少，与草地浑然一体。你小心地收集了其中一些。<br>
+<br>
+你获得了<<icon "material/Krypton_Moss.png">>氪苔藓(1)。<br>
+<br>
+<<link [[继续|Park]]>><</link>>
+
+:: Terra Argon Moss
+<<set $Argon_Moss += 1>>
+<<set $daily.Argon_Moss to true>>
+这些苔藓就生长在塔楼底下，依附着砖墙生长。你小心地收集了其中一些。<br>
+<br>
+你获得了<<icon "material/Argon_Moss.png">>氩苔藓(1)。<br>
+<br>
+<<link [[继续|Temple]]>><</link>>
+
+:: Terra Xenon Moss
+<<set $Xenon_Moss += 1>>
+<<set $daily.Xenon_Moss to true>>
+这些苔藓顽强地在水流的冲刷下生长着。你小心地收集了其中一些。<br>
+<br>
+你获得了<<icon "material/Xenon_Moss.png">>氙苔藓(1)。<br>
+<br>
+<<link [[继续|Drain Exit]]>><</link>>
+
+:: Terra Neon Moss
+<<set $Neon_Moss += 1>>
+<<set $daily.Neon_Moss to true>>
+这些苔藓分布得十分零散，发出的光芒也较为微弱。你小心地收集了其中一些。<br>
+<br>
+你获得了<<icon "material/Neon_Moss.png">>氖苔藓(1)。<br>
+<br>
+<<link [[继续|Lake Ruin]]>><</link>>

@@ -1,99 +1,22 @@
 :: Bait Forest Shop Receive
 <<npc Gwylan>><<person1>>
+<<set $bait_forest_shop_received to true>>
+<<switch $bait_forest_shop>>
+	<<case "Gold_Butterfly" "Gold_Worm" "Gold_Grasshopper" "Gold_Ladybug" "Gold_Dragonfly">>
+		<<set _bait_forest_shop_receive to random(1,2)>>
+	<<case "Tree_Nymph_Butterfly" "Maggot">>
+		<<set _bait_forest_shop_receive to random(3,5)>>
+	<<case "Firefly" "Lightning_Bug" "Snail" "Glow_Snail" "Grasshopper" "Ladybug">>
+		<<set _bait_forest_shop_receive to random(5,7)>>
+	<<default>>
+		<<set _bait_forest_shop_receive to random(3,7)>>
+<</switch>>
+<<set V[$bait_forest_shop] += _bait_forest_shop_receive>>
+<<set V.bestiary_bait_catch_count[$bait_forest_shop] += _bait_forest_shop_receive>>
+<<set _bait_forest_shop to setup.terraBait[$bait_forest_shop]>>
 "你对这些小家伙感兴趣么？"<<He>>钻入一个隐秘的房间中，拿着一个罐子走了出来。<br>
 <br>
-你获得了
-<<switch $bait_forest_shop>>
-	<<case "Gold_Butterfly">>
-		<<set $bait_forest_shop_receive to random(1,2)>>
-		<<set $Gold_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Gold_Butterfly.png">>金蝴蝶($bait_forest_shop_receive)
-	<<case "Monarch_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Monarch_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Monarch_Butterfly.png">>帝王蝶($bait_forest_shop_receive)
-	<<case "Sulphur_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Sulphur_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Sulphur_Butterfly.png">>黄粉蝶($bait_forest_shop_receive)
-	<<case "Zebra_Swallowtail_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Zebra_Swallowtail_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Zebra_Swallowtail_Butterfly.png">>带凤蝶($bait_forest_shop_receive)
-	<<case "Ulysses_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Ulysses_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Ulysses_Butterfly.png">>翠凤蝶($bait_forest_shop_receive)
-	<<case "Julia_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Julia_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Julia_Butterfly.png">>珠袖蝶($bait_forest_shop_receive)
-	<<case "Red_Admiral_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Red_Admiral_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Red_Admiral_Butterfly.png">>红蛱蝶($bait_forest_shop_receive)
-	<<case "Purple_Emperor_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Purple_Emperor_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Purple_Emperor_Butterfly.png">>紫蛱蝶($bait_forest_shop_receive)
-	<<case "Tree_Nymph_Butterfly">>
-		<<set $bait_forest_shop_receive to random(3,5)>>
-		<<set $Tree_Nymph_Butterfly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Tree_Nymph_Butterfly.png">>帛斑蝶($bait_forest_shop_receive)
-	<<case "Stinkbug">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Stinkbug += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Stinkbug.png">>臭虫($bait_forest_shop_receive)
-	<<case "Worm">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Worm += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Worm.png">>蠕虫($bait_forest_shop_receive)
-	<<case "Enchanted_Nightcrawler">>
-		<<set $bait_forest_shop_receive to random(3,7)>>
-		<<set $Enchanted_Nightcrawler += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Enchanted_Nightcrawler.png">>附魔夜行者($bait_forest_shop_receive)
-	<<case "Gold_Worm">>
-		<<set $bait_forest_shop_receive to random(1,2)>>
-		<<set $Gold_Worm += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Gold_Worm.png">>金蠕虫($bait_forest_shop_receive)
-	<<case "Firefly">>
-		<<set $bait_forest_shop_receive to random(5,7)>>
-		<<set $Firefly += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Firefly.png">>萤火虫($bait_forest_shop_receive)
-	<<case "Lightning_Bug">>
-		<<set $bait_forest_shop_receive to random(5,7)>>
-		<<set $Lightning_Bug += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Lightning_Bug.png">>荧光虫($bait_forest_shop_receive)
-	<<case "Snail">>
-		<<set $bait_forest_shop_receive to random(5,7)>>
-		<<set $Snail += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Snail.png">>蜗牛($bait_forest_shop_receive)
-	<<case "Glow_Snail">>
-		<<set $bait_forest_shop_receive to random(5,7)>>
-		<<set $Glow_Snail += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Glow_Snail.png">>发光蜗牛($bait_forest_shop_receive)
-	<<case "Grasshopper">>
-		<<set $bait_forest_shop_receive to random(5,7)>>
-		<<set $Grasshopper += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Grasshopper.png">>蚱蜢($bait_forest_shop_receive)
-	<<case "Gold_Grasshopper">>
-		<<set $bait_forest_shop_receive to random(1,2)>>
-		<<set $Gold_Grasshopper += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Gold_Grasshopper.png">>金蚱蜢($bait_forest_shop_receive)
-	<<case "Maggot">>
-		<<set $bait_forest_shop_receive to random(3,5)>>
-		<<set $Maggot += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Maggot.png">>蝇蛆($bait_forest_shop_receive)
-	<<case "Ladybug">>
-		<<set $bait_forest_shop_receive to random(5,7)>>
-		<<set $Ladybug += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Ladybug.png">>瓢虫($bait_forest_shop_receive)
-	<<case "Gold_Ladybug">>
-		<<set $bait_forest_shop_receive to random(1,2)>>
-		<<set $Gold_Ladybug += $bait_forest_shop_receive>>
-		<<icon "fishing/bait/Gold_Ladybug.png">>金瓢虫($bait_forest_shop_receive)
-<</switch>><br>
-<<set $bait_forest_shop_received to true>>
+你获得了：<<icon `_bait_forest_shop.icon`>><<print _bait_forest_shop.cn_name>>(_bait_forest_shop_receive)<br>
 <br>
 <<getouticon>><<link [[返回|Forest Shop]]>><</link>>
 <<endevent>>

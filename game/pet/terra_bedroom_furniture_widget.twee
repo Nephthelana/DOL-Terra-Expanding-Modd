@@ -1,0 +1,116 @@
+:: Terra Bedroom Furniture [widget]
+<<widget "terra_bedroom_furniture">>
+<br>
+<<for _p = 0; _p lt $pet_list.length; _p++>>
+	<<set _pet to setup.terraPet[$pet_list[_p]]>>
+	<<capture _pet>>
+		<<if V.bedroom_pets[_pet.name]>>
+			<<icon `_pet.icon_projectile`>>_pet.des_projectile<br>
+		<</if>>
+	<</capture>>
+<</for>>
+<<if $pet_list.length gt 0 >>
+	<<ind>><<link [[调整家具|Terra Bedroom Furniture Option]]>><</link>><<terraHint>>
+<</if>>
+<</widget>>
+
+<<widget "petList">>
+	<<set _petObtainedList to $pet_list>>
+	<div class="itemTerra">
+		<<for _t to 0; _t lt _petObtainedList.length; _t++>>
+			<<set _pet to setup.terraPet[_petObtainedList[_t]]>>
+			<<capture _pet>>
+				<<if $options.dragModeTEM>>
+					<div class="item" @id="_pet.name" draggable="true" ondragstart="dragTEM(event)" ondragover="allowDropTEM(event)" ondrop="dropPetListSwitch(event)">
+						<div class="itemTerraGeneral">
+							<<set _pet_icon_path to "img/misc/icon/pet/pet_item/">>
+							<<set _pet_icon_path += _pet.name>><!-- 好像不能在一行内用字符串相加的方式来写这个变量，所以只能这样笨笨地连加在一起了 -->
+							<<set _pet_icon_path += ".png">>
+							<<if V.bedroom_pets[_pet.name]>>
+								<<link [img[_pet_icon_path]]>>
+									<<run delete V.bedroom_pets[_pet.name]>>
+									<<replace #petList>>
+										<<petList>>
+									<</replace>>
+									<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+								<</link>>
+							<<else>>
+								<span class="terraFading">
+									<<link [img[_pet_icon_path]]>>
+										<<set V.bedroom_pets[_pet.name] to true>>
+										<<replace #petList>>
+											<<petList>>
+										<</replace>>
+										<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+									<</link>>
+								</span>
+							<</if>>
+						</div>
+					</div>
+				<<else>>
+					<div class="item">
+						<div @tooltip="`${_pet.cn_name}<br><br>▶${_pet.des_item}`">
+							<div class="itemTerraGeneral">
+								<<if V.bedroom_pets[_pet.name]>>
+									<<icon `_pet.icon_item`>>
+								<<else>>
+									<span class="terraFading"><<icon `_pet.icon_item`>></span>
+								<</if>>
+							</div>
+						</div>
+						<hr>
+						<<if V.bedroom_pets[_pet.name]>>
+							<<link "取消">>
+								<<run delete V.bedroom_pets[_pet.name]>>
+								<<replace #petList>>
+									<<petList>>
+								<</replace>>
+							<</link>>
+						<<else>>
+							<<link "使用">>
+								<<set V.bedroom_pets[_pet.name] to true>>
+								<<replace #petList>>
+									<<petList>>
+								<</replace>>
+							<</link>>
+						<</if>>
+						<hr>
+						<<if _t is 0>>
+							/
+						<<else>>
+							<<capture _t>>
+								<<link "⬅">>
+									<<set _temp to $pet_list[_t-1]>>
+									<<set $pet_list[_t-1] to $pet_list[_t]>>
+									<<set $pet_list[_t] to _temp>>
+									<<replace #petList>>
+										<<petList>>
+									<</replace>>
+								<</link>>
+							<</capture>>
+						<</if>>
+					</div>
+				<</if>>
+			<</capture>>
+		<</for>>	
+	</div>
+<</widget>>
+
+<<widget "UpdatePetList">>
+	<<replace #petList>>
+		<<petList>>
+	<</replace>>
+<</widget>>
+
+:: Terra Bedroom Furniture Option
+<<run initializeTooltips()>>
+<<run window.modImgLoaderHooker.addDynamicImageTagReplacePassage(V.passage)>>
+请选择要摆放的家具。<br>
+<<if $options.dragModeTEM>>
+	[拖拽模式]点击图标以切换宠物展示状态。拖动方框以将两个宠物在列表内的位置互换（长按方框内的非图标部分以选中方框）。<br>
+<</if>>
+<span id="petList" class="no-numberify">
+	<<petList>>
+</span>
+<br>
+<<getouticon>><<link [[返回|Bedroom]]>><</link>>

@@ -11,7 +11,7 @@
 
 <<widget "fishing_request_place_beach">>
 	<<if $fishing_place_beach_unlock isnot true>>
-		你能听着屋外的海风声无动于衷么
+		你能听着沙滩上的海风声无动于衷么
 	<<else>>
 		海滩
 	<</if>>
@@ -60,7 +60,7 @@
 <<widget "fishing_request_place_temple_garden">>
 	<<if $fishingskill lt 400>>
 		？？？
-	<<elseif $fishing_place_temple_garden_unlock isnot true>>
+	<<elseif $fishing_place_temple_garden_unlock>>
 		神殿的花园
 	<<elseif $artificial_fishing_pond_temple_garden is "done">>
 		老教堂墓地庭院的人工钓鱼池
@@ -113,8 +113,6 @@
 	<<else>>
 		垃圾场深处的沸水池
 	<</if>>
-<<<<<<< Updated upstream
-=======
 <</widget>>
 
 <<widget "fishing_request_place_ice">>
@@ -123,5 +121,4 @@
 	<<else>>
 		老教堂墓地地下的永冻湖
 	<</if>>
->>>>>>> Stashed changes
 <</widget>>

@@ -6,39 +6,214 @@
 你看着晶塔显示的地图，思索你要去哪里。<br>
 <<if $pylon_collected.includes("Bedroom")>>
 	<<if getRobinLocation() is "orphanage" or getRobinLocation() is "sleep" or getRobinLocation() is "bath" or getRobinLocation() is "liveStream">>
-		<<icon "pylon/Forest_Pylon.png">><<link [[传送到孤儿院卧室晶塔(0:01)|Bedroom]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
+		<<icon "pylon/Forest_Pylon.png">><<link [[传送到孤儿院卧室晶塔(0:01)|Bedroom]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
 	<<else>>
-		<span class="fading"><<icon "pylon/Forest_Pylon.png">></span>罗宾现在不在孤儿院，你无法使用孤儿院卧室晶塔。
+		<span class="terraFading"><<icon "pylon/Forest_Pylon.png">></span>罗宾现在不在孤儿院，你无法使用孤儿院卧室晶塔。<br>
 	<</if>>
-	<br>
 <</if>>
 <<if $pylon_collected.includes("Farm Bedroom")>>
-	<<icon "pylon/Universal_Pylon.png">><<link [[传送到农场卧室晶塔(0:01)|Farm Bedroom]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
-	<br>
+	<<icon "pylon/Universal_Pylon.png">><<link [[传送到农场卧室晶塔(0:01)|Farm Bedroom]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
 <</if>>
 <<if $pylon_collected.includes("Eden Cabin")>>
 	<<if Time.hour lt 11 or Time.hour gt 14 >>
-		<<icon "pylon/Jungle_Pylon.png">><<link [[传送到伊甸小屋晶塔(0:01)|Eden Cabin]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
+		<<icon "pylon/Jungle_Pylon.png">><<link [[传送到伊甸小屋晶塔(0:01)|Eden Cabin]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
 	<<else>>
-		<span class="fading"><<icon "pylon/Jungle_Pylon.png">></span>伊甸现在不在小屋，你无法使用伊甸小屋晶塔。
+		<span class="terraFading"><<icon "pylon/Jungle_Pylon.png">></span>伊甸现在不在小屋，你无法使用伊甸小屋晶塔。<br>
 	<</if>>
-	<br>
 <</if>>
 <<if $pylon_collected.includes("Hawks Tower")>>
-	<<icon "pylon/Sunken_Pylon.png">><<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
-	<br>
+	<<getChildrenIds `{location:"tower", eggTimer:undefined}` "both">>
+	<<icon "pylon/Sunken_Pylon.png">>
+	<<if $pylon isnot "hawkstower">>
+		<<if $bird.state is "hunting">>
+			<<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>>
+				<<pass 1>>
+				<<set $bird.timer to 0>>
+				<<set $pylon_teleport_count += 1>>
+			<</link>><br>
+		<<else>>
+			<<cleareventpool>>
+			<<if 
+				Time.dayState isnot "night" and 
+				((hasBabyHawkModInfo() and Object.values(_childrenIds).find(childId => getChildDays(childId) gt 89 and V.children[childId].localVariables.activity isnot "hunting" and V.children[childId].localVariables.growHintImmature is undefined))
+				or
+				(!hasBabyHawkModInfo() and Object.values(_childrenIds).find(childId => getChildDays(childId) gt 89)))
+			>>
+				<<addinlineevent "Pylon Baby Hawk" 1>>
+					<<link [[Baby传送到鹰塔晶塔(0:01)|Pylon Bird Tower Baby Hawk]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+				<</addinlineevent>>
+			<</if>>
+			<<addinlineevent "Pylon Great Hawk" 1>>
+				<<link [[Great传送到鹰塔晶塔(0:01)|Pylon Bird Tower Great Hawk]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+			<</addinlineevent>>
+			<<addinlineevent "None" 2>>
+				<<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+			<</addinlineevent>>
+			<<runeventpool>>
+		<</if>>
+	<<else>>
+		<<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+	<</if>>
 <</if>>
 <<if $pylon_collected.includes("Wolfcave")>>
 	<<if Time.hour gte 6 and Time.hour lte 17>>
 		<<set $wolf_cave_hunt_request_refuse to false>>
 	<</if>>
 	<<if $wolf_cave_hunt_request_refuse and (Time.hour lt 6 or Time.hour gt 17) and $blackWolfNotHunting isnot true>>
-		<span class="fading"><<icon "pylon/Mushroom_Pylon.png">></span>黑狼现在不在狼窝，你无法使用狼窝晶塔。
+		<span class="terraFading"><<icon "pylon/Mushroom_Pylon.png">></span>黑狼现在不在狼窝，你无法使用狼窝晶塔。
 	<<else>>
 		<<icon "pylon/Mushroom_Pylon.png">><<link [[传送到狼窝晶塔(0:01)|Wolf Cave]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<</if>>
 	<br>
 <</if>>
+<<if $debug is 1>>
+<<if $pylon_collected.includes("Temple")>>
+	<<sydneySchedule>>
+	<<if _sydney_location is "temple">>
+		<<icon "pylon/Hallow_Pylon.png">><<link [[传送到神殿晶塔(0:01)|Temple Cloister]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
+	<<else>>
+		<span class="terraFading"><<icon "pylon/Hallow_Pylon.png">></span>悉尼现在不在神殿，你无法使用神殿晶塔。
+	<</if>>
+	<br>
+<</if>>
+<</if>>
 <br>
 <<getouticon>>
 <<destinationpylon>>
+
+:: Pylon Bird Tower Baby Hawk
+	<<getChildrenIds `{location:"tower", eggTimer:undefined}` "both">>
+	<<set _immatureChildIDs to []>>
+	<<if hasBabyHawkModInfo()>>
+		<<for _t=0; _t lt _childrenIds.length; _t++>>
+			<<set _childID to _childrenIds[_t]>>
+			<<if getChildDays(_childID) gt 89 and $children[_childID].localVariables.activity isnot "hunting" and $children[_childID].localVariables.growHintImmature is undefined>>
+				<<set _immatureChildIDs.pushUnique(_childID)>>
+			<</if>>
+		<</for>>
+	<<else>>
+		<<for _t=0; _t lt _childrenIds.length; _t++>>
+			<<set _childID to _childrenIds[_t]>>
+			<<if getChildDays(_childID) gt 89>>
+				<<set _immatureChildIDs.pushUnique(_childID)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _immatureChildIDs.length lt 1>>
+		<span class="red">错误，未能找到对应的小鹰。请向泰拉瑞亚拓展模组作者反馈此问题。</span><br>
+		<br>
+		<<link [[继续|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+		<<exitAll>>
+	<</if>>
+	<<childSelect _immatureChildIDs.random()>>
+	<<if _immatureChildIDs.length lte 1>>
+		<<switch Weather.name>>
+			<<case "heavyClouds">>
+				你刚回巢，<<childname>>就啪叽一声摔在了你面前。看着<<childhe>>要哭不哭的样子，你连忙上前安慰。<br>
+				<br>
+				很快<<childname>>执着地挣脱了你的怀抱，站在栖木上，趁着强风跃跃欲试地拍打着自己的翅膀。随后<<childhe>>迎着强风起飞，在塔顶盘旋一圈才落了下来。经过这次成功的尝试后，<<childhe>>骄傲地叽喳着，向你炫耀<<childhis>>稚嫩的双翼。<br>
+				<br>
+				你摸了摸<<childname>>的头作为鼓励。<br>
+			<<case "lightPrecipitation" "heavyPrecipitation" "thunderStorm">>
+				<<if Weather.precipitation is "snow">>
+					你刚回巢，就听到了叽叽喳喳的声音：是<<childname>>正在玩雪。<<childhis>>的身上沾着雪花，就像一个毛茸茸的雪团子，让你哭笑不得。<br>
+					<be>
+					一见到你，<<childname>>兴奋地啁啾着，然后把一小团雪扬了过来——足够温暖的绒毛，让<<childhe>>有了与风雪对抗的勇气。<br>
+					<br>
+					你们又玩了一小会儿雪球才回到巢中。<br>
+				<<else>>
+					你刚回巢，就听到了叽叽喳喳的声音：是<<childname>>。一见到你，<<childhe>>尽量地将身上的水珠甩干，从巢中向你跑来。你赶紧迎上去，擦去<<childname>>羽毛中剩下的水滴，抱进怀中轻声安慰。<br>
+					<br>
+					不久后<<childname>>才高兴起来，用头蹭了蹭你，嘤嘤地诉说对你的想念。<br>
+				<</if>>
+			<<default>>
+				你刚回巢，就听到了叽叽喳喳的声音，是<<childname>>正好奇地观察着亮闪闪的晶塔。<<childHe>>起先被吓了一跳，但很快就围着你又吵又闹。<br>
+		<</switch>>
+	<<else>>
+		<<switch Weather.name>>
+			<<case "heavyClouds">>
+				你刚回巢，<<childname>>就啪叽一声摔在了你面前。看着<<childhe>>要哭不哭的样子，你连忙上前安慰。<br>
+				<br>
+				你抬头看去，原来是你的孩子们站在栖木上，趁着强风跃跃欲试地拍打着自己的翅膀。见你回来，孩子们兴奋地簇拥在你身旁。你花了好些时间才把他们送回巢中。<br>
+			<<case "lightPrecipitation" "heavyPrecipitation" "thunderStorm">>
+				<<if Weather.precipitation is "snow">>
+					你刚回巢，就听到了叽叽喳喳的声音：是孩子们正在玩雪。他们个个都沾上了雪花，就像一堆雪团子一样。你看着他们哭笑不得。<br>
+					<br>
+					一个个小雪球与雪花一起漫天飞舞——他们的绒毛足够温暖，这让他们拥有了与风雪对抗的勇气。<br>
+					<br>
+					你随后也加入了战场。你们又玩了一会儿才回到巢中。<br>
+				<<else>>
+					你刚回巢，就听到了叽叽喳喳的声音：是你的孩子们，他们似乎正在等你回来。<br>
+					<br>
+					他们正用翅膀互相挡雨，在羽翼下小声叽喳着。交叠的翅膀使巢里保持着干燥与温暖。你赶紧迎上去，擦去他们羽毛上的水珠，将孩子们抱进怀里。<br>
+				<</if>>
+			<<default>>
+				你刚回巢，就听到了叽叽喳喳的声音，是你的孩子们正好奇地观察着亮闪闪的晶塔。他们起先被吓了一跳，但很快就围着你又吵又闹。<br>
+		<</switch>>
+	<</if>>
+	<br>
+	<<link [[继续|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+
+:: Pylon Bird Tower Great Hawk
+	<<npc "Great Hawk">>
+	<<if Time.dayState is "night">>
+		你传送到了鹰塔。水晶微弱的亮光惊动了<<beasttype>>，<<bhe>>在巢里动了动，醒了过来。看到你，<<bhe>>努力张开惺忪的睡眼，
+		<<if $monster is 1>>
+			朝你微笑着。<br>
+			<br>
+			<<beasttype>>向你张开翅膀，"来这儿，<<wife>>，到我身边来。"<<bHe>>以温柔的语调呼唤着你。当你躺在你们温暖的巢中时，<<bhe>>将翅膀轻轻覆在你身上。"我入睡前一直在想念着<<wife>>。"<br>
+			<br>
+		<<else>>
+			发出了轻柔的啾啾声，以温柔的曲调呼唤你，示意你睡在<<bhis>>身旁。当你躺在你们温暖的巢中时，<<bhe>>将翅膀轻轻覆在你身上。<br>
+		<</if>>
+		<br>
+		你抚摸着<<bHis>>的头以示安慰。<<beasttype>>眷恋地蹭着你的手，满足地再次睡了过去。<br>
+	<<else>>
+		你传送到了鹰塔。
+		<<switch Weather.name>>
+			<<case "heavyClouds">>
+				<<beasttype>>看到了你，于是发出了一连串愉悦的啁啾。<br>
+				<br>
+				<<if $monster is 1>>
+					"现在是飞翔的好天气。"<<bHe>>张开强有力的翅膀。你微笑着点头赞成，为拥有如此美丽而强大的伴侣感到自豪。<br>
+				<<else>>
+					<<bHe>>扇动了几下强有力的翅膀，示意你现在是飞翔的好天气。你微笑着抚上<<bhis>>结实的双翼，为拥有如此美丽而强大的伴侣感到自豪。<br>
+				<</if>>
+			<<case "lightPrecipitation" "heavyPrecipitation" "thunderStorm">>
+				<<if Weather.precipitation is "snow">>
+					<<if $monster is 1>>
+						<<beasttype>>着急地向你走来。<<bHe>>拥着你，一路将你送入巢中才放手。<br>
+						<br>
+						"天气不好，我很担心<<wife>>会冷。"<<bHe>>带着担忧的表情握着你微凉的双手。你微笑着告诉<<bhim>>你没事，<<bhis>>的神情才放松下来。"<<Wife>>今天可以多留下一会儿吗？没有你的巢...也很冷。"<br>
+						<br>
+						你被<<bhis>>的神情打动了，点了点头。<<bHe>>肉眼可见地开心起来。<br>
+					<<else>>
+						<<beasttype>>一边叽喳叫着，一边着急地向你走来。<<bHe>>拥着你，就算已经在巢中也不肯放下翅膀。你向<<bhim>>保证你并不冷，<<bhe>>这才带着怀疑和担忧的表情收回了翅膀，但仍旧紧紧挨着你。<<bHe>>的眼中似乎有着乞求的神色。<br>
+						<br>
+						"我会多留一会儿的。"你为<<bhim>>梳理着羽毛，轻声安抚着。<<bHe>>这才开心起来。<br>
+					<</if>>
+				<<else>>
+					<<beasttype>>着急地向你走来，小心地用宽大的翅膀为你挡雨，一路将你送回了巢。
+					<<if $monster is 1>>
+						你担忧地望着<<bhim>>。<br>
+						<br>
+						"<<wife>>是在担心我吗？"<<beasttype>>温柔地蹭了蹭你的额头。"这种天气，我已经习惯了。但现在不一样，我拥有了<<wife>>。被你牵挂的感觉...真的很好。"<<bHe>>不好意思地抱住了你，不想让你看到<<bhis>>羞涩的表情。<br>
+					<<else>>
+						你担忧地望着<<bhim>>，伸手为<<bhim>>整理翅膀。<br>
+						<br>
+						<<beasttype>>似乎很不好意思地低下了头。你刚缩回手，<<bhe>>就拥住了你，用毛茸茸的额头蹭着，不想让你看到<<bhis>>羞涩的表情。<br>
+					<</if>>
+				<</if>>
+			<<default>>
+				<<beasttype>>看到你，眼睛瞬间亮了起来。
+				<<if $monster is 1>>
+					<<bHe>>略微理了理羽毛，将你拉入<<bhis>>温暖的怀抱。<br>
+					<br>
+					"欢迎回家，<<wife>>。"<br>
+				<<else>>
+					<<bHe>>兴奋地叽喳叫着，将你拥进怀中。<br>
+				<</if>>
+		<</switch>>
+	<</if>>
+	<br>
+	<<link [[继续|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>

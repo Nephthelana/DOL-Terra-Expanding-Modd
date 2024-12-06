@@ -1,6 +1,5 @@
 :: Abigails Flower Grown [widget]
 <<widget "Abigails_Flower_grown">>
-
 	<<if $Abigails_Flower isnot true>>
 		<<if $Abigails_Flower_grown>>
 			墓地里生长着一朵与众不同的花。也许是你之前没有注意到它，它已经生长到想要怒放的状态了。<br>
@@ -10,7 +9,6 @@
 			<br>
 		<</if>>
 	<</if>>
-
 <</widget>>
 
 :: Abigails Flower Pick 1

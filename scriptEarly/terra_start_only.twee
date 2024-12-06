@@ -1,201 +1,104 @@
 :: Terra Start Only [widget]
 <<widget "terraStartOnly">>
 
-/* 任务鱼 */
-<<set $fishing_request_selection_list to [
-	"Amanita_Fungifin",
-	"Angelfish",
-	"Batfish",
-	"Bonefish",
-	"Bumblebee_Tuna",
-	"Bunnyfish",
-	"Catfish",
-	"Cloudfish",
-	"Clownfish",
-	"Demonic_Hellfish",
-	"Derpfish",
-	"Dirtfish",
-	"Dynamite_Fish",
-	"Fallen_Starfish",
-	"Fish_of_Cthulhu",
-	"Fishotron",
-	"Guide_Voodoo_Fish",
-	"Harpyfish",
-	"Hungerfish",
-	"Jewelfish",
-	"Mirage_Fish",
-	"Mudfish",
-	"Pixiefish",
-	"Scarab_Fish",
-	"Scorpio_Fish",
-	"Slimefish",
-	"Spiderfish",
-	"Tropical_Barracuda",
-	"Unicorn_Fish",
-	"Wyverntail",
-	"Zombie_Fish",
-	"Brimlish",
-	"Eutrophic_Sandfish",
-	"Serpentuna",
-	"Slurpfish",
-	"Surf_Clam"
-]>>
+<!-- 各种列表定义 -->
+<<set _allRequestFishList to getAllRequestFishList()>>
+<<set _allPotionList to getAllPotionList()>>
+<<set _allBaitList to getAllBaitList()>>
+<<set _allCrateList to getAllCrateList()>>
+<<set _allFishList to getAllFishList()>>
+<<set _allTrashList to getAllTrashList()>>
+<<set _allMaterialList to getAllMaterialList()>>
+<<set _allConsumableList to getAllConsumableList()>>
+<<set _allFoodList to getAllFoodList()>>
+
+<!-- 任务鱼 -->
+<<set $fishing_request_selection_list to _allRequestFishList>>
+<<set $fishing_request_selection_list.delete("Bloody_Manowar")>>
 <<set $fishing_request_selection to $fishing_request_selection_list.random()>>
 <<set $fishing_request_fish to []>>
 <<set $fishing_requests_finished_count to 0>>
 
-/* 渔夫任务奖励家具 */
+<!-- 渔夫任务奖励家具 -->
 <<set $angler_furniture_obtained to []>>
 
-/* 孤儿院卧室家具 */
-<<set $terra_bedroom_furniture to []>>
+<!-- 药水数量 -->
+<<for _p=0; _p lt _allPotionList.length; _p++>>
+	<<set _potion to setup.terraPotion[_allPotionList[_p]]>>
+	<<set V[_potion.name] to 0>>
+<</for>>
 
-/* 药水数量 */
-<<set $Fishing_Potion = 0>>
-<<set $Sonar_Potion = 0>>
-<<set $Crate_Potion = 0>>
+<!-- 鱼饵数量 -->
+<<for _b=0; _b lt _allBaitList.length; _b++>>
+	<<set _bait to setup.terraBait[_allBaitList[_b]]>>
+	<<set V[_bait.name] to 0>>
+<</for>>
 
-/* 鱼饵数量 */
-<<set $butterfly_list to [
-	"Monarch_Butterfly",
-	"Sulphur_Butterfly",
-	"Zebra_Swallowtail_Butterfly",
-	"Ulysses_Butterfly",
-	"Julia_Butterfly",
-	"Red_Admiral_Butterfly",
-	"Purple_Emperor_Butterfly",
-	"Tree_Nymph_Butterfly"
-]>>
-<<set $Apprentice_Bait = 0>>
-<<set $Journeyman_Bait = 0>>
-<<set $Master_Bait = 0>>
-<<set $Gold_Butterfly = 0>>
-<<set $Monarch_Butterfly = 0>>
-<<set $Sulphur_Butterfly = 0>>
-<<set $Zebra_Swallowtail_Butterfly = 0>>
-<<set $Ulysses_Butterfly = 0>>
-<<set $Julia_Butterfly = 0>>
-<<set $Red_Admiral_Butterfly = 0>>
-<<set $Purple_Emperor_Butterfly = 0>>
-<<set $Tree_Nymph_Butterfly = 0>>
-<<set $Red_Dragonfly = 0>>
-<<set $Orange_Dragonfly = 0>>
-<<set $Yellow_Dragonfly = 0>>
-<<set $Green_Dragonfly = 0>>
-<<set $Blue_Dragonfly = 0>>
-<<set $Black_Dragonfly = 0>>
-<<set $Gold_Dragonfly = 0>>
-<<set $Stinkbug = 0>>
-<<set $Worm = 0>>
-<<set $Gold_Worm = 0>>
-<<set $Firefly = 0>>
-<<set $Lightning_Bug = 0>>
-<<set $Lavafly = 0>>
-<<set $Snail = 0>>
-<<set $Glow_Snail = 0>>
-<<set $Magma_Snail = 0>>
-<<set $Grasshopper = 0>>
-<<set $Gold_Grasshopper = 0>>
-<<set $Maggot = 0>>
-<<set $Ladybug = 0>>
-<<set $Gold_Ladybug = 0>>
+<!-- 渔获数量 -->
+<!-- 宝匣数量 -->
+<<for _c=0; _c lt _allCrateList.length; _c++>>
+	<<set _crate to setup.terraCrate[_allCrateList[_c]]>>
+	<<set V[_crate.name] to 0>>
+<</for>>
+<!-- 普通鱼数量 -->
+<<for _f=0; _f lt _allFishList.length; _f++>>
+	<<set _fish to setup.terraFish[_allFishList[_f]]>>
+	<<set V[_fish.name] to 0>>
+<</for>>
+<!-- 垃圾数量 -->
+<<for _t=0; _t lt _allTrashList.length; _t++>>
+	<<set _trash to setup.terraTrash[_allTrashList[_t]]>>
+	<<set V[_trash.name] to 0>>
+<</for>>
 
-/* 渔获数量 */
-/* 宝匣数量 */
-<<set $Golden_Crate = 0>>
-<<set $Iron_Crate = 0>>
-<<set $Wooden_Crate = 0>>
-<<set $Ocean_Crate = 0>>
-<<set $Oyster = 0>>
-<<set $Oasis_Crate = 0>>
-<<set $Jungle_Crate = 0>>
-<<set $Hallowed_Crate = 0>>
-<<set $Sky_Crate = 0>>
-<<set $Frozen_Crate = 0>>
-<<set $Obsidian_Crate = 0>>
-<<set $Sunken_Crate = 0>>
-<<set $Sulphurous_Crate = 0>>
-<<set $Brimstone_Crate = 0>>
-/* 普通鱼数量 */
-<<set $Salmon = 0>>
-<<set $Bass = 0>>
-<<set $Pink_Jellyfish_bait = 0>>
-<<set $Shrimp = 0>>
-<<set $Tuna = 0>>
-<<set $Red_Snapper = 0>>
-<<set $Trout = 0>>
-<<set $Golden_Carp = 0>>
-<<set $Stinkfish = 0>>
-<<set $Blue_Jellyfish_bait = 0>>
-<<set $Armored_Cavefish = 0>>
-<<set $Specular_Fish = 0>>
-<<set $Flounder = 0>>
-<<set $Rock_Lobster = 0>>
-<<set $Honeyfin = 0>>
-<<set $Double_Cod = 0>>
-<<set $Variegated_Lardfish = 0>>
-<<set $Neon_Tetra = 0>>
-<<set $Prismite = 0>>
-<<set $Princess_Fish = 0>>
-<<set $Chaos_Fish = 0>>
-<<set $Frost_Minnow = 0>>
-<<set $Atlantic_Cod = 0>>
-<<set $Flarefin_Koi = 0>>
-<<set $Obsidifish = 0>>
-<<set $Greenwave_Loach = 0>>
-<<set $Sunken_Sailfish = 0>>
-<<set $Prismatic_Guppy = 0>>
-<<set $Damselfish = 0>>
-<<set $Charred_Lasher = 0>>
-<<set $Coastal_Demonfish = 0>>
-<<set $Crag_Bullhead = 0>>
-/* 垃圾数量 */
-<<set $Old_Shoe = 0>>
-<<set $Seaweed_junk = 0>>
-<<set $Tin_Can = 0>>
-<<set $Joja_Cola = 0>>
-
-/* 森林商店鱼饵初始化 */
+<!-- 森林商店鱼饵初始化，第一周固定为蠕虫类，第一天固定为蠕虫 -->
 <<set $bait_forest_shop_main to "Worm">>
 <<set $bait_forest_shop to "Worm">>
 
-/* 向导任务 */
+<!-- 向导的新手任务 -->
 <<set $guide_mod_hint_pre to []>>
 
-/* 晶塔收集 */
+<!-- 晶塔收集 -->
 <<set $pylon_collected to []>>
 
-/* dom罗宾拓展联动 */
+<!-- dom罗宾拓展联动 -->
 <<set $fishing_request_robin to []>>
 <<set $robin_fishing_place_unlocked to []>>
 
-/* 宝匣内容物数量 */
-<<set $redemption_voucher to 0>>
-<<set $Sea_Prism = 0>>
-<<set $Sea_Minnow = 0>>
-<<set $Demonic_Bone_Ash = 0>>
-<<set $White_Pearl = 0>>
-<<set $Black_Pearl = 0>>
-<<set $Pink_Pearl = 0>>
-<<set $Iron_Bar = 0>>
-<<set $Sea_Remains = 0>>
+<!-- 纯材料类物品初始化 -->
+<<for _m=0; _m lt _allMaterialList.length; _m++>>
+	<<set _material to setup.terraMaterial[_allMaterialList[_m]]>>
+	<<if _material.type is "material">>
+		<<set V[_material.name] to 0>>
+	<</if>>
+<</for>>
 
-/* 饰品栏 */
+<!-- 盔甲栏 -->
+<<set $terra_armor_slots to ["Armor_Helmet","Armor_Shirt","Armor_Pants"]>>
+<!-- 饰品栏 -->
 <<set $terra_accessories_slots to []>>
+<!-- 时装栏 -->
+<<set $terra_vanity_accessories_slots to []>>
 
-/* 偷胖次 */
+<!-- 偷胖次，应对在解锁内衣小偷前就解锁泳池钓鱼点的情况 -->
 <<set $panties_held = 0>>
 
-/* 血月 */
-<<set $Bloody_Tear = 0>>
+<!-- 工具-消耗品数量 -->
+<<for _c=0; _c lt _allConsumableList.length; _c++>>
+	<<set _consumable to setup.terraConsumable[_allConsumableList[_c]]>>
+	<<set V[_consumable.name] to 0>>
+<</for>>
 
-/* 食物 */
-<<set $Sashimi to 0>>
+<!-- 食物 -->
+<<for _f=0; _f lt _allFoodList.length; _f++>>
+	<<set _food to setup.terraFood[_allFoodList[_f]]>>
+	<<set V[_food.name] to 0>>
+<</for>>
 
-/* 海岛 */
+<!-- 海岛制作站 -->
 <<set $island_build_cooking to []>>
 
-/* 统计数据 */
+<!-- 统计数据 -->
 <<set $fishing_bitten_count to 0>>
 <<set $fishing_harvest_count to 0>>
 <<set $fishing_failed_count to 0>>
@@ -203,34 +106,14 @@
 <<set $RPS_none_count to 0>>
 <<set $PRS_lose_count to 0>>
 <<set $pylon_teleport_count to 0>>
-<<set $fishing_crate_count to {
-	Golden_Crate: 0,
-	Iron_Crate: 0,
-	Wooden_Crate: 0,
-	Ocean_Crate: 0,
-	Oyster: 0,
-	Oasis_Crate: 0,
-	Jungle_Crate: 0,
-	Hallowed_Crate: 0,
-	Sky_Crate: 0,
-	Sunken_Crate: 0,
-	Sulphurous_Crate: 0,
-	Brimstone_Crate: 0,
-}>>
-<<set $unload_crate_count to {
-	Golden_Crate: 0,
-	Iron_Crate: 0,
-	Wooden_Crate: 0,
-	Ocean_Crate: 0,
-	Oyster: 0,
-	Oasis_Crate: 0,
-	Jungle_Crate: 0,
-	Hallowed_Crate: 0,
-	Sky_Crate: 0,
-	Sunken_Crate: 0,
-	Sulphurous_Crate: 0,
-	Brimstone_Crate: 0,
-}>>
+<<set $fishing_crate_count to {}>>
+<<set $unload_crate_count to {}>>
+<<for _c=0; _c lt _allCrateList.length; _c++>>
+	<<set _crate to setup.terraCrate[_allCrateList[_c]]>>
+	<<if _crate.type is "crate">>
+		<<set $unload_crate_count[_crate.name] to 0>>
+	<</if>>
+<</for>>
 <<set $crafting_count to {
 	Work_Bench: 0,
 	Iron_Anvil: 0,
@@ -238,13 +121,10 @@
 	Tinkerers_Workshop: 0,
 }>>
 
-/* 阁楼制作站初始化 */
+<!-- 阁楼制作站初始化 -->
 <<set $orphanage_loft_crafting_station to []>>
 
-<<<<<<< Updated upstream
-=======
 <!-- 落星概率初始化 -->
-<<set $Meteor_Shower to random(1,10) is 1 ? true : false>>
 <<fallen_star_rate_set>>
 
 <!-- 落星可能掉落的区域 -->
@@ -266,16 +146,71 @@
 	"Island", 
 ]>>
 
-<!-- 发光地衣数量初始化 -->
-<<set $Argon_Moss to 0>>
-<<set $Krypton_Moss to 0>>
-<<set $Lava_Moss to 0>>
-<<set $Neon_Moss to 0>>
-<<set $Xenon_Moss to 0>>
-<<set $Helium_Moss to 0>>
+<!-- 可使用传送工具的区域 -->
+<<set setup.terraTransportationAllowed to [
+	"Orphanage", "Bedroom", "Hallways","Brothel", "Strip Club", "Ocean Breeze", "Docks Work", "Residential Drain", "Commercial Drain", "Industrial Drain","Wolf Cave", "Farm Bedroom", "Temple Quarters", "Temple Cloister",
+
+	"Barb Street", "Cliff Street", "Connudatus Street", "Danube Street", "Domus Street", "Elk Street",
+	"Harvest Street", "High Street", "Mer Street", "Nightingale Street", "Oxford Street", "Starfish Street", "Wolf Street",
+
+	"Residential alleyways", "Commercial alleyways", "Industrial alleyways", "Park",
+
+	"Flats", "Coast Path", "Bus Station", "School Front Courtyard", "School Roof", "School Rear Courtyard", "Commercial rooftops",
+	"Trash", "Temple Garden", "Manor Garden", "Manor Grounds", "Lake Shore", "Lake Firepit", "Lake Waterfall", "Forest Brook", 
+	"Lake Fishing Rock", "Lake Campsite", "Beach",
+	
+	"Forest", "Churchyard", "Moor", "Farmland", "Farm Road 1", "Farm Road 2", "Farm Road 3", "Farm Road 4", "Farm Road 5", "Farm Road 6",
+	"Bog", "Meadow",
+
+	"Wolf Cave Clearing", "Wolf Cave Plots", "Eden Clearing", "Eden Plots", "Farm Work", "Farm Fields", "Farm Woodland", "Bird Tower",
+
+	"Island", 
+]>>
 
 <!-- 计算魔光护符降低意识的变量 -->
 <<set $Magiluminescence_timer to 0>>
 
->>>>>>> Stashed changes
+<!-- 快捷键默认关闭 -->
+<<set $terraHotKeys to false>>
+
+<!-- 图鉴初始化 -->
+	<!-- 任务鱼列表 -->
+	<<set $bestiary_request_fish_list to []>>
+	<!-- 任务鱼捕捞次数 -->
+	<<set $bestiary_request_fish_catch_count to {}>>
+	<<for _i=0; _i lt _allRequestFishList.length; _i++>>
+		<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_i]]>>
+		<<set V.bestiary_request_fish_catch_count[_requestFish.name] to 0>>
+	<</for>>
+	<!-- 普通鱼列表 -->
+	<<set $bestiary_fish_list to []>>
+	<!-- 普通鱼捕捞次数 -->
+	<<set $bestiary_fish_catch_count to {}>>
+	<<for _i=0; _i lt _allFishList.length; _i++>>
+		<<set _fish to setup.terraFish[_allFishList[_i]]>>
+		<<set V.bestiary_fish_catch_count[_fish.name] to 0>>
+	<</for>>
+	<!-- 宝匣列表 -->
+	<<set $bestiary_crate_list to []>>
+	<!-- 宝匣捕捞次数 -->
+	<<set $bestiary_crate_catch_count to {}>>
+	<<for _i=0; _i lt _allCrateList.length; _i++>>
+		<<set _crate to setup.terraCrate[_allCrateList[_i]]>>
+		<<if _crate.type is "crate">>
+			<<set V.bestiary_crate_catch_count[_crate.name] to 0>>
+		<</if>>
+	<</for>>
+	<!-- 鱼饵列表 -->
+	<<set $bestiary_bait_list to []>>
+	<!-- 鱼饵获得个数 -->
+	<<set $bestiary_bait_catch_count to {}>>
+	<<for _b=0; _b lt _allBaitList.length; _b++>>
+		<<set _bait to setup.terraBait[_allBaitList[_b]]>>
+		<<set V.bestiary_bait_catch_count[_bait.name] to 0>>
+	<</for>>
+
+<!-- 宠物列表 -->
+<<set $pet_list to []>>
+<<set $bedroom_pets to {}>>
+
 <</widget>>

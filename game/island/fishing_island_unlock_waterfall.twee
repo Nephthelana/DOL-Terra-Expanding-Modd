@@ -1,0 +1,31 @@
+:: Fishing Island Unlock Waterfall 1
+你花了一些时间来到瀑布上方。这里的水流比下游要缓和，河水看起来更加清澈，河面上还漂浮着几片荷叶。河岸被岩石包围着，就像一个露天浴池。如果这个浴池的尽头不是十几米高的瀑布，你也许会愿意在这里洗澡的。<br>
+<br>
+<<if $trauma gte (($traumamax / 10) * 8)>>
+	四周安静得可怕，除了鸟鸣声什么都没有，虽然你已经检查过周边了，但你依然无法放心。<<gstress>><<stress 3>><br>
+<<else>>
+	你坐在岸边，把脚伸进冰凉的水中。四周非常安静，只有鸟鸣声环绕着你，你感到很放松。<<lstress>><<stress -3>><br>
+<</if>>
+<br>
+<<if $fishing_island_unlock.length is 0>>
+	<<link [[继续 (0:30)|Fishing Island Unlock Waterfall 2]]>><<island_pass 30>><</link>>
+<<else>>
+	<<link [[继续|Fishing Island Unlock Rocky Hillock]]>><</link>>
+<</if>>
+
+:: Fishing Island Unlock Waterfall 2
+忽然，你发现身边的一片荷叶下面冒出了气泡。你伸手推开了荷叶，发现自己正与一条鱼四目相对。它呆呆地看着你，又吐出几个气泡之后，才仿佛恍然大悟一般飞快地逃走了。<br>
+<br>
+你灵光一闪，或许可以在这里钓鱼来补充你的食物。<br>
+<br>
+于是你掏出鱼竿，尝试垂钓。三十分钟后，你几乎要睡着了，但你的鱼竿猛得一抖，驱散了你的睡意。你立刻坐直身子，一边稳住钓竿，小心收线，一边祈祷鱼线不要断掉。最终，经过几分钟的斗争，那条倒霉鱼儿失败了，落入了你的手中。<br>
+<br>
+<<link [[继续|Fishing Island Unlock General 1]]>><</link>>
+
+:: Fishing Island Unlock Waterfall
+<<set $fishing_island_unlock.pushUnique("waterfall")>>
+忽然，你发现身边的一片荷叶下面冒出了气泡。你伸手推开了荷叶，发现自己正与一条鱼四目相对。它呆呆地看着你，又吐出几个气泡之后，才仿佛恍然大悟一般飞快地逃走了。<br>
+<br>
+<span class="gold">你现在可以前往瀑布湖钓鱼了！</span><br>
+<br>
+<<link [[返回 (0:20)|Island]]>><<island_pass 20>><<set $island_fishing_place_unlock to undefined>><</link>>

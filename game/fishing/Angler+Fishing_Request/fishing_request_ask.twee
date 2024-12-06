@@ -21,12 +21,28 @@
 		].random()>><br>
 	<</if>>
 <<else>>
+	<<set $fishing_request_asked to true>>
+	<<set _requestFish to setup.terraRequestFish[$fishing_request_selection]>>
 	你向渔夫询问今天的钓鱼任务。<br>
 	<br>
-	<<fishing_request_select>>
-	<<set $fishing_request_asked to true>>
+	<<if $options.cute_angler>>
+		_requestFish.cute_angler_des
+	<<else>>
+		_requestFish.angler_des
+	<</if>><br>
+	<<icon `_requestFish.icon`>>_requestFish.cn_name(抓捕地点：_requestFish.catching_place_des)
+	<mouse class="tooltip linkBlue">(?)<span>出现"？？？"时，表明你需要更高的垂钓等级，才能解锁钓鱼点的信息</span></mouse><br>
+	<<if 
+		($artificial_fishing_pond_eden_cabin is "realized" and $fishingskill gte 700 and _requestFish.catching_place.includes("eden_clearing")) or
+		($artificial_fishing_pond_wolf_cave_clearing is "realized" and $fishingskill gte 500 and _requestFish.catching_place.includes("wolf_cave_clearing")) or
+		($artificial_fishing_pond_bird_tower_clearing is "realized" and $fishingskill gte 600 and _requestFish.catching_place.includes("bird_tower"))
+	>>
+		<br>
+		<i>听到这段对于钓鱼点的描述，你回想起先前被追杀的过程，感到不寒而栗。向导是否知道某种方式设立相同渔获的钓鱼池，而避免与之直接接触？</i><br>
+	<</if>>
 	<<if $fishing_request_fish.includes($fishing_request_selection) and $fishing_request_finished_daily isnot true>>
-		<<link [[提交任务|Fishing Request Rewarding]]>><</link>>
+		<br>
+		<<link [[提交任务|Fishing Request Rewarding]]>><</link>><br>
 	<</if>>
 <</if>>
 <br>

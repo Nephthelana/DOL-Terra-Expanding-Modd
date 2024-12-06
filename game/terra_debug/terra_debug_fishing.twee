@@ -1,0 +1,18 @@
+:: Terra Debug Fishing
+<<fishing_cast_time_remake>>
+当前钓鱼点为：$fishing_place<br>
+当前渔力：$fishing_power<br>
+<<if $fishing_harvest is undefined>>
+	什么也没钓到<br>
+<<else>>
+	渔获内部名称：$fishing_harvest.name<br>
+	图标与中文名：
+	<<if $fishing_harvest.icon isnot undefined>>
+		<<icon `$fishing_harvest.icon`>>
+	<</if>>
+	<<print $fishing_harvest.cn_name>><br>
+<</if>>
+等待咬钩时间：$fishing_cast_time<br>
+难度系数：$fishing_difficulty<br>
+<<link [[刷新|$passage]]>><<unset $fishing_harvest>><<unset $fishing_cast_time>><<unset $fishing_difficulty>><</link>><br>
+<<link [[返回|Terra Debug]]>><<unset $fishing_harvest>><<unset $fishing_cast_time>><<unset $fishing_difficulty>><</link>>

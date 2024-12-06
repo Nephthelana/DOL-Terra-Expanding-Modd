@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream
-:: Fish Island [widget]
-<<widget "fish_island">>
-		
-<<if $fishingrod isnot true>>
-	<span class="blue">如果你能有一根鱼竿的话，可以试试钓鱼来解决食物问题。但在这个鬼地方，哪会有鱼竿呢？</span><br>
-<<elseif getFishObtainedList().length lte 0>>
-	<span class="teal">你也许可以试着钓一些鱼来充饥。</span><br>
-=======
 :: Fish Island
 <<if $island_campfire_countdown is undefined>>
 	<<set $island_campfire_countdown to 0>>
@@ -27,7 +18,6 @@
 	<<icon "furniture_placed/Work_Bench_(placed).png">>
 	<<link [[查看工作台|Fish Island Work Bench]]>><</link>><br>
 <</if>>
-/*
 <<if $island_build_cooking.includes("Campfire")>>
 	<br>
 	篝火现在处于<<campfire_info>>的状态。<br>
@@ -38,6 +28,7 @@
 	<</if>>
 	<<link [[查看篝火|Fish Island Campfire]]>><</link>><br>
 <</if>>
+/*
 <<if $island_build_cooking.includes("Cooking Pot")>>
 	<<link [[查看烹饪锅|Fish Island Cooking Pot]]>><</link>><br>
 <</if>>
@@ -93,25 +84,30 @@
 你擦去落在工作台上的杂物。由于海岛缺乏工具，你在这里使用工作台只能将鱼类加工为食物。
 <<icon "furniture_placed/Work_Bench_(placed).png">><br>
 <br>
-<<if currentSkillValue('housekeeping') lt 600>>
-	你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
->>>>>>> Stashed changes
-<<else>>
-	你可以吃鱼来填饱肚子。<br>
-	<<ind>><<link [[生吃鱼|Fish Island Eat]]>><</link>><br>
-<</if>>
-<<<<<<< Updated upstream
-<<if $Sashimi gt 0>>
-	<<ind>><<link [[`吃一份生鱼片(${$Sashimi})（0:05)`|Island]]>><<island_pass 5>><<set $Sashimi -= 1>><<hunger -200>><<stress -3>><</link>><<lhunger>><<lstress>><br>
-=======
-<br>
-<span id="crafting_island_info"></span>
+<span id="crafting_island_info">
+	<<if $housekeeping lt 600>>
+		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
+	<<elseif $housekeeping lt 1000>>
+		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
+	<<else>>
+		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+	<</if>>
+	<br>
+</span>
 <span id="crafting_island_work_bench"><<crafting_island_work_bench>></span>
 <br>
 <<getouticon>><<link [[返回|Fish Island]]>><</link>>
 
 :: Fish Island Work Bench Crafting [widget]
 <<widget "crafting_island_info">>
+	<<if $housekeeping lt 600>>
+		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
+	<<elseif $housekeeping lt 1000>>
+		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
+	<<else>>
+		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+	<</if>>
+	<br>
 	_crafted_info
 <</widget>>
 
@@ -164,16 +160,9 @@
 </div>
 <<if !_recipe_avalible>>
 	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
->>>>>>> Stashed changes
 <</if>>
-<<if $island_build_cooking.includes("Work Bench")>>
-	<<icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Fish Island Work Bench]]>><</link>><br>
-<</if>>
-<<link [[调试选项：回到孤儿院卧室|Bedroom]]>><</link>>
+</span>
 
-<<<<<<< Updated upstream
-<</widget>>
-=======
 <</widget>>
 
 :: Fish Island Campfire
@@ -265,15 +254,20 @@
 :: Fish Island Campfire Roast 2
 你决定烤一条<<icon `$island_campfire_roast.icon`>><<print $island_campfire_roast.cn_name>>。<br>
 <br>
+你在篝火旁坐下，将处理好的鱼穿在一根干净的树枝上，然后举着它在篝火上烤。<br>
+<br>
 <<if $housekeepingSuccess>>
-	你在篝火旁坐下，将处理好的鱼穿在一根干净的树枝上，然后举着它在篝火上烤。<br>
-	<br>
 	油脂在炙烤之下不断渗出，滴在火焰中发出劈里啪啦的声音，香味也飘了出来。你适时地翻面，保证两面均匀受热。<br>
 	<br>
 	过了一会儿，鱼的表皮呈现出令人满意的颜色。这条鱼差不多可以吃了。<br>
 	<br>
-	外脆里嫩，鲜美可口。享用完这顿美餐后，你感到很幸福。-压力--饥饿
-	<br>
-
+	外脆里嫩，鲜美可口。享用完这顿美餐后，你感到很幸福。<<lstress>><<stress -5>><<llhunger>><<hunger -350>><br>
 <<else>>
->>>>>>> Stashed changes
+	当你发觉自己已经一段时间没有翻面的时候，已经太晚了。<br>
+	<br>
+	你赶紧把鱼翻了过来，却发现那一面已经完全焦了，而这一面甚至还是生的！<br>
+	<br>
+	看来你还需要学着把控火候。<<gstress>><<stress 5>><<lhunger>><<hunger -250>><<housekeeping 1 600>><<ghousekeeping 600>><br>
+<</if>>
+<br>
+<<link [[继续|Fish Island Campfire]]>><<unset $island_campfire_roast>><</link>>

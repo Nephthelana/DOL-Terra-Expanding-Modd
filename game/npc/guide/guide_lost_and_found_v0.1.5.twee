@@ -1,0 +1,30 @@
+:: Guide Lost And Found v0.1.5
+<<if $guide_lost_and_found_015 is undefined>>
+	<<set $pet_list.pushUnique("Royal_Delight")>>
+	<<if $fishing_request_fish is undefined>>
+		<<set $fishing_request_fish to []>>
+	<</if>>
+	<<if $angler_furniture_obtained is undefined>>
+		<<set $angler_furniture_obtained to []>>
+	<</if>>
+	<<set _requestFishObtained to getRequestFishObtained()>>
+	<<for _t to 0; _t lt _requestFishObtained.length; _t++>>
+		<<set _requestFish to setup.terraRequestFish[_requestFishObtained[_t]]>>
+		<<if _requestFish.obtained>>
+			<<set $fishing_request_fish.pushUnique(_requestFish.name)>>
+			<<set _requestFish.obtained to undefined>>
+		<</if>>
+	<</for>>
+	<<set _anglerFurnitureObtained to getAnglerFurnitureObtained()>>
+	<<for _t to 0; _t lt _anglerFurnitureObtained.length; _t++>>
+		<<set _anglerFurniture to setup.terraAnglerFurniture[_anglerFurnitureObtained[_t]]>>
+		<<if _anglerFurniture.obtained>>
+			<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
+		<</if>>
+	<</for>>
+	你取回了丢失的任务鱼和渔夫任务奖励的家具。<br>
+<<else>>
+	"你已经取回了丢失的物品。"<br>
+<</if>>
+<br>
+<<link [[返回|Guide Room]]>><<set $guide_lost_and_found_015 to true>><</link>>

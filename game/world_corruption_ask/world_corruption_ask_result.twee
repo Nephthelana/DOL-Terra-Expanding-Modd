@@ -30,7 +30,7 @@
 <<endevent>>
 <<link [[继续|Temple Jordan]]>><</link>>
 
-<<if $world_corruption_soft lte 0>>
+<<if $world_corruption_soft lte 0 and Time.days gt 7>>
 	<<earnFeat "And Good Riddance ...?">>
 <</if>>
 <<if $world_corruption_soft gte 100>>

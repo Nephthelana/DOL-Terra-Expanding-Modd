@@ -4,48 +4,13 @@
 <<switch $options.fishingrod_held>>
 	<<case "Golden_Fishing_Rod">><<icon "fishing/fishing_pole/Golden_Fishing_Rod.png">>
 	<<case "Hotline_Fishing_Hook">><<icon "fishing/fishing_pole/Hotline_Fishing_Hook.png">>
+	<<case "Sitting_Ducks_Fishing_Pole">><<icon "fishing/fishing_pole/Sitting_Ducks_Fishing_Pole.png">>
 	<<case "Fiberglass_Fishing_Pole">><<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>
 	<<case "Scarab_Fishing_Rod">><<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>
+	<<case "Slurper_Pole">><<icon "fishing/fishing_pole/Slurper_Pole.png">>
 	<<case "Chum_Caster">><<icon "fishing/fishing_pole/Chum_Caster.png">>
 	<<case "Reinforced_Fishing_Pole">><<icon "fishing/fishing_pole/Reinforced_Fishing_Pole.png">>
 	<<case "Wood_Fishing_Pole">><<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
 <</switch>>
-
-<</widget>>
-
-<<widget "fishingrod_bobber">>
-
-<<<<<<< Updated upstream
-<<if $terra_accessories_slots.includes("Glowing_Fishing_Bobber")>>
-	<<icon "fishing/bobber/Glowing_Fishing_Bobber.png">>
-<<elseif $terra_accessories_slots.includes("Fishing_Bobber")>>
-	<<icon "fishing/bobber/Fishing_Bobber.png">>
-=======
-<!-- 判断是否装备着钓鱼浮标及其升级物 -->
-<<set $_accessory_Fishing_Bobber to false>>
-<<for _i to 0; _i lt $terra_accessories_slots.length; _i++>>
-	<<if setup.terraAccessories[$terra_accessories_slots[_i]].type is "bobber">>
-		<<set $_accessory_Fishing_Bobber to true>>
-		<<break>>
-	<</if>>
-<</for>>
-<<if $_accessory_Fishing_Bobber>>
-	<<if $terra_accessories_slots[_i] is "Helium_Moss_Fishing_Bobber">>
-		<<icon "fishing/bobber/Helium_Moss_Fishing_Bobber.gif">>
-	<<else>>
-		<img @src="'img/misc/icon/fishing/bobber/' + $terra_accessories_slots[_i] + '.png'">
-	<</if>>
->>>>>>> Stashed changes
-<<else>>
-	<<switch $options.fishingrod_held>>
-		<<case "Golden_Fishing_Rod">><<icon "fishing/bobber/Bobber_(Golden).png">>
-		<<case "Hotline_Fishing_Hook">><<icon "fishing/bobber/Bobber_(Hotlines).png">>
-		<<case "Fiberglass_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Fiberglass).png">>
-		<<case "Scarab_Fishing_Rod">><<icon "fishing/bobber/Bobber_(Scarab).png">>
-		<<case "Chum_Caster">><<icon "fishing/bobber/Bobber_(Bloody).png">>
-		<<case "Reinforced_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Reinforced).png">>
-		<<case "Wood_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Wooden).png">>
-	<</switch>>
-<</if>>
 
 <</widget>>

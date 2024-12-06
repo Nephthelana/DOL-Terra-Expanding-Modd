@@ -18,7 +18,7 @@
 		<<if $fishing_request_finished_daily isnot true>>
 			<<link [[换个任务|RPS Request]]>><</link>><br>
 		<<else>>
-			<span class="blue">你今天已经完成了任务。</span><br>
+			<span class="blue">你今天已经完成了渔夫的钓鱼任务，不能更换任务。</span><br>
 		<</if>>
 	<<case "Angler">>
 		<<set $PRS_lose_count += 1>>
@@ -78,11 +78,20 @@
 	<<set _fishing_reward_bait += 1>>
 <</if>>
 <<if random(1,20) is 1>>
-	<<icon "fishing/bait/Master_Bait.png">>大师诱饵<<set $Master_Bait += _fishing_reward_bait>>
+	<<set $Master_Bait += _fishing_reward_bait>>
+	<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
+	<<set $bestiary_bait_catch_count.Master_Bait += _fishing_reward_bait>>
+	<<icon "fishing/bait/Master_Bait.png">>大师诱饵
 <<elseif random(1,10) is 1>>
-	<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵<<set $Journeyman_Bait += _fishing_reward_bait>>
+	<<set $Journeyman_Bait += _fishing_reward_bait>>
+	<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
+	<<set $bestiary_bait_catch_count.Journeyman_Bait += _fishing_reward_bait>>
+	<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵
 <<else>>
-	<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵<<set $Apprentice_Bait += _fishing_reward_bait>>
+	<<set $Apprentice_Bait += _fishing_reward_bait>>
+	<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
+	<<set $bestiary_bait_catch_count.Apprentice_Bait += _fishing_reward_bait>>
+	<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵
 <</if>>(_fishing_reward_bait)。<br>
 <br>
 <<link [[返回|Fishing Angler Cabin]]>><</link>>

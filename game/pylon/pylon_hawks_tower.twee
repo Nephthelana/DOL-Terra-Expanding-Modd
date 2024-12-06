@@ -1,26 +1,31 @@
-/*晶塔鹰塔*/
 :: Pylon Hawks Tower [widget]
 <<widget "pylon_hawks_tower">>
-
-<br>
-<<if $historytrait gte 2 and $pylon_museum_asked isnot true and $syndromebird is 1>>
-	<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span><br>
-	<br>
-<</if>>
-<<if $pylon_museum_asked and $syndromebird is 1>>
-	<<if !$pylon_collected.includes("Hawks Tower")>>
-		为了激活这个晶塔，你需要找到那块水晶。
-		<<if C.npc["Great Hawk"].love gte 90>>
-			<span class="teal">巨鹰在栖木上歌唱时，也许你会被邀请去一次约会。</span>
+	<<if $historytrait gte 2>>
+		<<if $pylon_museum_asked>>
+			<<if $pylon_collected.includes("Hawks Tower")>>
+				这块充满魔力的水晶可以将你传送至别的地方。
+				<<if $bird.state is "hunting">>
+					<<getChildrenIds `{location:"tower", eggTimer:undefined}` "both">>
+					<<if
+						(hasBabyHawkModInfo() and Object.values(_childrenIds).find(childId => getChildDays(childId) gt 89 and V.children[childId].localVariables.activity isnot "hunting" and V.children[childId].localVariables.growHintImmature is undefined))
+						or
+						(!hasBabyHawkModInfo() and Object.values(_childrenIds).find(childId => getChildDays(childId) gt 89))
+					>>
+						现在巨鹰不在鹰塔，<span class="teal">但你们家中有已经成长的小鹰。</span><br>
+						<<icon "pylon/Sunken_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "hawkstower">><</link>>
+					<<else>>
+						<span class="blue">但是现在巨鹰不在鹰塔，你无法使用它。</span>
+					<</if>>
+				<<else>>
+					<br>
+					<<icon "pylon/Sunken_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "hawkstower">><</link>>
+				<</if>>
+			<<else>>
+				为了激活这个晶塔，你需要找到那块水晶。<<print $syndromebird is undefined ? "<span class='purple'>但你现在无法完全信任这只鸟。</span>" : C.npc["Great Hawk"].love gte 90 ? "<span class='teal'>巨鹰在栖木上歌唱时，也许你会被邀请去一次约会。</span>" : "<span class='blue'>如果巨鹰对你有足够的好感，你将会得到提示。</span>">>
+			<</if>>
 		<<else>>
-			<span class="blue">如果巨鹰对你有足够的好感，你将会得到提示。</span>
-		<</if>>
-	<<else>>
-		这块充满魔力的水晶可以将你传送至别的地方。
+			<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span><br>
+		<</if>><br>
 		<br>
-		<<icon "pylon/Sunken_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "hawkstower">><</link>>
 	<</if>>
-	<br>
-<</if>>
-
 <</widget>>
