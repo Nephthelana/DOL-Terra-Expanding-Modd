@@ -18,7 +18,9 @@
 							</div>
 						</div>
 						<hr>
-						_tool.use
+						<div class="terraLinks">
+							_tool.use
+						</div>
 					</div>
 				<</capture>>
 			<</for>>

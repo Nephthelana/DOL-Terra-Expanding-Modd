@@ -1,5 +1,5 @@
 :: Fishing Angler Intro
-/* 初见渔夫 */
+<!-- 初见渔夫 -->
 <<npc Angler>><<person1>>
 <<set $fishing_anglerintro to true>>
 <<set C.npc.Angler.init to 1>>

@@ -1,7 +1,7 @@
 :: Guide Mod Hint Pre
 <<set $guide_mod_hint_pre_intro to true>>
 <<if $guide_mod_hint_pre.length lt 2>>
-	"哦，你需要一些关于泰拉瑞亚拓展模组的提示是么？正如我们最初见面时所说，我需要研究几件关键物品，来适应这个模组对我先前已经掌握的知识做出的改动。<br>
+	"哦，你需要一些关于<span class="terraMod">泰拉瑞亚拓展模组</span>的提示是么？正如我们最初见面时所说，我需要研究几件关键物品，来适应这个模组对我先前已经掌握的知识做出的改动。<br>
 	<br>
 	"首先是一袋<span class="green">净化粉</span>，我很好奇它在这个世界里还能否发挥预期的作用。你好奇过神殿的誓言检查是如何实现的吗？我相信司祭那里有我需要的东西。<br>
 	<br>
@@ -11,10 +11,10 @@
 	<br>
 	<span class="gold">向导的需求被添加进了日志中。</span><br>
 	<br>
-	<<if $Purification_Powder>>
+	<<if $Purification_Powder and !$guide_mod_hint_pre.includes("Purification Powder")>>
 		<<link [[提交并询问净化粉|Guide Mod Hint Purification Powder Guide]]>><</link>><br>
 	<</if>>
-	<<if $Copper_Shortsword>>
+	<<if $Copper_Shortsword and !$guide_mod_hint_pre.includes("Copper Shortsword")>>
 		<<link [[提交并询问铜短剑|Guide Mod Hint Copper Shortsword Guide]]>><</link>><br>
 	<</if>>
 <<else>>

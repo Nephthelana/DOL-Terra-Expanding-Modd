@@ -10,15 +10,17 @@
 			<hr>
 			<span class="gold">£1000</span>
 			<hr>
-			<<if $orphanage_loft_crafting_station.includes("Tinkerers_Workshop")>>
-				<span class="black">已有</span>
-			<<elseif $money lt 100000>>
-				<mouse class="tooltip">/<span>余额不足</span></mouse>
-			<<else>>
-				<<link [[购买|Goblin Tinkerer Workshop]]>>
-					<<set $money -= 100000>>
-				<</link>>
-			<</if>>
+			<div class="terraLinks">
+				<<if $orphanage_loft_crafting_station.includes("Tinkerers_Workshop")>>
+					<span class="black">已有</span>
+				<<elseif $money lt 100000>>
+					<mouse class="tooltip">/<span>余额不足</span></mouse>
+				<<else>>
+					<<link [[购买|Goblin Tinkerer Workshop]]>>
+						<<set $money -= 100000>>
+					<</link>>
+				<</if>>
+			</div>
 		</div>
 		<div class="item">
 			<div class="itemTerraGeneral" @tooltip="`保暖药水<br><br>▶起到保暖效果，持续9小时<br><br>你现在有保温药水(<span class='green'>$Warmth_Potion</span>)`">
@@ -27,13 +29,15 @@
 			<hr>
 			<span class="gold">£500</span>
 			<hr>
-			<<if $daily.Warmth_Potion_purchase>>
-				售罄
-			<<elseif $money lt 50000>>
-				<mouse class="tooltip">/<span>余额不足</span></mouse>
-			<<else>>
-				<<link [[购买|Goblin Tinkerer Warmth Potion]]>><<set $money -= 50000>><</link>>
-			<</if>>
+			<div class="terraLinks">
+				<<if $daily.Warmth_Potion_purchase>>
+					售罄
+				<<elseif $money lt 50000>>
+					<mouse class="tooltip">/<span>余额不足</span></mouse>
+				<<else>>
+					<<link [[购买|Goblin Tinkerer Warmth Potion]]>><<set $money -= 50000>><</link>>
+				<</if>>
+			</div>
 		</div>
 	</div>
 </span>

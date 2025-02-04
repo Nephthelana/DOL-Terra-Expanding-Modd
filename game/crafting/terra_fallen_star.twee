@@ -1,6 +1,6 @@
 :: Terra Header [widget]
 <<widget "terra_header">>
-	<<if $passage isnot "Start">>
+	<<if !["Start","Start2"].includes($passage)>>
 		<<if $debug is 1>>
 			[DEBUG模式]坠落之星调试信息<br>
 			<span id="fallenStarDebugInfo">
@@ -49,6 +49,8 @@
 
 :: Terra Footer [widget]
 <<widget "terra_temperature">>
+
+<<if !["Start","Start2"].includes($passage)>>
 	<!-- 外界温度，IF：influencing factor，影响因素 -->
 	<<set _terraTemperatureIncreaseIF to "">>
 	<<set _terraTemperatureIncreaseIF_amount to 0>>
@@ -67,7 +69,7 @@
 	<!-- 保暖药水效果在每个页面尝试将体温设定为37度 -->
 	<<if $Warmth_Potion_countdown gt 0>>
 		<<set _terraTemperatureIncreaseIF += "保暖药水保护你免受低体温的影响。<br>">>
-		<<set $player.bodyTemperature to 37>>
+		<<set $player.bodyTemperature to $player.bodyTemperature lt 37 ? 37 : $player.bodyTemperature>>
 	<</if>>
 	<!-- 暴雪瓶降低外界温度 -->
 	<<if $terra_accessories_slots.includes("Blizzard_in_a_Bottle") and $player.bodyTemperature gt 39>>
@@ -98,5 +100,6 @@
 	<<if $debug isnot 1>>
 		<<unset $options.terra_halloween>>
 	<</if>>
+<</if>>
 	
 <</widget>>

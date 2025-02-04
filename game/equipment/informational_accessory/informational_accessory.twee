@@ -1,0 +1,194 @@
+:: Informational Accessory Content [widget]
+<<widget "informationalAccessoryContent">>
+	<!-- 初始化信息饰品列表 -->
+	<<set $informationalAccessoryList to $informationalAccessoryList is undefined ? [] : $informationalAccessoryList>>
+	<<set $informationalAccessoryActivating to $informationalAccessoryActivating is undefined ? {} : $informationalAccessoryActivating>>
+	<<for _a range Object.keys(setup.terraAccessories).filter(a => setup.terraAccessories[a].type === "informational")>>
+		<<set _accessory to setup.terraAccessories[_a]>>
+		<<if setup.terraAccessories[_a].upgrades.some(a => V[a])>>
+			<<set $informationalAccessoryList.pushUnique(_accessory.name)>>
+			<<set $informationalAccessoryActivating[_accessory.name] to $informationalAccessoryActivating[_accessory.name] or true>>
+		<<else>>
+			<<set $informationalAccessoryList.delete(_accessory.name)>>
+			<<set $informationalAccessoryActivating[_accessory.name] to undefined>>
+		<</if>>
+	<</for>>
+	<!-- 显示信息饰品列表 -->
+	<div id="informationalAccessorySetting">
+		<<if $informationalAccessoryList.length gte 2>>
+			<<link "调整信息饰品列表">>
+				<<replace #informationalAccessorySetting>>
+					<<informationalAccessorySetting>>
+				<</replace>>
+			<</link>>
+		<</if>>
+	</div>
+	<div id="informationalAccessoryInfo">
+		<<informationalAccessoryInfo>>
+	</div>
+<</widget>>
+
+<<widget "informationalAccessorySetting">>
+	<<run initializeTooltips()>>
+	<<link "关闭信息饰品列表">>
+		<<replace #informationalAccessorySetting>>
+			<<link "调整信息饰品列表">>
+				<<replace #informationalAccessorySetting>>
+					<<informationalAccessorySetting>>
+				<</replace>>
+			<</link>>
+		<</replace>>
+	<</link>>
+	<div class="itemTerra">
+		<<for _aaa=0; _aaa lt $informationalAccessoryList.length; _aaa++>>
+			<<set _accessory to setup.terraAccessories[$informationalAccessoryList[_aaa]]>>
+			<<capture _accessory>>
+				<div class="item">
+					<div class="itemTerraGeneral" @tooltip="`${_accessory.cn_name}<br><br>▶${_accessory.des}`">
+						<<if $informationalAccessoryActivating[_accessory.name]>>
+							<<icon `_accessory.icon`>>
+						<<else>>
+							<span class="terraFading">
+								<<icon `_accessory.icon`>>
+							</span>
+						<</if>>
+					</div>
+					<hr>
+					<<link "<<print $informationalAccessoryActivating[_accessory.name] ? '关闭' : '激活'>>">>
+						<<set $informationalAccessoryActivating[_accessory.name] to !$informationalAccessoryActivating[_accessory.name]>>
+						<<replace #informationalAccessorySetting>>
+							<<informationalAccessorySetting>>
+						<</replace>>
+						<<replace #informationalAccessoryInfo>>
+							<<informationalAccessoryInfo>>
+						<</replace>>
+					<</link>>
+					<hr>
+					<<if _aaa is 0>>
+						/
+					<<else>>
+						<<capture _aaa>>
+							<<link "⬅">>
+								<<set _temp to $informationalAccessoryList[_aaa-1]>>
+								<<set $informationalAccessoryList[_aaa-1] to $informationalAccessoryList[_aaa]>>
+								<<set $informationalAccessoryList[_aaa] to _temp>>
+								<<replace #informationalAccessorySetting>>
+									<<informationalAccessorySetting>>
+								<</replace>>
+								<<replace #informationalAccessoryInfo>>
+									<<informationalAccessoryInfo>>
+								<</replace>>
+							<</link>>
+						<</capture>>
+					<</if>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+<</widget>>
+
+<<widget "informationalAccessoryInfo">>
+	<<for _aa range $informationalAccessoryList>>
+		<<if $informationalAccessoryActivating[_aa]>>
+			<<set _accessory_activated to setup.terraAccessories[_aa]>>
+			<<icon `_accessory_activated.icon`>><<informationalAccessoryDetail _accessory_activated.name>>
+			<br>
+		<</if>>
+	<</for>>
+<</widget>>
+
+<<widget "informationalAccessoryDetail">>
+	<<switch _args[0]>>
+		<<case "Fishermans_Pocket_Guide">>
+			<<if $Bait is "Truffle_Worm">>
+				警告！<br>
+			<<else>>
+				<<run getFishingPower()>>
+				渔力：<<print Math.round($fishing_power)>><br>
+			<</if>>
+		<<case "Sextant">>
+			当前月相：
+			<<if Time.isBloodMoon()>>
+				<span class="red">血月</span>(+10%渔力)
+			<<elseif Time.date.moonPhaseFraction is 0>>
+				新月(-10%渔力)
+			<<elseif Time.date.moonPhaseFraction gt 0 and Time.date.moonPhaseFraction lt 0.25>>
+				娥眉月(-5%渔力)
+			<<elseif Time.date.moonPhaseFraction is 0.25>>
+				上弦月
+			<<elseif Time.date.moonPhaseFraction gt 0.25 and Time.date.moonPhaseFraction lt 0.5>>
+				盈凸月(+5%渔力)
+			<<elseif Time.date.moonPhaseFraction is 0.5>>
+				满月(+10%渔力)
+			<<elseif Time.date.moonPhaseFraction gt 0.5 and Time.date.moonPhaseFraction lt 0.75>>
+				亏凸月(+5%渔力)
+			<<elseif Time.date.moonPhaseFraction is 0.75>>
+				下弦月
+			<<elseif Time.date.moonPhaseFraction gt 0.75 and Time.date.moonPhaseFraction lt 1>>
+				残月(-5%渔力)
+			<<else>>
+				额哦，显示月相时好像出了些问题，建议问问模组作者~<br>
+				Someone tell Nephthelana there's a problem with his mod.
+			<</if>><br>
+		<<case "Weather_Radio">>
+			<<set $weather_forecast_hours to $weather_forecast_hours or 6>>
+			当前天气：
+			<<switch Weather.name>>
+				<<case "clear">><<icon "clear_icon.png">>晴天
+				<<case "lightClouds">><<icon "lightClouds_icon.png">>有云
+				<<case "heavyClouds">><<icon "heavyClouds_icon.png">>多云
+				<<case "lightPrecipitation">><<icon "lightPrecipitation_icon.png">>小雨
+				<<case "heavyPrecipitation">><<icon "heavyPrecipitation_icon.png">>大雨
+			<</switch>>｜
+			<span id="terraWeatherForcast">
+				<<link "查看天气预报">>
+					<<replace #terraWeatherForcast>>
+						<<terraWeatherForcast>>
+					<</replace>>
+				<</link>>｜<br>
+			</span>
+		<<case "Gold_Watch">>
+			<span id="alarmNext">
+				<<alarmNext>>
+			</span>
+			｜
+			<span id="terraAlarmListPreviewButton">
+				<<terraAlarmListPreviewButton>>
+			</span>
+			｜
+			<<link "设定新闹钟">>
+				<<set _newAlarm to {}>>
+				<<replace #terraAlarmListPreviewButton>>
+					<<terraAlarmListPreviewButton>>
+				<</replace>>
+				<<replace #alarmInfo>>
+					<<terraAlarmSetting>>
+				<</replace>>
+			<</link>>｜<br>
+			<span id="alarmInfo"></span>
+		<<case "Compass">>
+			<<if ["Forest","Moor","Sea"].includes($passage)>>
+				<<switch $passage>>
+					<<case "Forest">>
+						当前位置：森林（$forest/100）
+					<<case "Moor">>
+						当前位置：荒原（$moor/100）
+					<<case "Sea">>
+						当前位置：海洋（$sea/100）
+				<</switch>>
+			<<else>>
+				<mouse class="tooltip"><span class="black">当前不可用</span><span>仅在森林、荒原、海洋可用</span></mouse>
+			<</if>><br>
+		<<case "Depth_Meter">>
+			<<if ["Bog","Beach Cave"].includes($passage)>>
+				<<switch $passage>>
+					<<case "Bog">>
+						当前位置：沼泽（与荒原的距离：$bogdepth/4）
+					<<case "Beach Cave">>
+						当前位置：走私者洞穴（$cave/100）
+				<</switch>>
+			<<else>>
+				<mouse class="tooltip"><span class="black">当前不可用</span><span>仅在沼泽、走私者洞穴可用</span></mouse>
+			<</if>><br>
+	<</switch>>
+<</widget>>

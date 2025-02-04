@@ -4,7 +4,7 @@
 <<if $options.cute_angler>>
 	<<earnFeat "Blue Sunflower">>
 <</if>>
-/* 小屋介绍 */
+<!-- 小屋介绍 -->
 你走进<<he>>的小屋，
 <<if $options.cute_angler>>
 	<<print [
@@ -20,7 +20,7 @@
 	].random()>><br>
 <</if>>
 <br>
-/* 初次见面获得鱼竿 */
+<!-- 初次见面获得鱼竿 -->
 <<if $fishingrod isnot true>>
 	<<set $fishingrod to true>>
 	<<set $Wood_Fishing_Pole to true>>
@@ -45,16 +45,16 @@
 		"忘了告诉你，我<span class="gold">每天早上6点</span>后也许就会想要别的鱼了，所以你最好早早把它交给我！"<br>
 	<</if>>
 	<br>
-	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
+	<<mysteryicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
 	<br>
 	<<getouticon>><<link [[离开|Beach]]>><</link>>
 	<<endevent>>
 	<<exitAll>>
 <</if>>
-/* 渔夫"打招呼" */
+<!-- 渔夫"打招呼" -->
 <<if $fishingrod>>
 	<<if random(1,3) is 1>>
-		/* 多云时 */
+		<!-- 多云时 -->
 		<<if Weather.name is "heavyClouds">>
 			<<if $options.cute_angler>>
 				<<print [
@@ -67,8 +67,8 @@
 					`"起风时通常很适合钓鱼，但这风太大了！鱼钩差点钩住了我的眼睛！"`
 				].random()>>
 			<</if>><br>
-		/* 下雨/雪时 */
-		<<elseif Weather.name is "lightPrecipitation" or Weather.name is "heavyPrecipitation">>
+		<!-- 下雨/雪时 -->
+		<<elseif ["lightPrecipitation","heavyPrecipitation"].includes(Weather.name)>>
 			<<if Weather.precipitation is "rain">>
 				<<if $options.cute_angler>>
 					<<print [
@@ -92,7 +92,7 @@
 					].random()>>
 				<</if>>
 			<</if>><br>
-		/* 雷暴时 */
+		<!-- 雷暴时(游戏暂未实装) -->
 		<<elseif Weather.name is "thunderStorm">>
 			<<if $options.cute_angler>>
 				<<print [
@@ -105,7 +105,7 @@
 					`"雷雨交加时最适合钓鱼！但也最危险！所以我才派你帮我去！"`
 				].random()>>
 			<</if>><br>
-		/* 显示任务完成次数统计 */
+		<!-- 显示任务完成次数统计 -->
 		<<elseif $fishing_requests_finished_count gte 1 and random(1,3) lte 2>>
 			<<if $options.cute_angler>>
 				<<print [
@@ -129,7 +129,7 @@
 				].random()>>
 			<</if>><br>
 		<</if>>
-	/* 还未完成当日钓鱼任务 */
+	<!-- 还未完成当日钓鱼任务 -->
 	<<elseif $fishing_request_finished_daily isnot true>>
 		<<if $exposed gte 2>>
 			<<if $options.cute_angler>>
@@ -159,7 +159,7 @@
 					`"你知道吗，在血月期间，水中潜伏着超级可怕的东西！你应该去试试！我在这里帮你把风！"`
 				].random()>>
 			<</if>><br>
-		<<elseif (Weather.name is "lightPrecipitation" or Weather.name is "heavyPrecipitation") and Weather.precipitation is "snow">>
+		<<elseif ["lightPrecipitation","heavyPrecipitation"].includes(Weather.name) and Weather.precipitation is "snow">>
 			<<if $options.cute_angler>>
 				<<print [
 					`"快进来，外面好冷！今天可别为了帮我钓鱼而冻着了..."`,
@@ -176,19 +176,19 @@
 				<<print [
 					`"嘿！呃...你有空吗，我想请你帮个忙...噢！如果你忙的话,等下次也可以..."`,
 					`"嗨...我有个请求，能请你帮帮我么？"`,
-					`"我觉得你是全 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 最可靠的人！"`,
+					`"我觉得你是全 <<print $saveName is "" ? $saveId : $saveName>> 最可靠的人！"`,
 					`"虽然不想再次麻烦你，但是这种鱼只有你能逮到，所以...拜托了！"`
 				].random()>>
 			<<else>>	
 				<<print [
 					`"嘿！我有一个活儿给你。不要以为你能拒绝，怎么都不行！"`,
 					`"我想要一条鱼，你去给我弄一条来！快问我细节！"`,
-					`"我想让你正式成为 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 的跑腿官！"`,
+					`"我想让你正式成为 <<print $saveName is "" ? $saveId : $saveName>> 的跑腿官！"`,
 					`"嘿！你就是我一直在找的牺...我是说称职的钓鱼大师！"`
 				].random()>>
 			<</if>><br>
 		<</if>>
-	/* 已经完成当日钓鱼任务 */
+	<!-- 已经完成当日钓鱼任务 -->
 	<<else>>
 		<<if $exposed gte 2>>
 			<<if $options.cute_angler>>
@@ -207,34 +207,34 @@
 				<<print [
 					`"真令人失望！有些鱼可能在我出生之前就灭绝了，为什么我不能早点出生呢！"`,
 					`"哦！是你啊!光顾着鱼一时间没注意到你，嘿嘿，不好意思。"`,
-					`"全 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 一个厨师都没有，所以我只能自己煮鱼...所以其实我厨艺挺好的，有机会让你尝尝。"`,
+					`"全 <<print $saveName is "" ? $saveId : $saveName>> 一个厨师都没有，所以我只能自己煮鱼...所以其实我厨艺挺好的，有机会让你尝尝。"`,
 					`"我没有妈妈，也没有爸爸，但是我有你陪我...我是说有你帮我抓的鱼陪我！这就够了！"`,
 					`"嘿，你知道用舌头去碰冰块会发生什么吗？它会粘在上面！你可千万别这么干，或者你要这么干之前把我喊上，我给你准备热水！"`,
 					`"你听说哪种鱼会叫吗？啊不是，我不知道哪里有，也没想找你帮忙抓，我只是想知道你有没有听说过类似的传闻，我还挺希望有的。"`,
-					`"去探险的时候当心点！虽然不知道是谁设置的，但是 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 的各个地方都有许多机关...我不希望参加你的葬礼。"`,
-					`"<<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 到处都是各种稀奇古怪的鱼，我最大的愿望就是把它们全部收集齐！然后和你一起...呃...我是说我一个人！开一家'稀奇古怪鱼馆'给全世界的人参观！"`
+					`"去探险的时候当心点！虽然不知道是谁设置的，但是 <<print $saveName is "" ? $saveId : $saveName>> 的各个地方都有许多机关...我不希望参加你的葬礼。"`,
+					`"<<print $saveName is "" ? $saveId : $saveName>> 到处都是各种稀奇古怪的鱼，我最大的愿望就是把它们全部收集齐！然后和你一起...呃...我是说我一个人！开一家'稀奇古怪鱼馆'给全世界的人参观！"`
 				].random()>>
 			<<else>>
 				<<print [
 					`"太可气了！有些鱼可能在我出生之前就灭绝了，真不公平！"`,
 					`"什……么？！难道你没看见我在收钓鱼线吗？？"`,
-					`"整个 <<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 中都没有厨师，所以我不得不自己烹鱼！"`,
+					`"整个 <<print $saveName is "" ? $saveId : $saveName>> 中都没有厨师，所以我不得不自己烹鱼！"`,
 					`"我没爹没娘，但我有很多鱼！这也差不多了！"`,
 					`"听听小孩的忠告吧，永远不要用舌头碰冰块！等一下，就当我没说，我就想看你这样做！"`,
 					`"听说过会叫的鱼吗？！我没听说过，只是想知道你听说过没！"`,
 					`"嘿！当心！我设了许多陷阱，用来实施史上最大的恶作剧！没人会发觉！你敢告诉别人试试！"`,
-					`"<<if $saveName isnot "">>$saveName<<else>>$saveId<</if>> 到处都是各种稀奇古怪的鱼！"`
+					`"<<print $saveName is "" ? $saveId : $saveName>> 到处都是各种稀奇古怪的鱼！"`
 				].random()>>
 			<</if>><br>
 		<</if>>
 	<</if>>
 	<br>
-	/* 放置渔夫任务奖励家具 */
+	<!-- 放置渔夫任务奖励家具 -->
 	<<if $furniture_painting_angler_cabin isnot undefined and $furniture_painting_angler_cabin isnot "none">>
 		<<icon `setup.terraAnglerFurniture[$furniture_painting_angler_cabin].placed_icon`>><br>
 		<br>
 	<</if>>
-	<<askicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
+	<<mysteryicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
 	<<if $angler_furniture_obtained.length gte 1 or $debug is 1>>
 		<<if $furniture_painting_angler_cabin is undefined or $furniture_painting_angler_cabin is "none">>
 			<<ind>><<link [[放一个家具|Furniture Painting Angler Cabin Switch]]>><</link>>
@@ -245,7 +245,7 @@
 	<<if $Angler_RPS_daily>>
 		<<ind>><span class="blue">你今天和渔夫猜过拳了。</span><br>
 	<<else>>
-		<<ind>><<link [[猜拳(测试功能)|RPS Start]]>><</link>><br>
+		<<icon "RPS/RPS.gif">><<link [[猜拳(测试功能)|RPS Start]]>><</link>><br>
 	<</if>>
 	<<getouticon>><<link [[离开|Beach]]>><</link>><br>
 <</if>>

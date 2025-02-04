@@ -1,20 +1,19 @@
 :: Terra Debug Crates
 <<run initializeTooltips()>>
 请选择获得的宝匣。<br>
-<<set _allCrateList to getAllCrateList()>>
 <span class="no-numberify">
 	<div class="itemTerra">
-		<<for _t to 0; _t lt _allCrateList.length; _t++>>
-			<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
+		<<for _c range Object.keys(setup.terraCrate)>>
+			<<set _crate to setup.terraCrate[_c]>>
 			<<capture _crate>>
 				<div class="item">
-					<div @tooltip="`${_crate.cn_name}`">
-						<div class="itemTerraGeneral">
-							<<icon `_crate.icon`>>
-						</div>
+					<div class="itemTerraGeneral" @tooltip="`${_crate.cn_name}`">
+						<<icon `_crate.icon`>>
 					</div>
 					<hr>
-					<<link [[来5个|Terra Debug Crates]]>><<set V[_crate.name] += 5>><</link>>
+					<div class="terraLinks">
+						<<link [[`+5`|Terra Debug Crates]]>><<set V[_crate.name] += 5>><</link>>
+					</div>
 				</div>
 			<</capture>>
 		<</for>>

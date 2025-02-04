@@ -6,8 +6,8 @@
 <<if _AnglerFurnitureObtainedList.length gt 0>>
 	<span class="no-numberify">
 		<div class="itemTerra_Tool">
-			<<for _t to 0; _t lt _AnglerFurnitureObtainedList.length; _t++>>
-				<<set _anglerFurniture to setup.terraAnglerFurniture[_AnglerFurnitureObtainedList[_t]]>>
+			<<for _t range _AnglerFurnitureObtainedList>>
+				<<set _anglerFurniture to setup.terraAnglerFurniture[_t]>>
 				<<capture _anglerFurniture>>
 					<<set _tooltip to `${_anglerFurniture.cn_name}`>>
 					<div class="item">

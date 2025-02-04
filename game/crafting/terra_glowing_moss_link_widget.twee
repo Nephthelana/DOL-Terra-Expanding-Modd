@@ -4,6 +4,7 @@
 		<<case "Park">>
 			<<if $daily.Krypton_Moss isnot true>>
 				这里除了白色地衣外，你发现还有一些发光苔藓可以采集。
+				<br>
 				<<icon "material/Krypton_Moss.png">><<link [[采集发光苔藓|Terra Krypton Moss]]>><</link>><<terraHint>><br>
 			<<else>>
 				<span class="blue">你今天采集过这里的苔藓了。</span><br>
@@ -11,6 +12,7 @@
 		<<case "Temple">>
 			<<if $daily.Argon_Moss isnot true>>
 				这里除了粉红色地衣外，你发现还有一些发光苔藓可以采集。
+				<br>
 				<<icon "material/Argon_Moss.png">><<link [[采集发光苔藓|Terra Argon Moss]]>><</link>><<terraHint>><br>
 			<<else>>
 				<span class="blue">你今天采集过这里的苔藓了。</span><br>
@@ -18,6 +20,7 @@
 		<<case "Drain Exit">>
 			<<if $daily.Xenon_Moss isnot true>>
 				这里除了蓝紫色地衣外，你发现还有一些发光苔藓可以采集。
+				<br>
 				<<icon "material/Xenon_Moss.png">><<link [[采集发光苔藓|Terra Xenon Moss]]>><</link>><<terraHint>><br>
 			<<else>>
 				<span class="blue">你今天采集过这里的苔藓了。</span><br>
@@ -25,6 +28,7 @@
 		<<case "Lake Ruin">>
 			<<if $daily.Neon_Moss isnot true>>
 				这里除了紫色地衣外，你发现还有一些发光苔藓可以采集。
+				<br>
 				<<icon "material/Neon_Moss.png">><<link [[采集发光苔藓|Terra Neon Moss]]>><</link>><<terraHint>><br>
 			<<else>>
 				<span class="blue">你今天采集过这里的苔藓了。</span><br>

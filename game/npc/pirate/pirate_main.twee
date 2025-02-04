@@ -1,0 +1,173 @@
+:: Terra Pirate [widget]
+<<widget "terraPirate">>
+	<<if $Pirate_intro is undefined>>
+		你注意到有一个蓄满红须的老海盗独自坐在酒吧的一角。<<terraHint>><br>
+		<<link [[交谈|Pirate Meet]]>><</link>><br>
+	<<elseif $Pirate_intro is false>>
+		你看到老海盗独自坐在了酒吧的一角。<<terraHint>><br>
+		<<if $drunk gt 0 or $Sake gt 0>>
+			<<link [[交谈|Pirate Meet]]>><</link>><br>
+		<<else>>
+			<i><span class="black">如果你处于醉酒状态，或者身上带着酒再来找老海盗，他会对你感兴趣。</span></i><br>
+		<</if>>
+	<<elseif $Pirate_intro is true>>
+		你看到老海盗独自坐在了酒吧的一角。<<terraHint>><br>
+		<<link [[交谈|Pirate Talk]]>><</link>><br>
+	<</if>>
+<</widget>>
+
+:: Pirate Meet
+你走到那个老海盗的桌前。
+<<if $Pirate_intro is undefined>>
+	他手中的酒杯空空如也，似乎是刚刚痛饮了一番。一开始他并没有注意到你的靠近，仍在吆喝着旁边的海盗再拿一瓶朗姆酒过来。<br>
+	<br>
+	见没有人再理他，老海盗很快将醉醺醺的目光转向了你。"哟，看起来是生面孔啊！"他兴奋地用手中的空酒杯砸了一下桌子，"拿瓶酒过来！你要跟俺喝不？"<br>
+	<br>
+	<<if $drunk gt 0>>
+		<<set $Pirate_intro to true>>
+		还没等你回答，老海盗便示意你不要说话。"哈，哈，哈！俺刚刚怎么就没看出来——<span class="teal"><<print $drunk gte 120 ? "你小子已经喝醉啦！" : "你小子偷偷喝了酒，差点没让俺发现！">></span>来！坐下来咱们聊聊！我只告诉会喝酒的人，我过去的传...嗝...传奇经历！"<br>
+		<br>
+		<<link [[继续|Pirate Talk]]>><</link>>
+	<<else>>
+		<<set $Pirate_intro to false>>
+		你告诉他你并不是在这里工作的。<br>
+		<br>
+		"俺看你没喝酒，也不带酒过来，那你来这里干什么？一边玩去吧小鬼，俺可懒得和不跟酒打交道的人说话——你不喝酒俺要喝嘞！"<br>
+		<br>
+		<i>如果你处于醉酒状态，或者身上带着酒再来找老海盗，他会对你感兴趣。</i><br>
+		<br>
+		<<link [[离开|Smuggler Pub]]>><</link>>
+	<</if>>
+<<elseif $Pirate_intro is false>>
+	"俺认得你，"他先开了口，"来酒吧却滴酒不沾的怪胎...如果你没有带酒给俺的话，来找俺做什么？"<br>
+	<br>
+	<<if $drunk gt 0>>
+		<<set $Pirate_intro to true>>
+		还没等你回答，老海盗便示意你不要说话。"哈，哈，哈！俺刚刚怎么就没看出来——<span class="teal"><<print $drunk gte 120 ? "你小子已经喝醉啦！" : "你小子偷偷喝了酒，差点没让俺发现！">></span>来！坐下来咱们聊聊！我只告诉会喝酒的人，我过去的传...嗝...传奇经历！"<br>
+		<br>
+		<<link [[继续|Pirate Talk]]>><</link>>
+	<<elseif $Sake gt 0>>
+		<<set $Pirate_intro to true>>
+		<span class="teal">你身上带着<<icon "food/Sake.png">>清酒，可以分给老船长一瓶。</span><br>
+		<br>
+		<<link [[给他一瓶清酒|Pirate Sake]]>><</link>><br>
+	<</if>>
+<</if>>
+
+:: Pirate Sake
+<<set $Sake -= 1>>
+你取出一瓶<<icon "food/Sake.png">>清酒。<br>
+<br>
+老海盗接过这瓶清酒，饶有兴致地端详着瓶身。"非常有趣的走私物品。俺还是小看你了。哈！真是好东西！"<br>
+<br>
+<<link [[继续|Pirate Talk]]>><</link>>
+
+:: Pirate Talk
+<!-- 日常对话 -->
+<<cleareventpool>>
+<<addinlineevent "Daily" 1>>
+	<<print [
+		`"别打我的战利品的注意，淘气鬼！"`,
+		`"我不是旱鸭子，但即便试水失败也比永远不试强。"`,
+		`"呀！贼溜了，唠扯唠扯鹦鹉吧，因...噶...哈...唠啥嗑呢？"`,
+		`"*卜拉卜拉卡卡*"`,
+		`"说啥呢？白鲸是我的！"`,
+		`"哟呵呵，还有一瓶...闪耀根！"`
+	].random()>>
+<</addinlineevent>>
+<<if $player.gender_appearance is "f">>
+	<<addinlineevent "Gender" 1>>
+		"你是俺船长这半个月见过的最漂亮的妞！"
+	<</addinlineevent>>
+<</if>>
+<<if Weather.name is "heavyClouds">>
+	<<addinlineevent "heavyClouds" 1>>
+		<<print [
+			`"扬起帆来，狗东西！俺们海盗还没有发力呢！呀哈哈！"`,
+			`"全体船员就位！暴风雨就要来了！"`
+		].random()>>
+	<</addinlineevent>>
+<</if>>
+<<if Weather.precipitation is "rain">>
+	<<addinlineevent "Rain" 1>>
+		<<print [
+			`"鱼在下雨天确实会飞起来！我亲眼见过！"`,
+			`"哈哈！下雨！？对海盗来说是家常便饭。"`
+		].random()>>
+	<</addinlineevent>>
+<</if>>
+<<if Weather.name is "thunderStorm">>
+	<<addinlineevent "thunderStorm" 1>>
+		<<print [
+			`"啊嘿！迎接撞击吧，你这虚张声势的家伙！大风暴之母来了！"`,
+			`"伟大的卡律布狄斯！这次恁要怎么降怒诅咒我们！？"`
+		].random()>>
+	<</addinlineevent>>
+<</if>>
+<<runeventpool>><br>
+<br>
+<<highicon>><<link [[商店|Pirate Shop]]>><</link>><br>
+<<getouticon>><<link [[离开|Smuggler Pub]]>><</link>>
+
+:: Pirate Shop
+"你最好能拿出足够多的钱。俺的子弹和火炮可不长眼。"<br>
+<span class="no-numberify">
+	<div class="itemTerra">
+		<div class="item">
+			<div class="itemTerraGeneral" @tooltip='`鹦鹉饼干<br><br>▶召唤宠物鹦鹉<br>\"不适合人类食用。\"`'>
+				<<icon "pet/pet_item/Parrot_Cracker.png">>
+			</div>
+			<hr>
+			<span class="gold">£37500</span>
+			<hr>
+			<div class="terraLinks">
+				<<if $pet_list.includes("Parrot_Cracker")>>
+					<span class="black">已有</span>
+				<<elseif $money lt 3750000>>
+					<mouse class="tooltip">/<span>余额不足</span></mouse>
+				<<else>>
+					<<link [[购买|Pirate Parrot Cracker]]>>
+						<<set $money -= 3750000>>
+					<</link>>
+				<</if>>
+			</div>
+		</div>
+		<div class="item">
+			<div class="itemTerraGeneral" @tooltip="`深度计<br><i>材料</i><br><br>位于沼泽、走私者洞穴时，显示当前在该区域内的具体位置，无需装备即可生效`">
+				<<icon "accessories/Depth_Meter.png">>
+			</div>
+			<hr>
+			<span class="gold">£1000</span>
+			<hr>
+			<div class="terraLinks">
+				<<if setup.terraAccessories.Depth_Meter.upgrades.some(a => V[a])>>
+					<span class="black">已有</span>
+				<<elseif $money lt 100000>>
+					<mouse class="tooltip">/<span>余额不足</span></mouse>
+				<<else>>
+					<<link [[购买|Pirate Depth Meter]]>>
+						<<set $money -= 100000>>
+					<</link>>
+				<</if>>
+			</div>
+		</div>
+	</div>
+</span>
+<br>
+<<getouticon>><<link [[返回|Pirate Talk]]>><</link>>
+
+:: Pirate Parrot Cracker
+<<set $pet_list.pushUnique("Parrot_Cracker")>>
+"相信俺，这些饼干比那些什么金核桃更能吸引鹦鹉——但你不会想去尝尝它的味道的。很好，一手交钱一手交货。"<br>
+<br>
+<span class="gold">你购买了<<icon "pet/pet_item/Parrot_Cracker.png">>鹦鹉饼干。<i>你可以在孤儿院的卧室里使用它。</i></span><br>
+<br>
+<<link [[继续|Pirate Shop]]>><</link>>
+
+:: Pirate Depth Meter
+<<set $Depth_Meter to true>>
+"说实话，一个海盗手里会有这种东西挺奇怪的，但俺们肯定都是把这些好东西作为战利品抢来的！"老海盗在手里把玩着深度计，"正因如此你才有机会买到它！像罗盘这种东西，你就只能祈祷这酒吧旁边的洞穴里能捡到了！哈！"<br>
+<br>
+<span class="gold">你购买了<<icon "accessories/Depth_Meter.png">>深度计。</span><br>
+<br>
+<<link [[继续|Pirate Shop]]>><</link>><br>

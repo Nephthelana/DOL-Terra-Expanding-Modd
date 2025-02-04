@@ -14,7 +14,7 @@
 				为了激活这个晶塔，你需要找到那块水晶。<<print $syndromeeden is undefined ? "<span class='purple'>但你现在无法完全信任这个人。</span>" : C.npc.Eden.love gte 180 ? "<span class='teal'>让伊甸帮忙搜寻森林吧。</span>" : "<span class='blue'>如果伊甸对你有足够的好感，你将会得到提示。</span>">>
 			<</if>>
 		<<else>>
-			<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+			<<mysteryicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
 		<</if>><br>
 		<br>
 	<</if>>

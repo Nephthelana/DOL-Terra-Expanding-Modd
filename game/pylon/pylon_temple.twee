@@ -3,7 +3,6 @@
 <<if $debug is 1>>
 	*DEBUG功能<br>
 	<<if $historytrait gte 2>>
-		<br>
 		<<if $pylon_museum_asked>>
 			<<if $pylon_collected.includes("Temple")>>
 				<<sydneySchedule>>
@@ -18,7 +17,7 @@
 				为了激活这个晶塔，你需要找到那块水晶。<<print C.npc.Sydney.love gte 135 ? "<span class='teal'>/待后续完善。目前只能在调试菜单解锁神殿晶塔/</span>" : "<span class='blue'>如果悉尼对你有足够的好感，你将会得到提示。</span>">>
 			<</if>>
 		<<else>>
-			<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+			<<mysteryicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
 		<</if>>
 	<</if>>
 <</if>>

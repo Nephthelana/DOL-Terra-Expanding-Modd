@@ -21,7 +21,7 @@
 			<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>>
 		<</if>>
 	<<else>>
-		<<askicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>>
+		<<mysteryicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>>
 	<</if>>
 	<<if $Bug_Net isnot true>>
 		<br>

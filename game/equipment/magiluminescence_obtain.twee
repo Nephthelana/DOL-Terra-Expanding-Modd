@@ -1,6 +1,5 @@
 :: Magiluminescence Obtain [widget]
 <<widget "MagiluminescenceObtained">>
-	
 	<<if $Magiluminescence isnot true>>
 		车厢的地板上，一个刻有华丽花纹的盒子引起了你的注意。你不知道为何一个如此精致的工艺品，会被这样随意地放在地上。<br>
 		<br>
@@ -11,7 +10,6 @@
 	<<else>>
 		<<link [[继续|Elk Compound Station]]>><<estate_end>><<endevent>><</link>>
 	<</if>>
-
 <</widget>>
 
 :: Magiluminescence Obtain 1

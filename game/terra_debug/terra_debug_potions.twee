@@ -1,20 +1,19 @@
 :: Terra Debug Potions
 <<run initializeTooltips()>>
 请选择获得的药水。<br>
-<<set _allPotionList to getAllPotionList()>>
 <span class="no-numberify">
 	<div class="itemTerra">
-		<<for _t to 0; _t lt _allPotionList.length; _t++>>
-			<<set _potion to setup.terraPotion[_allPotionList[_t]]>>
+		<<for _p range Object.keys(setup.terraPotion)>>
+			<<set _potion to setup.terraPotion[_p]>>
 			<<capture _potion>>
 				<div class="item">
-					<div @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
-						<div class="itemTerraGeneral">
-							<<icon `_potion.item_icon`>>
-						</div>
+					<div class="itemTerraGeneral" @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
+						<<icon `_potion.item_icon`>>
 					</div>
 					<hr>
-					<<link [[来5瓶|Terra Debug Potions]]>><<set V[_potion.name] += 5>><</link>>
+					<div class="terraLinks">
+						<<link [[`+5`|Terra Debug Potions]]>><<set V[_potion.name] += 5>><</link>>
+					</div>
 				</div>
 			<</capture>>
 		<</for>>

@@ -82,47 +82,51 @@
 						<<set V.daily[_goods.name] to V.daily[_goods.name] is undefined ? _goods.stackable : V.daily[_goods.name]>>
 						<<print V.daily[_goods.name] gt 0 ? V.daily[_goods.name] : "售罄">>
 						<hr>
-						<<if V.daily[_goods.name] gt 0>>
-							<<link "购买">>
-								<<set $money -= _goods.price>>
-								<<set V.daily[_goods.name] -= 1>>
-								<<set V[_goods.name] += 1>>
-								<<updatesidebarmoney>>
-								<<set _purchase_info to _goods.purchase_info>>
-								<<replace #travelingMerchantShop>>
-									<<travelingMerchantShop>>
-								<</replace>>
-							<</link>>
-						<<else>>
-							/
-						<</if>>
+						<div class="terraLinks">
+							<<if V.daily[_goods.name] gt 0>>
+								<<link "购买">>
+									<<set $money -= _goods.price>>
+									<<set V.daily[_goods.name] -= 1>>
+									<<set V[_goods.name] += 1>>
+									<<updatesidebarmoney>>
+									<<set _purchase_info to _goods.purchase_info>>
+									<<replace #travelingMerchantShop>>
+										<<travelingMerchantShop>>
+									<</replace>>
+								<</link>>
+							<<else>>
+								/
+							<</if>>
+						</div>
 					<<else>>
 						<<print (V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))) ? "已有" : "1">>
 						<hr>
-						<<if V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))>>
-							/
-						<<elseif $money gte _goods.price>>
-							<<link "购买">>
-								<<set $money -= _goods.price>>
-								<<if _goods.type is "pet">>
-									<<set $pet_list.pushUnique(_goods.name)>>
-								<<else>>
-									<<set V[_goods.name] to true>>
-								<</if>>
-								<<updatesidebarmoney>>
-								<<set _purchase_info to _goods.purchase_info>>
-								<<replace #travelingMerchantShop>>
-									<<travelingMerchantShop>>
-								<</replace>>
-							<</link>>
-						<<else>>
-							<<link "购买">>
-								<<set _purchase_info to ["\"很好，成交！...什么？你根本就没有这么多钱！\"","\"你很有眼光...但你下次能不能先看清你身上到底有多少钱？\"","\"我这里不接受赊账！\""].random()>>
-								<<replace #travelingMerchantShop>>
-									<<travelingMerchantShop>>
-								<</replace>>
-							<</link>>
-						<</if>>
+						<div class="terraLinks">
+							<<if V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))>>
+								/
+							<<elseif $money gte _goods.price>>
+								<<link "购买">>
+									<<set $money -= _goods.price>>
+									<<if _goods.type is "pet">>
+										<<set $pet_list.pushUnique(_goods.name)>>
+									<<else>>
+										<<set V[_goods.name] to true>>
+									<</if>>
+									<<updatesidebarmoney>>
+									<<set _purchase_info to _goods.purchase_info>>
+									<<replace #travelingMerchantShop>>
+										<<travelingMerchantShop>>
+									<</replace>>
+								<</link>>
+							<<else>>
+								<<link "购买">>
+									<<set _purchase_info to ["\"很好，成交！...什么？你根本就没有这么多钱！\"","\"你很有眼光...但你下次能不能先看清你身上到底有多少钱？\"","\"我这里不接受赊账！\""].random()>>
+									<<replace #travelingMerchantShop>>
+										<<travelingMerchantShop>>
+									<</replace>>
+								<</link>>
+							<</if>>
+						</div>
 					<</if>>
 				</div>
 			<</capture>>
@@ -137,19 +141,28 @@
 			<hr>
 			<<print $angler_furniture_obtained.includes(_anglerFurniture.name) ? "已有" : "1">>
 			<hr>
-			<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
-				/
-			<<else>>
-				<<link "购买">>
-					<<set $money -= 10000>>
-					<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
-					<<updatesidebarmoney>>
-					<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
-					<<replace #travelingMerchantShop>>
-						<<travelingMerchantShop>>
-					<</replace>>
-				<</link>>
-			<</if>>
+			<div class="terraLinks">
+				<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
+					/
+				<<elseif $money gte 10000>>
+					<<link "购买">>
+						<<set $money -= 10000>>
+						<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
+						<<updatesidebarmoney>>
+						<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
+						<<replace #travelingMerchantShop>>
+							<<travelingMerchantShop>>
+						<</replace>>
+					<</link>>
+				<<else>>
+					<<link "购买">>
+						<<set _purchase_info to ["\"很好，成交！...什么？你根本就没有这么多钱！\"","\"你很有眼光...但你下次能不能先看清你身上到底有多少钱？\"","\"我这里不接受赊账！\""].random()>>
+						<<replace #travelingMerchantShop>>
+							<<travelingMerchantShop>>
+						<</replace>>
+					<</link>>
+				<</if>>
+			</div>
 		</div>
 	</div>
 </span>

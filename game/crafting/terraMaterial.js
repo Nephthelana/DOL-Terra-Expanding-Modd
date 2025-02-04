@@ -106,7 +106,13 @@ setup.terraMaterial = {
         obtained: V.Magic_Conch,
         icon: "tool/Magic_Conch.png",
     },
-
+	"Bottomless_Honey_Bucket": {
+        name: "Bottomless_Honey_Bucket",
+        cn_name: "无底蜂蜜桶<br><i>材料</i>",
+        type: "tool",
+        obtained: V.Bottomless_Honey_Bucket,
+        icon: "tool/Bottomless_Honey_Bucket.png",
+    },
 	//饰品
 	"Angler_Earring": {
         name: "Angler_Earring",
@@ -163,6 +169,27 @@ setup.terraMaterial = {
         type: "accessory",
         obtained: V.Weather_Radio,
         icon: "fishing/fishing_accessories/Weather_Radio.png",
+    },
+	"Gold_Watch": {
+        name: "Gold_Watch",
+        cn_name: "金表<br><i>材料</i>",
+        type: "accessory",
+        obtained: V.Gold_Watch,
+        icon: "accessories/Gold_Watch.png",
+    },
+	"Compass": {
+        name: "Compass",
+        cn_name: "罗盘<br><i>材料</i>",
+        type: "accessory",
+        obtained: V.Compass,
+        icon: "accessories/Compass.png",
+    },
+	"Depth_Meter": {
+        name: "Depth_Meter",
+        cn_name: "深度计<br><i>材料</i>",
+        type: "accessory",
+        obtained: V.Depth_Meter,
+        icon: "accessories/Depth_Meter.png",
     },
 	"Fishing_Bobber": {
         name: "Fishing_Bobber",
@@ -360,6 +387,13 @@ setup.terraMaterial = {
         type: "fish",
         amount: V.Crag_Bullhead || 0,
         icon: "fishing/fish/Crag_Bullhead.png",
+    },
+	"Honeyfin": {
+        name: "Honeyfin",
+        cn_name: "蜂蜜鱼<br><i>材料</i>",
+        type: "fish",
+        amount: V.Honeyfin || 0,
+        icon: "fishing/fish/Honeyfin.png",
     },
 	"Sashimi": {
         name: "Sashimi",

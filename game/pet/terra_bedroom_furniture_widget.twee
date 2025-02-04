@@ -59,36 +59,40 @@
 							</div>
 						</div>
 						<hr>
-						<<if V.bedroom_pets[_pet.name]>>
-							<<link "取消">>
-								<<run delete V.bedroom_pets[_pet.name]>>
-								<<replace #petList>>
-									<<petList>>
-								<</replace>>
-							<</link>>
-						<<else>>
-							<<link "使用">>
-								<<set V.bedroom_pets[_pet.name] to true>>
-								<<replace #petList>>
-									<<petList>>
-								<</replace>>
-							<</link>>
-						<</if>>
-						<hr>
-						<<if _t is 0>>
-							/
-						<<else>>
-							<<capture _t>>
-								<<link "⬅">>
-									<<set _temp to $pet_list[_t-1]>>
-									<<set $pet_list[_t-1] to $pet_list[_t]>>
-									<<set $pet_list[_t] to _temp>>
+						<div class="terraLinks">
+							<<if V.bedroom_pets[_pet.name]>>
+								<<link "取消">>
+									<<run delete V.bedroom_pets[_pet.name]>>
 									<<replace #petList>>
 										<<petList>>
 									<</replace>>
 								<</link>>
-							<</capture>>
-						<</if>>
+							<<else>>
+								<<link "使用">>
+									<<set V.bedroom_pets[_pet.name] to true>>
+									<<replace #petList>>
+										<<petList>>
+									<</replace>>
+								<</link>>
+							<</if>>
+						</div>
+						<hr>
+						<div class="terraLinks">
+							<<if _t is 0>>
+								/
+							<<else>>
+								<<capture _t>>
+									<<link "⬅">>
+										<<set _temp to $pet_list[_t-1]>>
+										<<set $pet_list[_t-1] to $pet_list[_t]>>
+										<<set $pet_list[_t] to _temp>>
+										<<replace #petList>>
+											<<petList>>
+										<</replace>>
+									<</link>>
+								<</capture>>
+							<</if>>
+						</div>
 					</div>
 				<</if>>
 			<</capture>>
@@ -113,4 +117,24 @@
 	<<petList>>
 </span>
 <br>
+<<ind>><<link "全部使用">>
+	<<for _p range $pet_list>>
+		<<set _pet to setup.terraPet[_p]>>
+		<<set V.bedroom_pets[_pet.name] to true>>
+	<</for>>
+	<<replace #petList>>
+		<<petList>>
+	<</replace>>
+	<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+<</link>><br>
+<<ind>><<link "全部取消">>
+	<<for _p range $pet_list>>
+		<<set _pet to setup.terraPet[_p]>>
+		<<run delete V.bedroom_pets[_pet.name]>>
+	<</for>>
+	<<replace #petList>>
+		<<petList>>
+	<</replace>>
+	<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+<</link>><br>
 <<getouticon>><<link [[返回|Bedroom]]>><</link>>

@@ -1,21 +1,20 @@
 :: Terra Debug Fish
 <<run initializeTooltips()>>
 请选择获得的鱼。<br>
-<<set _allFishList to getAllFishList()>>
 <span class="no-numberify">
 	<div class="itemTerra">
-		<<for _t to 0; _t lt _allFishList.length; _t++>>
-			<<set _fish to setup.terraFish[_allFishList[_t]]>>
+		<<for _f range Object.keys(setup.terraFish)>>
+			<<set _fish to setup.terraFish[_f]>>
 			<<capture _fish>>
 				<div class="item">
 					<<set _isMaterial to _fish.material ? "<br><i>材料</i>" : "">>
-					<div @tooltip="`${_fish.cn_name}${_isMaterial}`">
-						<div class="itemTerraGeneral">
-							<<icon `_fish.icon`>>
-						</div>
+					<div class="itemTerraGeneral" @tooltip="`${_fish.cn_name}${_isMaterial}`">
+						<<icon `_fish.icon`>>
 					</div>
 					<hr>
-					<<link [[来5条|Terra Debug Fish]]>><<set V[_fish.name] += 5>><</link>>
+					<div class="terraLinks">
+						<<link [[`+5`|Terra Debug Fish]]>><<set V[_fish.name] += 5>><</link>>
+					</div>
 				</div>
 			<</capture>>
 		<</for>>

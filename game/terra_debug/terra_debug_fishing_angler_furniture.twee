@@ -1,29 +1,27 @@
 :: Terra Debug Fishing Angler Furniture
 <<run initializeTooltips()>>
 请选择获得/丢弃渔夫家具。<br>
-<<set _allAnglerFurnitureList to getAllAnglerFurnitureList()>>
 <span class="no-numberify">
 	<div class="itemTerra_Tool">
-		<<for _t to 0; _t lt _allAnglerFurnitureList.length; _t++>>
-			<<set _anglerFurniture to setup.terraAnglerFurniture[_allAnglerFurnitureList[_t]]>>
+		<<for _af range Object.keys(setup.terraAnglerFurniture)>>
+			<<set _anglerFurniture to setup.terraAnglerFurniture[_af]>>
 			<<capture _anglerFurniture>>
-				<<set _tooltip to `<span class="gold">${_anglerFurniture.cn_name}</span>`>>
 				<div class="item">
-					<div @tooltip="_tooltip">
-						<div class="itemTerraGeneral">
-							<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
-								<<icon `_anglerFurniture.item_icon`>>
-							<<else>>
-								<span class="terraFading"><<icon `_anglerFurniture.item_icon`>></span>
-							<</if>>
-						</div>
+					<div class="itemTerraGeneral" @tooltip="_anglerFurniture.cn_name">
+						<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
+							<<icon `_anglerFurniture.item_icon`>>
+						<<else>>
+							<span class="terraFading"><<icon `_anglerFurniture.item_icon`>></span>
+						<</if>>
 					</div>
 					<hr>
-					<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
-						<<link [[丢弃|Terra Debug Fishing Angler Furniture]]>><<set $angler_furniture_obtained.delete(_anglerFurniture.name)>><</link>>
-					<<else>>
-						<<link [[获得|Terra Debug Fishing Angler Furniture]]>><<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>><</link>>
-					<</if>>
+					<div class="terraLinks">
+						<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
+							<<link [[丢弃|Terra Debug Fishing Angler Furniture]]>><<set $angler_furniture_obtained.delete(_anglerFurniture.name)>><<set $furniture_painting_angler_cabin to $furniture_painting_angler_cabin is _anglerFurniture.name ? "none" : $furniture_painting_angler_cabin>><</link>>
+						<<else>>
+							<<link [[获得|Terra Debug Fishing Angler Furniture]]>><<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>><</link>>
+						<</if>>
+					</div>
 				</div>
 			<</capture>>
 		<</for>>

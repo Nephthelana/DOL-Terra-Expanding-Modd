@@ -61,16 +61,13 @@
 		Tree_Nymph_Butterfly: 0,
 	}>>
 	<<set _bait to random(2,3)>>
-	<<set _butterfly_catch to []>>
-	<<for _t=0; _t lt _bait; _t++>>
+	<<for _i to 1; _i lt _bait; _i++>>
 		<<if random(1,400) is 1>>
-			<<set _butterfly_catch.push("Gold_Butterfly")>>
+			<<set _caught["Gold_Butterfly"] += 1>>
 		<<else>>
-			<<set _butterfly_catch.push(["Monarch_Butterfly","Sulphur_Butterfly","Zebra_Swallowtail_Butterfly","Ulysses_Butterfly","Julia_Butterfly","Red_Admiral_Butterfly","Purple_Emperor_Butterfly","Tree_Nymph_Butterfly"].random())>>
+			<<set _random_bf to _butterfly_list.random()>>
+			<<set _caught[_random_bf] += 1>>
 		<</if>>
-	<</for>>
-	<<for _j to 0; _j lt 9; _j++>>
-		<<set _caught[_butterfly_list[_j]] to _butterfly_catch.count(_butterfly_list[_j])>>
 	<</for>>
 	<span class="green">你拿出你的
 	<<if $Golden_Bug_Net>>
@@ -81,16 +78,13 @@
 	</span>
 	，给罗宾一个眼神。<<He>>立刻明白了你的意思，开始把蝴蝶往你这边赶。在默契的配合下，你们网住了这些蝴蝶。<br>
 	<br>
-	你抓到了：
-	<<for _k to 0; _k lt 9; _k++>>
-		<<set _caught_amount to _caught[_butterfly_list[_k]]>>
-		<<if _caught_amount gt 0>>
-			<<set _caught_butterfly to setup.terraBait[_butterfly_list[_k]]>>
-			<<print "<<icon `_caught_butterfly.icon`>>_caught_amount只_caught_butterfly.cn_name<br>">>
-			<<set V[_butterfly_list[_k]] += _caught_amount>>
-			<<set $bestiary_bait_list.pushUnique(_butterfly_list[_k])>>
-			<<set $bestiary_bait_catch_count[_butterfly_list[_k]] += _caught_amount>>
-		<</if>>
+	你抓到了：<br>
+	<<for _butterfly range Object.keys(_caught).filter(bf => T.caught[bf] > 0)>>
+		<<set _butterflyInfo to setup.terraBait[_butterfly]>>
+		<<set V[_butterflyInfo.name] += _caught[_butterflyInfo.name]>>
+		<<set $bestiary_bait_list.pushUnique(_butterflyInfo.name)>>
+		<<set $bestiary_bait_catch_count[_butterflyInfo.name] += _caught[_butterflyInfo.name]>>
+		<<icon `_butterflyInfo.icon`>><<print T.caught[_butterflyInfo.name]>>_butterflyInfo.cn_name<br>
 	<</for>>
 	<br>
 	"你真的抓到它们了！"罗宾跑得上气不接下气，但看起来很快乐。<br>

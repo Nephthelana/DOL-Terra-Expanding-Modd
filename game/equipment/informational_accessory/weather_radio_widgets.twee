@@ -1,0 +1,47 @@
+:: Widgets Weather Radio [widget]
+<<widget "terraWeatherForcast">>
+	<<run initializeTooltips()>>
+	<<link "收起天气预报">>
+		<<replace #terraWeatherForcast>>
+			<<link "查看天气预报">>
+				<<replace #terraWeatherForcast>>
+					<<terraWeatherForcast>>
+				<</replace>>
+			<</link>><br>
+		<</replace>>
+	<</link>><br>
+	接下来
+	<<link "<<">>
+		<<set $weather_forecast_hours to $weather_forecast_hours gt 1 ? ($weather_forecast_hours - 1) : $weather_forecast_hours>>
+		<<replace #terraWeatherForcast>>
+			<<terraWeatherForcast>>
+		<</replace>>
+	<</link>>
+	<<print $weather_forecast_hours>>
+	<<link ">>">>
+		<<set $weather_forecast_hours to $weather_forecast_hours lt 12 ? ($weather_forecast_hours + 1) : $weather_forecast_hours>>
+		<<replace #terraWeatherForcast>>
+			<<terraWeatherForcast>>
+		<</replace>>
+	<</link>>
+	小时内的天气为：<br>
+	<div class="itemTerra">
+		<<for _w=1; _w lte $weather_forecast_hours; _w++>>
+			<<switch weatherInAnHour(T.w).name>>
+				<<case "clear">><<set _weather_icon to "clear_icon.png">><<set _weather_cn_name to "晴天">>
+				<<case "lightClouds">><<set _weather_icon to "lightClouds_icon.png">><<set _weather_cn_name to "有云">>
+				<<case "heavyClouds">><<set _weather_icon to "heavyClouds_icon.png">><<set _weather_cn_name to "多云">>
+				<<case "lightPrecipitation">><<set _weather_icon to "lightPrecipitation_icon.png">><<set _weather_cn_name to "小雨">>
+				<<case "heavyPrecipitation">><<set _weather_icon to "heavyPrecipitation_icon.png">><<set _weather_cn_name to "大雨">>
+			<</switch>>
+			<div class="item">
+				<div class="itemTerraGeneral" @tooltip="_weather_cn_name">
+					<<icon `_weather_icon`>>
+				</div>
+				<hr>
+				<<set _hour to (Time.hour + _w) gte 24 ? (Time.hour + _w -24) : (Time.hour + _w)>>
+				<<print `${ampm(_hour, Time.minute)}`>>
+			</div>
+		<</for>>
+	</div>
+<</widget>>

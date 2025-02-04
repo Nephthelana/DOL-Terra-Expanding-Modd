@@ -1,4 +1,5 @@
 :: Magiluminescence Events Catacombs Widget [widget]
+<!-- 我实在没办法了，只能出此下策，腾挪出一个专门的widget -->
 <<widget "events_catacombs_Magiluminescence">>
 
 	<<cleareventpool>>

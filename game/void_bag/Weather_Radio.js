@@ -1,6 +1,6 @@
 //该部分js绝大部分内容来自于dol原版的 02-weather-generation.js 文件
 function weatherInAnHour(forecastHour) {
-		const currentTimeStamp = Time.date.timeStamp + 3600 * forecastHour;
+	const currentTimeStamp = Time.date.timeStamp + 3600 * forecastHour;
 
 		let currentKeyPoint = null;
 		let nextKeyPoint = null;
@@ -31,24 +31,13 @@ function weatherInAnHour(forecastHour) {
 		// Interpolate the weather value
 		const interpolatedValue = Math.round(current.value + (next.value - current.value) * fraction);
 
-		if (V.weatherObj?.name !== null) {
-			const currentWeatherType = Weather.genSettings.weatherTypes.find(type => type.name === V.weatherObj.name);
-			if (currentWeatherType.value === interpolatedValue) {
-				return createObjectByTypeTEM(currentWeatherType);
-			}
-		}
-
 		if (current.value === interpolatedValue) {
 			const newObj = createObjectByTypeTEM(current);
-			V.weatherObj.name = newObj.name;
-			const targetOvercast = resolveValue(Weather.genSettings.weatherTypes.find(type => type.name === Weather.name).overcast);
-			V.weatherObj.targetOvercast = targetOvercast * (Weather.bloodMoon ? setup.SkySettings.fade.overcast.bloodMoonMaxValue : 1);
 			return newObj;
 		}
 
 		return findClosestWeatherTypeTEM(interpolatedValue);
 	}
-
 window.weatherInAnHour = weatherInAnHour;
 
 function createObjectByTypeTEM(obj) {
@@ -80,9 +69,6 @@ function findClosestWeatherTypeTEM(interpolatedValue) {
 	const chosenType = closestTypes[Weather.activeRenderer.rng.randomInt(0, closestTypes.length - 1)];
 	const newObj = createObjectByTypeTEM(chosenType);
 
-	V.weatherObj.name = chosenType.name;
-	const targetOvercast = resolveValue(Weather.genSettings.weatherTypes.find(type => type.name === Weather.name).overcast);
-	V.weatherObj.targetOvercast = targetOvercast * (Weather.bloodMoon ? setup.SkySettings.fade.overcast.bloodMoonMaxValue : 1);
 	return newObj;
 }
 window.findClosestWeatherTypeTEM = findClosestWeatherTypeTEM;

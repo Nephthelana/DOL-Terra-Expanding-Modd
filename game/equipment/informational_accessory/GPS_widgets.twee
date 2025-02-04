@@ -1,0 +1,15 @@
+:: Widgets GPS [widget]
+<<widget "GPSOldSewerMap">>
+	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<br>
+		<<oldSewerMap>>
+	<</if>>
+<</widget>>
+
+<<widget "oldSewerMap">>
+	<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了旧下水道的地图以及你所处的位置。</span>
+	<div class="GPSOldSewerMap">
+		<img src="img/misc/map/旧下水道地图.png">
+		<img src="img/misc/map/箭头.png" @class="'GPSOldSewerMapArrow_' + $bus">
+	</div>
+<</widget>>

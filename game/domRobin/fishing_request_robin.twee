@@ -90,14 +90,12 @@
 <<if $fishing_request_fish.length gte 1>>
 	<span class="no-numberify">
 	<div class="itemTerra">
-		<<set _allRequestFishList to getAllRequestFishList()>>
-		<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
-			<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
+		<<for _rf range Object.keys(setup.terraRequestFish)>>
+			<<set _requestFish to setup.terraRequestFish[_rf]>>
 			<<capture _requestFish>>
 				<<if $fishing_request_fish.includes(_requestFish.name) and !$fishing_request_robin.includes(_requestFish.name)>>
 					<<set _showRequestFish to true>>
-					<<set _requestFishName to _requestFish.cn_name>>
-					<<set _tooltip to ` <span class="gold">${_requestFishName}</span>`>>
+					<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
 					<div class="item" @tooltip="_tooltip">
 						<div class="itemTerraGeneral">
 							<<icon `_requestFish.icon`>>
@@ -122,18 +120,14 @@
 已展示过的：
 <<if $fishing_request_robin.length gte 1>>
 	<div class="itemTerra">
-		<<set _allRequestFishList to getAllRequestFishList()>>
-		<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
-			<<set _requestFish to setup.terraRequestFish[_allRequestFishList[_t]]>>
-			<<if $fishing_request_robin.includes(_requestFish.name)>>
-				<<set _requestFishName to _requestFish.cn_name>>
-				<<set _tooltip to ` <span class="gold">${_requestFishName}</span>`>>
-				<div class="item" @tooltip="_tooltip">
-					<div class="itemTerraGeneral">
-						<<icon `_requestFish.icon`>>
-					</div>
+		<<for _rf range $fishing_request_robin>>
+			<<set _requestFish to setup.terraRequestFish[_rf]>>
+			<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
+			<div class="item" @tooltip="_tooltip">
+				<div class="itemTerraGeneral">
+					<<icon `_requestFish.icon`>>
 				</div>
-			<</if>>
+			</div>
 		<</for>>
 	</div>
 <<else>>
@@ -142,5 +136,104 @@
 <</if>>
 <<link [[调试选项：清空已展示过的任务鱼列表（用于重新触发提交任务鱼时的相关对话）|Fishing Request Robin]]>><<set $fishing_request_robin to []>><</link>><br>
 <br>
-<<link [[返回|Robin's Room Entrance]]>><</link>>
-<<endevent>>
+<<link [[返回|Robin's Room Entrance]]>>'<<endevent>><</link>>
+
+:: Fishing Request Robin Showing
+<!-- 展示给罗宾任务鱼的互动页面。 -->
+<<npc Robin>><<person1>>
+<<set _requestFish to setup.terraRequestFish[$fishing_request_robin_show]>>
+<<set $fishing_request_robin.pushUnique(_requestFish.name)>>
+你将<<icon `_requestFish.icon`>><span class="gold">_requestFish.cn_name</span>交给罗宾。<br>
+<br>
+<<request_fish_robin_react $fishing_request_robin_show>>
+<<unset $fishing_request_robin_show>>
+<<link [[返回|Fishing Request Robin]]>><<endevent>><</link>>
+
+:: Request Fish Robin React [widget]
+<<widget "request_fish_robin_react">>
+	<<switch _args[0]>>
+		<<case "Amanita_Fungifin">>
+			"小心，"你用力地抓着这条鱼的尾巴，避免它一个用力就扭过头来咬你，"这鱼凶得很，还是我拿着吧。这是'毒菌鱼'，尽管没有毒性，但真被咬一口还是很疼的。"罗宾把刚伸出的手缩了回来："它的脾气真的很暴躁！"<br>
+		<<case "Angelfish">>
+			罗宾发出一声赞叹："这个金色和蓝色的搭配好漂亮！"你告诉罗宾，这是一种"来自天上的鱼"，被称为"天使鱼"。"这个名字也很贴切，它简直就是化成了一条鱼的天使！"罗宾看起来很高兴。<br>
+		<<case "Batfish">>
+			"看看这翅膀，这简直就和蝙蝠一模一样。"罗宾好奇地用手碰了一下其中一只翅膀，"我之前只在书上看到过蝙蝠。你说，我们镇子里有蝙蝠吗？"你说你也很少见到它们。<br>
+		<<case "Bonefish">>
+			"这真的不是个普通的骨架吗...哇！"罗宾起初还不相信这是一条活生生的鱼，直到罗宾亲眼看到它跳了一下——然后罗宾跟着被吓了一跳。<br>
+		<<case "Bumblebee_Tuna">>
+			"从各个方面来看，这条鱼都和大黄蜂极其相似：昆虫的翅膀，黄黑相间的体色，还有这尾巴...这是蜂刺吗？不过应该不重要了..."但你接下来的话让罗宾更加震惊。"这是森林的蜂蜜池里钓上来的鱼？尝起来应该是蜂蜜味？我还是不尝了吧..."罗宾有些尴尬地挠了挠头。<br>
+		<<case "Bunnyfish">>
+			"兔子+鱼，好吧我不得不承认它还是挺可爱的。"你让罗宾也试着捏一捏兔兔鱼的尾巴。"竟然是软软的，真神奇。"然后又揉了揉耳朵。"可爱，想养一只。"<br>
+		<<case "Catfish">>
+			"我敢说它是猫里最会游泳的，鱼里最会爬树的！"然后罗宾的眼神里突然闪过一丝疑惑，"所以它应该被养在笼子里还是鱼缸里？"你也不知道。<br>
+		<<case "Cloudfish">>
+			"他们说的是真的！棉花糖一样的云！"你和罗宾一起把手放在这朵云鱼上。"好柔软～这真的是你从水里钓上来的，而不是从天上飘下来的吗？"<br>
+		<<case "Clownfish">>
+			"它不是应该在找他的家人吗？你怎么把它给钓上来了？"罗宾作出一副惊讶的神情。"好吧开个玩笑，电影里它们一家团聚了..."你放下手中的小丑鱼，坐下来抱住了罗宾。<br>
+		<<case "Demonic_Hellfish">>
+			你告诉罗宾，传言中这条恶魔地狱鱼，是地狱里所有恶魔的王。"地狱里所有恶魔的老大就这么被你钓上来了！那可不可以说你是一位打败了魔王的勇者呢？勇者大人！"罗宾对你的中二说法给予了热烈的回应。<br>
+		<<case "Derpfish">>
+			"我没见过哪条鱼的眼睛比这还大的！"罗宾看起来十分震惊。你告诉<<he>>这种鱼还有陆地上的同类：它们的亲戚不仅有大眼睛，还有<<he>>从未见过的<i>大长腿</i>。它们被称为"跳跳兽"。"幸好它们的亲戚不住在我们这里。我肯定会被这东西吓一跳的。"<br>
+		<<case "Dirtfish">>
+			"嘿！你为什么要把鱼埋在这堆土里面！"在罗宾眼里，你简直就是从虚空袋里捧出来了一个土堆。你向罗宾解释说这是一种性情凶猛，被称为"土鱼"的鱼。它喜欢潜藏在土质的水床里伺机攻击水边的生物。"幸好它现在睡着了，对吧？"<br>
+		<<case "Dynamite_Fish">>
+			"等等，你这是要干什么！"你取出来的"雷管"显然把罗宾吓坏了，"你有没有想过如果这东西在你的袋子里爆炸了会怎么样？"<br>
+		<<case "Fallen_Starfish">>
+			"是鱼长成了星星的形状？我更相信这是落在水里的星星变成的一条鱼。看看它闪亮的样子！"罗宾猜得很对。"照你这么说，也许这条鱼身上还承载着一个人的愿望呢。"<br>
+		<<case "Fish_of_Cthulhu">>
+			"真应该庆幸这种奇怪的鱼不是那种夜间出没的飞行生物。它们的大眼睛安在这个身体上实在太不协调了。"这条鱼一定会从"怪异"这方面给罗宾留下最深刻的印象。<br>
+		<<case "Fishotron">>
+			"一个骷髅，却能摆出如此狰狞的面目；背部的这部分与其说是鳍骨，不如说是手骨...很难想象和这个人...哦不，这条鱼经历了什么。"你能感到这条骷髅王鱼给你带来的恐惧，与它自己受到的相比只是微不足道的一点罢了。<br>
+		<<case "Fishron">>
+			"一条有着猪的鼻子和龙的翅膀的鱼！虽然我更愿意相信希腊神话中的奇美拉是真的，但这条猪龙鱼就这样活生生地摆在了我眼前。"罗宾突然想到了什么，"你有没有听说过'当猪飞的时候'？也许这句话得改改了。"<br>
+		<<case "Guide_Voodoo_Fish">>
+			"没想到现在这个年代还会有这种东西流传。制作这个的人和这个所影射的人里，两者至少有一个是坏蛋。"你不知道罗宾对此哪来的自信，也许<<he>>学习了某些奇怪方面的历史知识。<br>
+		<<case "Harpyfish">>
+			"有时候我也会想，鹰身女妖究竟是吃人类的食物还是吃鸟类的食物。也许人类的食物才有足够的能量供一只鹰身女妖的飞行。而这样一条鸟妖鱼，我更好奇它会不会向往着飞翔。"<br>
+		<<case "Hungerfish">>
+			"哦...说实话这条鱼看得我有些生理不适了。我不想知道这种鱼会生活在哪里，但那一定是十分奇怪的地方。"<<he>>猜的没错。你跟罗宾说那里很安全，不用担心。<br>
+		<<case "Jewelfish">>
+			"真是一条光彩夺目的鱼！不知道它们是怎么将身体的各个部位演化出这种宝石形状的结构的...啊，你说这些都是货真价实的宝石？"罗宾开始觉得这种鱼能存活繁衍到现在也不容易了。<br>
+		<<case "Mirage_Fish">>
+			"是不是我的眼睛看花了..."罗宾揉了揉眼睛，"为什么我感觉这条鱼一直在闪烁？它发出的紫光让我看着有些不舒服..."你赶忙将幻象鱼收回了虚空袋里。<br>
+		<<case "Mudfish">>
+			"真是有趣的习性，这样将泥巴覆盖在自己表面应该能起到一些保护作用吧，又或者是将自己隐藏起来伺机发动攻击？"泥鱼确实有跟强的攻击性——你把它钓上来时差点被咬了一口。<br>
+		<<case "Mutant_Flinxfin">>
+			"我听说雪怪有着大而突出的鼻子，不过显然对这种鱼类并不适用。"罗宾摸着突变雪怪鱼身上有些湿润的毛发，"虽然不知道这样它们怎么在水里游泳，但毛茸茸的还有些可爱。"<br>
+		<<case "Pengfish">>
+			"一条企鹅形态的鱼！它们会不会和企鹅是同一个祖先，一类继续在水里发展，另一类朝陆地发展呢？"罗宾又凑近了些，仔细的观察着企鹅鱼。"虽然不能亲眼看到企鹅一摇一摆的走路姿态，但这眼神是真的极为相似。"<br>
+		<<case "Pixiefish">>
+			"好漂亮的小精灵，它发出的光芒真是引人注目。"你告诉罗宾，这种妖精因为生长着太多翅膀而无法飞行，如今这些翅膀用于在水中游泳了。罗宾想起了<i>塞尔达传说</i>中的仙灵：这条妖精鱼长得就和仙灵差不多。<br>
+		<<case "Scarab_Fish">>
+			"就像一只甲虫一样，在阳光的照耀下反射出漂亮的纹路。"罗宾不断变换着角度来观察这条甲虫鱼，"它让我想起了传说中的魔法金龟子。"<br>
+		<<case "Scorpio_Fish">>
+			"在水里游泳的蝎子！即便一条蝎子鱼就这么摆在了我的面前，我也想不出它的游泳姿态到底是什么样的。这对螯在水中摆动的样子一定很滑稽。"你提醒罗宾，还是要小心蝎尾的毒刺。<br>
+		<<case "Slimefish">>
+			"能适应任何环境的史莱姆，甚至在居住于水中时直接变化成了一条鱼！...等等，你的手怎么了？"罗宾注意到你的手因为抓着史莱姆鱼而变得黏糊糊的。<br>
+		<<case "Spiderfish">>
+			"这是一只...这就是一只蜘蛛！"罗宾想到还有一些有蜘蛛恐惧症的人，"好吧，希望他们能把这个看成一条鱼，这样应该就不会那么难受吧。"<br>
+		<<case "Tropical_Barracuda">>
+			"好凶狠的牙齿！但是它的鳞片很漂亮。这种鱼一定有很高的观赏价值。"你在犹豫要不要告诉罗宾这些鱼更多的是用来被端上餐桌，但你最后还是决定不说这件事情。<br>
+		<<case "Tundra_Trout">>
+			"要不是你提前告诉了我这是一条鱼，我指定会想你为什么要抱出来一个冰块！"罗宾忍不住好奇心也伸手摸了一下这条苔原鳟鱼。"噢，好冰呀～"<br>
+		<<case "Unicorn_Fish">>
+			"传说中的独角兽！我印象中它一直以类似于一匹马的形态出现在文学作品里，没想到还有这样鱼类的形式。"罗宾突然想到了什么，"等等，自然界里是不是就有一种叫做'独角鲸'的生物..."<br>
+		<<case "Wyverntail">>
+			"好可爱一只！他好像还露出了微笑的表情！有点像一只小猫。"你告诉罗宾这条鱼被叫做"飞龙尾"。"飞龙尾...嗯...它会长大成为一只飞龙吗？"你希望不会发生这种事。<br>
+		<<case "Zombie_Fish">>
+			"真可怕，但也真可怜...这已经完全看不出来本来是哪种鱼了..."罗宾不忍直视这条鱼。<br>
+		<<case "Brimlish">>
+			"好迷你的一条小鱼。不过..."你和罗宾都感到有些不适的闷热，"为什么突然感觉有折磨身心的热浪袭击着我..."<br>
+		<<case "Eutrophic_Sandfish">>
+			"由蜥蜴变成的鱼？你这么一说的话，好像确实和蜥蜴有一点点像...不对啊，这到底哪里像蜥蜴了？"其实你自己也只是从别人那里听说来的。<br>
+		<<case "Serpentuna">>
+			"这是一条海蛇吗？我听说它们有很强的毒性诶...不过它看着非常漂亮。"<br>
+		<<case "Slurpfish">>
+			"说什么我都不会相信这是一条'鱼'的！"罗宾突然睁大了眼睛，"它是不是在喷吐着什么东西？"<br>
+		<<case "Surf_Clam">>
+			"好小的蛤哦。话说我们这里海滩上都见不到蛤蜊，我还没尝过这些海鲜的味道。"<br>
+		<<case "Bloody_Manowar">>
+			你让罗宾小心不要碰到那些有毒的触须。"好的。其实即使你不说我也不敢去碰的：这样鲜艳的血红色让我产生了十足的畏惧感。这种东西你是在哪里钓到的？"你随便回答说就是在森林湖里见到的这种水母。<br>
+	<</switch>>
+	<br>
+<</widget>>

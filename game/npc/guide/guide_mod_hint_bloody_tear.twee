@@ -10,7 +10,7 @@
 <<if $Chum_Caster>>
 	<<link [[返回|Guide Mod Hint]]>><</link>>
 <<else>>
-	<<askicon>><<link [[我还会再次见到它吗？|Guide Mod Hint Chum Caster]]>><</link>>
+	<<mysteryicon>><<link [[我还会再次见到它吗？|Guide Mod Hint Chum Caster]]>><</link>>
 <</if>>
 
 :: Guide Mod Hint Chum Caster

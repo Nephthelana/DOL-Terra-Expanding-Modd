@@ -1,0 +1,154 @@
+:: Nonogram
+<<run window.modImgLoaderHooker.addDynamicImageTagReplacePassage(V.passage)>>
+重新从调试页面进入此页面将会刷新题目/暂不支持撤销功能/可能存在解不唯一的情况
+<<link [[什么是数织（Nonogram）|Nonogram Details]]>><</link>><br>
+<<link [[生成5×5数织|Nonogram]]>><<set $Nonogram.sideLength to 5>><<run generateNonogramTable()>><</link>><br>
+<<link [[生成10×10数织|Nonogram]]>><<set $Nonogram.sideLength to 10>><<run generateNonogramTable()>><</link>><br>
+<span id="finishedHint"><br></span>
+<span id="NonogramTable" class="no-numberify">
+	<<NonogramTable>>
+</span>
+<<link "重来(此操作不可撤销！)">>
+	<<for _a=1; _a lte Math.pow(V.Nonogram.sideLength,2); _a++>>
+		<<set _aNo to V.Nonogram.grid["No" + _a]>>
+		<<set _aNo.answer to "blank">>
+	<</for>>
+	<<replace #NonogramTable>><<NonogramTable>><</replace>>
+	<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+<</link>><br>
+<<link [[返回|Terra Debug]]>><</link>>
+
+:: Widgets Nonogram [widget]
+<<widget "NonogramTable">>
+	<<switch $Nonogram.sideLength>>
+		<<case 5>>
+			<div class="itemNonogramFor5">
+				<<nonogramContent>>
+			</div>
+		<<case 10>>
+			<div class="itemNonogramFor10">
+				<<nonogramContent>>
+			</div>
+	<</switch>>
+<</widget>>
+
+<<widget "nonogramContent">>
+		<div class="itemNonogramInFirstColumn">
+		</div>
+		<<for _c = 1; _c lte $Nonogram.sideLength; _c++>>
+			<<set _ct to false>>
+			<<set _ct_count to 0>>
+			<div class="itemNonogramInFirstRow">
+				<<for _ind = 1; _ind lte Math.pow(V.Nonogram.sideLength,2); _ind++>>
+					<<set _No = V.Nonogram.grid["No" + _ind]>>
+					<<if _No.column is _c>>
+						<<if _No.puzzled is true>>
+							<<set _ct to true>>
+							<<set _ct_count += 1>>
+							<<if _No.row is $Nonogram.sideLength>>
+								<<print _ct_count>><br>
+							<</if>>
+						<<elseif _ct is true>>
+							<<print _ct_count>><br>
+							<<set _ct to false>>
+							<<set _ct_count = 0>>
+						<</if>>
+					<</if>>
+				<</for>>
+			</div>
+		<</for>>
+		<<set _i to 1>>
+		<<for _r = 1; _r lte $Nonogram.sideLength; _r++>>
+			<<set _rt to false>>
+			<<set _rt_count to 0>>
+			<div class="itemNonogramInFirstColumn">
+				<<for _ind = 1; _ind lte Math.pow(V.Nonogram.sideLength,2); _ind++>>
+					<<set _No = V.Nonogram.grid["No" + _ind]>>
+					<<if _No.row is _r>>
+						<<if _No.puzzled is true>>
+							<<set _rt to true>>
+							<<set _rt_count += 1>>
+							<<if _No.column is $Nonogram.sideLength>>
+								<<print _rt_count>><br>
+							<</if>>
+						<<elseif _rt is true>>
+							<<print `${_rt_count} `>>
+							<<set _rt to false>>
+							<<set _rt_count = 0>>
+						<</if>>
+					<</if>>
+				<</for>>
+			</div>
+			<<for _i lte (_r * $Nonogram.sideLength)>>
+				<<set _grid to V.Nonogram.grid["No" + _i]>>
+				<<capture _grid>>
+					<div class="item">
+						<div class="itemTerraGeneral">
+							<<switch _grid.answer>>
+								<<case "blank">>
+									<<link [img["img/misc/icon/nonogram/nonogram_blank.png"]]>>
+										<<set _grid.answer to true>>
+										<<replace #NonogramTable>><<NonogramTable>><</replace>>
+										<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+										<<nonogramFinishedCheck>>
+									<</link>>
+								<<case true>>
+									<<link [img["img/misc/icon/nonogram/nonogram_true.png"]]>>
+										<<set _grid.answer to false>>
+										<<replace #NonogramTable>><<NonogramTable>><</replace>>
+										<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+										<<nonogramFinishedCheck>>
+									<</link>>
+								<<case false>>
+									<<link [img["img/misc/icon/nonogram/nonogram_false.png"]]>>
+										<<set _grid.answer to "blank">>
+										<<replace #NonogramTable>><<NonogramTable>><</replace>>
+										<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
+									<</link>>
+							<</switch>>
+						</div>
+					</div>
+				<</capture>>
+				<<set _i++>>
+			<</for>>
+		<</for>>
+<</widget>>
+
+<<widget "nonogramFinishedCheck">>
+	<<set _finished to true>>
+	<<for _fc=1; _fc lte Math.pow(V.Nonogram.sideLength,2); _fc++>>
+		<<set _No = V.Nonogram.grid["No" + _fc]>>
+		<<if _No.answer isnot _No.puzzled>>
+			<<set _finished to false>>
+			<<break>>
+		<</if>>
+	<</for>>
+	<<if _finished>>
+		<<replace #finishedHint>>
+			<span class="green">你完成了数织！</span><br>
+		<</replace>>
+	<</if>>
+<</widget>>
+
+:: Nonogram Details
+<<icon "hint/Emote_Emote_Confused.gif">>
+数织（Nonogram），又称为Picross、Griddlers、或Picture Cross，是一种益智游戏。玩家通过推理填充一个方格网格，最终揭示出隐藏的图像。游戏的目标是根据每行和每列的数字提示，正确地填充或标记方格。<br>
+<br>
+游戏玩法：<br>
+一、网格和数字提示：
+<li>游戏的网格通常是一个方格，大小可以不同，常见的大小为5x5、10x10、15x15等。</li>
+<li>每行和每列都有一组数字，这些数字指示了该行或该列中连续填充的方格的数量。例如，提示"3 1"表示该行或列中有一个连续的3个方格被填充，之后是一个单独的1个方格。</li>
+<li>你必须根据这些数字来推理出哪些方格需要填充，哪些需要留空，直到整个表格被正确填充。</li>
+<br>
+二、解决方法：<br>
+<li>点击图标以切换表格内的答案。</li>
+<<icon "nonogram/nonogram_true.png">>填充方格的标记为绿色方块。<br>
+<<icon "nonogram/nonogram_false.png">>需要留空的标记为红色叉。<br>
+<<icon "nonogram/nonogram_blank.png">>待定的方格标记为白色问号。<br>
+<li>通常，解决数织的策略包括从已经确定的方格入手，逐步排除可能性，直到所有的方格都被正确填充。</li>
+<li>你可以通过<span class="gold">排除法</span>来逐步解开谜题。</li>
+<br>
+三、更多<br>
+<li>你可以在<a href="https://cn.puzzle-nonograms.com" target="_blank">数织-在线解谜游戏</a>在线游玩，获得更好的数织解谜体验。</li>
+<br>
+<<getouticon>><<link [[返回|Nonogram]]>><</link>>

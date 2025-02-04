@@ -149,6 +149,16 @@ setup.terraPet = {
 		des_item: "召唤格罗姆<br>\"花瓣在阳光下闪闪发光。\"",
 		des_projectile: "\"毛茸茸！还黏糊糊...\"",
 	},
+	"Parrot_Cracker": {
+		name: "Parrot_Cracker",
+		cn_name: "鹦鹉饼干",
+		type: "pet",
+		obtained: V.Parrot_Cracker,
+		icon_item: "pet/pet_item/Parrot_Cracker.png",
+		icon_projectile: "pet/pet_projectile/Pet_Parrot.gif",
+		des_item: "召唤宠物鹦鹉<br>\"不适合人类食用。\"",
+		des_projectile: "\"波利想要饼干\"",
+	},
 }
 
 function getAllPetList() {

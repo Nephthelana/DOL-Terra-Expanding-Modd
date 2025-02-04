@@ -542,7 +542,7 @@
 		<<set $Gold_Worm += 1>>
 		<<set $bestiary_bait_list.pushUnique("Gold_Worm")>>
 		<<set $bestiary_bait_catch_count.Worm += 1>>
-		、<<icon "fishing/bait/Enchanted_Nightcrawler.png">>金蠕虫(1)
+		、<<icon "fishing/bait/Gold_Worm.png">>金蠕虫(1)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>

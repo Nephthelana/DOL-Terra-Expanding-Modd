@@ -288,4 +288,7 @@
 	<<unset $terra_bedroom_furniture>>
 <</if>>
 
+<!-- 闹钟功能 -->
+<<set $terraAlarmList to $terraAlarmList or {}>>
+
 <</widget>>

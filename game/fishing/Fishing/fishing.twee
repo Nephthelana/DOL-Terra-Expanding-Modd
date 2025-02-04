@@ -10,9 +10,16 @@
 	<<fishing_finished_back>>
 	<<exitAll>>
 <</if>>
+<!-- 夜间游泳池的淫趴开始前自动退出钓鱼小游戏 -->
+<<if $fishing_place is "school_pool" and $weekly.schoolNightPoolParty is "intro" and Time.hour is 20 and Time.minute is 59>>
+	经过一段时间的等待，你听到更衣室传来了一阵阵欢呼声。你在其他人进来之前快速收拾好了渔具。<br>
+	<br>
+	<<fishing_finished_back>>
+	<<exitAll>>
+<</if>>
 <!-- 钓到钓鱼垃圾和内裤时直接跳过跳鱼小游戏 -->
 <<if ["Old_Shoe","Seaweed_junk","Tin_Can","Joja_Cola","feathers","swim_underwear"].includes($fishing_harvest.name)>>
-	<<fishing_harvest>>
+	<<run fishingHarvest()>>
 	<<set $fishing_harvest_count += 1>>
 	<<fishing_end>>
 	<span class="green">你猛地一收竿，宣示着你的胜利！</span><br>
@@ -33,7 +40,8 @@
 	<span class="green">最后你猛地一收竿，宣示着你的胜利！</span>
 	<<if !$terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag") and random(1,7) is 1>>
 		<<set $fishing_failed_count += 1>>
-		<span class="red">但是你的鱼线断了...</span>也许你需要一个优质钓鱼线。<<ggstress>><<stress 6>><br>
+		<span class="red">但是你的鱼线断了...</span>也许你需要一个<span class="teal">优质钓鱼线</span>。<<ggstress>><<stress 6>><br>
+		<span class="black"><i>如果没有优质钓鱼线，每次最后收竿时都有概率使鱼线直接断裂，损失此次渔获。</i></span><br>
 	<<else>>
 		<<set $fishing_harvest_count += 1>>
 		<<llstress>><<stress -6>><br>
@@ -46,11 +54,10 @@
 			<<case "None">>
 				<span class="red">看起来你在咬钩时就没有渔获判定成功，你是怎么看到这条消息的？这是不应该存在的情况，请向模组作者反馈</span><br>
 			<<default>>
-				<<fishing_harvest>>
+				<<run fishingHarvest()>>
 				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
 		<</switch>>
 	<</if>>
-	<br>
 	<<fishing_bait_consumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
@@ -100,42 +107,20 @@
 		<<else>>
 			<<fishingskill 2>><<set $fishingphase to 4>>
 		<</if>>
-	<</link>>
+	<</link>><br>
 <</if>>
+
+<!-- 日落伊甸园联动 -->
 <<if $fishing_place is "eden_clearing" and hasInTheEdenAfterSunsetModInfo()>>
-	<br><br>
+	<br>
 	<<Eden_Map_Actions>>
 	<<Eden_Cabin_Map>>
 <</if>>
 <<fishing_debug>>
 
 :: Widgets Fishing [widget]
-<<widget "fishing_prepare">>
-	<<set $fishing_distance to 50>>
-	<<set $fishing_integrity to $terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag") ? 5 : 3>>
-	<<switch $options.fishingrod_held>>
-		<<case "Golden_Fishing_Rod">>
-			<<set $fishing_distance_power = 16>>
-		<<case "Hotline_Fishing_Hook">>
-			<<set $fishing_distance_power = 15>>
-		<<case "Sitting_Ducks_Fishing_Pole">>
-			<<set $fishing_distance_power = 14>>
-		<<case "Fiberglass_Fishing_Pole">>
-			<<set $fishing_distance_power = 13>>
-		<<case "Scarab_Fishing_Rod">>
-			<<set $fishing_distance_power = 13>>
-		<<case "Slurper_Pole">>
-			<<set $fishing_distance_power = 12>>
-		<<case "Chum_Caster">>
-			<<set $fishing_distance_power = 12>>
-		<<case "Reinforced_Fishing_Pole">>
-			<<set $fishing_distance_power = 11>>
-		<<case "Wood_Fishing_Pole">>
-			<<set $fishing_distance_power = 10>>
-	<</switch>>
-	<<set $fishingphase to 0>>
-	<<set $fish_relax_count to 0>>
-	<<set $fish_struggle_count to 0>>
+<<widget "fishingrod_held_icon">>
+	<<icon `setup.terraFishingRod[$options.fishingrod_held].icon`>>
 <</widget>>
 
 <<widget "fishing_place">>
@@ -214,31 +199,11 @@
 
 <<widget "fishingrod_bobber">>
 	<!-- 判断是否装备着钓鱼浮标及其升级物 -->
-	<<set $_accessory_Fishing_Bobber to false>>
-	<<for _i to 0; _i lt $terra_accessories_slots.length; _i++>>
-		<<if setup.terraAccessories[$terra_accessories_slots[_i]].type is "bobber">>
-			<<set $_accessory_Fishing_Bobber to true>>
-			<<break>>
-		<</if>>
-	<</for>>
+	<<set $_accessory_Fishing_Bobber to Object.values(V.terra_accessories_slots).find(accessory => setup.terraAccessories[accessory].type === "bobber")>>
 	<<if $_accessory_Fishing_Bobber>>
-		<<if $terra_accessories_slots[_i] is "Helium_Moss_Fishing_Bobber">>
-			<<icon "fishing/bobber/Helium_Moss_Fishing_Bobber.gif">>
-		<<else>>
-			<img @src="'img/misc/icon/fishing/bobber/' + $terra_accessories_slots[_i] + '.png'">
-		<</if>>
+		<<icon `'fishing/bobber/' + $_accessory_Fishing_Bobber + ($_accessory_Fishing_Bobber is "Helium_Moss_Fishing_Bobber" ? '.gif' : '.png')`>>
 	<<else>>
-		<<switch $options.fishingrod_held>>
-			<<case "Golden_Fishing_Rod">><<icon "fishing/bobber/Bobber_(Golden).png">>
-			<<case "Hotline_Fishing_Hook">><<icon "fishing/bobber/Bobber_(Hotlines).png">>
-			<<case "Sitting_Ducks_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Sitting_Ducks).png">>
-			<<case "Fiberglass_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Fiberglass).png">>
-			<<case "Scarab_Fishing_Rod">><<icon "fishing/bobber/Bobber_(Scarab).png">>
-			<<case "Slurper_Pole">><<icon "fishing/bobber/Bobber_(Slurper).png">>
-			<<case "Chum_Caster">><<icon "fishing/bobber/Bobber_(Bloody).png">>
-			<<case "Reinforced_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Reinforced).png">>
-			<<case "Wood_Fishing_Pole">><<icon "fishing/bobber/Bobber_(Wooden).png">>
-		<</switch>>
+		<<icon `setup.terraFishingRod[$options.fishingrod_held].icon_bobber`>>
 	<</if>>
 <</widget>>
 
@@ -318,7 +283,7 @@
 
 <<widget "fishing_debug">>
 	<<if $debug is 1>>
-		<br><br>
+		<br>
 		*[DEBUG模式]调试信息<br>
 		*最后一回合不显示数据为正常现象<br>
 		*当前渔获：$fishing_harvest.cn_name<br>

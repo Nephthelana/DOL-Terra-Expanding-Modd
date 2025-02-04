@@ -9,9 +9,9 @@
 <<if $cat gte 6>>
 	<<link [[生吃鱼|Fish Island Eat Raw]]>><</link>><<cat>><br>
 <</if>>
-/*
+<!--
 <<link [[查看晾肉架|Fish Island Drying Rack]]>><</link>><br>
-*/
+-->
 <<if $island_build_cooking.includes("Work Bench")>>
 	<br>
 	你可以用工作台来简单处理鱼类。<br>
@@ -28,11 +28,11 @@
 	<</if>>
 	<<link [[查看篝火|Fish Island Campfire]]>><</link>><br>
 <</if>>
-/*
+<!--
 <<if $island_build_cooking.includes("Cooking Pot")>>
 	<<link [[查看烹饪锅|Fish Island Cooking Pot]]>><</link>><br>
 <</if>>
-*/
+-->
 <br>
 <<link [[返回营地 (0:05)|Island]]>><<island_pass 5>><</link>>
 

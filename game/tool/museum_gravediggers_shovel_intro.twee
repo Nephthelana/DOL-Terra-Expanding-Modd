@@ -41,7 +41,7 @@
 <br>
 <<ind>><<link [[同意 (0:10)|Museum Gravediggers Shovel Agree]]>><</link>><br>
 <<ind>><<link [[婉拒 (0:10)|Museum Gravediggers Shovel Refuse]]>><</link>><br>
-<<askicon>><<link [[询问薄雾|Museum Gravediggers Shovel Fog]]>><</link>><br>
+<<mysteryicon>><<link [[询问薄雾|Museum Gravediggers Shovel Fog]]>><</link>><br>
 <<endevent>>
 
 :: Museum Gravediggers Shovel Fog
@@ -61,6 +61,7 @@
 
 :: Museum Gravediggers Shovel Agree
 <<pass 10>>
+<<set $Gravediggers_Shovel to true>>
 <<npc Winter>><<person1>>
 你点点头，跟随温特一起来到院子里。温特的挖掘工作进展顺利。你负责将这些挖出来的沙土运送到<<he>>指定的地方。<<gtiredness>><<tiredness 5>><<glove>><<npcincr Winter love 1>><br>
 <br>
@@ -75,7 +76,7 @@
 <br>
 <<He>>叹了口气，看向你。"嗯...或许这把铲子在你手里能发挥它应有的价值。收下吧，就当是博物馆对你的谢礼。但我可没有鼓励你用它去盗墓。"<br>
 <br>
-<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><<set $Gravediggers_Shovel to true>><br>
+<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
 <br>
 <<getouticon>><<link [[返回|Museum]]>><</link>><br>
 <<endevent>>
@@ -93,21 +94,23 @@
 <<He>>沉思片刻后看向你，"嗯...或许这把铲子在你手里能发挥它应有的价值，收下吧，就当是博物馆对你的谢礼。"<br>
 <br>
 <<if $willpowerSuccess is 0>>
-	<<askicon>><<link [[询问铲子|Museum Gravediggers Shovel Ask]]>><</link>><br>
+	<<mysteryicon>><<link [[询问铲子|Museum Gravediggers Shovel Ask]]>><</link>><br>
 <<else>>
-	<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><<set $Gravediggers_Shovel to true>><br>
+	<<set $Gravediggers_Shovel to true>>
+	<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
 	<br>
 	<<getouticon>><<link [[返回|Museum]]>><</link>><br>
 <</if>>
 <<endevent>>
 
 :: Museum Gravediggers Shovel Ask
+<<set $Gravediggers_Shovel to true>>
 "这把铲子的铲头构造特殊，有很高的挖掘效率，主要被用于掘墓工作，被称为'掘墓者铲子'。不久之前，住在森林里的那位贤者将它的...配方告诉了我，当然还有其他的一些工具。"<br>
 <br>
 温特将铲子放在一边，继续说道："你找到的文物帮了大忙——市长在了解了近来本地文物收藏情况后，希望大家能更积极投身于文物的收集，丰富本地历史文化——博物馆因此获得了举办这次展览的机会。我原本想用这个铲子在院子里修整出一片展览场地，但我发现这里更需要的是一把镐子。<br>
 <br>
 "总之我用不到这把铲子。作为谢礼，它是你的了。"<br>
 <br>
-<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><<set $Gravediggers_Shovel to true>><br>
+<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
 <br>
 <<getouticon>><<link [[返回|Museum]]>><</link>><br>

@@ -1,0 +1,284 @@
+:: Widgets Gold Watch [widget]
+<<widget "alarmNext">>
+	<<if Object.keys($terraAlarmList).length lte 0>>
+		<span class="lblue">你还未设置闹钟</span>
+	<<else>>
+		<<set _alarmAvailable to false>>
+		<<for _ai range Object.keys($terraAlarmList)>>
+			<<set _AI to $terraAlarmList[_ai]>>
+			<<if Time.weekDay lt _AI.day or (Time.weekDay is _AI.day and Time.hour lt _AI.hour) or (Time.weekDay is _AI.day and Time.hour is _AI.hour and Time.minute lt _AI.minute)>>
+				<<set _alarmAvailable to true>>
+				<<break>>
+			<</if>>
+		<</for>>
+		<<if !_alarmAvailable>>
+			<<set _AI to $terraAlarmList.No1>>
+		<</if>>
+		下一个闹钟将会在 
+		<<switch _AI.day>>
+			<<case 1>>星期日
+			<<case 2>>星期一
+			<<case 3>>星期二
+			<<case 4>>星期三
+			<<case 5>>星期四
+			<<case 6>>星期五
+			<<case 7>>星期六
+		<</switch>> 
+		的 <<print ` ${ampm(_AI.hour, _AI.minute)}`>> 提醒：_AI.text
+	<</if>>
+<</widget>>
+
+<<widget "terraAlarmListPreviewButton">>
+	<<link "查看闹钟列表">>
+		<<replace #terraAlarmListPreviewButton>>
+			<<link "收起闹钟列表">>
+				<<replace #terraAlarmListPreviewButton>>
+					<<terraAlarmListPreviewButton>>
+				<</replace>>
+				<<replace #alarmInfo>>
+				<</replace>>
+			<</link>>
+		<</replace>>
+		<<replace #alarmInfo>>
+			<<terraAlarmListPreview>>
+		<</replace>>
+	<</link>>
+<</widget>>
+
+<<widget "terraAlarmListPreview">>
+	闹钟列表：<br>
+	单次：<br>
+	<<alarmListPreview "oneTime">>
+	重复：<br>
+	<<alarmListPreview "repetitive">>
+<</widget>>
+
+<<widget "alarmListPreview">>
+	<<set _al to Object.keys($terraAlarmList).filter(a => $terraAlarmList[a].type === _args[0])>>
+	<<if _al.length lte 0>>
+		<span class="lblue">你还未设置该类型的闹钟。</span><br>
+	<<else>>
+		<<for _a range _al>>
+			<<capture _a>>
+				<<set _oa to $terraAlarmList[_a]>>
+				<<link "删除">>
+					<<alarmDelete _a>>
+					<<replace #alarmInfo>>
+						<<terraAlarmListPreview>>
+					<</replace>>
+					<<replace #alarmNext>>
+						<<alarmNext>>
+					<</replace>>
+					<<replace #terraAlarmClockList>>
+						<<terraAlarmClockList>>
+					<</replace>>
+				<</link>> 
+				<<switch _oa.day>>
+					<<case 1>>星期日
+					<<case 2>>星期一
+					<<case 3>>星期二
+					<<case 4>>星期三
+					<<case 5>>星期四
+					<<case 6>>星期五
+					<<case 7>>星期六
+				<</switch>>
+				<<print ` ${ampm(_oa.hour, _oa.minute)}`>>：_oa.text
+			<</capture>>
+			<br>
+		<</for>>
+	<</if>>
+<</widget>>
+
+<<widget "alarmDelete">>
+	<<for _ad=parseInt(_args[0].replace("No","")); _ad lte Object.keys($terraAlarmList).length; _ad++>>
+		<<if $terraAlarmList["No" + (_ad+1)]>>
+			<<set $terraAlarmList["No" + _ad] to $terraAlarmList["No" + (_ad+1)]>>
+		<<else>>
+			<<run delete $terraAlarmList["No" + _ad]>>
+		<</if>>
+	<</for>>
+<</widget>>
+
+<<widget "terraAlarmSetting">>
+	<<set _newAlarm.type to _newAlarm.type or "oneTime">>
+	设定新闹钟：<br>
+	类型：
+	<label><<radiobutton "_newAlarm.type" "oneTime" autocheck>>单次</label>｜
+	<label><<radiobutton "_newAlarm.type" "repetitive" autocheck>>重复</label>
+	<br>
+	时间：
+	<<listbox "_newAlarm.day" autoselect>>
+		<<option "星期日" 1>>
+		<<option "星期一" 2>>
+		<<option "星期二" 3>>
+		<<option "星期三" 4>>
+		<<option "星期四" 5>>
+		<<option "星期五" 6>>
+		<<option "星期六" 7>>
+	<</listbox>>
+	<<if $options.timestyle is "ampm">>
+		<<set _hoursList to {}>>
+		<<for _h to 1; _h lt 12; _h++>>
+			<<set _hoursList[_h] to _h>>
+		<</for>>
+		<<listbox "_newAlarm.hourTemp" autoselect>>
+			<<option "12" 0>>
+			<<optionsfrom _hoursList>>
+		<</listbox>>
+	<<else>>
+		<!-- 由于生成的一系列listbox选项，不知为何会被自动整理，导致出现显示小时数的'01'、'02'的选项排在'22'、'23'的后面的情况，不合直觉。故分为了两个列表来显示 -->
+		<<set _hoursList1 to {}>>
+		<<set _hoursList2 to {}>>
+		<<for _ah1 to 0; _ah1 lt 10; _ah1++>>
+			<<set _hoursList1[("0" + _ah1).slice(-2)] to _ah1>>
+		<</for>>
+		<<for _ah2 to 10; _ah2 lt 24; _ah2++>>
+			<<set _hoursList2[_ah2] to _ah2>>
+		<</for>>
+		<<listbox "_newAlarm.hourTemp" autoselect>>
+			<<optionsfrom _hoursList1>>
+			<<optionsfrom _hoursList2>>
+		<</listbox>>
+	<</if>>
+	:
+	<<set _minutesList to {}>>
+	<<for _m to 10; _m lt 60; _m += 5>>
+		<<set _minutesList[_m] to _m>>
+	<</for>>
+	<<listbox "_newAlarm.minute" autoselect>>
+		<<option "00" 0>>
+		<<option "05" 5>>
+    	<<optionsfrom _minutesList>>
+	<</listbox>>
+	<<if $options.timestyle is "ampm">>
+		<<listbox "_newAlarm.AmPm" autoselect>>
+			<<option "上午" "am">>
+			<<option "下午" "pm">>
+		<</listbox>>
+	<</if>><br>
+	标签：
+	<<textbox "_newAlarm.text" "">><br>
+	<span id="alarmSettingHint"></span><br>
+	<<link "确定">>
+		<<if _newAlarm.text is "">>
+			<<replace #alarmSettingHint>><span class="red">标签不可为空！</span><</replace>>
+		<<else>>
+			<<alarmAdd>>
+			<<replace #alarmNext>>
+				<<alarmNext>>
+			<</replace>>
+		<</if>>
+	<</link>><br>
+	<<link "取消">>
+		<<replace #alarmInfo>><</replace>>
+	<</link>><br>
+<</widget>>
+
+<<widget "alarmAdd">>
+	<<set _newAlarm.hour to ($options.timestyle is "ampm" and _newAlarm.AmPm is "pm") ? (_newAlarm.hourTemp + 12) : _newAlarm.hourTemp>>
+	<<if Object.keys($terraAlarmList).length lte 0>>
+		<<set $terraAlarmList.No1 to {
+			type: _newAlarm.type,
+			day: _newAlarm.day,
+			hour: _newAlarm.hour,
+			minute: _newAlarm.minute,
+			text: _newAlarm.text,
+			phase: (Time.weekDay gt _newAlarm.day or (Time.weekDay is _newAlarm.day and Time.hour gt _newAlarm.hour) or (Time.weekDay is _newAlarm.day and Time.hour is _newAlarm.hour and Time.minute gt _newAlarm.minute)) ? "alarmed" : "alarmPre",
+		}>>
+		<<replace #alarmSettingHint>>
+			<span class="green fading">新闹钟已添加。</span>
+		<</replace>>
+	<<else>>
+		<<for _an=1; _an lte Object.keys($terraAlarmList).length; _an++>>
+			<<set _alarm to $terraAlarmList["No" + _an]>>
+			<<if _newAlarm.day is _alarm.day and _newAlarm.hour is _alarm.hour and _newAlarm.minute is _alarm.minute>>
+				<<replace #alarmSettingHint>>
+					<span class="red">该时间点的闹钟已存在！</span>你忘了 <span class="teal">_alarm.text</span> 吗？
+				<</replace>>
+				<<break>>
+			<<elseif _newAlarm.day lt _alarm.day or (_newAlarm.day is _alarm.day and _newAlarm.hour lt _alarm.hour) or (_newAlarm.day is _alarm.day and _newAlarm.hour is _alarm.hour and _newAlarm.minute lt _alarm.minute)>>
+				<<for _t=Object.keys($terraAlarmList).length; _t gte _an; _t-->>
+					<<set $terraAlarmList["No" + (_t+1)] to $terraAlarmList["No" + _t]>>
+				<</for>>
+				<<set $terraAlarmList["No" + _an] to {
+					type: _newAlarm.type,
+					day: _newAlarm.day,
+					hour: _newAlarm.hour,
+					minute: _newAlarm.minute,
+					text: _newAlarm.text,
+					phase: (Time.weekDay gt _newAlarm.day or (Time.weekDay is _newAlarm.day and Time.hour gt _newAlarm.hour) or (Time.weekDay is _newAlarm.day and Time.hour is _newAlarm.hour and Time.minute gt _newAlarm.minute)) ? "alarmed" : "alarmPre",
+				}>>
+				<<replace #alarmSettingHint>>
+					<span class="green fading">新闹钟已添加。</span>
+				<</replace>>
+				<<break>>
+			<<elseif _an gte Object.keys($terraAlarmList).length>>
+				<<set $terraAlarmList["No" + (_an + 1)] to {
+					type: _newAlarm.type,
+					day: _newAlarm.day,
+					hour: _newAlarm.hour,
+					minute: _newAlarm.minute,
+					text: _newAlarm.text,
+					phase: (Time.weekDay gt _newAlarm.day or (Time.weekDay is _newAlarm.day and Time.hour gt _newAlarm.hour) or (Time.weekDay is _newAlarm.day and Time.hour is _newAlarm.hour and Time.minute gt _newAlarm.minute)) ? "alarmed" : "alarmPre",
+				}>>
+				<<replace #alarmSettingHint>>
+					<span class="green fading">新闹钟已添加。</span>
+				<</replace>>
+				<<break>>
+			<</if>>
+		<</for>>
+	<</if>>
+<</widget>>
+
+<!-- 显示在页面内的闹钟提示 -->
+<<widget "terraAlarmClock">>
+	<<if !["Start","Start2"].includes($passage)>>
+		<span id="terraAlarmClockList">
+			<<terraAlarmClockList>>
+		</span>
+	<</if>>
+<</widget>>
+
+<<widget "terraAlarmClockList">>
+	<<for _i range Object.keys($terraAlarmList)>>
+		<<set _alarm to $terraAlarmList[_i]>>
+		<<if (Time.weekDay gt _alarm.day or (Time.weekDay is _alarm.day and Time.hour gt _alarm.hour) or (Time.weekDay is _alarm.day and Time.hour is _alarm.hour and Time.minute gte _alarm.minute)) and _alarm.phase is "alarmPre">>
+			<<set $terraAlarmList[_i].phase to "alarming">>
+		<</if>>
+	<</for>>
+	<<for _i range Object.keys($terraAlarmList).filter(a => ["alarming","alarmingPassedAWeek"].includes($terraAlarmList[a].phase))>>
+		<<capture _i>>
+			<<set _a to $terraAlarmList[_i]>>
+			<<capture _a>>
+				<span class="gold terraBlinking">
+					<<switch _a.day>>
+						<<case 1>>星期日
+						<<case 2>>星期一
+						<<case 3>>星期二
+						<<case 4>>星期三
+						<<case 5>>星期四
+						<<case 6>>星期五
+						<<case 7>>星期六
+					<</switch>>
+					<<print ` ${ampm(_a.hour, _a.minute)}`>>：_a.text 
+				</span>
+				<<link "确认">>
+					<<if _a.type is "oneTime">>
+						<<alarmDelete _i>>
+					<<else>>
+						<<switch _a.phase>>
+							<<case "alarming">>
+								<<set _a.phase to "alarmed">>
+							<<case "alarmingPassedAWeek">>
+								<<set _a.phase to "alarmPre">>
+						<</switch>>
+					<</if>>
+					<<replace #terraAlarmClockList>>
+						<<terraAlarmClockList>>
+					<</replace>>
+				<</link>>
+			<</capture>>
+		<</capture>><br>
+		<br>
+	<</for>>
+<</widget>>

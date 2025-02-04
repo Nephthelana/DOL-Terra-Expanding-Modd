@@ -1,14 +1,14 @@
 :: Terra Expand Equipment [widget]
-<<widget "terra_expand_equipment">>
+<<widget "terraExpandEquipmentButton">>
 	<<button '<<icon "Accessories_icon.png">>装备'>><<iModReplace "terraExpandEquipmentOverlay">><</button>>
 <</widget>>
 
 <<widget "terraExpandEquipmentOverlay">>
-	<<replace #customOverlayTitle>><<titleTerraExpandEquipment>><</replace>>
+	<<replace #customOverlayTitle>><<terraExpandEquipmentTitle>><</replace>>
 	<<replace #customOverlayContent>><<terraExpandEquipment>><</replace>>
 <</widget>>
 
-<<widget "titleTerraExpandEquipment">>
+<<widget "terraExpandEquipmentTitle">>
 	<<setupTabs>>
 	<div id="overlayTabs" class="tab">
 		<<closeButtonMobile>>
@@ -76,7 +76,7 @@
 		<div ondragover="allowDropTEM(event)" ondrop="dropArmorList(event)">
 			<<if getArmorObtained().length lte 0>>
 				<i>你还没有获得盔甲</i><br>
-			<<elseif ($terra_armor_slots.count("Armor_Helmet")+$terra_armor_slots.count("Armor_Shirt")+$terra_armor_slots.count("Armor_Pants")+getArmorObtained().length-3) lte 0>>
+			<<elseif ($terra_armor_slots.count("Armor_Helmet") + $terra_armor_slots.count("Armor_Shirt") + $terra_armor_slots.count("Armor_Pants") + getArmorObtained().length - 3) lte 0>>
 				<i>你没有多余的盔甲</i><br>
 			<<else>>
 				<<run initializeTooltips()>>
@@ -121,18 +121,20 @@
 							</div>
 						</div>
 						<hr>
-						<<link "卸下">>
-							<<switch _armor.type>>
-								<<case "helmet">>
-									<<set $terra_armor_slots[0] to "Armor_Helmet">>
-								<<case "shirt">>
-									<<set $terra_armor_slots[1] to "Armor_Shirt">>
-								<<case "pants">>
-									<<set $terra_armor_slots[2] to "Armor_Pants">>
-							<</switch>>
-							<<UpdateArmorSlots>>
-							<<UpdateArmorList>>
-						<</link>>
+						<div class="terraLinks">
+							<<link "卸下">>
+								<<switch _armor.type>>
+									<<case "helmet">>
+										<<set $terra_armor_slots[0] to "Armor_Helmet">>
+									<<case "shirt">>
+										<<set $terra_armor_slots[1] to "Armor_Shirt">>
+									<<case "pants">>
+										<<set $terra_armor_slots[2] to "Armor_Pants">>
+								<</switch>>
+								<<UpdateArmorSlots>>
+								<<UpdateArmorList>>
+							<</link>>
+						</div>
 					</div>
 				<</if>>
 			<</capture>>
@@ -143,7 +145,9 @@
 				</div>
 				<<if !$options.dragModeTEM>>
 					<hr>
-					空
+					<div class="terraLinks">
+						空
+					</div>
 				<</if>>
 			</div>
 		<</if>>
@@ -172,18 +176,20 @@
 							</div>
 						</div>
 						<hr>
-						<<link "装备">>
-							<<switch _armor.type>>
-								<<case "helmet">>
-									<<set $terra_armor_slots[0] to _armor.name>>
-								<<case "shirt">>
-									<<set $terra_armor_slots[1] to _armor.name>>
-								<<case "pants">>
-								<<set $terra_armor_slots[2] to _armor.name>>
-							<</switch>>
-							<<UpdateArmorSlots>>
-							<<UpdateArmorList>>
-						<</link>>
+						<div class="terraLinks">
+							<<link "装备">>
+								<<switch _armor.type>>
+									<<case "helmet">>
+										<<set $terra_armor_slots[0] to _armor.name>>
+									<<case "shirt">>
+										<<set $terra_armor_slots[1] to _armor.name>>
+									<<case "pants">>
+									<<set $terra_armor_slots[2] to _armor.name>>
+								<</switch>>
+								<<UpdateArmorSlots>>
+								<<UpdateArmorList>>
+							<</link>>
+						</div>
 					</div>
 				<</if>>
 			<</if>>
@@ -281,24 +287,28 @@
 						</div>
 					</div>
 					<hr>
-					<<link "卸下">>
-						<<set $terra_accessories_slots.delete(_accessory_equipped.name)>>
-						<<UpdateAccessoriesSlots>>
-						<<UpdateAccessoryList>>
-					<</link>>
+					<div class="terraLinks">
+						<<link "卸下">>
+							<<set $terra_accessories_slots.delete(_accessory_equipped.name)>>
+							<<UpdateAccessoriesSlots>>
+							<<UpdateAccessoryList>>
+						<</link>>
+					</div>
 					<hr>
-					<<capture _t>>
-						<<if _t is 0>>
-							/
-						<<else>>
-							<<link "⬅">>
-								<<set _temp to $terra_accessories_slots[_t-1]>>
-								<<set $terra_accessories_slots[_t-1] to $terra_accessories_slots[_t]>>
-								<<set $terra_accessories_slots[_t] to _temp>>
-								<<UpdateAccessoriesSlots>>
-							<</link>>
-						<</if>>
-					<</capture>>
+					<div class="terraLinks">
+						<<capture _t>>
+							<<if _t is 0>>
+								/
+							<<else>>
+								<<link "⬅">>
+									<<set _temp to $terra_accessories_slots[_t-1]>>
+									<<set $terra_accessories_slots[_t-1] to $terra_accessories_slots[_t]>>
+									<<set $terra_accessories_slots[_t] to _temp>>
+									<<UpdateAccessoriesSlots>>
+								<</link>>
+							<</if>>
+						<</capture>>
+					</div>
 				</div>
 			<</if>>
 			<<switch _accessory_equipped.type>>
@@ -318,9 +328,13 @@
 			</div>
 			<<if !$options.dragModeTEM>>
 				<hr>
-				空
+				<div class="terraLinks">
+					空
+				</div>
 				<hr>
-				/
+				<div class="terraLinks">
+					/
+				</div>
 			<</if>>
 		</div>
 	<</for>>
@@ -348,24 +362,28 @@
 						</div>
 					</div>
 					<hr>
-					<<link "卸下">>
-						<<set $terra_vanity_accessories_slots.delete(_vanity_accessory_equipped.name)>>
-						<<UpdateVanityAccessoriesSlots>>
-						<<UpdateAccessoryList>>
-					<</link>>
+					<div class="terraLinks">
+						<<link "卸下">>
+							<<set $terra_vanity_accessories_slots.delete(_vanity_accessory_equipped.name)>>
+							<<UpdateVanityAccessoriesSlots>>
+							<<UpdateAccessoryList>>
+						<</link>>
+					</div>
 					<hr>
-					<<capture _t>>
-						<<if _t is 0>>
-							/
-						<<else>>
-							<<link "⬅">>
-								<<set _temp to $terra_vanity_accessories_slots[_t-1]>>
-								<<set $terra_vanity_accessories_slots[_t-1] to $terra_vanity_accessories_slots[_t]>>
-								<<set $terra_vanity_accessories_slots[_t] to _temp>>
-								<<UpdateVanityAccessoriesSlots>>
-							<</link>>
-						<</if>>
-					<</capture>>
+					<div class="terraLinks">
+						<<capture _t>>
+							<<if _t is 0>>
+								/
+							<<else>>
+								<<link "⬅">>
+									<<set _temp to $terra_vanity_accessories_slots[_t-1]>>
+									<<set $terra_vanity_accessories_slots[_t-1] to $terra_vanity_accessories_slots[_t]>>
+									<<set $terra_vanity_accessories_slots[_t] to _temp>>
+									<<UpdateVanityAccessoriesSlots>>
+								<</link>>
+							<</if>>
+						<</capture>>
+					</div>
 				</div>
 			<</if>>
 		<</capture>>
@@ -377,9 +395,13 @@
 			</div>
 			<<if !$options.dragModeTEM>>
 				<hr>
-				空
+				<div class="terraLinks">
+					空
+				</div>
 				<hr>
-				/
+				<div class="terraLinks">
+					/
+				</div>
 			<</if>>
 		</div>
 	<</for>>
@@ -409,31 +431,35 @@
 							</div>
 						</div>
 						<hr>
-						<<if $terra_accessories_slots.length gte 6>>
-							<mouse class="tooltip linkBlue">不可用<span class="blue">饰品栏已满</span></mouse>
-						<<elseif _accessory.type is "wings" and _accessory_equipped_type.includes("wings")>>
-							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个翅膀</span></mouse>
-						<<elseif _accessory.type is "boots" and _accessory_equipped_type.includes("boots")>>
-							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一双靴子</span></mouse>
-						<<elseif _accessory.type is "bobber" and _accessory_equipped_type.includes("bobber")>>
-							<mouse class="tooltip linkBlue">不可用<span class="blue">同时只能装备一个钓鱼浮标</span></mouse>
-						<<else>>
-							<<link "饰品栏">>
-								<<set $terra_accessories_slots.pushUnique(_accessory.name)>>
-								<<UpdateAccessoriesSlots>>
-								<<UpdateAccessoryList>>
-							<</link>>
-						<</if>>
+						<div class="terraLinks">
+							<<if $terra_accessories_slots.length gte 6>>
+								<mouse class="tooltip linkBlue">/<span class="blue">饰品栏已满</span></mouse>
+							<<elseif _accessory.type is "wings" and _accessory_equipped_type.includes("wings")>>
+								<mouse class="tooltip linkBlue">/<span class="blue">同时只能装备一个翅膀</span></mouse>
+							<<elseif _accessory.type is "boots" and _accessory_equipped_type.includes("boots")>>
+								<mouse class="tooltip linkBlue">/<span class="blue">同时只能装备一双靴子</span></mouse>
+							<<elseif _accessory.type is "bobber" and _accessory_equipped_type.includes("bobber")>>
+								<mouse class="tooltip linkBlue">/<span class="blue">同时只能装备一个钓鱼浮标</span></mouse>
+							<<else>>
+								<<link "饰品">>
+									<<set $terra_accessories_slots.pushUnique(_accessory.name)>>
+									<<UpdateAccessoriesSlots>>
+									<<UpdateAccessoryList>>
+								<</link>>
+							<</if>>
+						</div>
 						<hr>
-						<<if $terra_vanity_accessories_slots.length gte 6>>
-							<mouse class="tooltip linkBlue">不可用<span class="blue">时装栏已满</span></mouse>
-						<<else>>
-							<<link "时装栏">>
-								<<set $terra_vanity_accessories_slots.pushUnique(_accessory.name)>>
-								<<UpdateVanityAccessoriesSlots>>
-								<<UpdateAccessoryList>>
-							<</link>>
-						<</if>>
+						<div class="terraLinks">
+							<<if $terra_vanity_accessories_slots.length gte 6>>
+								<mouse class="tooltip linkBlue">/<span class="blue">时装栏已满</span></mouse>
+							<<else>>
+								<<link "时装">>
+									<<set $terra_vanity_accessories_slots.pushUnique(_accessory.name)>>
+									<<UpdateVanityAccessoriesSlots>>
+									<<UpdateAccessoryList>>
+								<</link>>
+							<</if>>
+						</div>
 					</div>
 				<</if>>
 			<</if>>

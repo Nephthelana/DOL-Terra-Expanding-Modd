@@ -1,0 +1,25 @@
+:: Guide Compass
+你取出从走私者洞穴中找到的银质指南针，放在了桌上。<br>
+<br>
+"毫不意外，这种指南针还有很多个。"向导一手拿起这个指南针摆弄着，看起来是在测试其功能。<br>
+<br>
+<<link [[继续|Guide Compass 1]]>><</link>>
+
+:: Guide Compass 1
+<<set $timeStampTempCompass to $timeStamp>>
+"玻璃表面有几道细密的裂纹，但在时间的冲刷下，它仍能很好的指示方向。很抱歉我不能像博物馆馆长一样用钱来支付报酬，但我会在研究完之后，给你这块指南针经过改良的版本。"<br>
+<br>
+"大概需要<span class="teal">一个小时</span>，在那之后来拿吧。"<br>
+<br>
+<<link [[继续|Guide Room]]>><</link>>
+
+:: Guide Compass 2
+<<unset $CompassPre>>
+<<unset $timeStampTempCompass>>
+<<unset $antiqueCompassObtained>>
+<<set $Compass to true>>
+"修复这块玻璃是很轻松的事。所以我另外做了一些改进，这样你在一些地方探索时，它能显示出你所处的具体位置。"<br>
+<br>
+<span class="gold">你获得了<<icon "accessories/Compass.png">>罗盘！</span><br>
+<br>
+<<link [[继续|Guide Room]]>><</link>>

@@ -1,8 +1,8 @@
 :: Robin Fishing Bitten
 <<npc Robin>><<person1>>
-<<fishing_cast_time>>
+<<run fishingCastTime()>>
 /* 将开始钓鱼已经过去的时间与等待鱼上钩所需的时间之和，跟对应地点的可钓鱼时间进行比较。前者较大表明已超出约会时间，该回去了，否则可以继续钓鱼 */
-<<if ($robin_fishing_date_time_passed + $fishing_cast_time * 60) gte $robin_fishing_date_time>>
+<<if ($robin_fishing_date_time_passed + _fishing_cast_time * 60) gte $robin_fishing_date_time>>
 	<<if $robin_fishing_date_time_passed gte $robin_fishing_date_time>>
 		你准备再抛一竿，而罗宾提醒你是时候回去了。<<robin_bait_back>>你们收拾好渔具回到了孤儿院。<br>
 	<<else>>
@@ -16,11 +16,11 @@
 	<<robin_fishing_travel_time>>
 	<<robinoptions>>
 <<else>>
-	<<pass $fishing_cast_time>>
+	<<pass _fishing_cast_time>>
 	<<set $fishing_bitten_count += 1>>
 	/* 计算钓鱼约会中已钓鱼时间 */
-	<<set $robin_fishing_date_time_passed += $fishing_cast_time * 60>>
-	经过$fishing_cast_time分钟的等待，有东西上钩了！<br>
+	<<set $robin_fishing_date_time_passed += _fishing_cast_time * 60>>
+	经过_fishing_cast_time分钟的等待，有东西上钩了！<br>
 	<<if $Sonar_Potion_countdown gt 0>>
 		<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
 	<</if>>
@@ -28,7 +28,7 @@
 	/* 显示罗宾的钓鱼状态。钓鱼状态机制详见<<widget "robin_fishing_phase">> */
 	<<robin_fishing_phase>>
 	<br>
-	<<link [[收竿！|Robin Fishing]]>><<fishing_prepare>><</link>><br>
+	<<link [[收竿！|Robin Fishing]]>><<run fishingPrepare()>><</link>><br>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<br>

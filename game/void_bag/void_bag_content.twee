@@ -36,63 +36,7 @@
 		<span class="teal">渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？</span><br>
 	<</if>>
 	<<run initializeTooltips()>>
-	/* 钓鱼信息饰品：渔民袖珍宝典、天气收音机、六分仪 */
-	<<if $Fishermans_Pocket_Guide or $Fish_Finder>>
-		<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">>
-		<<if $Bait is "Truffle_Worm">>
-			警告！<br>
-		<<else>>
-			<<fishing_power>>
-			渔力：<<print Math.round($fishing_power)>><br>
-		<</if>>
-		<br>
-	<</if>>
-	<<if $Weather_Radio or $Fish_Finder>>
-		<<set $weather_forecast_hours to $weather_forecast_hours is undefined ? 6 : $weather_forecast_hours>>
-		<<icon "fishing/fishing_accessories/Weather_Radio.png">>
-		当前天气：
-		<<switch Weather.name>>
-			<<case "clear">><<icon "clear_icon.png">>晴天
-			<<case "lightClouds">><<icon "lightClouds_icon.png">>有云
-			<<case "heavyClouds">><<icon "heavyClouds_icon.png">>多云
-			<<case "lightPrecipitation">><<icon "lightPrecipitation_icon.png">>小雨
-			<<case "heavyPrecipitation">><<icon "heavyPrecipitation_icon.png">>大雨
-		<</switch>>
-		<span id="terraWeatherForcast">
-			<<link "查看天气预报">>
-				<<replace #terraWeatherForcast>>
-					<<terraWeatherForcast>>
-				<</replace>>
-			<</link>><br>
-			<br>
-		</span>
-	<</if>>
-	<<if $Sextant or $Fish_Finder>>
-		<<icon "fishing/fishing_accessories/Sextant.png">>
-		当前月相：
-		<<if Time.isBloodMoon()>>
-			<span class="red">血月</span>(+10%渔力)
-		<<elseif Time.date.moonPhaseFraction is 0>>
-			新月(-10%渔力)
-		<<elseif Time.date.moonPhaseFraction gt 0 and Time.date.moonPhaseFraction lt 0.25>>
-			娥眉月(-5%渔力)
-		<<elseif Time.date.moonPhaseFraction is 0.25>>
-			上弦月
-		<<elseif Time.date.moonPhaseFraction gt 0.25 and Time.date.moonPhaseFraction lt 0.5>>
-			盈凸月(+5%渔力)
-		<<elseif Time.date.moonPhaseFraction is 0.5>>
-			满月(+10%渔力)
-		<<elseif Time.date.moonPhaseFraction gt 0.5 and Time.date.moonPhaseFraction lt 0.75>>
-			亏凸月(+5%渔力)
-		<<elseif Time.date.moonPhaseFraction is 0.75>>
-			下弦月
-		<<elseif Time.date.moonPhaseFraction gt 0.75 and Time.date.moonPhaseFraction lt 1>>
-			残月(-5%渔力)
-		<<else>>
-			额哦，显示月相时好像出了些问题，建议问问模组作者~
-		<</if>><br>
-		<br>
-	<</if>>
+	<<informationalAccessoryContent>>
 	/* 持有鱼饵+切换鱼饵 */
 	<<if $fishingrod>>
 		<span class="gold bold">鱼饵</span><mouse class="tooltip linkBlue">(?)<span>鱼饵可以给你提供不同的鱼饵力，影响渔获的品质，也影响在成功钓起渔获物时鱼饵物品被消耗掉的几率：高鱼饵力意味着低消耗几率。</span></mouse><br>
@@ -270,20 +214,22 @@
 						<hr>
 						_crate.amount
 						<hr>
-						<<link "打开">>
-							<<set $void_bag_unload_crate to _crate.name>>
-							<<replace #unloadCrateHint>>
-								<<UnloadCrateHint>>
-							<</replace>>
-							<<replace #crateList>>
-								<<crateList>>
-							<</replace>>
-							<<if !($passage is "Fishing" or $passage is "Robin Fishing") and $fishingrod>>
-								<<replace #baitList>>
-									<<baitList>>
+						<div class="terraLinks">
+							<<link "打开">>
+								<<set $void_bag_unload_crate to _crate.name>>
+								<<replace #unloadCrateHint>>
+									<<UnloadCrateHint>>
 								<</replace>>
-							<</if>>
-						<</link>>
+								<<replace #crateList>>
+									<<crateList>>
+								<</replace>>
+								<<if !($passage is "Fishing" or $passage is "Robin Fishing") and $fishingrod>>
+									<<replace #baitList>>
+										<<baitList>>
+									<</replace>>
+								<</if>>
+							<</link>>
+						</div>
 					</div>
 				<</capture>>
 			<</for>>
@@ -375,17 +321,23 @@
 						<hr>
 						_food.amount
 						<hr>
-						<<link "吃">>
-							_food.use
-							<<earnFeat "Don't Starve">>
-							<<replace #hunger_description>>
-								<<hunger_description>><br>
-								你吃了一份<<icon `_food.icon`>>_food.cn_name。_food.use_hint<br>
-							<</replace>>
-							<<replace #foodList>>
-								<<foodList>>
-							<</replace>>
-						<</link>>
+						<div class="terraLinks">
+							<<link "吃">>
+								<<replace #hunger_description>>
+									<<hunger_description>><br>
+									<<if _food.name is "Sake" and playerIsPregnant() and playerAwareTheyArePregnant()>>
+										<span class="blue">你怀有身孕，不能喝酒。</span><br>
+									<<else>>
+										<<earnFeat "Don't Starve">>
+										_food.use
+										你吃了一份<<icon `_food.icon`>>_food.cn_name。_food.use_hint<br>
+									<</if>>
+								<</replace>>
+								<<replace #foodList>>
+									<<foodList>>
+								<</replace>>
+							<</link>>
+						</div>
 					</div>
 				<</capture>>
 			<</for>>
@@ -394,51 +346,3 @@
 		你没有携带的食物。
 	<</if>>
 <</widget>>
-
-:: Terra Weather Forecast [widget]
-	<<widget "terraWeatherForcast">>
-		<<run initializeTooltips()>>
-		<<link "收起天气预报">>
-			<<replace #terraWeatherForcast>>
-				<<link "查看天气预报">>
-					<<replace #terraWeatherForcast>>
-						<<terraWeatherForcast>>
-					<</replace>>
-				<</link>><br>
-				<br>
-			<</replace>>
-		<</link>><br>
-		接下来
-		<<link "<<">>
-			<<set $weather_forecast_hours to $weather_forecast_hours gt 1 ? ($weather_forecast_hours - 1) : $weather_forecast_hours>>
-			<<replace #terraWeatherForcast>>
-				<<terraWeatherForcast>>
-			<</replace>>
-		<</link>>
-		<<print $weather_forecast_hours>>
-		<<link ">>">>
-			<<set $weather_forecast_hours to $weather_forecast_hours lt 12 ? ($weather_forecast_hours + 1) : $weather_forecast_hours>>
-			<<replace #terraWeatherForcast>>
-				<<terraWeatherForcast>>
-			<</replace>>
-		<</link>>
-		小时内的天气为：<br>
-		<div class="itemTerra">
-			<<for _w=1; _w lt ($weather_forecast_hours+1); _w++>>
-				<<switch weatherInAnHour(T.w).name>>
-					<<case "clear">><<set _weather_icon to "clear_icon.png">><<set _weather_cn_name to "晴天">>
-					<<case "lightClouds">><<set _weather_icon to "lightClouds_icon.png">><<set _weather_cn_name to "有云">>
-					<<case "heavyClouds">><<set _weather_icon to "heavyClouds_icon.png">><<set _weather_cn_name to "多云">>
-					<<case "lightPrecipitation">><<set _weather_icon to "lightPrecipitation_icon.png">><<set _weather_cn_name to "小雨">>
-					<<case "heavyPrecipitation">><<set _weather_icon to "heavyPrecipitation_icon.png">><<set _weather_cn_name to "大雨">>
-				<</switch>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="_weather_cn_name">
-						<<icon `_weather_icon`>>
-					</div>
-					<hr>
-					<<print (Time.hour + _w) gte 24 ? `${Time.hour + _w - 24}` : `${Time.hour + _w}`>>:<<print Time.minute>>
-				</div>
-			<</for>>
-		</div><br>
-	<</widget>>

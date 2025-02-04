@@ -26,7 +26,7 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Magic_Mirror,
         icon: "tool/Magic_Mirror.png",
-		des: "使用后将你传送至设定的锚点。锚点只能为已解锁的安全屋，且至多存在一个。<br>当前魔镜锚点：$Magic_Mirror_anchor_cn<br>当日使用次数：<<print $options.terraTransportLimit is 'Unlimited' ? '<span class=\"green\">无限制</span>' : $daily.Magic_Mirror_use is undefined ? '0 / $options.terraTransportLimit' : $daily.Magic_Mirror_use lt $options.terraTransportLimit ? '$daily.Magic_Mirror_use / $options.terraTransportLimit' : '已到达$options.terraTransportLimit次上限'>>",
+		des: "使用后将你传送至设定的锚点。锚点只能为已解锁的安全屋，不能同时设定两个或更多安全屋作为锚点。在安全屋内使用魔镜以设定锚点。<br>当前魔镜锚点：$Magic_Mirror_anchor_cn<br>当日使用次数：<<print $options.terraTransportLimit is 'Unlimited' ? '<span class=\"green\">无限制</span>' : $daily.Magic_Mirror_use is undefined ? '0 / $options.terraTransportLimit' : $daily.Magic_Mirror_use lt $options.terraTransportLimit ? '$daily.Magic_Mirror_use / $options.terraTransportLimit' : '已到达$options.terraTransportLimit次上限'>>",
 		use: "<<terra_tool_use_Magic_Mirror>>"
     },
 	"Ice_Mirror": {
@@ -82,7 +82,7 @@ setup.terraTool = {
 	"Bottomless_Honey_Bucket": {
         name: "Bottomless_Honey_Bucket",
         cn_name: "无底蜂蜜桶",
-		material: false,
+		material: true,
         type: "tool",
         obtained: V.Bottomless_Honey_Bucket,
         icon: "tool/Bottomless_Honey_Bucket.png",

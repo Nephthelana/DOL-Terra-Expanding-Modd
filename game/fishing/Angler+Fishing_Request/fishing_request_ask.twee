@@ -1,5 +1,5 @@
 :: Fishing Request Ask
-/*根据是否已经完成了当日任务作出反应（已完成；未完成）*/
+<!-- 根据是否已经完成了当日任务作出反应（已完成；未完成）-->
 <<if $fishing_request_finished_daily>>
 	<<if $options.cute_angler>>
 		<<print [
@@ -25,13 +25,12 @@
 	<<set _requestFish to setup.terraRequestFish[$fishing_request_selection]>>
 	你向渔夫询问今天的钓鱼任务。<br>
 	<br>
-	<<if $options.cute_angler>>
-		_requestFish.cute_angler_des
-	<<else>>
-		_requestFish.angler_des
-	<</if>><br>
+	<<print $options.cute_angler ? _requestFish.cute_angler_des : _requestFish.angler_des>><br>
 	<<icon `_requestFish.icon`>>_requestFish.cn_name(抓捕地点：_requestFish.catching_place_des)
-	<mouse class="tooltip linkBlue">(?)<span>出现"？？？"时，表明你需要更高的垂钓等级，才能解锁钓鱼点的信息</span></mouse><br>
+	<<if $fishingskill lt 1000>>
+		<mouse class="tooltip linkBlue">(?)<span>出现"？？？"时，表明你需要更高的垂钓等级，才能解锁钓鱼点的信息</span></mouse>
+	<</if>>
+	<br>
 	<<if 
 		($artificial_fishing_pond_eden_cabin is "realized" and $fishingskill gte 700 and _requestFish.catching_place.includes("eden_clearing")) or
 		($artificial_fishing_pond_wolf_cave_clearing is "realized" and $fishingskill gte 500 and _requestFish.catching_place.includes("wolf_cave_clearing")) or

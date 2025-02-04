@@ -104,7 +104,7 @@
 		<</link>><br>
 	<</if>>
 	<<if $robin_fishing_place_unlocked.length gt 0>>
-		<<askicon>><<link [[让罗宾来选|Robin Fishing Bait Give]]>>
+		<<mysteryicon>><<link [[让罗宾来选|Robin Fishing Bait Give]]>>
 			<<set $fishing_place to $robin_fishing_place_unlocked.random()>>
 		<</link>>
 	<</if>>

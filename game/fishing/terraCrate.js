@@ -97,7 +97,7 @@ setup.terraCrate = {
         rarity: ["rare"],
 		rarity_cn: "罕见",
 		catching_place: ["eden_clearing","eden_clearing_artificial","rocky_hillock"],
-		catching_place_cn: "<<lakeicon 'pond'>>伊甸小屋的泉水<<print $options.artificial_fishing_pond ? '<br><<foresticon>>猎人小屋附近的人工钓鱼池' : ''>><<print $island.explore_locations.includes('battleground') ? '<br><<ind>>海岛的天湖' : ''>>",
+		catching_place_cn: "<<lakeicon 'pond'>>伊甸小屋的泉水<<print $options.artificial_fishing_pond ? '<br><<foresticon>>猎人小屋附近的人工钓鱼池' : ''>><<if $island isnot undefined>><<print $island.explore_locations.includes('battleground') ? '<br><<ind>>海岛的天湖' : ''>><</if>>",
         amount: V.Sky_Crate || 0,
         icon: "fishing/crates/Sky_Crate.png",
 		unload: "<<Sky_Crate_unload>>",

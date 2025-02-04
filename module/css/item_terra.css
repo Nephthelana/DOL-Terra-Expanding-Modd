@@ -5,30 +5,6 @@
 	padding: 0.5rem;
 }
 
-/* 新行的平移动画 */
-@keyframes slide-down {
-	0% {
-	  opacity: 0;
-	  transform: translateY(-20px);
-	}
-	100% {
-	  opacity: 1;
-	  transform: translateY(0);
-	}
-  }
-
-.new-row {
-	grid-column: 1 / -1;
-	padding: 10px;
-	border: 1px solid var(--200);
-	animation: slide-down 0.5s ease-out;
-}
-
-.new-row hr {
-	border-top: 1px solid var(--600);
-	width: 100%;
-}
-
 .itemTerra_Tool {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 60px);
@@ -65,6 +41,11 @@
 	color: transparent;
 }
 
+/* 新版本的link会自带额外的padding，只能这样手动来使链接与文字保持在同一行QAQ */
+.terraLinks {
+	padding: 0.1em 0.1em;
+}
+
 @keyframes blink {
 	0% { color: #FFC437; } 
 	33% { color: #FFE76B; } 
@@ -73,7 +54,7 @@
   }
    
   .blinking-text {
-	animation: blink 1.5s infinite; /* 每秒闪烁一次，无限循环 */
+	animation: blink 1.5s infinite; /* 每1.5秒闪烁一次，无限循环 */
   }
 
 @keyframes terraFading {
@@ -102,6 +83,48 @@
 	opacity: 0.3;
 }
 
+@keyframes blinking {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.terraBlinking {
+	animation: blinking 2s infinite; /* 每秒闪烁一次，无限循环 */
+}
+
 .terraItemLocked {
 	filter: contrast(0);
+}
+
+/* 新行的平移动画 */
+@keyframes slide-down {
+	0% {
+	  opacity: 0;
+	  transform: translateY(-20px);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+
+.new-row {
+	grid-column: 1 / -1;
+	padding: 10px;
+	border: 1px solid var(--200);
+	animation: slide-down 0.5s ease-out;
+}
+
+.new-row hr {
+	border-top: 1px solid var(--600);
+	width: 100%;
 }

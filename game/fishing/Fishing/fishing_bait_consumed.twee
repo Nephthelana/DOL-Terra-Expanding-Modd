@@ -1,11 +1,12 @@
 :: Fishing Bait Consumed [widget]
 <<widget "fishing_bait_consumed">>
 	<<if $Bait isnot "None">>
+		<br>
 		<<set _bait to setup.terraBait[$Bait]>>
-		<<if $terra_accessories_slots.includes("Tackle_Box") or $terra_accessories_slots.includes("Angler_Tackle_Bag") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")>>
+		<<if $terra_accessories_slots.includesAny("Tackle_Box","Angler_Tackle_Bag","Lavaproof_Tackle_Bag")>>
 			<<if random(1,6*2+ _bait.fishing_power) lte 6>><<set V[_bait.name] -= 1>><</if>>
 		<<else>>
-			<<if random(1,6 + _bait.fishing_power) lte 6>><<set V[_bait.name] -= 1>><</if>>
+			<<if random(1, 6 + _bait.fishing_power) lte 6>><<set V[_bait.name] -= 1>><</if>>
 		<</if>>
 		<<if V[_bait.name] lte 0>>
 			<<set $Bait to "None">>

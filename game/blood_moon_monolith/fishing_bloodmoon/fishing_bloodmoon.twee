@@ -4,7 +4,7 @@
 		<span class="red">一个熟悉的巨大身影逐渐浮现出来。尽管你已经见过它一面，但你仍不寒而栗。</span><<gstress>><<stress 3>><br>
 		<br>
 		<<if $plants["blood_lemon"].amount lt 10>>
-			<<askicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
+			<<mysteryicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
 		<<else>>
 			<<icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 0]]>><</link>>
 			<</if>><br>
@@ -18,9 +18,9 @@
 		<br>
 		出乎意料的是，它扬起的水波让你感到十分不安，却迟迟没有什么特别的反应。它好像在渴求着什么...<span class="teal">你想到它只在血月活动，或许是这个时候才有的东西。</span><br>
 		<<if $plants["blood_lemon"] is undefined>>
-			<<askicon>><span class="blue">去森林深处找找看吧。</span>
+			<<mysteryicon>><span class="blue">去森林深处找找看吧。</span>
 		<<elseif $plants["blood_lemon"].amount lt 10>>
-			<<askicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
+			<<mysteryicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
 		<<else>>
 			<<icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 1]]>><</link>>
 		<</if>><br>
@@ -51,7 +51,7 @@
 	<br>
 <</if>>
 <br>
-<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<set $fishing_harvest to undefined>><<fishing_cast_time>><</link>><br>
+<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<set $fishing_harvest to undefined>><<run fishingCastTime()>><</link>><br>
 <<fishing_finished_back>>
 
 :: Blood Moon Sacrifice 1
@@ -162,7 +162,7 @@
 <br>
 <<fishing_finished_back>>
 
-<!-- 自己写的初版初见恐惧鹦鹉螺的剧情
+<!-- 自己写的初版初见恐惧鹦鹉螺的剧情（为什么你要留着这段？）
 	<br>
 	它不断地接近水面。壳上红白相间、令人不安的纹路越发清晰可见；口部不断蠕动着、看起来充满攻击性的触须，像是蓄势待发喷射致命性弹幕；眼中滴落的、比红月照映的水还要血红的眼泪，或许是对在血月打扰它的人最后一丝怜悯...一切都如幻象一般，却又如此真实地逐渐呈现在你眼前。<<ggstress>><<stress 6>><br>
 	<br>

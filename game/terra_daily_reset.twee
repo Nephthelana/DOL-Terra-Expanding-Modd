@@ -61,7 +61,16 @@
 		<<if random(1,400) is 1>>
 			<<set $bait_forest_shop to "Gold_Butterfly">>
 		<<else>>
-			<<set $bait_forest_shop to $butterfly_list.random()>>
+			<<set $bait_forest_shop to [
+				"Monarch_Butterfly",
+				"Sulphur_Butterfly",
+				"Zebra_Swallowtail_Butterfly",
+				"Ulysses_Butterfly",
+				"Julia_Butterfly",
+				"Red_Admiral_Butterfly",
+				"Purple_Emperor_Butterfly",
+				"Tree_Nymph_Butterfly"
+			].random()>>
 		<</if>>
 	<<case "Ladybug">>
 		<<if random(1,400) is 1>>

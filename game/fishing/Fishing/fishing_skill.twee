@@ -6,12 +6,12 @@
 	<</if>>
 	<<set _fishingConfig = 
 		{ 
-    			name : "垂钓",	
-    			displayType : "grade",
-    			currentValue : $fishingskill,
-    			modifier: 100, 
-    			modTypes: { good: [], bad: [] },
-    			states : _detailedSkillGrades
+			name : "垂钓",	
+			displayType : "grade",
+			currentValue : $fishingskill,
+			modifier: 100, 
+			modTypes: { good: [], bad: [] },
+			states : _detailedSkillGrades
 		}
 	>>
 	<<if $fishingskill gte 0>>

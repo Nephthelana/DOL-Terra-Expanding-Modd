@@ -213,4 +213,7 @@
 <<set $pet_list to []>>
 <<set $bedroom_pets to {}>>
 
+<!-- 闹钟功能 -->
+<<set $terraAlarmList to {}>>
+
 <</widget>>

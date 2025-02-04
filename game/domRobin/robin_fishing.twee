@@ -4,8 +4,10 @@
 <<set $robin_fishing_date_time_passed += 10>>
 <!-- 显示钓鱼地点 -->
 <<fishing_place>>
+<br>
 <!-- 显示罗宾的钓鱼状态。钓鱼状态机制详见<<widget "robin_fishing_phase">> -->
-<<robin_fishing_phase>><br>
+<<robin_fishing_phase>>
+<br>
 <<if $debug is 1>>
 	<i>
 		DEBUG：<br>
@@ -14,10 +16,11 @@
 		罗宾收杆次数：$robin_fishing_harvest_times<br>
 		罗宾状态：$robin_fishing_phase<br>
 	</i>
+	<br>
 <</if>>
 <!-- 钓到钓鱼垃圾时直接跳过跳鱼小游戏 -->
 <<if ["Old_Shoe","Seaweed_junk","Tin_Can","Joja_Cola","feathers"].includes($fishing_harvest)>>
-	<<fishing_harvest>>
+	<<run fishingHarvest()>>
 	<<set $fishing_harvest_count += 1>>
 	<<fishing_end>>
 	<span class="green">你猛地一收竿，宣示着你的胜利！</span><br>
@@ -42,7 +45,7 @@
 		<<set $fishing_failed_count += 1>>
 		<span class="red">但是你的鱼线断了...</span>也许你需要一个优质钓鱼线。<<ggstress>><<stress 6>><br>
 	<<else>>
-		<<fishing_harvest>>
+		<<run fishingHarvest()>>
 		<<set $fishing_harvest_count += 1>>
 		<<llstress>><<stress -6>><br>
 		你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
@@ -129,6 +132,6 @@
 		<<else>>
 			<<fishingskill 2>><<set $fishingphase to 4>>
 		<</if>>
-	<</link>><br>
+	<</link>>
 <</if>>
 <<fishing_debug>>

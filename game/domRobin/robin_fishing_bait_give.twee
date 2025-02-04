@@ -112,19 +112,19 @@
 	<<set V[$robin_bait_type] += $robin_bait_amount>>
 	"我这还有剩下的鱼饵。"罗宾把<<icon `$robin_bait_icon`>>$robin_bait_cn_name($robin_bait_amount)还给了你。
 <</if>>
-<<set $robin_bait_amount to undefined>>
-<<set $robin_bait_type to undefined>>
-<<set $robin_bait_icon to undefined>>
-<<set $robin_bait_cn_name to undefined>>
-<<set $robin_bait_fishing_power to undefined>>
-<<set $robin_fishing_fishing_power to undefined>>
-<<set $robin_fishing_cast_time to undefined>>
-<<set $robin_fishing_date_time to undefined>>
-<<set $robin_fishing_date_time_passed to undefined>>
-<<set $robin_fishing_harvest_times to undefined>>
-<<set $robin_fishing_phase to undefined>>
-<<set $robin_fishing_harvest_times to undefined>>
-<<set $robin_fishing_harvest_times_prev to undefined>>
+<<unset $robin_bait_amount>>
+<<unset $robin_bait_type>>
+<<unset $robin_bait_icon>>
+<<unset $robin_bait_cn_name>>
+<<unset $robin_bait_fishing_power>>
+<<unset $robin_fishing_fishing_power>>
+<<unset $robin_fishing_cast_time>>
+<<unset $robin_fishing_date_time>>
+<<unset $robin_fishing_date_time_passed>>
+<<unset $robin_fishing_harvest_times>>
+<<unset $robin_fishing_phase>>
+<<unset $robin_fishing_harvest_times>>
+<<unset $robin_fishing_harvest_times_prev>>
 <</widget>>
 
 <<widget "robin_fishing_travel_time">>

@@ -1,0 +1,110 @@
+.GPSOldSewerMap {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+.GPSOldSewerMapArrow_sewerswebs {
+    position: absolute;
+    top: 0px;
+    left: 32px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewerswood {
+    position: absolute;
+    top: 40px;
+    left: 32px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersresidential {
+    position: absolute;
+    top: 80px;
+    left: 32px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersscrap {
+    position: absolute;
+    top: 120px;
+    left: 32px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersworkshop {
+    position: absolute;
+    top: 160px;
+    left: 32px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewershole {
+    position: absolute;
+    top: 0px;
+    left: 72px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersruins {
+    position: absolute;
+    top: 40px;
+    left: 72px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewerscommercial {
+    position: absolute;
+    top: 80px;
+    left: 72px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersmud {
+    position: absolute;
+    top: 120px;
+    left: 72px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersshrooms {
+    position: absolute;
+    top: 160px;
+    left: 72px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersrubble {
+    position: absolute;
+    top: 40px;
+    left: 112px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersindustrial {
+    position: absolute;
+    top: 80px;
+    left: 112px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewersalgae {
+    position: absolute;
+    top: 120px;
+    left: 112px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewerswaterfall {
+    position: absolute;
+    top: 80px;
+    left: 152px;
+    pointer-events: none;
+}
+
+.GPSOldSewerMapArrow_sewerslake {
+    position: absolute;
+    top: 80px;
+    left: 192px;
+    pointer-events: none;
+}

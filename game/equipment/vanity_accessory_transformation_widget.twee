@@ -1,36 +1,70 @@
 :: Vanity Accessory Transformation [widget]
 <<widget "vanityAccessoryTransformation">>
-	<<if $passage isnot "Start">>
-		<<set _terra_vanity_angelHalo to (($terra_vanity_accessories_slots.includes("Angel_Halo") or $terra_accessories_slots.includes("Angel_Halo")) and $angel lt 4) ? true : false>>
-		<<set _terra_vanity_demonHorns to (($terra_vanity_accessories_slots.includes("Demon_Horns") or $terra_accessories_slots.includes("Demon_Horns")) and $demon lt 2) ? true : false>>
+	<<if !["Start","Start2"].includes($passage)>>
+		<<set _terra_vanity_angelHalo to (($terra_vanity_accessories_slots + $terra_accessories_slots).includes("Angel_Halo") and $angel lt 4) ? true : false>>
+		<<set _terra_vanity_demonHorns to (($terra_vanity_accessories_slots + $terra_accessories_slots).includes("Demon_Horns") and $demon lt 2) ? true : false>>
 		<<set $transformationParts.angel.halo to $angel gte 4 ? $transformationParts.angel.halo : !_terra_vanity_angelHalo ? "disabled" : $transformationParts.angel.halo is "disabled" ? "default" : $transformationParts.angel.halo>>
 		<<set $transformationParts.demon.horns to $demon gte 2 ? $transformationParts.demon.horns : !_terra_vanity_demonHorns ? "disabled" : $transformationParts.demon.horns is "disabled" ? "default" : $transformationParts.demon.horns>>
 	<</if>>
 <</widget>>
 
 <<widget "vanityAccessoryTransformationToggle">>
-	<br>
 	<<if _terra_vanity_angelHalo>>
-		<div class='tf-angel'>
-			<<icon "vanity_accessories/Angel_Halo.png">>天使光环：
-			<<listbox "_angel.halo" autoselect>>
-				<<option "隐藏" "hidden">>
-				<<option "默认" "default">>
-				<<option "传统的" "traditional">>
-			<</listbox>>
+		<div @class="_terra_vanity_demonHorns ? 'settingsToggleItem' : 'settingsToggleItemWide'">
+			<<icon "vanity_accessories/Angel_Halo.png">><span class="gold bold">时装：天使光环</span>
+			<<set _BA_Halos to {
+				"玛█(M██y)": "mary",
+				"圣█(S██a)": "seia",
+				"爱██(A███e)": "alice",
+				"氵█(N████a)": "nagisa",
+				"日█(H████i)": "himari",
+				"木█(A███a)": "azusa",
+				"桔█(K███o)": "kikyo",
+				"真█(M██i)": "maki",
+				"小█(Ko██ma)": "kotama",
+				"小█　日█(H██e)": "hare",
+				"亻██欠(Ib██i)": "ibuki",
+				"亻████皮(Ir██a)": "iroha",
+				"亚█子(A███ko)": "atsuko",
+				"纱█(sa█ri)": "saori",
+				"才█ 绿(mi██ri)": "midori",
+				"才█ 桃(mo██i)": "momoi",
+				"ニ██ヤ教授(ni████ya)": "nyanya",
+				"女██关(ki██ki)": "kisaki",
+				"亻█香(y██ka)": "yuuka",
+				"讠█亚(n█a)": "noa",
+				"日█(hi██)": "hina",
+			}>>
+			<div class='tf-part-item'>
+				<<if window.modUtils.getMod('AngelHalos')>>
+					<<listbox "_angel.halo" autoselect>>
+						<<optionsfrom _BA_Halos>>
+						<<option "隐藏" "hidden">>
+						<<option "默认" "default">>
+						<<option "传统的" "traditional">>
+					<</listbox>>
+				<<else>>
+					<<listbox "_angel.halo" autoselect>>
+						<<option "隐藏" "hidden">>
+						<<option "默认" "default">>
+						<<option "传统的" "traditional">>
+					<</listbox>>
+				<</if>>
+			</div>
 		</div>
 	<</if>>
 	<<if _terra_vanity_demonHorns>>
-		<div class='tf-demon'>
-			<<icon "vanity_accessories/Demon_Horns.png">>恶魔角：
-			<<listbox "_demon.horns" autoselect>>
-				<<option "隐藏" "hidden">>
-				<<option "默认" "default">>
-				<<option "经典" "classic">>
-				<<option "魅魔" "succubus">>
-			<</listbox>>
-			<<gencolourselector "_demon.horns_colour">>
+		<div @class="_terra_vanity_angelHalo ? 'settingsToggleItem' : 'settingsToggleItemWide'">
+			<<icon "vanity_accessories/Demon_Horns.png">><span class="gold bold">时装：恶魔角</span>
+			<div class='tf-part-item'>
+				<<listbox "_demon.horns" autoselect>>
+					<<option "隐藏" "hidden">>
+					<<option "默认" "default">>
+					<<option "经典" "classic">>
+					<<option "魅魔" "succubus">>
+				<</listbox>>
+				<<gencolourselector "_demon.horns_colour">>
+			</div>
 		</div>
-		<br>
 	<</if>>
 <</widget>>

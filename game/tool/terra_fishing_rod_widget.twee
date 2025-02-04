@@ -1,0 +1,45 @@
+:: Terra Fishing Rod [widget]
+<<widget "void_bag_FishingRod">>
+	<<if $fishingrod>>
+		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你不能在钓鱼小游戏中切换鱼竿</span></mouse><br>
+		<<if $passage is "Fishing" or $passage is "Robin Fishing">>
+			哦不，钓钩都抛出去了，怎么能换鱼竿呢？
+		<<else>>
+			<<run initializeTooltips()>>
+			<span class="no-numberify">
+				<div class="itemTerra_Tool">
+					<<for _fp range Object.keys(setup.terraFishingRod)>>
+						<<set _fishingRod to setup.terraFishingRod[_fp]>>
+						<<if V[_fishingRod.name]>>
+							<<capture _fishingRod>>
+								<div class="item">
+									<div class="itemTerraTool" @tooltip="`${_fishingRod.cn_name}<br><br>▶${_fishingRod.des}`">
+										<<icon `_fishingRod.icon`>>
+									</div>
+									<hr>
+									<div class="terraLinks">
+										<<if $options.fishingrod_held is _fishingRod.name>>
+											<span class="teal">使用中</span>
+										<<else>>
+											<<link "使用">>
+												<<set $options.fishingrod_held to _fishingRod.name>>
+												<<set _optionsRefresh to true>>
+												<<replace #void_bag_FishingRod>>
+													<<void_bag_FishingRod>>
+												<</replace>>
+											<</link>>
+										<</if>>
+									</div>
+								</div>
+							<</capture>>
+						<</if>>
+					<</for>>
+				</div>
+			</span>
+		<</if>>
+	<<elseif $fishing_anglerintro>>
+		<span class="teal">渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？</span><br>
+	<<else>>
+		<span class="lblue">你需要从某人那里获得鱼竿。也许这人正漂浮在海上。</span><br>
+	<</if>>
+<</widget>>

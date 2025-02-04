@@ -10,7 +10,7 @@
 				为了激活这个晶塔，你需要找到那块水晶。<<print C.npc.Alex.love gte 90 ? "<span class='teal'>和艾利克斯一起在树下休息，然后去骑马逛一圈吧。</span>" : "<span class='blue'>如果艾利克斯对你有足够的好感，你将会得到提示。</span>">>
 			<</if>>
 		<<else>>
-			<<askicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
+			<<mysteryicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
 		<</if>><br>
 		<br>
 	<</if>>

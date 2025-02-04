@@ -1,6 +1,6 @@
 :: Terra Dragonfly [widget]
 <<widget "terraDragonflyEstate">>
-	<<if $daily.estate_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds") and random(1,4) is 1>>
+	<<if $daily.estate_dragonfly isnot true and Time.dayState isnot "night" and ["clear","lightClouds"].includes(Weather.name) and random(1,4) is 1>>
 		<<if random(1,400) is 1>>
 			<<set $random_dragonfly to "Gold_Dragonfly">>
 		<<else>>
@@ -25,7 +25,7 @@
 <</widget>>
 
 <<widget "terraDragonflyLake">>
-	<<if $daily.lake_dragonfly isnot true and Time.dayState isnot "night" and (Weather.name is "clear" or Weather.name is "lightClouds") and random(1,4) is 1>>
+	<<if $daily.lake_dragonfly isnot true and Time.dayState isnot "night" and ["clear","lightClouds"].includes(Weather.name) and random(1,4) is 1>>
 		<<if random(1,400) is 1>>
 			<<set $random_dragonfly to "Gold_Dragonfly">>
 		<<else>>
@@ -59,7 +59,6 @@
 <br>
 <<if $athleticsSuccess>>
 	<<set $daily.estate_dragonfly to true>>
-	<<set _Estate_Dragonfly to ["Gold_Dragonfly","Orange_Dragonfly","Yellow_Dragonfly","Black_Dragonfly"]>>
 	<<set _caught to {
 		Gold_Dragonfly: 0,
 		Orange_Dragonfly: 0,
@@ -67,29 +66,24 @@
 		Black_Dragonfly: 0,
 	}>>
 	<<set _bait to random(2,4)>>
-	<<set _dragonfly_catch to [$random_dragonfly]>>
+	<<set _caught[$random_dragonfly] += 1>>
 	<<for _i to 1; _i lt _bait; _i++>>
 		<<if random(1,400) is 1>>
-			<<set _dragonfly_catch.push("Gold_Dragonfly")>>
+			<<set _caught["Gold_Dragonfly"] += 1>>
 		<<else>>
-			<<set _dragonfly_catch.push(["Orange_Dragonfly","Yellow_Dragonfly","Black_Dragonfly"].random())>>
+			<<set _random_df to ["Orange_Dragonfly","Yellow_Dragonfly","Black_Dragonfly"].random()>>
+			<<set _caught[_random_df] += 1>>
 		<</if>>
-	<</for>>
-	<<for _j to 0; _j lt 4; _j++>>
-		<<set _caught[_Estate_Dragonfly[_j]] to _dragonfly_catch.count(_Estate_Dragonfly[_j])>>
 	<</for>>
 	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
 	<br>
 	你抓到了：<br>
-	<<for _k to 0; _k lt 4; _k++>>
-		<<set _caught_amount to _caught[_Estate_Dragonfly[_k]]>>
-		<<if _caught_amount gt 0>>
-			<<set _caught_dragonfly to setup.terraBait[_Estate_Dragonfly[_k]]>>
-			<<print "<<icon `_caught_dragonfly.icon`>>_caught_amount只_caught_dragonfly.cn_name<br>">>
-			<<set V[_Estate_Dragonfly[_k]] += _caught_amount>>
-			<<set $bestiary_bait_list.pushUnique(_Estate_Dragonfly[_k])>>
-			<<set $bestiary_bait_catch_count[_Estate_Dragonfly[_k]] += _caught_amount>>
-		<</if>>
+	<<for _dragonfly range Object.keys(_caught).filter(df => T.caught[df] > 0)>>
+		<<set _dragonflyInfo to setup.terraBait[_dragonfly]>>
+		<<set V[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
+		<<set $bestiary_bait_list.pushUnique(_dragonflyInfo.name)>>
+		<<set $bestiary_bait_catch_count[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
+		<<icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
 	<</for>>
 <<else>>
 	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>
@@ -120,7 +114,6 @@
 <br>
 <<if $athleticsSuccess>>
 	<<set $daily.lake_dragonfly to true>>
-	<<set _Lake_Dragonfly to ["Gold_Dragonfly","Red_Dragonfly","Green_Dragonfly","Blue_Dragonfly"]>>
 	<<set _caught to {
 		Gold_Dragonfly: 0,
 		Red_Dragonfly: 0,
@@ -128,29 +121,24 @@
 		Blue_Dragonfly: 0,
 	}>>
 	<<set _bait to random(2,4)>>
-	<<set _dragonfly_catch to [$random_dragonfly]>>
+	<<set _caught[$random_dragonfly] += 1>>
 	<<for _i to 1; _i lt _bait; _i++>>
 		<<if random(1,400) is 1>>
-			<<set _dragonfly_catch.push("Gold_Dragonfly")>>
+			<<set _caught["Gold_Dragonfly"] += 1>>
 		<<else>>
-			<<set _dragonfly_catch.push(["Red_Dragonfly","Green_Dragonfly","Blue_Dragonfly"].random())>>
+			<<set _random_df to ["Red_Dragonfly","Green_Dragonfly","Blue_Dragonfly"].random()>>
+			<<set _caught[_random_df] += 1>>
 		<</if>>
-	<</for>>
-	<<for _j to 0; _j lt 4; _j++>>
-		<<set _caught[_Lake_Dragonfly[_j]] to _dragonfly_catch.count(_Lake_Dragonfly[_j])>>
 	<</for>>
 	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
 	<br>
 	你抓到了：<br>
-	<<for _k to 0; _k lt 4; _k++>>
-		<<set _caught_amount to _caught[_Lake_Dragonfly[_k]]>>
-		<<if _caught_amount gt 0>>
-			<<set _caught_dragonfly to setup.terraBait[_Lake_Dragonfly[_k]]>>
-			<<print "<<icon `_caught_dragonfly.icon`>>_caught_amount只_caught_dragonfly.cn_name<br>">>
-			<<set V[_Lake_Dragonfly[_k]] += _caught_amount>>
-			<<set $bestiary_bait_list.pushUnique(_Estate_Dragonfly[_k])>>
-			<<set $bestiary_bait_catch_count[_Estate_Dragonfly[_k]] += _caught_amount>>
-		<</if>>
+	<<for _dragonfly range Object.keys(_caught).filter(df => T.caught[df] > 0)>>
+		<<set _dragonflyInfo to setup.terraBait[_dragonfly]>>
+		<<set V[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
+		<<set $bestiary_bait_list.pushUnique(_dragonflyInfo.name)>>
+		<<set $bestiary_bait_catch_count[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
+		<<icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
 	<</for>>
 <<else>>
 	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>
