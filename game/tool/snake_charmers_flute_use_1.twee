@@ -2,6 +2,9 @@
 <<set $outside to 1>><<effects>>
 你用耍蛇者长笛爬到了高处。<br>
 <<icon "Mystic_Snake_Coil.png">><br>
+<br>
+<<snakeCharmersFluteText>>
+<br>
 <<if $harpy gte 6 or $angel gte 6 or $demon gte 6 or $fallenangel gte 2 or $terra_accessories_slots.includes("Fledgling_Wings")>>
 	配合一双翅膀，你可以滑翔到小镇的任一处街道。这与公交车相比安全得多。<br>
 	<br>

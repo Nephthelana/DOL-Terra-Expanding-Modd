@@ -127,7 +127,7 @@
 					<mouse class="tooltip">/<span>余额不足</span></mouse>
 				<<else>>
 					<<link [[购买|Pirate Parrot Cracker]]>>
-						<<set $money -= 3750000>>
+						<<money -3750000 "NPC交易">>
 					<</link>>
 				<</if>>
 			</div>
@@ -146,7 +146,7 @@
 					<mouse class="tooltip">/<span>余额不足</span></mouse>
 				<<else>>
 					<<link [[购买|Pirate Depth Meter]]>>
-						<<set $money -= 100000>>
+						<<money -100000 "NPC交易">>
 					<</link>>
 				<</if>>
 			</div>

@@ -7,6 +7,5 @@
 	你没注意到路边的一块石头，直到被它反射的阳光照了一下。艾利克斯注意到你没有跟上来，"怎么了？"<<He>>关切地问道。<br>
 	<<link [[告诉艾利克斯|Pylon Farm Bedroom Unlock]]>><</link>>
 <</if>>
-<<endevent>>
 
 <</widget>>

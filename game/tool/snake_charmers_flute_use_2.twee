@@ -3,6 +3,8 @@
 你用耍蛇者长笛爬到了高处。有了这对强健的翅膀，你可以飞到更远的地方。<br>
 <<icon "Mystic_Snake_Coil.png">><br>
 <br>
+<<snakeCharmersFluteText>>
+<br>
 <<switch $Snake_Charmers_Flute_destination>>
 	<<case "Lake Shore">>
 		<<wolficon>><<link [[飞向狼街(神殿) (0:05)|Wolf Street]]>><<pass 5>><<set $foresthunt to 0>><</link>><br>

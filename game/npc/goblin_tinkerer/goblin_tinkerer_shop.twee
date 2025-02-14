@@ -16,9 +16,7 @@
 				<<elseif $money lt 100000>>
 					<mouse class="tooltip">/<span>余额不足</span></mouse>
 				<<else>>
-					<<link [[购买|Goblin Tinkerer Workshop]]>>
-						<<set $money -= 100000>>
-					<</link>>
+					<<link [[购买|Goblin Tinkerer Workshop]]>><<money -100000 "NPC交易">><</link>>
 				<</if>>
 			</div>
 		</div>
@@ -35,7 +33,7 @@
 				<<elseif $money lt 50000>>
 					<mouse class="tooltip">/<span>余额不足</span></mouse>
 				<<else>>
-					<<link [[购买|Goblin Tinkerer Warmth Potion]]>><<set $money -= 50000>><</link>>
+					<<link [[购买|Goblin Tinkerer Warmth Potion]]>><<money -50000 "NPC交易">><</link>>
 				<</if>>
 			</div>
 		</div>

@@ -11,5 +11,8 @@
 	<div class="GPSOldSewerMap">
 		<img src="img/misc/map/旧下水道地图.png">
 		<img src="img/misc/map/箭头.png" @class="'GPSOldSewerMapArrow_' + $bus">
+		<<if $smuggler_pub_known is 1>>
+			<img src="img/misc/map/走私者酒吧.png" class="GPSOldSewerMapSmugglerPub">
+		<</if>>
 	</div>
 <</widget>>

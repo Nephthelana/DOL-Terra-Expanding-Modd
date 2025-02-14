@@ -98,6 +98,10 @@
 	地下永冻湖
 	<span>垂钓<<fishingskillRank 0>>，科学 <a class="lblue">B</a> ，老教堂墓穴中"小溪流淌"字样的位置。</span>
 </mouse><br>
+<<icon "location/underground_lava_lake.png">><mouse class="tooltip linkBlue">
+	地下熔岩湖
+	<span>垂钓<<fishingskillRank 0>>，科学 <a class="green">A*</a> ，历史 <a class="green">A*</a> ，意志 <a class="teal">5级</a> ，走私者洞穴最深处的位置。</span>
+</mouse><br>
 <br>
 人工钓鱼池<mouse class="tooltip linkBlue">(?)<span>通过在"选项-模组设置-人工钓鱼池"开启此功能。一部分天然钓鱼点需要与NPC交互作为前置条件来解锁，而人工钓鱼点可以避免与这些NPC的深入接触。</span></mouse><br>
 <<foresticon "churchyard">><mouse class="tooltip linkBlue">

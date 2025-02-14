@@ -123,7 +123,7 @@ setup.terraCrate = {
         rarity: ["extremely_rare","very_rare","rare"],
 		rarity_cn: "罕见",
 		catching_place: ["lava"],
-		catching_place_cn: "<<icon 'location/underground_lava_lake.png'>>地下熔岩湖(暂未实装)",
+		catching_place_cn: "<<icon 'location/underground_lava_lake.png'>>地下熔岩湖",
         amount: V.Obsidian_Crate || 0,
         icon: "fishing/crates/Obsidian_Crate.png",
 		unload: "<<Obsidian_Crate_unload>>",

@@ -70,11 +70,13 @@
 		<</if>>
 	<</for>>
 	<span class="green">你拿出你的
-	<<if $Golden_Bug_Net>>
-		<<icon "tool/Golden_Bug_Net.png">>金虫网
-	<<elseif $Bug_Net>>
-		<<icon "tool/Bug_Net.png">>虫网
-	<</if>>
+		<<if $Golden_Bug_Net>>
+			<<icon "tool/Golden_Bug_Net.png">>金虫网
+		<<elseif $Lavaproof_Bug_Net>>
+			<<icon "tool/Lavaproof_Bug_Net.png">>防熔岩虫网
+		<<elseif $Bug_Net>>
+			<<icon "tool/Bug_Net.png">>虫网
+		<</if>>
 	</span>
 	，给罗宾一个眼神。<<He>>立刻明白了你的意思，开始把蝴蝶往你这边赶。在默契的配合下，你们网住了这些蝴蝶。<br>
 	<br>

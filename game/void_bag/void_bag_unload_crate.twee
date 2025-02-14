@@ -3,7 +3,9 @@
 <<widget "Golden_Crate_unload">>
 	<<set $Golden_Crate -= 1>>
 	<<set $unload_crate_count.Golden_Crate += 1>>
-	<<moneyGain random(800,2000)>>
+	<<set _unload_crate_money to (random(800,2000) * 100)>>
+	<<money _unload_crate_money "宝匣">>
+	<<printmoney _unload_crate_money>>
 	<<if random(1,3) lte 2>>
 		<<set _unload_crate_Bait = random(3,7)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
@@ -21,7 +23,9 @@
 <<widget "Iron_Crate_unload">>
 	<<set $Iron_Crate -= 1>>
 	<<set $unload_crate_count.Iron_Crate += 1>>
-	<<moneyGain random(500,1000)>>
+	<<set _unload_crate_money to (random(500,1000) * 100)>>
+	<<money _unload_crate_money "宝匣">>
+	<<printmoney _unload_crate_money>>
 	<<if random(1,23) is 1>>
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
@@ -53,9 +57,13 @@
 	<<set $Wooden_Crate -= 1>>
 	<<set $unload_crate_count.Wooden_Crate += 1>>
 	<<if random(1,3) is 1>>
-		<<moneyGain random(100,500)>>
+		<<set _unload_crate_money to (random(100,500) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<<else>>
-		<<moneyGain random(20,90)>>
+		<<set _unload_crate_money to (random(20,90) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,40) is 1>>
 		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
@@ -94,7 +102,9 @@
 <<widget "Ocean_Crate_unload">>
 	<<set $Ocean_Crate -= 1>>
 	<<set $unload_crate_count.Ocean_Crate += 1>>
-	<<moneyGain random(500,1200)>>
+	<<set _unload_crate_money to (random(500,1200) * 100)>>
+	<<money _unload_crate_money "宝匣">>
+	<<printmoney _unload_crate_money>>
 	<<if random(1,40) lte 9>>
 		、<<icon "accessories/Inner_Tube.png">>浮游圈
 		<<set $Inner_Tube to true>>
@@ -163,7 +173,10 @@
 		、<<icon "accessories/Sandstorm_in_a_Bottle.png">>沙暴瓶<<set $Sandstorm_in_a_Bottle to true>>
 	<</if>>
 	<<if random(1,4) is 1>>
-		、<<moneyGain random(500,1200)>>
+		、
+		<<set _unload_crate_money to (random(500,1200) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
@@ -203,7 +216,10 @@
 	<</switch>>
 	、<<gardenicon "fertiliser">>一袋肥料<<set $fertiliser.current += 1>>
 	<<if random(1,4) is 1>>
-		<span class="gold">、<<moneyGain random(500,1200)>></span>
+		、
+		<<set _unload_crate_money to (random(500,1200) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
@@ -239,7 +255,10 @@
 	赎罪券(1)<mouse class="tooltip linkBlue">(?)<span>消耗品，在神殿使用后 +恩典</span></mouse>
 	<<set $redemption_voucher =+ 1>>
 	<<if random(1,4) is 1>>
-		、<<moneyGain random(500,1200)>>
+		、
+		<<set _unload_crate_money to (random(500,1200) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
@@ -288,7 +307,10 @@
 		<<set $Fledgling_Wings to true>>
 	<</if>>
 	<<if random(1,4) is 1>>
-		、<<moneyGain random(500,1200)>>
+		、
+		<<set _unload_crate_money to (random(500,1200) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Fallen_Star = random(1,3)>>
@@ -335,7 +357,10 @@
 			<<set $Blizzard_in_a_Bottle to true>>
 	<</switch>>
 	<<if random(1,4) is 1>>
-		、<<moneyGain random(500,1200)>>
+		、
+		<<set _unload_crate_money to (random(500,1200) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
@@ -362,8 +387,8 @@
 <<widget "Obsidian_Crate_unload">>
 	<<set $Obsidian_Crate -= 1>>
 	<<set $unload_crate_count.Obsidian_Crate += 1>>
-	<<switch random(1,20)>>
-		<<case 20>>
+	<<switch random(1,8)>>
+		<<case 8>>
 			<<icon "accessories/Lava_Charm.png">>熔岩护身符
 			<<set $Lava_Charm to true>>
 		<<default>>
@@ -375,13 +400,21 @@
 			<<if $fishing_spray_material is undefined>>
 				<<set $fishing_spray_material to 0>>
 			<</if>>
-			、<<print $fishing_spray_known ? "一包防狼喷雾原料" : "一包奇怪的粉末<mouse class='tooltip linkBlue'>(?)<span>你可以在实验室分析研究这包粉末，找到它的用途</span></mouse>">><<set $fishing_spray_material += 1>>
+			、<<print $fishing_spray_known ? "一包防狼喷雾原料" : "一包奇怪的粉末<mouse class='tooltip linkBlue'>(?)<span>你可以在实验室分析研究这包粉末，找到它的用途</span></mouse>">>
+			<<set $fishing_spray_material += 1>>
 		<<else>>
-			、<<peppersprayicon>>你获得了额外的防狼喷雾<<set $spraymax += 1>><<spray 5>><<gspraymax>><<set $fishing_spraymax to true>>
+			<<set $spraymax += 1>>
+			<<spray 5>>
+			<<set $fishing_spraymax to true>>
+			<<updatesidebarimg>>
+			、<<peppersprayicon>>你获得了额外的防狼喷雾<<gspraymax>>
 		<</if>>
 	<</if>>
 	<<if random(1,4) is 1>>
-		、<<moneyGain random(500,1200)>>
+		、
+		<<set _unload_crate_money to (random(500,1200) * 100)>>
+		<<money _unload_crate_money "宝匣">>
+		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
@@ -408,7 +441,9 @@
 <<widget "Sunken_Crate_unload">>
 	<<set $Sunken_Crate -= 1>>
 	<<set $unload_crate_count.Sunken_Crate += 1>>
-	<<moneyGain random(200,600)>>
+	<<set _unload_crate_money to (random(200,600) * 100)>>
+	<<money _unload_crate_money "宝匣">>
+	<<printmoney _unload_crate_money>>
 	<<if random(1,5) is 1>>
 		<<set _unload_crate_Sea_Prism = random(2,5)>>
 		、<<icon "material/Sea_Prism.png">>海棱晶(_unload_crate_Sea_Prism)
@@ -440,7 +475,9 @@
 <<widget "Sulphurous_Crate_unload">>
 	<<set $Sulphurous_Crate -= 1>>
 	<<set $unload_crate_count.Sulphurous_Crate += 1>>
-	<<moneyGain random(200,600)>>
+	<<set _unload_crate_money to (random(200,600) * 100)>>
+	<<money _unload_crate_money "宝匣">>
+	<<printmoney _unload_crate_money>>
 	<<if random(1,4) is 1>>
 		<<if random(1,2) is 1>>
 			、<<icon "pet/pet_item/Strange_Orb.png">>奇光球<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
@@ -476,7 +513,9 @@
 <<widget "Brimstone_Crate_unload">>
 	<<set $Brimstone_Crate -= 1>>
 	<<set $unload_crate_count.Brimstone_Crate += 1>>
-	<<moneyGain random(200,600)>>
+	<<set _unload_crate_money to (random(200,600) * 100)>>
+	<<money _unload_crate_money "宝匣">>
+	<<printmoney _unload_crate_money>>
 	<<set _unload_crate_Demonic_Bone_Ash = random(1,4)>>
 	<<icon "material/Demonic_Bone_Ash.png">>恶魔骨灰(_unload_crate_Demonic_Bone_Ash)
 	<<set $Demonic_Bone_Ash += _unload_crate_Demonic_Bone_Ash>>

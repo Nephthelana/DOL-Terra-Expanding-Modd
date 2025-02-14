@@ -510,7 +510,7 @@ function getAllRequestFishList() {
 	let all_request_fish_list = Object.keys(setup.terraRequestFish);
 	return all_request_fish_list;
 }
-window.getAllRequestFishList = getAllRequestFishList
+window.getAllRequestFishList = getAllRequestFishList;
 
 function getRequestFishObtained() {
 	for (let request in setup.terraRequestFish) {

@@ -347,6 +347,16 @@ setup.terraAccessories = {
 		des: "可在特定地点提供照明，随时间降低<span class='lblue'>意识</span>(\"选项-模组设置\"中开启)<br>▶<i>\"我黑暗生命中的一道短暂曙光。\"</i>",
 		vanity: "",
     },
+	"Lava_Charm": {
+        name: "Lava_Charm",
+        cn_name: "熔岩护身符",
+		material: false,
+        type: "none",
+        obtained: V.Lava_Charm,
+        icon: "accessories/Lava_Charm.png",
+		des: "免疫熔岩、沸水、地衣等高温环境带来的催情效果",
+		vanity: "",
+    },
 	"Angel_Halo": {
         name: "Angel_Halo",
         cn_name: "天使光环",
@@ -367,17 +377,6 @@ setup.terraAccessories = {
 		des: "一对恶魔的犄角！防止恶魔转化点数衰退(不会防止对应的惩罚)",
 		vanity: "<i>时装</i>：获得仅自己可见的恶魔犄角",
     },
-	/*
-	"Lava_Charm": {
-        name: "Lava_Charm",
-        cn_name: "熔岩护身符",
-		material: false,
-        type: "none",
-        obtained: V.Lava_Charm,
-        icon: "accessories/Lava_Charm.png",
-		des: "对熔岩免疫",
-    },
-	*/
 }
 
 function getAllAccessoriesList() {

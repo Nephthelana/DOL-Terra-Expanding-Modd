@@ -21,11 +21,13 @@
 	<span class="blue">你需要一个工具来安全地捕捉小动物。一个住在森林，且喜爱昆虫的人应该有办法。</span>
 <<else>>
 	<span class="green">你拿出你的
-	<<if $Golden_Bug_Net>>
-		<<icon "tool/Golden_Bug_Net.png">>金虫网
-	<<elseif $Bug_Net>>
-		<<icon "tool/Bug_Net.png">>虫网
-	<</if>>
+		<<if $Golden_Bug_Net>>
+			<<icon "tool/Golden_Bug_Net.png">>金虫网
+		<<elseif $Lavaproof_Bug_Net>>
+			<<icon "tool/Lavaproof_Bug_Net.png">>防熔岩虫网
+		<<elseif $Bug_Net>>
+			<<icon "tool/Bug_Net.png">>虫网
+		<</if>>
 	</span>
 	，网住了这些瓢虫。<br>
 	<br>

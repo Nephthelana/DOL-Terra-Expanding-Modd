@@ -23,7 +23,7 @@
 	<<else>>
 		<<mysteryicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>>
 	<</if>>
-	<<if $Bug_Net isnot true>>
+	<<if $Bug_Net isnot true and $Lavaproof_Bug_Net isnot true>>
 		<br>
 		<<link [[你都是怎么抓的虫子？|Bait Forest Shop Bug Net]]>><</link>>
 	<</if>>

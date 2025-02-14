@@ -1,0 +1,228 @@
+:: Widgets Lava Lake [widget]
+<<widget "terra_underground_lava_lake_unlock">>
+	<<if $underground_lava_lake_unlock is undefined and $cave gte 100>>
+		<br>
+		这里异常闷热，令人感到十分不适。洞窟内的地衣好像着了火一般充满侵略性，仿佛它们就要将你吞没了。
+		<<if $historytrait gte 4>>
+			<span class="green">你在课堂上了解到过，这片海域在数万年前曾有过火山活动。这或许难以置信，但你只能这样解释所见到的现象。而</span>
+		<<else>>
+			<span class="red">你不知道热源从何处而来。</span>
+		<</if>>
+		<<if $sciencetrait gte 4>>
+			<span class="green">你注意到，这些地衣在洞穴内呈现着某种横向的分布差异。随着洞穴的深入，这些地衣个体更小，分布更密集。</span>
+		<<else>>
+			<span class="red">这些地衣使你头皮发麻。</span>
+		<</if>><br>
+		<<if $historytrait gte 4 and $sciencetrait gte 4>>
+			<br>
+			<<if currentSkillValue("willpower") gte 715>>
+				<span class="green">你冷静了下来。</span>眼前这些地衣虽然让你产生了轻微的幻觉，但你还是发现了其中一处地衣分布得十分稀疏。你拨开这块地衣，发现了一个幽暗的通道。<br>
+				<br>
+				<<ind>><<link [[进入通道 (0:20)|Underground Lava Lake Intro 1]]>><<pass 20>><</link>>
+			<<else>>
+				<span class="red">你变得更加烦躁。</span>只有当你转移视线不再关注这些地衣时，你才能稍微缓过神来。
+			<</if>>
+		<</if>><<terraHint>>
+	<<elseif $underground_lava_lake_unlock and $cave gte 100>>
+		<br>
+		你可以从这里前往地下熔岩湖。<br>
+		<<ind>><<link [[进入 (0:20)|Underground Lava Lake Trip]]>><<pass 20>><</link>><<terraHint>><br>
+	<</if>>
+<</widget>>
+
+<<widget "lavaLakeClothes">>
+	<br>
+	<<storeactions "lavaLake">>
+	<<wardrobeSelection true>>
+	<<set _store_location to "lavaLake">>
+	<<storeon _store_location "check">>
+	<<if _store_check is 1>>
+		<<set _clothes to clothingInStorage(_store_location)>>
+		<<if _clothes.length gt 0>>
+			<<if _clothes.length gt 2>>
+				你的衣服散落在一块岩石后面的地上。
+				<br>
+			<<elseif _clothes.length is 2>>
+				你的_clothes[0].cn_name_cap和你的_clothes[1].cn_name_cap散落在一块岩石后面的地上。
+				<br>
+			<<else>>
+				你的_clothes[0].cn_name_cap散落在一块岩石后面的地上。
+				<br>
+			<</if>>
+			<<clothingicon _clothes[0] _clothes[0].slot>><<link [[穿上衣服|$passage]]>><<set $eventskip to 1>><<storeload _store_location>><</link>>
+			<br><br>
+		<</if>>
+	<</if>>
+<</widget>>
+
+:: Underground Lava Lake Intro 1
+<<set $underground_lava_lake_unlock to true>>
+你努力地钻入岩缝中。借由这些地衣发出的微弱光线，你尽量地避开了尖锐的岩石。但火红的地衣带来滚滚热浪，使你的眼前逐渐扭曲，幸而还不至于到看不清路的地步。<br>
+<br>
+奇怪的是，随着你对隧道的探索不断深入，刚开始的不适感逐渐消失了，取而代之的是体内一股暖意的膨胀。<span class="lewd">到后面每当你尝试着挪动一点距离，都似乎有什么在轻抚着你<<genitals 1>>。这使你不住地颤抖。</span><<ggarousal>><<arousal 2000>><br>
+<br>
+终于，一道光线告诉你隧道的尽头就在眼前。体感上隧道前后并没有多少高度差，所以这应该并没有通往地表。不过很快，你听到了夹杂着什么东西迸裂的嘶嘶声，<span class="green">一片硕大的地下熔岩湖出现在你眼前</span>。<br>
+<br>
+<<link [[继续|Underground Lava Lake]]>><</link>>
+
+:: Underground Lava Lake Trip
+你已经熟悉这个隧道的结构了，但你还是无法避免地接触到附着在内壁的地衣，
+<<if $terra_accessories_slots.includes("Lava_Charm")>>
+	<span class="green">好在有<<icon "accessories/Lava_Charm.png">>熔岩护身符的保护，你并没有受到其影响。</span><br>
+<<else>>
+	<span class="lewd">这使你感到一股淫荡的暖意在体内蔓延。</span><<garousal>><<arousal 1000>><br>
+<</if>>
+<br>
+<<link [[继续|Underground Lava Lake]]>><</link>>
+
+:: Underground Lava Lake
+<<location "underground_lava_lake">>
+你站在这片地下熔岩湖前。熔岩中的气泡在湖面迸裂的声音警告着你，这里不是什么安全的地方。<br>
+<br>
+<<if random(1,3) is 1>>
+	<<switch random(1,5)>>
+		<<case 1>>
+			<<set _randomBait to "Magma_Snail">>
+		<<case 2 3>>
+			<<set _randomBait to "Lavafly">>
+		<<case 4 5>>
+			<<set _randomBait to "Hell_Butterfly">>
+	<</switch>>
+	<<icon `'fishing/bait/bait_animation/' + _randomBait + '.gif'`>>
+	你看到有只熔岩小动物在旁边活动。<br>
+	<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<icon 'tool/Lavaproof_Bug_Net.png'>>" : $Bug_Net ? "<<icon 'tool/Bug_Net.png'>>" : "<<ind>>">>
+	<<if $Golden_Bug_Net or $Lavaproof_Bug_Net>>
+		<<link [[抓住它！(0:02)|Underground Lava Lake Catch Success]]>><<pass 2>><<set $randomBait to _randomBait>><</link>><br>
+	<<elseif $Bug_Net>>
+		<<link [[抓住它！(0:02)|Underground Lava Lake Catch Fail]]>><<pass 2>><<set $randomBait to _randomBait>><</link>><br>
+	<<else>>
+		<span class="blue">你需要一个工具来安全地捕捉小动物。一个住在森林，且喜爱昆虫的人应该有办法。</span><br>
+	<</if>>
+	<br>
+<</if>>
+<<if $daily.Lava_Moss isnot true>>
+	隧道入口处的周围分布着一些苔藓，看起来与隧道内部的地衣有着一定的亲缘关系。
+	<br>
+	<<icon "material/Lava_Moss.png">><<link [[采集发光苔藓|Terra Lava Moss]]>><</link>><br>
+<<else>>
+	<span class="blue">你今天采集过这里的苔藓了。</span><br>
+<</if>>
+<br>
+<<if clothingInStorage("lavaLake").length lt 1>>
+	你可以在一个岩洞处存放你的衣服。<br>
+<</if>>
+<<lavaLakeClothes>>
+熔岩湖岸有一个看起来由炽热的石砖堆砌而成的熔炉。<br>
+<<icon "furniture_placed/Hellforge_(placed).gif">><<link [[使用地狱熔炉|Underground Lava Lake Hellforge]]>><</link>><br>
+<br>
+<<if (Time.hour gte 18 and Time.hour lte 20) or (Time.hour is 21 and Time.minute lte 30)>>
+	附近生长着几株火焰般的花朵，偶尔会爆出微小的火星。<span class="green">看起来已经开花了。</span><br>
+	<<icon "herb/Fireblossom_placed_blossom.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
+<<else>>
+	附近生长着几株有粗壮的火红色茎干的植物。<span class="lblue">看起来已经成熟了。</span><br>
+	<<icon "herb/Fireblossom_placed_mature.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
+<</if>>
+<br>
+钓鱼<br>
+<<fishingrod_held_icon>><<link [[在熔岩湖钓鱼|Fishing Bitten]]>><<set $fishing_place to "lava">><</link>><br>
+<br>
+<<getouticon>><<link [[返回走私者洞穴 (0:20)|Underground Lava Lake Leave]]>><<pass 20>><</link>>
+
+:: Underground Lava Lake Catch Success
+<<set _catchingBaitInfo to setup.terraBait[$randomBait]>>
+<<set V[_catchingBaitInfo.name] += 1>>
+<<set $bestiary_bait_list.pushUnique(_catchingBaitInfo.name)>>
+<<set $bestiary_bait_catch_count[_catchingBaitInfo.name] += 1>>
+你抄起你的<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>金虫网" : "<<icon 'tool/Lavaproof_Bug_Net.png'>>防熔岩捕虫网">>，抓住了这只<<icon `_catchingBaitInfo.icon`>>_catchingBaitInfo.cn_name。<br>
+<br>
+<<link [[继续|Underground Lava Lake]]>><<unset $randomBait>><</link>>
+
+:: Underground Lava Lake Catch Fail
+<<set _catchingBaitInfo to setup.terraBait[$randomBait]>>
+你抄起你的<<icon 'tool/Bug_Net.png'>>虫网，试图抓住这只<<icon `_catchingBaitInfo.icon`>>_catchingBaitInfo.cn_name。<span class="purple">但很不幸的是，你的虫网并没有结实到能够捕捉这些生活在熔岩环境中的小动物。</span><br>
+<br>
+<<if $terra_accessories_slots.includes("Lava_Charm")>>
+	<span class="green">好在有<<icon "accessories/Lava_Charm.png">>熔岩护身符的保护，你并没有受到其影响。</span><br>
+<<else>>
+	<span class="lewd">熔岩小动物带来的热量使你产生了奇怪的感觉。</span><<garousal>><<arousal 300>><br>
+<</if>>
+<br>
+<<link [[继续|Underground Lava Lake]]>><<unset $randomBait>><</link>>
+
+:: Underground Lava Lake Hellforge
+地狱熔炉内部流淌着汩汩的熔岩。<br>
+<<icon "furniture_placed/Hellforge_(placed).gif">><br>
+<br>
+<span id="crafting_hellforge_info">
+	<br>
+</span>
+<span id="crafting_hellforge">
+	<<crafting_hellforge>>
+</span>
+<br>
+<<getouticon>><<link [[返回|Underground Lava Lake]]>><</link>>
+
+:: Widgets Underground Lava Lake Hellforge [widget]
+<<widget "crafting_hellforge_info">>
+	_crafted_info
+<</widget>>
+
+<<widget "crafting_hellforge">>
+	<<run initializeTooltips()>>
+	<span class="no-numberify">
+		<<set _recipe_list to getAllRecipeList()>>
+		<<set _recipe_avalible to false>>
+		<div class="itemTerra">
+			<<for _t to 0; _t lt _recipe_list.length; _t++>>
+				<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
+				<<if _recipe.required_crafting_station is "Hellforge">>
+					<<capture _recipe>>
+						_recipe.craftable
+						<<if _craftable>>
+							<<set _recipe_avalible to true>>
+							<div class="item">
+								<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+									<div class="itemTerraGeneral">
+										<<icon `_recipe.icon`>>
+									</div>
+								</div>
+								<hr>
+								<mouse class="tooltip">
+									配方
+									<span>
+										_recipe.required_material_info
+									</span>
+								</mouse>
+								<hr>
+								<<link "制作">>
+									_recipe.craft
+									<<set $crafting_count.Hellforge += 1>>
+									<<set _crafted_info to _recipe.crafting_info>>
+									<<replace #crafting_hellforge_info>>
+										<<crafting_hellforge_info>>
+									<</replace>>
+									<<replace #crafting_hellforge>>
+										<<crafting_hellforge>>
+									<</replace>>
+								<</link>>
+							</div>
+						<</if>>
+					<</capture>>
+				<</if>>
+			<</for>>
+		</div>
+		<<if !_recipe_avalible>>
+			<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
+		<</if>>
+	</span>
+<</widget>>
+
+:: Underground Lava Lake Leave
+你通过隧道爬回了走私者洞穴的最深处。
+<<if $terra_accessories_slots.includes("Lava_Charm")>>
+	<span class="green"><<icon "accessories/Lava_Charm.png">>熔岩护身符的保护使你免于受到地衣的影响。</span><br>
+<<else>>
+	<span class="lewd">那些灼热的地衣使你感到一股淫荡的暖意在体内蔓延。</span><<garousal>><<arousal 1000>><br>
+<</if>>
+<br>
+<<link [[继续|Beach Cave]]>><<set $cave to 100>><</link>>

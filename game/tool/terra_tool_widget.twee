@@ -50,7 +50,7 @@
 <<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
 	<mouse class="tooltip linkBlue">不可用<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
 <<else>>
-	<<link [[使用|Beach]]>>
+	<<link [[使用|Underground Lava Lake]]>>
 		<<if $daily.Demon_Conch_use is undefined>>
 			<<set $daily.Demon_Conch_use to 1>>
 		<<else>>
@@ -241,15 +241,22 @@
 
 <<widget "terra_tool_use_Bottomless_Lava_Bucket">>
 <<link "使用">>
-	<<arousal 1000>>
-	<<drugs 60>>
-	<<replace #hint_item_use>>
-		<span class="blue">你往自己身上倒了一些岩浆。</span><<ggarousal>><<gdrugged>><br>
-		<br>
-	<</replace>>
-	<<replace #buff>>
-		<<buffList>>
-	<</replace>>
+	<<if $terra_accessories_slots.includes("Lava_Charm")>>
+		<<replace #hint_item_use>>
+			<span class="blue">你往自己身上倒了一些岩浆。</span><span class="teal">但在<<icon "accessories/Lava_Charm.png">>熔岩护身符的作用下无事发生。</span><br>
+			<br>
+		<</replace>>
+	<<else>>
+		<<arousal 1000>>
+		<<drugs 60>>
+		<<replace #hint_item_use>>
+			<span class="blue">你往自己身上倒了一些岩浆。</span><<ggarousal>><<gdrugged>><br>
+			<br>
+		<</replace>>
+		<<replace #buff>>
+			<<buffList>>
+		<</replace>>
+	<</if>>
 <</link>>
 <</widget>>
 
@@ -280,6 +287,10 @@
 <</widget>>
 
 <<widget "terra_tool_use_Bug_Net">>
+不可用
+<</widget>>
+
+<<widget "terra_tool_use_Lavaproof_Bug_Net">>
 不可用
 <</widget>>
 

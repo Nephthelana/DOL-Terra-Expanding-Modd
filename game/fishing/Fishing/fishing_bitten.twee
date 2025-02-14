@@ -2,6 +2,7 @@
 <<if ["trash","lava"].includes($fishing_place) and (["Hotline_Fishing_Hook","Slurper_Pole"].includes($options.fishingrod_held) or ["Lavafly","Magma_Snail","Hell_Butterfly"].includes($Bait) or $terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag"))>>
 	<<earnFeat "Hot Reels!">>
 <</if>>
+<<run fishingCastTime()>>
 <<if $Bait is "Truffle_Worm">>
 	<<if $fishing_place is "beach">>
 		<<pass 3>>
@@ -30,17 +31,14 @@
 	<<pass 45>>
 	经过45分钟的等待，你什么都没等到。也许不惧高温的小动物或渔具能解决这个问题。<mouse class="tooltip linkBlue">(?)<span>目前模组中仅有两种可正常获得的防熔岩渔具：完成渔夫任务获得的"熔线钓钩"和旅商出售的"饮食者钓竿"</span></mouse><br>
 <<elseif $fishing_place is "school_pool" and Time.schoolDay and Time.hour is 8 and (_fishing_cast_time + Time.minute) gte 59>>
-	<<run fishingCastTime()>>
 	经过一段时间的等待，你听到更衣室传来了嬉笑打闹声。你在梅森和学生们进来之前快速收拾好了渔具。<br>
 	<<set _time_left to (59 - Time.minute)>>
 	<<pass _time_left>>
 <<elseif $fishing_place is "school_pool" and $weekly.schoolNightPoolParty is "intro" and Time.hour is 20 and (_fishing_cast_time + Time.minute) gte 59>>
-	<<run fishingCastTime()>>
 	经过一段时间的等待，你听到更衣室传来了一阵阵欢呼声。你在其他人进来之前快速收拾好了渔具。<br>
 	<<set _time_left to (59 - Time.minute)>>
 	<<pass _time_left>>
 <<else>>
-	<<run fishingCastTime()>>
 	<<if $fishing_harvest is "None">>
 		<span class="red">生成渔获时出现了问题。请将本页面截图并报告给模组作者</span>
 		钓鱼点：$fishing_place<br>

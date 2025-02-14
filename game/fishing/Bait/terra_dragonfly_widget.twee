@@ -8,11 +8,13 @@
 		<</if>>
 		<img @src="'img/misc/icon/fishing/bait/bait_animation/' + $random_dragonfly + '.gif'">
 		你看到有几只蜻蜓在沙地的水池边打转。<br>
-		<<if $Bug_Net or $Golden_Bug_Net>>
-			<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>" : "<<icon \"tool/Bug_Net.png\">>">>
+		<<if $Bug_Net or $Lavaproof_Bug_Net or $Golden_Bug_Net>>
+			<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<icon 'tool/Lavaproof_Bug_Net.png'>>" : "<<icon 'tool/Bug_Net.png'>>">>
 			<<link [[试着抓住它们 (0:02)|Terra Dragonfly Estate Catch]]>><<pass 2>><</link>>
 			<<if $Golden_Bug_Net>>
 				<<athleticsdifficulty 500 1200>>
+			<<elseif $Lavaproof_Bug_Net>>
+				<<athleticsdifficulty 500 1350>>
 			<<else>>
 				<<athleticsdifficulty 500 1500>>
 			<</if>>
@@ -33,11 +35,13 @@
 		<</if>>
 		<img @src="'img/misc/icon/fishing/bait/bait_animation/' + $random_dragonfly + '.gif'">
 		你看到有几只蜻蜓在森林湖边打转。<br>
-		<<if $Bug_Net or $Golden_Bug_Net>>
-			<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>" : "<<icon \"tool/Bug_Net.png\">>">>
+		<<if $Bug_Net or $Lavaproof_Bug_Net or $Golden_Bug_Net>>
+			<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<icon 'tool/Lavaproof_Bug_Net.png'>>" : "<<icon 'tool/Bug_Net.png'>>">>
 			<<link [[试着抓住它们 (0:02)|Terra Dragonfly Lake Catch]]>><<pass 2>><</link>>
 			<<if $Golden_Bug_Net>>
 				<<athleticsdifficulty 500 1200>>
+			<<elseif $Lavaproof_Bug_Net>>
+				<<athleticsdifficulty 500 1350>>
 			<<else>>
 				<<athleticsdifficulty 500 1500>>
 			<</if>>
@@ -51,9 +55,11 @@
 
 :: Terra Dragonfly Estate Catch
 <<if $Golden_Bug_Net>>
-	<<silently>><<athleticsdifficulty 800 1200>><</silently>>
+	<<silently>><<athleticsdifficulty 500 1200>><</silently>>
+<<elseif $Lavaproof_Bug_Net>>
+	<<silently>><<athleticsdifficulty 500 1350>><</silently>>
 <<else>>
-	<<silently>><<athleticsdifficulty 800 1500>><</silently>>
+	<<silently>><<athleticsdifficulty 500 1500>><</silently>>
 <</if>>
 你蹑手蹑脚地靠近这些蜻蜓。在移动到被它们察觉之前的最短距离时，你用最快的速度向它们冲了过去。<<gathletics>><<athletics 2>><<physique 2>><br>
 <br>
@@ -88,6 +94,7 @@
 <<else>>
 	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>
 <</if>>
+<<unset $random_dragonfly>>
 <br>
 <<link [[返回|Moor]]>><</link>>
 
@@ -106,9 +113,11 @@
 
 :: Terra Dragonfly Lake Catch
 <<if $Golden_Bug_Net>>
-	<<silently>><<athleticsdifficulty 800 1200>><</silently>>
+	<<silently>><<athleticsdifficulty 500 1200>><</silently>>
+<<elseif $Lavaproof_Bug_Net>>
+	<<silently>><<athleticsdifficulty 500 1350>><</silently>>
 <<else>>
-	<<silently>><<athleticsdifficulty 800 1500>><</silently>>
+	<<silently>><<athleticsdifficulty 500 1500>><</silently>>
 <</if>>
 你蹑手蹑脚地靠近这些蜻蜓。在移动到被它们察觉之前的最短距离时，你用最快的速度向它们冲了过去。<<gathletics>><<athletics 2>><<physique 2>><br>
 <br>
@@ -143,6 +152,7 @@
 <<else>>
 	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>
 <</if>>
+<<unset $random_dragonfly>>
 <br>
 <<link [[返回|Lake Shore]]>><</link>>
 

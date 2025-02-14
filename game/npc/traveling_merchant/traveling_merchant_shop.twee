@@ -54,7 +54,7 @@
 				<<break>>
 			<</if>>
 		<</for>>
-		<<if _t gte 998>>
+		<<if _t gte 998>><!-- 为了避免超出1000次的限制bruh -->
 			<<set $traveling_merchant_shop_list to _allGoodsList.randomMany(_traveling_merchant_shop_slot - 1)>>
 			<<break>>
 		<</if>>
@@ -85,7 +85,7 @@
 						<div class="terraLinks">
 							<<if V.daily[_goods.name] gt 0>>
 								<<link "购买">>
-									<<set $money -= _goods.price>>
+									<<money `-_goods.price` "NPC交易">>
 									<<set V.daily[_goods.name] -= 1>>
 									<<set V[_goods.name] += 1>>
 									<<updatesidebarmoney>>
@@ -106,7 +106,7 @@
 								/
 							<<elseif $money gte _goods.price>>
 								<<link "购买">>
-									<<set $money -= _goods.price>>
+									<<money `-_goods.price` "NPC交易">>
 									<<if _goods.type is "pet">>
 										<<set $pet_list.pushUnique(_goods.name)>>
 									<<else>>
@@ -146,7 +146,7 @@
 					/
 				<<elseif $money gte 10000>>
 					<<link "购买">>
-						<<set $money -= 10000>>
+						<<money -10000 "NPC交易">>
 						<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
 						<<updatesidebarmoney>>
 						<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>

@@ -16,7 +16,7 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Demon_Conch,
         icon: "tool/Demon_Conch.png",
-		des: "使用后将你传送至地下熔岩湖(暂未实装，目前为传送至海滩)<br>当日使用次数：<<print $options.terraTransportLimit is 'Unlimited' ? '<span class=\"green\">无限制</span>' : $daily.Demon_Conch_use is undefined ? '0 / $options.terraTransportLimit' : $daily.Demon_Conch_use lt $options.terraTransportLimit ? '$daily.Demon_Conch_use / $options.terraTransportLimit' : '已到达$options.terraTransportLimit次上限'>>",
+		des: "使用后将你传送至地下熔岩湖<br>当日使用次数：<<print $options.terraTransportLimit is 'Unlimited' ? '<span class=\"green\">无限制</span>' : $daily.Demon_Conch_use is undefined ? '0 / $options.terraTransportLimit' : $daily.Demon_Conch_use lt $options.terraTransportLimit ? '$daily.Demon_Conch_use / $options.terraTransportLimit' : '已到达$options.terraTransportLimit次上限'>>",
 		use: "<<terra_tool_use_Demon_Conch>>"
     },
 	"Magic_Mirror": {
@@ -112,11 +112,21 @@ setup.terraTool = {
 	"Bug_Net": {
         name: "Bug_Net",
         cn_name: "虫网",
-		material: false,
+		material: true,
         type: "tool",
         obtained: V.Bug_Net,
         icon: "tool/Bug_Net.png",
 		des: "可以用来和罗宾在森林捕捉小动物，还可以在森林湖边、雷米庄园门口抓蜻蜓。",
+		use: "<<terra_tool_use_Bug_Net>>"
+    },
+	"Lavaproof_Bug_Net": {
+        name: "Lavaproof_Bug_Net",
+        cn_name: "防熔岩虫网",
+		material: false,
+        type: "tool",
+        obtained: V.Lavaproof_Bug_Net,
+        icon: "tool/Lavaproof_Bug_Net.png",
+		des: "可以用来和罗宾在森林捕捉小动物，还可以在森林湖边、雷米庄园门口抓蜻蜓。也可以捕捉熔岩小动物！",
 		use: "<<terra_tool_use_Bug_Net>>"
     },
 	"Golden_Bug_Net": {
@@ -126,7 +136,7 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Golden_Bug_Net,
         icon: "tool/Golden_Bug_Net.png",
-		des: "可以用来和罗宾在森林捕捉小动物，还可以在森林湖边、雷米庄园门口抓蜻蜓。也可以捕捉熔岩小动物(未实装)！",
+		des: "可以用来和罗宾在森林捕捉小动物，还可以在森林湖边、雷米庄园门口抓蜻蜓。也可以捕捉熔岩小动物！",
 		use: "<<terra_tool_use_Golden_Bug_Net>>"
     },
 	"Staff_of_Regrowth": {

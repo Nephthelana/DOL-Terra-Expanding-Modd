@@ -148,6 +148,7 @@ function fishingHarvestPre() {
 					name: "Dreadnautilus",
 					cn_name: "<span class='red'>恐惧鹦鹉螺</span>",
 				} // 恐惧鹦鹉螺没有对应图标。声呐药水处需要对此增加判断
+				V.fishing_difficulty = 1.5;
 				break;
 			}
 			return;
@@ -305,7 +306,7 @@ function fishingHarvestPre() {
 			V.fishing_harvest = {
 				name: "Pink_Jellyfish_bait",
 				cn_name: "粉水母",
-				icon: "fishing/crates/Pink_Jellyfish_bait.png",
+				icon: "fishing/bait/Pink_Jellyfish_bait.png",
 			}
 			V.fishing_difficulty = 1;
 			return;
@@ -320,13 +321,13 @@ function fishingHarvestPre() {
 				V.fishing_harvest = {
 					name: "Blue_Jellyfish_bait",
 					cn_name: "蓝水母",
-					icon: "fishing/crates/Blue_Jellyfish_bait.png",
+					icon: "fishing/bait/Blue_Jellyfish_bait.png",
 				}
 			} else {
 				V.fishing_harvest = {
 					name: "Green_Jellyfish_bait",
 					cn_name: "绿水母",
-					icon: "fishing/crates/Green_Jellyfish_bait.png",
+					icon: "fishing/bait/Green_Jellyfish_bait.png",
 				}
 			}
 			V.fishing_difficulty = 1;

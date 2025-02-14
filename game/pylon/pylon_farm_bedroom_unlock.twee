@@ -11,4 +11,4 @@
 回到农舍，这块水晶只好先放在你的房间了，因为艾利克斯的卧室暂时有点乱。"放那个台子上吧，"<<He>>指了指那个基座，"这两个看着挺配的。"啊这，<span class="green">这应该就是晶塔需要的水晶。</span><br>
 <br>
 <<set $pylon_collected.pushUnique("Farm Bedroom")>>
-<<link[[继续|Farm Bedroom]]>><</link>>
+<<link[[继续|Farm Bedroom]]>><<endevent>><</link>>

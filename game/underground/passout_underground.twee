@@ -1,0 +1,152 @@
+:: Widgets Terra Passout [widget]
+<<widget "terraPassoutIceLake">>
+	<<if $location is "underground_ice_lake">>
+		<<addinlineevent "Guide" 4>>
+			<<link [[你眼前一黑……|Passout Underground Ice Lake Guide]]>><</link>>
+		<</addinlineevent>>
+		<<addinlineevent "Goblin Tinkerer" 1>>
+			<<link [[你眼前一黑……|Passout Underground Ice Lake Goblin Tinkerer]]>><</link>>
+		<</addinlineevent>>
+		<<runeventpool>>
+		<<exitAll>>
+	<</if>>
+<</widget>>
+
+<<widget "terraPassoutLavaLake">>
+	<<if $location is "underground_lava_lake">>
+		<<link [[你眼前一黑……|Passout Underground Lava Lake]]>><</link>>
+		<<exitAll>>
+	<</if>>
+<</widget>>
+
+:: Passout Underground Ice Lake Guide
+<!-- 设定在向导小屋醒来 -->
+<<location "forest">><<effects>>
+<<set $outside to 0>>
+<<set $player.bodyTemperature to 37>>
+<<outfitChecks>>
+你慢慢睁开了眼睛。在你失去意识之前，你感到自己跌倒在了残酷的冰面上。而现在你躺在了床上，身上有一层被子盖着，让你感觉没那么冷了。
+<<if $guide_intro>><!-- 在这之前已经见过向导 -->
+	<<if $guide_mod_hint>>
+		虽然你眼前还有些模糊，但你可以认出这里是熟悉的小屋。你听到向导在旁边工作。<br><!-- 如果已经解锁模组提示，那么已经比较熟了 -->
+	<<else>>
+		你眼前还有些模糊，不知自己躺在何处。但你听到有人在旁边。<br><!-- 如果还未解锁模组提示，说明还不太熟 -->
+	<</if>>
+	<br>
+	你想掀开身上的被子下床，但你暂时使不上力气。向导听到你这边的动静，走到了床边。<br>
+	<br>
+	"我不知道你为什么要跑到那个天寒地冻的地方去，甚至
+	<<if _fullyNaked>><!-- 如果全身光的 -->
+		<!-- 穿上毛衣、长裤 -->
+		<<upperwear 23>>
+		<<lowerwear 23>>
+		一丝不挂。你最好穿上这些衣服。"被子上还盖着一件毛衣，一条长裤。稍微休息一段时间后，你下床把它们穿上。<br>
+	<<else>><!-- 至少穿了一件衣服 -->
+		没有做好相应的保暖措施。<br>
+	<</if>>
+<<else>><!-- 在这之前还未见过向导 -->
+	你眼前还有些模糊，不知自己躺在何处。但你听到有人在旁边。<br>
+	<br>
+	"我不知道你为什么要跑到那个天寒地冻的地方去，甚至
+	<<if _fullyNaked>><!-- 如果全身光的 -->
+		<!-- 穿上毛衣、长裤 -->
+		<<upperwear 23>>
+		<<lowerwear 23>>
+		一丝不挂。你最好穿上这些衣服。"被子上还盖着一件毛衣，一条长裤。稍微休息一段时间后，你下床把它们穿上。<br>
+	<<else>><!-- 至少穿了一件衣服 -->
+		没有做好相应的保暖措施。<br>
+	<</if>>
+<</if>>
+<br>
+<<link [[继续|Guide Room]]>><</link>><!-- 在向导小屋 -->
+
+:: Passout Underground Ice Lake Goblin Tinkerer
+<<effects>>
+<!-- 设定在哥布林工匠的小屋醒来 -->
+<<outfitChecks>>
+<<set $player.bodyTemperature to 37>>
+你慢慢睁开了眼睛。在你失去意识之前，你感到自己跌倒在了残酷的冰面上。而现在你躺在了床上，身上有一层被子盖着，让你感觉没那么冷了。你眼前还有些模糊，不知自己躺在何处。但你听到有人在旁边。<br>
+<br>
+<<if $Goblin_Tinkerer_intro>>
+	你想掀开身上的被子下床，但你暂时使不上力气。哥布林工匠听到你这边的动静，走到了床边。<br>
+	<br>
+	"我不知道你为什么要在这么冷的地方睡觉，甚至
+	<<if _fullyNaked>><!-- 如果全身光的 -->
+		<!-- 穿上毛衣、长裤 -->
+		<<upperwear 23>>
+		<<lowerwear 23>>
+		什么也没穿。你最好穿上这些衣服。"被子上还盖着一件毛衣，一条长裤。稍微休息一段时间后，你下床把它们穿上。<br>
+	<<else>><!-- 至少穿了一件衣服 -->
+		连个床单都没有。<br>
+	<</if>>
+	<br>
+	"你应该考虑一下使用保暖药水。我觉得这已经是相当实惠的价格了。"<br>
+<<else>>
+	<<set $Goblin_Tinkerer_intro to true>>
+	"我不知道你为什么要在这么冷的地方睡觉，甚至
+	<<if _fullyNaked>><!-- 如果全身光的 -->
+		<!-- 穿上毛衣、长裤 -->
+		<<upperwear 23>>
+		<<lowerwear 23>>
+		什么也没穿。你最好穿上这些衣服。"被子上还盖着一件毛衣，一条长裤。稍微休息一段时间后，你下床把它们穿上。<br>
+	<<else>><!-- 至少穿了一件衣服 -->
+		连个床单都没有。<br>
+	<</if>>
+	<br>
+	"不过我这里还有更高效的保暖措施。"他转身从书桌边的一个箱子里拿出了一瓶药剂。"这是保暖药水，它可以让你的体温保持不低于37度。我能安心呆在这个冷的要死的地下永冻湖边，全靠的是这玩意。"<br>
+	<br>
+	他收回了那瓶保暖药水，"忘记自我介绍了，我是一名哥布林工匠。我喜欢呆在这个与世隔绝的地方做我自己的研究工作。比如我刚刚在尝试给一顶帽子装上马达，还有在一双跑鞋里内置一些火箭..."<br>
+	<br>
+	工匠似乎突然有了什么好主意。"我可以给你分享我的研究成果——前提是你有足够的钱。我得先提醒你，不是我们哥布林贪财：我需要很多钱来推进我的研究进度。比如你刚刚的保暖药水，就可以达成一笔不错的交易。"<br>
+	<br>
+	"那么，我要继续被你打断的工作了。"他朝你摆了摆手，"如果你下次还冻晕在这里，我得考虑一下收取那些衣物的费用。"<br>
+<</if>>
+<br>
+<<link [[继续|Goblin Tinkerer Room]]>><</link>>
+
+:: Passout Underground Lava Lake
+不知过了多长时间，你逐渐恢复了意识，感觉体温有所消却。但长期毫无防备地吸入了这里的空气，你感到随着每一次呼吸，性欲都在体内攀升。<span class="lewd">你控制不住自己了。</span><br>
+<br>
+<<link [[自慰|Passout Underground Lava Lake Masturbation]]>><<set $masturbationstart to 1>><</link>>
+
+:: Passout Underground Lava Lake Masturbation
+<<effects>>
+<<if $masturbationstart is 1>>
+	<<set $masturbationstart to 0>>
+	<<set $masturbationstat += 1>>
+	<<masturbationstart>>
+
+	燥热但香甜的空气，使你沉醉在情欲的幻想中。失去意识前感到的翻滚热浪化为了不断冲击大脑的快感。<<ggarousal>><<arousal 2000>>
+	<br><br>
+<</if>>
+<<masturbationeffects>>
+<<masturbationactions>>
+<<if $corruptionMasturbation>>
+	<span class="red">你耳朵里的史莱姆不让你停下。</span>
+<</if>>
+
+<div id="masturbationButtons">
+	<<if $masturbationorgasm gte 3>>
+		<div id="next"><<link [[继续|$passage + " Finish"]]>><</link>><<nexttext>></div>
+	<<else>>
+		<div id="next"><<link [[继续|$passage]]>><</link>><<nexttext>></div>
+	<</if>>
+	<<if $masturbationorgasm lt 1>>
+		<div class="red">你无法停下。</div>
+	<<elseif $corruptionMasturbation isnot true and random(0,3) gt $orgasmcurrent and $earSlime.corruption gt (currentSkillValue('willpower') / 10)>>
+		<div id="stop"><<link [[停下|$passage]]>><<set $corruptionMasturbation to true>><</link>></div>
+	<<elseif $corruptionMasturbation isnot true>>
+		<div id="stop"><<link [[停下|$passage + " Finish"]]>><<set $finish to 1>><</link>></div>
+	<<else>>
+		<div id="noStop">停不下来</div>
+	<</if>>
+</div>
+
+:: Passout Underground Lava Lake Masturbation Finish
+<<effects>>
+<<endmasturbation>>
+<<clotheson>>
+<<endcombat>>
+你在这个不会有任何人来打扰的地方自慰到了高潮，这使你感到心满意足。<br>
+<br>
+<<link [[继续|Underground Lava Lake]]>><</link>>

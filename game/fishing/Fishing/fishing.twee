@@ -72,18 +72,44 @@
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<fishing_finished_back>>
+<!-- 30回合后还没分出胜负时结束钓鱼小游戏 -->
+<<elseif ($fish_relax_count + $fish_struggle_count) gt 30>>
+	<<set $fishing_failed_count += 1>>
+	<<fishing_end>>
+	你足足搏斗了5分钟！<span class="red">它失去了对你的兴趣。</span><<gstress>><<stress 3>><br>
+	<br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
+	<<fishing_finished_back>>
 <!-- 显示每回合的结果 -->
 <<else>>	
 	<<fishing_round_info>>
 	<!-- 渔获距离大于66时开始有概率落水 -->
 	<<if random(1,100) lt (3 * $fishing_distance - 200)>>
 		渔获距离太远了！
-		<<if ($danceskill * 0.75) gte random(1,1000)>>
+		<<if (currentSkillValue("danceskill") * 0.75) gte random(1,1000)>>
 			<span class="green">但你设法维持住了身体的平衡。</span><br>
-		<<else>>
-			<<water>>
+		<<elseif ["trash","lava"].includes($fishing_place)>>
 			<<pass 3>>
+			<br><br>
+			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...你被拖进了<<print $fishing_place is "trash" ? "沸水" : "熔岩">>里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
+			<br>
+			<<if $terra_accessories_slots.includes("Lava_Charm")>>
+				<span class="green">幸运的是，<<icon "accessories/Lava_Charm.png">>熔岩护身符的保护下，这种强烈催情性的液体对你没有效果。</span><br>
+				<br>
+				你花费了一些时间爬到岸上。<br>
+			<<else>>
+				<span class="lewd">你感到你的每一寸皮肤又胀又痒——并不是因为高温带来的疼痛，而是不自然的淫靡不断刺激着你。随着心跳逐渐加快，感官受到的刺激越来越强烈。</span><<ggarousal>><<arousal 2000>><<ggdrugged>><<drugs 120>><br>
+				<br>
+				你在失去意识前挣扎回到了岸上。<br>
+			<</if>>
+			<br>
+			<<fishing_finished_back>>
+			<<exitAll>>
+		<<else>>
+			<<pass 3>>
+			<br><br>
 			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...你被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
+			<<water>>
 			<br>
 			你花费了一些时间爬到岸上。<br>
 			<br>
@@ -231,12 +257,7 @@
 		<<set $fish_struggle_count += 1>>
 	<</if>>
 	<<if ($fishingskill * 0.8 + 200) gte random(1,1000)>>
-		你可以准确地看出来
-		<<if $fish_relax>>
-			它很安静。
-		<<else>>
-			它在挣扎。
-		<</if>>
+		你可以准确地看出来<<print $fish_relax ? "它很安静。" : "它在挣扎。">>
 	<<else>>
 		你还看不出它的行为。
 	<</if>><br>

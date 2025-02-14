@@ -72,3 +72,12 @@
 你获得了<<icon "material/Neon_Moss.png">>氖苔藓(1)。<br>
 <br>
 <<link [[继续|Lake Ruin]]>><</link>>
+
+:: Terra Lava Moss
+<<set $Lava_Moss += 1>>
+<<set $daily.Lava_Moss to true>>
+相较而言，这些苔藓要温和许多。你小心地收集了其中一些。<br>
+<br>
+你获得了<<icon "material/Lava_Moss.png">>熔岩苔藓(1)。<br>
+<br>
+<<link [[继续|Underground Lava Lake]]>><</link>>

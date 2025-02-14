@@ -66,8 +66,8 @@
 你可以在这里练习滑冰。<br>
 <<lakeicon "skate">><<link [[滑冰 (0:30)|Underground Ice Lake Skate]]>><<pass 30>><<tiredness 5>><<danceskill 5>><</link>><<gtiredness>><<gdanceskill>><br>
 <br>
-附近的一片地面上生长着几株盛开着白色花朵的植物。蓝色的茎干看起来柔弱，但和花朵一样，在这个严寒的环境中没有一丝退却。<br>
-<span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
+附近的一片地面上生长着几株盛开着白色花朵的植物。蓝色的茎干看起来柔弱，但和花朵一样，在这个严寒的环境中没有一丝退却。<span class="green">看起来已经开花了。</span><br>
+<<icon "herb/Shiverthorn_placed_blossom.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
 <br>
 坚固的冰面下隐约可以见到几条正在游动的鱼。
 <<if $underground_ice_lake_broken gte 1>>

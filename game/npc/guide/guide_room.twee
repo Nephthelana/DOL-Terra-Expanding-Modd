@@ -112,5 +112,5 @@
 		<<icon "antiques/antique_silver_compass.png">><<link [[询问银质指南针|Guide Compass 2]]>><</link>><br>
 	<</if>>
 	<br>
-	<<getouticon>><<link [[离开|Forest]]>><</link>><br>
+	<<getouticon>><<link [[离开|Forest]]>><<set $forest to 0>><</link>><br>
 <</if>>

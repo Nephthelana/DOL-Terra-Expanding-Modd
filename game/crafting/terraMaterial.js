@@ -106,6 +106,13 @@ setup.terraMaterial = {
         obtained: V.Magic_Conch,
         icon: "tool/Magic_Conch.png",
     },
+	"Bug_Net": {
+        name: "Bug_Net",
+        cn_name: "虫网<br><i>材料</i>",
+        type: "tool",
+        obtained: V.Bug_Net,
+        icon: "tool/Bug_Net.png",
+    },
 	"Bottomless_Honey_Bucket": {
         name: "Bottomless_Honey_Bucket",
         cn_name: "无底蜂蜜桶<br><i>材料</i>",

@@ -123,6 +123,11 @@
 	<<icon "potions/Crate_Potion.png">>宝匣药水(_fishing_reward_potion)
 	<<set $Crate_Potion += _fishing_reward_potion>>
 <</if>>
+<!-- 钱币奖励 -->
+<<set _fishing_reward_money to (Math.round((100 + 10 * ($fishing_requests_finished_count - 1)) * random(80,120) / 100) * 100)>>
+<<set _fishing_reward_money to _fishing_reward_money gt 100000 ? 100000 : _fishing_reward_money>><!-- 如果奖励金额超过1000，则设为1000 -->
+<<money _fishing_reward_money "渔夫任务">>
+、<<printmoney _fishing_reward_money>>
 <!-- 家具奖励 -->
 <<if $fishing_requests_finished_count gte random(1,100)>>
 	<<set _anglerFurniture to setup.terraAnglerFurniture[getAllAnglerFurnitureList().random()]>>
