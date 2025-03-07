@@ -4,7 +4,7 @@
 
 <<if $pylon_museum_asked and !$pylon_collected.includes("Eden Cabin") and C.npc.Eden.love gte 180>>
 	<br><br>
-	你还注意到脚边的藤蔓下似乎有意外坚硬的物体，但凭你的力气无法拨开它们。伊甸回过头看着你："怎么了，摘好还不走吗？"<br>
+	你还注意到脚边的藤蔓下似乎有意外坚硬的物体，但凭你的力气无法拨开它们。伊甸回过头看着你：“怎么了，摘好还不走吗？”<br>
 	<<link [[让伊甸帮忙查看这个坚硬的物体|Pylon Eden Cabin Unlock]]>><</link>>
 <</if>>
 

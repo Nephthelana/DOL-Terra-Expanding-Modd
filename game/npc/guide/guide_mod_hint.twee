@@ -3,18 +3,18 @@
 	<<switch $GoldWatchPre>>
 		<<case undefined>>
 			<<set $GoldWatchPre to "intro">>
-			"在你向我提问之前，我希望你能帮助我解答一个问题：我从博物馆馆长那里听说你找到了一块老怀表，你是在哪里找到它的？"<br>
+			“在你向我提问之前，我希望你能帮助我解答一个问题：我从博物馆馆长那里听说你找到了一块老怀表，你是在哪里找到它的？”<br>
 			<br>
 			你回忆起了你在镇内的旧下水道发现那块怀表的经历——你在塞满雕塑的水管附近，发现了一个带有开锁计时器的保险箱。幸运的是，你在倒计时结束之前试出了密码，取出了这块怀表。<br>
 			<br>
-			向导进一步追问道："在那个保险箱中只有一块这样的怀表吗？我希望馆长能将那块怀表送给我来做研究，但很遗憾，<<npc Winter>><<person1>><<he>><<endevent>>不同意。"<br>
+			向导进一步追问道：“在那个保险箱中只有一块这样的怀表吗？我希望馆长能将那块怀表送给我来做研究，但很遗憾，<<nnpc_he "Winter">>不同意。”<br>
 			<br>
 			<span class="gold">你需要再拿到一块怀表，并把它交给向导。</span><br>
 			<br>
 			<<link [[继续|Guide Mod Hint]]>><</link>>
 			<<exitAll>>
 		<<case "intro">>
-			"去拿怀表的时候，小心下水道里可能的危险，尤其是下雨的时候。"<br>
+			“去拿怀表的时候，小心下水道里可能的危险，尤其是下雨的时候。”<br>
 			<<if $antiqueWatchObtained>>
 				<<icon "antiques/antique_watch.gif">><<link [[将怀表交给向导|Guide Watch]]>><</link>><br>
 			<</if>>
@@ -28,18 +28,18 @@
 	<<switch $CompassPre>>
 		<<case undefined>>
 			<<set $CompassPre to "intro">>
-			"在你向我提问之前，我希望你能帮助我解答一个问题：我从博物馆馆长那里听说你找到了一块价值不菲的指南针，你是在哪里找到它的？"<br>
+			“在你向我提问之前，我希望你能帮助我解答一个问题：我从博物馆馆长那里听说你找到了一块价值不菲的指南针，你是在哪里找到它的？”<br>
 			<br>
 			你回忆起了你在海边潜水找到的洞穴里发现那块银质指南针的经历——洞中有不少宝藏，但也充满着危险。而且这个指南针是在洞穴最深处找到的，着实费了你不少功夫。<br>
 			<br>
-			向导进一步追问道："这种指南针造价不菲。放在那个时代，一定有不少人会持有它来证明自己的地位的。我希望馆长能将那块指南针送给我来做研究，但很遗憾，<<npc Winter>><<person1>><<he>><<endevent>>不同意。"<br>
+			向导进一步追问道：“这种指南针造价不菲。放在那个时代，一定有不少人会持有它来证明自己的地位的。我希望馆长能将那块指南针送给我来做研究，但很遗憾，<<nnpc_he "Winter">>不同意。”<br>
 			<br>
 			<span class="gold">你需要再拿到一块银质指南针，并把它交给向导。</span><br>
 			<br>
 			<<link [[继续|Guide Mod Hint]]>><</link>>
 			<<exitAll>>
 		<<case "intro">>
-			"去拿指南针的时候，千万不要为了贪图小利而造成更大的损失。祝你好运。"<br>
+			“去拿指南针的时候，千万不要为了贪图小利而造成更大的损失。祝你好运。”<br>
 			<<if $antiqueCompassObtained>>
 				<<icon "antiques/antique_silver_compass.png">><<link [[将银质指南针交给向导|Guide Compass]]>><</link>><br>
 			<</if>>
@@ -49,7 +49,7 @@
 			<br>
 	<</switch>>
 <</if>>
-"如果你还有什么其他疑问或者建议，欢迎通过贴吧、QQ与我...哦不是，与作者 <i>苯环</i> 交流。你可以在<a href="https://github.com/Nephthelana/DOL-Terra-Expanding-Modd" target="_blank">模组的Github主页</a>里找到联系方式。"<br>
+“如果你还有什么其他疑问或者建议，欢迎通过贴吧、QQ与我……哦不是，与作者 <i>苯环</i> 交流。你可以在<a href="https://github.com/Nephthelana/DOL-Terra-Expanding-Modd" target="_blank">模组的Github主页</a>里找到联系方式。”<br>
 <br>
 <<icon "hint/Emote_Emote_Confused.gif">>关于模组提示的前置任务<br>
 <<link [[关于净化粉|Guide Mod Hint Purification Powder Guide]]>><</link>><br>

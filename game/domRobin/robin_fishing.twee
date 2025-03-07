@@ -41,16 +41,26 @@
 <<elseif $fishing_distance lte 0>>
 	<<fishing_end>>
 	<span class="green">最后你猛地一收竿，宣示着你的胜利！</span>
-	<<if !($terra_accessories_slots.includes("High_Test_Fishing_Line") or $terra_accessories_slots.includes("Angler_Tackle_Bag") or $terra_accessories_slots.includes("Lavaproof_Tackle_Bag")) and random(1,7) is 1>>
+	<<if !$terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") and random(1,7) is 1>>
 		<<set $fishing_failed_count += 1>>
-		<span class="red">但是你的鱼线断了...</span>也许你需要一个优质钓鱼线。<<ggstress>><<stress 6>><br>
+		<span class="red">但是你的鱼线断了……</span>也许你需要一个<span class="teal">优质钓鱼线</span>。<<ggstress>><<stress 6>><br>
+		<span class="black"><i>如果没有优质钓鱼线，每次最后收竿时都有概率使鱼线直接断裂，损失此次渔获。</i></span><br>
 	<<else>>
-		<<run fishingHarvest()>>
 		<<set $fishing_harvest_count += 1>>
 		<<llstress>><<stress -6>><br>
-		你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
+		<<switch $fishing_harvest.name>>
+			<<case "Dreadnautilus">>
+				<<fishing_Dreadnautilus>>
+				<<exit>>
+			<<case undefined>>
+				<span class="red">你的渔获好像在钓鱼中途消失了？这是不应该存在的情况，请向模组作者反馈</span><br>
+			<<case "None">>
+				<span class="red">看起来你在咬钩时就没有渔获判定成功，你是怎么看到这条消息的？这是不应该存在的情况，请向模组作者反馈</span><br>
+			<<default>>
+				<<run fishingHarvest()>>
+				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
+		<</switch>>
 	<</if>>
-	<br>
 	<<fishing_bait_consumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
@@ -65,11 +75,27 @@
 <!-- 鱼线耐久为0时结束钓鱼小游戏 -->
 <<elseif $fishing_integrity is 0>>
 	<<set $fishing_failed_count += 1>>
+	<<fishing_end>>
 	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><<ggstress>><<stress 6>><br>
 	<br>
 	<<fishing_bait_consumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
+	<<link [[回家|Robin Fishing Finished]]>>
+		<<unset $fishing_harvest>>
+		<<if $robin_fishing_phase is "none" and $fishing_place is "lake_fishing_rock">>
+			<<set $robin_fishing_finished_phase to 3>>
+		<<else>>
+			<<set $robin_fishing_finished_phase to 1>>
+		<</if>>
+	<</link>><br>
+<!-- 30回合后还没分出胜负时结束钓鱼小游戏 -->
+<<elseif ($fish_relax_count + $fish_struggle_count) gt 30>>
+	<<set $fishing_failed_count += 1>>
+	<<fishing_end>>
+	你足足搏斗了5分钟！<span class="red">它失去了对你的兴趣。</span><<gstress>><<stress 3>><br>
+	<br>
+	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>
 		<<unset $fishing_harvest>>
 		<<if $robin_fishing_phase is "none" and $fishing_place is "lake_fishing_rock">>
@@ -84,12 +110,12 @@
 	<!-- 渔获距离大于66时开始有概率落水罗宾空闲时，会在pc触发落水惩罚的情况下抱住pc -->
 	<<if random(1,100) lt (3 * $fishing_distance - 200)>>
 		渔获距离太远了！
-		<<if ($danceskill * 0.75) gte random(1,1000)>>
+		<<if (currentSkillValue("danceskill") * 0.75) gte random(1,1000)>>
 			<span class="green">但你设法维持住了身体的平衡。</span>罗宾向你这边投来担心的眼神。<br>
 			<br>
 		<<else>>
 			<<if $robin_fishing_phase is "none">>
-				在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...<span class="teal">一双手突然从背后环抱住了你——是罗宾。</span><br>
+				在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡……<span class="teal">一双手突然从背后环抱住了你——是罗宾。</span><br>
 				<br>
 				你转过头去，想看看到底什么情况，只发现你几乎就要贴到罗宾的脸。待你身体平稳后，你的肩膀清楚地感受到<<his>>的鼻息。罗宾的双手稍微放松了些。<br>
 				<br>
@@ -97,19 +123,19 @@
 					罗宾依然抱着你，<span class="green">你感觉到<<he>>的两只手扣得更紧，更加用力地抱紧了你</span>。你们感受着彼此的心跳。<<gglove>><<npcincr Robin love 3>><br>
 					<br>
 				<</if>>
-				你还在因为这次猝不及防的拥抱而待在原地。罗宾最后松开了手，"可惜了这条鱼。不过，你没掉下去就好。"<<gdom Robin>><<npcincr Robin dom 1>><br>
+				你还在因为这次猝不及防的拥抱而待在原地。罗宾最后松开了手，“可惜了这条鱼。不过，你没掉下去就好。”<<gdom Robin>><<npcincr Robin dom 1>><br>
 				<br>
-				<<He>>看起来还是十分担心："我们今天就钓到这里吧，回去好好休息一下。下次可不要为了一条鱼这么冒险了。"<br>
+				<<He>>看起来还是十分担心：“我们今天就钓到这里吧，回去好好休息一下。下次可不要为了一条鱼这么冒险了。”<br>
 				<br>
 				<<link [[回家|Robin Fishing Finished]]>><<unset $fishing_harvest>><<set $robin_fishing_finished_phase to 2>><</link>>
 				<<endevent>>
 			<<else>>
-				<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...你被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
+				<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡……你被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
 				<<water>>
 				<br>
 				罗宾扔下鱼竿，赶来查看你的情况。在罗宾的帮助下，你花费了一些时间爬到岸上。<<pass 1>><<ldom Robin>><<npcincr Robin dom -1>><br>
 				<br>
-				<<He>>看起来还是十分担心："全身湿透了对身体不好。我们今天就钓到这里吧，回去好好处理一下。下次可不要为了一条鱼这么冒险了。"<br>
+				<<He>>看起来还是十分担心：“全身湿透了对身体不好。我们今天就钓到这里吧，回去好好处理一下。下次可不要为了一条鱼这么冒险了。”<br>
 				<br>
 				<<link [[回家|Robin Fishing Finished]]>><<unset $fishing_harvest>><<set $robin_fishing_finished_phase to 2>><</link>>
 				<<endevent>>

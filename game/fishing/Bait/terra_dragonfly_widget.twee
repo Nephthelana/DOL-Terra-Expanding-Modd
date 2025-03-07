@@ -87,8 +87,7 @@
 	<<for _dragonfly range Object.keys(_caught).filter(df => T.caught[df] > 0)>>
 		<<set _dragonflyInfo to setup.terraBait[_dragonfly]>>
 		<<set V[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
-		<<set $bestiary_bait_list.pushUnique(_dragonflyInfo.name)>>
-		<<set $bestiary_bait_catch_count[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
+		<<bestiaryStatistics "bait" _dragonflyInfo.name _caught[_dragonflyInfo.name]>>
 		<<icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
 	<</for>>
 <<else>>
@@ -145,8 +144,7 @@
 	<<for _dragonfly range Object.keys(_caught).filter(df => T.caught[df] > 0)>>
 		<<set _dragonflyInfo to setup.terraBait[_dragonfly]>>
 		<<set V[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
-		<<set $bestiary_bait_list.pushUnique(_dragonflyInfo.name)>>
-		<<set $bestiary_bait_catch_count[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
+		<<bestiaryStatistics "bait" _dragonflyInfo.name _caught[_dragonflyInfo.name]>>
 		<<icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
 	<</for>>
 <<else>>

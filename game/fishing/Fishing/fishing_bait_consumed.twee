@@ -3,7 +3,7 @@
 	<<if $Bait isnot "None">>
 		<br>
 		<<set _bait to setup.terraBait[$Bait]>>
-		<<if $terra_accessories_slots.includesAny("Tackle_Box","Angler_Tackle_Bag","Lavaproof_Tackle_Bag")>>
+		<<if $terra_accessories_slots.includesAny("Tackle_Box","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station")>>
 			<<if random(1,6*2+ _bait.fishing_power) lte 6>><<set V[_bait.name] -= 1>><</if>>
 		<<else>>
 			<<if random(1, 6 + _bait.fishing_power) lte 6>><<set V[_bait.name] -= 1>><</if>>

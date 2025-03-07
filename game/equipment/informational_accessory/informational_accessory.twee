@@ -1,8 +1,8 @@
 :: Informational Accessory Content [widget]
 <<widget "informationalAccessoryContent">>
 	<!-- 初始化信息饰品列表 -->
-	<<set $informationalAccessoryList to $informationalAccessoryList is undefined ? [] : $informationalAccessoryList>>
-	<<set $informationalAccessoryActivating to $informationalAccessoryActivating is undefined ? {} : $informationalAccessoryActivating>>
+	<<set $informationalAccessoryList to $informationalAccessoryList or []>>
+	<<set $informationalAccessoryActivating to $informationalAccessoryActivating or {}>>
 	<<for _a range Object.keys(setup.terraAccessories).filter(a => setup.terraAccessories[a].type === "informational")>>
 		<<set _accessory to setup.terraAccessories[_a]>>
 		<<if setup.terraAccessories[_a].upgrades.some(a => V[a])>>
@@ -54,33 +54,37 @@
 						<</if>>
 					</div>
 					<hr>
-					<<link "<<print $informationalAccessoryActivating[_accessory.name] ? '关闭' : '激活'>>">>
-						<<set $informationalAccessoryActivating[_accessory.name] to !$informationalAccessoryActivating[_accessory.name]>>
-						<<replace #informationalAccessorySetting>>
-							<<informationalAccessorySetting>>
-						<</replace>>
-						<<replace #informationalAccessoryInfo>>
-							<<informationalAccessoryInfo>>
-						<</replace>>
-					<</link>>
+					<div class="terraLink">
+						<<link "<<print $informationalAccessoryActivating[_accessory.name] ? '关闭' : '激活'>>">>
+							<<set $informationalAccessoryActivating[_accessory.name] to !$informationalAccessoryActivating[_accessory.name]>>
+							<<replace #informationalAccessorySetting>>
+								<<informationalAccessorySetting>>
+							<</replace>>
+							<<replace #informationalAccessoryInfo>>
+								<<informationalAccessoryInfo>>
+							<</replace>>
+						<</link>>
+					</div>
 					<hr>
-					<<if _aaa is 0>>
-						/
-					<<else>>
-						<<capture _aaa>>
-							<<link "⬅">>
-								<<set _temp to $informationalAccessoryList[_aaa-1]>>
-								<<set $informationalAccessoryList[_aaa-1] to $informationalAccessoryList[_aaa]>>
-								<<set $informationalAccessoryList[_aaa] to _temp>>
-								<<replace #informationalAccessorySetting>>
-									<<informationalAccessorySetting>>
-								<</replace>>
-								<<replace #informationalAccessoryInfo>>
-									<<informationalAccessoryInfo>>
-								<</replace>>
-							<</link>>
-						<</capture>>
-					<</if>>
+					<div class="terraLink">
+						<<if _aaa is 0>>
+							/
+						<<else>>
+							<<capture _aaa>>
+								<<link "⬅">>
+									<<set _temp to $informationalAccessoryList[_aaa-1]>>
+									<<set $informationalAccessoryList[_aaa-1] to $informationalAccessoryList[_aaa]>>
+									<<set $informationalAccessoryList[_aaa] to _temp>>
+									<<replace #informationalAccessorySetting>>
+										<<informationalAccessorySetting>>
+									<</replace>>
+									<<replace #informationalAccessoryInfo>>
+										<<informationalAccessoryInfo>>
+									<</replace>>
+								<</link>>
+							<</capture>>
+						<</if>>
+					</div>
 				</div>
 			<</capture>>
 		<</for>>
@@ -100,7 +104,9 @@
 <<widget "informationalAccessoryDetail">>
 	<<switch _args[0]>>
 		<<case "Fishermans_Pocket_Guide">>
-			<<if $Bait is "Truffle_Worm">>
+			<<if getFishingRodObtainedList().length lte 0>>
+				<span class="black">你还没有鱼竿，无法查看当前渔力</span><br>
+			<<elseif $Bait is "Truffle_Worm">>
 				警告！<br>
 			<<else>>
 				<<run getFishingPower()>>
@@ -127,19 +133,13 @@
 			<<elseif Time.date.moonPhaseFraction gt 0.75 and Time.date.moonPhaseFraction lt 1>>
 				残月(-5%渔力)
 			<<else>>
-				额哦，显示月相时好像出了些问题，建议问问模组作者~<br>
-				Someone tell Nephthelana there's a problem with his mod.
+				额哦，显示月相时好像出了些问题，建议问问模组作者~"Someone tell Nephthelana there's a problem with his mod."<br>
 			<</if>><br>
 		<<case "Weather_Radio">>
 			<<set $weather_forecast_hours to $weather_forecast_hours or 6>>
 			当前天气：
-			<<switch Weather.name>>
-				<<case "clear">><<icon "clear_icon.png">>晴天
-				<<case "lightClouds">><<icon "lightClouds_icon.png">>有云
-				<<case "heavyClouds">><<icon "heavyClouds_icon.png">>多云
-				<<case "lightPrecipitation">><<icon "lightPrecipitation_icon.png">>小雨
-				<<case "heavyPrecipitation">><<icon "heavyPrecipitation_icon.png">>大雨
-			<</switch>>｜
+			<<icon `Weather.name + "_icon.png"`>><<print Weather.name.replace("clear","晴天").replace("lightClouds","有云").replace("heavyClouds","多云").replace("lightPrecipitation","小雨").replace("heavyPrecipitation","大雨")>>
+			｜
 			<span id="terraWeatherForcast">
 				<<link "查看天气预报">>
 					<<replace #terraWeatherForcast>>
@@ -148,10 +148,6 @@
 				<</link>>｜<br>
 			</span>
 		<<case "Gold_Watch">>
-			<span id="alarmNext">
-				<<alarmNext>>
-			</span>
-			｜
 			<span id="terraAlarmListPreviewButton">
 				<<terraAlarmListPreviewButton>>
 			</span>

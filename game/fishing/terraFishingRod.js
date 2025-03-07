@@ -107,8 +107,8 @@ function getAllFishingRodList() {
 window.getAllFishingRodList = getAllFishingRodList;
 
 function getFishingRodObtainedList() {
-	for (let fishing_rod in setup.terraBait) {
-        setup.terraBait[fishing_rod].obtained = V[fishing_rod];
+	for (let fishing_rod in setup.terraFishingRod) {
+        setup.terraFishingRod[fishing_rod].obtained = V[fishing_rod];
     }
     let fishing_rod_obtained = Object.keys(setup.terraFishingRod);
     return fishing_rod_obtained.filter(fishing_rod => {

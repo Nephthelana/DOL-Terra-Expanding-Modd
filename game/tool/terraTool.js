@@ -106,7 +106,7 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Gravediggers_Shovel,
         icon: "tool/Gravediggers_Shovel.png",
-		des: "可以用于建造人工钓鱼池，更高效的开垦农田。<i>\"你明白了吗？\"</i>",
+		des: "可以用于建造人工钓鱼池，更高效的开垦农田。<i>“你明白了吗？”</i>",
 		use: "<<terra_tool_use_Gravediggers_Shovel>>"
     },
 	"Bug_Net": {

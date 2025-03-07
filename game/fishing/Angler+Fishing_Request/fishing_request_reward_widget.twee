@@ -1,5 +1,9 @@
 :: Fishing Request Rewarding
-	<<set $fishing_request_fish.delete($fishing_request_selection)>>
+	<<if $fishing_request_Golden_Carp>>
+		<<set $Golden_Carp -= 1>>
+	<<else>>
+		<<set $fishing_request_fish.delete($fishing_request_selection)>>
+	<</if>>
 	<<set $fishing_request_finished_daily to true>>
 	<<set $fishing_requests_finished_count += 1>>
 	<<if $fishing_requests_finished_count gte 1>>
@@ -14,27 +18,43 @@
 	<<if $fishing_requests_finished_count gte 50>>
 		<<earnFeat "Fast and Fishious">>
 	<</if>>
-	<<if $options.cute_angler>>
-		<<print [
-			`"哦！谢谢你抓来我要的鱼，让我看看我能用些什么来作为你的酬劳..."`,
-			`"抓到啦！你永远都不会失手，一如既往！"`,
-			`"哇哦，你做到了！真高兴你毫发无伤！"`,
-			`"哇！？你竟然完成了任务，还活了下来！你太厉害了！还有其他事要忙？好吧...那你快去吧！我就不再占用你的时间了。"`,
-			`"你办事可真利索，不知道上辈子烧了什么好香能遇到你..."`
-		].random()>>
+	<<if $fishing_request_Golden_Carp>>
+		<<if $options.cute_angler>>
+			<<print [
+				`“你知道吗？我在几分钟前有一种特别好的预感，然后你就带着这条亮闪闪的鱼来了！”`,
+				`“哦！是今天的任务对你来说比较难吗？没事，这条鱼更好！谢谢你！”`,
+				`“它会为我的新鱼缸增色不少！希望你也有美好的一天！”`
+			].random()>>
+		<<else>>
+			<<print [
+				`“今天算我心情好！下次再不拿来我要的鱼，就给我滚蛋！”`,
+				`“没有完成任务的本事就想拿这个东西敷衍我？行吧！你成功了！带着你的奖励离开我的视线！”`,
+				`“我今天可是专门为那条鱼准备了个鱼缸！……算了，你这条也不是不行！走吧！”`
+			].random()>>
+		<</if>><br>
 	<<else>>
-		<<print [
-			`"哦！谢谢你抓来我要的鱼，可以滚了！"`,
-			`"你这跑腿的活干得挺不错嘛！现在走开！"`,
-			`"哈哈哈哈！你做到了！你竟然毫发无伤，真没劲！"`,
-			`"哇！？你竟然完成了任务，还活了下来！不错，把它交上来，再滚远点！"`,
-			`"抓到啦！一切都是按计划进行的！哈哈哈！"`
-		].random()>>
-	<</if>><br>
+		<<if $options.cute_angler>>
+			<<print [
+				`“哦！谢谢你抓来我要的鱼，让我看看我能用些什么来作为你的酬劳……”`,
+				`“抓到啦！你永远都不会失手，一如既往！”`,
+				`“哇哦，你做到了！真高兴你毫发无伤！”`,
+				`“哇！？你竟然完成了任务，还活了下来！你太厉害了！还有其他事要忙？好吧……那你快去吧！我就不再占用你的时间了。”`,
+				`“你办事可真利索，不知道上辈子烧了什么好香能遇到你……”`
+			].random()>>
+		<<else>>
+			<<print [
+				`“哦！谢谢你抓来我要的鱼，可以滚了！”`,
+				`“你这跑腿的活干得挺不错嘛！现在走开！”`,
+				`“哈哈哈哈！你做到了！你竟然毫发无伤，真没劲！”`,
+				`“哇！？你竟然完成了任务，还活了下来！不错，把它交上来，再滚远点！”`,
+				`“抓到啦！一切都是按计划进行的！哈哈哈！”`
+			].random()>>
+		<</if>><br>
+	<</if>>
 	<br>
 	<<fishing_request_reward>><br>
 	<br>
-	<<link [[返回|Fishing Angler Cabin]]>><</link>>
+	<<link [[返回|Fishing Angler Cabin]]>><<unset $fishing_request_Golden_Carp>><</link>>
 
 :: Fishing Request Reward [widget]
 <<widget "fishing_request_reward">>
@@ -158,18 +178,15 @@
 	、
 	<<if random(1,15) is 1>>
 		<<set $Master_Bait += _fishing_reward_bait>>
-		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-		<<set $bestiary_bait_catch_count.Master_Bait += _fishing_reward_bait>>
+		<<bestiaryStatistics "bait" "Master_Bait" _fishing_reward_bait>>
 		<<icon "fishing/bait/Master_Bait.png">>大师诱饵
 	<<elseif random(1,5) is 1>>
 		<<set $Journeyman_Bait += _fishing_reward_bait>>
-		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-		<<set $bestiary_bait_catch_count.Journeyman_Bait += _fishing_reward_bait>>
+		<<bestiaryStatistics "bait" "Journeyman_Bait" _fishing_reward_bait>>
 		<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵
 	<<else>>
 		<<set $Apprentice_Bait += _fishing_reward_bait>>
-		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
-		<<set $bestiary_bait_catch_count.Apprentice_Bait += _fishing_reward_bait>>
+		<<bestiaryStatistics "bait" "Apprentice_Bait" _fishing_reward_bait>>
 		<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵
 	<</if>>(_fishing_reward_bait)
 <</if>>

@@ -1,5 +1,5 @@
 :: Fishing Bitten
-<<if ["trash","lava"].includes($fishing_place) and (["Hotline_Fishing_Hook","Slurper_Pole"].includes($options.fishingrod_held) or ["Lavafly","Magma_Snail","Hell_Butterfly"].includes($Bait) or $terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag"))>>
+<<if ["trash","lava"].includes($fishing_place) and (["Hotline_Fishing_Hook","Slurper_Pole"].includes($options.fishingrod_held) or ["Lavafly","Magma_Snail","Hell_Butterfly"].includes($Bait) or $terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station"))>>
 	<<earnFeat "Hot Reels!">>
 <</if>>
 <<run fishingCastTime()>>
@@ -11,7 +11,7 @@
 		<br>
 		这是怎么回事？<br>
 		<br>
-		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><<gawareness>><<awareness 10>><br>
+		<span class="black">“怎么回事？我还想反问你呢——你哪来的松露虫？”你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><<gawareness>><<awareness 10>><br>
 		<br>
 		你扭头看向四周，却什么也没看见。<<gtrauma>><<trauma 2>><br>
 		<br>
@@ -21,15 +21,15 @@
 		<</if>>
 	<<else>>
 		<<pass 30>>
-		经过30分钟的等待，你什么都没等到...怎么回事？<br>
+		经过30分钟的等待，你什么都没等到……怎么回事？<br>
 		<br>
-		<span class="black">"怎么回事？我还想反问你呢——你哪来的松露虫？"你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><<gawareness>><<awareness 10>><br>
+		<span class="black">“怎么回事？我还想反问你呢——你哪来的松露虫？”你的耳边不知从何处响起奇怪的声音。</span><<gstress>><<stress 6>><<gawareness>><<awareness 10>><br>
 		<br>
 		你扭头看向四周，却什么也没看见。<<gtrauma>><<trauma 2>><br>
 	<</if>>
-<<elseif ["trash","lava"].includes($fishing_place) and !["Hotline_Fishing_Hook","Slurper_Pole"].includes($options.fishingrod_held) and !["Lavafly","Magma_Snail","Hell_Butterfly"].includes($Bait) and !$terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag")>>
+<<elseif ["trash","lava"].includes($fishing_place) and !["Hotline_Fishing_Hook","Slurper_Pole"].includes($options.fishingrod_held) and !["Lavafly","Magma_Snail","Hell_Butterfly"].includes($Bait) and !$terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station")>>
 	<<pass 45>>
-	经过45分钟的等待，你什么都没等到。也许不惧高温的小动物或渔具能解决这个问题。<mouse class="tooltip linkBlue">(?)<span>目前模组中仅有两种可正常获得的防熔岩渔具：完成渔夫任务获得的"熔线钓钩"和旅商出售的"饮食者钓竿"</span></mouse><br>
+	经过45分钟的等待，你什么都没等到。也许不惧高温的小动物或渔具能解决这个问题。<mouse class="tooltip linkBlue">(?)<span>目前模组中可获得的防熔岩渔具：完成渔夫任务获得的"熔线钓钩"和旅商出售的"饮食者钓竿"，黑曜石匣开出的"防熔岩钓钩"，地下熔岩湖刷出的熔岩小动物</span></mouse><br>
 <<elseif $fishing_place is "school_pool" and Time.schoolDay and Time.hour is 8 and (_fishing_cast_time + Time.minute) gte 59>>
 	经过一段时间的等待，你听到更衣室传来了嬉笑打闹声。你在梅森和学生们进来之前快速收拾好了渔具。<br>
 	<<set _time_left to (59 - Time.minute)>>
@@ -48,12 +48,13 @@
 		血月敌怪概率：_bloodMoonEnemyChance<br>
 		难度系数：$fishing_difficulty<br>
 	<<elseif $fishing_harvest is undefined>>
+		<<pass _fishing_cast_time>>
 		经过_fishing_cast_time分钟的等待，你什么都没等到。<mouse class="tooltip linkBlue">(?)<span>可以尝试选用更好的渔具，挑选合适的时机提高渔力再来钓鱼。</span></mouse><br>
 	<<else>>
 		<<pass _fishing_cast_time>>
 		<<set $fishing_bitten_count += 1>>
 		经过_fishing_cast_time分钟的等待，有东西上钩了！<br>
-		<<if $Sonar_Potion_countdown gt 0>>
+		<<if $Sonar_Potion_countdown>>
 			<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
 			<br>
 		<</if>>

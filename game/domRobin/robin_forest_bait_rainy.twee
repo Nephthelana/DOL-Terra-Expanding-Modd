@@ -1,14 +1,14 @@
 :: Robin Forest Bait Rainy
 <<npc Robin>><<person1>>
-/* 雨天抓蠕虫 */
-你们在返回孤儿院的途中，玩起了"躲水坑"的游戏。<br>
+<!-- 雨天抓蠕虫 -->
+你们在返回孤儿院的途中，玩起了“躲水坑”的游戏。<br>
 <br>
 罗宾突然定在了一处水坑前，缓缓地蹲了下来，专注观察着地上的什么东西。你凑上前去，发现是几只蠕虫。雨天它们需要到地面来呼吸空气。<br>
 <br>
-"鱼儿肯定喜欢这个，对吧？咱们可以带几只回去。"说完，罗宾就准备伸手去抓。<br>
+“鱼儿肯定喜欢这个，对吧？咱们可以带几只回去。”说完，罗宾就准备伸手去抓。<br>
 <br>
 你提醒<<he>>最好不要直接用手去碰它们。
-<<if $Golden_Bug_Net isnot true and $Bug_Net isnot true>>
+<<if $Golden_Bug_Net isnot true and $Lavaproof_Bug_Net isnot true and $Bug_Net isnot true>>
 	<span class="blue">你需要一个工具来更安全地捕捉小动物。一个住在森林，且喜爱昆虫的人应该有办法。</span>
 <<else>>
 	<span class="green">你拿出你的
@@ -30,14 +30,11 @@
 		<<set $Worm += _bait>>
 		<<set $Worm -= 1>>
 		<<set $Gold_Worm += 1>>
-		<<set $bestiary_bait_catch_count.Worm += (_bait-1)>>
-		<<set $bestiary_bait_list.pushUnique("Worm")>>
-		<<set $bestiary_bait_catch_count.Gold_Worm += 1>>
-		<<set $bestiary_bait_list.pushUnique("Gold_Worm")>>
+		<<bestiaryStatistics "bait" "Worm" (_bait - 1)>>
+		<<bestiaryStatistics "bait" "Gold_Worm" 1>>
 	<<else>>
 		<<set $Worm += _bait>>
-		<<set $bestiary_bait_catch_count.Worm += _bait>>
-		<<set $bestiary_bait_list.pushUnique("Worm")>>
+		<<bestiaryStatistics "bait" "Worm" _bait>>
 	<</if>>
 <</if>>
 <br>

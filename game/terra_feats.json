@@ -29,7 +29,7 @@
         "difficulty": 1,
         "series": "",
         "filter": ["All", "General"],
-		"hint": "提示：完成渔夫任务。"
+		"hint": "提示：完成一次渔夫任务。"
     },
 	"Good Little Slave": {
         "title": "三好小奴隶",
@@ -97,10 +97,42 @@
     },
 	"Don't Starve": {
         "title": "撑得慌",
-        "desc": "吃不完的食物！我喜欢'精美毛绒玩具'！",
+        "desc": "吃不完的食物！我喜欢‘精美毛绒玩具’！",
         "difficulty": 1,
         "series": "",
         "filter": ["All", "General"],
 		"hint": "提示：自制一份食物，然后吃掉它！"
+    },
+	"Fisherman's Diploma": {
+        "title": "渔夫の毕业证书",
+        "desc": "渔夫并不会真的给你颁发这个证书，我才会",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：填满图鉴的“任务鱼”部分"
+    },
+	"Fish is What I Desire": {
+        "title": "鱼我所欲也",
+        "desc": "成就亦我所欲也",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：填满图鉴的“普通鱼”部分"
+    },
+	"Always More Fish Than Crates": {
+        "title": "匣不掩鱼",
+        "desc": "但你还是成功集齐了它们！",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：填满图鉴的“宝匣”部分"
+    },
+	"Baits Makes Perfect": {
+        "title": "饵熟能详",
+        "desc": "世界上有那么多种鱼饵，你已经都见到了，即使是最稀有的那种",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：填满图鉴的“鱼饵”部分"
     }
 }

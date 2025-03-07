@@ -28,19 +28,19 @@
 	<<closeButton>>
 <</widget>>
 
-/* 渔获标签页信息 */
+<!-- 渔获标签页信息 -->
 <<widget "fishingharvests">>
-	<<if $fishingrod isnot true>>
+	<<if getFishingRodObtainedList().length lte 0>>
 		<span class="lblue">你需要从某人那里获得鱼竿。也许这人正漂浮在海上。</span><br>
 	<<elseif $fishing_anglerintro isnot true>>
 		<span class="teal">渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？</span><br>
 	<</if>>
 	<<run initializeTooltips()>>
 	<<informationalAccessoryContent>>
-	/* 持有鱼饵+切换鱼饵 */
-	<<if $fishingrod>>
-		<span class="gold bold">鱼饵</span><mouse class="tooltip linkBlue">(?)<span>鱼饵可以给你提供不同的鱼饵力，影响渔获的品质，也影响在成功钓起渔获物时鱼饵物品被消耗掉的几率：高鱼饵力意味着低消耗几率。</span></mouse><br>
-		<<if $passage is "Fishing" or $passage is "Robin Fishing">>
+	<!-- 持有鱼饵+切换鱼饵 -->
+	<<if getFishingRodObtainedList().length gt 0>>
+		<span class="gold bold">鱼饵</span><mouse class="tooltip linkBlue">(?)<span>鱼饵可以给你提供不同的渔力，影响渔获的品质，也影响在成功钓起渔获物时鱼饵物品被消耗掉的几率：高鱼饵力意味着低消耗几率。</span></mouse><br>
+		<<if ["Fishing","Robin Fishing"].includes($passage)>>
 			哦不，钓钩都抛出去了，怎么能换鱼饵呢？<br>
 		<<else>>
 			<label><<radiobutton "$Bait" "None" autocheck>>不使用鱼饵</label>
@@ -48,27 +48,23 @@
 			<span id="baitList"><<baitList>></span>
 		<</if>>
 	<</if>>
-	/* 持有任务鱼 */
+	<!-- 持有任务鱼 -->
 	<span class="gold bold">任务鱼</span><br>
 	<<if $fishing_request_fish.length gte 1>>
 		<div class="itemTerra">
-			<<set _allRequestFishList to getAllRequestFishList()>>
-			<<for _t to 0; _t lt _allRequestFishList.length; _t++>>
-				<<set _item to setup.terraRequestFish[_allRequestFishList[_t]]>>
-				<<if $fishing_request_fish.includes(_item.name)>>
-					<<set _tooltip to `<span class="gold">${_item.cn_name}</span>`>>
-            		<div class="item" @tooltip="_tooltip">
-						<div class="itemTerraGeneral">
-							<<icon `_item.icon`>>
-						</div>
+			<<for _rf range $fishing_request_fish>>
+				<<set _rfInfo to setup.terraRequestFish[_rf]>>
+            	<div class="item" @tooltip="`<span class='gold'>${_rfInfo.cn_name}</span>`">
+					<div class="itemTerraGeneral">
+						<<icon `_rfInfo.icon`>>
 					</div>
-				<</if>>
+				</div>
 			<</for>>
 		</div>
 	<<else>>
 		<i>你身上没有任务鱼</i><br>
 	<</if>>
-	/* 持有宝匣 */
+	<!-- 持有宝匣 -->
 	<span class="gold bold">宝匣</span><mouse class="tooltip linkBlue">(?)<span>包含一些随机的物品。</span></mouse><br>
 	<<if getCrateObtainedList().length gte 1>>
 		<span id="unloadCrateHint"></span>
@@ -78,30 +74,27 @@
 	<<else>>
 		<i>你身上没有宝匣</i><br>
 	<</if>>
-	/* 持有鱼 */
+	<!-- 持有鱼 -->
 	<span class="gold bold">鱼</span><mouse class="tooltip linkBlue">(?)<span>普通渔获作为<i>材料</i>可以用于制作物品。你也可以在dom罗宾拓展mod中，和罗宾一起烤鱼并出售它们中的一部分。</span></mouse><br>
 	<<if getFishObtainedList().length gte 1>>
         <div class="itemTerra">
 			<<set _fishObtained to getFishObtainedList()>>
-			<<for _t to 0; _t lt _fishObtained.length; _t++>>
-				<<set _fish to setup.terraFish[_fishObtained[_t]]>>
-            	<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
-				<<set _amount = _formatter.format(_fish.amount)>>
-				<<set _isMaterial to _fish.material ? "<br><i>材料</i>" : "">>
-            	<<set _tooltip to `<span class="green">${_fish.amount}</span> ${_fish.cn_name}${_isMaterial}`>>
-            	<div class="item" @tooltip="_tooltip">
+			<<for _f range _fishObtained>>
+				<<set _fInfo to setup.terraFish[_f]>>
+				<<set _isMaterial to _fInfo.material ? "<br><i>材料</i>" : "">>
+            	<div class="item" @tooltip="`${_fInfo.cn_name}${_isMaterial}`">
 					<div class="itemTerraGeneral">
-						<<icon `_fish.icon`>>
+						<<icon `_fInfo.icon`>>
 					</div>
 					<hr>
-					<<= _amount>>
+					_fInfo.amount
 				</div>
 			<</for>>
 		</div>
 	<<else>>
 		<i>你身上没有普通鱼</i><br>
 	<</if>>
-	/* 持有垃圾 */
+	<!-- 持有垃圾 -->
 	<span class="gold bold">垃圾</span><mouse class="tooltip linkBlue">(?)<span>如果你的渔力足够低(<50)，或者在<<print $fishing_place_park_unlock ? "公园的喷泉" : "一个十分狭小的水域">>里钓鱼，就有可能钓到看起来无用的垃圾。</span></mouse><br>
 	<<if getTrashObtainedList().length gte 1>>
 		<span id="extractTrashHint">你可以用<<icon "furniture_item/Extractinator.png">>提炼机将垃圾转化为低级鱼饵</span>
@@ -114,30 +107,28 @@
 <</widget>>
 
 <<widget "craftingMaterial">>
-
 	<<run initializeTooltips()>>
-
 	<span id="hunger_description">
 		<<hunger_description>><br>
 	</span>
 	<span id="foodList">
 		<<foodList>>
 	</span>
-	<<set _materialObtained to getMaterialObtainedList()>>
 	<br>
 	<span class="gold bold">材料</span><mouse class="tooltip linkBlue">(?)<span>一部分物品并不能直接发挥特别的用处，但它们可以作为合成的材料。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到提示。</span></mouse><br>
+	<<set _materialObtained to getMaterialObtainedList()>>
 	<<if _materialObtained.length gt 0>>
 		<div class="itemTerra">
-			<<for _i to 0; _i lt _materialObtained.length; _i++>>
-				<<set _material to setup.terraMaterial[_materialObtained[_i]]>>
-				<<capture _material>>
-					<<if _material.type is "material">>
-						<div class="item" @tooltip="_material.cn_name">
+			<<for _m range _materialObtained>>
+				<<set _mInfo to setup.terraMaterial[_m]>>
+				<<capture _mInfo>>
+					<<if _mInfo.type is "material">>
+						<div class="item" @tooltip="_mInfo.cn_name">
 							<div class="itemTerraGeneral">
-								<<icon `_material.icon`>>
+								<<icon `_mInfo.icon`>>
 							</div>
 							<hr>
-							_material.amount
+							_mInfo.amount
 						</div>
 					<</if>>
 				<</capture>>
@@ -153,48 +144,40 @@
 <<widget "baitList">>
 	<div class="itemTerra">
 		<<set _baitObtained to getBaitObtainedList()>>
-		<<for _t to 0; _t lt _baitObtained.length; _t++>>
-			<<set _bait to setup.terraBait[_baitObtained[_t]]>>
+		<<for _b range _baitObtained>>
+			<<set _bInfo to setup.terraBait[_b]>>
 			<<set _formatter = new Intl.NumberFormat('en-gb', { roundingMode: 'trunc', notation: 'compact' })>>
-			<<set _amount = _formatter.format(_bait.amount)>>
-			<<set _isMaterial to _bait.material ? "<br><i>材料</i>" : "">>
-			<<set _tooltip to `<span class="green">${_bait.amount}</span> ${_bait.cn_name}${_isMaterial}<br><br>▶ ${_bait.fishing_power}渔力`>>
-			<div class="item" @tooltip="_tooltip">
-				<label>
-				<div class="itemTerraBait">
-					<<icon `_bait.icon`>>
+			<<set _amount = _formatter.format(_bInfo.amount)>>
+			<<set _isMaterial to _bInfo.material ? "<br><i>材料</i>" : "">>
+			<<set _tooltip to `<span class="green">${_bInfo.amount}</span> ${_bInfo.cn_name}${_isMaterial}<br><br>▶ ${_bInfo.fishing_power}渔力`>>
+			<label>
+				<div class="item" @tooltip="_tooltip">
+					<div class="itemTerraBait">
+						<<icon `_bInfo.icon`>>
+					</div>
+					<hr>
+					<<radiobutton "$Bait" _bInfo.name autocheck>><<= _amount>>
 				</div>
-				<hr>
-				<<radiobutton "$Bait" _bait.name autocheck>><<= _amount>></label>
-			</div>
+			</label>
 		<</for>>
 	</div>
 <</widget>>
 
 :: Unload Crate [widget]
 <<widget "UnloadCrateHint">>
-	<<set _allCrateList to getAllCrateList()>>
-	<<for _t to 0; _t lt _allCrateList.length; _t++>>
-		<<set _crate to setup.terraCrate[_allCrateList[_t]]>>
-		<<if $void_bag_unload_crate is _crate.name>>
-			你打开了一个<<icon `_crate.icon`>>_crate.cn_name。<br>
-			<span class="gold">
-				你得到了_crate.unload！
-			</span><br>
-			<<break>>
-		<</if>>
-	<</for>>
-	<<if random(1,10) is 1 and $void_bag_unload_crate is "Ocean_Crate">>
+	<<set _ucInfo to setup.terraCrate[_void_bag_unload_crate]>>
+	你打开了一个<<icon `_ucInfo.icon`>>_ucInfo.cn_name。<br>
+	<span class="gold">
+		你得到了_ucInfo.unload
+	</span><br>
+	<<if random(1,10) is 1 and _void_bag_unload_crate is "Ocean_Crate">>
 		<br>
+		<<museumAntiqueStatus "antiqueleathermap" "found">>
 		<<earnFeat "X Marks the Spot">>
-		你发现里面还有一个用蜡质细绳捆着的皮革卷轴。你把它展开，是一张保存完好的地图。这张地图描绘了一个森林旁边的沿海定居点。表示海洋的部分上，线条纵横交错，有的地方被符号标注了，可能是一些重要的地点。在地图的左上角画着一只克拉肯，右下角画着一条龙。博物馆馆长也许会知道更多关于它的信息。<br>
 		<<set $antiquemoney += 4000>>
-		<<if $museumAntiques.antiques.antiqueleathermap is "notFound">>
-			<<set $museumAntiques.antiques.antiqueleathermap to "found">>
-		<</if>>
+		你发现里面还有一个用蜡质细绳捆着的皮革卷轴。你把它展开，是一张保存完好的地图。这张地图描绘了一个森林旁边的沿海定居点。表示海洋的部分上，线条纵横交错，有的地方被符号标注了，可能是一些重要的地点。在地图的左上角画着一只克拉肯，右下角画着一条龙。博物馆馆长也许会知道更多关于它的信息。<br>
 		<br>
 	<</if>>
-	<<set $void_bag_unload_crate to undefined>>
 <</widget>>
 
 <<widget "crateList">>
@@ -202,28 +185,28 @@
 	<<if getCrateObtainedList().length gte 1>>
 		<div class="itemTerra">
 			<<set _crateObtained to getCrateObtainedList()>>
-			<<for _t to 0; _t lt _crateObtained.length; _t++>>
-				<<set _crate to setup.terraCrate[_crateObtained[_t]]>>
-				<<capture _crate>>
+			<<for _c range _crateObtained>>
+				<<set _cInfo to setup.terraCrate[_c]>>
+				<<capture _cInfo>>
 					<div class="item">
-						<div @tooltip="`${_crate.cn_name}`">
+						<div @tooltip="`${_cInfo.cn_name}`">
 							<div class="itemTerraGeneral">
-								<<icon `_crate.icon`>>
+								<<icon `_cInfo.icon`>>
 							</div>
 						</div>
 						<hr>
-						_crate.amount
+						_cInfo.amount
 						<hr>
 						<div class="terraLinks">
 							<<link "打开">>
-								<<set $void_bag_unload_crate to _crate.name>>
+								<<set _void_bag_unload_crate to _cInfo.name>>
 								<<replace #unloadCrateHint>>
 									<<UnloadCrateHint>>
 								<</replace>>
 								<<replace #crateList>>
 									<<crateList>>
 								<</replace>>
-								<<if !($passage is "Fishing" or $passage is "Robin Fishing") and $fishingrod>>
+								<<if !["Fishing","Robin Fishing"].includes($passage) and getFishingRodObtainedList().length gt 0>>
 									<<replace #baitList>>
 										<<baitList>>
 									<</replace>>
@@ -242,20 +225,16 @@
 	<<icon "furniture_placed/Extractinator_(placed).gif">>你提炼得到了
 	<<switch random(1,36)>>
 		<<case 1>><<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(1)
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += 1>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" 1>>
 			<<set $Journeyman_Bait += 1>>
 		<<case 2 3>><<icon "fishing/bait/Worm.png">>蠕虫(1)
-			<<set $bestiary_bait_list.pushUnique("Worm")>>
-			<<set $bestiary_bait_catch_count.Worm += 1>>
+			<<bestiaryStatistics "bait" "Worm" 1>>
 			<<set $Worm += 1>>
 		<<case 4 5 6 7 8 9>><<icon "fishing/bait/Snail.png">>蜗牛(1)
-			<<set $bestiary_bait_list.pushUnique("Snail")>>
-			<<set $bestiary_bait_catch_count.Snail += 1>>
+			<<bestiaryStatistics "bait" "Snail" 1>>
 			<<set $Snail += 1>>
 		<<default>><<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(1)
-			<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
-			<<set $bestiary_bait_catch_count.Apprentice_Bait += 1>>
+			<<bestiaryStatistics "bait" "Apprentice_Bait" 1>>
 			<<set $Apprentice_Bait += 1>>
 	<</switch>>。
 <</widget>>
@@ -264,36 +243,35 @@
 	<<run initializeTooltips()>>
 	<div class="itemTerra">
 		<<set _trashObtained to getTrashObtainedList()>>
-		<<for _t to 0; _t lt _trashObtained.length; _t++>>
-			<<set _trash to setup.terraTrash[_trashObtained[_t]]>>
-			<<capture _trash>>
-       			<<set _tooltip to `<span class="green">${_trash.amount}</span> ${_trash.cn_name}`>>
-       			<div class="item">
-					<div @tooltip="_tooltip">
-						<div class="itemTerraGeneral">
-							<<icon `_trash.icon`>>
-						</div>
+		<<for _t range _trashObtained>>
+			<<set _tInfo to setup.terraTrash[_t]>>
+			<<capture _tInfo>>
+       			<div class="item" @tooltip="`${_tInfo.cn_name}`">
+					<div class="itemTerraGeneral">
+						<<icon `_tInfo.icon`>>
 					</div>
 					<hr>
-					_trash.amount
+					_tInfo.amount
 					<<if $Extractinator>>
 						<hr>
-						<<if _trash.name is "Joja_Cola">>
-							/
-						<<else>>
-							<<link "提炼">>
-								<<set V[_trash.name] -= 1>>
-								<<replace #extractTrashHint>>
-									<<extractTrashHint>>
-								<</replace>>
-								<<replace #trashList>>
-									<<trashList>>
-								<</replace>>
-								<<replace #baitList>>
-									<<baitList>>
-								<</replace>>
-							<</link>>
-						<</if>>
+						<div class="terraLinks">
+							<<if _tInfo.name is "Joja_Cola">>
+								/
+							<<else>>
+								<<link "提炼">>
+									<<set V[_tInfo.name] -= 1>>
+									<<replace #extractTrashHint>>
+										<<extractTrashHint>>
+									<</replace>>
+									<<replace #trashList>>
+										<<trashList>>
+									<</replace>>
+									<<replace #baitList>>
+										<<baitList>>
+									<</replace>>
+								<</link>>
+							<</if>>
+						</div>
 					<</if>>
 				</div>
 			<</capture>>
@@ -305,32 +283,32 @@
 <<widget "foodList">>
 	<<run initializeTooltips()>>
 	<span class="gold bold">食物</span><mouse class="tooltip linkBlue">(?)<span>吃下食物可以降低饥饿值。食物的附加效果待定。<br>*泰拉瑞亚拓展MOD本身不提供饥饿值增长的机制，只是给原版会增长饥饿值的场合提供了新的降低饥饿值的手段。</span></mouse><br>
-	<<set _foodObtained to getFoodObtained()>>
-	<<if _foodObtained.length gt 0>>
+	<<if getFoodObtained().length gt 0>>
+		<<set _foodObtained to getFoodObtained()>>
 		<div class="itemTerra">
-			<<for _j to 0; _j lt _foodObtained.length; _j++>>
-				<<set _food to setup.terraFood[_foodObtained[_j]]>>
-				<<capture _food>>
+			<<for _food range _foodObtained>>
+				<<set _foodInfo to setup.terraFood[_food]>>
+				<<capture _foodInfo>>
 					<div class="item">
-						<<set _isMaterial to _food.material ? "<br><i>材料</i>" : "">>
-						<div @tooltip="`${_food.cn_name}${_isMaterial}<br><br>${_food.des}`">
+						<<set _isMaterial to _foodInfo.material ? "<br><i>材料</i>" : "">>
+						<div @tooltip="`${_foodInfo.cn_name}${_isMaterial}<br><br>${_foodInfo.des}`">
 							<div class="itemTerraGeneral">
-								<<icon `_food.icon`>>
+								<<icon `_foodInfo.icon`>>
 							</div>
 						</div>
 						<hr>
-						_food.amount
+						_foodInfo.amount
 						<hr>
 						<div class="terraLinks">
 							<<link "吃">>
 								<<replace #hunger_description>>
 									<<hunger_description>><br>
-									<<if _food.name is "Sake" and playerIsPregnant() and playerAwareTheyArePregnant()>>
+									<<if _foodInfo.name is "Sake" and playerIsPregnant() and playerAwareTheyArePregnant()>>
 										<span class="blue">你怀有身孕，不能喝酒。</span><br>
 									<<else>>
 										<<earnFeat "Don't Starve">>
-										_food.use
-										你吃了一份<<icon `_food.icon`>>_food.cn_name。_food.use_hint<br>
+										_foodInfo.use
+										你吃了一份<<icon `_foodInfo.icon`>>_foodInfo.cn_name。_foodInfo.use_hint<br>
 									<</if>>
 								<</replace>>
 								<<replace #foodList>>

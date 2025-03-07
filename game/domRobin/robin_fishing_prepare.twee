@@ -1,6 +1,6 @@
 :: Robin Fishing Prepare
 <<npc Robin>><<person1>>
-/* 获取交给罗宾的鱼饵的名称、图标、渔力信息 */
+<!-- 获取交给罗宾的鱼饵的名称、图标、渔力信息 -->
 <<set $robin_bait_amount = Number($options.robin_bait_amount)>>
 <<set $robin_bait_type = $options.robin_bait_type>>
 <<set _baitObtained to getBaitObtainedList()>>
@@ -16,13 +16,13 @@
 		<<break>>
 	<</if>>
 <</for>>
-/* 计算罗宾的渔力[默认使用强化钓竿，渔力为(20+鱼饵渔力)]，用于计算得到罗宾当天钓鱼等待咬钩所需的时间 */
+<!-- 计算罗宾的渔力[默认使用强化钓竿，渔力为(20+鱼饵渔力)]，用于计算得到罗宾当天钓鱼等待咬钩所需的时间 -->
 <<set $robin_fishing_fishing_power to (20+$robin_bait_fishing_power)>>
-/* 计算得到罗宾当天钓鱼等待咬钩所需的时间 */
+<!-- 计算得到罗宾当天钓鱼等待咬钩所需的时间 -->
 <<robin_fishing_cast_time>>
-/* 约会计时器归零，后续用于统计距离开始钓鱼已经过去的时间，以秒为单位 */
+<!-- 约会计时器归零，后续用于统计距离开始钓鱼已经过去的时间，以秒为单位 -->
 <<set $robin_fishing_date_time_passed to 0>>
-/* 根据钓鱼地点的不同，从钓鱼约会总计的90分钟内，扣除赶路所需的对应时间，即为对应地点的可钓鱼时间 */
+<!-- 根据钓鱼地点的不同，从钓鱼约会总计的90分钟内，扣除赶路所需的对应时间，即为对应地点的可钓鱼时间 -->
 <<switch $fishing_place>>
 	<<case "lake_fishing_rock">>
 		<<if $town_projects.road gte 4>>
@@ -38,9 +38,9 @@
 		<<set $robin_fishing_date_time to 4800>>
 		<<set $fishing_place to "barb_street">>
 <</switch>>
-/* 给予罗宾鱼饵。在罗宾的鱼饵消耗完之前，罗宾会处在钓鱼状态；消耗完之后，会处于在旁边看pc钓鱼的状态 */
+<!-- 给予罗宾鱼饵。在罗宾的鱼饵消耗完之前，罗宾会处在钓鱼状态；消耗完之后，会处于在旁边看pc钓鱼的状态 -->
 你给了罗宾$robin_bait_amount个<<icon `$robin_bait_icon`>>$robin_bait_cn_name。<br>
-/* 从pc身上扣除给出的鱼饵，免得在约会中继续使用这种鱼饵产生透支的情况 */
+<!-- 从pc身上扣除给出的鱼饵，免得在约会中继续使用这种鱼饵产生透支的情况 -->
 <<set V[$robin_bait_type] -= $robin_bait_amount>>
 <br>
 <span id="fishingrod_held_icon"><<fishingrod_held_icon>></span>
@@ -50,7 +50,7 @@
 
 :: Robin Fishing Cast Time [widget]
 <<widget "robin_fishing_cast_time">>
-	/* 获取罗宾当天抛竿等待鱼咬钩所需时间 */
+	<!-- 获取罗宾当天抛竿等待鱼咬钩所需时间 -->
 	<<set $robin_fishing_cast_time = 0>>
 	<<for _fishing_catch_counter = 0 ; $robin_fishing_cast_time lt 30 ; $robin_fishing_cast_time += 1>>
 		<<set _fishing_catch_counter += random(30,60)>>

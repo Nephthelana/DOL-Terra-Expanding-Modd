@@ -34,6 +34,7 @@
 			丛林匣：$unload_crate_count.Jungle_Crate<br>
 			神圣匣：$unload_crate_count.Hallowed_Crate<br>
 			天空匣：$unload_crate_count.Sky_Crate<br>
+			黑曜石匣：$unload_crate_count.Obsidian_Crate<br>
 			富养匣：$unload_crate_count.Sunken_Crate<br>
 			硫海匣：$unload_crate_count.Sulphurous_Crate<br>
 			焦炭匣：$unload_crate_count.Brimstone_Crate<br>
@@ -45,6 +46,7 @@
 			铁　砧：$crafting_count.Iron_Anvil<br>
 			烹饪锅：$crafting_count.Cooking_Pot<br>
 			工匠作坊：$crafting_count.Tinkerers_Workshop<br>
+			地狱熔炉：$crafting_count.Hellforge<br>
 			<br>
 		<</foldout>>
 	<</foldout>>

@@ -1,31 +1,29 @@
 :: Terra Header [widget]
-<<widget "terra_header">>
-	<<if !["Start","Start2"].includes($passage)>>
-		<<if $debug is 1>>
-			[DEBUG模式]坠落之星调试信息<br>
-			<span id="fallenStarDebugInfo">
-				<<link "显示">>
-					<<replace #fallenStarDebugInfo>>
-						<<fallenStarDebugInfo>>
-					<</replace>>
-				<</link>><br>
-				<br>
-			</span>
-		<</if>>
-		<span id="terra_fallen_star">
-			<<if Time.dayState is "night" and random(1 , Math.round(2000 / $fallen_star_rate)) is 1 and (setup.fallenStarAreas.includes($passage) and $event is undefined)>>
-				你听到一个不寻常的声音。它离你越来越近，然后在一声撞击后戛然而止。你沿着声音的来源上前查看：是一颗落在地上的星星！<<terraHint>><br>
-				<<link "捡起">>
-					<<set $Fallen_Star += 1>>
-					<<replace #terra_fallen_star>>
-						你捡起了一颗<<icon "material/Fallen_Star.png">>坠落之星。<br>
-						<br>
-					<</replace>>
-				<</link>><br>
-				<br>
-			<</if>>
+<<widget "terraFallenStar">>
+	<<if $debug is 1>>
+		[DEBUG模式]坠落之星调试信息<br>
+		<span id="fallenStarDebugInfo">
+			<<link "显示">>
+				<<replace #fallenStarDebugInfo>>
+					<<fallenStarDebugInfo>>
+				<</replace>>
+			<</link>><br>
+			<br>
 		</span>
 	<</if>>
+	<span id="terra_fallen_star">
+		<<if Time.dayState is "night" and random(1 , Math.round(2000 / $fallen_star_rate)) is 1 and (setup.fallenStarAreas.includes($passage) and $event is undefined)>>
+			你听到一个不寻常的声音。它离你越来越近，然后在一声撞击后戛然而止。你沿着声音的来源上前查看：是一颗落在地上的星星！<<terraHint>><br>
+			<<link "捡起">>
+				<<set $Fallen_Star += 1>>
+				<<replace #terra_fallen_star>>
+					你捡起了一颗<<icon "material/Fallen_Star.png">>坠落之星。<br>
+					<br>
+				<</replace>>
+			<</link>><br>
+			<br>
+		<</if>>
+	</span>
 <</widget>>
 
 <<widget "fallenStarDebugInfo">>
@@ -49,8 +47,6 @@
 
 :: Terra Footer [widget]
 <<widget "terra_temperature">>
-
-<<if !["Start","Start2"].includes($passage)>>
 	<!-- 外界温度，IF：influencing factor，影响因素 -->
 	<<set _terraTemperatureIncreaseIF to "">>
 	<<set _terraTemperatureIncreaseIF_amount to 0>>
@@ -67,7 +63,7 @@
 		<<set _terraTemperatureIncreaseIF_amount += 10>>
 	<</if>>
 	<!-- 保暖药水效果在每个页面尝试将体温设定为37度 -->
-	<<if $Warmth_Potion_countdown gt 0>>
+	<<if $Warmth_Potion_countdown>>
 		<<set _terraTemperatureIncreaseIF += "保暖药水保护你免受低体温的影响。<br>">>
 		<<set $player.bodyTemperature to $player.bodyTemperature lt 37 ? 37 : $player.bodyTemperature>>
 	<</if>>
@@ -77,7 +73,7 @@
 		<<set _terraTemperatureDecreaseIF_amount += 10>>
 	<</if>>
 	<!-- 显示体温影响因素 -->
-	<<if _terraTemperatureIncreaseIF_amount gt 0 or $Warmth_Potion_countdown gt 0>>
+	<<if _terraTemperatureIncreaseIF_amount gt 0 or $Warmth_Potion_countdown>>
 		<<if _inWater>>
 			<<set Weather.Temperature.override.increase.water(_terraTemperatureIncreaseIF_amount, _terraTemperatureIncreaseIF)>>
 		<<elseif $outside is 1>>
@@ -100,6 +96,4 @@
 	<<if $debug isnot 1>>
 		<<unset $options.terra_halloween>>
 	<</if>>
-<</if>>
-	
 <</widget>>

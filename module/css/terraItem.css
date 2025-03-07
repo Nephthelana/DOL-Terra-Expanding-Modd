@@ -1,3 +1,4 @@
+/* 通用物品栏整体 */
 .itemTerra {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 50px);
@@ -5,6 +6,7 @@
 	padding: 0.5rem;
 }
 
+/* 工具物品栏整体（因为有的工具图标很大） */
 .itemTerra_Tool {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 60px);
@@ -12,6 +14,7 @@
 	padding: 0.5rem;
 }
 
+/* 通用物品竖直方向居中 */
 .itemTerraGeneral {
 	display: flex;
 	flex-direction: row;
@@ -19,6 +22,7 @@
 	height: 40px;
 }
 
+/* 工具物品竖直方向居中 */
 .itemTerraTool {
 	display: flex;
 	flex-direction: row;
@@ -26,6 +30,7 @@
 	height: 50px;
 }
 
+/* 鱼饵物品竖直方向居中 */
 .itemTerraBait {
 	display: flex;
 	flex-direction: row;
@@ -33,6 +38,7 @@
 	height: 32px;
 }
 
+/* 提示“内容来源于泰拉瑞亚模组”的信息 */
 .terraMod {
 	animation: 180s infinite linear lustful;
 	background: linear-gradient(-90deg, #1ea44a, #1ea44a, #1ea44a, #1ea44a, #1ea44a, #d9e299);
@@ -41,22 +47,18 @@
 	color: transparent;
 }
 
-/* 新版本的link会自带额外的padding，只能这样手动来使链接与文字保持在同一行QAQ */
-.terraLinks {
-	padding: 0.1em 0.1em;
-}
-
+/* 灾厄（Calamity）Mod中圣天誓盟的物品字体颜色。模组中未使用 */
 @keyframes blink {
 	0% { color: #FFC437; } 
 	33% { color: #FFE76B; } 
 	66% { color: #FFFEF3; } 
 	100% { color: #FFC437; } 
-  }
-   
-  .blinking-text {
+}   
+.blinking-text {
 	animation: blink 1.5s infinite; /* 每1.5秒闪烁一次，无限循环 */
-  }
+}
 
+/* 图标动态过渡为半透明状态，用于在调试模式中表示未获得的物品 */
 @keyframes terraFading {
 	0% {
 		opacity: 1;
@@ -70,7 +72,6 @@
 		opacity: 0.3;
 	}
 }
-
 .terraFading {
 	background: var(--150);
 	text-shadow: 0 0 32px var(--purple);
@@ -83,6 +84,8 @@
 	opacity: 0.3;
 }
 
+
+/* 用于金表到点的提示信息，达成闪烁的效果 */
 @keyframes blinking {
 	0% {
 		opacity: 1;
@@ -96,35 +99,11 @@
 		opacity: 1;
 	}
 }
-
 .terraBlinking {
 	animation: blinking 2s infinite; /* 每秒闪烁一次，无限循环 */
 }
 
-.terraItemLocked {
-	filter: contrast(0);
-}
-
-/* 新行的平移动画 */
-@keyframes slide-down {
-	0% {
-	  opacity: 0;
-	  transform: translateY(-20px);
-	}
-	100% {
-	  opacity: 1;
-	  transform: translateY(0);
-	}
-  }
-
-.new-row {
-	grid-column: 1 / -1;
-	padding: 10px;
-	border: 1px solid var(--200);
-	animation: slide-down 0.5s ease-out;
-}
-
-.new-row hr {
-	border-top: 1px solid var(--600);
-	width: 100%;
+/* 新版本的link会自带额外的padding，只能这样手动来使链接与文字保持在同一行QAQ */
+.terraLinks {
+	padding: 0em 0em;
 }

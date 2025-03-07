@@ -76,7 +76,7 @@
 <<link [[继续|Underground Lava Lake]]>><</link>>
 
 :: Underground Lava Lake
-<<location "underground_lava_lake">>
+<<location "underground_lava_lake">><<effects>>
 你站在这片地下熔岩湖前。熔岩中的气泡在湖面迸裂的声音警告着你，这里不是什么安全的地方。<br>
 <br>
 <<if random(1,3) is 1>>
@@ -123,16 +123,17 @@
 	<<icon "herb/Fireblossom_placed_mature.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
 <</if>>
 <br>
-钓鱼<br>
-<<fishingrod_held_icon>><<link [[在熔岩湖钓鱼|Fishing Bitten]]>><<set $fishing_place to "lava">><</link>><br>
-<br>
+<<if getFishingRodObtainedList().length gt 0>>
+	钓鱼<br>
+	<<fishingrod_held_icon>><<link [[在熔岩湖钓鱼|Fishing Bitten]]>><<set $fishing_place to "lava">><</link>><br>
+	<br>
+<</if>>
 <<getouticon>><<link [[返回走私者洞穴 (0:20)|Underground Lava Lake Leave]]>><<pass 20>><</link>>
 
 :: Underground Lava Lake Catch Success
 <<set _catchingBaitInfo to setup.terraBait[$randomBait]>>
 <<set V[_catchingBaitInfo.name] += 1>>
-<<set $bestiary_bait_list.pushUnique(_catchingBaitInfo.name)>>
-<<set $bestiary_bait_catch_count[_catchingBaitInfo.name] += 1>>
+<<bestiaryStatistics "bait" _catchingBaitInfo.name 1>>
 你抄起你的<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>金虫网" : "<<icon 'tool/Lavaproof_Bug_Net.png'>>防熔岩捕虫网">>，抓住了这只<<icon `_catchingBaitInfo.icon`>>_catchingBaitInfo.cn_name。<br>
 <br>
 <<link [[继续|Underground Lava Lake]]>><<unset $randomBait>><</link>>

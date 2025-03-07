@@ -8,7 +8,7 @@
 		<<if !$robin_fishing_place_unlocked.includes("lake_fishing_rock")>>
 			你提议去森林湖钓鱼。<br>
 			<br>
-			"森林湖确实是个钓鱼的好地方！"罗宾恍然大悟，但<<he>>很快又陷入沉思，"那之前怎么没见到有人在那钓鱼呢？"<br>
+			“森林湖确实是个钓鱼的好地方！”罗宾恍然大悟，但<<he>>很快又陷入沉思，“那之前怎么没见到有人在那钓鱼呢？”<br>
 			<br>
 			你解释说，森林湖附近有块非常适合钓鱼的岩石。那里风景不错，但知道的人不多，钓鱼的时候不容易被打扰。<br>
 			<<set $robin_fishing_place_unlocked.pushUnique("lake_fishing_rock")>>
@@ -32,12 +32,12 @@
 		<<if !$robin_fishing_place_unlocked.includes("beach")>>
 			你提议去海滩钓鱼。<br>
 			<br>
-			你向罗宾介绍着海面下的居民："海洋里生活着各种鱼类，其中不乏危险的生物。很多人会为了赚大钱，冒险远赴几公里外的海域。我们只是在海岸钓鱼，也能钓到许多鲜美的鱼类：比如金枪鱼、鲷鱼之类的。"<br>
+			你向罗宾介绍着海面下的居民：“海洋里生活着各种鱼类，其中不乏危险的生物。很多人会为了赚大钱，冒险远赴几公里外的海域。我们只是在海岸钓鱼，也能钓到许多鲜美的鱼类：比如金枪鱼、鲷鱼之类的。”<br>
 			<br>
 			<<if $hasGivenFish>>
-				"这就是为什么我们的烤鱼大获成功！"罗宾看起来十分兴奋，"我已经等不及钓更多的鱼了！"<br>
+				“这就是为什么我们的烤鱼大获成功！”罗宾看起来十分兴奋，“我已经等不及钓更多的鱼了！”<br>
 			<<else>>
-				"哦！我想到了一个好主意。"罗宾看起来十分兴奋，"柠檬水配烤鱼，一定会很畅销。"<br>
+				“哦！我想到了一个好主意。”罗宾看起来十分兴奋，“柠檬水配烤鱼，一定会很畅销。”<br>
 				<br>
 				你也觉得这是个很棒的点子。<span class="teal">你可以把你的鱼带到柠檬水摊给罗宾看看。</span><br>
 			<</if>>
@@ -58,7 +58,7 @@
 		<<if !$robin_fishing_place_unlocked.includes("barb_street")>>
 			你提议去倒钩街钓鱼。<br>
 			<br>
-			罗宾十分困惑："倒钩街？我记得温特提到过那条河，但它在上个世纪末就已经完全干涸了。"<br>
+			罗宾十分困惑：“倒钩街？我记得温特提到过那条河，但它在上个世纪末就已经完全干涸了。”<br>
 			<br>
 			你告诉<<he>>由于近年来的降水，河床开始会积起一些小水池。里面生活着一些奇异的鱼类，也许没人品尝过它们的味道。<br>
 			<<set $robin_fishing_place_unlocked.pushUnique("barb_street")>>
@@ -110,7 +110,7 @@
 	罗宾用完了你给他的<<icon `$robin_bait_icon`>>$robin_bait_cn_name。
 <<else>>
 	<<set V[$robin_bait_type] += $robin_bait_amount>>
-	"我这还有剩下的鱼饵。"罗宾把<<icon `$robin_bait_icon`>>$robin_bait_cn_name($robin_bait_amount)还给了你。
+	“我这还有剩下的鱼饵。”罗宾把<<icon `$robin_bait_icon`>>$robin_bait_cn_name($robin_bait_amount)还给了你。
 <</if>>
 <<unset $robin_bait_amount>>
 <<unset $robin_bait_type>>

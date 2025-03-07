@@ -3,7 +3,7 @@
 
 <<if C.npc["Black Wolf"].love gte 27 and $pylon_museum_asked and !$pylon_collected.includes("Wolfcave")>>
 	<br>
-	你在犹豫要不要偷个懒的时候，黑狼从前面跑了回来。"我在河里发现了一个奇怪的石头，你要来看看吗？"<br>
+	你在犹豫要不要偷个懒的时候，黑狼从前面跑了回来。“我在河里发现了一个奇怪的石头，你要来看看吗？”<br>
 	<<link [[和黑狼去上游看看|Pylon Wolfcave Unlock]]>><</link>>
 	<br>
 <</if>>

@@ -1,0 +1,46 @@
+/* 图鉴物品栏整体 */
+.terraContainerItem {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 50px);
+	gap: 5px;
+}
+
+/* 图鉴物品栏单元格 */
+.terraButtonSettings {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	align-items: center;
+	text-align: center;
+}
+
+/* 表示图鉴未解锁的物品 */
+.terraItemLocked {
+	filter: contrast(0);
+}
+
+/* 新行的平移动画 */
+@keyframes slide-down {
+	0% {
+	  opacity: 0;
+	  transform: translateY(-20px);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+}
+
+/* 图鉴详细信息栏 */
+.new-row {
+	grid-column: 1 / -1;
+	padding: 10px;
+	border: 1px solid var(--200);
+	animation: slide-down 0.5s ease-out;
+}
+
+/* 图鉴详细信息栏的分隔线 */
+.new-row hr {
+	border-top: 1px solid var(--600);
+	width: 100%;
+}

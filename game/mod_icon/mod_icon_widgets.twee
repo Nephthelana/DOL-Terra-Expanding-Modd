@@ -19,28 +19,36 @@
 		<<set _message to "如果你有关于泰拉瑞亚拓展模组的意见或建议，欢迎找我～">>
 	<</addinlineevent>>
 
+	<<addinlineevent "Bestiary" 0.1>>
+		<<set _message to "填满你的图鉴！">>
+	<</addinlineevent>>
+
+	<<addinlineevent "Accessory" 0.1>>
+		<<set _message to "为什么饰品栏只有6个栏位？<i>恶魔之心</i>救一下啊！<br>*模组内并没有<i>恶魔之心</i>">>
+	<</addinlineevent>>
+
 	<<addinlineevent "DomRobin" 0.1>>
-		<<set _message to hasDomRobinModInfo() ? ($hasGivenFish ? "试试和罗宾一起钓鱼！" : "试试和罗宾一起在柠檬水摊烤鱼！") : "试试 <i>Dom罗宾</i> 模组！你可以在中文WIKI的\"模组列表\"页面找到它。">>
+		<<set _message to hasDomRobinModInfo() ? ($hasGivenFish ? "试试和罗宾一起钓鱼！" : "试试和罗宾一起在柠檬水摊烤鱼！") : "试试 <i>Dom罗宾</i> 模组！你可以在中文WIKI的“模组列表”页面找到它。">>
 	<</addinlineevent>>
 
 	<<addinlineevent "NPCAvatarsMods" 0.1>>
-		<<set _message to hasNPCAvatarsModsInfo() ? "社交栏里NPC的小头像们真可爱！<br>你有想过自己也画一套看看吗？" : "试试 <i>NPC社交栏头像</i> 模组！你可以在中文WIKI的\"模组列表\"页面找到它。">>
+		<<set _message to hasNPCAvatarsModsInfo() ? "社交栏里NPC的小头像们真可爱！<br>你有想过自己也画一套看看吗？" : "试试 <i>NPC社交栏头像</i> 模组！你可以在中文WIKI的“模组列表”页面找到它。">>
 	<</addinlineevent>>
 
 	<<addinlineevent "MoreLoveInterests" 0.1>>
-		<<set _message to hasMoreLoveInterestsModInfo() ? "你有没有掰着指头数过你现在有几个恋人了？" : "试试 <i>更多恋人</i> 模组！你可以在中文WIKI的\"模组列表\"页面找到它。">>
+		<<set _message to hasMoreLoveInterestsModInfo() ? "你有没有掰着指头数过你现在有几个恋人了？" : "试试 <i>更多恋人</i> 模组！你可以在中文WIKI的“模组列表”页面找到它。">>
 	<</addinlineevent>>
 
 	<<addinlineevent "BabyHawk" 0.1>>
-		<<set _message to hasBabyHawkModInfo() ? "鹰塔里的小鸡崽们今天吃饱了吗？" : "试试 <i>鹰宝宝</i> 模组！你可以在中文WIKI的\"模组列表\"页面找到它。">>
+		<<set _message to hasBabyHawkModInfo() ? "鹰塔里的小鸡崽们今天吃饱了吗？" : "试试 <i>鹰宝宝</i> 模组！你可以在中文WIKI的“模组列表”页面找到它。">>
 	<</addinlineevent>>
 
 	<<addinlineevent "HotKey" 0.1>>
-		<<set _message to hasBabyHawkModInfo() ? "说到底为什么本游戏会没有快捷键绑定？——鲤鱼旗" : "试试 <i>快捷键设置</i> 模组！你可以在中文WIKI的\"模组列表\"页面评论区找到它。">>
+		<<set _message to hasBabyHawkModInfo() ? "说到底为什么本游戏会没有快捷键绑定？——鲤鱼旗" : "试试 <i>快捷键设置</i> 模组！你可以在中文WIKI的“模组列表”页面评论区找到它。">>
 	<</addinlineevent>>
 
 	<<addinlineevent "InTheEdenAfterSunset" 0.1>>
-		<<set _message to hasInTheEdenAfterSunsetModInfo() ? "在伊甸睡着时不停地拍他的脑袋，会发生什么事？" : "试试 <i>日落伊甸园</i> 模组！你可以在中文WIKI的\"模组列表\"页面找到它。">>
+		<<set _message to hasInTheEdenAfterSunsetModInfo() ? "在伊甸睡着时不停地拍他的脑袋，会发生什么事？" : "试试 <i>日落伊甸园</i> 模组！你可以在中文WIKI的“模组列表”页面找到它。">>
 	<</addinlineevent>>
 
 	<<addinlineevent "Terraria" 0.05>>
@@ -53,7 +61,7 @@
 
 	<<if $passage is "Fishing Bitten">>
 		<<addinlineevent "Fishing Bitten" 2>>
-			<<set _message to $Sonar_Potion_countdown gt 0 ? "非常漂亮的抛竿！我们来看看你这竿是什么鱼咬钩了吧。" : "非常漂亮的抛竿！如果你使用了'声呐药水'，你能看到现在是什么东西在咬钩。">>
+			<<set _message to $Sonar_Potion_countdown ? "非常漂亮的抛竿！我们来看看你这竿是什么鱼咬钩了吧。" : "非常漂亮的抛竿！如果你使用了'声呐药水'，你能看到现在是什么东西在咬钩。">>
 		<</addinlineevent>>
 	<</if>>
 
@@ -61,9 +69,9 @@
 		<<addinlineevent "Fishing" 2>>
 			<<switch random(0,1)>>
 				<<case 0>>
-					<<set _message to $fishing_distance lte 0 ? "你做到了！" : $fishing_distance lte 15 ? "加油！就差一点了！" : $fishing_distance lte 40 ? "还有些距离呀...给点力！" : $fishing_distance lte 66 ? "不太看得清浮标的位置诶...总之你加油！" : "渔获距离太远，你可得小心了！">>
+					<<set _message to $fishing_distance lte 0 ? "你做到了！" : $fishing_distance lte 15 ? "加油！就差一点了！" : $fishing_distance lte 40 ? "还有些距离呀……给点力！" : $fishing_distance lte 66 ? "不太看得清浮标的位置诶……总之你加油！" : "渔获距离太远，你可得小心了！">>
 				<<case 1>>
-					<<set _message to $fishing_integrity is 0 ? "又断线了吗？也许下次还是谨慎为妙。" : $fishing_integrity is 1 ? "当心！你的鱼线岌岌可危！" : $fishing_integrity is 2 ? "你的鱼线看起来还有放手一搏的机会。" : $fishing_integrity is 3 ? "你的鱼线看起来状况很好。" : "优质钓鱼线，爽！">>
+					<<set _message to $fishing_integrity lte 0 ? "又断线了吗？也许下次还是谨慎为妙。" : $fishing_integrity is 1 ? "当心！你的鱼线岌岌可危！" : $fishing_integrity is 2 ? "你的鱼线看起来还有放手一搏的机会。" : $fishing_integrity is 3 ? "你的鱼线看起来状况很好。" : "优质钓鱼线，爽！">>
 			<</switch>>
 		<</addinlineevent>>
 	<</if>>
@@ -74,11 +82,17 @@
 		<</addinlineevent>>
 	<</if>>
 
+	<<if $passage is "Pylon Transport">>
+		<<addinlineevent "Pylon" 2>>
+			<<set _message to "眼镜一闭，一睁：你就到另一个人家里去了。">>
+		<</addinlineevent>>
+	<</if>>
+
 	<<if $passage is "Fishing Request Rewarding">>
 		<<addinlineevent "Fishing Request Rewarding" 5>>
 			<<set _message to [
-				"让我猜猜...这次渔夫给你的都是垃圾！对不对？",
-				"让我猜猜...这次渔夫给了你好东西！对不对？",
+				"让我猜猜……这次渔夫给你的都是垃圾！对不对？",
+				"让我猜猜……这次渔夫给了你好东西！对不对？",
 				"任务完成得越多，得到家具的概率越高。而我比较喜欢把渔夫送的家具直接放回去做装饰。",
 			]>>
 		<</addinlineevent>>

@@ -19,14 +19,20 @@
 <</if>>
 <!-- 钓到钓鱼垃圾和内裤时直接跳过跳鱼小游戏 -->
 <<if ["Old_Shoe","Seaweed_junk","Tin_Can","Joja_Cola","feathers","swim_underwear"].includes($fishing_harvest.name)>>
-	<<run fishingHarvest()>>
 	<<set $fishing_harvest_count += 1>>
 	<<fishing_end>>
 	<span class="green">你猛地一收竿，宣示着你的胜利！</span><br>
 	<<if $fishing_harvest.name is "swim_underwear">>
 		<<set _colour to either("蓝色","绿色","红色","黑色","粉色","紫色","黄色","白色","橙色","条纹","波点")>>
-		你钓到了一条_colour的<<print $fishing_harvest.cn_name>>！或许有人愿意出价收购它。
+		你钓到了一条_colour的<<print $fishing_harvest.cn_name>>！
+		<<if $panties_held is undefined>>
+			但你并不知道这能用来做什么，将它扔回了泳池。<br>
+		<<else>>
+			<<run fishingHarvest()>>
+			或许有人愿意出价收购它。<br>
+		<</if>>
 	<<else>>
+		<<run fishingHarvest()>>
 		你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
 	<</if>>
 	<br>
@@ -38,9 +44,9 @@
 <<elseif $fishing_distance lte 0>>
 	<<fishing_end>>
 	<span class="green">最后你猛地一收竿，宣示着你的胜利！</span>
-	<<if !$terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag") and random(1,7) is 1>>
+	<<if !$terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") and random(1,7) is 1>>
 		<<set $fishing_failed_count += 1>>
-		<span class="red">但是你的鱼线断了...</span>也许你需要一个<span class="teal">优质钓鱼线</span>。<<ggstress>><<stress 6>><br>
+		<span class="red">但是你的鱼线断了……</span>也许你需要一个<span class="teal">优质钓鱼线</span>。<<ggstress>><<stress 6>><br>
 		<span class="black"><i>如果没有优质钓鱼线，每次最后收竿时都有概率使鱼线直接断裂，损失此次渔获。</i></span><br>
 	<<else>>
 		<<set $fishing_harvest_count += 1>>
@@ -91,7 +97,7 @@
 		<<elseif ["trash","lava"].includes($fishing_place)>>
 			<<pass 3>>
 			<br><br>
-			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...你被拖进了<<print $fishing_place is "trash" ? "沸水" : "熔岩">>里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
+			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡……你被拖进了<<print $fishing_place is "trash" ? "沸水" : "熔岩">>里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
 			<br>
 			<<if $terra_accessories_slots.includes("Lava_Charm")>>
 				<span class="green">幸运的是，<<icon "accessories/Lava_Charm.png">>熔岩护身符的保护下，这种强烈催情性的液体对你没有效果。</span><br>
@@ -108,7 +114,7 @@
 		<<else>>
 			<<pass 3>>
 			<br><br>
-			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡...你被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
+			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡……你被拖进了水里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
 			<<water>>
 			<br>
 			你花费了一些时间爬到岸上。<br>
@@ -150,43 +156,18 @@
 <</widget>>
 
 <<widget "fishing_place">>
-	你现在在
-	<<switch $fishing_place>>
-		<<case "lake_fishing_rock">><<lakeicon "fishing">>森林湖钓鱼岩
-		<<case "beach">><<icon "beach.gif">>海滩
-		<<case "barb_street">><<barbicon>>倒钩街的运河
-		<<case "moor">><<mooricon "remy">>雷米庄园门口的沙地
-		<<case "honey">>森林蜂蜜池
-		<<case "farm_woodland">><<farmicon "barn">>农场
-		<<case "temple_garden">><<templeicon "garden">>神殿的花园
-		<<case "temple_garden_artificial">><<foresticon "churchyard">>老教堂墓地庭院的人工钓鱼池
-		<<case "wolf_cave_clearing">><<wolfcaveicon "stream">>狼窝的溪流
-		<<case "wolf_cave_clearing_artificial">><<foresticon>>狼穴洞口附近的人工钓鱼池
-		<<case "bird_tower">><<birdicon "rainwater">>鹰塔的雨水池
-		<<case "bird_tower_artificial">><<birdicon "tower">>高塔塔底的人工钓鱼池
-		<<case "eden_clearing">><<lakeicon "pond">>伊甸小屋的泉水
-		<<case "eden_clearing_artificial">><<foresticon>>猎人小屋附近的人工钓鱼池
-		<<case "bog">><<foresticon "bog">>沼泽
-		<<case "trash">><<landfillicon>>垃圾场深处的沸水池
-		<<case "park">><<parkicon "fountain">>公园喷泉
-		<<case "school_pool">><<swimmingicon>>学校泳池
-		<<case "ice">><<icon "location/underground_ice_lake.png">>地下永冻湖
-		<<case "lava">><<icon "location/underground_lava_lake.png">>地下熔岩湖
-		<<case "rocky_hillock">>海岛的天湖
-		<<case "waterfall">>海岛的瀑布湖
-		<<case "gulch">>海岛的洞穴湖
-	<</switch>>
-	钓鱼。<br>
+	<<set $_fpInfo to setup.terraFishingPlace[$fishing_place]>>
+	你现在在$_fpInfo.icon<<print $_fpInfo.cn_name>>钓鱼。<br>
 <</widget>>
 
 <<widget "fishing_round_info">>
 	<<set $_fishing_distance_info to "渔获距离：$fishing_distance/100">>
-	<<set $_fishing_integrity_info to "鱼线耐久：$fishing_integrity/<<print $terra_accessories_slots.includesAny('High_Test_Fishing_Line','Angler_Tackle_Bag','Lavaproof_Tackle_Bag') ? 5 : 3>>">>
+	<<set $_fishing_integrity_info to "鱼线耐久：$fishing_integrity/<<print $terra_accessories_slots.includesAny('High_Test_Fishing_Line','Angler_Tackle_Bag','Lavaproof_Tackle_Bag','Supreme_Bait_Tackle_Box_Fishing_Station') ? 5 : 3>>">>
 	<<switch $fishingphase>>
 		<<case 1>>
 			<span class="teal">一次很成功的收线！</span>| <span class="green">+ 垂钓</span>
 		<<case 2>>
-			<span class="pink">哦不！它的挣扎使鱼线更加的脆弱......</span>| <span class="green">+ + 垂钓</span><<gstress>><<stress 3>>
+			<span class="pink">哦不！它的挣扎使鱼线更加的脆弱……</span>| <span class="green">+ + 垂钓</span><<gstress>><<stress 3>>
 		<<case 3>>
 			<span class="teal">你让它挣扎得稍微远离了一些。</span>| <span class="green">+ 垂钓</span>
 		<<case 4>>

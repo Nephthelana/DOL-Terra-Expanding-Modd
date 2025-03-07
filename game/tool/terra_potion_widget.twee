@@ -2,7 +2,7 @@
 <<widget "void_bag_Potion">>
 
 <<if getPotionObtained().length gt 0>>
-	<span class="gold bold">药水</span><mouse class="tooltip linkBlue">(?)<span>给予持续一段时间的增益。使用后在下一个页面生效。激活增益后，可在"展开增益追踪器"中选择取消增益</span></mouse><br>
+	<span class="gold bold">药水</span><mouse class="tooltip linkBlue">(?)<span>给予持续一段时间的增益。使用后在下一个页面生效。激活增益后，可在“展开增益追踪器”中选择取消增益</span></mouse><br>
 	<span id="buff">
 		<<buff>>
 	</span>
@@ -21,17 +21,21 @@
 					_potion.amount
 					<hr>
 					<div class="terraLinks">
-						<<link "使用">>
-							_potion.use
-							<<replace #hint_item_use>>
-								<span class="teal">你使用了1瓶<<icon `_potion.item_icon`>>_potion.cn_name。</span><br>
-								<br>
-							<</replace>>
-							<<replace #void_bag_Potion>><<void_bag_Potion>><</replace>>
-							<<replace #buff>>
-								<<buffList>>
-							<</replace>>
-						<</link>>
+						<<if ["Fishing_Potion","Sonar_Potion","Crate_Potion"].includes(_potion.name) and $terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station") and $options.trueSBTBFS>>
+							<mouse class="tooltip linkBlue">/<span>“万能渔具包完全体”选项开启时，不能继续叠加药水效果</span></mouse>
+						<<else>>
+							<<link "使用">>
+								_potion.use
+								<<replace #hint_item_use>>
+									<span class="teal">你使用了1瓶<<icon `_potion.item_icon`>>_potion.cn_name。</span><br>
+									<br>
+								<</replace>>
+								<<replace #void_bag_Potion>><<void_bag_Potion>><</replace>>
+								<<replace #buff>>
+									<<buffList>>
+								<</replace>>
+							<</link>>
+						<</if>>
 					</div>
 				</div>
 			<</capture>>
@@ -77,18 +81,24 @@
 							<<icon `_buff.icon`>>
 						</div>
 						<hr>
-						<<print _activated_hours_countdown gt 0 ? _activated_minutes_countdown gt 0 ? `${_activated_hours_countdown}h${_activated_minutes_countdown}m` : `${_activated_hours_countdown}h` : `${_activated_minutes_countdown}m`>>
-						<hr>
-						<<if _buff.type is "positive">>
-							<<link "取消">>
-								<<set V[_buff.variable_name] to 0>>
-								<<replace #buff>>
-									<<buffList>>
-								<</replace>>
-							<</link>>
+						<<if ["Fishing","Sonar","Crate"].includes(_buff.name) and $terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station") and $options.trueSBTBFS>>
+							<span class="green">无限</span>
 						<<else>>
-							/
+							<<print _activated_hours_countdown gt 0 ? _activated_minutes_countdown gt 0 ? `${_activated_hours_countdown}h${_activated_minutes_countdown}m` : `${_activated_hours_countdown}h` : `${_activated_minutes_countdown}m`>>
 						<</if>>
+						<hr>
+						<div class="terraLinks">
+							<<if _buff.type is "positive">>
+								<<link "取消">>
+									<<set V[_buff.variable_name] to 0>>
+									<<replace #buff>>
+										<<buffList>>
+									<</replace>>
+								<</link>>
+							<<else>>
+								/
+							<</if>>
+						</div>
 					</div>
 				<</capture>>
 			<</for>>

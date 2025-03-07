@@ -70,12 +70,12 @@
 <<icon "herb/Shiverthorn_placed_blossom.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
 <br>
 坚固的冰面下隐约可以见到几条正在游动的鱼。
-<<if $underground_ice_lake_broken gte 1>>
-	<<print $underground_ice_lake_broken gte 2 ? "你可以在新凿开的冰洞里钓鱼了。" : "冰洞开始重新冻结，但目前还是可以钓鱼的。">><br>
+<<if $underground_ice_lake_broken gte 0 and getFishingRodObtainedList().length gt 0>>
+	<<print $underground_ice_lake_broken gte 1 ? "你可以在新凿开的冰洞里钓鱼了。" : "冰洞开始重新冻结，但目前还是可以钓鱼的。">><br>
 	<<fishingrod_held_icon>><<link [[在永冻湖钓鱼|Fishing Bitten]]>><<set $fishing_place to "ice">><</link>><br>
 <<elseif $Gravediggers_Shovel>>
 	<span class="teal">你可以用<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子敲出一个足够大的冰洞。</span><br>
-	<<swimicon "break">><<link [[破冰 (0:30)|Underground Ice Lake Break]]>><<pass 30>><<set $underground_ice_lake_broken to 2>><<tiredness 10>><</link>><<ggtiredness>><br>
+	<<swimicon "break">><<link [[破冰 (0:30)|Underground Ice Lake Break]]>><<pass 30>><<set $underground_ice_lake_broken to 1>><<tiredness 10>><</link>><<ggtiredness>><br>
 <<else>>
 	<span class="blue">面对这个厚实的冰面，你需要借助工具才能敲开它。如果你向博物馆捐赠足够多的古董，温特会给你一把的。</span><br>
 <</if>>

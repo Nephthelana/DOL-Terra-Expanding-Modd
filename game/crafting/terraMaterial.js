@@ -156,6 +156,13 @@ setup.terraMaterial = {
         obtained: V.Lavaproof_Fishing_Hook,
         icon: "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png",
     },
+	"Lavaproof_Tackle_Bag": {
+        name: "Lavaproof_Tackle_Bag",
+        cn_name: "防熔岩渔具袋<br><i>材料</i>",
+        type: "accessory",
+        obtained: V.Lavaproof_Tackle_Bag,
+        icon: "fishing/fishing_accessories/Lavaproof_Tackle_Bag.png",
+    },
 	"Fishermans_Pocket_Guide": {
         name: "Fishermans_Pocket_Guide",
         cn_name: "渔民袖珍宝典<br><i>材料</i>",
@@ -437,6 +444,28 @@ setup.terraMaterial = {
         type: "bait",
         amount: V.Worm || 0,
         icon: "fishing/bait/Worm.png",
+    },
+	// 药水
+	"Fishing_Potion": {
+        name: "Fishing_Potion",
+        cn_name: "钓鱼药水<br><i>材料</i>",
+        type: "bait",
+        amount: V.Fishing_Potion || 0,
+        icon: "potions/Fishing_Potion.png",
+    },
+	"Sonar_Potion": {
+        name: "Sonar_Potion",
+        cn_name: "声呐药水<br><i>材料</i>",
+        type: "bait",
+        amount: V.Sonar_Potion || 0,
+        icon: "potions/Sonar_Potion.png",
+    },
+	"Crate_Potion": {
+        name: "Crate_Potion",
+        cn_name: "宝匣药水<br><i>材料</i>",
+        type: "bait",
+        amount: V.Crate_Potion || 0,
+        icon: "potions/Crate_Potion.png",
     },
 }
 

@@ -10,7 +10,7 @@
 <<if $fishing_island_unlock.length is 0>>
 	<<link [[继续 (0:30)|Fishing Island Unlock Waterfall 2]]>><<island_pass 30>><</link>>
 <<else>>
-	<<link [[继续|Fishing Island Unlock Rocky Hillock]]>><</link>>
+	<<link [[继续|Fishing Island Unlock Waterfall]]>><</link>>
 <</if>>
 
 :: Fishing Island Unlock Waterfall 2

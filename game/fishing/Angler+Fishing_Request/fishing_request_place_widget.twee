@@ -34,7 +34,7 @@
 <</widget>>
 
 <<widget "fishing_request_place_bird_tower">>
-	<<print $fishingskill lt 600 ? "？？？" : $fishing_place_bird_tower_unlock ? "鹰塔的雨水池" : $artificial_fishing_pond_bird_tower is "done" ? "高塔塔底的人工钓鱼池" : "相传，荒原深处的高塔上有一口永不干涸的水池。其底部的石头取自于另一片大陆，被荒漠深埋在地下的海床...如今这个水池，据有幸从荒原深处冒险回来的探索者说，是一只恐怖的哈比洗澡的地方">>
+	<<print $fishingskill lt 600 ? "？？？" : $fishing_place_bird_tower_unlock ? "鹰塔的雨水池" : $artificial_fishing_pond_bird_tower is "done" ? "高塔塔底的人工钓鱼池" : "相传，荒原深处的高塔上有一口永不干涸的水池。其底部的石头取自于另一片大陆，被荒漠深埋在地下的海床……如今这个水池，据有幸从荒原深处冒险回来的探索者说，是一只恐怖的哈比洗澡的地方">>
 <</widget>>
 
 <<widget "fishing_request_place_eden_clearing">>
@@ -42,7 +42,7 @@
 <</widget>>
 
 <<widget "fishing_request_place_trash">>
-	<<print $fishingskill lt 900 ? "？？？" : $fishing_place_farm_woodland_unlock ? "垃圾场深处的沸水池" : '学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加"宏伟"。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景'>>
+	<<print $fishingskill lt 900 ? "？？？" : $fishing_place_farm_woodland_unlock ? "垃圾场深处的沸水池" : '学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加“宏伟”。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景'>>
 <</widget>>
 
 <<widget "fishing_request_place_ice">>

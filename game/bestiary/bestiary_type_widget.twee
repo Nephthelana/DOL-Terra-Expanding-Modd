@@ -20,15 +20,21 @@
 			$_requestFish.cn_name<br>
 			<hr>
 			抓捕地点：<br>
-			$_requestFish.catching_place_cn<br>
+			<<for $_cp range $_requestFish.catching_place>>
+				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+				<<catchingPlace $_cpInfo>>
+			<</for>>
 			<hr>
-			获得次数：<<print V.bestiary_request_fish_catch_count[$_requestFish.name]>>
+			获得次数：<<print V.bestiary.request_fish[$_requestFish.name].catch_count>>
 		<<case "locked">>
 			<span class="terraItemLocked"><<icon `$_requestFish.icon`>></span>
 			？？？<br>
 			<hr>
 			抓捕地点：<br>
-			$_requestFish.catching_place_cn<br>
+			<<for $_cp range $_requestFish.catching_place>>
+				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+				<<catchingPlace $_cpInfo>>
+			<</for>>
 	<</switch>>
 <</widget>>
 
@@ -40,18 +46,32 @@
 			$_fish.cn_name<br>
 			<hr>
 			抓捕地点：<br>
-			$_fish.catching_place_cn<br>
+			<<if $_fish.name is "Bass">>
+				除熔岩、蜂蜜外的大部分水域
+			<<else>>
+				<<for $_cp range $_fish.catching_place>>
+					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+					<<catchingPlace $_cpInfo>>
+				<</for>>
+			<</if>>
 			<hr>
 			稀有度<mouse class="tooltip linkBlue">(?)<span>"稀有度"这一概念是相对的，即只有同一图鉴分类下的稀有度对比才有意义。例：普通鱼的"丰富"和宝匣的"丰富"代表的含义不同。</span></mouse>：<br>
 			$_fish.rarity_cn<br>
 			<hr>
-			获得次数：<<print V.bestiary_fish_catch_count[$_fish.name]>>
+			获得次数：<<print V.bestiary.fish[$_fish.name].catch_count>>
 		<<case "locked">>
 			<span class="terraItemLocked"><<icon `$_fish.icon`>></span>
 			？？？<br>
 			<hr>
 			抓捕地点：<br>
-			$_fish.catching_place_cn<br>
+			<<if $_fish.name is "Bass">>
+				除熔岩、蜂蜜外的大部分水域
+			<<else>>
+				<<for $_cp range $_fish.catching_place>>
+					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+					<<catchingPlace $_cpInfo>>
+				<</for>>
+			<</if>>
 	<</switch>>
 <</widget>>
 
@@ -63,12 +83,19 @@
 			$_crate.cn_name<br>
 			<hr>
 			获取地点：<br>
-			$_crate.catching_place_cn<br>
+			<<if ["Golden_Crate","Iron_Crate","Wooden_Crate"].includes($_crate.name)>>
+				除熔岩、蜂蜜外的所有水域
+			<<else>>
+				<<for $_cp range $_crate.catching_place>>
+					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+					<<catchingPlace $_cpInfo>>
+				<</for>>
+			<</if>>
 			<hr>
 			稀有度<mouse class="tooltip linkBlue">(?)<span>"稀有度"这一概念是相对的，即只有同一图鉴分类下的稀有度对比才有意义。例：普通鱼的"丰富"和宝匣的"丰富"代表的含义不同。</span></mouse>：<br>
 			$_crate.rarity_cn<br>
 			<hr>
-			获得次数：<<print V.bestiary_crate_catch_count[$_crate.name]>>
+			获得次数：<<print V.bestiary.crate[$_crate.name].catch_count>>
 			<hr>
 			宝匣中可能开出：
 			<<bestiaryCrateUnloadList $_crate.name>>
@@ -77,7 +104,14 @@
 			？？？<br>
 			<hr>
 			获取地点：<br>
-			$_crate.catching_place_cn<br>
+			<<if ["Golden_Crate","Iron_Crate","Wooden_Crate"].includes($_crate.name)>>
+				除熔岩、蜂蜜外的所有水域
+			<<else>>
+				<<for $_cp range $_crate.catching_place>>
+					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+					<<catchingPlace $_cpInfo>>
+				<</for>>
+			<</if>>
 	<</switch>>
 <</widget>>
 
@@ -90,10 +124,28 @@
 			<hr>
 			渔力：$_bait.fishing_power<br>
 			<hr>
-			获得次数：<<print V.bestiary_bait_catch_count[$_bait.name]>><br>
+			获得次数：<<print V.bestiary.bait[$_bait.name].catch_count>><br>
 		<<case "locked">>
 			<span class="terraItemLocked"><<icon `$_bait.icon`>></span>
 			？？？<br>
+	<</switch>>
+<</widget>>
+
+<<widget "catchingPlace">>
+	<<set $_cp to _args[0]>>
+	<<switch $_cp.type>>
+		<<case "town">>
+			$_cp.icon<<print $_cp.cn_name>><br>
+		<<case "artificial">>
+			<<if $options.artificial_fishing_pond>>
+				$_cp.icon<<print $_cp.cn_name>><br>
+			<</if>>
+		<<case "island">>
+			<<if $island>>
+				<<if $island.explore_locations.includes('battleground')>>
+					$_cp.icon<<print $_cp.cn_name>><br>
+				<</if>>
+			<</if>>
 	<</switch>>
 <</widget>>
 
@@ -111,6 +163,11 @@
 				<div class="item">
 					<div class="itemTerraGeneral" tooltip="魔镜">
 						<<icon "tool/Magic_Mirror.png">>
+					</div>
+				</div>
+				<div class="item">
+					<div class="itemTerraGeneral" tooltip="金质贞操带">
+						<<antiqueicon "chastity">>
 					</div>
 				</div>
 				<div class="item" tooltip="大师诱饵(3~7)<br><i>材料</i>">
@@ -197,6 +254,11 @@
 				<div class="item">
 					<div class="itemTerraGeneral" tooltip="海洋残渣(1~2)<br><i>材料</i>">
 						<<icon "material/Sea_Remains.png">>
+					</div>
+				</div>
+				<div class="item">
+					<div class="itemTerraGeneral" tooltip="皮质地图">
+						<<antiqueicon "map">>
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>

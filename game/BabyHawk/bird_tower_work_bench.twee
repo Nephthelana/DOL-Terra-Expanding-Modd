@@ -49,18 +49,17 @@
 <<run initializeTooltips()>>
 
 <span class="no-numberify">
-<<set _recipe_list to getAllRecipeList()>>
-<<set _recipe_avalible to false>>
-<div class="itemTerra">
-	<<for _t to 0; _t lt _recipe_list.length; _t++>>
-		<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
-		<<if _recipe.required_crafting_station is "Work_Bench" and _recipe.type is "food">>
+	<<set _recipe_list to getAllRecipeList().filter(r => setup.terraRecipe[r].required_crafting_station === "Work_Bench" && setup.terraRecipe[r].type is "food")>>
+	<<set _recipe_avalible to false>>
+	<div class="itemTerra">
+		<<for _r range _recipe_list>>
+			<<set _recipe to setup.terraRecipe[_r]>>
 			<<capture _recipe>>
 				_recipe.craftable
 				<<if _craftable>>
 					<<set _recipe_avalible to true>>
 					<div class="item">
-						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+						<div class="itemTerraGeneral" @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
 							<<icon `_recipe.icon`>>
 						</div>
 						<hr>
@@ -93,9 +92,8 @@
 					</div>
 				<</if>>
 			<</capture>>
-		<</if>>
-	<</for>>
-</div>
+		<</for>>
+	</div>
 <<if !_recipe_avalible>>
 	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
 <</if>>

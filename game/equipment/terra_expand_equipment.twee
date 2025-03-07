@@ -347,7 +347,7 @@
 			<<if $options.dragModeTEM>>
 				<div class="item" @id="_vanity_accessory_equipped.name" draggable="true" ondragstart="dragTEM(event)" ondragover="allowDropTEM(event)" ondrop="dropVanityAccessoriesSwitch(event)">
 					<<set _isMaterial to _vanity_accessory_equipped.material ? "<br><i>材料</i>" : "">>
-					<div @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_vanity_accessory_equipped.des}<br>${_vanity_accessory_equipped.vanity}`">
+					<div @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶<<if ['informational','multiInfo'].includes(_vanity_accessory_equipped.type)>>${_vanity_accessory_equipped.des}<<else>><i>时装栏内不生效</i><</if>><br>${_vanity_accessory_equipped.vanity}`">
 						<div class="itemTerraGeneral" style="pointer-events: none">
 							<<icon `_vanity_accessory_equipped.icon`>>
 						</div>
@@ -356,7 +356,7 @@
 			<<else>>
 				<div class="item">
 					<<set _isMaterial to _vanity_accessory_equipped.material ? "<br><i>材料</i>" : "">>
-					<div @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_vanity_accessory_equipped.des}<br>${_vanity_accessory_equipped.vanity}`">
+					<div @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶<<if ['informational','multiInfo'].includes(_vanity_accessory_equipped.type)>>${_vanity_accessory_equipped.des}<<else>><i>时装栏内不生效</i><</if>><br>${_vanity_accessory_equipped.vanity}`">
 						<div class="itemTerraGeneral">
 							<<icon `_vanity_accessory_equipped.icon`>>
 						</div>

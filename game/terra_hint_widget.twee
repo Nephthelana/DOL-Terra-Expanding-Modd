@@ -1,7 +1,7 @@
 :: TerraHint [widget]
 <<widget "terraHint">>
-    |
-    <span class="terraMod">
-        <<print " 泰拉瑞亚">>
-    </span>
+	|
+	<span class="terraMod">
+		<<print " 泰拉瑞亚">>
+	</span>
 <</widget>>

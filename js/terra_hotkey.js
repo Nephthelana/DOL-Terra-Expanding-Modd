@@ -36,7 +36,7 @@ $(document).on("keyup", function (e){
 				T.currentOverlay = "terraExpandEquipmentOverlay";
 				$("#customOverlay").removeClass("hidden").parent().removeClass("hidden");
 				$("#customOverlay").attr("data-overlay", T.currentOverlay);
-				Wikifier.wikifyEval("<<replace #customOverlayTitle>><<titleTerraExpandEquipment>><</replace>><<replace #customOverlayContent>><<terraExpandEquipment>><</replace>>");
+				Wikifier.wikifyEval("<<replace #customOverlayTitle>><<terraExpandEquipmentTitle>><</replace>><<replace #customOverlayContent>><<terraExpandEquipment>><</replace>>");
 			}
 			return false;
 		}
@@ -51,7 +51,7 @@ $(document).on("keyup", function (e){
 				T.currentOverlay = "terraExpandToolOverlay";
 				$("#customOverlay").removeClass("hidden").parent().removeClass("hidden");
 				$("#customOverlay").attr("data-overlay", T.currentOverlay);
-				Wikifier.wikifyEval("<<replace #customOverlayTitle>><<titleTerraExpandTool>><</replace>><<replace #customOverlayContent>><<terraExpandTool>><</replace>>");
+				Wikifier.wikifyEval("<<replace #customOverlayTitle>><<terraExpandToolTitle>><</replace>><<replace #customOverlayContent>><<terraExpandTool>><</replace>>");
 			}
 			return false;
 		}

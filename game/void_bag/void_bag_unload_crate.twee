@@ -9,13 +9,34 @@
 	<<if random(1,3) lte 2>>
 		<<set _unload_crate_Bait = random(3,7)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<if random(1,8) is 1>>
 		、<<icon "tool/Magic_Mirror.png">>魔镜
 		<<set $Magic_Mirror to true>>
+	<</if>>
+	<<if random(1,15) is 1>>
+		<<museumAntiqueText>>
+		<<set $antiquemoney += 2000>>
+		。你发现里面还有一条<<antiqueicon "chastity">>金质贞操带！
+		<<if $worn.genitals.name is "naked" and playerBellySize() lte 7>>
+			<<link "穿上">>
+				<<set $antiquemoney -= 2000>>
+				<<genitalswear 3>>
+				<<earnFeat "Locked In Gold">>
+				<<set $worn.genitals.origin to "Underwater Temple">>
+				<<updatesidebarimg true>>
+				<<updatesidebardescription>>
+				<<updateallure>>
+				<<updatewarmthscale>>
+				<<replace #unloadCrateHint>>
+					你手里拿着金质贞操带，感觉它散发出一丝微弱的光芒。你想象着拥有这么美丽的东西来保护你的<<genitals 1>>是什么感觉。<br>
+					<br>
+					你感到一种试穿它的冲动。你将它缠绕在腰间，当它发出卡嗒声时，<span class="purple">你想知道是否有一把钥匙可以解开它</span>。
+				<</replace>>
+			<</link>>
+		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -39,14 +60,12 @@
 		<<if random(1,3) is 1>>
 			<<set _unload_crate_Bait = random(2,4)>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set _unload_crate_Bait = random(2,4)>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -82,14 +101,12 @@
 		<<if random(1,3) is 1>>
 			<<set _unload_crate_Bait = random(1,4)>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set _unload_crate_Bait = random(1,4)>>
 			<<set $Apprentice_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
-			<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -127,13 +144,11 @@
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -187,13 +202,11 @@
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -230,13 +243,11 @@
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -269,13 +280,11 @@
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -326,13 +335,11 @@
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -371,13 +378,11 @@
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -425,13 +430,11 @@
 		<<set _unload_crate_Bait = random(2,6)>>
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-			<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
-			<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-			<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
@@ -453,20 +456,17 @@
 	<<if _bait_chance lte 10>>
 		<<set _unload_crate_Bait = random(2,3)>>
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
-		<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-		<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
@@ -491,20 +491,17 @@
 	<<if _bait_chance lte 10>>
 		<<set _unload_crate_Bait = random(2,3)>>
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
-		<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-		<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
@@ -523,20 +520,17 @@
 	<<if _bait_chance lte 10>>
 		<<set _unload_crate_Bait = random(2,3)>>
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
-		<<set $bestiary_bait_catch_count.Apprentice_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-		<<set $bestiary_bait_catch_count.Journeyman_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
-		<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-		<<set $bestiary_bait_catch_count.Master_Bait += _unload_crate_Bait>>
+		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
@@ -567,20 +561,17 @@
 	<<set $Can_Of_Worms -= 1>>
 	<<set _unload_crate_Worm to random(5,8)>>
 	<<set $Worm += _unload_crate_Worm>>
-	<<set $bestiary_bait_list.pushUnique("Worm")>>
-	<<set $bestiary_bait_catch_count.Worm += _unload_crate_Worm>>
+	<<bestiaryStatistics "bait" "Worm" _unload_crate_Worm>>
 	<<icon "fishing/bait/Worm.png">>蠕虫(_unload_crate_Worm)
 	<<if random(1,10) lte 3>>
 		<<set _unload_crate_Enchanted_Nightcrawler to random(1,2)>>
 		<<set $Enchanted_Nightcrawler += _unload_crate_Enchanted_Nightcrawler>>
-		<<set $bestiary_bait_list.pushUnique("Enchanted_Nightcrawler")>>
-		<<set $bestiary_bait_catch_count.Enchanted_Nightcrawler += _unload_crate_Enchanted_Nightcrawler>>
+		<<bestiaryStatistics "bait" "Enchanted_Nightcrawler" _unload_crate_Enchanted_Nightcrawler>>
 		、<<icon "fishing/bait/Enchanted_Nightcrawler.png">>附魔夜行者(_unload_crate_Enchanted_Nightcrawler)
 	<</if>>
 	<<if random(1,20) is 1>>
 		<<set $Gold_Worm += 1>>
-		<<set $bestiary_bait_list.pushUnique("Gold_Worm")>>
-		<<set $bestiary_bait_catch_count.Worm += 1>>
+		<<bestiaryStatistics "bait" "Gold_Worm" 1>>
 		、<<icon "fishing/bait/Gold_Worm.png">>金蠕虫(1)
 	<</if>>
 	<<updatesidebarmoney>>

@@ -62,7 +62,7 @@
 <<if $willpowerSuccess is 1>>
 	<span class="green">你顶住了巨大的压力</span>，推开盒盖——一缕温馨的光芒随着盒盖的打开而逐渐释放出来。它足以照亮整个车厢。<<llstress>><<stress -10>><<ltrauma>><<trauma -3>><br>
 <<else>>
-	恍惚间，<span class="red">你的手指打滑</span>，盒子掉在了地上。盒盖被意外的撞击打开，一缕温馨的光芒渐释放出来。它足以照亮整个车厢。<<llstress>><<stress -10>><<lstrauma>><<trauma -3>><br>
+	恍惚间，<span class="red">你的手指打滑</span>，盒子掉在了地上。盒盖被意外的撞击打开，一缕温馨的光芒渐释放出来。它足以照亮整个车厢。<<llstress>><<stress -10>><<ltrauma>><<trauma -3>><br>
 <</if>>
 <br>
 晕眩感逐渐消失，你感到生命力又重新回到了你的体内。你重新看向那两个暗影生物的方向，但它们已经无影无踪了。<br>

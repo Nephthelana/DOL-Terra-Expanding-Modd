@@ -4,13 +4,13 @@
 		<<set $RPS_win_count += 1>>
 		<<if $options.cute_angler>>
 			<<print [
-				`"哦！看来今天是你的运气略胜一筹呀。你想要什么呢？"`,
-				`"嘿！难道石头剪刀布也有技巧吗？下次我要是赢了，你就得教我！"`,
+				`“哦！看来今天是你的运气略胜一筹呀。你想要什么呢？”`,
+				`“嘿！难道石头剪刀布也有技巧吗？下次我要是赢了，你就得教我！”`,
 			].random()>>
 		<<else>>	
 			<<print [
-				`"啧！看在你今天运气好的份上，你想要什么？"`,
-				`"咄！为什么我看不出你到底怎么作弊的？"`,
+				`“啧！看在你今天运气好的份上，你想要什么？”`,
+				`“咄！为什么我看不出你到底怎么作弊的？”`,
 			].random()>>
 		<</if>><br>
 		<br>
@@ -24,11 +24,11 @@
 		<<set $PRS_lose_count += 1>>
 		<<if $options.cute_angler>>
 			<<print [
-				`"是我捕了这么多鱼给我带来的好运！每次你带来我想要的鱼，我都会分你一点！"`,
+				`“是我捕了这么多鱼给我带来的好运！每次你带来我想要的鱼，我都会分你一点！”`,
 			].random()>>
 		<<else>>	
 			<<print [
-				`"像我这种捕到的鱼比你吃过的饭还多的人，这点胜利是理所应当的！现在别打扰我了！"`,
+				`“像我这种捕到的鱼比你吃过的饭还多的人，这点胜利是理所应当的！现在别打扰我了！”`,
 			].random()>>
 		<</if>><br>
 		<br>
@@ -39,11 +39,11 @@
 		<<set $RPS_none_count += 1>>
 		<<if $options.cute_angler>>
 			<<print [
-				`"看来咱们旗鼓相当，明日再战！"`,
+				`“看来咱们旗鼓相当，明日再战！”`,
 			].random()>>
 		<<else>>	
 			<<print [
-				`"什么？你竟然能猜到我要出这个？"`,
+				`“什么？你竟然能猜到我要出这个？”`,
 			].random()>>
 		<</if>><br>
 		<br>
@@ -55,11 +55,11 @@
 :: RPS Bait
 <<if $options.cute_angler>>
 	<<print [
-		`"可以哦，我这儿还有很多呢。"`,
+		`“可以哦，我这儿还有很多呢。”`,
 	].random()>>
 <<else>>	
 	<<print [
-		`"鱼饵是吧？我最不缺这个了。拿去拿去。"`,
+		`“鱼饵是吧？我最不缺这个了。拿去拿去。”`,
 	].random()>>
 <</if>><br>
 <br>
@@ -79,18 +79,15 @@
 <</if>>
 <<if random(1,20) is 1>>
 	<<set $Master_Bait += _fishing_reward_bait>>
-	<<set $bestiary_bait_list.pushUnique("Master_Bait")>>
-	<<set $bestiary_bait_catch_count.Master_Bait += _fishing_reward_bait>>
+	<<bestiaryStatistics "bait" "Master_Bait" _fishing_reward_bait>>
 	<<icon "fishing/bait/Master_Bait.png">>大师诱饵
 <<elseif random(1,10) is 1>>
 	<<set $Journeyman_Bait += _fishing_reward_bait>>
-	<<set $bestiary_bait_list.pushUnique("Journeyman_Bait")>>
-	<<set $bestiary_bait_catch_count.Journeyman_Bait += _fishing_reward_bait>>
+	<<bestiaryStatistics "bait" "Journeyman_Bait" _fishing_reward_bait>>
 	<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵
 <<else>>
 	<<set $Apprentice_Bait += _fishing_reward_bait>>
-	<<set $bestiary_bait_list.pushUnique("Apprentice_Bait")>>
-	<<set $bestiary_bait_catch_count.Apprentice_Bait += _fishing_reward_bait>>
+	<<bestiaryStatistics "bait" "Apprentice_Bait" _fishing_reward_bait>>
 	<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵
 <</if>>(_fishing_reward_bait)。<br>
 <br>
@@ -100,11 +97,11 @@
 <<npc Angler>><<person1>>
 <<if $options.cute_angler>>
 	<<print [
-		`"这个任务对你来说太难了是吗？我今天确实不急着要这条鱼。"`,
+		`“这个任务对你来说太难了是吗？我今天确实不急着要这条鱼。”`,
 	].random()>>
 <<else>>	
 	<<print [
-		`"蛤？你想让我放弃今天的目标？我可是花了整整一个晚上的时间，思考出来我今天需要这条鱼的！"<<He>>看你并没有做出让步的样子，最终还是妥协了。`,
+		`“蛤？你想让我放弃今天的目标？我可是花了整整一个晚上的时间，思考出来我今天需要这条鱼的！”<<He>>看你并没有做出让步的样子，最终还是妥协了。`,
 	].random()>>
 <</if>><br>
 <br>

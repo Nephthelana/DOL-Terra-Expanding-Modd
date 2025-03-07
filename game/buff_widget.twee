@@ -11,7 +11,11 @@
 					<<set _activated_hours_countdown to Math.floor(_buff.activated / 60)>>
 					<<set _activated_minutes_countdown to (_buff.activated - _activated_hours_countdown * 60)>>
 					<<icon `_buff.icon`>>_buff.cn_name:
-					<<print _activated_hours_countdown gt 0 ? `${_activated_hours_countdown}h` : `${_activated_minutes_countdown}m`>><br>
+					<<if ["Fishing","Sonar","Crate"].includes(_buff.name) and $terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station") and $options.trueSBTBFS>>
+						<a class="green">无限</a><br>
+					<<else>>
+						<<print _activated_hours_countdown gt 0 ? `${_activated_hours_countdown}h` : `${_activated_minutes_countdown}m`>><br>
+					<</if>>
 				<</for>>
 			</span>
 		</mouse>

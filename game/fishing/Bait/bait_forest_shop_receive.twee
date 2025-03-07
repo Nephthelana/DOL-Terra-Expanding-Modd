@@ -12,9 +12,9 @@
 		<<set _bait_forest_shop_receive to random(3,7)>>
 <</switch>>
 <<set V[$bait_forest_shop] += _bait_forest_shop_receive>>
-<<set V.bestiary_bait_catch_count[$bait_forest_shop] += _bait_forest_shop_receive>>
+<<bestiaryStatistics "bait" $bait_forest_shop _bait_forest_shop_receive>>
 <<set _bait_forest_shop to setup.terraBait[$bait_forest_shop]>>
-"你对这些小家伙感兴趣么？"<<He>>钻入一个隐秘的房间中，拿着一个罐子走了出来。<br>
+“你对这些小家伙感兴趣么？”<<He>>钻入一个隐秘的房间中，拿着一个罐子走了出来。<br>
 <br>
 你获得了：<<icon `_bait_forest_shop.icon`>><<print _bait_forest_shop.cn_name>>(_bait_forest_shop_receive)<br>
 <br>

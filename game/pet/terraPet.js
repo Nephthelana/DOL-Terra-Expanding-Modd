@@ -6,8 +6,8 @@ setup.terraPet = {
 		obtained: V.Royal_Delight,
 		icon_item: "pet/pet_item/Royal_Delight.png",
 		icon_projectile: "pet/pet_projectile/Slime_Prince.gif",
-		des_item: "召唤史莱姆王子<br>\"适合国王的甜点！\"",
-		des_projectile: "<span class='teal'>\"他听命于上级！\"</span><span class='gold'><i>感谢游玩泰拉瑞亚拓展模组！</i></span>",
+		des_item: "召唤史莱姆王子<br>“适合国王的甜点！”",
+		des_projectile: "<span class='teal'>“他听命于上级！”</span><span class='gold'><i>感谢游玩泰拉瑞亚拓展模组！</i></span>",
 	},
 	"Zephyr_Fish": {
 		name: "Zephyr_Fish",
@@ -17,7 +17,7 @@ setup.terraPet = {
 		icon_item: "pet/pet_item/Zephyr_Fish.png",
 		icon_projectile: "pet/pet_projectile/Zephyr_Fish.gif",
 		des_item: "召唤宠物和风鱼",
-		des_projectile: "\"它喜欢在你周围游泳。\"",
+		des_projectile: "“它喜欢在你周围游泳。”",
 	},
 	"Strange_Orb": {
 		name: "Strange_Orb",
@@ -27,7 +27,7 @@ setup.terraPet = {
 		icon_item: "pet/pet_item/Strange_Orb.png",
 		icon_projectile: "pet/pet_projectile/Ocean_Spirit_(sleep).png",
 		des_item: "召唤一个迷你海洋之灵",
-		des_projectile: "\"音轻体柔，小巧玲珑。\"",
+		des_projectile: "“音轻体柔，小巧玲珑。”",
 	},
 	"Rusted_Jingle_Bell": {
 		name: "Rusted_Jingle_Bell",
@@ -37,7 +37,7 @@ setup.terraPet = {
 		icon_item: "pet/pet_item/Rusted_Jingle_Bell.png",
 		icon_projectile: "pet/pet_projectile/Baby_Ghost_Bell_(pet).gif",
 		des_item: "召唤一只小鬼铃水母",
-		des_projectile: "\"小心不要戳破那个泡泡。\"",
+		des_projectile: "“小心不要戳破那个泡泡。”",
 	},
 	"Shark_Bait": {
 		name: "Shark_Bait",
@@ -46,8 +46,8 @@ setup.terraPet = {
 		obtained: V.Shark_Bait,
 		icon_item: "pet/pet_item/Shark_Bait.png",
 		icon_projectile: "pet/pet_projectile/Shark_Pup_in_Bubble.gif",
-		des_item: "召唤小鲨鱼<br>\"嘟嘟嘟嘟嘟嘟。\"",
-		des_projectile: "\"嘟嘟嘟嘟嘟嘟。\"",
+		des_item: "召唤小鲨鱼<br>“嘟嘟嘟嘟嘟嘟。”",
+		des_projectile: "“嘟嘟嘟嘟嘟嘟。”",
 	},
 	"Stardrop": {
 		name: "Stardrop",
@@ -56,8 +56,8 @@ setup.terraPet = {
 		obtained: V.Stardrop,
 		icon_item: "pet/pet_item/Stardrop.png",
 		icon_projectile: "pet/pet_projectile/Junimo.gif",
-		des_item: "召唤祝尼魔<br>\"来自异界的神秘果实。味道如梦如幻...\"",
-		des_projectile: "\"可爱的森林守护者。\"",
+		des_item: "召唤祝尼魔<br>“来自异界的神秘果实。味道如梦如幻……”",
+		des_projectile: "“可爱的森林守护者。”",
 	},
 	"Celestial_Wand": {
 		name: "Celestial_Wand",
@@ -67,7 +67,7 @@ setup.terraPet = {
 		icon_item: "pet/pet_item/Celestial_Wand.png",
 		icon_projectile: "pet/pet_projectile/Estee.gif",
 		des_item: "召唤埃斯蒂",
-		des_projectile: "\"埃斯蒂闪闪发光。\"",
+		des_projectile: "“埃斯蒂闪闪发光。”",
 	},
 	"Bamboo_Leaf": {
 		name: "Bamboo_Leaf",
@@ -77,7 +77,7 @@ setup.terraPet = {
 		icon_item: "pet/pet_item/Bamboo_Leaf.png",
 		icon_projectile: "pet/pet_projectile/Baby_Red_Panda.gif",
 		des_item: "召唤小熊猫宝宝",
-		des_projectile: "\"小熊猫宝宝充满了活力。\"",
+		des_projectile: "“小熊猫宝宝充满了活力。”",
 	},
 	"Bedazzled_Nectar": {
 		name: "Bedazzled_Nectar",
@@ -86,8 +86,8 @@ setup.terraPet = {
 		obtained: V.Bedazzled_Nectar,
 		icon_item: "pet/pet_item/Bedazzled_Nectar.png",
 		icon_projectile: "pet/pet_projectile/Glittery_Butterfly.gif",
-		des_item: "召唤宠物蝴蝶<br>\"只要最好、最精致的花蜜！\"",
-		des_projectile: "\"真的真的荒唐。\"",
+		des_item: "召唤宠物蝴蝶<br>“只要最好、最精致的花蜜！”",
+		des_projectile: "“真的真的荒唐。”",
 	},
 	"Blue_Chicken_Egg": {
 		name: "Blue_Chicken_Egg",
@@ -96,8 +96,8 @@ setup.terraPet = {
 		obtained: V.Blue_Chicken_Egg,
 		icon_item: "pet/pet_item/Blue_Chicken_Egg.png",
 		icon_projectile: "pet/pet_projectile/Blue_Chicken.gif",
-		des_item: "召唤蓝鸡<br>\"普普通通的蓝色鸡蛋\"",
-		des_projectile: "\"名牌上写着'Shane'\"",
+		des_item: "召唤蓝鸡<br>“普普通通的蓝色鸡蛋”",
+		des_projectile: "“名牌上写着'Shane'”",
 	},
 	"Exotic_Chew_Toy": {
 		name: "Exotic_Chew_Toy",
@@ -106,8 +106,8 @@ setup.terraPet = {
 		obtained: V.Exotic_Chew_Toy,
 		icon_item: "pet/pet_item/Exotic_Chew_Toy.png",
 		icon_projectile: "pet/pet_projectile/Fennec_Fox.gif",
-		des_item: "召唤耳廓狐<br>\"它的叫声是惊人的96千赫！\"",
-		des_projectile: "\"狐狸说了什么？更进一步，狐狸听到了什么？！\"",
+		des_item: "召唤耳廓狐<br>“它的叫声是惊人的96千赫！”",
+		des_projectile: "“狐狸说了什么？更进一步，狐狸听到了什么？！”",
 	},
 	"Birdie_Rattle": {
 		name: "Birdie_Rattle",
@@ -116,8 +116,8 @@ setup.terraPet = {
 		obtained: V.Birdie_Rattle,
 		icon_item: "pet/pet_item/Birdie_Rattle.png",
 		icon_projectile: "pet/pet_projectile/Lil_Harpy.gif",
-		des_item: "召唤鸟妖宝宝<br>\"不适合你的日常小鹦鹉\"",
-		des_projectile: "\"从天而降的可爱\"",
+		des_item: "召唤鸟妖宝宝<br>“不适合你的日常小鹦鹉”",
+		des_projectile: "“从天而降的可爱”",
 	},
 	"Companion_Cube": {
 		name: "Companion_Cube",
@@ -126,8 +126,8 @@ setup.terraPet = {
 		obtained: V.Companion_Cube,
 		icon_item: "pet/pet_item/Companion_Cube.png",
 		icon_projectile: "pet/pet_projectile/Companion_Cube_(pet).png",
-		des_item: "召唤同伴方块<br>\"易受熔岩伤害！\"",
-		des_projectile: "\"永远不会威胁要刺伤你，而且，其实，不会说话\"",
+		des_item: "召唤同伴方块<br>“易受熔岩伤害！”",
+		des_projectile: "“永远不会威胁要刺伤你，而且，其实，不会说话”",
 	},
 	"Eye_Bone": {
 		name: "Eye_Bone",
@@ -136,8 +136,8 @@ setup.terraPet = {
 		obtained: V.Eye_Bone,
 		icon_item: "pet/pet_item/Eye_Bone.png",
 		icon_projectile: "pet/pet_projectile/Chester.gif",
-		des_item: "召唤一只活宝箱<br>\"它正在审视我的灵魂。\"",
-		des_projectile: "\"奥特·冯·切斯特菲尔德先生\"",
+		des_item: "召唤一只活宝箱<br>“它正在审视我的灵魂。”",
+		des_projectile: "“奥特·冯·切斯特菲尔德先生”",
 	},
 	"Glommers_Flower": {
 		name: "Glommers_Flower",
@@ -146,8 +146,8 @@ setup.terraPet = {
 		obtained: V.Glommers_Flower,
 		icon_item: "pet/pet_item/Glommers_Flower.png",
 		icon_projectile: "pet/pet_projectile/Glommer.gif",
-		des_item: "召唤格罗姆<br>\"花瓣在阳光下闪闪发光。\"",
-		des_projectile: "\"毛茸茸！还黏糊糊...\"",
+		des_item: "召唤格罗姆<br>“花瓣在阳光下闪闪发光。”",
+		des_projectile: "“毛茸茸！还黏糊糊……”",
 	},
 	"Parrot_Cracker": {
 		name: "Parrot_Cracker",
@@ -156,8 +156,8 @@ setup.terraPet = {
 		obtained: V.Parrot_Cracker,
 		icon_item: "pet/pet_item/Parrot_Cracker.png",
 		icon_projectile: "pet/pet_projectile/Pet_Parrot.gif",
-		des_item: "召唤宠物鹦鹉<br>\"不适合人类食用。\"",
-		des_projectile: "\"波利想要饼干\"",
+		des_item: "召唤宠物鹦鹉<br>“不适合人类食用。”",
+		des_projectile: "“波利想要饼干”",
 	},
 }
 

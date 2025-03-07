@@ -10,13 +10,16 @@
 		<label><<checkbox "$options.artificial_fishing_pond" false true autocheck>>人工钓鱼池</label><mouse class="tooltip linkBlue">(?)<span>开启后，可建造并使用某些原本以NPC交互作为前置条件的钓鱼点。详情请询问向导。</span></mouse>
 	</div>
 	<div class="settingsToggleItem">
-		<label><<checkbox "$options.Magiluminescence_awareness_effect" false true autocheck>>魔光护符降低"意识"</label><mouse class="tooltip linkBlue">(?)<span>开启后，佩戴魔光护符时，"意识"属性会随着时间的流逝而降低。</span></mouse>
+		<label><<checkbox "$options.Magiluminescence_awareness_effect" false true autocheck>>魔光护符降低"意识"</label><mouse class="tooltip linkBlue">(?)<span>开启后，佩戴<<icon "accessories/Magiluminescence.png">>魔光护符时，"意识"属性会随着时间的流逝而降低。</span></mouse>
 	</div>
 	<div class="settingsToggleItem">
 		<label><<checkbox "$options.bestiaryHint" false true autocheck>>图鉴收集提示</label><mouse class="tooltip linkBlue">(?)<span>开启后，可点击图鉴内未点亮的图标以查看获取方式。</span></mouse>
 	</div>
-	<div class="settingsToggleItemWide">
+	<div class="settingsToggleItem">
 		<label><<checkbox "$options.dragModeTEM" false true autocheck>>拖拽模式</label><mouse class="tooltip linkBlue">(?)<span>开启后，将一些内容的交互修改为拖拽操作（目前仅支持装备、宠物家具界面）</span></mouse>
+	</div>
+	<div class="settingsToggleItem">
+		<label><<checkbox "$options.trueSBTBFS" false true autocheck>>万能渔具包完全体</label><mouse class="tooltip linkBlue">(?)<span>开启后，<<icon "fishing/fishing_accessories/Supreme_Bait_Tackle_Box_Fishing_Station.png">>万能渔具包将无限提供<<icon 'potions/Fishing_Potion.png'>>钓鱼/<<icon 'potions/Sonar_Potion.png'>>声呐/<<icon 'potions/Crate_Potion.png'>>宝匣药水的增益</span></mouse>
 	</div>
 	<div class="settingsToggleItemWide">
 		<label>传送工具每日使用次数：
@@ -36,7 +39,7 @@
 		<mouse class="tooltip linkBlue">(?)<span>设定传送工具的使用限制</span></mouse>
 	</div>
 	<<if $debug is 1>>
-		<!-- 游戏内用V.halloween是否为1来记录当前是否为万圣节 -->
+		<!-- 游戏本体内用V.halloween是否为1来记录当前是否为万圣节 -->
 		<div class="settingsToggleItemWide">
 			<label>万圣节：
 				<<listbox "$options.terra_halloween" autoselect>>

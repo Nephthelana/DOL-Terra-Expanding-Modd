@@ -6,7 +6,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Shucked_Oyster || 0,
         icon: "food/Shucked_Oyster.png",
-		des: "- 饥饿值<br><i>\"噢，壳！\"</i>",
+		des: "- 饥饿值<br><i>“噢，壳！”</i>",
 		use: "<<set $Shucked_Oyster -= 1>><<hunger -200>>",
 		use_hint: "<<lhunger>>"
     },
@@ -17,7 +17,7 @@ setup.terraFood = {
         type: "food",
         obtained: V.Sashimi || 0,
         icon: "food/Sashimi.png",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
 		use: "<<set $Sashimi -= 1>><<hunger -200>>",
 		use_hint: "<<lhunger>>"
     },
@@ -28,7 +28,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Cooked_Shrimp || 0,
         icon: "food/Cooked_Shrimp.png",
-		des: "- 饥饿值<br><i>\"烧、煮、烤、烘...\"</i>",
+		des: "- 饥饿值<br><i>“烧、煮、烤、烘……”</i>",
 		use: "<<set $Cooked_Shrimp -= 1>><<hunger -200>>",
 		use_hint: "<<lhunger>>"
     },
@@ -39,7 +39,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
 		use: "<<set $Cooked_Fish -= 1>><<hunger -400>>",
 		use_hint: "<<llhunger>>"
     },
@@ -50,7 +50,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Lobster_Tail || 0,
         icon: "food/Lobster_Tail.png",
-		des: "- - 饥饿值<br><i>\"加一点黄油就很美味了\"</i>",
+		des: "- - 饥饿值<br><i>“加一点黄油就很美味了”</i>",
 		use: "<<set $Lobster_Tail -= 1>><<hunger -400>>",
 		use_hint: "<<llhunger>>"
     },
@@ -61,7 +61,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
 		use: "<<set $Seafood_Dinner -= 1>><<hunger -800>>",
 		use_hint: "<<lllhunger>>"
     },
@@ -72,7 +72,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Pho || 0,
         icon: "food/Pho.png",
-		des: "- - 饥饿值<br><i>\"粉它！\"</i>",
+		des: "- - 饥饿值<br><i>“粉它！”</i>",
 		use: "<<set $Pho -= 1>><<hunger -400>>",
 		use_hint: "<<llhunger>>"
     },
@@ -83,7 +83,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Pad_Thai || 0,
         icon: "food/Pad_Thai.png",
-		des: "- - 饥饿值<br><i>\"五星级辣度！\"</i>",
+		des: "- - 饥饿值<br><i>“五星级辣度！”</i>",
 		use: "<<set $Pad_Thai -= 1>><<hunger -400>>",
 		use_hint: "<<llhunger>>"
     },
@@ -94,7 +94,7 @@ setup.terraFood = {
         type: "food",
         amount: V.Sake || 0,
         icon: "food/Sake.png",
-		des: "给予2小时的醉酒效果<br><i>\"喝多了你会变成空手道大师。\"</i>",
+		des: "给予2小时的醉酒效果<br><i>“喝多了你会变成空手道大师。”</i>",
 		use: "<<set $Sake -= 1>><<set $drunk += 120>>",
 		use_hint: "<<ggalcohol>>"
     },

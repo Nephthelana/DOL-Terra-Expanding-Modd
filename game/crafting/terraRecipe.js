@@ -135,6 +135,21 @@ setup.terraRecipe = {
 		craft: "<<unset $Angler_Tackle_Bag>><<set $terra_accessories_slots.delete('Angler_Tackle_Bag')>><<set $terra_vanity_accessories_slots.delete('Angler_Tackle_Bag')>><<unset $Lavaproof_Fishing_Hook>><<set $terra_accessories_slots.delete('Lavaproof_Fishing_Hook')>><<set $terra_vanity_accessories_slots.delete('Lavaproof_Fishing_Hook')>><<set $Lavaproof_Tackle_Bag to true>>",
 		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Lavaproof_Tackle_Bag.png\">>防熔岩渔具袋。",
     },
+	"Supreme_Bait_Tackle_Box_Fishing_Station": {
+        name: "Supreme_Bait_Tackle_Box_Fishing_Station",
+        cn_name: "万能渔具包",
+		des: "拥有<<icon \"fishing/fishing_accessories/Lavaproof_Tackle_Bag.png\">>防熔岩渔具袋的全部效果，在此基础上增加50点渔力，并使<<icon 'potions/Fishing_Potion.png'>>钓鱼/<<icon 'potions/Sonar_Potion.png'>>声呐/<<icon 'potions/Crate_Potion.png'>>宝匣药水持续时间翻倍<br><i>\"水中鱼的噩梦，钓鱼者的最爱，泰拉人的希望，至尊渔具背包钓鱼台！\"</i>",
+        type: "accessories",
+        amount: V.Supreme_Bait_Tackle_Box_Fishing_Station,
+        icon: "fishing/fishing_accessories/Supreme_Bait_Tackle_Box_Fishing_Station.png",
+		required_material: ["Lavaproof_Tackle_Bag","Pink_Pearl","Master_Bait","Fishing_Potion","Sonar_Potion","Crate_Potion"],
+		required_material_info: "<<icon \"fishing/fishing_accessories/Lavaproof_Tackle_Bag.png\">>防熔岩渔具袋<br><<icon 'material/Pink_Pearl.png'>>粉珍珠(1)<br><<icon 'fishing/bait/Master_Bait.png'>>大师诱饵(5)<br><<icon 'potions/Fishing_Potion.png'>>钓鱼药水(5)<br><<icon 'potions/Sonar_Potion.png'>>声呐药水(5)<br><<icon 'potions/Crate_Potion.png'>>宝匣药水(5)",
+		required_crafting_station: "Iron_Anvil",
+		required_crafting_station_info: "<<icon \"furniture_item/Iron_Anvil.png\">>铁砧",
+		craftable: "<<set _craftable to ($Lavaproof_Tackle_Bag and $Pink_Pearl gte 1 and $Master_Bait gte 5 and $Fishing_Potion gte 5 and $Sonar_Potion gte 5 and $Crate_Potion gte 5 and $Supreme_Bait_Tackle_Box_Fishing_Station isnot true) ? true : false>>",
+		craft: "<<unset $Lavaproof_Tackle_Bag>><<set $terra_accessories_slots.delete('Lavaproof_Tackle_Bag')>><<set $terra_vanity_accessories_slots.delete('Lavaproof_Tackle_Bag')>><<set $Pink_Pearl -= 5>><<set $Master_Bait -= 5>><<set $Fishing_Potion -= 5>><<set $Sonar_Potion -= 5>><<set $Crate_Potion -= 5>><<set $Supreme_Bait_Tackle_Box_Fishing_Station to true>>",
+		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Supreme_Bait_Tackle_Box_Fishing_Station.png\">>万能渔具包。",
+    },
 	"Fish_Finder": {
         name: "Fish_Finder",
         cn_name: "探鱼器",
@@ -274,7 +289,7 @@ setup.terraRecipe = {
 	"Sashimi_Salmon": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -289,7 +304,7 @@ setup.terraRecipe = {
 	"Sashimi_Bass": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -304,7 +319,7 @@ setup.terraRecipe = {
 	"Sashimi_Tuna": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -319,7 +334,7 @@ setup.terraRecipe = {
 	"Sashimi_Red_Snapper": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -334,7 +349,7 @@ setup.terraRecipe = {
 	"Sashimi_Trout": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -349,7 +364,7 @@ setup.terraRecipe = {
 	"Sashimi_Flounder": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -364,7 +379,7 @@ setup.terraRecipe = {
 	"Sashimi_Atlantic_Cod": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -379,7 +394,7 @@ setup.terraRecipe = {
 	"Sashimi_Prismatic_Guppy": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -394,7 +409,7 @@ setup.terraRecipe = {
 	"Sashimi_Crag_Bullhead": {
 		name: "Sashimi",
         cn_name: "生鱼片<br><i>材料</i>",
-		des: "- 饥饿值<br><i>\"是生的！异国风味！\"</i>",
+		des: "- 饥饿值<br><i>“是生的！异国风味！”</i>",
         type: "food",
         amount: V.Sashimi || 0,
         icon: "food/Sashimi.png",
@@ -410,7 +425,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Salmon": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -425,7 +440,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Bass": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -440,7 +455,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Tuna": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -455,7 +470,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Red_Snapper": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -470,7 +485,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Trout": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -485,7 +500,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Flounder": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -500,7 +515,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Atlantic_Cod": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -515,7 +530,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Prismatic_Guppy": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -530,7 +545,7 @@ setup.terraRecipe = {
 	"Cooked_Fish_Crag_Bullhead": {
 		name: "Cooked_Fish",
         cn_name: "熟鱼",
-		des: "- - 饥饿值<br><i>\"薯条在哪里！？\"</i>",
+		des: "- - 饥饿值<br><i>“薯条在哪里！？”</i>",
         type: "food",
         amount: V.Cooked_Fish || 0,
         icon: "food/Cooked_Fish.png",
@@ -546,7 +561,7 @@ setup.terraRecipe = {
 	"Cooked_Shrimp": {
 		name: "Cooked_Shrimp",
         cn_name: "熟虾",
-		des: "- 饥饿值<br><i>\"烧、煮、烤、烘...\"</i>",
+		des: "- 饥饿值<br><i>“烧、煮、烤、烘……”</i>",
         type: "food",
         amount: V.Cooked_Shrimp || 0,
         icon: "food/Cooked_Shrimp.png",
@@ -562,7 +577,7 @@ setup.terraRecipe = {
 	"Lobster_Tail": {
 		name: "Lobster_Tail",
         cn_name: "龙虾尾",
-		des: "- - 饥饿值<br><i>\"加一点黄油就很美味了\"</i>",
+		des: "- - 饥饿值<br><i>“加一点黄油就很美味了”</i>",
         type: "food",
         amount: V.Lobster_Tail || 0,
         icon: "food/Lobster_Tail.png",
@@ -578,7 +593,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Stinkfish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -593,7 +608,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Armored_Cavefish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -608,7 +623,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Specular_Fish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -623,7 +638,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Honeyfin": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -638,7 +653,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Double_Cod": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -653,7 +668,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Variegated_Lardfish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -668,7 +683,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Neon_Tetra": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -683,7 +698,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Chaos_Fish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -698,7 +713,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Prismite": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -713,7 +728,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Princess_Fish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -728,7 +743,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Frost_Minnow": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -743,7 +758,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Flarefin_Koi": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -758,7 +773,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Obsidifish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -773,7 +788,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Sunken_Sailfish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -788,7 +803,7 @@ setup.terraRecipe = {
 	"Seafood_Dinner_Coastal_Demonfish": {
 		name: "Seafood_Dinner",
         cn_name: "海鲜大餐",
-		des: "- - - 饥饿值<br><i>\"我，海鲜，吃掉。\"</i>",
+		des: "- - - 饥饿值<br><i>“我，海鲜，吃掉。”</i>",
         type: "food",
         amount: V.Seafood_Dinner || 0,
         icon: "food/Seafood_Dinner.png",
@@ -855,7 +870,7 @@ setup.terraRecipe = {
 		required_crafting_station: "Work_Bench",
 		required_crafting_station_info: "<<icon \"furniture_item/Work_Bench.png\">>工作台",
 		craftable: "<<set _craftable to ($Worm gte 1 and $Fallen_Star gte 1) ? true : false>>",
-		craft: "<<set $Worm -= 1>><<set $Fallen_Star -= 1>><<set $Enchanted_Nightcrawler += 1>><<set $bestiary_bait_list.pushUnique('Enchanted_Nightcrawler')>><<set $bestiary_bait_catch_count['Enchanted_Nightcrawler'] += 1>>",
+		craft: "<<set $Worm -= 1>><<set $Fallen_Star -= 1>><<set $Enchanted_Nightcrawler += 1>><<bestiaryStatistics 'bait' 'Enchanted_Nightcrawler' 1>>",
 		crafting_info: "你制作了1只<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者。<br>你有<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者($Enchanted_Nightcrawler)，你还有<<icon \"fishing/bait/Worm.png\">>蠕虫($Worm)和<<icon \"material/Fallen_Star.png\">>坠落之星($Fallen_Star)。",
 	},
 	// 原版的新食材

@@ -1,6 +1,6 @@
 :: Terra Fishing Rod [widget]
 <<widget "void_bag_FishingRod">>
-	<<if $fishingrod>>
+	<<if getFishingRodObtainedList().length gt 0>>
 		<span class="gold bold">钓竿</span><mouse class="tooltip linkBlue">(?)<span>不同鱼竿提供不同的渔力。你不能在钓鱼小游戏中切换鱼竿</span></mouse><br>
 		<<if $passage is "Fishing" or $passage is "Robin Fishing">>
 			哦不，钓钩都抛出去了，怎么能换鱼竿呢？

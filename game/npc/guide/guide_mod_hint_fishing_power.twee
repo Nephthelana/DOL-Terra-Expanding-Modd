@@ -1,7 +1,7 @@
 :: Guide Mod Hint Fishing Power
-"<span class="teal">渔力</span>是许多钓鱼相关因素对钓鱼产生的影响总和。它决定了等待鱼咬钩所需的时间，以及得到高品质渔获的几率。<br>
+“<span class="teal">渔力</span>是许多钓鱼相关因素对钓鱼产生的影响总和。它决定了等待鱼咬钩所需的时间，以及得到高品质渔获的几率。<br>
 <br>
-"<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">><span class="gold">渔民袖珍宝典</span>允许你随时在虚空袋中查看当前的渔力。它是渔夫任务奖励之一。"<br>
+“<<icon "fishing/fishing_accessories/Fishermans_Pocket_Guide.png">><span class="gold">渔民袖珍宝典</span>允许你随时在虚空袋中查看当前的渔力。它是渔夫任务奖励之一。”<br>
 <br>
 <mouse class="tooltip linkBlue">渔力影响因素一览
 	<span>

@@ -1,9 +1,9 @@
 :: Guide Mod Hint Pylon
 <<if $pylon_museum_asked>>
 	<<if $pylon_collected.length gte 5>>
-		"你已经集齐了5个晶塔，恭喜你！"<br>
+		“你已经集齐了5个晶塔，恭喜你！我想你已经不需要这方面的提示了。”<br>
 	<<else>>
-		"卧室里的提示不够明确是吗？没问题，你想知道哪个晶塔的晶石位置？不过在此之前，你得保证他们对你有了足够的好感。"<br>
+		“卧室里的提示不够明确是吗？没问题，你想知道哪个晶塔的晶石位置？不过在此之前，你得保证他们对你有了足够的好感。”<br>
 		<br>
 		<<if !$pylon_collected.includes("Bedroom")>>
 			<<icon "pylon/Forest_Pylon.png">><mouse class="tooltip linkBlue">孤儿院卧室<span>在与罗宾去森林约会，野餐篮被大风吹跑时。且罗宾自信值不低于20，创伤为0</span></mouse><br>
@@ -22,9 +22,9 @@
 		<</if>>
 	<</if>>
 <<elseif $historytrait gte 2>>
-	"不知道卧室的基座是什么用处？你可以去博物馆问问。"<br>
+	“不知道卧室的基座是什么用处？你可以去博物馆问问。”<br>
 <<else>>
-	"如果你对小镇的历史有了更多了解，你会注意到卧室里奇怪的基座。"<br>
+	“如果你对小镇的历史有了更多了解，你会注意到卧室里奇怪的基座。”<br>
 <</if>>
 <br>
 <<link [[返回|Guide Mod Hint]]>><</link>>

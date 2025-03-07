@@ -57,7 +57,7 @@ setup.terraBuff = {
         name: "Hallucinogen",
         cn_name: "致幻",
 		variable_name: "hallucinogen",
-		des: "带来<i>\"严重幻觉\"</i>特质",
+		des: "带来<i>“严重幻觉”</i>特质",
         type: "negative",
         activated: V.hallucinogen || 0,
 		icon: "buff_icon/Cerebral_Mindtrick_(buff).png",
@@ -76,7 +76,7 @@ function getBuffActivated() {
     }
     let buff_activated = Object.keys(setup.terraBuff);
     return buff_activated.filter(buff => {
-        return setup.terraBuff[buff].activated > 0;
+        return setup.terraBuff[buff].activated;
     });
 }
 window.getBuffActivated = getBuffActivated;

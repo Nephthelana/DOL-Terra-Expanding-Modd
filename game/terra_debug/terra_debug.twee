@@ -14,7 +14,8 @@
 :: Terra Debug
 数织
 <<link [[进入数织|Nonogram]]>>
-	<<set $Nonogram.sideLength to $Nonogram.sideLength is undefined ? 5 : $Nonogram.sideLength>>
+	<<set $Nonogram to $Nonogram or {}>>
+	<<set $Nonogram.sideLength to $Nonogram.sideLength or 5>>
 	<<set $Nonogram.grid to {}>>
 	<<run generateNonogramTable()>>
 <</link>><br>

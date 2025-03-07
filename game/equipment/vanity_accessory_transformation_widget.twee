@@ -1,11 +1,9 @@
 :: Vanity Accessory Transformation [widget]
 <<widget "vanityAccessoryTransformation">>
-	<<if !["Start","Start2"].includes($passage)>>
-		<<set _terra_vanity_angelHalo to (($terra_vanity_accessories_slots + $terra_accessories_slots).includes("Angel_Halo") and $angel lt 4) ? true : false>>
-		<<set _terra_vanity_demonHorns to (($terra_vanity_accessories_slots + $terra_accessories_slots).includes("Demon_Horns") and $demon lt 2) ? true : false>>
-		<<set $transformationParts.angel.halo to $angel gte 4 ? $transformationParts.angel.halo : !_terra_vanity_angelHalo ? "disabled" : $transformationParts.angel.halo is "disabled" ? "default" : $transformationParts.angel.halo>>
-		<<set $transformationParts.demon.horns to $demon gte 2 ? $transformationParts.demon.horns : !_terra_vanity_demonHorns ? "disabled" : $transformationParts.demon.horns is "disabled" ? "default" : $transformationParts.demon.horns>>
-	<</if>>
+	<<set _terra_vanity_angelHalo to (($terra_vanity_accessories_slots + $terra_accessories_slots).includes("Angel_Halo") and $angel lt 4) ? true : false>>
+	<<set _terra_vanity_demonHorns to (($terra_vanity_accessories_slots + $terra_accessories_slots).includes("Demon_Horns") and $demon lt 2) ? true : false>>
+	<<set $transformationParts.angel.halo to $angel gte 4 ? $transformationParts.angel.halo : !_terra_vanity_angelHalo ? "disabled" : $transformationParts.angel.halo is "disabled" ? "default" : $transformationParts.angel.halo>>
+	<<set $transformationParts.demon.horns to $demon gte 2 ? $transformationParts.demon.horns : !_terra_vanity_demonHorns ? "disabled" : $transformationParts.demon.horns is "disabled" ? "default" : $transformationParts.demon.horns>>
 <</widget>>
 
 <<widget "vanityAccessoryTransformationToggle">>

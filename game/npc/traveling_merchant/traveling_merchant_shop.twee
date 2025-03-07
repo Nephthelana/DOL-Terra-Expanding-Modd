@@ -2,30 +2,30 @@
 <<cleareventpool>>
 <<addinlineevent "daily" 1>>
 	<<print [
-		`"我不会因'买家后悔...'或者任何其它原因退款，绝不退。"`,
-		`"现在购买还包邮！"`,
-		`"我卖的商品来自可能根本就不存在的地方！"`,
-		`"你想要两文钱！？一文钱就成交。"`,
-		`"既能抽水烟，也能煮咖啡！还能炸切丝薯条！"`,
-		`"看一看，瞧一瞧！一斤重的鱼！新鲜味美！一斤重的鱼！"`,
-		`"如果你是在找垃圾，那就来错地方了。"`,
-		`"旧货店？不，我只卖市场上的尖货。"`,
-		`"来码头整点薯条！你没带吗？"`,
+		`“我不会因'买家后悔……'或者任何其它原因退款，绝不退。”`,
+		`“现在购买还包邮！”`,
+		`“我卖的商品来自可能根本就不存在的地方！”`,
+		`“你想要两文钱！？一文钱就成交。”`,
+		`“既能抽水烟，也能煮咖啡！还能炸切丝薯条！”`,
+		`“看一看，瞧一瞧！一斤重的鱼！新鲜味美！一斤重的鱼！”`,
+		`“如果你是在找垃圾，那就来错地方了。”`,
+		`“旧货店？不，我只卖市场上的尖货。”`,
+		`“来码头整点薯条！你没带吗？”`,
 	].random()>>
 <</addinlineevent>>
 <<if $guide_intro>>
 	<<addinlineevent "guide" 0.25>>
-		"向导学识渊博，但他绝对猜不到我是从哪里进货的。"
+		“向导学识渊博，但他绝对猜不到我是从哪里进货的。”
 	<</addinlineevent>>
 <</if>>
 <<if $fishing_anglerintro>>
 	<<addinlineevent "angler" 0.25>>
-		"我保证，我带来的异域美食，比渔夫整天抱着的那几条鱼更美味。"
+		“我保证，我带来的异域美食，比渔夫整天抱着的那几条鱼更美味。”
 	<</addinlineevent>>
 <</if>>
 <<if $wrenSeen isnot undefined>>
 	<<addinlineevent "Wren" 0.25>>
-		"某种意义上来说，我和走私者的工作是相通的...没什么。"
+		“某种意义上来说，我和走私者的工作是相通的……没什么。”
 	<</addinlineevent>>
 <</if>>
 <<runeventpool>><br>
@@ -54,7 +54,7 @@
 				<<break>>
 			<</if>>
 		<</for>>
-		<<if _t gte 998>><!-- 为了避免超出1000次的限制bruh -->
+		<<if _t gte 998>><!-- 为了避免超出1000次的限制 bruh -->
 			<<set $traveling_merchant_shop_list to _allGoodsList.randomMany(_traveling_merchant_shop_slot - 1)>>
 			<<break>>
 		<</if>>
@@ -120,7 +120,7 @@
 								<</link>>
 							<<else>>
 								<<link "购买">>
-									<<set _purchase_info to ["\"很好，成交！...什么？你根本就没有这么多钱！\"","\"你很有眼光...但你下次能不能先看清你身上到底有多少钱？\"","\"我这里不接受赊账！\""].random()>>
+									<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
 									<<replace #travelingMerchantShop>>
 										<<travelingMerchantShop>>
 									<</replace>>
@@ -156,7 +156,7 @@
 					<</link>>
 				<<else>>
 					<<link "购买">>
-						<<set _purchase_info to ["\"很好，成交！...什么？你根本就没有这么多钱！\"","\"你很有眼光...但你下次能不能先看清你身上到底有多少钱？\"","\"我这里不接受赊账！\""].random()>>
+						<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
 						<<replace #travelingMerchantShop>>
 							<<travelingMerchantShop>>
 						<</replace>>

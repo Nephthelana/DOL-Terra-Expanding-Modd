@@ -5,7 +5,7 @@
 		<<addinlineevent "terra_halloween_crow" 0.5>>
 			你感觉到黑夜中，树丛里有双眼睛在盯着你。<br>
 			<br>
-			那个方向传来奇怪的叫声：<i>"永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。"</i><<gstress>><<stress 5>><<terraHint>><br>
+			那个方向传来奇怪的叫声：<i>“永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。”</i><<gstress>><<stress 5>><<terraHint>><br>
 			<br>
 			它扑扇了几下翅膀——只是一只乌鸦。<br>
 			<br>
@@ -20,7 +20,7 @@
 	<<if ($options.terra_halloween is "alwaysTrue" or ($options.terra_halloween is "onlyHalloween" and $halloween)) and random(1,5) is 1>>
 		你感觉到树丛里有双眼睛在盯着你。<br>
 		<br>
-		那个方向传来奇怪的叫声：<i>"永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。"</i><<gstress>><<stress 5>><<terraHint>><br>
+		那个方向传来奇怪的叫声：<i>“永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。永不复焉。”</i><<gstress>><<stress 5>><<terraHint>><br>
 		<br>
 		它扑扇了几下翅膀——只是一只乌鸦。<br>
 		<br>

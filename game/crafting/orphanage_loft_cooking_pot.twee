@@ -39,48 +39,44 @@
 <<run initializeTooltips()>>
 
 <span class="no-numberify">
-<<set _recipe_list to getAllRecipeList()>>
+<<set _recipe_list to getAllRecipeList().filter(r => setup.terraRecipe[r].required_crafting_station === "Cooking_Pot")>>
 <<set _recipe_avalible to false>>
 <div class="itemTerra">
-	<<for _t to 0; _t lt _recipe_list.length; _t++>>
-		<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
-		<<if _recipe.required_crafting_station is "Cooking_Pot">>
-			<<capture _recipe>>
-				_recipe.craftable
-				<<if _craftable>>
-					<<set _recipe_avalible to true>>
-					<div class="item">
-						<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-							<div class="itemTerraGeneral">
-								<<icon `_recipe.icon`>>
-							</div>
-						</div>
-						<hr>
-						<mouse class="tooltip">
-							配方
-							<span>
-								_recipe.required_material_info
-							</span>
-						</mouse>
-						<hr>
-						<<link "制作">>
-							_recipe.craft
-							<<set $crafting_count.Cooking_Pot += 1>>
-							<<if _recipe.type is "food">>
-								<<housekeeping 1 1000>>
-							<</if>>
-							<<set _crafted_info to _recipe.crafting_info>>
-							<<replace #crafting_orphanage_loft_cooking_pot_info>>
-								<<crafting_orphanage_loft_cooking_pot_info>>
-							<</replace>>
-							<<replace #crafting_orphanage_loft_cooking_pot>>
-								<<crafting_orphanage_loft_cooking_pot>>
-							<</replace>>
-						<</link>>
+	<<for _r range _recipe_list>>
+		<<set _recipe to setup.terraRecipe[_r]>>
+		<<capture _recipe>>
+			_recipe.craftable
+			<<if _craftable>>
+				<<set _recipe_avalible to true>>
+				<div class="item">
+					<div class="itemTerraGeneral" @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+						<<icon `_recipe.icon`>>
 					</div>
-				<</if>>
-			<</capture>>
-		<</if>>
+					<hr>
+					<mouse class="tooltip">
+						配方
+						<span>
+							_recipe.required_material_info
+						</span>
+					</mouse>
+					<hr>
+					<<link "制作">>
+						_recipe.craft
+						<<set $crafting_count.Cooking_Pot += 1>>
+						<<if _recipe.type is "food">>
+							<<housekeeping 1 1000>>
+						<</if>>
+						<<set _crafted_info to _recipe.crafting_info>>
+						<<replace #crafting_orphanage_loft_cooking_pot_info>>
+							<<crafting_orphanage_loft_cooking_pot_info>>
+						<</replace>>
+						<<replace #crafting_orphanage_loft_cooking_pot>>
+							<<crafting_orphanage_loft_cooking_pot>>
+						<</replace>>
+					<</link>>
+				</div>
+			<</if>>
+		<</capture>>
 	<</for>>
 </div>
 <<if !_recipe_avalible>>

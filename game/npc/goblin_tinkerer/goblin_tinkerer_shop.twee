@@ -44,7 +44,7 @@
 
 :: Goblin Tinkerer Workshop
 <<set $orphanage_loft_crafting_station.pushUnique("Tinkerers_Workshop")>>
-"这个作坊上的工具应有尽有。在这上面可以将一些饰品组合在一起，而不影响它们原本的功能。"<br>
+“这个作坊上的工具应有尽有。在这上面可以将一些饰品组合在一起，而不影响它们原本的功能。”<br>
 <br>
 <span class="gold">你购买了<<icon "furniture_item/Tinkerers_Workshop.png">>工匠作坊。你可以在孤儿院的阁楼使用它。</span><br>
 <br>
@@ -53,7 +53,7 @@
 :: Goblin Tinkerer Warmth Potion
 <<set $Warmth_Potion += 1>>
 <<set $daily.Warmth_Potion_purchase to true>>
-"喝下它，你就可以在寒冷的冬夜里裸奔！...额，我只是强调它的保暖效果，并不是叫你这么去做。"<br>
+“喝下它，你就可以在寒冷的冬夜里裸奔！...额，我只是强调它的保暖效果，并不是叫你这么去做。”<br>
 <br>
 <span class="gold">你购买了<<icon "potions/Warmth_Potion.png">>保温药水(1)。</span>你现在有保温药水($Warmth_Potion)。<br>
 <br>

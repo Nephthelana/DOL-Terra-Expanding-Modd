@@ -1,12 +1,12 @@
 :: Guide Mod Hint Crafting
-"身上有材料却不知道用它们做些什么？那你算是问对人了！<br>
+“身上有材料却不知道用它们做些什么？那你算是问对人了！<br>
 <br>
-"如果物品描述中被标记为'<i>材料</i>'，说明它可以用于制作物品——而我能告诉你它可以用来做什么。
+“如果物品描述中被标记为'<i>材料</i>'，说明它可以用于制作物品——而我能告诉你它可以用来做什么。
 <<if !$orphanage_loft_crafting_station.includes("Work_Bench")>>
 	<br><br>
-	"另外，如果你找不到<<icon "furniture_item/Work_Bench.png">>工作台，它可能藏在阁楼的一个角落，需要你用足够的<span class="gold">家务技能</span>来找到它。
+	”另外，如果你找不到<<icon "furniture_item/Work_Bench.png">>工作台，它可能藏在阁楼的一个角落，需要你用足够的<span class="gold">家务技能</span>来找到它。
 <</if>>
-"<br>
+”<br>
 <br>
 <span id="guide_mod_hint_recipe">
 	<<guide_mod_hint_recipe>>
@@ -19,10 +19,10 @@
 
 <<run initializeTooltips()>>
 <<if getMaterialObtainedList().length lte 0 and $debug is 0>>
-	"<span class="blue">看起来你身上没有符合条件的物品。</span>"<br>
+	“<span class="blue">看起来你身上没有符合条件的物品。</span>”<br>
 <<else>>
 	<<set _materialObtained to $debug is 1 ? getAllMaterialList() : getMaterialObtainedList()>>
-	"<span class="teal">在材料列表中点击⬇来选择你要询问的材料。</span>"
+	“<span class="teal">在材料列表中点击⬇来选择你要询问的材料。</span>”
 	<div class="no-numberify">
 		<details class="journal">
 			<summary class="journal">材料列表<<print $debug is 1 ? "（[DEBUG模式]你可以查看模组内所有的合成配方）" : "">></summary>

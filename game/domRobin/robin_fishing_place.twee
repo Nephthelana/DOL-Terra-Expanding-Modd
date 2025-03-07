@@ -3,41 +3,41 @@
 <<cleareventpool>>
 <<addinlineevent "daily" 1>>
 	<<if $speech_attitude is "meek">>
-		"你想去钓鱼吗？"你问道。
+		“你想去钓鱼吗？”你问道。
 	<<elseif $speech_attitude is "bratty">>
-		"让我们一起去钓鱼吧！"你这样说道。
+		“让我们一起去钓鱼吧！”你这样说道。
 	<<else>>
-		"想去钓鱼么？"你问道。
+		“想去钓鱼么？”你问道。
 	<</if>><br>
 <</addinlineevent>>
 <<if Weather.name is "lightPrecipitation">>
 	<<addinlineevent "lightPrecipitation" 2>>
-		"现在外面有一点雨，正是钓鱼的好时机。"你提议道。<br>
+		“现在外面有一点雨，正是钓鱼的好时机。”你提议道。<br>
 	<</addinlineevent>>
 <</if>>
 <<if Weather.name is "heavyPrecipitation">>
 	<<addinlineevent "heavyPrecipitation" 2>>
-		"外面大雨倾盆，鱼儿们喜欢这时候到水面上换气。要去钓鱼吗？"你提议道。<br>
+		“外面大雨倾盆，鱼儿们喜欢这时候到水面上换气。要去钓鱼吗？”你提议道。<br>
 	<</addinlineevent>>
 <</if>>
 <<runeventpool>>
 <br>
 <<if Time.hour lt 12 and (Time.schoolDay or Time.isWeekEnd())>>
 	<<effects>>
-	<<His>>的眼神一下子亮了起来，但<<he>>看了看墙上的时钟，然后惋惜地说："抱歉，我需要尽快做好准备。晚上我应该没问题。"<br>
+	<<His>>的眼神一下子亮了起来，但<<he>>看了看墙上的时钟，然后惋惜地说：“抱歉，我需要尽快做好准备。晚上我应该没问题。”<br>
 	<br>
 	<<robinoptions>>
 <<else>>
-	/* 选择钓鱼地点。pc解锁对应钓鱼点后，才能一起去指定位置一起钓鱼。在一起去某个地方钓过鱼之前，“让罗宾来选”的选项不会随机到该钓鱼点 */
+	<!-- 选择钓鱼地点。pc解锁对应钓鱼点后，才能一起去指定位置一起钓鱼。在一起去某个地方钓过鱼之前，“让罗宾来选”的选项不会随机到该钓鱼点 -->
 	<<effects>>
-	罗宾开始收拾渔具，"我白天都在想这件事呢！让我整理一下～"<br>
+	罗宾开始收拾渔具，“我白天都在想这件事呢！让我整理一下～”<br>
 	<br>
-	/* 受dom罗宾拓展的摄影剧情启发，此处如果pc身上没有装备雨具，罗宾会送给pc一个。如果罗宾都买不起就送斗笠 */
+	<!-- 受dom罗宾拓展的摄影剧情启发，此处如果pc身上没有装备雨具，罗宾会送给pc一个。如果罗宾都买不起就送斗笠 -->
 	<<if (Weather.name is "lightPrecipitation" or Weather.name is "heavyPrecipitation") and !($worn.head.type.includes("rainproof") or $worn.handheld.type.includes("rainproof"))>>
-		/* 生成百货店雨具清单 */
+		<!-- 生成百货店雨具清单 -->
 		<<set _rainproofHeadList = setup.clothes["head"].filter(x => x.shop.includes("clothing") && x.type.includes("rainproof"))>>
 		<<set _rainproofHandheldList = setup.clothes["handheld"].filter(x => x.shop.includes("clothing") && x.type.includes("rainproof"))>>
-		/* 生成罗宾可购买的雨具列表 */
+		<!-- 生成罗宾可购买的雨具列表 -->
 		<<set _robinCouldAffordList to []>>
 		<<for _i to 0; _i lt _rainproofHeadList.length; _i++>>
 			<<set _cost to getClothingCost(_rainproofHeadList[_i], "head")>>
@@ -51,7 +51,7 @@
 				<<set _robinCouldAffordList.pushUnique(_rainproofHandheldList[_i])>>
 			<</if>>
 		<</for>>
-		/* 若可购买的雨具列表为空，则赠送斗笠。穿上雨具 */
+		<!-- 若可购买的雨具列表为空，则赠送斗笠。穿上雨具 -->
 		<<if _robinCouldAffordList.length is 0>>
 			<<set _chosen to _rainproofHeadList[2]>>
 			<<generalWear "head" _chosen.index>>

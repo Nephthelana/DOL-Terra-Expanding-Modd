@@ -27,16 +27,10 @@
 	小时内的天气为：<br>
 	<div class="itemTerra">
 		<<for _w=1; _w lte $weather_forecast_hours; _w++>>
-			<<switch weatherInAnHour(T.w).name>>
-				<<case "clear">><<set _weather_icon to "clear_icon.png">><<set _weather_cn_name to "晴天">>
-				<<case "lightClouds">><<set _weather_icon to "lightClouds_icon.png">><<set _weather_cn_name to "有云">>
-				<<case "heavyClouds">><<set _weather_icon to "heavyClouds_icon.png">><<set _weather_cn_name to "多云">>
-				<<case "lightPrecipitation">><<set _weather_icon to "lightPrecipitation_icon.png">><<set _weather_cn_name to "小雨">>
-				<<case "heavyPrecipitation">><<set _weather_icon to "heavyPrecipitation_icon.png">><<set _weather_cn_name to "大雨">>
-			<</switch>>
+			<<set _wfn to weatherInAnHour(T.w).name>>
 			<div class="item">
-				<div class="itemTerraGeneral" @tooltip="_weather_cn_name">
-					<<icon `_weather_icon`>>
+				<div class="itemTerraGeneral" @tooltip='_wfn.replace("clear","晴天").replace("lightClouds","有云").replace("heavyClouds","多云").replace("lightPrecipitation","小雨").replace("heavyPrecipitation","大雨")'>
+					<<icon `_wfn + "_icon.png"`>>
 				</div>
 				<hr>
 				<<set _hour to (Time.hour + _w) gte 24 ? (Time.hour + _w -24) : (Time.hour + _w)>>

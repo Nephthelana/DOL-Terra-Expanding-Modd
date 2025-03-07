@@ -3,7 +3,7 @@
 	<<run initializeTooltips()>>
 	<<set $options.terraTransportLimit to $options.terraTransportLimit is undefined ? 1 : $options.terraTransportLimit>>
 	<<if getToolObtained().length gt 0 or $debug is 1>>
-		<span class="gold bold">工具</span><mouse class="tooltip linkBlue">(?)<span>部分工具可以主动使用，它们下方会显示蓝色链接字可供使用，或显示暂时不可用的原因；<br>另一部分工具只能在特定场景中使用，或是还未实装，它们下方会显示黑白的"不可用"字样；<br>传送类工具的每日允许使用次数，可在 <i>选项</i>-<i>模组设置</i> 中的 <i>传送工具每日使用次数</i> 选项进行调整。</span></mouse><br>
+		<span class="gold bold">工具</span><mouse class="tooltip linkBlue">(?)<span>部分工具可以主动使用，它们下方会显示蓝色链接字可供使用，或显示暂时不可用的原因；<br>另一部分工具只能在特定场景中使用，或是还未实装，它们下方会显示黑白的“不可用”字样；<br>传送类工具的每日允许使用次数，可在 <i>选项</i>-<i>模组设置</i> 中的 <i>传送工具每日使用次数</i> 选项进行调整。</span></mouse><br>
 		<<print $debug is 1 ? "[DEBUG模式]你可以查看并使用全部的工具<br>" : "">>
 		<<set _toolObtainedList to $debug is 1 ? getAllToolList() : getToolObtained()>>
 		<div class="itemTerra_Tool">
@@ -272,7 +272,6 @@
 			if (V.worn[slot].name === 'naked') return;
 			const wetnessProp = slot.replace('_', '') + 'wet';
 			V[wetnessProp + 'stage'] = 0;
-			cheatsUpdateSlider(`#numberslider-input-${wetnessProp}`, V[wetnessProp]);
 		})>>
 		<<updatesidebarimg>>
 		<<replace #hint_item_use>>

@@ -1,20 +1,23 @@
 :: Robin Forest Bait Clear [widget]
 <<widget "robin_forest_bait_clear">>
 
-<br>
-你注意到附近的花丛正在开放。<br>
-<<link [[靠近|Robin Forest Bait Clear Catch]]>><</link>>
+<<if $fishing_request_robin.length gte 5 and random(1,5) lte 4>>
+	<br>
+	你注意到附近的花丛正在开放。<br>
+	<<link [[靠近|Robin Forest Bait Clear Catch]]>><</link>>
+<</if>>
 
 <</widget>>
 
 :: Robin Forest Bait Clear Catch
-/* 判断孤儿院内是否有种花 */
+<!-- 判断孤儿院内是否有种花 -->
 <<garden_flower_exist>>
 <<npc Robin>><<person1>>
-/* 非雨天、非大风天抓蝴蝶(此处待补充非晴天抓蚂蚱) */
+<!-- 非雨天、非大风天抓蝴蝶(此处待补充非晴天抓蚂蚱) -->
+<!-- 嘶 到底要不要加个抓蚂蚱？ -->
 你的目光停留在一片灌木的缝隙中，那里时不时有阵风吹来，似乎有什么东西藏在后面。你指着那个方向，告诉罗宾你想过去看看。<br>
 <br>
-"好呀，说不定能找到上次丢的篮子呢！"罗宾笑了起来。<br>
+“好呀，说不定能找到上次丢的篮子呢！”罗宾笑了起来。<br>
 <br>
 <<if $robinromance is 1>>
 	你牵起罗宾的手，<<takeHandholdingVirginity "Robin" "romantic">>
@@ -24,9 +27,9 @@
 一起向那片灌木丛走去。来到那条缝隙前，你开始闻到一股清甜的花香，这让你感到很放松。<<lstress>><<stress -3>><br>
 <br>
 <<if _garden_flower_exist>>
-	"我们在花园里种的更好，但这里的花也很香！"罗宾的脸上充满了惊喜的表情。
+	“我们在花园里种的更好，但这里的花也很香！”罗宾的脸上充满了惊喜的表情。
 <<else>>
-	"好香啊！我们可以在花园里种一些吗？"罗宾的脸上充满了期待的表情。
+	“好香啊！我们可以在花园里种一些吗？”罗宾的脸上充满了期待的表情。
 <</if>><br>
 <br>
 你小心地拨开灌木，映入眼帘的是一片花海。罗宾在你身边惊呼起来，你也很惊讶自己竟然从没发现森林里有这样的迷人风景。<br>
@@ -35,7 +38,7 @@
 <br>
 你听见罗宾正在追逐什么，<<he>>笑得很开心。你发现<<He>>在抓一只蝴蝶。<br>
 <br>
-<<if $Golden_Bug_Net isnot true and $Bug_Net isnot true>>
+<<if $Golden_Bug_Net isnot true and $Lavaproof_Bug_Net isnot true and $Bug_Net isnot true>>
 	<span class="blue">你需要一个工具来安全地捕捉小动物。一个住在森林，且喜爱昆虫的人应该有办法。</span><br>
 <<else>>
 	<<set _butterfly_list to [
@@ -49,17 +52,10 @@
 		"Purple_Emperor_Butterfly",
 		"Tree_Nymph_Butterfly"
 	]>>
-	<<set _caught to {
-		Gold_Butterfly: 0,
-		Monarch_Butterfly: 0,
-		Sulphur_Butterfly: 0,
-		Zebra_Swallowtail_Butterfly: 0,
-		Ulysses_Butterfly: 0,
-		Julia_Butterfly: 0,
-		Red_Admiral_Butterfly: 0,
-		Purple_Emperor_Butterfly: 0,
-		Tree_Nymph_Butterfly: 0,
-	}>>
+	<<set _caught to {}>>
+	<<for _bf range _butterfly_list>>
+		<<set _caught[_bf] to 0>>
+	<</for>>
 	<<set _bait to random(2,3)>>
 	<<for _i to 1; _i lt _bait; _i++>>
 		<<if random(1,400) is 1>>
@@ -84,16 +80,15 @@
 	<<for _butterfly range Object.keys(_caught).filter(bf => T.caught[bf] > 0)>>
 		<<set _butterflyInfo to setup.terraBait[_butterfly]>>
 		<<set V[_butterflyInfo.name] += _caught[_butterflyInfo.name]>>
-		<<set $bestiary_bait_list.pushUnique(_butterflyInfo.name)>>
-		<<set $bestiary_bait_catch_count[_butterflyInfo.name] += _caught[_butterflyInfo.name]>>
+		<<bestiaryStatistics "bait" _butterflyInfo.name _caught[_butterflyInfo.name]>>
 		<<icon `_butterflyInfo.icon`>><<print T.caught[_butterflyInfo.name]>>_butterflyInfo.cn_name<br>
 	<</for>>
 	<br>
-	"你真的抓到它们了！"罗宾跑得上气不接下气，但看起来很快乐。<br>
+	“你真的抓到它们了！”罗宾跑得上气不接下气，但看起来很快乐。<br>
 	<br>
 	你小心地将抓到的蝴蝶一一展示给罗宾看。<br>
 	<br>
-	"或许你只要招招手，蝴蝶就会自己飞过来了，"罗宾红着脸，"我是说，你站在这片花里的样子真的很漂亮。"<br>
+	“或许你只要招招手，蝴蝶就会自己飞过来了，”罗宾红着脸，“我是说，你站在这片花里的样子真的很漂亮。”<br>
 <</if>>
 <br>
 你们一起回到孤儿院。

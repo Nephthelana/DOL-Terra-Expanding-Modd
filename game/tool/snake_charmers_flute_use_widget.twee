@@ -33,7 +33,7 @@
 					<<case "rain">>
 						你置身于猩红的大潮中，无处可逃。
 					<<case "snow">>
-						地面...结痂...天空...谋杀...
+						地面……结痂……天空……谋杀……
 				<</switch>>
 		<</switch>>
 		你隐约能意识到这是血月天塔柱带来的效果。
@@ -49,7 +49,7 @@
 					<<case "rain">>
 						你置身于猩红的大潮中，无处可逃。
 					<<case "snow">>
-						地面...结痂...天空...谋杀...
+						地面……结痂……天空……谋杀……
 				<</switch>>
 		<</switch>>
 		<<exit>>
@@ -58,7 +58,7 @@
 		<<case "clear">>
 			<<switch Time.season>>
 				<<case "spring">>
-					<<if Time.state is "night">>
+					<<if Time.dayState is "night">>
 						<<print [
 							"小镇在你脚下，神殿的钟楼刺破夜空，使你能够判断方向。",
 							"小镇上只有零落的灯光，你隐约听到最后一班轮船的汽笛声从码头传来。"
@@ -70,7 +70,7 @@
 						].random()>>
 					<</if>>
 				<<case "summer">>
-					<<if Time.state is "night">>
+					<<if Time.dayState is "night">>
 						<<print [
 							"空中远离酷暑和热浪，你倍感舒适。",
 							"今晚星空璀璨，令人陶醉。"
@@ -82,7 +82,7 @@
 						].random()>>
 					<</if>>
 				<<case "autumn">>
-					<<if Time.state is "night">>
+					<<if Time.dayState is "night">>
 						<<print [
 							"这里和地面的温差很大，你不禁打了个哆嗦。",
 							"夜空清朗，月光明亮，你能看清地面的细节。"
@@ -94,7 +94,7 @@
 						].random()>>
 					<</if>>
 				<<case "winter">>
-					<<if Time.state is "night">>
+					<<if Time.dayState is "night">>
 						<<print [
 							"小镇在你脚下，一个个覆雪的屋顶就像糖霜饼干。",
 							"你不由地蜷起身子，这里真的很冷，你在夜空下努力辨认着方向。"
@@ -114,7 +114,7 @@
 						"小镇在你脚下，云雾让你看不清地表，耳边只有呼啸的风。"
 					].random()>>
 				<<case "summer">>
-					<<if Time.state is "night">>
+					<<if Time.dayState is "night">>
 						<<print [
 							"你身处高空的云雾之中，伸手不见五指。细雨打在你的皮肤上，似乎有虫子爬过",
 							"周围一片漆黑，雨水包围着你，脚下小镇的灯火在沉闷的风声中失真。"
@@ -126,7 +126,7 @@
 						].random()>>
 					<</if>>
 				<<case "winter">>
-					<<if Time.state is "night">>
+					<<if Time.dayState is "night">>
 						<<print [
 							"你在蛇绳的顶端颤抖着，寒风宛如刀割。你努力辨认方向，只想快点离开。",
 							"这里太冷也太黑了！你几乎感觉不到你的四肢，甚至分辨不了上下。"
@@ -143,7 +143,7 @@
 				<<case "rain">>
 					<<switch Time.season>>
 						<<case "spring" "autumn">>
-							<<if Time.state is "night">>
+							<<if Time.dayState is "night">>
 								<<print [
 									"雨水从四面八方袭来，你无处可躲，你紧抓着蛇绳，尝试在雨云中稳住自己。",
 									"你进入可怖的黑暗之中，纷乱的雨滴审视着你的内心，雷鸣和闪电传达它的宣判。"
@@ -155,7 +155,7 @@
 								].random()>>
 							<</if>>
 						<<case "summer">>
-							<<if Time.state is "night">>
+							<<if Time.dayState is "night">>
 								<<print [
 									"你好像在一个瀑布底下，你怀疑自己接下来要做的并不是飞翔，而是游泳。",
 									"你觉得自己好像被丢进了一台洗衣机，四周黑暗、潮湿，狂躁的气流裹挟着水滴和碎冰，你感到呼吸困难。"
@@ -167,7 +167,7 @@
 								].random()>>
 							<</if>>
 						<<case "winter">>
-							<<if Time.state is "night">>
+							<<if Time.dayState is "night">>
 								<<print [
 									"这里太冷也太黑了！你的身体在暴风雪中瑟瑟发抖，你几乎感觉不到你的四肢，甚至分辨不了上下。",
 									"你觉得自己好像被丢进了一台洗衣机：四周黑暗、潮湿、寒冷，狂躁的气流裹挟着水滴和碎冰。你感到呼吸困难。"
@@ -182,7 +182,7 @@
 				<<case "snow">>
 					<<switch Time.season>>
 						<<case "spring">>
-							<<if Time.state is "night">>
+							<<if Time.dayState is "night">>
 								<<print [
 									"这里太冷也太黑了！你的身体在暴风雪中瑟瑟发抖，你几乎感觉不到你的四肢，甚至分辨不了上下。",
 									"你在蛇绳的顶端颤抖着，寒风宛如刀割。你努力辨认方向，只想快点离开。"
@@ -194,11 +194,11 @@
 								].random()>>
 							<</if>>
 						<<case "summer">>
-							这个季节下雨雪实在是太罕见了...但愿不是发生了什么千古奇冤。<<print Time.state is "night" ? "" : "不过这场雪确实驱散了夏日的燥热。">>
+							这个季节下雨雪实在是太罕见了……但愿不是发生了什么千古奇冤。<<print Time.dayState is "night" ? "" : "不过这场雪确实驱散了夏日的燥热。">>
 						<<case "autumn">>
 							今年的雪，比以往来的更早一些。好在现在不算太冷。
 						<<case "winter">>
-							<<if Time.state is "night">>
+							<<if Time.dayState is "night">>
 								<<print [
 									"你什么都看不见！只能无助地低头躲避横冲直撞的冷水、碎冰和寒流，现在最要紧的是在你窒息之前离开这里！",
 									"在如此恶劣的天气进入高空真的不是什么好主意，但你幸运地毫发无伤地穿过了正在降雪的云层。虽然四周很冷，但你依然能比较从容地决定接下来要去的地方。"

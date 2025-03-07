@@ -1,38 +1,36 @@
-/*"树妖"*/
+<!-- "树妖" -->
 :: World Corruption Ask
-"你想知道现在世界的腐化度？"约旦说着，将一些绿色的叶片放在了一个古怪的祭坛上。它们发出了绿光，并排布成数个圆环缓慢的旋转着，你能感到这股力量的温暖。约旦仔细地端详着其中的符号，然后转身看向了你。"
-<br><br>
-"现在世界中$world_corruption_soft%为腐化之地，腐化扩散的速度是$world_corruption_hard倍。
-<<if $world_corruption_soft is 0>>
-	<<if $world_corruption_hard is 0>>	
-		<span class="green">我们生活在童话之中。</span>"
-	<<else>>
-		<span class="teal">世界已完全变得纯净。干得漂亮！</span>"
-	<</if>>
-<<elseif $world_corruption_soft lte 25>>
-	<<if $world_corruption_hard is 0>>
-		<span class="teal">世界处于平衡状态，你做的很好。</span>"
-	<<elseif $world_corruption_hard lte 3>>
-		<span class="blue">你就要成功了！</span>"
-	<<else>>
-		<span class="purple">你做的很好，但还需要加以控制。</span>"
-	<</if>>
-<<else>>
-	<<if $world_corruption_hard is 0>>
-		<span class="blue">世界处于平衡状态,但你还能做的更好。</span>"
-	<<elseif $world_corruption_hard lte 3>>
-		<span class="purple">情况确实严峻...</span>"
-	<<else>>
-		<span class="red">你有许多工作要做</span><span class="teal">...环境改造枪？这是什么东西？</span>"
-	<</if>>
-<</if>>
-<br><br>	
-<<endevent>>
-<<link [[继续|Temple Jordan]]>><</link>>
-
 <<if $world_corruption_soft lte 0 and Time.days gt 7>>
 	<<earnFeat "And Good Riddance ...?">>
 <</if>>
 <<if $world_corruption_soft gte 100>>
 	<<earnFeat "It's All Up">>
 <</if>>
+“你想知道现在世界的腐化度？”约旦说着，将一些绿色的叶片放在了一个古怪的祭坛上。它们发出了绿光，并排布成数个圆环缓慢的旋转着，你能感到这股力量的温暖。约旦仔细地端详着其中的符号，然后转身看向了你。<br>
+<br>
+“现在世界中$world_corruption_soft%为腐化之地，腐化扩散的速度是$world_corruption_hard倍。
+<<if $world_corruption_soft is 0>>
+	<<if $world_corruption_hard is 0>>	
+		<span class="green">我们生活在童话之中。</span>
+	<<else>>
+		<span class="teal">世界已完全变得纯净。干得漂亮！</span>
+	<</if>>
+<<elseif $world_corruption_soft lte 25>>
+	<<if $world_corruption_hard is 0>>
+		<span class="teal">世界处于平衡状态，你做的很好。</span>
+	<<elseif $world_corruption_hard lte 3>>
+		<span class="blue">你就要成功了！</span>
+	<<else>>
+		<span class="purple">你做的很好，但还需要加以控制。</span>
+	<</if>>
+<<else>>
+	<<if $world_corruption_hard is 0>>
+		<span class="blue">世界处于平衡状态,但你还能做的更好。</span>
+	<<elseif $world_corruption_hard lte 3>>
+		<span class="purple">情况确实严峻……</span>
+	<<else>>
+		<span class="red">你有许多工作要做</span><span class="teal">……环境改造枪？这是什么东西？</span>
+	<</if>>
+<</if>>”<br>
+<br>
+<<link [[继续|Temple Jordan]]>><</link>>

@@ -1,4 +1,4 @@
-function bestiaryInfo (arr, element, parentId, childId) {
+function bestiaryInfo(arr, element, parentId, childId) {
 	if (T.lastInsertedRow) {
 		T.lastInsertedRow.remove();
 		delete T.lastInsertedRow;
@@ -11,7 +11,7 @@ function bestiaryInfo (arr, element, parentId, childId) {
 }
 window.bestiaryInfo = bestiaryInfo;
 
-function addNewRow (arr, element, parentId, childId) {
+function addNewRow(arr, element, parentId, childId) {
 	//计算点击元素所在的行row，以及当前表格列数columnCount，得到该行的最后一位元素位置nextRowPosition
 	for (var i = 0; i < arr.length; i++) {
         if (arr[i] === element) {
@@ -21,7 +21,7 @@ function addNewRow (arr, element, parentId, childId) {
 	const parentWidth = document.getElementById(parentId).getBoundingClientRect().width;
 	const parentGap = parseInt(window.getComputedStyle(document.getElementById(parentId)).getPropertyValue('gap')) * V.options.zoom / 100;
 	const childWidth = document.getElementById(childId).getBoundingClientRect().width;
-	const columnCount = Math.floor(((parentWidth - 8 * 2) - childWidth) / (parentGap + childWidth) + 1);//计算当前表格列数。固定padding为8，gap为5
+	const columnCount = Math.floor((parentWidth - childWidth) / (parentGap + childWidth) + 1);//计算当前表格列数。固定padding为8，gap为5
 	const row = Math.floor(index / columnCount) + 1;
 	const nextRowPosition = row * columnCount;
 	//在nextRowPosition后插入新行newRow
@@ -35,3 +35,11 @@ function addNewRow (arr, element, parentId, childId) {
 	T.lastInsertedRow = newRow;// 更新最后插入的行内容
 }
 window.addNewRow = addNewRow;
+
+// 图鉴数据统计
+function bestiaryStatistics(type,item,amount) {
+	V.bestiary[type][item] = V.bestiary[type][item] || {};
+	V.bestiary[type][item].catch_count = (V.bestiary[type][item].catch_count + amount) || amount;
+}
+window.bestiaryStatistics = bestiaryStatistics;
+DefineMacro("bestiaryStatistics", bestiaryStatistics);

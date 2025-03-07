@@ -13,7 +13,7 @@ function getFishingPower() {
 				FP += 5;
 	});
 	// 使用钓鱼药水提供15渔力
-	if (V.Fishing_Potion_countdown > 0)
+	if (V.Fishing_Potion_countdown)
 		FP += 15;
 	// 醉酒状态提供5渔力
 	if (V.drunk > 0)
@@ -30,9 +30,12 @@ function getFishingPower() {
 	// 装备防熔岩渔具袋提供10渔力
 	if (V.terra_accessories_slots.includes("Lavaproof_Tackle_Bag"))
 		FP += 10;
+	// 装备万能渔具包提供共60渔力
+	if (V.terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station"))
+		FP += 60;
 	// 装备浮游圈提供5渔力
 	if (V.terra_accessories_slots.includes("Inner_Tube"))
-		FP += 10;
+		FP += 5;
 	// 装备附魔珍珠提供10渔力
 	if (V.terra_accessories_slots.includes("Enchanted_Pearl"))
 		FP += 10;
@@ -71,7 +74,7 @@ window.getFishingPower = getFishingPower;
 
 // 计算咬钩所需时间，并生成此次抛竿的渔获
 /*
-	由于熔岩钓鱼时，有可能出现判定得到的钓鱼品位不存在对应渔获的情况，需进入重新计时。具体解释如下：
+	由于熔岩钓鱼时，有可能出现判定得到的钓鱼品位不存在对应渔获（V.fishing_harvest === undefined）的情况，需进入重新计时。具体解释如下：
 
 	当次抛竿后，咬钩计数器从0开始计数，达到660时，若检定通过，尝试生成此次渔获；若检定失败，则进行新一轮的咬钩计数器(该检定通过概率与渔力高低有关)。
 	如果在熔岩钓鱼，渔获就有可能生成失败(即判定得到的钓鱼品位不存在对应渔获)，此时也进入新一轮的咬钩计数器。
@@ -113,7 +116,7 @@ window.fishingCastTime = fishingCastTime;
 function fishingCastCounterReset() {
 	if (["trash","lava"].includes(V.fishing_place)) {
 		let lavaproof = 0;
-		lavaproof += V.terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag") ? 1 : 0;
+		lavaproof += V.terra_accessories_slots.includesAny("Lavaproof_Fishing_Hook","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") ? 1 : 0;
 		lavaproof += ["Lavafly","Magma_Snail","Hell_Butterfly"].includes(V.Bait) ? 1 : 0;
 		lavaproof += ["Hotline_Fishing_Hook","Slurper_Pole"].includes(V.options.fishingrod_held) ? 1 : 0;
 		if (lavaproof >= 2)
@@ -139,7 +142,7 @@ function fishingHarvestPre() {
 	}
 
 	// 血月期间有1/6概率钓到敌怪
-	if (Time.isBloodMoon() && V.fishing_place !== "lava") {
+	if (Time.isBloodMoon() && !["lava","honey"].includes(V.fishing_place)) {
 		let bloodMoonEnemyChance = V.options.fishingrod_held === "Chum_Caster" ? 3 : 6;
 		if (random(1,bloodMoonEnemyChance) === 1) {
 			switch (random(1,1)) { // 后续可能新增其他敌怪，起占位作用
@@ -217,7 +220,7 @@ function fishingHarvestPre() {
 
 	// "宝匣"判定通过概率，无药水10%，有宝匣药水增加15%，有附魔珍珠增加10%
 	let fishing_crate_chance = 10;
-	fishing_crate_chance += V.Crate_Potion_countdown > 0 ? 15 : 0;
+	fishing_crate_chance += V.Crate_Potion_countdown ? 15 : 0;
 	fishing_crate_chance += V.terra_accessories_slots.includes("Enchanted_Pearl") ? 10 : 0;
 	T.fishing_crate_chance = fishing_crate_chance;
 
@@ -309,6 +312,7 @@ function fishingHarvestPre() {
 				icon: "fishing/bait/Pink_Jellyfish_bait.png",
 			}
 			V.fishing_difficulty = 1;
+			V.fishing_harvest.bestiary_type = "bait";
 			return;
 		}
 	case "barb_street":
@@ -363,7 +367,7 @@ window.fishingHarvestPre = fishingHarvestPre;
 // 钓鱼小游戏初始化准备
 function fishingPrepare() {
 	V.fishing_distance = 50;
-	V.fishing_integrity = V.terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag") ? 5 : 3;
+	V.fishing_integrity = V.terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") ? 5 : 3;
 	V.fishing_distance_power = setup.terraFishingRod[V.options.fishingrod_held].fishing_distance_power;
 	V.fishingphase = 0;
 	V.fish_relax_count = 0;
@@ -376,7 +380,7 @@ function fishingHarvest() {
 	// 获得对应物品
 	switch (V.fishing_harvest.name) {
 	case "swim_underwear":
-		V.$panties_held += 1;
+		V.panties_held += 1;
 		break;
 	case "feathers":
 		V.bird.materials.feathers += 1;
@@ -396,23 +400,8 @@ function fishingHarvest() {
 			V[V.fishing_harvest.name] += 1;
 	}
 	// 图鉴数据统计
-	switch (V.fishing_harvest.bestiary_type) {
-	case "request_fish":
-		V.bestiary_request_fish_list.pushUnique(V.fishing_harvest.name);
-		V.bestiary_request_fish_catch_count[V.fishing_harvest.name] += 1;
-		break;
-	case "fish":
-		V.bestiary_fish_list.pushUnique(V.fishing_harvest.name);
-		V.bestiary_fish_catch_count[V.fishing_harvest.name] += 1;
-		break;
-	case "crate":
-		V.bestiary_crate_list.pushUnique(V.fishing_harvest.name);
-		V.bestiary_crate_catch_count[V.fishing_harvest.name] += 1;
-		break;
-	case "bait":
-		V.bestiary_bait_list.pushUnique(V.fishing_harvest.name);
-		V.bestiary_bait_catch_count[V.fishing_harvest.name] += 1;
-		break;
+	if (V.fishing_harvest.bestiary_type) {
+		bestiaryStatistics(V.fishing_harvest.bestiary_type, V.fishing_harvest.name, 1);
 	}
 }
 window.fishingHarvest = fishingHarvest;

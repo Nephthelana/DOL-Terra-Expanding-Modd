@@ -33,7 +33,7 @@
 		<<harvesticon>><<link [[飞向丰收街(酒吧) (0:01)|Harvest Street]]>><<pass 1>><</link>><br>
 		<br>
 		爬下去<br>
-		<<getouticon>><<destination>>
+		<<destination>>
 	<<case "Meadow">>
 		<<harvesticon>><<link [[飞向丰收街(酒吧) (0:15)|Harvest Street]]>><<pass 15>><</link>><br>
 		<<birdicon "tower">><<link [[飞向高塔塔底 (0:20)|Moor]]>><<pass 20>><<set $moor to 100>><</link>><br>

@@ -31,4 +31,4 @@
 <</if>>
 <br>
 爬下去<br>
-<<getouticon>><<destination>>
+<<destination>>
