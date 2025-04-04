@@ -8,6 +8,8 @@ function terraStartOnly() {
 	
 	// 渔夫
 	setup.NPCNameList.pushUnique("Angler");
+	setup.NPCNameList_cn_name[0].pushUnique("渔夫");
+	setup.NPCNameList_cn_name[1].pushUnique("渔夫");
 
 	// 渔夫任务奖励家具
 	V.angler_furniture_obtained = [];

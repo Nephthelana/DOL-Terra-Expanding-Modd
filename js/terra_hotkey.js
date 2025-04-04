@@ -57,3 +57,29 @@ $(document).on("keyup", function (e){
 		}
 	}
 });
+
+function terraMainButton() {
+	const fragment = document.createDocumentFragment();
+	V.terraMainButtonExpand = V.terraMainButtonExpand || false;
+	V.terraMainButtonExpand = V.terraMainButtonExpand ? false : true;
+	fragment.append(wikifier("<<replace #terraMainButtonList>><<terraMainButtonList>><</replace>>"));
+}
+window.terraMainButton = terraMainButton;
+
+function voidBagOverlayBox() {
+	const fragment = document.createDocumentFragment();
+	fragment.append(wikifier("<<iModReplace 'voidBagOverlay'>>"));
+}
+window.voidBagOverlayBox = voidBagOverlayBox;
+
+function equipmentOverlayBox() {
+	const fragment = document.createDocumentFragment();
+	fragment.append(wikifier("<<iModReplace 'terraExpandEquipmentOverlay'>>"));
+}
+window.equipmentOverlayBox = equipmentOverlayBox;
+
+function toolOverlayBox() {
+	const fragment = document.createDocumentFragment();
+	fragment.append(wikifier("<<iModReplace 'terraExpandToolOverlay'>>"));
+}
+window.toolOverlayBox = toolOverlayBox;

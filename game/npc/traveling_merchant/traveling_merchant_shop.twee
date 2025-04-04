@@ -37,6 +37,9 @@
 :: Traveling Merchant Shop Widgets [widget]
 <<widget "travelingMerchantShopListSetup">>
 	<<set _allGoodsList to getAllTravelingMerchantGoodsList()>>
+	<<if $fishingskill is undefined>>
+		<<set _allGoodsList.delete("Sitting_Ducks_Fishing_Pole","Slurper_Pole")>>
+	<</if>>
 	<<switch random(1,27)>>
 		<<case 1 2 3 4 5 6 7>>
 			<<set _traveling_merchant_shop_slot to 4>>
@@ -85,11 +88,15 @@
 						<div class="terraLinks">
 							<<if V.daily[_goods.name] gt 0>>
 								<<link "购买">>
-									<<money `-_goods.price` "NPC交易">>
-									<<set V.daily[_goods.name] -= 1>>
-									<<set V[_goods.name] += 1>>
-									<<updatesidebarmoney>>
-									<<set _purchase_info to _goods.purchase_info>>
+									<<if $money gte _goods.price>>
+										<<money `-_goods.price` "NPC交易">>
+										<<set V.daily[_goods.name] -= 1>>
+										<<set V[_goods.name] += 1>>
+										<<updatesidebarmoney>>
+										<<set _purchase_info to _goods.purchase_info>>
+									<<else>>
+										<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
+									<</if>>
 									<<replace #travelingMerchantShop>>
 										<<travelingMerchantShop>>
 									<</replace>>
@@ -104,23 +111,20 @@
 						<div class="terraLinks">
 							<<if V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))>>
 								/
-							<<elseif $money gte _goods.price>>
-								<<link "购买">>
-									<<money `-_goods.price` "NPC交易">>
-									<<if _goods.type is "pet">>
-										<<set $pet_list.pushUnique(_goods.name)>>
-									<<else>>
-										<<set V[_goods.name] to true>>
-									<</if>>
-									<<updatesidebarmoney>>
-									<<set _purchase_info to _goods.purchase_info>>
-									<<replace #travelingMerchantShop>>
-										<<travelingMerchantShop>>
-									<</replace>>
-								<</link>>
 							<<else>>
 								<<link "购买">>
-									<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
+									<<if $money gte _goods.price>>
+										<<money `-_goods.price` "NPC交易">>
+										<<if _goods.type is "pet">>
+											<<set $pet_list.pushUnique(_goods.name)>>
+										<<else>>
+											<<set V[_goods.name] to true>>
+										<</if>>
+										<<updatesidebarmoney>>
+										<<set _purchase_info to _goods.purchase_info>>
+									<<else>>
+										<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
+									<</if>>
 									<<replace #travelingMerchantShop>>
 										<<travelingMerchantShop>>
 									<</replace>>
@@ -144,19 +148,16 @@
 			<div class="terraLinks">
 				<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
 					/
-				<<elseif $money gte 10000>>
-					<<link "购买">>
-						<<money -10000 "NPC交易">>
-						<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
-						<<updatesidebarmoney>>
-						<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
-						<<replace #travelingMerchantShop>>
-							<<travelingMerchantShop>>
-						<</replace>>
-					<</link>>
 				<<else>>
 					<<link "购买">>
-						<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
+						<<if $money gte 10000>>
+							<<money -10000 "NPC交易">>
+							<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
+							<<updatesidebarmoney>>
+							<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
+						<<else>>
+							<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
+						<</if>>
 						<<replace #travelingMerchantShop>>
 							<<travelingMerchantShop>>
 						<</replace>>

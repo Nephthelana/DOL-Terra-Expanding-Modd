@@ -6,6 +6,7 @@ function terraDailyReset() {
 	delete V.fishing_request_finished_daily;
 	delete V.fishing_request_asked;
 	delete V.Angler_RPS_daily;
+	delete V.fishing_request_punishment;
 
 	//每日6点刷新森林商店小动物家具小种类
 	switch (V.bait_forest_shop_main) {
@@ -89,43 +90,88 @@ function terraDailyReset() {
 }
 window.terraDailyReset = terraDailyReset;
 
-function terraWeeklyReset() {
-	// 森林商店
-	delete V.bait_forest_shop_main;
-	if (random(1,3) === 1) {
-		if (random(1,9) === 1) {
-			V.bait_forest_shop_main = "Stinkbug";
+new TimeEvent('onMin', 'terraMinute')
+	.Action(timeData => {
+		const fragment = document.createDocumentFragment();
+		// 药水生效时间
+		if (V.terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station") && V.options.trueSBTBFS) {
+			V.Fishing_Potion_countdown = "Infinite";
+			V.Sonar_Potion_countdown = "Infinite";
+			V.Crate_Potion_countdown = "Infinite";
+		} else {
+			if (V.Fishing_Potion_countdown === "Infinite") delete V.Fishing_Potion_countdown;
+			if (V.Sonar_Potion_countdown === "Infinite") delete V.Sonar_Potion_countdown;
+			if (V.Crate_Potion_countdown === "Infinite") delete V.Crate_Potion_countdown;
+			if (V.Fishing_Potion_countdown) {
+				V.Fishing_Potion_countdown -= timeData.min;
+				V.Fishing_Potion_countdown = V.Fishing_Potion_countdown <= 0 ? undefined : V.Fishing_Potion_countdown;
+			}
+			if (V.Sonar_Potion_countdown) {
+				V.Sonar_Potion_countdown -= timeData.min;
+				V.Sonar_Potion_countdown = V.Sonar_Potion_countdown <= 0 ? undefined : V.Sonar_Potion_countdown;
+			}
+			if (V.Crate_Potion_countdown) {
+				V.Crate_Potion_countdown -= timeData.min;
+				V.Crate_Potion_countdown = V.Crate_Potion_countdown <= 0 ? undefined : V.Crate_Potion_countdown;
+			}
 		}
-	} else if (random(1,13) === 1) {
-		V.bait_forest_shop_main = random(1,3) === 1 ? "Ladybug" : "Butterfly";
-	}
-	if (V.bait_forest_shop_main === undefined) {
-		V.bait_forest_shop_main = [
-			"Worm",
-			"Firefly",
-			"Snail",
-			"Grasshopper",
-			"Maggot",
-			"Dragonfly"
-		].random();
-	}
-	delete V.bait_forest_shop_received;
-
-	// 金表
-	terraAlarmResetWeekly();
-}
-window.terraWeeklyReset = terraWeeklyReset;
-
-function terraMinute(minutes) {
-	const fragment = document.createDocumentFragment();
-	potionCountdown(minutes);
-	if (V.options.Magiluminescence_awareness_effect && V.terra_accessories_slots.includes("Magiluminescence")) {
-		V.Magiluminescence_timer += minutes;
-		T.Magiluminescence_temp = 0 - Math.floor(V.Magiluminescence_timer / 30);
-		if (T.Magiluminescence_temp < 0) {
-			fragment.append(wikifier("<<awareness _Magiluminescence_temp>>"));
-			V.Magiluminescence_timer += T.Magiluminescence_temp * 30;
+		if (V.Warmth_Potion_countdown) {
+			V.Warmth_Potion_countdown -= timeData.min;
+			V.Warmth_Potion_countdown = V.Warmth_Potion_countdown <= 0 ? undefined : V.Warmth_Potion_countdown;
 		}
-	}
-}
-window.terraMinute = terraMinute;
+
+		// 魔光护符降低意识
+		if (V.options.Magiluminescence_awareness_effect && V.terra_accessories_slots.includes("Magiluminescence")) {
+			V.Magiluminescence_timer += timeData.min;
+			T.Magiluminescence_temp = 0 - Math.floor(V.Magiluminescence_timer / 30);
+			if (T.Magiluminescence_temp < 0) {
+				fragment.append(wikifier("<<awareness _Magiluminescence_temp>>"));
+				V.Magiluminescence_timer += T.Magiluminescence_temp * 30;
+			}
+		}
+	});
+
+new TimeEvent('onHour', 'terraHour')
+	.Action(timeData => {
+		// 垂钓S的成就
+		const fragment = document.createDocumentFragment();
+		const earnFeat = featName => {
+			if (!V.feats.currentSave[featName]) fragment.append(wikifier("earnFeat", `"${featName}"`));
+		};
+		if (V.fishingskill >= 1000) earnFeat("Kong Jun");
+	});
+
+new TimeEvent('onDay', 'terraDay')
+	// 使用血月过夜后，正确地调整月相为'morning'
+	.Cond((timeData) => Time.monthDay !== Time.lastDayOfMonth && V.Bloody_Tear_used)
+	.Action(timeData => {
+		V.moonstate = "morning";
+		wikifier("checkWraith", true);
+	});
+
+new TimeEvent('onWeek', 'terraWeek')
+	.Action(timeData => {
+		// 森林商店
+		delete V.bait_forest_shop_main;
+		if (random(1,3) === 1) {
+			if (random(1,9) === 1) {
+				V.bait_forest_shop_main = "Stinkbug";
+			}
+		} else if (random(1,13) === 1) {
+			V.bait_forest_shop_main = random(1,3) === 1 ? "Ladybug" : "Butterfly";
+		}
+		if (V.bait_forest_shop_main === undefined) {
+			V.bait_forest_shop_main = [
+				"Worm",
+				"Firefly",
+				"Snail",
+				"Grasshopper",
+				"Maggot",
+				"Dragonfly"
+			].random();
+		}
+		delete V.bait_forest_shop_received;
+
+		// 金表
+		terraAlarmResetWeekly();
+	});

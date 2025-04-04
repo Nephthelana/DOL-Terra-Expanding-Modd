@@ -244,7 +244,7 @@
 	<<if $Angler_RPS_daily>>
 		<<ind>><span class="blue">你今天和渔夫猜过拳了。</span><br>
 	<<else>>
-		<<icon "RPS/RPS.gif">><<link [[猜拳(测试功能)|RPS Start]]>><</link>><br>
+		<<icon "RPS/RPS.gif">><<link [[猜拳|RPS Start]]>><</link>><br>
 	<</if>>
 	<<getouticon>><<link [[离开|Beach]]>><<endevent>><</link>><br>
 <</if>>

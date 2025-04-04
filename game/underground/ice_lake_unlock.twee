@@ -61,6 +61,7 @@
 
 :: Underground Ice Lake
 <<location "underground_ice_lake">><<effects>>
+<<set $fishing_place_ice_unlock to true>>
 你站在这片地下永冻湖前。周围的银装素裹让你感觉这里像是一片静谧的桃花源——除了冷之外什么都好。<br>
 <br>
 你可以在这里练习滑冰。<br>

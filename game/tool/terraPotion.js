@@ -57,32 +57,3 @@ function getPotionObtained() {
     });
 }
 window.getPotionObtained = getPotionObtained;
-
-function potionCountdown (minutes) {
-	if (V.terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station") && V.options.trueSBTBFS) {
-		V.Fishing_Potion_countdown = "Infinite";
-		V.Sonar_Potion_countdown = "Infinite";
-		V.Crate_Potion_countdown = "Infinite";
-	} else {
-		if (V.Fishing_Potion_countdown === "Infinite") delete V.Fishing_Potion_countdown;
-		if (V.Sonar_Potion_countdown === "Infinite") delete V.Sonar_Potion_countdown;
-		if (V.Crate_Potion_countdown === "Infinite") delete V.Crate_Potion_countdown;
-		if (V.Fishing_Potion_countdown) {
-			V.Fishing_Potion_countdown -= minutes;
-			V.Fishing_Potion_countdown = V.Fishing_Potion_countdown <= 0 ? undefined : V.Fishing_Potion_countdown;
-		}
-		if (V.Sonar_Potion_countdown) {
-			V.Sonar_Potion_countdown -= minutes;
-			V.Sonar_Potion_countdown = V.Sonar_Potion_countdown <= 0 ? undefined : V.Sonar_Potion_countdown;
-		}
-		if (V.Crate_Potion_countdown) {
-			V.Crate_Potion_countdown -= minutes;
-			V.Crate_Potion_countdown = V.Crate_Potion_countdown <= 0 ? undefined : V.Crate_Potion_countdown;
-		}
-		if (V.Warmth_Potion_countdown) {
-			V.Warmth_Potion_countdown -= minutes;
-			V.Warmth_Potion_countdown = V.Warmth_Potion_countdown <= 0 ? undefined : V.Warmth_Potion_countdown;
-		}
-	}
-}
-window.potionCountdown = potionCountdown;

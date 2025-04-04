@@ -4,11 +4,8 @@
 	<<if $historytrait gte 2>>
 		<<if $pylon_museum_asked>>
 			<<if $pylon_collected.includes("Wolfcave")>>
-				<<if Time.hour gte 6 and Time.hour lte 17>>
-					<<set $wolf_cave_hunt_request_refuse to false>>
-				<</if>>
 				这块充满魔力的水晶可以将你传送至别的地方。
-				<<if $wolf_cave_hunt_request_refuse and (Time.hour lt 6 or Time.hour gt 17) and $blackWolfNotHunting isnot true>>
+				<<if $wolfstate is "hunt" and !$blackWolfNotHunting>>
 					<span class="blue">但是现在黑狼不在狼窝，你无法使用它。</span>
 				<<else>>
 					<br>

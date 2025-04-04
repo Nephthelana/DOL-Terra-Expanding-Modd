@@ -21,7 +21,7 @@
 <</link>><br>
 <br>
 晶塔相关<br>
-请在历史等级达到B级，在博物馆向温特询问过晶塔的事情后，再使用这些晶塔相关功能。在这之前解锁晶塔功能无法发挥作用。<br>
+<span class="black">请在历史等级达到B级，在博物馆向温特询问过晶塔的事情后，再使用这些晶塔相关功能。在这之前解锁晶塔功能无法发挥作用。</span><br>
 <span class="no-numberify">
 	<div class="itemTerra">
 		<div class="item">
@@ -119,30 +119,28 @@
 				</div>
 			<</if>>
 		</div>
-		<<if $debug is 1>>
-			<div class="item">
-				<<if $pylon_collected.includes("Temple")>>
-					<div class="itemTerraGeneral" tooltip="神殿晶塔(仅DEBUG模式可用)">
-						<<icon "pylon/Hallow_Pylon.png">>
-					</div>
-					<hr>
-					<div class="terraLinks">
-						<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Temple")>><</link>>
-					</div>
-				<<else>>
-					<div class="terraFading itemTerraGeneral" tooltip="神殿晶塔(仅DEBUG模式可用)">
-						<<icon "pylon/Hallow_Pylon.png">>
-					</div>
-					<hr>
-					<div class="terraLinks">
-						<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Temple")>><</link>>
-					</div>
-				<</if>>
-			</div>
-		<</if>>
+		<div class="item">
+			<<if $pylon_collected.includes("Temple")>>
+				<div class="itemTerraGeneral" tooltip="神殿晶塔">
+					<<icon "pylon/Hallow_Pylon.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Temple")>><<unset $sydney_garden_date>><</link>>
+				</div>
+			<<else>>
+				<div class="terraFading itemTerraGeneral" tooltip="神殿晶塔">
+					<<icon "pylon/Hallow_Pylon.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Temple")>><<set $sydney_garden_date to true>><</link>>
+				</div>
+			<</if>>
+		</div>
 	</div>
 </span>
-在正常解锁对应地点前使用传送，可能会导致问题。(点击图标以查看对应传送地点)
+<span class="black">在正常解锁对应地点前使用传送，可能会导致问题。(点击图标以查看对应传送地点)</span>
 <span class="no-numberify">
 	<div class="itemTerra">
 		<div class="item">
@@ -190,104 +188,106 @@
 				<<link [[传送|Wolf Cave]]>><</link>>
 			</div>
 		</div>
-		<<if $debug is 1>>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="神殿回廊(仅DEBUG模式可用)">
-					<<wolficon>>
-				</div>
-				<hr>
-				<div class="terraLinks">
-					<<link [[传送|Temple Cloister]]>><</link>>
-				</div>
+		<div class="item">
+			<div class="itemTerraGeneral" tooltip="神殿回廊">
+				<<wolficon>>
 			</div>
-		<</if>>
+			<hr>
+			<div class="terraLinks">
+				<<link [[传送|Temple Cloister]]>><</link>>
+			</div>
+		</div>
 	</div>
 </span>
 <br>
 钓鱼相关<br>
-<span class="no-numberify">
-	<<link "<<<">><<set $fishingskill -= 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
-	<<link "<<">><<set $fishingskill -= 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
-	<<link "<">><<set $fishingskill -= 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
-	垂钓: <span id="statsfishingskill"><<print Math.trunc($fishingskill)>></span>
-	| <<link ">">><<set $fishingskill += 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>">><<set $fishingskill += 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $fishingskill += 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
-	<div class="itemTerra">
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得/丢弃鱼竿">
-				<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
+<<if $fishingskill>>
+	<span class="no-numberify">
+		<<link "<<<">><<set $fishingskill -= 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
+		<<link "<<">><<set $fishingskill -= 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
+		<<link "<">><<set $fishingskill -= 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
+		垂钓: <span id="statsfishingskill"><<print Math.trunc($fishingskill)>></span>
+		| <<link ">">><<set $fishingskill += 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+		| <<link ">>">><<set $fishingskill += 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+		| <<link ">>>">><<set $fishingskill += 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+		<div class="itemTerra">
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得/丢弃鱼竿">
+					<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[鱼竿|Terra Debug Fishing Pole]]>><</link>>
+				</div>
 			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[鱼竿|Terra Debug Fishing Pole]]>><</link>>
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得/丢弃装备">
+					<<icon "Accessories_icon.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[装备|Terra Debug Equipment]]>><</link>>
+				</div>
+			</div>
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得/丢弃任务鱼">
+					<<icon "fishing/quest_fish/Clownfish.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[任务|Terra Debug Request Fish]]>><</link>>
+				</div>
+			</div>
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得/丢弃渔夫家具">
+					<<icon "furniture_item/Ship_in_a_Bottle.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[家具|Terra Debug Fishing Angler Furniture]]>><</link>>
+				</div>
+			</div>
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得鱼饵">
+					<<icon "fishing/bait/Apprentice_Bait.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[鱼饵|Terra Debug Baits]]>><</link>>
+				</div>
+			</div>
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得普通鱼">
+					<<icon "fishing/fish/Bass.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[鱼|Terra Debug Fish]]>><</link>>
+				</div>
+			</div>
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得宝匣">
+					<<icon "fishing/crates/Wooden_Crate.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[宝匣|Terra Debug Crates]]>><</link>>
+				</div>
+			</div>
+			<div class="item">
+				<div class="itemTerraGeneral" tooltip="获得药水">
+					<<icon "potions/Fishing_Potion.png">>
+				</div>
+				<hr>
+				<div class="terraLinks">
+					<<link [[药水|Terra Debug Potions]]>><</link>>
+				</div>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得/丢弃装备">
-				<<icon "Accessories_icon.png">>
-			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[装备|Terra Debug Equipment]]>><</link>>
-			</div>
-		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得/丢弃任务鱼">
-				<<icon "fishing/quest_fish/Clownfish.png">>
-			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[任务|Terra Debug Request Fish]]>><</link>>
-			</div>
-		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得/丢弃渔夫家具">
-				<<icon "furniture_item/Ship_in_a_Bottle.png">>
-			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[家具|Terra Debug Fishing Angler Furniture]]>><</link>>
-			</div>
-		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得鱼饵">
-				<<icon "fishing/bait/Apprentice_Bait.png">>
-			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[鱼饵|Terra Debug Baits]]>><</link>>
-			</div>
-		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得普通鱼">
-				<<icon "fishing/fish/Bass.png">>
-			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[鱼|Terra Debug Fish]]>><</link>>
-			</div>
-		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得宝匣">
-				<<icon "fishing/crates/Wooden_Crate.png">>
-			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[宝匣|Terra Debug Crates]]>><</link>>
-			</div>
-		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="获得药水">
-				<<icon "potions/Fishing_Potion.png">>
-			</div>
-			<hr>
-			<div class="terraLinks">
-				<<link [[药水|Terra Debug Potions]]>><</link>>
-			</div>
-		</div>
-	</div>
-</span>
+	</span>
+<<else>>
+	<span class="black">在渔夫处获得<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿后，解锁钓鱼相关的调试功能。</span><br>
+<</if>>
 <br>
 血月天塔柱相关<br>
 <<ind>><<link [[重置初遇恐惧鹦鹉螺|Terra Debug]]>><<set $Dreadnautilus_intro to undefined>><</link>><br>

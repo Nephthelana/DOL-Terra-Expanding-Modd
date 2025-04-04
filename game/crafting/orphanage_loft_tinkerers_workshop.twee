@@ -45,17 +45,19 @@
 							</span>
 						</mouse>
 						<hr>
-						<<link "制作">>
-							_recipe.craft
-							<<set $crafting_count.Tinkerers_Workshop += 1>>
-							<<set _crafted_info to _recipe.crafting_info>>
-							<<replace #crafting_orphanage_loft_tinkerers_workshop_info>>
-								<<crafting_orphanage_loft_tinkerers_workshop_info>>
-							<</replace>>
-							<<replace #crafting_orphanage_loft_tinkerers_workshop>>
-								<<crafting_orphanage_loft_tinkerers_workshop>>
-							<</replace>>
-						<</link>>
+						<div class="terraLinks">
+							<<link "制作">>
+								_recipe.craft
+								<<set $crafting_count.Tinkerers_Workshop += 1>>
+								<<set _crafted_info to _recipe.crafting_info>>
+								<<replace #crafting_orphanage_loft_tinkerers_workshop_info>>
+									<<crafting_orphanage_loft_tinkerers_workshop_info>>
+								<</replace>>
+								<<replace #crafting_orphanage_loft_tinkerers_workshop>>
+									<<crafting_orphanage_loft_tinkerers_workshop>>
+								<</replace>>
+							<</link>>
+						</div>
 					</div>
 				<</if>>
 			<</capture>>

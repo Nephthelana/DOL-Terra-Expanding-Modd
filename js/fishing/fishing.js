@@ -52,16 +52,16 @@ function getFishingPower() {
 			break;
 	}
 	// 6:00-7:30，19:30-21:00提供30%渔力加成
-	if (Time.hour === 6 || (Time.hour === 7 && Time.minute <= 30) || (Time.hour === 19 && Time.minute >= 30) || Time.hour === 20 || (Time.hour === 21 && Time.minute === 0))
+	if (Time.hour === 6 || (Time.hour === 7 && Time.minute <= 30) || (Time.hour === 19 && Time.minute >= 30) || Time.hour === 20)
 		FP *= 1.3;
 	// 9:00-15:00，22:30-3:30降低20%渔力
-	if ((Time.hour >= 9 && Time.hour <= 14) || (Time.hour === 15 && Time.minute === 0) || (Time.hour === 22 && Time.minute >= 30) || (Time.hour >= 23) || Time.hour <= 2 || (Time.hour === 3 && Time.minute <= 30))
+	if (between(Time.hour,9,14) || (Time.hour === 22 && Time.minute >= 30) || Time.hour >= 23 || Time.hour <= 2 || (Time.hour === 3 && Time.minute <= 30))
 		FP *= 0.8;
 	// 月相影响渔力
 	let moonPhase = Time.date.moonPhaseFraction;
 	if (moonPhase === 0)
 		FP *= 0.9;
-	else if ((moonPhase > 0 && moonPhase <= 0.25) || (moonPhase > 0.75 || moonPhase < 1))
+	else if ((moonPhase > 0 && moonPhase < 0.25) || (moonPhase > 0.75 && moonPhase < 1))
 		FP *= 0.95;
 	else if ((moonPhase > 0.25 && moonPhase < 0.5) || (moonPhase > 0.5 && moonPhase < 0.75))
 		FP *= 1.05;
@@ -405,3 +405,42 @@ function fishingHarvest() {
 	}
 }
 window.fishingHarvest = fishingHarvest;
+
+function fishingBaitConsumed() {
+	if (V.Bait !== "None") {
+		console.log("鱼饵消耗测试1");
+		T.bait = setup.terraBait[V.Bait];
+		if (random(1, 6 * (V.terra_accessories_slots.includesAny("Tackle_Box","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") ? 2 : 1) + T.bait.fishing_power) <= 6) {
+			V[T.bait.name] -= 1;
+		}
+		if (V[T.bait.name] <= 0) {
+			V.Bait = "None";
+			$(document).on(':postApplyZone', function () {
+                htmlTools.wiki("fishingBaitConsumed", "你用掉了最后一个<<icon `_bait.icon`>>_bait.cn_name。<br>",true);
+            });
+			console.log("鱼饵消耗测试2");
+		} else {
+			$(document).on(':postApplyZone', function () {
+                htmlTools.wiki("fishingBaitConsumed", "你还剩下<<print V[_bait.name]>>个<<icon `_bait.icon`>>_bait.cn_name。<br>",true);
+            });
+			console.log("鱼饵消耗测试3");
+		}
+	} else {
+		$(document).on(':postApplyZone', function () {
+			htmlTools.wiki("fishingBaitConsumed", "",true);
+		});
+		console.log("鱼饵消耗测试4");
+	}
+}
+window.fishingBaitConsumed = fishingBaitConsumed;
+
+function fishingEnd() {
+	delete V.fishing_distance_power;
+	delete V.fishing_distance;
+	delete V.fishing_integrity;
+	delete V.fishingphase;
+	delete V.fish_relax_count;
+	delete V.fish_struggle_count;
+	delete V.fishing_difficulty;
+}
+window.fishingEnd = fishingEnd;

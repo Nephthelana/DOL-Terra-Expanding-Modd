@@ -1,7 +1,3 @@
-simpleFrameworks.addto('ModMenuBig', 'void_bag');
-simpleFrameworks.addto('ModMenuSmall', 'terraExpandEquipmentButton');
-simpleFrameworks.addto('ModMenuSmall', 'terraExpandToolButton');
-
 simpleFrameworks.addto('iModOptions', 'terraOptions');
 
 simpleFrameworks.addto('iModStatist', 'terraStatistics');

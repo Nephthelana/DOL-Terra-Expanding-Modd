@@ -827,7 +827,7 @@ setup.terraRecipe = {
 		required_crafting_station: "Work_Bench",
 		required_crafting_station_info: "<<icon \"furniture_item/Work_Bench.png\">>工作台",
 		craftable: "<<set _craftable to ($Sashimi gte 2 and $Apprentice_Bait gte 10) ? true : false>>",
-		craft: "<<set $Sashimi -= 2>><<set $Apprentice_Bait -= 10>><<set $fertiliser.current += 1>>",
+		craft: "<<set $Sashimi -= 2>><<set $Apprentice_Bait -= 10>><<if $Apprentice_Bait lte 0 and $Bait is 'Apprentice_Bait'>><<set $Bait to 'None'>><</if>><<set $fertiliser.current += 1>>",
 		crafting_info: "你制作了1袋<<icon \"fertiliser.png\">>肥料。<br>你有<<icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<icon \"fishing/bait/Apprentice_Bait.png\">>学徒诱饵($Apprentice_Bait)。",
 	},
 	"fertiliser_Journeyman_Bait": {
@@ -841,7 +841,7 @@ setup.terraRecipe = {
 		required_crafting_station: "Work_Bench",
 		required_crafting_station_info: "<<icon \"furniture_item/Work_Bench.png\">>工作台",
 		craftable: "<<set _craftable to ($Sashimi gte 2 and $Journeyman_Bait gte 5) ? true : false>>",
-		craft: "<<set $Sashimi -= 2>><<set $Journeyman_Bait -= 5>><<set $fertiliser.current += 1>>",
+		craft: "<<set $Sashimi -= 2>><<set $Journeyman_Bait -= 5>><<if $Journeyman_Bait lte 0 and $Bait is 'Journeyman_Bait'>><<set $Bait to 'None'>><</if>><<set $fertiliser.current += 1>>",
 		crafting_info: "你制作了1袋<<icon \"fertiliser.png\">>肥料。<br>你有<<icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<icon \"fishing/bait/Journeyman_Bait.png\">>熟手诱饵($Journeyman_Bait)。",
 	},
 	"fertiliser_Master_Bait": {
@@ -855,7 +855,7 @@ setup.terraRecipe = {
 		required_crafting_station: "Work_Bench",
 		required_crafting_station_info: "<<icon \"furniture_item/Work_Bench.png\">>工作台",
 		craftable: "<<set _craftable to ($Sashimi gte 2 and $Master_Bait gte 3) ? true : false>>",
-		craft: "<<set $Sashimi -= 2>><<set $Master_Bait -= 3>><<set $fertiliser.current += 1>>",
+		craft: "<<set $Sashimi -= 2>><<set $Master_Bait -= 3>><<if $Master_Bait lte 0 and $Bait is 'Master_Bait'>><<set $Bait to 'None'>><</if>><<set $fertiliser.current += 1>>",
 		crafting_info: "你制作了1袋<<icon \"fertiliser.png\">>肥料。<br>你有<<icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<icon \"fishing/bait/Master_Bait.png\">>大师诱饵($Master_Bait)。",
 	},
 	//鱼饵
@@ -870,7 +870,7 @@ setup.terraRecipe = {
 		required_crafting_station: "Work_Bench",
 		required_crafting_station_info: "<<icon \"furniture_item/Work_Bench.png\">>工作台",
 		craftable: "<<set _craftable to ($Worm gte 1 and $Fallen_Star gte 1) ? true : false>>",
-		craft: "<<set $Worm -= 1>><<set $Fallen_Star -= 1>><<set $Enchanted_Nightcrawler += 1>><<bestiaryStatistics 'bait' 'Enchanted_Nightcrawler' 1>>",
+		craft: "<<set $Worm -= 1>><<if $Worm lte 0 and $Bait is 'Worm'>><<set $Bait to 'None'>><</if>><<set $Fallen_Star -= 1>><<set $Enchanted_Nightcrawler += 1>><<bestiaryStatistics 'bait' 'Enchanted_Nightcrawler' 1>>",
 		crafting_info: "你制作了1只<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者。<br>你有<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者($Enchanted_Nightcrawler)，你还有<<icon \"fishing/bait/Worm.png\">>蠕虫($Worm)和<<icon \"material/Fallen_Star.png\">>坠落之星($Fallen_Star)。",
 	},
 	// 原版的新食材

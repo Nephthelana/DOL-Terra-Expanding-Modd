@@ -1,6 +1,6 @@
 :: Informational Accessory Content [widget]
-<<widget "informationalAccessoryContent">>
-	<!-- 初始化信息饰品列表 -->
+<<widget "informationalAccessoryUpdate">>
+	<!-- 更新信息饰品列表状态 -->
 	<<set $informationalAccessoryList to $informationalAccessoryList or []>>
 	<<set $informationalAccessoryActivating to $informationalAccessoryActivating or {}>>
 	<<for _a range Object.keys(setup.terraAccessories).filter(a => setup.terraAccessories[a].type === "informational")>>
@@ -13,6 +13,10 @@
 			<<set $informationalAccessoryActivating[_accessory.name] to undefined>>
 		<</if>>
 	<</for>>
+<</widget>>
+
+<<widget "informationalAccessoryContent">>
+	<<informationalAccessoryUpdate>>
 	<!-- 显示信息饰品列表 -->
 	<div id="informationalAccessorySetting">
 		<<if $informationalAccessoryList.length gte 2>>
@@ -186,5 +190,21 @@
 			<<else>>
 				<mouse class="tooltip"><span class="black">当前不可用</span><span>仅在沼泽、走私者洞穴可用</span></mouse>
 			<</if>><br>
+		<<case "Stopwatch">>
+			<<if setup.terraTransportationAllowed.includes($passage) and $event is undefined>>
+				<<link "消磨1分钟" $passage>><<pass 1>><</link>>｜<<link "消磨5分钟" $passage>><<pass 5>><</link>><br>
+			<<else>>
+				<mouse class="tooltip"><span class="black">当前不可用</span><span>在使用之前，请先返回到世界范围内，或结束当前的事件</span></mouse><br>
+			<</if>>
+		<<case "Lifeform_Analyzer">>
+			<span id="lifeformAnalyzerInfo">
+				<<lifeformAnalyzerInfo>>
+			</span>
+		<<case "Thermometer">>
+			室外温度：<span @class="Weather.temperature <= -10 ? 'blue' : Weather.temperature <= 0 ? 'lblue' : Weather.temperature <= 10 ? 'teal' : Weather.temperature <= 20 ? 'yellow' : Weather.temperature <= 30 ? 'orange' : 'red'"><<print Weather.toSelectedString(Weather.temperature, 0)>></span>
+			｜
+			室内温度：<span @class="Weather.insideTemperature <= -10 ? 'blue' : Weather.insideTemperature <= 0 ? 'lblue' : Weather.insideTemperature <= 10 ? 'teal' : Weather.insideTemperature <= 20 ? 'yellow' : Weather.insideTemperature <= 30 ? 'orange' : 'red'"><<print Weather.toSelectedString(Weather.insideTemperature, 0)>></span>
+			｜
+			水温：<span @class="Weather.waterTemperature <= 5 ? 'blue' : Weather.waterTemperature <= 15 ? 'teal' : Weather.waterTemperature <= 25 ? 'yellow' : Weather.waterTemperature <= 35 ? 'orange' : 'red'"><<print Weather.toSelectedString(Weather.waterTemperature, 0)>></span><br>
 	<</switch>>
 <</widget>>

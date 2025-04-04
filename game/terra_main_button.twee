@@ -1,0 +1,60 @@
+
+
+:: Terra Main Button [widget]
+<<widget "terraMainButton">>
+	<style>
+		.infoAccButton{
+			position: fixed;
+			bottom: 20px;
+			right: 0;
+			align-items: end;
+			cursor: pointer;
+			color: #fff;
+		}
+		.infoAccMenuButton{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 5px;
+			background-color: var(--850);
+			border: 1px solid var(--750);
+			border-radius: 5px 0 0 5px;
+		}
+		.infoAccButtonItem{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 1px;
+			background-color: var(--850);
+			border: 1px solid var(--750);
+			border-radius: 5px 0 0 5px;
+		}
+		.infoAccButtonItem>div{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			height: 34px;
+		}
+		.infoAccButton>div:hover{
+			background-color: var(--800);
+		}
+	</style>
+	<div id="terraMainButtonList" class="infoAccButton unstowable">
+		<<terraMainButtonList>>
+	</div>
+<</widget>>
+
+<<widget "terraMainButtonList">>
+		<div class="infoAccMenuButton" onclick="terraMainButton()">
+			<<print $terraMainButtonExpand ? "➡️" : "⬅️">>
+		</div>
+		<div class="infoAccButtonItem" onclick="voidBagOverlayBox()">
+			<div id="voidBagButton"><<icon "Void_Bag.png">><<print $terraMainButtonExpand ? "虚空袋" : "">></div>
+		</div>
+		<div class="infoAccButtonItem" onclick="equipmentOverlayBox()">
+			<div><<icon "Accessories_icon.png">><<print $terraMainButtonExpand ? "装备" : "">></div>
+		</div>
+		<div class="infoAccButtonItem" onclick="toolOverlayBox()">
+			<div><<icon "tool/Magic_Mirror.png">><<print $terraMainButtonExpand ? "工具" : "">></div>
+		</div>
+<</widget>>

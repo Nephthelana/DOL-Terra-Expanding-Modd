@@ -1,6 +1,6 @@
 /*晶塔地图*/
 :: Pylon Transport
-<<if $pylon_collected.length gte 5>>
+<<if $pylon_collected.length gte 6>>
 	<<earnFeat "Pylon Collector">>
 <</if>>
 你看着晶塔显示的地图，思索你要去哪里。<br>
@@ -40,11 +40,11 @@
 				(!hasBabyHawkModInfo() and Object.values(_childrenIds).find(childId => getChildDays(childId) gt 89)))
 			>>
 				<<addinlineevent "Pylon Baby Hawk" 1>>
-					<<link [[Baby传送到鹰塔晶塔(0:01)|Pylon Bird Tower Baby Hawk]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+					<<link [[传送到鹰塔晶塔(0:01)|Pylon Bird Tower Baby Hawk]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
 				<</addinlineevent>>
 			<</if>>
 			<<addinlineevent "Pylon Great Hawk" 1>>
-				<<link [[Great传送到鹰塔晶塔(0:01)|Pylon Bird Tower Great Hawk]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
+				<<link [[传送到鹰塔晶塔(0:01)|Pylon Bird Tower Great Hawk]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
 			<</addinlineevent>>
 			<<addinlineevent "None" 2>>
 				<<link [[传送到鹰塔晶塔(0:01)|Bird Tower]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>><br>
@@ -56,17 +56,13 @@
 	<</if>>
 <</if>>
 <<if $pylon_collected.includes("Wolfcave")>>
-	<<if Time.hour gte 6 and Time.hour lte 17>>
-		<<set $wolf_cave_hunt_request_refuse to false>>
-	<</if>>
-	<<if $wolf_cave_hunt_request_refuse and (Time.hour lt 6 or Time.hour gt 17) and $blackWolfNotHunting isnot true>>
+	<<if $wolfstate is "hunt" and !$blackWolfNotHunting>>
 		<span class="terraFading"><<icon "pylon/Mushroom_Pylon.png">></span>黑狼现在不在狼窝，你无法使用狼窝晶塔。
 	<<else>>
 		<<icon "pylon/Mushroom_Pylon.png">><<link [[传送到狼窝晶塔(0:01)|Wolf Cave]]>><<pass 1>><<set $pylon_teleport_count += 1>><</link>>
 	<</if>>
 	<br>
 <</if>>
-<<if $debug is 1>>
 <<if $pylon_collected.includes("Temple")>>
 	<<sydneySchedule>>
 	<<if _sydney_location is "temple">>
@@ -75,7 +71,6 @@
 		<span class="terraFading"><<icon "pylon/Hallow_Pylon.png">></span>悉尼现在不在神殿，你无法使用神殿晶塔。
 	<</if>>
 	<br>
-<</if>>
 <</if>>
 <br>
 <<getouticon>>

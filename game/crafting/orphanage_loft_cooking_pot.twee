@@ -60,20 +60,22 @@
 						</span>
 					</mouse>
 					<hr>
-					<<link "制作">>
-						_recipe.craft
-						<<set $crafting_count.Cooking_Pot += 1>>
-						<<if _recipe.type is "food">>
-							<<housekeeping 1 1000>>
-						<</if>>
-						<<set _crafted_info to _recipe.crafting_info>>
-						<<replace #crafting_orphanage_loft_cooking_pot_info>>
-							<<crafting_orphanage_loft_cooking_pot_info>>
-						<</replace>>
-						<<replace #crafting_orphanage_loft_cooking_pot>>
-							<<crafting_orphanage_loft_cooking_pot>>
-						<</replace>>
-					<</link>>
+					<div class="terraLinks">
+						<<link "制作">>
+							_recipe.craft
+							<<set $crafting_count.Cooking_Pot += 1>>
+							<<if _recipe.type is "food">>
+								<<housekeeping 1 1000>>
+							<</if>>
+							<<set _crafted_info to _recipe.crafting_info>>
+							<<replace #crafting_orphanage_loft_cooking_pot_info>>
+								<<crafting_orphanage_loft_cooking_pot_info>>
+							<</replace>>
+							<<replace #crafting_orphanage_loft_cooking_pot>>
+								<<crafting_orphanage_loft_cooking_pot>>
+							<</replace>>
+						<</link>>
+					</div>
 				</div>
 			<</if>>
 		<</capture>>

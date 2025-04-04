@@ -45,17 +45,19 @@
 							</span>
 						</mouse>
 						<hr>
-						<<link "制作">>
-							_recipe.craft
-							<<set $crafting_count.Iron_Anvil += 1>>
-							<<set _crafted_info to _recipe.crafting_info>>
-							<<replace #crafting_orphanage_loft_iron_anvil_info>>
-								<<crafting_orphanage_loft_iron_anvil_info>>
-							<</replace>>
-							<<replace #crafting_orphanage_loft_iron_anvil>>
-								<<crafting_orphanage_loft_iron_anvil>>
-							<</replace>>
-						<</link>>
+						<div class="terraLinks">
+							<<link "制作">>
+								_recipe.craft
+								<<set $crafting_count.Iron_Anvil += 1>>
+								<<set _crafted_info to _recipe.crafting_info>>
+								<<replace #crafting_orphanage_loft_iron_anvil_info>>
+									<<crafting_orphanage_loft_iron_anvil_info>>
+								<</replace>>
+								<<replace #crafting_orphanage_loft_iron_anvil>>
+									<<crafting_orphanage_loft_iron_anvil>>
+								<</replace>>
+							<</link>>
+						</div>
 					</div>
 				<</if>>
 			<</capture>>

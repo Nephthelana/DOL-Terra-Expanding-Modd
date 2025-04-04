@@ -1,7 +1,5 @@
 :: Pylon Temple [widget]
 <<widget "pylon_temple">>
-<<if $debug is 1>>
-	*DEBUG功能<br>
 	<<if $historytrait gte 2>>
 		<<if $pylon_museum_asked>>
 			<<if $pylon_collected.includes("Temple")>>
@@ -14,11 +12,10 @@
 					<span class="blue">但是现在悉尼不在神殿，你无法使用它。</span>
 				<</if>>
 			<<else>>
-				为了激活这个晶塔，你需要找到那块水晶。<<print C.npc.Sydney.love gte 135 ? "<span class='teal'>/待后续完善。目前只能在调试菜单解锁神殿晶塔/</span>" : "<span class='blue'>如果悉尼对你有足够的好感，你将会得到提示。</span>">>
+				为了激活这个晶塔，你需要找到那块水晶。<<print C.npc.Sydney.love gte 135 ? "<span class='teal'>升职为修士/修女后，在神殿找到悉尼询问心事，然后选择一个晴朗的天气一起去神殿花园。</span>" : "<span class='blue'>如果悉尼对你有足够的好感，你将会得到提示。</span>">>
 			<</if>>
 		<<else>>
 			<<mysteryicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
 		<</if>>
 	<</if>>
-<</if>>
 <</widget>>

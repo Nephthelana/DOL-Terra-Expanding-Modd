@@ -6,7 +6,7 @@
 			`“哦，我觉得今天应该不会再需要请求你的帮助了，谢谢你！”`,
 			`“你帮了我这么多，我会永远感激你！”`,
 			`“我现在暂时不需要别的鱼了，谢谢你！”`,
-			`“我今天已经得到了一条鱼，不能继续麻烦你了……”`,
+			`“我今天已经得到了足够多的鱼，不能继续麻烦你了……”`,
 			`“你上次给我的鱼还没用呢。我暂时不需要，谢谢你。”`,
 			`“我很高兴能遇到你这样的好帮手！你今天表现很棒！”`
 		].random()>><br>
@@ -15,7 +15,7 @@
 			`“我的鱼够了！我现在不需要你的帮助！”`,
 			`“你今天已经让我够开心了，可以走了。”`,
 			`“现在没有任务要分配给你。”`,
-			`“一天就一条鱼，请离开！”`,
+			`“一天就这么几条鱼，请离开！”`,
 			`“你上次给我的鱼还没用呢。我不需要了。”`,
 			`“你完蛋了，伟大的我会解雇你！”`
 		].random()>><br>
@@ -26,7 +26,7 @@
 	你向渔夫询问今天的钓鱼任务。<br>
 	<br>
 	<<print $options.cute_angler ? _requestFish.cute_angler_des : _requestFish.angler_des>><br>
-	<<icon `_requestFish.icon`>>_requestFish.cn_name(抓捕地点：_requestFish.catching_place_des)
+	<<icon `_requestFish.icon`>>_requestFish.cn_name（抓捕地点：_requestFish.catching_place_des）
 	<<if $fishingskill lt 1000>>
 		<mouse class="tooltip linkBlue">(?)<span>出现“？？？”时，表明你需要更高的垂钓等级，才能解锁钓鱼点的信息</span></mouse>
 	<</if>><br>
@@ -39,6 +39,9 @@
 	>>
 		<i>听到这段对于钓鱼点的描述，你回想起先前被追杀的过程，感到不寒而栗。向导是否知道某种方式设立相同渔获的钓鱼池，而避免与之直接接触？</i><br>
 		<br>
+	<</if>>
+	<<if $fishing_request_punishment>>
+		<span class="blue">作为猜拳失败的惩罚，渔夫不会给你完成这个任务的奖励。</span><br>
 	<</if>>
 	<<if $fishing_request_fish.includes($fishing_request_selection) and $fishing_request_finished_daily isnot true>>
 		<<link [[提交任务|Fishing Request Rewarding]]>><</link>><br>

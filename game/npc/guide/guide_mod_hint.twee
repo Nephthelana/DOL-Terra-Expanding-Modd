@@ -39,7 +39,7 @@
 			<<link [[继续|Guide Mod Hint]]>><</link>>
 			<<exitAll>>
 		<<case "intro">>
-			“去拿指南针的时候，千万不要为了贪图小利而造成更大的损失。祝你好运。”<br>
+			“去那个洞穴中拿银质指南针的时候，千万不要为了贪图小利而造成更大的损失。祝你好运。”<br>
 			<<if $antiqueCompassObtained>>
 				<<icon "antiques/antique_silver_compass.png">><<link [[将银质指南针交给向导|Guide Compass]]>><</link>><br>
 			<</if>>

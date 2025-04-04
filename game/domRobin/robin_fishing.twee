@@ -22,11 +22,11 @@
 <<if ["Old_Shoe","Seaweed_junk","Tin_Can","Joja_Cola","feathers"].includes($fishing_harvest)>>
 	<<run fishingHarvest()>>
 	<<set $fishing_harvest_count += 1>>
-	<<fishing_end>>
+	<<run fishingEnd()>>
 	<span class="green">你猛地一收竿，宣示着你的胜利！</span><br>
 	你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
-	<br>
-	<<fishing_bait_consumed>>
+	<div id="fishingBaitConsumed"></div>
+	<<run fishingBaitConsumed()>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>
@@ -39,7 +39,7 @@
 	<</link>><br>
 <!-- 渔获距离为0时结束钓鱼小游戏 -->
 <<elseif $fishing_distance lte 0>>
-	<<fishing_end>>
+	<<run fishingEnd()>>
 	<span class="green">最后你猛地一收竿，宣示着你的胜利！</span>
 	<<if !$terra_accessories_slots.includesAny("High_Test_Fishing_Line","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") and random(1,7) is 1>>
 		<<set $fishing_failed_count += 1>>
@@ -61,7 +61,8 @@
 				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
 		<</switch>>
 	<</if>>
-	<<fishing_bait_consumed>>
+	<div id="fishingBaitConsumed"></div>
+	<<run fishingBaitConsumed()>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>
@@ -75,10 +76,10 @@
 <!-- 鱼线耐久为0时结束钓鱼小游戏 -->
 <<elseif $fishing_integrity is 0>>
 	<<set $fishing_failed_count += 1>>
-	<<fishing_end>>
+	<<run fishingEnd()>>
 	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><<ggstress>><<stress 6>><br>
-	<br>
-	<<fishing_bait_consumed>>
+	<div id="fishingBaitConsumed"></div>
+	<<run fishingBaitConsumed()>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>
@@ -92,7 +93,7 @@
 <!-- 30回合后还没分出胜负时结束钓鱼小游戏 -->
 <<elseif ($fish_relax_count + $fish_struggle_count) gt 30>>
 	<<set $fishing_failed_count += 1>>
-	<<fishing_end>>
+	<<run fishingEnd()>>
 	你足足搏斗了5分钟！<span class="red">它失去了对你的兴趣。</span><<gstress>><<stress 3>><br>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>

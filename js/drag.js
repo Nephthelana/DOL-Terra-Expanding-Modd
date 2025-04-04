@@ -21,6 +21,8 @@ function dropAccessoriesSlots(ev) {
 		Wikifier.wikifyEval("<<UpdateAccessoriesSlots>>");
 		Wikifier.wikifyEval("<<UpdateVanityAccessoriesSlots>>");
 		Wikifier.wikifyEval("<<UpdateAccessoryList>>");
+		Wikifier.wikifyEval("<<vanityAccessoryTransformation>>");
+		Wikifier.wikifyEval("<<updatesidebarimg>>");
 	}
 }
 window.dropAccessoriesSlots = dropAccessoriesSlots;
@@ -35,6 +37,8 @@ function dropVanityAccessoriesSlots(ev) {
 		Wikifier.wikifyEval("<<UpdateAccessoriesSlots>>");
 		Wikifier.wikifyEval("<<UpdateVanityAccessoriesSlots>>");
 		Wikifier.wikifyEval("<<UpdateAccessoryList>>");
+		Wikifier.wikifyEval("<<vanityAccessoryTransformation>>");
+		Wikifier.wikifyEval("<<updatesidebarimg>>");
 	}
 }
 window.dropVanityAccessoriesSlots = dropVanityAccessoriesSlots;
@@ -49,6 +53,8 @@ function dropAccessoryList(ev) {
 		Wikifier.wikifyEval("<<UpdateAccessoriesSlots>>");
 		Wikifier.wikifyEval("<<UpdateVanityAccessoriesSlots>>");
 		Wikifier.wikifyEval("<<UpdateAccessoryList>>");
+		Wikifier.wikifyEval("<<vanityAccessoryTransformation>>");
+		Wikifier.wikifyEval("<<updatesidebarimg>>");
 	}
 }
 window.dropAccessoryList = dropAccessoryList;

@@ -52,7 +52,11 @@
 		<</if>><br>
 	<</if>>
 	<br>
-	<<fishing_request_reward>><br>
+	<<if $fishing_request_punishment>>
+		<span class="blue">作为猜拳失败的惩罚，渔夫没有给你任务奖励。</span><br>
+	<<else>>
+		<<fishing_request_reward>><br>
+	<</if>>
 	<br>
 	<<link [[返回|Fishing Angler Cabin]]>><<unset $fishing_request_Golden_Carp>><</link>>
 

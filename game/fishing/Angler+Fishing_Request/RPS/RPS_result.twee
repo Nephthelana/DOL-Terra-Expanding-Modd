@@ -5,12 +5,12 @@
 		<<if $options.cute_angler>>
 			<<print [
 				`“哦！看来今天是你的运气略胜一筹呀。你想要什么呢？”`,
-				`“嘿！难道石头剪刀布也有技巧吗？下次我要是赢了，你就得教我！”`,
+				`“嘿！难道石头剪刀布也有技巧吗？下次我要是赢了，你就得教我！所以你想要什么呢？”`,
 			].random()>>
 		<<else>>	
 			<<print [
 				`“啧！看在你今天运气好的份上，你想要什么？”`,
-				`“咄！为什么我看不出你到底怎么作弊的？”`,
+				`“咄！为什么我看不出你到底怎么作弊的？…说吧，你想要什么？”`,
 			].random()>>
 		<</if>><br>
 		<br>
@@ -22,19 +22,29 @@
 		<</if>>
 	<<case "Angler">>
 		<<set $PRS_lose_count += 1>>
-		<<if $options.cute_angler>>
-			<<print [
-				`“是我捕了这么多鱼给我带来的好运！每次你带来我想要的鱼，我都会分你一点！”`,
-			].random()>>
-		<<else>>	
-			<<print [
-				`“像我这种捕到的鱼比你吃过的饭还多的人，这点胜利是理所应当的！现在别打扰我了！”`,
-			].random()>>
-		<</if>><br>
-		<br>
-		/待完善/<br>
-		<br>
-		<<link [[返回|Fishing Angler Cabin]]>><</link>><br>
+		<<if $fishing_request_finished_daily>>
+			<<unset $fishing_request_finished_daily>>
+			<<set $fishing_request_punishment to true>>
+			<<run T.request_fish_list_temp = [...V.fishing_request_selection_list]>>
+			<<set _request_fish_list_temp.delete($fishing_request_selection)>>
+			<<set $fishing_request_selection to _request_fish_list_temp.random()>>
+			<<if $options.cute_angler>>
+				“是我捕了这么多鱼给我带来的好运！每次你带来我想要的鱼，我都会分你一点！既然你今天输了，那么惩罚就是：<span class="blue">我给你布置新的任务，但没有任务奖励哦！</span>嗯，你需要更加专注于钓鱼本身！”<br>
+			<<else>>
+				“像我这种捕到的鱼比你吃过的饭还多的人，这点胜利是理所应当的！现在别打扰我了！……等等，我赢了猜拳，<span class="blue">那我允许你今天再接一个任务，这样你才能输掉任务奖励！</span>哈哈哈！多钓几年的鱼再来挑战我吧！”<br>
+			<</if>>
+			<br>
+			<<link [[继续|Fishing Request Ask]]>><</link>>
+		<<else>>
+			<<set $fishing_request_punishment to true>>
+			<<if $options.cute_angler>>
+				“是我捕了这么多鱼给我带来的好运！每次你带来我想要的鱼，我都会分你一点！既然你今天输了，那么惩罚就是：<span class="blue">今天的任务奖励取消咯！</span>嗯，你需要更加专注于钓鱼本身！”<br>
+			<<else>>
+				“像我这种捕到的鱼比你吃过的饭还多的人，这点胜利是理所应当的！现在别打扰我了！……等等，我赢了猜拳，<span class="blue">那么你就输掉了今天的任务奖励！</span>哈哈哈！多钓几年的鱼再来挑战我吧！”<br>
+			<</if>>
+			<br>
+			<<link [[继续|Fishing Angler Cabin]]>><</link>>
+		<</if>>
 	<<case "None">>
 		<<set $RPS_none_count += 1>>
 		<<if $options.cute_angler>>
@@ -46,8 +56,6 @@
 				`“什么？你竟然能猜到我要出这个？”`,
 			].random()>>
 		<</if>><br>
-		<br>
-		/待完善/<br>
 		<br>
 		<<link [[返回|Fishing Angler Cabin]]>><</link>><br>
 <</switch>>
@@ -106,6 +114,8 @@
 <</if>><br>
 <br>
 <<link [[那么，今天的新任务是什么呢？|Fishing Request Ask]]>>
-	<<set $fishing_request_selection to $fishing_request_selection_list.random()>>
+	<<run T.request_fish_list_temp = [...V.fishing_request_selection_list]>>
+	<<set _request_fish_list_temp.delete($fishing_request_selection)>>
+	<<set $fishing_request_selection to _request_fish_list_temp.random()>>
 <</link>>
 <<endevent>>
