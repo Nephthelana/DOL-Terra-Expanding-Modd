@@ -67,7 +67,7 @@
 <<cleareventpool>>
 <<addinlineevent "Daily" 1>>
 	<<print [
-		`“别打我的战利品的注意，淘气鬼！”`,
+		`“别打我的战利品的主意，淘气鬼！”`,
 		`“我不是旱鸭子，但即便试水失败也比永远不试强。”`,
 		`“呀！贼溜了，唠扯唠扯鹦鹉吧，因……噶……哈……唠啥嗑呢？”`,
 		`“*卜拉卜拉卡卡*”`,
@@ -112,14 +112,14 @@
 :: Pirate Shop
 “你最好能拿出足够多的钱。俺的子弹和火炮可不长眼。”<br>
 <span class="no-numberify">
-	<div class="itemTerra">
-		<div class="item">
-			<div class="itemTerraGeneral" @tooltip='`鹦鹉饼干<br><br>▶召唤宠物鹦鹉<br>“不适合人类食用。”`'>
+	<div class="terraInventory">
+		<div class="terraItem">
+			<div class="terraIcon" @tooltip='`鹦鹉饼干<br><br>▶召唤宠物鹦鹉<br>“不适合人类食用。”`'>
 				<<icon "pet/pet_item/Parrot_Cracker.png">>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<span class="gold">£37500</span>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<if $pet_list.includes("Parrot_Cracker")>>
 					<span class="black">已有</span>
@@ -132,13 +132,13 @@
 				<</if>>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" @tooltip="`深度计<br><i>材料</i><br><br>位于沼泽、走私者洞穴时，显示当前在该区域内的具体位置，无需装备即可生效`">
+		<div class="terraItem">
+			<div class="terraIcon" @tooltip="`深度计<br><i>材料</i><br><br>位于沼泽、走私者洞穴时，显示当前在该区域内的具体位置，无需装备即可生效`">
 				<<icon "accessories/Depth_Meter.png">>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<span class="gold">£1000</span>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<if setup.terraAccessories.Depth_Meter.upgrades.some(a => V[a])>>
 					<span class="black">已有</span>

@@ -21,6 +21,12 @@
 	<div class="settingsToggleItem">
 		<label><<checkbox "$options.trueSBTBFS" false true autocheck>>万能渔具包完全体</label><mouse class="tooltip linkBlue">(?)<span>开启后，<<icon "fishing/fishing_accessories/Supreme_Bait_Tackle_Box_Fishing_Station.png">>万能渔具包将无限提供<<icon 'potions/Fishing_Potion.png'>>钓鱼/<<icon 'potions/Sonar_Potion.png'>>声呐/<<icon 'potions/Crate_Potion.png'>>宝匣药水的增益</span></mouse>
 	</div>
+	<div class="settingsToggleItem">
+		<label><<checkbox "$options.buttonsLegacy" false true autocheck>>旧版侧边栏按钮</label><mouse class="tooltip linkBlue">(?)<span>开启后，虚空袋、装备、工具按钮将转移至侧边栏</span></mouse>
+	</div>
+	<div class="settingsToggleItem">
+		渔夫性别：<label><<radiobutton "$options.terraGender.Angler" "m" autocheck>>男</label>｜<label><<radiobutton "$options.terraGender.Angler" "f" autocheck>>女</label><mouse class="tooltip linkBlue">(?)<span>文本中的渔夫人称代词设定</span></mouse>
+	</div>
 	<div class="settingsToggleItemWide">
 		<label>传送工具每日使用次数：
 			<<listbox "$options.terraTransportLimit" autoselect>>
@@ -70,8 +76,8 @@
 				<</replace>>
 			<</link>><br>
 			虚空袋：<<textbox "$options.voidBagKey" $options.voidBagKey>><br>
-			装　备：<<textbox "$options.equipmentKey" $options.equipmentKey>><br>
-			工　具：<<textbox "$options.toolKey" $options.toolKey>><br>
+			装备：<<textbox "$options.equipmentKey" $options.equipmentKey>><br>
+			工具：<<textbox "$options.toolKey" $options.toolKey>><br>
 		<<else>>
 			<<link "启用快捷键">>
 				<<set $terraHotKeys to true>>

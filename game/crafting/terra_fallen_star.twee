@@ -1,5 +1,6 @@
 :: Terra Header [widget]
 <<widget "terraFallenStar">>
+	<!--
 	<<if $debug is 1>>
 		[DEBUG模式]坠落之星调试信息<br>
 		<span id="fallenStarDebugInfo">
@@ -11,6 +12,7 @@
 			<br>
 		</span>
 	<</if>>
+	-->
 	<span id="terra_fallen_star">
 		<<if Time.dayState is "night" and random(1 , Math.round(2000 / $fallen_star_rate)) is 1 and (setup.fallenStarAreas.includes($passage) and $event is undefined)>>
 			你听到一个不寻常的声音。它离你越来越近，然后在一声撞击后戛然而止。你沿着声音的来源上前查看：是一颗落在地上的星星！<<terraHint>><br>

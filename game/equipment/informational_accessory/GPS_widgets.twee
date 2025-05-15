@@ -1,18 +1,599 @@
 :: Widgets GPS [widget]
 <<widget "GPSOldSewerMap">>
 	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<<set _markLocation to {
+			"sewerswebs": 
+				{x: 0, y: 0},
+			"sewerswood":
+				{x: 0, y: 1},
+			"sewersresidential":
+				{x: 0, y: 2},
+			"sewersscrap":
+				{x: 0, y: 3},
+			"sewersworkshop":
+				{x: 0, y: 4},
+			"sewershole":
+				{x: 1, y: 0},
+			"sewersruins":
+				{x: 1, y: 1},
+			"sewerscommercial":
+				{x: 1, y: 2},
+			"sewersmud":
+				{x: 1, y: 3},
+			"sewersshrooms":
+				{x: 1, y: 4},
+			"sewersrubble":
+				{x: 2, y: 1},
+			"sewersindustrial":
+				{x: 2, y: 2},
+			"sewersalgae":
+				{x: 2, y: 3},
+			"sewerswaterfall":
+				{x: 3, y: 2},
+			"sewerslake":
+				{x: 4, y: 2}
+		}>>
+
 		<br>
-		<<oldSewerMap>>
+		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了旧下水道的地图以及你所处的位置。</span>
+		<div class="GPSOldSewerMap">
+			<img src="img/misc/map/旧下水道地图.png">
+			<img src="img/misc/map/箭头.png" @style="'
+				position: absolute;
+   				top: ' + (40 * _markLocation[V.bus].y) + 'px;
+    			left: ' + (32 + (40 * _markLocation[V.bus].x)) + 'px;
+   				pointer-events: none;
+			'">
+			<<if $smuggler_pub_known is 1>>
+				<img src="img/misc/map/走私者酒吧1.png" class="GPSOldSewerMapSmugglerPub">
+			<</if>>
+		</div>
 	<</if>>
 <</widget>>
 
-<<widget "oldSewerMap">>
-	<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了旧下水道的地图以及你所处的位置。</span>
-	<div class="GPSOldSewerMap">
-		<img src="img/misc/map/旧下水道地图.png">
-		<img src="img/misc/map/箭头.png" @class="'GPSOldSewerMapArrow_' + $bus">
-		<<if $smuggler_pub_known is 1>>
-			<img src="img/misc/map/走私者酒吧.png" class="GPSOldSewerMapSmugglerPub">
+<<widget "GPSTentaclePlains">>
+	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<<set _markLocation to [
+			{
+				x: 0,
+				y: 0,
+				icon: $tentacleEntrance is "mirror" ? "<<mirroricon 'blood'>>" : "<<asylumicon 'door'>>",
+				class: "",
+			},
+			{
+				x: $tentportalnorth,
+				y: $tentportaleast,
+				icon: "<<foresticon>>",
+				class: "",
+			}
+		]>>
+		<<if $tentspray isnot 1>>
+			<<set _markLocation.pushUnique({
+				x: 4,
+				y: 4,
+				icon: "<<peppersprayicon>>",
+				class: "terraBlinking",
+			})>>
 		<</if>>
-	</div>
+		<<if numberOfEarSlime() gte 2 and $earSlime.growth gt 50 and $earSlime.focus isnot "none" and !$weekly.earSlimeTentaclePlains and $tentnorth lte 0 and $tenteast lte 1>>
+			<<set _markLocation.pushUnique({
+				x: -5,
+				y: -4,
+				icon: "<<peppersprayicon>>",
+				class: "",
+			})>>
+		<</if>>
+		<<set _markLocation.pushUnique({
+			x: $tentnorth,
+			y: $tenteast,
+			icon: "<<icon 'map/pc.png'>>",
+			class: "",
+		})>>
+
+		<br>
+		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了触手平原的地图以及你所处的位置。</span>
+		<div class="GPSTentaclePlainsMap">
+			<img src="img/misc/map/11*11地图.png">
+			<<for _mark range _markLocation>>
+				<div @class = "_mark.class" @style = "'
+					position: absolute;
+   					top: ' + ((5 - _mark.x) * 29) + 'px;
+    				left: ' + ((5 + _mark.y) * 29) + 'px;
+   					pointer-events: none;
+				'">
+					_mark.icon
+				</div>
+			<</for>>
+		</div>
+	<</if>>
+<</widget>>
+
+<<widget "GPSCatacombs">>
+	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<<set _markLocation to {
+			"catacombs": 
+				{x: 2, y: 4},
+			"prison":
+				{x: 1, y: 4},
+			"ridge":
+				{x: 0, y: 4},
+			"mud":
+				{x: 0, y: 5},
+			"masonry":
+				{x: 1, y: 5},
+			"barrow":
+				{x: 2, y: 5},
+			"stream":
+				{x: 3, y: 5},
+			"stalagmites":
+				{x: 4, y: 5},
+			"bores":
+				{x: 5, y: 4},
+			"engravings":
+				{x: 5, y: 3},
+			"museum":
+				{x: 5, y: 2},
+			"statues":
+				{x: 5, y: 1},
+			"compound":
+				{x: 5, y: 0},
+			"chasm":
+				{x: 4, y: 4},
+			"sarcophagi":
+				{x: 3, y: 4}
+		}>>
+
+		<br>
+		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了老教堂墓地的地图以及你所处的位置。</span>
+		<div class="GPSCatacombs">
+			<img src="img/misc/map/老教堂墓地地图.png">
+			<<if $tending lt 500>>
+				<img src="img/misc/map/禁止通行-横向.png" style="
+					position: absolute;
+   					top: 164px;
+    				left: 192px;
+   					pointer-events: none;
+				">
+			<</if>>
+			<<if setup.terraAccessories.Metal_Detector.upgrades.some(a => V[a])>>
+				<<if $museumAntiques.antiques.antiqueivorystatuette is "notFound">>
+					<div class="terraBlinking" style="
+						position: absolute;
+   						top: 160px;
+    					left: 80px;
+   						pointer-events: none;
+					">
+						<<antiqueicon "ivory_statuette">>
+					</div>
+				<</if>>
+				<<if $museumAntiques.antiques.antiquewhitecrystal is "notFound">>
+					<div class="terraBlinking" style="
+						position: absolute;
+   						top: 0px;
+    					left: 200px;
+   						pointer-events: none;
+					">
+						<<antiqueicon "crystal">>
+					</div>
+				<</if>>
+				<<if $museumAntiques.antiques.antiquesilvercrown is "notFound">>
+					<div class="terraBlinking" style="
+						position: absolute;
+   						top: 200px;
+    					left: 80px;
+   						pointer-events: none;
+					">
+						<<antiqueicon "silver_crown">>
+					</div>
+				<</if>>
+			<</if>>
+			<<if $underground_ice_lake_unlock>>
+				<img src="img/misc/icon/location/underground_ice_lake.png" style="
+					position: absolute;
+   					top: 200px;
+    				left: 120px;
+   					pointer-events: none;
+				">
+			<</if>>
+			<img src="img/misc/map/箭头.png" @style="'
+				position: absolute;
+   				top: ' + (40 * _markLocation[V.bus].y) + 'px;
+    			left: ' + (31 + (40 * _markLocation[V.bus].x)) + 'px;
+   				pointer-events: none;
+			'">
+		</div>
+	<</if>>
+<</widget>>
+
+<<widget "GPSDocks">>
+	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<<set _markLocation to {
+			"NW": {x: 0, y: 0},
+			"N" : {x: 1, y: 0},
+			"NE": {x: 2, y: 0},
+			"W" : {x: 0, y: 1},
+			"M" : {x: 1, y: 1},
+			"E" : {x: 2, y: 1},
+			"SW": {x: 0, y: 2},
+			"S" : {x: 1, y: 2},
+			"SE": {x: 2, y: 2}
+		}>>
+
+		<br>
+		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了码头的地图以及你所处的位置。</span>
+		<div class="GPSDocks">
+			<img src="img/misc/map/码头地图.png">
+			<<if setup.terraAccessories.Metal_Detector.upgrades.some(a => V[a])>>
+				<<for _location range Object.entries($skul_dock).filter(l => l[1].contents !== "none" && l[1].state !== "empty")>>
+					<div @style="'
+						position: absolute;
+						top: ' + (40 * _markLocation[_location[0]].y) + 'px;
+    					left: ' + (40 * _markLocation[_location[0]].x) + 'px;
+   						pointer-events: none;
+					'">
+						<<switch _location[1].contents>>
+							<<case "gold">>
+								<<icon "map/Gold_Bar.png">>
+							<<case "aphrodisiacs">>
+								<<icon "aphrodisiac.png">>
+							<<case "fertiliser">>
+								<<icon "fertiliser.png">>
+							<<case "electronics">>
+								<<if $radarMessage is "dock">>
+									<<icon "accessories/Radar.png">>
+								<</if>>
+						<</switch>>
+					</div>
+				<</for>>
+			<</if>>
+			<img src="img/misc/map/箭头.png" @style="'
+				position: absolute;
+   				top: ' + (40 * _markLocation[V.bus].y) + 'px;
+    			left: ' + (31 + (40 * _markLocation[V.bus].x)) + 'px;
+   				pointer-events: none;
+			'">
+		</div>
+	<</if>>
+<</widget>>
+
+<<widget "GPSForest">>
+	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<br>
+		<<if between(V.forest, 0, 20) or $passage is "Churchyard">>
+			<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了森林入口附近的地图以及你所处的位置。</span>
+			<<set _markLocation to {
+				0 : {x: 0, y: 0},
+				5 : {x: 1, y: 0},
+				10: {x: 2, y: 0},
+				15: {x: 3, y: 0},
+				20: {x: 4, y: 0},
+			}>>
+			<div class="GPSForestPart1">
+				<img src="img/misc/map/森林地图part1.png">
+				<div class="terraBlinking">
+					<<switch $passage>>
+						<<case "Forest">>	
+							<img src="img/misc/map/位置高亮1.png" @style="'
+								position: absolute;
+								top: ' + (40 * _markLocation[V.forest].y) + 'px;
+								left: ' + (40 * _markLocation[V.forest].x) + 'px;
+								pointer-events: none;
+							'">
+						<<case "Churchyard">>
+							<img src="img/misc/map/位置高亮1.png" style="
+								position: absolute;
+								top: 40px;
+								left: 80px;
+								pointer-events: none;
+							">
+					<</switch>>
+				</div>
+			</div>
+		<<else>>
+			<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了森林深处的地图以及你所处的位置。</span>
+			<<set _markLocation to {
+				25: {x: 0, y: 0},
+				30: {x: 1, y: 0},
+				35: {x: 2, y: 0},
+				40: {x: 3, y: 0},
+				45: {x: 4, y: 0},
+				50: {x: 5, y: 0},
+				55: {x: 6, y: 0},
+				60: {x: 6, y: 1},
+				65: {x: 6, y: 2},
+				70: {x: 6, y: 3},
+				75: {x: 5, y: 3},
+				80: {x: 4, y: 3},
+				85: {x: 3, y: 3},
+				90: {x: 2, y: 3},
+				95: {x: 1, y: 3},
+				100:{x: 0, y: 3},
+			}>>
+			<div class="GPSForestPart2">
+				<img src="img/misc/map/森林地图part2.png">
+				<<if $edenfreedom gte 1 or $syndromeeden gte 1 or $syndromewolves gte 1>>
+					<img src="img/misc/map/森林斯德哥尔摩.png" style="
+						position: absolute;
+						top: 70px;
+						left: 160px;
+						pointer-events: none;
+					">
+					<<if $edenfreedom gte 1 or $syndromeeden gte 1>>
+						<img src="img/misc/map/伊甸小屋.png" style="
+							position: absolute;
+							top: 78px;
+							left: 160px;
+							pointer-events: none;
+						">
+					<</if>>
+					<<if $syndromewolves gte 1>>
+						<img src="img/misc/map/狼窝.png" style="
+							position: absolute;
+							top: 80px;
+							left: 196px;
+							pointer-events: none;
+						">
+					<</if>>
+				<</if>>
+				<<if $brookIntro gte 1>>
+					<img src="img/misc/map/小溪.png" style="
+						position: absolute;
+						top: 70px;
+						left: 80px;
+						pointer-events: none;
+					">
+				<</if>>
+				<<if $bogProgress gte 1>>
+					<img src="img/misc/map/沼泽.png" style="
+						position: absolute;
+						top: 80px;
+						left: 40px;
+						pointer-events: none;
+					">
+				<</if>>
+				<div class="terraBlinking">
+					<<switch $passage>>
+						<<case "Forest">>	
+							<img src="img/misc/map/位置高亮1.png" @style="'
+								position: absolute;
+								top: ' + (40 * _markLocation[V.forest].y) + 'px;
+								left: ' + (40 * _markLocation[V.forest].x) + 'px;
+								pointer-events: none;
+							'">
+						<<case "Lake Shore" "Lake Firepit">>
+							<img src="img/misc/map/位置高亮2.png" style="
+								position: absolute;
+								top: 40px;
+								left: 0px;
+								pointer-events: none;
+							">
+						<<case "Lake Waterfall">>
+							<img src="img/misc/map/位置高亮2.png" style="
+								position: absolute;
+								top: 40px;
+								left: 80px;
+								pointer-events: none;
+							">
+						<<case "Lake Fishing Rock">>
+							<img src="img/misc/map/位置高亮1.png" style="
+								position: absolute;
+								top: 40px;
+								left: 160px;
+								pointer-events: none;
+							">
+						<<case "Lake Campsite">>
+							<img src="img/misc/map/位置高亮1.png" style="
+								position: absolute;
+								top: 40px;
+								left: 200px;
+								pointer-events: none;
+							">
+						<<case "Forest Brook">>
+							<img src="img/misc/map/位置高亮2.png" style="
+								position: absolute;
+								top: 80px;
+								left: 80px;
+								pointer-events: none;
+							">
+					<</switch>>
+				</div>
+			</div>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "GPSBeachCave">>
+	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<<set _markLocation to {
+			0 : {x: 0, y: 0},
+			5 : {x: 1, y: 0},
+			10: {x: 2, y: 0},
+			15: {x: 3, y: 0},
+			20: {x: 4, y: 0},
+			25: {x: 4, y: 1},
+			30: {x: 4, y: 2},
+			35: {x: 3, y: 2},
+			40: {x: 2, y: 2},
+			45: {x: 1, y: 2},
+			50: {x: 0, y: 2},
+			55: {x: 0, y: 3},
+			60: {x: 1, y: 3},
+			65: {x: 2, y: 3},
+			70: {x: 3, y: 3},
+			75: {x: 4, y: 3},
+			80: {x: 4, y: 4},
+			85: {x: 3, y: 4},
+			90: {x: 2, y: 4},
+			95: {x: 1, y: 4},
+			100:{x: 0, y: 4},
+		}>>
+
+		<br>
+		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了走私者洞穴的地图以及你所处的位置。</span>
+		<div class="GPSBeachCave">
+			<img src="img/misc/map/走私者洞穴地图.png">
+			<<if $smuggler_pub_known is 1 or ($historytrait gte 4 or ($temple_spear_mission gte 1 and $temple_spear_mission_winter is 1))>>
+				<img src="img/misc/map/走私者酒吧2.png" style="
+					position: absolute;
+   					top: 40px;
+    				left: 0px;
+   					pointer-events: none;
+				">
+			<</if>>
+			<<if setup.terraAccessories.Metal_Detector.upgrades.some(a => V[a])>>
+				<<if $museumAntiques.antiques.antiqueleathermap is "notFound">>
+					<div class="terraBlinking" style="
+						position: absolute;
+   						top: 160px;
+    					left: 0px;
+   						pointer-events: none;
+					">
+						<<antiqueicon "map">>
+					</div>
+				<<elseif !$weekly.beachCaveCompass>>
+					<div style="
+						position: absolute;
+   						top: 160px;
+    					left: 0px;
+   						pointer-events: none;
+					">
+						<<antiqueicon "silver_compass">>
+					</div>
+				<</if>>
+			<</if>>
+			<img src="img/misc/map/箭头.png" @style="'
+				position: absolute;
+   				top: ' + (40 * _markLocation[V.cave].y) + 'px;
+    			left: ' + (31 + (40 * _markLocation[V.cave].x)) + 'px;
+   				pointer-events: none;
+			'">
+		</div>
+	<</if>>
+<</widget>>
+
+<<widget "GPSBirdHunt">>
+	<<if $bird.hunts>>
+		<<if $bird.hunts.distanceNorth isnot undefined and $bird.hunts.distanceEast isnot undefined and $event is undefined and setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+			<<set _markLocation to [
+				{
+					x: 0,
+					y: 0,
+					icon: "<<birdicon 'tower'>>",
+					class: "",
+				},
+				{
+					x: -3,
+					y: 3,
+					icon: "<<icon 'bush.png'>>",
+					class: "",
+				},
+				{
+					x: -3,
+					y: -3,
+					icon: "<<icon 'bush.png'>>",
+					class: "",
+				}
+			]>>
+			<<if setup.terraAccessories.Radar.upgrades.some(a => V[a])>>
+				<<if $daily.huntRemyCampNorth isnot undefined and $daily.huntRemyCampEast isnot undefined>>
+					<<set _markLocation.pushUnique({
+						x: $daily.huntRemyCampNorth,
+						y: $daily.huntRemyCampEast,
+						icon: "<<icon 'birdTower/cooking_pot.png'>>",
+						class: "",
+					})>>
+				<</if>>
+				<<if $daily.emptyCampNorth isnot undefined and $daily.emptyCampEast isnot undefined>>
+					<<set _markLocation.pushUnique({
+						x: $daily.emptyCampNorth,
+						y: $daily.emptyCampEast,
+						icon: Time.dayState isnot "night" ? "<<icon 'birdTower/firepit_robust_0.gif'>>" : "<<icon 'birdTower/firepit_robust_3.gif'>>",
+						class: "",
+					})>>
+				<</if>>
+			<</if>>
+			<<set _markLocation.pushUnique({
+				x: $bird.hunts.distanceNorth,
+				y: $bird.hunts.distanceEast,
+				icon: "<img src='img/misc/map/位置高亮1.png'>",
+				class: "terraBlinking",
+			})>>
+
+			<br>
+			<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了鹰塔及其周围区域的地图以及你所处的位置。</span>
+			<div class="GPSTentaclePlainsMap">
+				<img src="img/misc/map/11*11地图.png">
+				<<for _mark range _markLocation>>
+					<div @class = "_mark.class" @style = "'
+						position: absolute;
+						top: ' + ((5 - _mark.x) * 29) + 'px;
+						left: ' + ((5 + _mark.y) * 29) + 'px;
+						pointer-events: none;
+					'">
+						_mark.icon
+					</div>
+				<</for>>
+			</div>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "GPSMoor">>
+	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
+		<<set _markLocation to {
+			0 : {x: 0, y: 0},
+			5 : {x: 0, y: 1},
+			10: {x: 1, y: 1},
+			15: {x: 2, y: 1},
+			20: {x: 3, y: 1},
+			25: {x: 4, y: 1},
+			30: {x: 4, y: 2},
+			35: {x: 3, y: 2},
+			40: {x: 2, y: 2},
+			45: {x: 1, y: 2},
+			50: {x: 0, y: 2},
+			55: {x: 0, y: 3},
+			60: {x: 1, y: 3},
+			65: {x: 2, y: 3},
+			70: {x: 3, y: 3},
+			75: {x: 4, y: 3},
+			80: {x: 4, y: 4},
+			85: {x: 3, y: 4},
+			90: {x: 2, y: 4},
+			95: {x: 1, y: 4},
+			100:{x: 0, y: 4},
+		}>>
+
+		<br>
+		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了荒原的地图以及你所处的位置。</span>
+		<div class="GPSMoor">
+			<img src="img/misc/map/荒原地图.png">
+			<<if $bogProgress gte 1>>
+				<img src="img/misc/map/沼泽2.png" style="
+					position: absolute;
+   					top: 190px;
+    				left: 40px;
+   					pointer-events: none;
+				">
+			<</if>>
+			<<if setup.terraAccessories.Metal_Detector.upgrades.some(a => V[a])>>
+				<<if $treasure_map is 1>>
+					<div class="terraBlinking" style="
+						position: absolute;
+   						top: 200px;
+    					left: 0px;
+   						pointer-events: none;
+					">
+						<<antiqueicon "bell">>
+					</div>
+				<</if>>
+			<</if>>
+			<img src="img/misc/map/箭头.png" @style="'
+				position: absolute;
+   				top: ' + (40 * _markLocation[V.moor].y) + 'px;
+    			left: ' + (31 + (40 * _markLocation[V.moor].x)) + 'px;
+   				pointer-events: none;
+			'">
+		</div>
+	<</if>>
 <</widget>>

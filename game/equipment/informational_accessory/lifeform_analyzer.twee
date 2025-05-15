@@ -111,45 +111,55 @@
 			<<elseif $farm_work.alex>>
 				艾利克斯在<<print $farm_work.alex.replace("shower","淋浴间").replace("border","农场").replace("yard","院子").replace("chickens_fed","鸡舍").replace("chickens_out","鸡舍").replace("chickens_in","鸡舍").replace("pigs_out","猪圈").replace("pigs_in","猪圈").replace("horses_out","马厩").replace("horses_in","马厩").replace("cattle_out","牛棚").replace("cattle_in","牛棚").replace("cattle_milked","牛棚").replace("chicken_eggs","鸡舍").replace("pigs_fed","猪圈").replace("horses_brushed","马棚").replace("relax","树下休息").replace("still", $farm_stage gte 9 ? "实验室" : "一座古老的石头建筑里").replace("tending","农田").replace("clearing", $farm_stage is 12 ? "小屋" : "农田").replace("chickens_panic","鸡舍").replace("pigs_panic","猪圈").replace("horses_panic","马厩").replace("cattle_panic","牛棚").replace("dogs_panic","犬舍").replace("panic","农场").replace("fence_damage","农场").replace("dogs_fed","犬舍").replace("hay","农场").replace("woodland","林地").replace("admin","小屋")>>
 			<<else>>
-				<span class="black">艾利克斯的位置暂不可用</span>
+				<a class="black">艾利克斯的位置暂不可用</a>
 			<</if>>
 		<<case "Eden">>
 			<<if $foresthunt gte 1 and $edenforesthunt is 1>>
 				伊甸在<a @class="$syndromeeden ? 'blue' : 'red'">追猎你</a>
-			<<elseif Time.hour gte 17 or Time.hour lte 8>>
-				伊甸在小屋
-			<<elseif Time.hour gte 11 and Time.hour lte 14>>
-				伊甸在森林里
+			<<elseif $syndromeeden>>
+				<<if Time.hour gte 17 or Time.hour lte 8>>
+					伊甸在小屋
+				<<elseif Time.hour gte 11 and Time.hour lte 14>>
+					伊甸在森林里
+				<<else>>
+					伊甸在小屋外的空地
+				<</if>>
 			<<else>>
-				伊甸在小屋外的空地
+				<a class="black">伊甸的位置暂不可用</a>
 			<</if>>
 		<<case "Great Hawk">>
 			<<if $moor_hunt gte 1>>
 				巨鹰在<a @class="$syndromebird ? 'blue' : 'red'">追猎你</a>
-			<<elseif $bird.hunts.duo>>
-				巨鹰在你身边
-			<<elseif $bird.state is "hunting">>
-				巨鹰在荒原
-			<<elseif $bird.state is "home">>
-				巨鹰在
-				<<switch $bird.activity>>
-					<<case "bathe">>
-						雨水池
-					<<case "groom" "sing">>
-						栖木上
-					<<default>>
-						巢里
-				<</switch>>
+			<<elseif $syndromebird>>
+				<<if $bird.hunts.duo>>
+					巨鹰在你身边
+				<<elseif $bird.state is "hunting">>
+					巨鹰在荒原
+				<<elseif $bird.state is "home">>
+					巨鹰在
+					<<switch $bird.activity>>
+						<<case "bathe">>
+							雨水池
+						<<case "groom" "sing">>
+							栖木上
+						<<default>>
+							巢里
+					<</switch>>
+				<</if>>
 			<<else>>
-				<span class="black">巨鹰的位置暂不可用</span>
+				<a class="black">巨鹰的位置暂不可用</a>
 			<</if>>
 		<<case "Black Wolf">>
 			<<if $foresthunt gte 1 and $blackwolfhunt is 1>>
 				黑狼在<a @class="$syndromewolves ? 'blue' : 'red'">追猎你</a>
-			<<elseif $wolfstate is "hunt" and !$blackWolfNotHunting>>
-				黑狼在森林
+			<<elseif $syndromewolves>>
+				<<if $wolfstate is "hunt" and !$blackWolfNotHunting>>
+					黑狼在森林
+				<<else>>
+					黑狼在狼窝
+				<</if>>
 			<<else>>
-				黑狼在狼窝
+				<a class="black">黑狼的位置暂不可用</a>
 			<</if>>
 		<<case "Avery">>
 			<<if C.npc.Avery.state isnot "dismissed" and $averyseen isnot 1 and Time.weekDay is 7 and Time.dayState is "day" and ($scienceproject is "won" or $scienceproject is "done" or C.npc.Avery.init is 1)>>

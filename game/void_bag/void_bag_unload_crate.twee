@@ -13,12 +13,19 @@
 		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<if random(1,8) is 1>>
+		<<if !["Magic_Mirror","Cell_Phone","Shellphone"].some(a => V[a])>>
+			<<set $Magic_Mirror to true>>
+		<</if>>
 		、<<icon "tool/Magic_Mirror.png">>魔镜
-		<<set $Magic_Mirror to true>>
+	<</if>>
+	<<if random(1,5) is 1>>
+		<<set $condoms to ($condoms + 1) or 1>>
+		、<img class="icon" src="img/ui/condom.png" style="position: static; vertical-align: middle;">避孕套(1)
 	<</if>>
 	<<if random(1,15) is 1>>
 		<<museumAntiqueText>>
 		<<set $antiquemoney += 2000>>
+		<<museumAntiqueStatus "antiquegoldchastitybelt" "found">>
 		。你发现里面还有一条<<antiqueicon "chastity">>金质贞操带！
 		<<if $worn.genitals.name is "naked" and playerBellySize() lte 7>>
 			<<link "穿上">>
@@ -69,6 +76,10 @@
 			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
+	<<if random(1,10) is 1>>
+		<<set $condoms to ($condoms + 1) or 1>>
+		、<img class="icon" src="img/ui/condom.png" style="position: static; vertical-align: middle;">避孕套(1)
+	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
 
@@ -110,8 +121,9 @@
 			、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
-	<<if random(1,10) is 1>>
-		<<facesend 3 wardrobe>>、医用外科口罩
+	<<if random(1,15) is 1>>
+		<<set $condoms to ($condoms + 1) or 1>>
+		、<img class="icon" src="img/ui/condom.png" style="position: static; vertical-align: middle;">避孕套(1)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -152,15 +164,6 @@
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
-	<<if random(1,2) is 1>>
-		<<switch random(1,5)>>
-			<<case 1>><<underuppersend 2 wardrobe>>、校泳装
-			<<case 2>><<underuppersend 11 wardrobe>><<underlowersend 18 wardrobe>>、暴露式比基尼上下装
-			<<case 3>><<underuppersend 24 wardrobe>><<underlowersend 6 wardrobe>>、学校泳装上下装
-			<<case 4>><<underlowersend 7 wardrobe>>、学校泳裤
-			<<case 5>><<facesend 19 wardrobe>>、泳镜
-		<</switch>>
-	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
 
@@ -172,17 +175,19 @@
 			<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
 			<<set $Scarab_Fishing_Rod to true>>
 		<<case 2>>
-			<<icon "furniture_item/Bast_Statue.png">>巴斯特雕像
-			<<set $Bast_Statue to true>>
-		<<case 3>>
 			<<icon "tool/Snake_Charmers_Flute.png">>耍蛇者长笛
 			<<set $Snake_Charmers_Flute to true>>
-		<<case 4>>
+		<<case 3>>
+			<<if !["Magic_Conch","Shellphone"].some(a => V[a])>>
+				<<set $Magic_Conch to true>>
+			<</if>>
 			<<icon "tool/Magic_Conch.png">>魔法海螺
-			<<set $Magic_Conch to true>>
-		<<case 5>>
+		<<case 4>>
 			<<icon "accessories/Dunerider_Boots.png">>沙丘行者靴
 			<<set $Dunerider_Boots to true>>
+		<<case 5>>
+			<<icon "accessories/Ancient_Chisel.png">>远古凿子
+			<<set $Ancient_Chisel to true>>
 	<</switch>>
 	<<if random(1,20) is 1>>
 		、<<icon "accessories/Sandstorm_in_a_Bottle.png">>沙暴瓶<<set $Sandstorm_in_a_Bottle to true>>
@@ -209,9 +214,6 @@
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
-	<</if>>
-	<<if random(1,2) is 1>>
-		<<uppersend 39 wardrobe>>、背带裤
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -251,12 +253,6 @@
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
-	<<switch random(1,3)>>
-		<<case 1>>
-			<span class="gold"><<uppersend 33 wardrobe>><<lowersend 22 wardrobe>>、格子衬衫和牛仔裤</span>
-		<<case 2>>
-			<span class="gold"><<headsend 40 wardrobe>>、玫瑰花头饰</span>
-	<</switch>>
 	<<updatesidebarmoney>>
 <</widget>>
 
@@ -287,15 +283,6 @@
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
 			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
-	<</if>>
-	<<if random(1,2) is 1>>
-		<<switch random(1,5)>>
-			<<case 1>><<uppersend 13 wardrobe>>、性感修女长袍
-			<<case 2>><<uppersend 32 wardrobe>>、修士长袍
-			<<case 3>><<uppersend 141 wardrobe>>、性感修女长袍
-			<<case 4>><<uppersend 142 wardrobe>>、性感祭祀法袍
-			<<case 5>><<necksend 5 wardrobe>>、石制十字架
-		<</switch>>
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -354,8 +341,10 @@
 			<<icon "accessories/Flurry_Boots.png">>疾风雪靴
 			<<set $Flurry_Boots to true>>
 		<<case 2>>
+			<<if !["Ice_Mirror","Cell_Phone","Shellphone"].some(a => V[a])>>
+				<<set $Ice_Mirror to true>>
+			<</if>>
 			<<icon "tool/Ice_Mirror.png">>冰雪镜
-			<<set $Ice_Mirror to true>>
 		<<case 3>>
 			<<icon "accessories/Ice_Skates.png">>溜冰鞋
 			<<set $Ice_Skates to true>>

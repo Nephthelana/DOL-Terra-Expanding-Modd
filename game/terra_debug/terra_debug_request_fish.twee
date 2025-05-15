@@ -1,21 +1,18 @@
 :: Terra Debug Request Fish
-<<run initializeTooltips()>>
 请选择获得/丢弃任务鱼。<br>
 <span class="no-numberify">
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _rf range Object.keys(setup.terraRequestFish)>>
 			<<set _requestFish to setup.terraRequestFish[_rf]>>
 			<<capture _requestFish>>
 				<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="_tooltip">
-						<<if $fishing_request_fish.includes(_requestFish.name)>>
+				<div class="terraItem">
+					<div class="terraIcon" @tooltip="_tooltip">
+						<span @class="$fishing_request_fish.includes(_requestFish.name) ? '' : 'terraFading'">
 							<<icon `_requestFish.icon`>>
-						<<else>>
-							<span class="terraFading"><<icon `_requestFish.icon`>></span>
-						<</if>>
+						</span>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					<div class="terraLinks">
 						<<if $fishing_request_fish.includes(_requestFish.name)>>
 							<<link [[丢弃|Terra Debug Request Fish]]>><<set $fishing_request_fish.delete(_requestFish.name)>><</link>>

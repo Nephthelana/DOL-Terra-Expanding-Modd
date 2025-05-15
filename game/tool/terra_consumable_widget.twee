@@ -1,20 +1,19 @@
 :: Terra Consumable [widget]
 <<widget "void_bag_Consumable">>
-	<<run initializeTooltips()>>
 	<<if getConsumableObtained().length gt 0>>
 		<span class="gold bold">消耗品</span><mouse class="tooltip linkBlue">(?)<span>使用后会被消耗掉的物品</span></mouse><br>
-		<div class="itemTerra">
+		<div class="terraInventory">
 			<<for _c range getConsumableObtained()>>
 				<<set _consumable to setup.terraConsumable[_c]>>
 				<<capture _consumable>>
-					<div class="item">
+					<div class="terraItem">
 						<<set _isMaterial to _consumable.material ? "<br><i>材料</i>" : "">>
-						<div class="itemTerraGeneral" @tooltip="`${_consumable.cn_name}${_isMaterial}<br><br>▶${_consumable.des}`">
+						<div class="terraIcon" @tooltip="`${_consumable.cn_name}${_isMaterial}<br><br>▶${_consumable.des}`">
 							<<icon `_consumable.icon`>>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						_consumable.amount
-						<hr>
+						<div class="terraDivider"></div>
 						<div class="terraLinks">
 							_consumable.use
 						</div>
@@ -27,9 +26,13 @@
 
 <<widget "Bloody_Tear_use">>
 	<<if Time.isBloodMoon()>>
-		<mouse class="tooltip linkBlue">/<span>你不能在血月期间使用血泪</span></mouse>
+		<span style="border-bottom: dotted 1px" tooltip="你不能在血月期间使用血泪">
+			<span class="linkBlue">/</span><br>
+		</span>
 	<<elseif !(Time.dayState is "night")>>
-		<mouse class="tooltip linkBlue">/<span>你只能在夜晚使用血泪</span></mouse>
+		<span style="border-bottom: dotted 1px" tooltip="你只能在夜晚使用血泪">
+			<span class="linkBlue">/</span><br>
+		</span>
 	<<else>>
 		<<link "使用">>
 			<<set $Bloody_Tear -= 1>>
@@ -131,6 +134,8 @@
 			<</replace>>
 		<</link>>
 	<<else>>
-		<mouse class="tooltip linkBlue">不可用<span>没有可消除的催眠特质</span></mouse>
+		<span style="border-bottom: dotted 1px" tooltip="没有可消除的催眠特质">
+			<span class="linkBlue">/</span><br>
+		</span>
 	<</if>>
 <</widget>>

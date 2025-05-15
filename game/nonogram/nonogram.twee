@@ -1,9 +1,13 @@
 :: Nonogram
 <<run window.modImgLoaderHooker.addDynamicImageTagReplacePassage(V.passage)>>
-重新从调试页面进入此页面将会刷新题目/暂不支持撤销功能/可能存在解不唯一的情况
+重新从调试页面进入此页面将会刷新题目/不支持撤销功能/可能存在解不唯一的情况
 <<link [[什么是数织（Nonogram）|Nonogram Details]]>><</link>><br>
 <<link [[生成5×5数织|Nonogram]]>><<set $Nonogram.sideLength to 5>><<run generateNonogramTable()>><</link>><br>
 <<link [[生成10×10数织|Nonogram]]>><<set $Nonogram.sideLength to 10>><<run generateNonogramTable()>><</link>><br>
+<!--
+	Damn，在设备屏幕限制和随意的谜面生成下，15×15数织的体验实在太差了！所以就这样藏起来吧。
+	<<link [[生成15×15数织|Nonogram]]>><<set $Nonogram.sideLength to 15>><<run generateNonogramTable()>><</link>><br>
+-->
 <span id="finishedHint"><br></span>
 <span id="NonogramTable" class="no-numberify">
 	<<NonogramTable>>
@@ -29,61 +33,68 @@
 			<div class="itemNonogramFor10">
 				<<nonogramContent>>
 			</div>
+		<<case 15>>
+			<div class="itemNonogramFor15">
+				<<nonogramContent>>
+			</div>
 	<</switch>>
 <</widget>>
 
 <<widget "nonogramContent">>
+		<!-- 第一行第一列空格 -->
 		<div class="itemNonogramInFirstColumn">
 		</div>
+		<!-- 第一行的剩余列里标上数字 -->
 		<<for _c = 1; _c lte $Nonogram.sideLength; _c++>>
+			<!-- 判断谜底中连续的格子的数量 -->
 			<<set _ct to false>>
-			<<set _ct_count to 0>>
+			<<unset _ct_count>>
 			<div class="itemNonogramInFirstRow">
-				<<for _ind = 1; _ind lte Math.pow(V.Nonogram.sideLength,2); _ind++>>
-					<<set _No = V.Nonogram.grid["No" + _ind]>>
-					<<if _No.column is _c>>
-						<<if _No.puzzled is true>>
-							<<set _ct to true>>
-							<<set _ct_count += 1>>
-							<<if _No.row is $Nonogram.sideLength>>
-								<<print _ct_count>><br>
-							<</if>>
-						<<elseif _ct is true>>
+				<<for _No range Object.keys(V.Nonogram.grid).filter(no => V.Nonogram.grid[no].column === T.c)>>
+					<<if V.Nonogram.grid[_No].puzzled is true>>
+						<<set _ct to true>>
+						<<set _ct_count = (_ct_count + 1) || 1>>
+						<<if V.Nonogram.grid[_No].row is $Nonogram.sideLength>>
 							<<print _ct_count>><br>
-							<<set _ct to false>>
-							<<set _ct_count = 0>>
 						<</if>>
+					<<elseif _ct is true>>
+						<<print _ct_count>><br>
+						<<set _ct to false>>
+						<<set _ct_count = 0>>
 					<</if>>
 				<</for>>
+				<<if _ct_count is undefined>>
+					<<print 0>>
+				<</if>>
 			</div>
 		<</for>>
 		<<set _i to 1>>
 		<<for _r = 1; _r lte $Nonogram.sideLength; _r++>>
 			<<set _rt to false>>
-			<<set _rt_count to 0>>
+			<<unset _rt_count>>
 			<div class="itemNonogramInFirstColumn">
-				<<for _ind = 1; _ind lte Math.pow(V.Nonogram.sideLength,2); _ind++>>
-					<<set _No = V.Nonogram.grid["No" + _ind]>>
-					<<if _No.row is _r>>
-						<<if _No.puzzled is true>>
-							<<set _rt to true>>
-							<<set _rt_count += 1>>
-							<<if _No.column is $Nonogram.sideLength>>
-								<<print _rt_count>><br>
-							<</if>>
-						<<elseif _rt is true>>
-							<<print `${_rt_count} `>>
-							<<set _rt to false>>
-							<<set _rt_count = 0>>
+				<<for _No range Object.keys(V.Nonogram.grid).filter(no => V.Nonogram.grid[no].row === T.r)>>
+					<<if V.Nonogram.grid[_No].puzzled is true>>
+						<<set _rt to true>>
+						<<set _rt_count = (_rt_count + 1) || 1>>
+						<<if V.Nonogram.grid[_No].column is $Nonogram.sideLength>>
+							<<print _rt_count>>
 						<</if>>
+					<<elseif _rt is true>>
+						<<print _rt_count>>
+						<<set _rt to false>>
+						<<set _rt_count = 0>>
 					<</if>>
 				<</for>>
+				<<if _rt_count is undefined>>
+					<<print 0>>
+				<</if>>
 			</div>
 			<<for _i lte (_r * $Nonogram.sideLength)>>
 				<<set _grid to V.Nonogram.grid["No" + _i]>>
 				<<capture _grid>>
-					<div class="item">
-						<div class="itemTerraGeneral">
+					<div class="terraItem">
+						<div class="terraIcon">
 							<<switch _grid.answer>>
 								<<case "blank">>
 									<<link [img["img/misc/icon/nonogram/nonogram_blank.png"]]>>

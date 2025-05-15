@@ -11,7 +11,7 @@
 					<span class="blue">但是现在罗宾不在孤儿院，你无法使用它。</span>
 				<</if>>
 			<<else>>
-				为了激活这个晶塔，你需要找到那块水晶。<<print C.npc.Robin.love gte 90 ? "<span class='teal'>试着和罗宾一起去森林找找吧，注意可能会被大风吹跑的野餐篮。</span>" : "<span class='blue'>如果罗宾对你有足够的好感，你将会得到提示。</span>">>
+				为了激活这个晶塔，你需要找到那块水晶。<<print C.npc.Robin.love gte 90 ? "<span class='teal'>试着和罗宾一起去森林找找吧，注意在多云的大风天中被吹跑的野餐篮，以及罗宾足够高的自信(20)与足够低的创伤(0)。</span>" : "<span class='blue'>如果罗宾对你有足够的好感，你将会得到提示。</span>">>
 			<</if>>
 		<<else>>
 			<<mysteryicon>>房间里有一块奇怪的水晶基座引起了你的注意。<span class="teal">也许历史老师温特会对这个有所了解，抽空去博物馆问问吧。</span>
@@ -19,3 +19,29 @@
 	<</if>>
 	<br>
 <</widget>>
+
+<<widget "pylon_bedroom_ask">>
+	<<if $pylon_museum_asked and C.npc.Robin.love gte 90 and C.npc.Robin.trauma lt 1 and C.npc.Robin.dom gte 20 and !$pylon_collected.includes("Bedroom")>>
+		<br>
+		尽管是阴天，但这更显得树丛中闪烁着光芒。不只是你，罗宾也注意到了。<br>
+		<<link [[鼓起勇气和罗宾一起去一探究竟|Pylon Bedroom Unlock]]>><</link>><br>
+	<</if>>
+<</widget>>
+
+:: Pylon Bedroom Unlock
+<<set $pylon_collected.pushUnique("Bedroom")>>
+<<npc Robin>><<person1>>
+万一是比篮子还值钱的东西呢？罗宾刚开始有些犹豫，但还是决定和你一起去那个树丛看看。这次<<he>>要走前面。罗宾小心翼翼地接近树丛，一只手护着你，另一只手鼓着劲往树丛里伸。“这是什么东西？”<<He>>一下把手缩了回来，“冰凉冰凉的，和石头一样硬……”罗宾的声音又开始有些颤抖。你提议找一些工具来对付这些交缠的枝叶。<br>
+<br>
+你们找来了几根木棍，合力从罗宾伸手进去的地方将树丛撬开。一块碧绿的水晶展现在眼前，它比森林深处的那块更加规整。“这可比篮子值钱多了！”你可以看到罗宾很高兴，但显然<<He>>一直都在担心着背负在你身上的双重债务。<br>
+<br>
+花费了不少时间和力气，这块水晶终于完整地展现在了你们面前，尽管表面还有几片树叶没拿下来，但无法掩盖其晶面的完美无瑕。<br>
+<br>
+你忽然想到卧室里的水晶基座上，零星生长着不会枯萎的枝条与树叶。<span class="green">这应该就是晶塔需要的水晶。</span>你提议把它摆在卧室里，这是比被不合时宜的大风打扰的野餐更加值得记忆的事情。<br>
+<br>
+<<link[[返回孤儿院|Pylon Bedroom Unlocked]]>><</link>>
+
+:: Pylon Bedroom Unlocked
+你们带着这块水晶回到了孤儿院。<br>
+<br>
+<<robinoptions>>

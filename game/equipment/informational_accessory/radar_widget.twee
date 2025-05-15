@@ -1,0 +1,17 @@
+:: Widgets Radar [widget]
+<<widget "radarSmuggler">>
+	<<if $radarMessage is undefined and !setup.terraAccessories.Radar.upgrades.some(a => V[a])>>
+		<<set $radarMessage to "note">>
+		你还找到一张粘在金属管底部的纸条。你小心地将其取下，然后展开了它。上面的文字同样看不懂，但有一张示意图描绘了某种电子产品的结构。整张纸条的末尾标记着这样一个符号：<<icon "Peddlers_Hat.png">><br>
+		<span class="teal">如果你能找到这个标志所代表的人，或许就可以解开这个金属管的秘密。</span>你收起了这张纸条。<br>
+	<</if>>
+<</widget>>
+
+<<widget "radarFound">>
+	<<if $radarMessage is "dock">>
+		<<unset $radarMessage>>
+		<<set $Radar to true>>
+		除此之外，你还注意到一个特别的东西：和那张纸条上的示意图一模一样的设备。<span class="gold">你获得了<<icon "accessories/Radar.png">>雷达！</span><br>
+		<br>
+	<</if>>
+<</widget>>

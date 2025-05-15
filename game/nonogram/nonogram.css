@@ -12,6 +12,12 @@
 	padding: 0.5rem;
 }
 
+.itemNonogramFor15 {
+	display: grid;
+	grid-template-columns: repeat(16, 50px);
+	padding: 0.5rem;
+}
+
 .itemNonogramInFirstColumn {
 	display: flex;
 	flex-direction: row;

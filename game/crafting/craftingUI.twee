@@ -1,0 +1,114 @@
+:: Crafting UI [widget]
+<<widget "crafting">>
+
+<span class="no-numberify">
+	<<set _recipe_list to getAllRecipeList().filter(r => {
+		if (["birdToolBox","birdPot"].includes(T.args[0]) || V.passage === "Fish Island Work Bench") {
+			return setup.terraRecipe[r].crafting_station.includes(T.args[0]) && setup.terraRecipe[r].condition() && setup.terraRecipe[r].type === "food";
+		} else {
+			return setup.terraRecipe[r].crafting_station.includes(T.args[0]) && setup.terraRecipe[r].condition();
+		}
+	})>>
+	<<set _recipe_avalible to false>>
+	<div class="terraInventory">
+		<<for _r range _recipe_list>>
+			<<set _recipe to setup.terraRecipe[_r]>>
+			<<set _ingredients to Object.entries(_recipe.ingredients)>>
+			<<capture _recipe, _ingredients>>
+				<<set _craftable to true>>
+				<<for _ing1 range _ingredients>>
+					<<switch typeof(_ing1[1])>>
+						<<case "number">>
+							<<set _craftable to V[_ing1[0]] gte _ing1[1] ? _craftable : false>>
+						<<case "boolean">>
+							<<set _craftable to V[_ing1[0]] ? _craftable : false>>
+					<</switch>>
+				<</for>>
+				<<if _craftable>>
+					<<set _recipe_avalible to true>>
+					<div class="terraItem">
+						<div class="terraIcon" @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
+							<<icon `_recipe.icon`>>
+						</div>
+						<div class="terraDivider"></div>
+						<mouse class="tooltip-image" style="border-bottom: dotted 1px">
+							配方
+							<span>
+								_recipe.ingredients_info
+							</span>
+						</mouse>
+						<div class="terraDivider"></div>
+						<div class="terraLinks">
+							<<link "制作">>
+								<<for _ing2 range _ingredients>>
+									<<switch typeof(_ing2[1])>>
+										<<case "number">>
+											<<run V[_ing2[0]] -= _ing2[1]>>
+										<<case "boolean">>
+											<<run delete V[_ing2[0]]>>
+											<<set $terra_accessories_slots.delete(_ing2[0])>>
+											<<set $terra_vanity_accessories_slots.delete(_ing2[0])>>
+									<</switch>>
+								<</for>>
+								_recipe.craft
+								<<if _recipe.name is "Cell_Phone">>
+									<<set $featMessageBlackMirror to true>>
+								<</if>>
+								<<if ["Work_Bench","Iron_Anvil","Cooking_Pot","Tinkerers_Workshop","Hellforge"].includes(_args[0])>>
+									<<set $crafting_count[_args[0]] += 1>>
+								<</if>>
+								<<switch _args[0]>>
+									<<case "Cooking_Pot" "birdPot">>
+										<<if _recipe.type is "food">>
+											<<housekeeping 1 1000>>
+										<</if>>
+										<<replace #housekeepingInfo>>
+											<<if $housekeeping lt 1000>>
+												你可以从<span class="teal">烹饪鱼类</span>中精进你的<span class="gold">家务技能</span>。<br>
+											<<else>>
+												你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+											<</if>>
+										<</replace>>
+										<<if _args[0] is "birdPot" and hasBabyHawkModInfo()>>
+											<<replace #crafting_bird_tower_cooking_pot_exit>>
+												<<getouticon>><<link [[返回|Crafting Bird Tower Cooking Pot Exit]]>><</link>>
+											<</replace>>
+										<</if>>
+									<<case "Work_Bench" "birdToolBox">>
+										<<if _recipe.type is "food">>
+											<<housekeeping 1 600>>
+										<</if>>
+										<<replace #housekeepingInfo>>
+											<<if $housekeeping lt 600>>
+												你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
+											<<elseif $housekeeping lt 1000>>
+												<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
+											<<else>>
+												你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
+											<</if>>
+										<</replace>>
+										<<if _args[0] is "birdToolBox" and hasBabyHawkModInfo()>>
+											<<replace #crafting_bird_tower_work_bench_exit>>
+												<<getouticon>><<link [[返回|Crafting Bird Tower Work Bench Exit]]>><</link>>
+											<</replace>>
+										<</if>>
+								<</switch>>
+								<<replace #craftingInfo>>
+									_recipe.crafting_info
+								<</replace>>
+								<<replace #craftingUI>>
+									<<crafting _args[0]>>
+								<</replace>>
+							<</link>>
+						</div>
+					</div>
+				<</if>>
+			<</capture>>
+		<</for>>
+	</div>
+	<<if !_recipe_avalible>>
+		<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
+	<</if>>
+</span>
+
+<</widget>>

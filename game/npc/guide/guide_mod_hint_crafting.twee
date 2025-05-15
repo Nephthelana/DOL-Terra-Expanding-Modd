@@ -7,94 +7,92 @@
 	”另外，如果你找不到<<icon "furniture_item/Work_Bench.png">>工作台，它可能藏在阁楼的一个角落，需要你用足够的<span class="gold">家务技能</span>来找到它。
 <</if>>
 ”<br>
-<br>
-<span id="guide_mod_hint_recipe">
-	<<guide_mod_hint_recipe>>
-</span>
-<br>
+<div style="border: 1px solid var(--500); height: 80vh; border-radius: 5px 0 0 5px;" class="no-numberify">
+	<div id="recipeTitle" style="
+		display: flex;
+		height: 5%;
+		align-items: center;
+		gap: 0.4em;
+		padding: 5px;
+		border-bottom: 1px solid var(--500);
+	">
+		点击物品图标<<print $debug is 1 ? "<mouse class='tooltip linkBlue'>[DEBUG模式]<span>你可以查看模组内所有的合成配方</span></mouse>" : "">>
+	</div>
+	<div id="recipeDetail" style="height: 93%; overflow-y: auto;">
+		<<recipeDetail>>
+	</div>
+</div>
 <<link [[返回|Guide Mod Hint]]>><</link>>
 
 :: Guide Mod Hint Recipe [widget]
-<<widget "guide_mod_hint_recipe">>
-
-<<run initializeTooltips()>>
-<<if getMaterialObtainedList().length lte 0 and $debug is 0>>
-	“<span class="blue">看起来你身上没有符合条件的物品。</span>”<br>
-<<else>>
-	<<set _materialObtained to $debug is 1 ? getAllMaterialList() : getMaterialObtainedList()>>
-	“<span class="teal">在材料列表中点击⬇来选择你要询问的材料。</span>”
-	<div class="no-numberify">
-		<details class="journal">
-			<summary class="journal">材料列表<<print $debug is 1 ? "（[DEBUG模式]你可以查看模组内所有的合成配方）" : "">></summary>
-			<div class="itemTerra">
-				<<for _i to 0; _i lt _materialObtained.length; _i++>>
-					<<set _material to setup.terraMaterial[_materialObtained[_i]]>>
-					<<capture _material>>
-						<<if _material_ask isnot _material.name>>
-							<div class="item">
-								<div @tooltip="`${_material.cn_name}`">
-									<div class="itemTerraGeneral">
-										<<icon `_material.icon`>>
-									</div>
+<<widget "recipeDetail">>
+	<<if getMaterialObtainedList().length lte 0 and $debug is 0>>
+		<div style="padding: 5px">
+			<span class="blue">你身上没有符合条件的物品。</span>
+		</div>
+	<<else>>
+		<<set _materialObtained to $debug is 1 ? getAllMaterialList() : getMaterialObtainedList()>>
+		<div class="terraInventory">
+			<<for _m range _materialObtained>>
+				<<set _mInfo to setup.terraMaterial[_m]>>
+				<<capture _mInfo>>
+					<<button '
+						<span class="terraIconButton">
+							<<icon `_mInfo.icon`>>
+						</span>
+					'>>
+						<<replace #recipeTitle>>
+							<<link "⬅返回">>
+								<<replace #recipeTitle>>
+									点击物品图标<<print $debug is 1 ? "<mouse class='tooltip linkBlue'>[DEBUG模式]<span>你可以查看模组内所有的合成配方</span></mouse>" : "">>
+								<</replace>>
+								<<replace #recipeDetail>>
+									<<recipeDetail>>
+								<</replace>>
+							<</link>>
+						<</replace>>
+						<<replace #recipeDetail>>
+							<div style="padding: 5px">
+								<<set _mDetail to _mInfo>>
+								<div style="height: 40px; display: flex; align-items: center;">
+									<<icon `_mDetail.icon`>><<print _mDetail.cn_name>>
 								</div>
-								<hr>
-								<div class="terraLinks">
-									<<link "⬇">>
-										<<set _material_ask to _material.name>>
-										<<replace #guide_mod_hint_recipe>>
-											<<guide_mod_hint_recipe>>
-										<</replace>>
-									<</link>>
+								<div style="
+									border-top: 1px solid var(--600);
+									margin: 2px;
+									width: 100%;
+								"></div>
+								<div class="terraInventory">
+									<<set _recipeList to getAllRecipeList()>>
+									<<for _recipe range _recipeList>>
+										<<set _rInfo to setup.terraRecipe[_recipe]>>
+										<<if Object.keys(_rInfo.ingredients).includes(_mDetail.name)>>
+											<div class="terraItem">
+												<div class="terraIcon" @tooltip="`${_rInfo.cn_name}<br><br>▶ ${_rInfo.des}`">
+													<<icon `_rInfo.icon`>>
+												</div>
+												<div class="terraDivider"></div>
+												<mouse class="tooltip-image" style="border-bottom: dotted 1px">
+													制作
+													<span>
+														制作站：
+														<<for _crafting_station range _rInfo.crafting_station>>
+															<<set _csInfo to setup.terraCraftingStation[_crafting_station]>>
+																_csInfo.icon _csInfo.cn_name
+														<</for>>
+														<div class="terraDivider"></div>
+														_rInfo.ingredients_info
+													</span>
+												</mouse>
+											</div>
+										<</if>>
+									<</for>>
 								</div>
 							</div>
-						<</if>>
-					<</capture>>
-				<</for>>
-			</div>
-		</details>
-	</div>
-	<br>
-	⬇在此放置物品,显示它可用于制作什么
-	<div class="itemTerra">
-		<div class="item">
-			<<if _material_ask>>
-				<<set _material to setup.terraMaterial[_material_ask]>>
-				<div @tooltip="`${_material.cn_name}`">
-					<div class="itemTerraGeneral">
-						<<icon `_material.icon`>>
-					</div>
-				</div>
-			<<else>>
-				<div class="itemTerraGeneral">
-					空
-				</div>
-			<</if>>
+						<</replace>>
+					<</button>>
+				<</capture>>
+			<</for>>
 		</div>
-	</div>
-	<br>
-	可制作物品列表(查看<i>制作</i>以获取配方信息)
-	<div class="itemTerra">
-		<<set _recipeList to getAllRecipeList()>>
-		<<for _k to 0; _k lt _recipeList.length; _k++>>
-			<<set _recipe to setup.terraRecipe[_recipeList[_k]]>>
-			<<if _recipe.required_material.includes(_material_ask)>>
-				<div class="item">
-					<div @tooltip="`${_recipe.cn_name}<br><br>▶ ${_recipe.des}`">
-						<div class="itemTerraGeneral">
-							<<icon `_recipe.icon`>>
-						</div>
-					</div>
-					<hr>
-					<mouse class="tooltip">
-						制作
-						<span>
-							在_recipe.required_crafting_station_info上制作<br>
-							_recipe.required_material_info
-						</span>
-					</mouse>
-				</div>
-			<</if>>
-		<</for>>
-	</div>
-<</if>>
+	<</if>>
 <</widget>>

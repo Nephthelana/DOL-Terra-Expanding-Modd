@@ -3,16 +3,16 @@
 <!-- 展示任务鱼数量不少于5条时，森林约会时将有4/5概率出现抓小动物鱼饵的选项 -->
 <<if $fishing_request_robin.length gte 5 and $robin_forest_bait_intro isnot true>>
 	<<set $robin_forest_bait_intro to true>>
-	"等等！你都是用什么吸引它们的？它们肯定不会像这样自己跳进你的袋子里。"罗宾比划着一条抛物线。<br>
+	“等等！你都是用什么吸引它们的？它们肯定不会像这样自己跳进你的袋子里。”罗宾比划着一条抛物线。<br>
 	<br>
 	<<if getBaitObtainedList().length gt 0>>
-		你拿出了一个鱼饵给<<him>>看："鱼儿们喜欢吃这些东西，
+		你拿出了一个鱼饵给<<him>>看：“鱼儿们喜欢吃这些东西，
 	<<else>>
-		"用饵料来诱惑它们，
+		“用饵料来诱惑它们，
 	<</if>>
-	比如森林里的小昆虫。"<br>
+	比如森林里的小昆虫。”<br>
 	<br>
-	"说起来我还对昆虫一无所知呢。我们以后去森林的时候，可以一起抓！"<br>
+	“说起来我还对昆虫一无所知呢。我们以后去森林的时候，可以一起抓！”<br>
 	<br>
 	<span class="teal">如果要在森林抓虫子的话，你们需要一个虫网。一个住在森林，且喜爱昆虫的人应该有办法。</span><br>
 	<br>
@@ -21,9 +21,9 @@
 <!-- 展示任务鱼数量不少于10条时，约会时会出现一起钓鱼的选项 -->
 <<elseif $fishing_request_robin.length gte 10 and $robin_date_fishing_intro isnot true>>
 	<<set $robin_date_fishing_intro to true>>
-	"嘿！打住！"罗宾看起来想阻止你从虚空袋里掏鱼。你已经向<<him>>展示了好几条鱼，却不告诉<<him>>你到底是如何抓到这些稀奇玩意的。<br>
+	“嘿！打住！”罗宾看起来想阻止你从虚空袋里掏鱼。你已经向<<him>>展示了好几条鱼，却不告诉<<him>>你到底是如何抓到这些稀奇玩意的。<br>
 	<br>
-	你从虚空袋里掏出一个鱼竿："很简单，我钓上来的。"你试着摆出一个漂亮的抛竿动作，
+	你从虚空袋里掏出一个鱼竿：“很简单，我钓上来的。”你试着摆出一个漂亮的抛竿动作，
 	<<if $fishingskill lte 333>>
 		<span class="blue">但用力过猛，后仰蓄力时差点跌倒在地上。</span>还好罗宾及时扶住了你。<br>
 	<<elseif $fishingskill lte 666>>
@@ -35,14 +35,14 @@
 	<</if>>
 	<br>
 	<<if $speech_attitude is "meek">>
-		"等鱼咬钩后，注意观察它的动向，配合着慢慢收线，最后就可以钓上来了。"
+		“等鱼咬钩后，注意观察它的动向，配合着慢慢收线，最后就可以钓上来了。”
 	<<elseif $speech_attitude is "bratty">>
-		"等鱼咬钩后，和它进行一番酣畅淋漓的搏斗，最后它就会屈服于我，成为囊中之物！"
+		“等鱼咬钩后，和它进行一番酣畅淋漓的搏斗，最后它就会屈服于我，成为囊中之物！”
 	<<else>>
-		"等鱼咬钩后，寻找它的弱点，把握时机，这样就能顺利抓到它。"
+		“等鱼咬钩后，寻找它的弱点，把握时机，这样就能顺利抓到它。”
 	<</if>>你比划着收竿的动作作为结尾。<br>
 	<br>
-	"酷！我也想试试钓鱼了。"罗宾从床上跳起来，想模仿你抛竿的动作，但还是显得有些拘谨。<br>
+	“酷！我也想试试钓鱼了。”罗宾从床上跳起来，想模仿你抛竿的动作，但还是显得有些拘谨。<br>
 	<br>
 	你提议以后可以带<<he>>一起出去钓鱼。<br>
 	<br>
@@ -89,18 +89,18 @@
 未展示过的：
 <<if $fishing_request_fish.length gte 1>>
 	<span class="no-numberify">
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _rf range Object.keys(setup.terraRequestFish)>>
 			<<set _requestFish to setup.terraRequestFish[_rf]>>
 			<<capture _requestFish>>
 				<<if $fishing_request_fish.includes(_requestFish.name) and !$fishing_request_robin.includes(_requestFish.name)>>
 					<<set _showRequestFish to true>>
 					<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
-					<div class="item" @tooltip="_tooltip">
-						<div class="itemTerraGeneral">
+					<div class="terraItem" @tooltip="_tooltip">
+						<div class="terraIcon">
 							<<icon `_requestFish.icon`>>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						<<link [[⬆|Fishing Request Robin Showing]]>><<set $fishing_request_robin_show to _requestFish.name>><</link>>
 					</div>
 				<</if>>
@@ -119,12 +119,12 @@
 <</if>>
 已展示过的：
 <<if $fishing_request_robin.length gte 1>>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _rf range $fishing_request_robin>>
 			<<set _requestFish to setup.terraRequestFish[_rf]>>
 			<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
-			<div class="item" @tooltip="_tooltip">
-				<div class="itemTerraGeneral">
+			<div class="terraItem" @tooltip="_tooltip">
+				<div class="terraIcon">
 					<<icon `_requestFish.icon`>>
 				</div>
 			</div>
@@ -139,7 +139,7 @@
 <<link [[返回|Robin's Room Entrance]]>>'<<endevent>><</link>>
 
 :: Fishing Request Robin Showing
-<!-- 展示给罗宾任务鱼的互动页面。 -->
+<!-- 展示给罗宾任务鱼的互动页面 -->
 <<npc Robin>><<person1>>
 <<set _requestFish to setup.terraRequestFish[$fishing_request_robin_show]>>
 <<set $fishing_request_robin.pushUnique(_requestFish.name)>>

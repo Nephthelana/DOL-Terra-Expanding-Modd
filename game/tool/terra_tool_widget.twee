@@ -1,23 +1,22 @@
 :: Terra Tool [widget]
 <<widget "void_bag_Tool">>
-	<<run initializeTooltips()>>
 	<<set $options.terraTransportLimit to $options.terraTransportLimit is undefined ? 1 : $options.terraTransportLimit>>
 	<<if getToolObtained().length gt 0 or $debug is 1>>
 		<span class="gold bold">工具</span><mouse class="tooltip linkBlue">(?)<span>部分工具可以主动使用，它们下方会显示蓝色链接字可供使用，或显示暂时不可用的原因；<br>另一部分工具只能在特定场景中使用，或是还未实装，它们下方会显示黑白的“不可用”字样；<br>传送类工具的每日允许使用次数，可在 <i>选项</i>-<i>模组设置</i> 中的 <i>传送工具每日使用次数</i> 选项进行调整。</span></mouse><br>
 		<<print $debug is 1 ? "[DEBUG模式]你可以查看并使用全部的工具<br>" : "">>
 		<<set _toolObtainedList to $debug is 1 ? getAllToolList() : getToolObtained()>>
-		<div class="itemTerra_Tool">
+		<div class="terraInventoryTool">
 			<<for _t to 0; _t lt _toolObtainedList.length; _t++>>
 				<<set _tool to setup.terraTool[_toolObtainedList[_t]]>>
 				<<capture _tool>>
-					<div class="item">
+					<div class="terraItem">
 						<<set _isMaterial to _tool.material ? "<br><i>材料</i>" : "">>
 						<div @tooltip="`${_tool.cn_name}${_isMaterial}<br><br>▶${_tool.des}`">
-							<div class="itemTerraTool">
+							<div class="terraIconTool">
 								<<icon `_tool.icon`>>
 							</div>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						<div class="terraLinks">
 							_tool.use
 						</div>
@@ -30,9 +29,13 @@
 
 <<widget "terra_tool_use_Magic_Conch">>
 <<if $daily.Magic_Conch_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
-	<mouse class="tooltip linkBlue">不可用<span>当日魔法海螺使用次数达到上限</span></mouse>
+	<span style="border-bottom: dotted 1px" tooltip="当日魔法海螺使用次数达到上限">
+		<span class="linkBlue">不可用</span>
+	</span>
 <<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
-	<mouse class="tooltip linkBlue">不可用<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
+	<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+		<span class="linkBlue">不可用</span>
+	</span>
 <<else>>
 	<<link [[使用|Beach]]>>
 		<<if $daily.Magic_Conch_use is undefined>>
@@ -46,9 +49,13 @@
 
 <<widget "terra_tool_use_Demon_Conch">>
 <<if $daily.Demon_Conch_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
-	<mouse class="tooltip linkBlue">不可用<span>当日恶魔海螺使用次数达到上限</span></mouse>
+	<span style="border-bottom: dotted 1px" tooltip="当日恶魔海螺使用次数达到上限">
+		<span class="linkBlue">不可用</span>
+	</span>
 <<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
-	<mouse class="tooltip linkBlue">不可用<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
+	<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+		<span class="linkBlue">不可用</span>
+	</span>
 <<else>>
 	<<link [[使用|Underground Lava Lake]]>>
 		<<if $daily.Demon_Conch_use is undefined>>
@@ -67,66 +74,7 @@
 	<</if>>
 	<<link "使用">>
 		<<replace #hint_item_use>>
-			<<icon "tool/Magic_Mirror.png">>
-			<<if $daily.Magic_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
-				<mouse class="tooltip linkBlue">不可传送<span>当日魔镜使用次数达到上限</span></mouse>
-			<<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
-				<mouse class="tooltip linkBlue">不可传送<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
-			<<else>>
-				<<link [[`传送至${$Magic_Mirror_anchor_cn}`|$Magic_Mirror_anchor]]>>	
-					<<if $daily.Magic_Mirror_use is undefined>>
-						<<set $daily.Magic_Mirror_use to 1>>
-					<<else>>
-						<<set $daily.Magic_Mirror_use += 1>>
-					<</if>>
-				<</link>>	
-			<</if>>
-			<<switch $passage>>
-				<<case "Bedroom">>
-					<<print " | ">><<link "设定魔镜锚点">>
-						<<set $Magic_Mirror_anchor to "Bedroom">>
-						<<set $Magic_Mirror_anchor_cn to "孤儿院卧室">>
-						<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
-					<</link>>
-				<<case "Farm Bedroom">>
-					<<print " | ">><<link "设定魔镜锚点">>
-						<<set $Magic_Mirror_anchor to "Farm Bedroom">>
-						<<set $Magic_Mirror_anchor_cn to "农场卧室">>
-						<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
-					<</link>>
-				<<case "Eden Cabin">>
-					<<if $syndromeeden is 1>>
-						<<print " | ">><<link "设定魔镜锚点">>
-							<<set $Magic_Mirror_anchor to "Eden Cabin">>
-							<<set $Magic_Mirror_anchor_cn to "伊甸小屋">>
-							<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
-						<</link>>
-					<</if>>
-				<<case "Bird Tower">>
-					<<if $syndromebird is 1>>
-						<<print " | ">><<link "设定魔镜锚点">>
-							<<set $Magic_Mirror_anchor to "Bird Tower">>
-							<<set $Magic_Mirror_anchor_cn to "鹰塔">>
-							<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
-						<</link>>
-					<</if>>
-				<<case "Wolf Cave">>
-					<<if $syndromewolves is 1>>
-						<<print " | ">><<link "设定魔镜锚点">>
-							<<set $Magic_Mirror_anchor to "Wolf Cave">>
-							<<set $Magic_Mirror_anchor_cn to "狼窝">>
-							<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
-						<</link>>
-					<</if>>
-				<<case "Temple Quarters">>
-					<<if $temple_rank is "monk">>
-						<<print " | ">><<link "设定魔镜锚点">>
-							<<set $Magic_Mirror_anchor to "Temple Quarters">>
-							<<set $Magic_Mirror_anchor_cn to "神殿">>
-							<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
-						<</link>>
-					<</if>>
-			<</switch>><br>
+			<<terra_tool_use_Magic_Mirror_detail>>
 			<br>
 		<</replace>>
 	<</link>>
@@ -142,11 +90,82 @@
 	<</replace>>
 <</widget>>
 
+<<widget "terra_tool_use_Magic_Mirror_detail">>
+	<<icon "tool/Magic_Mirror.png">>
+	<<if $daily.Magic_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
+		<span style="border-bottom: dotted 1px" tooltip="当日魔镜使用次数达到上限">
+			<span class="linkBlue">不可用</span>
+		</span>
+	<<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
+		<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+			<span class="linkBlue">不可用</span>
+		</span>
+	<<else>>
+		<<link [[`传送至${$Magic_Mirror_anchor_cn}`|$Magic_Mirror_anchor]]>>	
+			<<if $daily.Magic_Mirror_use is undefined>>
+				<<set $daily.Magic_Mirror_use to 1>>
+			<<else>>
+				<<set $daily.Magic_Mirror_use += 1>>
+			<</if>>
+		<</link>>	
+	<</if>>
+	<<switch $passage>>
+		<<case "Bedroom">>
+			<<print " | ">><<link "设定魔镜锚点">>
+				<<set $Magic_Mirror_anchor to "Bedroom">>
+				<<set $Magic_Mirror_anchor_cn to "孤儿院卧室">>
+				<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
+			<</link>>
+		<<case "Farm Bedroom">>
+			<<print " | ">><<link "设定魔镜锚点">>
+				<<set $Magic_Mirror_anchor to "Farm Bedroom">>
+				<<set $Magic_Mirror_anchor_cn to "农场卧室">>
+				<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
+			<</link>>
+		<<case "Eden Cabin">>
+			<<if $syndromeeden is 1>>
+				<<print " | ">><<link "设定魔镜锚点">>
+					<<set $Magic_Mirror_anchor to "Eden Cabin">>
+					<<set $Magic_Mirror_anchor_cn to "伊甸小屋">>
+					<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
+				<</link>>
+			<</if>>
+		<<case "Bird Tower">>
+			<<if $syndromebird is 1>>
+				<<print " | ">><<link "设定魔镜锚点">>
+					<<set $Magic_Mirror_anchor to "Bird Tower">>
+					<<set $Magic_Mirror_anchor_cn to "鹰塔">>
+					<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
+				<</link>>
+			<</if>>
+		<<case "Wolf Cave">>
+			<<if $syndromewolves is 1>>
+				<<print " | ">><<link "设定魔镜锚点">>
+					<<set $Magic_Mirror_anchor to "Wolf Cave">>
+					<<set $Magic_Mirror_anchor_cn to "狼窝">>
+					<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
+				<</link>>
+			<</if>>
+		<<case "Temple Quarters">>
+			<<if $temple_rank is "monk">>
+				<<print " | ">><<link "设定魔镜锚点">>
+					<<set $Magic_Mirror_anchor to "Temple Quarters">>
+					<<set $Magic_Mirror_anchor_cn to "神殿">>
+					<<terra_tool_use_Magic_Mirror_anchorSettingGeneral>>
+				<</link>>
+			<</if>>
+	<</switch>><br>
+<</widget>>
+
 <<widget "terra_tool_use_Ice_Mirror">>
 <<if $daily.Ice_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
-	<mouse class="tooltip linkBlue">不可用<span>当日冰雪镜使用次数达到上限</span></mouse>
+	<span style="border-bottom: dotted 1px" tooltip="当日冰雪镜使用次数达到上限">
+		<span class="linkBlue">不可用</span>
+	</span>
 <<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
-	<mouse class="tooltip linkBlue">不可用<span>在传送之前，请先返回到世界范围内，或结束当前的事件</span></mouse>
+	<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+		<span class="linkBlue">不可用</span>
+	</span>
 <<else>>
 	<<link [[使用|Underground Ice Lake]]>>
 		<<if $daily.Ice_Mirror_use is undefined>>
@@ -158,6 +177,96 @@
 <</if>>
 <</widget>>
 
+<<widget "terra_tool_use_Cell_Phone">>
+	<<link "使用">>
+		<<replace #hint_item_use>>
+			<<terra_tool_use_Magic_Mirror_detail>>
+			<<icon "tool/Ice_Mirror.png">>
+			<<if $daily.Ice_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
+				<span style="border-bottom: dotted 1px" tooltip="当日冰雪镜使用次数达到上限">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
+				<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<else>>
+				<<link [[传送至地下永冻湖|Underground Ice Lake]]>>
+					<<if $daily.Ice_Mirror_use is undefined>>
+						<<set $daily.Ice_Mirror_use to 1>>
+					<<else>>
+						<<set $daily.Ice_Mirror_use += 1>>
+					<</if>>
+				<</link>><br>
+			<</if>>
+			<br>
+		<</replace>>
+	<</link>>
+<</widget>>
+
+<<widget "terra_tool_use_Shellphone">>
+	<<link "使用">>
+		<<replace #hint_item_use>>
+			<<terra_tool_use_Magic_Mirror_detail>>
+			<<icon "tool/Ice_Mirror.png">>
+			<<if $daily.Ice_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
+				<span style="border-bottom: dotted 1px" tooltip="当日冰雪镜使用次数达到上限">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
+				<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<else>>
+				<<link [[传送至地下永冻湖|Underground Ice Lake]]>>
+					<<if $daily.Ice_Mirror_use is undefined>>
+						<<set $daily.Ice_Mirror_use to 1>>
+					<<else>>
+						<<set $daily.Ice_Mirror_use += 1>>
+					<</if>>
+				<</link>><br>
+			<</if>>
+			<<icon "tool/Magic_Conch.png">>
+			<<if $daily.Magic_Conch_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
+				<span style="border-bottom: dotted 1px" tooltip="当日魔法海螺使用次数达到上限">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
+				<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<else>>
+				<<link [[传送至海滩|Beach]]>>
+					<<if $daily.Magic_Conch_use is undefined>>
+						<<set $daily.Magic_Conch_use to 1>>
+					<<else>>
+						<<set $daily.Magic_Conch_use += 1>>
+					<</if>>
+				<</link>><br>
+			<</if>>
+			<<icon "tool/Demon_Conch.png">>
+			<<if $daily.Demon_Conch_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
+				<span style="border-bottom: dotted 1px" tooltip="当日恶魔海螺使用次数达到上限">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<elseif !(setup.terraTransportationAllowed.includes($passage) and $event is undefined)>>
+				<span style="border-bottom: dotted 1px" tooltip="在传送之前，请先返回到世界范围内，或结束当前的事件">
+					<span class="linkBlue">不可用</span><br>
+				</span>
+			<<else>>
+				<<link [[传送至地下熔岩湖|Underground Lava Lake]]>>
+					<<if $daily.Demon_Conch_use is undefined>>
+						<<set $daily.Demon_Conch_use to 1>>
+					<<else>>
+						<<set $daily.Demon_Conch_use += 1>>
+					<</if>>
+				<</link>><br>
+			<</if>>
+			<br>
+		<</replace>>
+	<</link>>
+<</widget>>
+
 <<widget "terra_tool_use_Snake_Charmers_Flute">>
 <<if $terra_accessories_slots.includes("Fin_Wings") or $birdFly gte 1>>
 	<<switch $passage>>
@@ -167,17 +276,23 @@
 			<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Lake Shore">><<pass 1>><</link>>
 		<<case "Meadow">>
 			<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Meadow">><<pass 1>><</link>>
-		<<case "Moor">>
-			<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Moor">><<pass 1>><</link>>
 		<<default>>
-			<mouse class="tooltip linkBlue">不可用<span>你只能在森林湖、小镇街道、镇外草地、鹰塔塔底使用耍蛇者长笛</span></mouse>
+			<<if $passage is "Moor" and $moor gte 100>>
+				<<link [[使用|Snake Charmers Flute Use 2]]>><<set $Snake_Charmers_Flute_destination to "Moor">><<pass 1>><</link>>
+			<<else>>
+				<span style="border-bottom: dotted 1px" tooltip="你只能在森林湖、小镇街道、镇外草地、鹰塔塔底使用耍蛇者长笛">
+					<span class="linkBlue">不可用</span>
+				</span>
+			<</if>>
 	<</switch>>
 <<else>>
 	<<switch $passage>>
 		<<case "Domus Street" "Barb Street" "Danube Street" "Wolf Street" "High Street" "Connudatus Street" "Connudatus Street" "Cliff Street" "Nightingale Street" "Starfish Street" "Oxford Street" "Elk Street" "Mer Street" "Harvest Street">>
 			<<link [[使用|Snake Charmers Flute Use 1]]>><<pass 1>><</link>>
 		<<default>>
-			<mouse class="tooltip linkBlue">不可用<span>你只能在小镇的街道上使用耍蛇者长笛</span></mouse>
+			<span style="border-bottom: dotted 1px" tooltip="你只能在小镇的街道上使用耍蛇者长笛">
+				<span class="linkBlue">不可用</span>
+			</span>
 	<</switch>>
 <</if>>
 <</widget>>

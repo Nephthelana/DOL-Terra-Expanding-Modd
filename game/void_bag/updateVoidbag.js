@@ -1,6 +1,6 @@
 // 抄自原版function updateOptions()，用于在切换鱼竿后更新页面(但这样并不能更新侧边栏)
 function updateVoidbag() {
-	if (T.currentOverlay === "terraExpandToolOverlay" && T.optionsRefresh && V.passage !== "Start") {
+	if (["terraExpandToolOverlay","terraExpandEquipmentOverlay"].includes(T.currentOverlay) && T.optionsRefresh && V.passage !== "Start") {
 		updatehistorycontrols();
 		const optionsData = clone(V.options);
 		const tmpButtons = T.buttons;

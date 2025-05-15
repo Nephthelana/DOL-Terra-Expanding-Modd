@@ -248,7 +248,7 @@ setup.terraFish = {
 	"Damselfish": {
         name: "Damselfish",
         cn_name: "雀鲷",
-		material: false,
+		material: true,
         type: "potion",
 		rarity: ["extremely_rare","very_rare","rare","uncommon"],
 		rarity_cn: "不常见",

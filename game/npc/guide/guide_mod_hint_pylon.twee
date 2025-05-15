@@ -1,7 +1,7 @@
 :: Guide Mod Hint Pylon
 <<if $pylon_museum_asked>>
 	<<if $pylon_collected.length gte 6>>
-		“你已经集齐了5个晶塔，恭喜你！我想你已经不需要这方面的提示了。”<br>
+		“你已经集齐了6个晶塔，恭喜你！我想你已经不需要这方面的提示了。”<br>
 	<<else>>
 		“卧室里的提示不够明确是吗？没问题，你想知道哪个晶塔的晶石位置？不过在此之前，你得保证他们对你有了足够的好感。”<br>
 		<br>

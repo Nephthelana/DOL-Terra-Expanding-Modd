@@ -386,8 +386,10 @@ function fishingHarvest() {
 		V.bird.materials.feathers += 1;
 		break;
 	case "Bottomless_Lava_Bucket":
-	case "Demon_Conch":
 		V[V.fishing_harvest.name] = true;
+		break;
+	case "Demon_Conch":
+		if (!["Demon_Conch","Shellphone"].some(a => V[a])) V[V.fishing_harvest.name] = true;
 		break;
 	case "Rusted_Jingle_Bell":
 	case "Zephyr_Fish":
@@ -406,33 +408,105 @@ function fishingHarvest() {
 }
 window.fishingHarvest = fishingHarvest;
 
-function fishingBaitConsumed() {
+// widget生产器
+const terraFishing = {
+	create(name, fn) {
+		if (this[name] === undefined && !Macro.get(name)) {
+			DefineMacro(name, function () {
+				this.output.append(fn(...this.args));
+			});
+			this[name] = fn;
+		} else {
+			console.error(`A function with the name "${name}" already exists in statDisplay.`);
+		}
+	}
+}
+window.terraFishing = terraFishing;
+
+// 鱼饵消耗
+terraFishing.create("baitConsumed", () => {
+	const fragment = document.createDocumentFragment();
+	const sWikifier = text => {fragment.append(Wikifier.wikifyEval(text));};
+
 	if (V.Bait !== "None") {
-		console.log("鱼饵消耗测试1");
 		T.bait = setup.terraBait[V.Bait];
-		if (random(1, 6 * (V.terra_accessories_slots.includesAny("Tackle_Box","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") ? 2 : 1) + T.bait.fishing_power) <= 6) {
+		// 金蠕虫消耗概率固定为5%
+		if (V.Bait === "Gold_Worm" && random(1,20) == 1) {
+			V[T.bait.name] -= 1;
+		} else if (random(1, 6 * (V.terra_accessories_slots.includesAny("Tackle_Box","Angler_Tackle_Bag","Lavaproof_Tackle_Bag","Supreme_Bait_Tackle_Box_Fishing_Station") ? 2 : 1) + T.bait.fishing_power) <= 6) {
 			V[T.bait.name] -= 1;
 		}
 		if (V[T.bait.name] <= 0) {
 			V.Bait = "None";
-			$(document).on(':postApplyZone', function () {
-                htmlTools.wiki("fishingBaitConsumed", "你用掉了最后一个<<icon `_bait.icon`>>_bait.cn_name。<br>",true);
-            });
-			console.log("鱼饵消耗测试2");
+			sWikifier(`你用掉了最后一个<<icon \`T.bait.icon\`>>${T.bait.cn_name}。<br>`);
 		} else {
-			$(document).on(':postApplyZone', function () {
-                htmlTools.wiki("fishingBaitConsumed", "你还剩下<<print V[_bait.name]>>个<<icon `_bait.icon`>>_bait.cn_name。<br>",true);
-            });
-			console.log("鱼饵消耗测试3");
+			sWikifier(`你还剩下${V[T.bait.name]}个<<icon \`T.bait.icon\`>>${T.bait.cn_name}。<br>`);
 		}
 	} else {
-		$(document).on(':postApplyZone', function () {
-			htmlTools.wiki("fishingBaitConsumed", "",true);
-		});
-		console.log("鱼饵消耗测试4");
+		sWikifier(``);
 	}
-}
-window.fishingBaitConsumed = fishingBaitConsumed;
+	return fragment;
+});
+
+// 渔夫任务奖励
+terraFishing.create("fishing_request_reward", () => {
+	const fragment = document.createDocumentFragment();
+	const sWikifier = text => {fragment.append(Wikifier.wikifyEval(text));};
+
+	// 计算“罕见度降低量”，具体参考泰拉瑞亚wiki
+	let rarity_reduction = 
+		V.fishing_requests_finished_count <=  50 ? (1    - V.fishing_requests_finished_count * 0.01) :
+		V.fishing_requests_finished_count <= 100 ? (0.5  - V.fishing_requests_finished_count * 0.005) :
+		V.fishing_requests_finished_count <= 150 ? (0.25 - V.fishing_requests_finished_count * 0.002) :
+		0.15;
+	rarity_reduction *= 0.9;
+
+	// 主要任务奖励（必定出现）
+	for (const r of Object.keys(setup.fishingRequestRewardMain)) {
+		T.rInfo = setup.fishingRequestRewardMain[r];
+		if (T.rInfo.condition()) {
+			if (T.rInfo.rarity() == 1) {
+				T.rInfo.reward();
+				sWikifier(`<<icon \`T.rInfo.icon\`>>${T.rInfo.cn_name}`);
+				break;
+			} else if (random(1 , Math.round(T.rInfo.rarity() * rarity_reduction)) == 1) {
+				T.rInfo.reward();
+				sWikifier(`<<icon \`T.rInfo.icon\`>>${T.rInfo.cn_name}`);
+				break;
+			}
+		}
+	}
+
+	// 钱币奖励
+	let money = Math.round((100 + 10 * (V.fishing_requests_finished_count - 1)) * random(80,120) / 100) * 100;
+	money = money >= 100000 ? 100000 : money; // 如果奖励金额超过1000，则设为1000
+	sWikifier(`<<money ${money} '渔夫任务'>>`);
+	sWikifier(`、<<printmoney ${money}>>`);
+
+	// 家具奖励
+	if (V.fishing_requests_finished_count >= random(1,100)) {
+		T.anglerFurniture = setup.terraAnglerFurniture[getAllAnglerFurnitureList().random()];
+		V.angler_furniture_obtained.pushUnique(T.anglerFurniture.name);
+		sWikifier(`、<<icon \`T.anglerFurniture.item_icon\`>>${T.anglerFurniture.cn_name}`);
+	}
+
+	// 鱼饵奖励
+	if ((100 + V.fishing_requests_finished_count) >= random(1,200)) {
+		let bait = 1;
+		[25,50,100,150,200,250].forEach(n => {
+			if (V.fishing_requests_finished_count >= random(1,n)) bait++;
+		})
+		if (random(1,15) == 1) {var baitType = "Master_Bait";}
+		else if (random(1,5) == 1) {var baitType = "Journeyman_Bait";}
+		else {var baitType = "Apprentice_Bait";}
+		T.bait_type_info = setup.terraBait[baitType];
+		sWikifier(`<<bestiaryStatistics "bait" ${baitType} ${bait}>>`);
+		sWikifier(`、<<icon \`T.bait_type_info.icon\`>>${T.bait_type_info.cn_name}(${bait})`);
+	}
+
+	sWikifier(`。`);
+	return fragment;
+});
 
 function fishingEnd() {
 	delete V.fishing_distance_power;

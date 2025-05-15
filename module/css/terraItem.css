@@ -1,41 +1,57 @@
-/* 通用物品栏整体 */
-.itemTerra {
+/* 通用物品栏整体框架 */
+.terraInventory {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 50px);
 	gap: 5px;
 	padding: 0.5rem;
 }
-
-/* 工具物品栏整体（因为有的工具图标很大） */
-.itemTerra_Tool {
+/* 一些工具和鱼竿要宽一些 */
+.terraInventoryTool {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 60px);
 	gap: 5px;
 	padding: 0.5rem;
 }
 
-/* 通用物品竖直方向居中 */
-.itemTerraGeneral {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: 40px;
+/* 通用物品栏格子属性 */
+.terraItem {
+	position: relative;
+	border: 1px solid var(--200);
+	padding-bottom: 5px;
+	text-align: center;
 }
-
-/* 工具物品竖直方向居中 */
-.itemTerraTool {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+/* 通用物品栏图标属性 */
+.terraIcon {
+	display: grid;
+	place-items: center;
 	height: 50px;
+	margin-bottom: -5px;
 }
-
-/* 鱼饵物品竖直方向居中 */
-.itemTerraBait {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+/* 鱼饵图标属性 */
+.terraIconBait {
+	display: grid;
+	place-items: center;
 	height: 32px;
+	margin-bottom: -5px;
+}
+/* 工具图标属性 */
+.terraIconTool {
+	display: grid;
+	place-items: center;
+	height: 60px;
+	margin-bottom: -5px;
+}
+/* 物品栏内部的分割线 */
+.terraDivider {
+	height: 1px;        /* 线的高度（粗细） */
+	background: linear-gradient(
+	  to right,
+	  transparent 0 5px,          /* 左端5px透明 */
+	  var(--600) 5px calc(100% - 5px), /* 中间灰色区域 */
+	  transparent calc(100% - 5px) 100% /* 右端5px透明 */
+	);
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 /* 提示“内容来源于泰拉瑞亚模组”的信息 */
@@ -105,5 +121,6 @@
 
 /* 新版本的link会自带额外的padding，只能这样手动来使链接与文字保持在同一行QAQ */
 .terraLinks {
-	padding: 0em 0em;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }

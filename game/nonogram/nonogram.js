@@ -4,6 +4,7 @@ function generateNonogramTable() {
     	numbers.push(i);
 	}
 	let puzzleList = numbers.randomMany(Math.round(Math.pow(V.Nonogram.sideLength,2) * random(50,60) / 100));
+	V.Nonogram.grid = {};
 	for (let j=1; j <= Math.pow(V.Nonogram.sideLength,2); j++) {
 		V.Nonogram.grid["No" + j] = {}
 		let unitGrid = V.Nonogram.grid["No" + j];

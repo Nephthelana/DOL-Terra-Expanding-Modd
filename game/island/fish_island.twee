@@ -42,29 +42,31 @@
 <<print $eat_raw_hint is undefined ? "" : $eat_raw_hint>>
 吃生鱼 (0:05)<br>
 <span class="no-numberify">
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<set _fishObtained to getFishObtainedList()>>
 		<<for _t to 0; _t lt _fishObtained.length; _t++>>
 			<<set _fish to setup.terraFish[_fishObtained[_t]]>>
 			<<if _fish.type is "cookable">>
 				<<capture _fish>>
-            		<div class="item">
-						<mouse class="tooltip">
+            		<div class="terraItem">
+						<mouse class="tooltip-image" style="border-bottom: dotted 1px">
 							<<icon `_fish.icon`>>
 							<span>
 								_fish.cn_name
 							</span>
 						</mouse>
-						<hr>
+						<div class="terraDivider"></div>
 						_fish.amount
-						<hr>
-						<<link [[吃|Fish Island Eat Raw]]>>
-							<<island_pass 5>>
-							<<set V[_fish.name] -= 1>>
-							<<hunger -200>>
-							<<set $eat_raw_icon to _fish.icon>>
-							<<set $eat_raw_hint to "你吃掉了一条<<icon `$eat_raw_icon`>>。<<lhunger>><br>">>
-						<</link>>
+						<div class="terraDivider"></div>
+						<div class="terraLinks">
+							<<link [[吃|Fish Island Eat Raw]]>>
+								<<island_pass 5>>
+								<<set V[_fish.name] -= 1>>
+								<<hunger -200>>
+								<<set $eat_raw_icon to _fish.icon>>
+								<<set $eat_raw_hint to "你吃掉了一条<<icon `$eat_raw_icon`>>。<<lhunger>><br>">>
+							<</link>>
+						</div>
 					</div>
 				<</capture>>
 			<</if>>
@@ -85,7 +87,7 @@
 你擦去落在工作台上的杂物。由于海岛缺乏工具，你在这里使用工作台只能将鱼类加工为食物。
 <<icon "furniture_placed/Work_Bench_(placed).png">><br>
 <br>
-<span id="crafting_island_info">
+<span id="housekeepingInfo">
 	<<if $housekeeping lt 600>>
 		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
 	<<elseif $housekeeping lt 1000>>
@@ -93,80 +95,12 @@
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
 	<</if>>
-	<br>
 </span>
-<span id="crafting_island_work_bench"><<crafting_island_work_bench>></span>
+<br>
+<span id="craftingInfo"></span>
+<span id="craftingUI"><<crafting "Work_Bench">></span>
 <br>
 <<getouticon>><<link [[返回|Fish Island]]>><</link>>
-
-:: Fish Island Work Bench Crafting [widget]
-<<widget "crafting_island_info">>
-	<<if $housekeeping lt 600>>
-		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
-	<<elseif $housekeeping lt 1000>>
-		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
-	<<else>>
-		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
-	<</if>>
-	<br>
-	_crafted_info
-<</widget>>
-
-<<widget "crafting_island_work_bench">>
-
-<<run initializeTooltips()>>
-
-<span class="no-numberify">
-<<set _recipe_list to getAllRecipeList()>>
-<<set _recipe_avalible to false>>
-<div class="itemTerra">
-	<<for _t to 0; _t lt _recipe_list.length; _t++>>
-		<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
-		<<if _recipe.required_crafting_station is "Work_Bench" and _recipe.type is "food">>
-			<<capture _recipe>>
-				_recipe.craftable
-				<<if _craftable>>
-					<<set _recipe_avalible to true>>
-					<div class="item">
-						<div class="itemTerraGeneral" @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-							<<icon `_recipe.icon`>>
-						</div>
-						<hr>
-						<mouse class="tooltip">
-							配方
-							<span>
-								_recipe.required_material_info
-							</span>
-						</mouse>
-						<hr>
-						<span class="terraLink">
-							<<link "制作">>
-								_recipe.craft
-								<<set $crafting_count.Work_Bench += 1>>
-								<<if _recipe.type is "food">>
-									<<housekeeping 1 600>>
-								<</if>>
-								<<set _crafted_info to _recipe.crafting_info>>
-								<<replace #crafting_island_info>>
-									<<crafting_island_info>>
-								<</replace>>
-								<<replace #crafting_island_work_bench>>
-									<<crafting_island_work_bench>>
-								<</replace>>
-							<</link>>
-						</span>
-					</div>
-				<</if>>
-			<</capture>>
-		<</if>>
-	<</for>>
-</div>
-<<if !_recipe_avalible>>
-	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
-<</if>>
-</span>
-
-<</widget>>
 
 :: Fish Island Campfire
 <!-- 0:已经熄灭 (0,180]:只有火苗了 (180,360]:火势微弱 (360,540]:平稳燃烧 (540,720]:火势旺盛 -->
@@ -229,25 +163,25 @@
 你打算烤哪条鱼？<<housekeepingdifficulty 400 600>>
 <span class="no-numberify">
 	<<set _fishObtained to getFishObtainedList()>>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _t to 0; _t lt _fishObtained.length; _t++>>
 			<<set _fish to setup.terraFish[_fishObtained[_t]]>>
 			<<if _fish.type is "cookable">>
 				<<capture _fish>>
-					<div class="item">
-						<div class="itemTerraGeneral" @tooltip="`${_fish.cn_name}`">
+					<div class="terraItem">
+						<div class="terraIcon" @tooltip="`${_fish.cn_name}`">
 							<<icon `_fish.icon`>>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						<<print _fish.amount>>
-						<hr>
-						<span class="terraLink">
+						<div class="terraDivider"></div>
+						<div class="terraLinks">
 							<<link "⬆" "Fish Island Campfire Roast 2">>
 								<<set V[_fish.name] -= 1>>
 								<<island_pass 20>>
 								<<set $island_campfire_roast to setup.terraFish[_fish.name]>>
 							<</link>>
-						</span>
+						</div>
 					</div>
 				<</capture>>
 			<</if>>

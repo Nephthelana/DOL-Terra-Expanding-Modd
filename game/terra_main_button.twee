@@ -39,9 +39,11 @@
 			background-color: var(--800);
 		}
 	</style>
-	<div id="terraMainButtonList" class="infoAccButton unstowable">
-		<<terraMainButtonList>>
-	</div>
+	<<if !$options.buttonsLegacy>>
+		<div id="terraMainButtonList" class="infoAccButton unstowable">
+			<<terraMainButtonList>>
+		</div>
+	<</if>>
 <</widget>>
 
 <<widget "terraMainButtonList">>

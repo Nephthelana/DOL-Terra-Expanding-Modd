@@ -1,0 +1,10 @@
+:: Widgets NPC Pronoun [widget]
+<<widget "terraPronoun">>
+	<<switch $options.terraGender[$terraNPC]>>
+		<<case "m">>
+			<<set _terraGender to "他">>
+		<<case "f">>
+			<<set _terraGender to "她">>
+	<</switch>>
+	_terraGender
+<</widget>>

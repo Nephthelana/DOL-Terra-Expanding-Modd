@@ -13,7 +13,7 @@
 你打开了工具箱。这里面的工具足以帮你制作生鱼片。
 <<birdicon "tools">><br>
 <br>
-<span id="crafting_bird_tower_work_bench_info">
+<span id="housekeepingInfo">
 	<<if $housekeeping lt 600>>
 		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
 	<<elseif $housekeeping lt 1000>>
@@ -21,82 +21,11 @@
 	<<else>>
 		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
 	<</if>>
-	<br>
 </span>
-<span id="crafting_bird_tower_work_bench">
-	<<crafting_bird_tower_work_bench>>
-</span>
+<br>
+<span id="craftingInfo"></span>
+<span id="craftingUI"><<crafting "birdToolBox">></span>
 <br>
 <span id="crafting_bird_tower_work_bench_exit">
 	<<getouticon>><<link [[返回|Bird Tower]]>><</link>>
 </span>
-
-:: Bird Tower Work Bench Crafting [widget]
-<<widget "crafting_bird_tower_work_bench_info">>
-	<<if $housekeeping lt 600>>
-		你可以从<span class="teal">加工鱼类为生鱼片</span>中精进你的<span class="gold">家务技能</span>，直到你的家务等级达到<span class="blue">B</span>。<br>
-	<<elseif $housekeeping lt 1000>>
-		<span class="black">你已经完全掌握了技巧，你的家务水平不会再从<i>加工鱼类为生鱼片</i>中得到突破了。</span><br>
-	<<else>>
-		你的<span class="gold">家务技能</span>已经达到了<span class="green">S</span>！<br>
-	<</if>>
-	<br>
-	_crafted_info
-<</widget>>
-
-<<widget "crafting_bird_tower_work_bench">>
-
-<<run initializeTooltips()>>
-
-<span class="no-numberify">
-	<<set _recipe_list to getAllRecipeList().filter(r => setup.terraRecipe[r].required_crafting_station === "Work_Bench" && setup.terraRecipe[r].type is "food")>>
-	<<set _recipe_avalible to false>>
-	<div class="itemTerra">
-		<<for _r range _recipe_list>>
-			<<set _recipe to setup.terraRecipe[_r]>>
-			<<capture _recipe>>
-				_recipe.craftable
-				<<if _craftable>>
-					<<set _recipe_avalible to true>>
-					<div class="item">
-						<div class="itemTerraGeneral" @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-							<<icon `_recipe.icon`>>
-						</div>
-						<hr>
-						<mouse class="tooltip">
-							配方
-							<span>
-								_recipe.required_material_info
-							</span>
-						</mouse>
-						<hr>
-						<<link "制作">>
-							_recipe.craft
-							<<set $crafting_count.Work_Bench += 1>>
-							<<if _recipe.type is "food">>
-								<<housekeeping 1 600>>
-							<</if>>
-							<<set _crafted_info to _recipe.crafting_info>>
-							<<replace #crafting_bird_tower_work_bench_info>>
-								<<crafting_bird_tower_work_bench_info>>
-							<</replace>>
-							<<replace #crafting_bird_tower_work_bench>>
-								<<crafting_bird_tower_work_bench>>
-							<</replace>>
-							<<if hasBabyHawkModInfo()>>
-								<<replace #crafting_bird_tower_work_bench_exit>>
-									<<getouticon>><<link [[返回|Crafting Bird Tower Work Bench Exit]]>><</link>>
-								<</replace>>
-							<</if>>
-						<</link>>
-					</div>
-				<</if>>
-			<</capture>>
-		<</for>>
-	</div>
-<<if !_recipe_avalible>>
-	<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
-<</if>>
-</span>
-
-<</widget>>

@@ -1,113 +1,13 @@
-/* 用神秘的方式实现全球定位系统显示的地图中，对人物所处的位置的指示（十分简单粗暴！） */
+.informationalAccessoryGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+	grid-gap: 5px;
+}
+
 .GPSOldSewerMap {
 	position: relative;
 	width: 200px;
 	height: 200px;
-}
-
-.GPSOldSewerMapArrow_sewerswebs {
-    position: absolute;
-    top: 0px;
-    left: 32px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewerswood {
-    position: absolute;
-    top: 40px;
-    left: 32px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersresidential {
-    position: absolute;
-    top: 80px;
-    left: 32px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersscrap {
-    position: absolute;
-    top: 120px;
-    left: 32px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersworkshop {
-    position: absolute;
-    top: 160px;
-    left: 32px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewershole {
-    position: absolute;
-    top: 0px;
-    left: 72px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersruins {
-    position: absolute;
-    top: 40px;
-    left: 72px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewerscommercial {
-    position: absolute;
-    top: 80px;
-    left: 72px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersmud {
-    position: absolute;
-    top: 120px;
-    left: 72px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersshrooms {
-    position: absolute;
-    top: 160px;
-    left: 72px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersrubble {
-    position: absolute;
-    top: 40px;
-    left: 112px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersindustrial {
-    position: absolute;
-    top: 80px;
-    left: 112px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewersalgae {
-    position: absolute;
-    top: 120px;
-    left: 112px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewerswaterfall {
-    position: absolute;
-    top: 80px;
-    left: 152px;
-    pointer-events: none;
-}
-
-.GPSOldSewerMapArrow_sewerslake {
-    position: absolute;
-    top: 80px;
-    left: 192px;
-    pointer-events: none;
 }
 
 .GPSOldSewerMapSmugglerPub {
@@ -115,4 +15,52 @@
     top: 121px;
     left: 111px;
     pointer-events: none;
+}
+
+.GPSTentaclePlainsMap {
+	position: relative;
+	width: 320px;
+	height: 320px;
+}
+
+.GPSCatacombs {
+	position: relative;
+	width: 230px;
+	height: 230px;
+}
+
+.GPSDocks {
+	position: relative;
+	width: 150px;
+	height: 110px;
+}
+
+.GPSForest {
+	position: relative;
+	width: 276px;
+	height: 270px;
+}
+
+.GPSForestPart1 {
+	position: relative;
+	width: 200px;
+	height: 70px;
+}
+
+.GPSForestPart2 {
+	position: relative;
+	width: 270px;
+	height: 150px;
+}
+
+.GPSBeachCave {
+	position: relative;
+	width: 190px;
+	height: 190px;
+}
+
+.GPSMoor {
+	position: relative;
+	width: 190px;
+	height: 230px;
 }

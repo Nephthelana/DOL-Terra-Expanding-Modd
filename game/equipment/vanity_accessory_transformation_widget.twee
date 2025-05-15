@@ -4,12 +4,25 @@
 	<<set _terra_vanity_demonHorns to (($terra_vanity_accessories_slots + $terra_accessories_slots).includes("Demon_Horns") and $demon lt 2) ? true : false>>
 	<<set $transformationParts.angel.halo to $angel gte 4 ? $transformationParts.angel.halo : !_terra_vanity_angelHalo ? "disabled" : $transformationParts.angel.halo is "disabled" ? "default" : $transformationParts.angel.halo>>
 	<<set $transformationParts.demon.horns to $demon gte 2 ? $transformationParts.demon.horns : !_terra_vanity_demonHorns ? "disabled" : $transformationParts.demon.horns is "disabled" ? "default" : $transformationParts.demon.horns>>
+
+	<script>
+		if (V.options.buttonsLegacy) {
+			simpleFrameworks.data.ModMenuBig.pushUnique('void_bag');
+			simpleFrameworks.data.ModMenuSmall.pushUnique('terraExpandEquipmentButton');
+			simpleFrameworks.data.ModMenuSmall.pushUnique('terraExpandToolButton');
+		} else {
+			simpleFrameworks.data.ModMenuBig.delete('void_bag');
+			simpleFrameworks.data.ModMenuSmall.delete('terraExpandEquipmentButton');
+			simpleFrameworks.data.ModMenuSmall.delete('terraExpandToolButton');
+		}
+	</script>
+
 <</widget>>
 
 <<widget "vanityAccessoryTransformationToggle">>
 	<<if _terra_vanity_angelHalo>>
 		<div @class="_terra_vanity_demonHorns ? 'settingsToggleItem' : 'settingsToggleItemWide'">
-			<<icon "vanity_accessories/Angel_Halo.png">><span class="gold bold">时装：天使光环</span>
+			<<icon "accessories/Angel_Halo.png">><span class="gold bold">时装：天使光环</span>
 			<<set _BA_Halos to {
 				"玛█(M██y)": "mary",
 				"圣█(S██a)": "seia",
@@ -39,12 +52,14 @@
 						<<optionsfrom _BA_Halos>>
 						<<option "隐藏" "hidden">>
 						<<option "默认" "default">>
+						<<option "星辰" "celestial">>
 						<<option "传统的" "traditional">>
 					<</listbox>>
 				<<else>>
 					<<listbox "_angel.halo" autoselect>>
 						<<option "隐藏" "hidden">>
 						<<option "默认" "default">>
+						<<option "星辰" "celestial">>
 						<<option "传统的" "traditional">>
 					<</listbox>>
 				<</if>>
@@ -53,7 +68,7 @@
 	<</if>>
 	<<if _terra_vanity_demonHorns>>
 		<div @class="_terra_vanity_angelHalo ? 'settingsToggleItem' : 'settingsToggleItemWide'">
-			<<icon "vanity_accessories/Demon_Horns.png">><span class="gold bold">时装：恶魔角</span>
+			<<icon "accessories/Demon_Horns.png">><span class="gold bold">时装：恶魔角</span>
 			<div class='tf-part-item'>
 				<<listbox "_demon.horns" autoselect>>
 					<<option "隐藏" "hidden">>

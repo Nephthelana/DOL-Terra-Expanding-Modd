@@ -1,0 +1,10 @@
+.terraPet {
+	position: absolute;
+	left: 64px;
+	top: 0px;
+	z-index: 10;
+	user-select: none;
+	width: 64px;
+	height: 192px;
+	overflow: hidden;
+}

@@ -16,13 +16,13 @@
 
 <<widget "petList">>
 	<<set _petObtainedList to $pet_list>>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _t to 0; _t lt _petObtainedList.length; _t++>>
 			<<set _pet to setup.terraPet[_petObtainedList[_t]]>>
 			<<capture _pet>>
 				<<if $options.dragModeTEM>>
-					<div class="item" @id="_pet.name" draggable="true" ondragstart="dragTEM(event)" ondragover="allowDropTEM(event)" ondrop="dropPetListSwitch(event)">
-						<div class="itemTerraGeneral">
+					<div class="terraItem" @id="_pet.name" draggable="true" ondragstart="dragTEM(event)" ondragover="allowDropTEM(event)" ondrop="dropPetListSwitch(event)">
+						<div class="terraIcon">
 							<<set _pet_icon_path to "img/misc/icon/pet/pet_item/">>
 							<<set _pet_icon_path += _pet.name>><!-- 好像不能在一行内用字符串相加的方式来写这个变量，所以只能这样笨笨地连加在一起了 -->
 							<<set _pet_icon_path += ".png">>
@@ -48,9 +48,9 @@
 						</div>
 					</div>
 				<<else>>
-					<div class="item">
+					<div class="terraItem">
 						<div @tooltip="`${_pet.cn_name}<br><br>▶${_pet.des_item}`">
-							<div class="itemTerraGeneral">
+							<div class="terraIcon">
 								<<if V.bedroom_pets[_pet.name]>>
 									<<icon `_pet.icon_item`>>
 								<<else>>
@@ -58,7 +58,7 @@
 								<</if>>
 							</div>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						<div class="terraLinks">
 							<<if V.bedroom_pets[_pet.name]>>
 								<<link "取消">>
@@ -76,16 +76,14 @@
 								<</link>>
 							<</if>>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						<div class="terraLinks">
 							<<if _t is 0>>
 								/
 							<<else>>
 								<<capture _t>>
 									<<link "⬅">>
-										<<set _temp to $pet_list[_t-1]>>
-										<<set $pet_list[_t-1] to $pet_list[_t]>>
-										<<set $pet_list[_t] to _temp>>
+										<<run swap(V.pet_list, _t-1, _t)>>
 										<<replace #petList>>
 											<<petList>>
 										<</replace>>
@@ -107,7 +105,6 @@
 <</widget>>
 
 :: Terra Bedroom Furniture Option
-<<run initializeTooltips()>>
 <<run window.modImgLoaderHooker.addDynamicImageTagReplacePassage(V.passage)>>
 请选择要摆放的家具。<br>
 <<if $options.dragModeTEM>>
@@ -138,3 +135,17 @@
 	<<run window.modImgLoaderHooker.replaceAllImageInHtmlElement(document.body)>>
 <</link>><br>
 <<getouticon>><<link [[返回|Bedroom]]>><</link>>
+
+:: Terra Pet [widget]
+<<widget "terraPet">>
+	<<if $options.petSidebar>>
+		<div class="terraPet">
+			<<set _petSidebarInfo to setup.terraPet[$options.petSidebar]>>
+			<img @src="'img/misc/icon/' + _petSidebarInfo.icon_projectile" @style="'
+				position: relative;
+	   			top: ' + _petSidebarInfo.sidebarCoordinate.y + 'px;
+   				left: ' + _petSidebarInfo.sidebarCoordinate.x + 'px;
+			'" @tooltip="`${_petSidebarInfo.des_projectile}`">
+		</div>
+	<</if>>
+<</widget>>

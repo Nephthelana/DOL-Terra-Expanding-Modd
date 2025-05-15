@@ -42,7 +42,7 @@
 <</widget>>
 
 <<widget "fishing_request_place_trash">>
-	<<print $fishingskill lt 900 ? "？？？" : $fishing_place_farm_woodland_unlock ? "垃圾场深处的沸水池" : '学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加“宏伟”。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景'>>
+	<<print $fishingskill lt 900 ? "？？？" : $fishing_place_trash_unlock ? "垃圾场深处的沸水池" : '学校里几个以胆大著称的同学提起他们在麋鹿街垃圾场的热血冒险时，大部分时候都在讨论谁的更加“宏伟”。有时他们也会嘲笑其中一个人在逃离保安时，险些跌入垃圾场深处沸水池的滑稽场景'>>
 <</widget>>
 
 <<widget "fishing_request_place_ice">>

@@ -35,8 +35,7 @@
 		<<run fishingHarvest()>>
 		你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
 	<</if>>
-	<div id="fishingBaitConsumed"></div>
-	<<run fishingBaitConsumed()>>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<fishing_finished_back>>
@@ -61,11 +60,10 @@
 				<span class="red">看起来你在咬钩时就没有渔获判定成功，你是怎么看到这条消息的？这是不应该存在的情况，请向模组作者反馈</span><br>
 			<<default>>
 				<<run fishingHarvest()>>
-				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
+				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
 		<</switch>>
 	<</if>>
-	<div id="fishingBaitConsumed"></div>
-	<<run fishingBaitConsumed()>>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<fishing_finished_back>>
@@ -74,8 +72,7 @@
 	<<set $fishing_failed_count += 1>>
 	<<run fishingEnd()>>
 	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><<ggstress>><<stress 6>><br>
-	<div id="fishingBaitConsumed"></div>
-	<<run fishingBaitConsumed()>>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<fishing_finished_back>>
@@ -84,6 +81,7 @@
 	<<set $fishing_failed_count += 1>>
 	<<run fishingEnd()>>
 	你足足搏斗了5分钟！<span class="red">它失去了对你的兴趣。</span><<gstress>><<stress 3>><br>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<fishing_finished_back>>
@@ -162,8 +160,6 @@
 <</widget>>
 
 <<widget "fishing_round_info">>
-	<<set $_fishing_distance_info to "渔获距离：$fishing_distance/100">>
-	<<set $_fishing_integrity_info to "鱼线耐久：$fishing_integrity/<<print $terra_accessories_slots.includesAny('High_Test_Fishing_Line','Angler_Tackle_Bag','Lavaproof_Tackle_Bag','Supreme_Bait_Tackle_Box_Fishing_Station') ? 5 : 3>>">>
 	<<switch $fishingphase>>
 		<<case 1>>
 			<span class="teal">一次很成功的收线！</span>| <span class="green">+ 垂钓</span>
@@ -175,39 +171,33 @@
 			<span class="pink">它刚刚明明就没动！</span>| <span class="green">+ + 垂钓</span><<gstress>><<stress 3>>
 	<</switch>><br>
 	<br>
-	<<fishingrod_bobber>>钓鱼状态：<br>
-	<<if $fishing_distance lte 0>>
-		<span class="green">$_fishing_distance_info</span>
-	<<elseif $fishing_distance lte 20>>
-		<span class="teal">$_fishing_distance_info</span>
-	<<elseif $fishing_distance lte 40>>
-		<span class="lblue">$_fishing_distance_info</span>
-	<<elseif $fishing_distance lte 60>>
-		<span class="blue">$_fishing_distance_info</span>
-	<<elseif $fishing_distance lte 80>>
-		<span class="purple">$_fishing_distance_info</span>
-	<<elseif $fishing_distance lte 100>>
-		<span class="pink">$_fishing_distance_info</span>
-	<<else>>
-		<span class="red">$_fishing_distance_info</span>
-	<</if>><br>
-	<<switch $fishing_integrity>>
-		<<case 1>>
-			<span class="pink">$_fishing_integrity_info</span>
-		<<case 2>>
-			<span class="blue">$_fishing_integrity_info</span>
-		<<case 3>>
-			<span class="lblue">$_fishing_integrity_info</span>
-		<<case 4>>
-			<span class="teal">$_fishing_integrity_info</span>
-		<<case 5>>
-			<span class="green">$_fishing_integrity_info</span>
-	<</switch>><br>
+	<<if $Bait isnot "None">><<icon `setup.terraBait[$Bait].icon`>><</if>>钓鱼状态<br>
+	<span @class="
+		$fishing_distance <=   0 ? 'green' :
+		$fishing_distance <=  20 ? 'teal' :
+		$fishing_distance <=  40 ? 'lblue' :
+		$fishing_distance <=  60 ? 'blue' :
+		$fishing_distance <=  80 ? 'purple' :
+		$fishing_distance <= 100 ? 'pink' :
+		'red'
+	">
+		渔获距离：$fishing_distance/100
+	</span><br>
+	<span @class="
+		$fishing_integrity == 1 ? 'pink' :
+		$fishing_integrity == 2 ? 'blue' :
+		$fishing_integrity == 3 ? 'lblue' :
+		$fishing_integrity == 4 ? 'teal' :
+		$fishing_integrity == 5 ? 'green' :
+		''
+	">
+		鱼线耐久：$fishing_integrity/<<print $terra_accessories_slots.includesAny('High_Test_Fishing_Line','Angler_Tackle_Bag','Lavaproof_Tackle_Bag','Supreme_Bait_Tackle_Box_Fishing_Station') ? 5 : 3>>
+	</span><br>
 <</widget>>
 
 <<widget "fishingrod_bobber">>
 	<!-- 判断是否装备着钓鱼浮标及其升级物 -->
-	<<set $_accessory_Fishing_Bobber to Object.values(V.terra_accessories_slots).find(accessory => setup.terraAccessories[accessory].type === "bobber")>>
+	<<set $_accessory_Fishing_Bobber to V.terra_accessories_slots.find(accessory => setup.terraAccessories[accessory].type === "bobber") or V.terra_vanity_accessories_slots.find(accessory => setup.terraAccessories[accessory].type === "bobber")>>
 	<<if $_accessory_Fishing_Bobber>>
 		<<icon `'fishing/bobber/' + $_accessory_Fishing_Bobber + ($_accessory_Fishing_Bobber is "Helium_Moss_Fishing_Bobber" ? '.gif' : '.png')`>>
 	<<else>>
@@ -238,8 +228,9 @@
 		<<set $fish_relax to false>>
 		<<set $fish_struggle_count += 1>>
 	<</if>>
+	<<fishingrod_bobber>>
 	<<if ($fishingskill * 0.8 + 200) gte random(1,1000)>>
-		你可以准确地看出来<<print $fish_relax ? "它很安静。" : "它在挣扎。">>
+		你可以准确地看出来<<print $fish_relax ? "它很安静" : "它在挣扎">>。
 	<<else>>
 		你还看不出它的行为。
 	<</if>><br>
@@ -247,8 +238,7 @@
 
 <<widget "fishing_finished_back">>
 	<<set $_fpInfo to setup.terraFishingPlace[$fishing_place]>>
-	<<getouticon>>
-	<<link "返回$_fpInfo.cn_name" $_fpInfo.entrance>><<unset $fishing_harvest>><</link>>
+	<<getouticon>><<link "返回$_fpInfo.cn_name" $_fpInfo.entrance>><<unset $fishing_harvest>><</link>>
 <</widget>>
 
 <<widget "fishing_debug">>

@@ -1,21 +1,18 @@
 :: Terra Debug Equipment
-<<run initializeTooltips()>>
 请选择获得/丢弃装备。<br>
 盔甲<br>
 <span class="no-numberify">
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _am range Object.keys(setup.terraArmor)>>
 			<<set _armor to setup.terraArmor[_am]>>
 			<<capture _armor>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}`">
-						<<if V[_armor.name]>>
+				<div class="terraItem">
+					<div class="terraIcon" @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}<br><span class='black'>_armor.set_bonus（未激活）</span>`">
+						<span @class="V[_armor.name] ? '' : 'terraFading'">
 							<<icon `_armor.icon`>>
-						<<else>>
-							<span class="terraFading"><<icon `_armor.icon`>></span>
-						<</if>>
+						</span>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					<div class="terraLinks">
 						<<if V[_armor.name]>>
 							<<link [[丢弃|Terra Debug Equipment]]>>
@@ -40,20 +37,18 @@
 </span>
 饰品
 <span class="no-numberify">
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _acc range Object.keys(setup.terraAccessories)>>
 			<<set _accessory to setup.terraAccessories[_acc]>>
 			<<capture _accessory>>
-				<div class="item">
+				<div class="terraItem">
 					<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
-					<div class="itemTerraGeneral" @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}`">
-						<<if V[_accessory.name]>>
+					<div class="terraIcon" @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}<br>${_accessory.vanity}`">
+						<span @class="V[_accessory.name] ? '' : 'terraFading'">
 							<<icon `_accessory.icon`>>
-						<<else>>
-							<span class="terraFading"><<icon `_accessory.icon`>></span>
-						<</if>>
+						</span>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					<div class="terraLinks">
 						<<if V[_accessory.name]>>
 							<<link [[丢弃|Terra Debug Equipment]]>>

@@ -1,0 +1,17 @@
+:: Widgets Dryad [Widgets]
+<<widgets "dryadMuseum">>
+	<<if $dryad_intro is "museum">>
+		<<antiqueicon "hourglass">><<link [[找到铭文沙漏 (0:10)|Dryad Hourglass 1]]>><</link>><br>
+	<</if>>
+<</widgets>>
+
+:: Dryad Hourglass 1
+你环顾博物馆，很快找到了那个铭文沙漏。其内部的流沙均匀落下，使你感到安心与镇静。<<lstress>><<stress -3>><br>
+<br>
+看来或许是出于展览目的，温特有时会使用它。<br>
+<br>
+取出纸笔，你观察了一下这些刻在沙漏上的铭文的字形与排列，然后开始抄写。这并不是一件容易的事：这些字符大致在一个网格中排列，看不出整段话是从哪里起始的。你尽量保留着字符间的相对位置关系。<br>
+<br>
+“很高兴看到你对这种失传的文字仍有如此浓厚的兴趣，”熟悉的声音在你耳边响起，温特将手搭在你一边的肩膀上。<br>
+<br>
+<<link [[询问发生了什么事|Dryad Hourglass 2]]>><</link>>

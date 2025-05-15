@@ -7,9 +7,9 @@ setup.terraTravelingMerchantGoods = {
 		rarity: 6,
 		price: 400000,
 		obtained: V.Angel_Halo,
-		icon: "vanity_accessories/Angel_Halo.png",
+		icon: "accessories/Angel_Halo.png",
 		des: "一个天使的光环！防止天使转化点数衰退<br><br><i>时装</i>：获得仅自己可见的天使光环",
-		purchase_info: "你购买了一个<<icon 'vanity_accessories/Angel_Halo.png'>>天使光环。<i>试着在装备栏里戴上它。</i>",
+		purchase_info: "你购买了一个<<icon 'accessories/Angel_Halo.png'>>天使光环。<i>试着在装备栏里戴上它。</i>",
 	},
 	"Eye_Bone": {
 		name: "Eye_Bone",
@@ -175,9 +175,9 @@ setup.terraTravelingMerchantGoods = {
 		rarity: 3,
 		price: 25000,
 		obtained: V.Demon_Horns,
-		icon: "vanity_accessories/Demon_Horns.png",
+		icon: "accessories/Demon_Horns.png",
 		des: "一对恶魔的犄角！防止恶魔转化点数衰退(不会防止对应的惩罚)<br><br><i>时装</i>：获得仅自己可见的恶魔犄角",
-		purchase_info: "你购买了一对<<icon 'vanity_accessories/Demon_Horns.png'>>恶魔角。<i>试着在装备栏里戴上它。</i>",
+		purchase_info: "你购买了一对<<icon 'accessories/Demon_Horns.png'>>恶魔角。<i>试着在装备栏里戴上它。</i>",
 	},
 	"Pad_Thai": {
 		name: "Pad_Thai",
@@ -191,6 +191,42 @@ setup.terraTravelingMerchantGoods = {
 		des: "- - 饥饿值<br>“五星级辣度！”",
 		purchase_info: "你购买了一份<<icon 'food/Pad_Thai.png'>>泰式炒面。你现在有泰式炒面($Pad_Thai)。",
 	},
+	"Stopwatch": {
+		name: "Stopwatch",
+		cn_name: "秒表",
+		type: "accessory",
+		stackable: false,
+		rarity: 2,
+		price: 50000,
+		obtained: V.Stopwatch,
+		icon: "accessories/Stopwatch.png",
+		des: "允许在合适的地点和时机掐表消磨时间",
+		purchase_info: "你购买了一个<<icon 'accessories/Stopwatch.png'>>秒表。",
+	},
+	"Lifeform_Analyzer": {
+		name: "Lifeform_Analyzer",
+		cn_name: "生命体分析机",
+		type: "accessory",
+		stackable: false,
+		rarity: 2,
+		price: 50000,
+		obtained: V.Lifeform_Analyzer,
+		icon: "accessories/Lifeform_Analyzer.png",
+		des: "显示NPC的位置（仅限主要角色）",
+		purchase_info: "你购买了一个<<icon 'accessories/Lifeform_Analyzer.png'>>生命体分析机。",
+	},
+	"Thermometer": {
+		name: "Thermometer",
+		cn_name: "温度计",
+		type: "accessory",
+		stackable: false,
+		rarity: 2,
+		price: 50000,
+		obtained: V.Thermometer,
+		icon: "accessories/Thermometer.png",
+		des: "显示室外温度、室内温度与水体温度",
+		purchase_info: "你购买了一个<<icon 'accessories/Thermometer.png'>>温度计。",
+	},
 	"Sake": {
 		name: "Sake",
 		cn_name: "清酒",
@@ -203,46 +239,37 @@ setup.terraTravelingMerchantGoods = {
 		des: "给予2小时的醉酒效果<br>“喝多了你会变成空手道大师。”",
 		purchase_info: "你购买了一瓶<<icon 'food/Sake.png'>>清酒。你现在有清酒($Sake)。",
 	},
-	"Stopwatch": {
-		name: "Stopwatch",
-		cn_name: "秒表",
-		type: "accessory",
-		stackable: false,
-		rarity: 1,
-		price: 50000,
-		obtained: V.Stopwatch,
-		icon: "accessories/Stopwatch.png",
-		des: "允许在合适的地点和时机掐表消磨时间",
-		purchase_info: "你购买了一个<<icon 'accessories/Stopwatch.png'>>秒表。",
-	},
-	"Lifeform_Analyzer": {
-		name: "Lifeform_Analyzer",
-		cn_name: "生命体分析机",
-		type: "accessory",
-		stackable: false,
-		rarity: 1,
-		price: 50000,
-		obtained: V.Lifeform_Analyzer,
-		icon: "accessories/Lifeform_Analyzer.png",
-		des: "显示NPC的位置（仅限主要角色）",
-		purchase_info: "你购买了一个<<icon 'accessories/Lifeform_Analyzer.png'>>生命体分析机。",
-	},
-	"Thermometer": {
-		name: "Thermometer",
-		cn_name: "温度计",
-		type: "accessory",
-		stackable: false,
-		rarity: 1,
-		price: 50000,
-		obtained: V.Thermometer,
-		icon: "accessories/Thermometer.png",
-		des: "显示室外温度、室内温度与水体温度",
-		purchase_info: "你购买了一个<<icon 'accessories/Thermometer.png'>>温度计。",
-	},
 }
 
-function getAllTravelingMerchantGoodsList() {
-	let all_goods_list = Object.keys(setup.terraTravelingMerchantGoods);
-	return all_goods_list;
+function travelingMerchantShopListSetup() {
+	const goodsList = Object.keys(setup.terraTravelingMerchantGoods);
+	// 还未解锁渔夫以及钓鱼时，在商品列表中删去鱼竿，以免提前买到鱼竿
+	if (V.fishingskill === undefined) goodsList.delete("Sitting_Ducks_Fishing_Pole","Slurper_Pole");
+
+	// 简易框架提供的更灵活的类似switch的写法，决定当天旅商带来几种货物（4～6种）
+	const select = new SelectCase();
+	select.case([1,7],  4)
+		  .case([8,16], 5)
+		  .case([17,27],6);
+	const travelingMerchantShopSlot = select.has(random(1,27));
+
+	V.traveling_merchant_shop_list = [];
+	for (let n=1; V.traveling_merchant_shop_list.length <= (travelingMerchantShopSlot - 1); n++) {
+		// 根据设定的稀有度判断是否在列表中加上某件商品
+		for (const good of goodsList) {
+			if (random(1, setup.terraTravelingMerchantGoods[good].rarity) === 1) {
+				V.traveling_merchant_shop_list.pushUnique(good.name);
+				break;
+			}
+		}
+		// 为了避免超出循环1000次的限制 bruh 我该怎么优化这里
+		if (n >= 999) {
+			V.traveling_merchant_shop_list = goodsList.randomMany(travelingMerchantShopSlot - 1);
+			break;
+		}
+	}
+
+	// 最后在商品列表里加上渔夫家具奖励中的一幅画
+	V.traveling_merchant_shop_list.pushUnique(getAllAnglerFurnitureList().random());
 }
-window.getAllTravelingMerchantGoodsList = getAllTravelingMerchantGoodsList;
+window.travelingMerchantShopListSetup = travelingMerchantShopListSetup;

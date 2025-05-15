@@ -1,4 +1,3 @@
-/*晶塔地图*/
 :: Pylon Transport
 <<if $pylon_collected.length gte 6>>
 	<<earnFeat "Pylon Collector">>
@@ -75,6 +74,24 @@
 <br>
 <<getouticon>>
 <<destinationpylon>>
+
+:: Pylon Destination Back [widget]
+<<widget "destinationpylon">>
+	<<switch $pylon>>
+		<<case "bedroom">>
+			<<link [[返回|Bedroom]]>><</link>>
+		<<case "farmbedroom">>
+			<<link [[返回|Farm Bedroom]]>><</link>>
+		<<case "edencabin">>
+			<<link [[返回|Eden Cabin]]>><</link>>
+		<<case "hawkstower">>
+			<<link [[返回|Bird Tower]]>><</link>>
+		<<case "wolfcave">>
+			<<link [[返回|Wolf Cave]]>><</link>>
+		<<case "temple">>
+			<<link [[返回|Temple Cloister]]>><</link>>
+	<</switch>>	
+<</widget>>
 
 :: Pylon Bird Tower Baby Hawk
 	<<getChildrenIds `{location:"tower", eggTimer:undefined}` "both">>

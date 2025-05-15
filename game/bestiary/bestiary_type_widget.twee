@@ -14,121 +14,117 @@
 
 <<widget "bestiaryRequestFish">>
 	<<set $_requestFish to setup.terraRequestFish[_args[0]]>>
-	<<switch _args[1]>>
-		<<case "unlocked">>
-			<<icon `$_requestFish.icon`>>
-			$_requestFish.cn_name<br>
-			<hr>
-			抓捕地点：<br>
-			<<for $_cp range $_requestFish.catching_place>>
-				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
-				<<catchingPlace $_cpInfo>>
-			<</for>>
-			<hr>
-			获得次数：<<print V.bestiary.request_fish[$_requestFish.name].catch_count>>
-		<<case "locked">>
-			<span class="terraItemLocked"><<icon `$_requestFish.icon`>></span>
-			？？？<br>
-			<hr>
-			抓捕地点：<br>
-			<<for $_cp range $_requestFish.catching_place>>
-				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
-				<<catchingPlace $_cpInfo>>
-			<</for>>
-	<</switch>>
+	<<if _args[1]>>
+		<<icon `$_requestFish.icon`>>
+		$_requestFish.cn_name<br>
+		<hr>
+		抓捕地点：<br>
+		<<for $_cp range $_requestFish.catching_place>>
+			<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+			<<catchingPlace $_cpInfo>>
+		<</for>>
+		<hr>
+		获得次数：<<print V.bestiary.request_fish[$_requestFish.name].catch_count>>
+	<<else>>
+		<span class="terraItemLocked"><<icon `$_requestFish.icon`>></span>
+		？？？<br>
+		<hr>
+		抓捕地点：<br>
+		<<for $_cp range $_requestFish.catching_place>>
+			<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+			<<catchingPlace $_cpInfo>>
+		<</for>>
+	<</if>>
 <</widget>>
 
 <<widget "bestiaryFish">>
 	<<set $_fish to setup.terraFish[_args[0]]>>
-	<<switch _args[1]>>
-		<<case "unlocked">>
-			<<icon `$_fish.icon`>>
-			$_fish.cn_name<br>
-			<hr>
-			抓捕地点：<br>
-			<<if $_fish.name is "Bass">>
-				除熔岩、蜂蜜外的大部分水域
-			<<else>>
-				<<for $_cp range $_fish.catching_place>>
-					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
-					<<catchingPlace $_cpInfo>>
-				<</for>>
-			<</if>>
-			<hr>
-			稀有度<mouse class="tooltip linkBlue">(?)<span>"稀有度"这一概念是相对的，即只有同一图鉴分类下的稀有度对比才有意义。例：普通鱼的"丰富"和宝匣的"丰富"代表的含义不同。</span></mouse>：<br>
-			$_fish.rarity_cn<br>
-			<hr>
-			获得次数：<<print V.bestiary.fish[$_fish.name].catch_count>>
-		<<case "locked">>
-			<span class="terraItemLocked"><<icon `$_fish.icon`>></span>
-			？？？<br>
-			<hr>
-			抓捕地点：<br>
-			<<if $_fish.name is "Bass">>
-				除熔岩、蜂蜜外的大部分水域
-			<<else>>
-				<<for $_cp range $_fish.catching_place>>
-					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
-					<<catchingPlace $_cpInfo>>
-				<</for>>
-			<</if>>
-	<</switch>>
+	<<if _args[1]>>
+		<<icon `$_fish.icon`>>
+		$_fish.cn_name<br>
+		<hr>
+		抓捕地点：<br>
+		<<if $_fish.name is "Bass">>
+			除熔岩、蜂蜜外的大部分水域
+		<<else>>
+			<<for $_cp range $_fish.catching_place>>
+				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+				<<catchingPlace $_cpInfo>>
+			<</for>>
+		<</if>>
+		<hr>
+		稀有度<mouse class="tooltip linkBlue">(?)<span>"稀有度"这一概念是相对的，即只有同一图鉴分类下的稀有度对比才有意义。例：普通鱼的"丰富"和宝匣的"丰富"代表的含义不同。</span></mouse>：<br>
+		$_fish.rarity_cn<br>
+		<hr>
+		获得次数：<<print V.bestiary.fish[$_fish.name].catch_count>>
+	<<else>>
+		<span class="terraItemLocked"><<icon `$_fish.icon`>></span>
+		？？？<br>
+		<hr>
+		抓捕地点：<br>
+		<<if $_fish.name is "Bass">>
+			除熔岩、蜂蜜外的大部分水域
+		<<else>>
+			<<for $_cp range $_fish.catching_place>>
+				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+				<<catchingPlace $_cpInfo>>
+			<</for>>
+		<</if>>
+	<</if>>
 <</widget>>
 
 <<widget "bestiaryCrate">>
 	<<set $_crate to setup.terraCrate[_args[0]]>>
-	<<switch _args[1]>>
-		<<case "unlocked">>
-			<<icon `$_crate.icon`>>
-			$_crate.cn_name<br>
-			<hr>
-			获取地点：<br>
-			<<if ["Golden_Crate","Iron_Crate","Wooden_Crate"].includes($_crate.name)>>
-				除熔岩、蜂蜜外的所有水域
-			<<else>>
-				<<for $_cp range $_crate.catching_place>>
-					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
-					<<catchingPlace $_cpInfo>>
-				<</for>>
-			<</if>>
-			<hr>
-			稀有度<mouse class="tooltip linkBlue">(?)<span>"稀有度"这一概念是相对的，即只有同一图鉴分类下的稀有度对比才有意义。例：普通鱼的"丰富"和宝匣的"丰富"代表的含义不同。</span></mouse>：<br>
-			$_crate.rarity_cn<br>
-			<hr>
-			获得次数：<<print V.bestiary.crate[$_crate.name].catch_count>>
-			<hr>
-			宝匣中可能开出：
-			<<bestiaryCrateUnloadList $_crate.name>>
-		<<case "locked">>
-			<span class="terraItemLocked"><<icon `$_crate.icon`>></span>
-			？？？<br>
-			<hr>
-			获取地点：<br>
-			<<if ["Golden_Crate","Iron_Crate","Wooden_Crate"].includes($_crate.name)>>
-				除熔岩、蜂蜜外的所有水域
-			<<else>>
-				<<for $_cp range $_crate.catching_place>>
-					<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
-					<<catchingPlace $_cpInfo>>
-				<</for>>
-			<</if>>
-	<</switch>>
+	<<if _args[1]>>
+		<<icon `$_crate.icon`>>
+		$_crate.cn_name<br>
+		<hr>
+		获取地点：<br>
+		<<if ["Golden_Crate","Iron_Crate","Wooden_Crate"].includes($_crate.name)>>
+			除熔岩、蜂蜜外的所有水域
+		<<else>>
+			<<for $_cp range $_crate.catching_place>>
+				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+				<<catchingPlace $_cpInfo>>
+			<</for>>
+		<</if>>
+		<hr>
+		稀有度<mouse class="tooltip linkBlue">(?)<span>"稀有度"这一概念是相对的，即只有同一图鉴分类下的稀有度对比才有意义。例：普通鱼的"丰富"和宝匣的"丰富"代表的含义不同。</span></mouse>：<br>
+		$_crate.rarity_cn<br>
+		<hr>
+		获得次数：<<print V.bestiary.crate[$_crate.name].catch_count>>
+		<hr>
+		宝匣中可能开出：
+		<<bestiaryCrateUnloadList $_crate.name>>
+	<<else>>
+		<span class="terraItemLocked"><<icon `$_crate.icon`>></span>
+		？？？<br>
+		<hr>
+		获取地点：<br>
+		<<if ["Golden_Crate","Iron_Crate","Wooden_Crate"].includes($_crate.name)>>
+			除熔岩、蜂蜜外的所有水域
+		<<else>>
+			<<for $_cp range $_crate.catching_place>>
+				<<set $_cpInfo to setup.terraFishingPlace[$_cp]>>
+				<<catchingPlace $_cpInfo>>
+			<</for>>
+		<</if>>
+	<</if>>
 <</widget>>
 
 <<widget "bestiaryBait">>
 	<<set $_bait to setup.terraBait[_args[0]]>>
-	<<switch _args[1]>>
-		<<case "unlocked">>
-			<<icon `$_bait.icon`>>
-			$_bait.cn_name<br>
-			<hr>
-			渔力：$_bait.fishing_power<br>
-			<hr>
-			获得次数：<<print V.bestiary.bait[$_bait.name].catch_count>><br>
-		<<case "locked">>
-			<span class="terraItemLocked"><<icon `$_bait.icon`>></span>
-			？？？<br>
-	<</switch>>
+	<<if _args[1]>>
+		<<icon `$_bait.icon`>>
+		$_bait.cn_name<br>
+		<hr>
+		渔力：$_bait.fishing_power<br>
+		<hr>
+		获得次数：<<print V.bestiary.bait[$_bait.name].catch_count>><br>
+	<<else>>
+		<span class="terraItemLocked"><<icon `$_bait.icon`>></span>
+		？？？<br>
+	<</if>>
 <</widget>>
 
 <<widget "catchingPlace">>
@@ -150,354 +146,375 @@
 <</widget>>
 
 <<widget "bestiaryCrateUnloadList">>
-	<<run initializeTooltips()>>
-	<div class="itemTerra">
+	<div class="terraInventoryTool">
 		<<switch _args[0]>>
 			<<case "Golden_Crate">>
 				<<set $_tooltip to `<span class="gold">£800～2000</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="魔镜">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="魔镜">
 						<<icon "tool/Magic_Mirror.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="金质贞操带">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="金质贞操带">
 						<<antiqueicon "chastity">>
 					</div>
 				</div>
-				<div class="item" tooltip="大师诱饵(3~7)<br><i>材料</i>">
-					<div class="itemTerraGeneral">
+				<div class="terraItem" tooltip="大师诱饵(3~7)<br><i>材料</i>">
+					<div class="terraIconTool">
 						<<icon "fishing/bait/Master_Bait.png">>
+					</div>
+				</div>
+				<div class="terraItem" tooltip="避孕套(1)">
+					<div class="terraIconTool">
+						<img class="icon" src="img/ui/condom.png" style="position: static; vertical-align: middle;">
 					</div>
 				</div>
 			<<case "Iron_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1000</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="航鱼靴">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="航鱼靴">
 						<<icon "accessories/Sailfish_Boots.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="铁锭(4~7)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="铁锭(4~7)<br><i>材料</i>">
 						<<icon "material/Iron_Bar.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="大师诱饵(2~4)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="大师诱饵(2~4)<br><i>材料</i>">
 						<<icon "fishing/bait/Master_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="熟手诱饵(2~4)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="熟手诱饵(2~4)<br><i>材料</i>">
 						<<icon "fishing/bait/Journeyman_Bait.png">>
+					</div>
+				</div>
+				<div class="terraItem" tooltip="避孕套(1)">
+					<div class="terraIconTool">
+						<img class="icon" src="img/ui/condom.png" style="position: static; vertical-align: middle;">
 					</div>
 				</div>
 			<<case "Wooden_Crate">>
 				<<set $_tooltip to `<span class="gold">£100～500</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="航鱼靴">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="航鱼靴">
 						<<icon "accessories/Sailfish_Boots.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="提炼机">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="提炼机">
 						<<icon "furniture_item/Extractinator.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="铁锭(2~5)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="铁锭(2~5)<br><i>材料</i>">
 						<<icon "material/Iron_Bar.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="熟手诱饵(1~4)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="熟手诱饵(1~4)<br><i>材料</i>">
 						<<icon "fishing/bait/Journeyman_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="学徒诱饵(1~4)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="学徒诱饵(1~4)<br><i>材料</i>">
 						<<icon "fishing/bait/Apprentice_Bait.png">>
+					</div>
+				</div>
+				<div class="terraItem" tooltip="避孕套(1)">
+					<div class="terraIconTool">
+						<img class="icon" src="img/ui/condom.png" style="position: static; vertical-align: middle;">
 					</div>
 				</div>
 			<<case "Ocean_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1200</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="浮游圈">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="浮游圈">
 						<<icon "accessories/Inner_Tube.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="鲨鱼鱼饵">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="鲨鱼鱼饵">
 						<<icon "pet/pet_item/Shark_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="海洋残渣(1~2)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="海洋残渣(1~2)<br><i>材料</i>">
 						<<icon "material/Sea_Remains.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="皮质地图">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="皮质地图">
 						<<antiqueicon "map">>
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>
 			<<case "Oasis_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1200</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="甲虫钓竿">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="甲虫钓竿">
 						<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="巴斯特雕像">
+				<!--
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="巴斯特雕像">
 						<<icon "furniture_item/Bast_Statue.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="耍蛇者长笛">
+				-->
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="远古凿子">
+						<<icon "accessories/Ancient_Chisel.png">>
+					</div>
+				</div>
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="耍蛇者长笛">
 						<<icon "tool/Snake_Charmers_Flute.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="魔法海螺">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="魔法海螺">
 						<<icon "tool/Magic_Conch.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="沙丘行者靴">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="沙丘行者靴">
 						<<icon "accessories/Dunerider_Boots.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="沙暴瓶">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="沙暴瓶">
 						<<icon "accessories/Sandstorm_in_a_Bottle.png">>
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>
 			<<case "Jungle_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1200</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="玻璃钢钓竿">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="玻璃钢钓竿">
 						<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="再生法杖">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="再生法杖">
 						<<icon "tool/Staff_of_Regrowth.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="肥料">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="肥料">
 						<<gardenicon "fertiliser">>
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>
 			<<case "Hallowed_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1200</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="赎罪券(1)">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="赎罪券(1)">
 						<<icon "赎罪券.png">>
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>
 			<<case "Sky_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1200</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="星怒">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="星怒">
 						<<icon "tool/Starfury.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="幸运马掌">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="幸运马掌">
 						<<icon "accessories/Lucky_Horseshoe.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="雏翼">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="雏翼">
 						<<icon "accessories/Fledgling_Wings.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="坠落之星(1~3)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="坠落之星(1~3)<br><i>材料</i>">
 						<<icon "material/Fallen_Star.png">>
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>
 			<<case "Frozen_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1200</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="疾风雪靴">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="疾风雪靴">
 						<<icon "accessories/Flurry_Boots.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="冰雪镜">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="冰雪镜">
 						<<icon "tool/Ice_Mirror.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="溜冰鞋">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="溜冰鞋">
 						<<icon "accessories/Ice_Skates.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="暴雪瓶">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="暴雪瓶">
 						<<icon "accessories/Blizzard_in_a_Bottle.png">>
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>
 			<<case "Obsidian_Crate">>
 				<<set $_tooltip to `<span class="gold">£500～1200</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="熔岩护身符">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="熔岩护身符">
 						<<icon "accessories/Lava_Charm.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="防熔岩钓钩">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="防熔岩钓钩">
 						<<icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="防狼喷雾原料">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="防狼喷雾原料">
 						<img @src="'img/ui/pepperspray.png'">
 					</div>
 				</div>
 				<<environmentCrateGeneralItem>>
 			<<case "Sunken_Crate">>
 				<<set $_tooltip to `<span class="gold">£200～600</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="海棱晶(2~5)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="海棱晶(2~5)<br><i>材料</i>">
 						<<icon "material/Sea_Prism.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="大师诱饵(1~2)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="大师诱饵(1~2)<br><i>材料</i>">
 						<<icon "fishing/bait/Master_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="熟手诱饵(1~3)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="熟手诱饵(1~3)<br><i>材料</i>">
 						<<icon "fishing/bait/Journeyman_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="学徒诱饵(2~3)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="学徒诱饵(2~3)<br><i>材料</i>">
 						<<icon "fishing/bait/Apprentice_Bait.png">>
 					</div>
 				</div>
 			<<case "Sulphurous_Crate">>
 				<<set $_tooltip to `<span class="gold">£200～600</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="奇光球">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="奇光球">
 						<<icon "pet/pet_item/Strange_Orb.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="洪流之泪">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="洪流之泪">
 						<<icon "tool/Torrential_Tear.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="大师诱饵(1~2)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="大师诱饵(1~2)<br><i>材料</i>">
 						<<icon "fishing/bait/Master_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="熟手诱饵(1~3)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="熟手诱饵(1~3)<br><i>材料</i>">
 						<<icon "fishing/bait/Journeyman_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="学徒诱饵(2~3)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="学徒诱饵(2~3)<br><i>材料</i>">
 						<<icon "fishing/bait/Apprentice_Bait.png">>
 					</div>
 				</div>
 			<<case "Brimstone_Crate">>
 				<<set $_tooltip to `<span class="gold">£200～600</span>`>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="$_tooltip">
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="$_tooltip">
 						<<icon "coin/Gold_Coin.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="恶魔骨灰(1~4)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="恶魔骨灰(1~4)<br><i>材料</i>">
 						<<icon "material/Demonic_Bone_Ash.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="大师诱饵(1~2)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="大师诱饵(1~2)<br><i>材料</i>">
 						<<icon "fishing/bait/Master_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="熟手诱饵(1~3)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="熟手诱饵(1~3)<br><i>材料</i>">
 						<<icon "fishing/bait/Journeyman_Bait.png">>
 					</div>
 				</div>
-				<div class="item">
-					<div class="itemTerraGeneral" tooltip="学徒诱饵(2~3)<br><i>材料</i>">
+				<div class="terraItem">
+					<div class="terraIconTool" tooltip="学徒诱饵(2~3)<br><i>材料</i>">
 						<<icon "fishing/bait/Apprentice_Bait.png">>
 					</div>
 				</div>
@@ -506,18 +523,18 @@
 <</widget>>
 
 <<widget "environmentCrateGeneralItem">>
-	<div class="item">
-		<div class="itemTerraGeneral" tooltip="铁锭(6~16)<br><i>材料</i>">
+	<div class="terraItem">
+		<div class="terraIconTool" tooltip="铁锭(6~16)<br><i>材料</i>">
 			<<icon "material/Iron_Bar.png">>
 		</div>
 	</div>
-	<div class="item">
-		<div class="itemTerraGeneral" tooltip="大师诱饵(2~6)<br><i>材料</i>">
+	<div class="terraItem">
+		<div class="terraIconTool" tooltip="大师诱饵(2~6)<br><i>材料</i>">
 			<<icon "fishing/bait/Master_Bait.png">>
 		</div>
 	</div>
-	<div class="item">
-		<div class="itemTerraGeneral" tooltip="熟手诱饵(2~6)<br><i>材料</i>">
+	<div class="terraItem">
+		<div class="terraIconTool" tooltip="熟手诱饵(2~6)<br><i>材料</i>">
 			<<icon "fishing/bait/Journeyman_Bait.png">>
 		</div>
 	</div>

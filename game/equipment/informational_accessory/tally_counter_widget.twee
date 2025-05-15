@@ -1,0 +1,121 @@
+:: Widgets Tally Counter [widget]
+<<widget "tallyCounterFound">>
+	<<if !setup.terraAccessories.Tally_Counter.upgrades.some(a => V[a])>>
+		一个木质平台上摆放着惨白的物体，两个眼眶形状的空洞告诉你这很可能是一具头骨。
+		<<if $catacombs_torch lte 0 and !$terra_accessories_slots.includes("Magiluminescence")>>
+			<span class="red">你没有任何光源，无法确定这到底是什么东西。</span><<terraHint>><br>
+			<br>
+		<<else>>
+			<<set $Tally_Counter to true>>
+			<span class="green">你借着光线凑近查看，发现只是一个做工粗糙的塑料头骨模型。</span>将这玩意放在这里吓人，确实是种很妙的恶趣味。<br>
+			<br>
+			你拿起模型，随即响起沉闷的碰撞声——内部还放着什么东西。很快你找到了可以活动的下颚结构，然后将其打开。模型的口中滚出来了一个奇怪的物品。<br>
+			<br>
+			<span class="gold">你获得了<<icon "accessories/Tally_Counter.png">>战斗计数器！</span><br>
+			<br>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "tallyCounterInfo">>
+	<<if Object.values(V.defeated_counter).some(x => Object.keys(x).length > 0)>>
+		<<link "显示击退的NPC及数量">>
+			<<replace #tallyCounterInfo>>
+				<<tallyCounterContent>>
+			<</replace>>
+		<</link>>
+	<<else>>
+		<mouse class="tooltip"><span class="black">当前不可用</span><span>你还没有击退任何NPC</span></mouse><br>
+	<</if>>
+<</widget>>
+
+<<widget "tallyCounterContent">>
+	<<link "收起">>
+		<<replace #tallyCounterInfo>>
+			<<link "显示击退的NPC及数量">>
+				<<replace #tallyCounterInfo>>
+					<<tallyCounterContent>>
+				<</replace>>
+			<</link>>
+		<</replace>>
+	<</link>><br>
+	击退的NPC及数量：<br>
+	<<for _enemyType range Object.entries(V.defeated_counter).filter(x => Object.keys(V.defeated_counter[x[0]]).length > 0)>>
+		<<switch _enemyType[0]>>
+			<<case "namedNPC">>
+				命名NPC<br>
+				<<for _enemy range Object.entries(_enemyType[1])>>
+					<li><<NPC_CN_NAME _enemy[0]>>：_enemy[1]</li>
+				<</for>>
+			<<case "human">>
+				路人<br>
+				<li>路人：_enemyType[1].others</li>
+			<<case "beast">>
+				野兽<br>
+				<<for _enemy range Object.entries(_enemyType[1])>>
+					<li><<print _enemy[0].replace("dog","狗").replace("cat","猫").replace("pig","猪").replace("wolf","狼").replace("dolphin","海豚").replace("lizard","蜥蜴").replace("bear","熊").replace("boar","野猪").replace("creature","生物").replace("horse","马").replace("fox","狐狸").replace("hawk","鹰").replace("cow","牛").replace("spider","蜘蛛").replace("horned","夜魔")>>：_enemy[1]</li>
+				<</for>>
+			<<case "tentacle">>
+				触手<br>
+				<<for _enemy range Object.entries(_enemyType[1])>>
+					<li><<print _enemy[0].replace("tentacle","触手").replace("root","树根").replace("shoot","嫩芽").replace("tendril","卷须").replace("vine","藤蔓").replace("metal","金属")>>：_enemy[1]</li>
+				<</for>>
+			<<case "plant">>
+				植物人<br>
+				<li>植物人：_enemyType[1].plants</li>
+		<</switch>>
+	<</for>>
+<</widget>>
+
+<<widget "tallyCounterCombatEnd">>
+	<<if $enemyhealth lte 0>>
+		<<if $NPCNameList.includes($NPCList[0].fullDescription)>>
+			<<set $defeated_counter.namedNPC[$NPCList[0].fullDescription] to ($defeated_counter.namedNPC[$NPCList[0].fullDescription] + 1) or 1>>
+		<<else>>
+			<<switch $enemytype>>
+				<<case "man">>
+					<<set $defeated_counter.human.others to ($defeated_counter.human.others + $enemynomax) or $enemynomax>>
+				<<case "beast">>
+					<<for _beastType range ["wolf","fox","hawk","harpy","horse","centaur","lizard","dog","dolphin","bear","cat","pig","boar","cow","bull","spider","creature","horned"]>>
+						<<if $NPCList[0].type.includes(_beastType)>>
+							<<if ["cow","bull"].includes(_beastType)>>
+								<<set $defeated_counter.beast.cow to ($defeated_counter.beast.cow + 1) or 1>>
+							<<elseif ["hawk","harpy"].includes(_beastType)>>
+								<<set $defeated_counter.beast.hawk to ($defeated_counter.beast.hawk + 1) or 1>>
+							<<elseif ["horse","centaur"].includes(_beastType)>>
+								<<set $defeated_counter.beast.horse to ($defeated_counter.beast.horse + 1) or 1>>
+							<<else>>
+								<<set $defeated_counter.beast[_beastType] to ($defeated_counter.beast[_beastType] + 1) or 1>>
+							<</if>>
+							<<break>>
+						<</if>>
+					<</for>>
+				<<case "plant">>
+					<<set $defeated_counter.plant.plants to ($defeated_counter.plant.plants + 1) or 1>>
+			<</switch>>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "tallyCounterCombatTentacles">>
+	<<set $defeated_counter.tentacle[$tentacles[_j].type] to ($defeated_counter.tentacle[$tentacles[_j].type] + 1) or 1>>
+<</widget>>
+
+<<widget "tallyCounterBeastTrain">>
+	<<if $enemyhealth lte 0>>
+		<<for _beastType range ["wolf","fox","hawk","harpy","horse","centaur","lizard","dog","dolphin","bear","cat","pig","boar","cow","bull","spider","creature","horned"]>>
+			<<if $NPCList[0].type.includes(_beastType)>>
+				<<if ["cow","bull"].includes(_beastType)>>
+					<<set $defeated_counter.beast.cow to ($defeated_counter.beast.cow + 1) or 1>>
+				<<elseif ["hawk","harpy"].includes(_beastType)>>
+					<<set $defeated_counter.beast.hawk to ($defeated_counter.beast.hawk + 1) or 1>>
+				<<elseif ["horse","centaur"].includes(_beastType)>>
+					<<set $defeated_counter.beast.horse to ($defeated_counter.beast.horse + 1) or 1>>
+				<<else>>
+					<<set $defeated_counter.beast[_beastType] to ($defeated_counter.beast[_beastType] + 1) or 1>>
+				<</if>>
+				<<break>>
+			<</if>>
+		<</for>>
+	<</if>>
+<</widget>>

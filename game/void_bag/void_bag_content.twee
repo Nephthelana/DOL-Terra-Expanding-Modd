@@ -35,8 +35,6 @@
 	<<elseif $fishing_anglerintro isnot true>>
 		<span class="teal">渔夫好像提到他家在海滩。他真的会给你个鱼竿吗？</span><br>
 	<</if>>
-	<<run initializeTooltips()>>
-	<<informationalAccessoryContent>>
 	<!-- 持有鱼饵+切换鱼饵 -->
 	<<if getFishingRodObtainedList().length gt 0>>
 		<span class="gold bold">鱼饵</span><mouse class="tooltip linkBlue">(?)<span>鱼饵可以给你提供不同的渔力，影响渔获的品质，也影响在成功钓起渔获物时鱼饵物品被消耗掉的几率：高鱼饵力意味着低消耗几率。</span></mouse><br>
@@ -51,11 +49,11 @@
 	<!-- 持有任务鱼 -->
 	<span class="gold bold">任务鱼</span><br>
 	<<if $fishing_request_fish.length gte 1>>
-		<div class="itemTerra">
+		<div class="terraInventory">
 			<<for _rf range $fishing_request_fish>>
 				<<set _rfInfo to setup.terraRequestFish[_rf]>>
-            	<div class="item" @tooltip="`<span class='gold'>${_rfInfo.cn_name}</span>`">
-					<div class="itemTerraGeneral">
+            	<div class="terraItem" @tooltip="`<span class='gold'>${_rfInfo.cn_name}</span>`">
+					<div class="terraIcon">
 						<<icon `_rfInfo.icon`>>
 					</div>
 				</div>
@@ -77,16 +75,16 @@
 	<!-- 持有鱼 -->
 	<span class="gold bold">鱼</span><mouse class="tooltip linkBlue">(?)<span>普通渔获作为<i>材料</i>可以用于制作物品。你也可以在dom罗宾拓展mod中，和罗宾一起烤鱼并出售它们中的一部分。</span></mouse><br>
 	<<if getFishObtainedList().length gte 1>>
-        <div class="itemTerra">
+        <div class="terraInventory">
 			<<set _fishObtained to getFishObtainedList()>>
 			<<for _f range _fishObtained>>
 				<<set _fInfo to setup.terraFish[_f]>>
 				<<set _isMaterial to _fInfo.material ? "<br><i>材料</i>" : "">>
-            	<div class="item" @tooltip="`${_fInfo.cn_name}${_isMaterial}`">
-					<div class="itemTerraGeneral">
+            	<div class="terraItem" @tooltip="`${_fInfo.cn_name}${_isMaterial}`">
+					<div class="terraIcon">
 						<<icon `_fInfo.icon`>>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					_fInfo.amount
 				</div>
 			<</for>>
@@ -107,7 +105,6 @@
 <</widget>>
 
 <<widget "craftingMaterial">>
-	<<run initializeTooltips()>>
 	<span id="hunger_description">
 		<<hunger_description>><br>
 	</span>
@@ -118,16 +115,16 @@
 	<span class="gold bold">材料</span><mouse class="tooltip linkBlue">(?)<span>一部分物品并不能直接发挥特别的用处，但它们可以作为合成的材料。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到提示。</span></mouse><br>
 	<<set _materialObtained to getMaterialObtainedList()>>
 	<<if _materialObtained.length gt 0>>
-		<div class="itemTerra">
+		<div class="terraInventory">
 			<<for _m range _materialObtained>>
 				<<set _mInfo to setup.terraMaterial[_m]>>
 				<<capture _mInfo>>
 					<<if _mInfo.type is "material">>
-						<div class="item" @tooltip="_mInfo.cn_name">
-							<div class="itemTerraGeneral">
+						<div class="terraItem" @tooltip="_mInfo.cn_name">
+							<div class="terraIcon">
 								<<icon `_mInfo.icon`>>
 							</div>
-							<hr>
+							<div class="terraDivider"></div>
 							_mInfo.amount
 						</div>
 					<</if>>
@@ -142,7 +139,7 @@
 
 :: Bait List [widget]
 <<widget "baitList">>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<set _baitObtained to getBaitObtainedList()>>
 		<<for _b range _baitObtained>>
 			<<set _bInfo to setup.terraBait[_b]>>
@@ -151,12 +148,12 @@
 			<<set _isMaterial to _bInfo.material ? "<br><i>材料</i>" : "">>
 			<<set _tooltip to `<span class="green">${_bInfo.amount}</span> ${_bInfo.cn_name}${_isMaterial}<br><br>▶ ${_bInfo.fishing_power}渔力`>>
 			<label>
-				<div class="item" @tooltip="_tooltip">
-					<div class="itemTerraBait">
+				<div class="terraItem">
+					<div class="terraIconBait" @tooltip="_tooltip">
 						<<icon `_bInfo.icon`>>
 					</div>
-					<hr>
-					<<radiobutton "$Bait" _bInfo.name autocheck>><<= _amount>>
+					<div class="terraDivider"></div>
+					<<radiobutton "$Bait" _bInfo.name autocheck>> <<= _amount>>
 				</div>
 			</label>
 		<</for>>
@@ -181,22 +178,19 @@
 <</widget>>
 
 <<widget "crateList">>
-	<<run initializeTooltips()>>
 	<<if getCrateObtainedList().length gte 1>>
-		<div class="itemTerra">
+		<div class="terraInventory">
 			<<set _crateObtained to getCrateObtainedList()>>
 			<<for _c range _crateObtained>>
 				<<set _cInfo to setup.terraCrate[_c]>>
 				<<capture _cInfo>>
-					<div class="item">
-						<div @tooltip="`${_cInfo.cn_name}`">
-							<div class="itemTerraGeneral">
-								<<icon `_cInfo.icon`>>
-							</div>
+					<div class="terraItem">
+						<div class="terraIcon" @tooltip="`${_cInfo.cn_name}`">
+							<<icon `_cInfo.icon`>>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						_cInfo.amount
-						<hr>
+						<div class="terraDivider"></div>
 						<div class="terraLinks">
 							<<link "打开">>
 								<<set _void_bag_unload_crate to _cInfo.name>>
@@ -240,20 +234,19 @@
 <</widget>>
 
 <<widget "trashList">>
-	<<run initializeTooltips()>>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<set _trashObtained to getTrashObtainedList()>>
 		<<for _t range _trashObtained>>
 			<<set _tInfo to setup.terraTrash[_t]>>
 			<<capture _tInfo>>
-       			<div class="item" @tooltip="`${_tInfo.cn_name}`">
-					<div class="itemTerraGeneral">
+       			<div class="terraItem" @tooltip="`${_tInfo.cn_name}`">
+					<div class="terraIcon">
 						<<icon `_tInfo.icon`>>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					_tInfo.amount
 					<<if $Extractinator>>
-						<hr>
+						<div class="terraDivider"></div>
 						<div class="terraLinks">
 							<<if _tInfo.name is "Joja_Cola">>
 								/
@@ -281,24 +274,23 @@
 
 :: Void Bag Food List [widget]
 <<widget "foodList">>
-	<<run initializeTooltips()>>
 	<span class="gold bold">食物</span><mouse class="tooltip linkBlue">(?)<span>吃下食物可以降低饥饿值。食物的附加效果待定。<br>*泰拉瑞亚拓展MOD本身不提供饥饿值增长的机制，只是给原版会增长饥饿值的场合提供了新的降低饥饿值的手段。</span></mouse><br>
 	<<if getFoodObtained().length gt 0>>
 		<<set _foodObtained to getFoodObtained()>>
-		<div class="itemTerra">
+		<div class="terraInventory">
 			<<for _food range _foodObtained>>
 				<<set _foodInfo to setup.terraFood[_food]>>
 				<<capture _foodInfo>>
-					<div class="item">
+					<div class="terraItem">
 						<<set _isMaterial to _foodInfo.material ? "<br><i>材料</i>" : "">>
-						<div @tooltip="`${_foodInfo.cn_name}${_isMaterial}<br><br>${_foodInfo.des}`">
-							<div class="itemTerraGeneral">
+						<div @tooltip="`${_foodInfo.cn_name}${_isMaterial}<br><br>▶${_foodInfo.des}`">
+							<div class="terraIcon">
 								<<icon `_foodInfo.icon`>>
 							</div>
 						</div>
-						<hr>
+						<div class="terraDivider"></div>
 						_foodInfo.amount
-						<hr>
+						<div class="terraDivider"></div>
 						<div class="terraLinks">
 							<<link "吃">>
 								<<replace #hunger_description>>

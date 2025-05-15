@@ -1,17 +1,16 @@
-/* 图鉴物品栏整体 */
+/* 图鉴物品栏整体框架 */
 .terraContainerItem {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 50px);
 	gap: 5px;
 }
 
-/* 图鉴物品栏单元格 */
-.terraButtonSettings {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
-	align-items: center;
-	text-align: center;
+/* 通用物品栏图标属性 */
+.terraIconButton {
+	display: grid;
+	place-items: center;
+	height: 48px;
+	margin: -0.4em;
 }
 
 /* 表示图鉴未解锁的物品 */

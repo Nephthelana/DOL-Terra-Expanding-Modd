@@ -117,7 +117,7 @@ setup.terraFishingPlace = {
 		type: "town",
 		icon: "<<icon 'location/underground_ice_lake.png'>>",
 		entrance: "Underground Ice Lake",
-		unlock_conditions: "垂钓<<fishingskillRank 0>>，科学 <a class='lblue'>B</a> ，老教堂墓穴中\"小溪流淌\"字样的位置",
+		unlock_conditions: "垂钓<<fishingskillRank 0>>，科学 <a class='lblue'>B</a> ，老教堂墓穴中“小溪流淌”字样的位置",
 	},
 	"lava": {
 		name: "lava",

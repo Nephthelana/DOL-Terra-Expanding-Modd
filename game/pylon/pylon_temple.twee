@@ -5,7 +5,7 @@
 			<<if $pylon_collected.includes("Temple")>>
 				<<sydneySchedule>>
 				这块充满魔力的水晶可以将你传送至别的地方。
-				<<if _sydney_location is "temple">>
+				<<if ["temple","late"].includes(_sydney_location)>>
 					<br>
 					<<icon "pylon/Hallow_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "temple">><</link>>
 				<<else>>
@@ -19,3 +19,290 @@
 		<</if>>
 	<</if>>
 <</widget>>
+
+<<widget "pylon_temple_ask">>
+	<<if !$sydney_garden_date and C.npc.Sydney.love gte 135 and ["monk","priest"].includes($temple_rank)>>
+		<<run statusCheck("Sydney")>>
+		<<if _sydneyStatus.includes("pure")>>
+			你注意到悉尼的脸上逐渐泛起了一层红晕，却轻轻地皱起了眉头。<<He>>似乎是有什么话却不好意思告诉你。<br>
+		<<elseif _sydneyStatus.includes("neutral")>>
+			你注意到悉尼有时候偷偷地睁开眼睛，往你这边瞥了一眼，像是有什么事情要说，但不好意思打断自己的祷告，只是不停地观察着你。<br>
+		<<elseif _sydneyStatus.includes("corrupt")>>
+			你注意到悉尼慢慢地朝你凑了过来，不断地向你倾身，直到最后变成不停磨蹭着你的肩膀，让你感到你无法再忽视<<his>>的想法了。<br>
+		<</if>>
+		<<mysteryicon>><<link [[询问是什么事情|Pylon Temple Ask 0]]>><</link>><<terraHint>><br>
+		<br>
+	<</if>>
+<</widget>>
+
+<<widget "sydney_garden">>
+	<<if $location is "temple" and $sydney_garden_date>>
+		<<templeicon "garden">>
+		<<if Weather.name is "clear">>
+			<<link [[神殿花园 (0:30)|Sydney Walk Garden]]>><</link>>
+		<<else>>
+			<span class="blue">等晴朗的天气再去花园吧</span>
+		<</if>>
+		<<terraHint>><br>
+	<</if>>
+<</widget>>
+
+:: Pylon Temple Ask 0
+<<set $sydney_garden_date to true>>
+<<run statusCheck("Sydney")>>
+你率先开了口，问悉尼是不是最近有什么烦恼的事情。<br>
+<br>
+“你有没有注意到，最近去花园打扫干活的同修多了起来？我基本上都在宿舍做清洁工作，所以……”<<He>>用眼神询问着你是否对此有更多的了解。<br>
+<br>
+<<if $temple_garden gte 80>>
+	你最近一段时间有在精心整理花园，但你并没注意到发生了什么特别的事情。
+<<elseif $temple_garden gte 20>>
+	你这段时间有在努力打扫花园，却并没有发现什么不同之处。
+<<else>>
+	你不记得上次打扫花园是什么时候了，根本不知道最近花园发生了什么。
+<</if>>
+“我也不清楚……”你只能这样回答，“我之后去花园打扫的话，一定会帮你打听打听的。”但悉尼好像并不满足于这样的答案。<br>
+<br>
+<<if _sydneyStatus.includes("pure")>>
+	“你觉得……我们找个好天气一起去看看，怎么样？”<<He>>好像终于下定了某种决心似的，涨红了脸才憋出这句话。最后在得到你肯定的回复后，悉尼一脸如释重负的样子，激动地握住了你还在合十的两只手。然后你们才回到各自的祈祷中。<br>
+<<elseif _sydneyStatus.includes("neutral")>>
+	“我有个更好的主意：我们在一个晴朗的天气一起去看看，如何？”<<He>>用期待的眼神望着你。在得到你肯定的回复后，悉尼兴奋地向你张开了双臂。你们拥抱了好一会，才回到各自的祈祷中。<br>
+<<elseif _sydneyStatus.includes("corrupt")>>
+	“笨蛋，为什么不直接带上我一起去看看呢？最好是找个好天气～”<<He>>用得意的眼神看着你，像是早有计划一般。在得到你肯定的回复后，悉尼飞快地在你的脸上吻了一下。还没等你反应过来，ta就回到了祈祷当中。<br>
+<</if>>
+<br>
+<span class="gold">你可以在晴朗的天气邀请悉尼去神殿花园了！但最好是在花园比较整洁的情况下。</span><br>
+<br>
+<<link [[继续|Temple Sydney]]>><</link>>
+
+:: Sydney Walk Garden
+	<<run statusCheck("Sydney")>>
+	<<if $speech_attitude is "meek">>
+		“你看现在的天气，适不适合去花园看看？”你提议道。<br>
+	<<elseif $speech_attitude is "bratty">>
+		“很棒的晴天。我们去花园看看吧。”你提议道。<br>
+	<<else>>
+		“现在是个好天气，我们去花园看看呗？”你提议道。<br>
+	<</if>>
+	<br>
+	<<if Time.weekDay is 1 and Time.hour gte 10 and Time.hour lte 12 and $daily.massAttended isnot 1>>
+		“我很想去，但能不能等到弥撒结束？”<<set _walk to false>>
+	<<elseif Time.schoolDay and Time.hour is 6>>
+		“有点太早了，不是吗？”<<set _walk to false>>
+	<<elseif Time.hour gte 18 or Time.hour lte 5>>
+		“有点太晚了，不是吗？”<<set _walk to false>>
+	<<elseif _sydneyStatus.includes("corrupt")>>
+		“好的，我们走吧！”<<set _walk to true>>
+	<<elseif $temple_rank is undefined or $temple_rank is "prospective">>
+		悉尼看起来很兴奋。“当然！虽然我们只是去看看花园，但还是请先让我告诉一下约旦<<nnpc_brother "Jordan">>。”<<He>>跑着离开，几分钟后便回来了，“可以了。”<<set _walk to true>><<pass 2>>
+	<<elseif $temple_garden gte 100 and $temple_quarters gte 100>>
+		“神殿现在挺好的，我们一起去放松一下也没什么关系。”<<set _walk to true>>
+	<<elseif $temple_garden gte 100>>
+		“花园已经被打理得很完美了，我想他们会让我休息一下的。”<<set _walk to true>>
+	<<elseif $temple_quarters gte 100>>
+		“宿舍已经整理得很干净了，我想他们会让我休息一下的。”<<set _walk to true>>
+	<<elseif $temple_garden gte 50 or $temple_quarters gte 50>>
+		<<He>>似乎有些犹豫。“这里还有很多工作要做，但是……休息一下应该不会有问题。”<<set _walk to true>>
+	<<else>>
+		<<He>>悲伤地摇了摇头。“有太多事情要去处理了，抱歉。”<<set _walk to false>>
+	<</if>>
+	<<if _walk is true>>
+		<<set $exit to "temple">><<set $location to "town">>
+		悉尼挥手告别了一群<<monks_and_nuns>>，<<if $sydneyromance is 1>>挽起你的胳膊，<</if>>和你一起向花园走去。<br>
+		<br>
+		<<if $pylon_collected.includes("Temple")>>
+			<<link [[继续|Sydney Garden 1]]>><<set $daily.sydney.walk to true>><<pass 30>><</link>>
+		<<else>>
+			<<link [[继续|Sydney Garden Pylon 1]]>><<set $daily.sydney.walk to true>><<pass 30>><</link>>
+		<</if>>
+	<<else>>
+		<br><br>
+		<<sydneyOptions>>
+	<</if>>
+
+:: Sydney Garden Pylon 1
+<<set $outside to 1>><<set $location to "temple">><<temple_effects>><<effects>>
+<<run statusCheck("Sydney")>>
+<<if $temple_garden gte 80>>
+	“干净整洁的花园总是让所有人心情愉悦。大家最近的努力有目共睹。”你们都对此感到很满足，因为做到这点并不容易。<<lstress>><<stress -3>>
+<<elseif $temple_garden gte 20>>
+	“花园看起来已经很干净了，但似乎还是缺少人手，不是吗？”尽管你们都有努力打扫，但想有一个整洁的花园还得下更多功夫。
+<<else>>
+	“我怀疑<<brothers_and_sisters>>来这里并没有做打扫卫生的工作……”你合理地怀疑，他们反而让花园更加脏乱了。
+<</if>><br>
+<br>
+很快，悉尼告诉了你此行的真正目的：<<He>>从<<monks>>那里，听闻最近花园中时常会有异象出现。他们都说是维戈的赐福，才让同修们得以见到这一美丽的景色。但没人告诉悉尼花园里究竟发生了什么。<br>
+<br>
+起初悉尼很是兴致勃勃，但这种热情很快就消退了下去。
+<<if $temple_garden gte 40>>
+	尽管花园的景色很美，但<<he>>似乎并没有得到想要的结果。
+<<else>>
+	更别提这副杂草丛生的景象实在不适合观赏：<<He>>好几次差点被纷乱的藤蔓绊倒。
+<</if>><br>
+<br>
+“好吧，或许我们来得不是时候……”悉尼撇撇嘴，转过头来向你耸肩。<br>
+<br>
+<<if $speech_attitude is "meek">>
+	你握住<<his>>的手，轻轻捏了捏，“我很遗憾没有找到你想要的东西……不过，你觉得我们可以在这里留一会儿吗？”你说话时有些脸红。
+<<elseif $speech_attitude is "bratty">>
+	“这没什么大不了的，别那么沮丧。”你忍不住笑了，对悉尼眨了眨眼，“但如果你把这当做一个约会，我们就不算浪费时间。”
+<<else>>
+	你伸出手戳了戳<<him>>，“真可惜，但我们也可以只是在花园里散散步？愿意跟我一起吗？”
+<</if>><br>
+<br>
+<<if _sydneyStatus.includes("corrupt")>>
+	悉尼听了你的话，似乎愣了那么一下，紧接着又笑了起来，用肩膀轻轻撞了你一下，“噢，好吧，你总是知道怎样让我感觉好一些——浪漫的坏家伙。”借着这个姿势，悉尼往你身上靠了靠。你听到<<he>>还有些不是很甘心德小声嘀咕：“老实说，我本来想看你惊喜的样子的。”
+<<else>>
+	悉尼的眼睛亮了起来。<<He>>清了清嗓子，来掩饰自己泛红的脸颊：“你说得对，我承认我有些太过功利了。但毕竟……嗯……我还没有亲眼见过那种景象，而且我也想让你看看。”
+<</if>><br>
+<br>
+<<link [[继续|Sydney Garden 1]]>><</link>>
+
+:: Sydney Garden 1
+<<if $temple_garden gte 40>>
+	你们选择了一块干净的草地坐下。微风卷起叶片撞击的沙沙声，你不由得眯了眯眼睛，放松下来倾听自然的声音。平时的劳务确实带来了收获，你对这个结果很是满足。<<lstress>><<stress -5>><<ltrauma>><<trauma -2>><br>
+	<br>
+	悉尼似乎注意到你迷醉在风景中，咯咯笑了起来，“你知道吗？这其实都多亏了你！”<br>
+	<br>
+	“在你来之前，花园从来没有如此美丽过。”没有等待你发问，悉尼就继续说了下去，“我并不是说其他同修的坏话——只不过，神殿的花园确实很大，哪怕是我也不得不承认，种植和修剪是个很累的工作。”<br>
+	<br>
+	<<He>>伸了个懒腰，搂住你的肩膀，与你依偎在一起。“或许你的勤奋与虔诚就是神迹本身。仔细想想，一切美好的事情都是你带来的，你真的无时无刻不在让我感受到惊喜。亲爱的，我想你正是我的奇迹。”<<gglove>><<npcincr Sydney love 5>><br>
+<<else>>
+	<<run statusCheck("Sydney")>>
+	<<if currentSkillValue('tending') gte 1500>>
+		<<set $temple_garden += 12>>
+	<<elseif currentSkillValue('tending') gte 1200>>
+		<<set $temple_garden += 11>>
+	<<elseif currentSkillValue('tending') gte 800>>
+		<<set $temple_garden += 10>>
+	<<elseif currentSkillValue('tending') gte 600>>
+		<<set $temple_garden += 9>>
+	<<elseif currentSkillValue('tending') gte 400>>
+		<<set $temple_garden += 8>>
+	<<elseif currentSkillValue('tending') gte 200>>
+		<<set $temple_garden += 7>>
+	<<else>>
+		<<set $temple_garden += 6>>
+	<</if>>
+	你们在一棵树下聊了会儿天，天边时不时有鸟雀飞过。尽管花园有些杂乱，但阳光透过树荫斑驳地洒在你身上时，你还是放松了下来。穿着长袍的教徒偶尔会拿着修剪和栽培工具在你们眼前工作。不一会儿，悉尼的注意力落到了他们身上。<br>
+	<br>
+	<<if _sydneyStatus.includes("corrupt")>>
+		“噢，可恶，总有那么多不解风情的家伙。”悉尼暗骂的声音很轻。在你转头看<<him>>时，<<he>>对你吐了一下舌头：“我早就想那么说说了，你知道的，被人打扰的感觉真的很差。”<br>
+		<br>
+		“或许我们得动手让这些‘电灯泡’减少一些了？两个人一起总是更开心的。”悉尼故意用上了撺掇似的语气，不过你知道<<he>>是想要加入劳务之中，“也许等这里的情况再好一点的时候，就不会有人打扰我们了——然后我们就能继续这段美好的时光。”说完，<<he>>笑了，快速吻过你的脸颊。<<gglove>><<npcincr Sydney love 5>><br>
+	<<else>>
+		你轻轻碰了碰悉尼的肩膀，将<<his>>的注意力拉回到自己身上。<<He>>有些不好意思地笑了：“抱歉……我有些走神，希望你不会因此感觉到被疏忽和怠慢。”<br>
+		<br>
+		<<He>>示意你一起看向忙碌中的<<monks_and_nuns>>们的身影：“虽然我已经打定主意和你一起休息一会儿了，不过……当<<brothers_and_sisters>>们在我眼前忙碌时，我总是没办法真正忽略它们。约旦<<nnpc_brother "Jordan">>常说：虔诚的人不该懈怠自己。我想我已经足够放纵了，我们之后再来这里吧。”<<gglove>><<npcincr Sydney love 5>><br>
+	<</if>>
+	<br>
+	悉尼歉意地拥抱了你一下。你们加入了清扫花园的人中。<<gtending>><<tending 1>><br>
+<</if>>
+<br>
+<<if $pylon_collected.includes("Temple")>>
+	<<link [[继续|Sydney Garden 2]]>><</link>>
+<<else>>
+	<<link [[继续|Sydney Garden Pylon 2]]>><</link>>
+<</if>>
+
+:: Sydney Garden 2
+“我想我们已经玩得够久，现在该回去了？”悉尼还有些意犹未尽地与你分开，还在你衣服上摘下了几片落叶。<<He>>并没有丢掉叶子，而是在盯着它们看了一会儿，收入了自己的口袋里。<br>
+<br>
+你点点头，与<<him>>走向神殿大厅。<br>
+<br>
+<<link [[继续|Temple]]>><<endevent>><</link>>
+
+:: Sydney Garden Pylon 2
+<<run statusCheck("Sydney")>>
+“我想我们已经玩得够久，现在该回去了？”悉尼还有些意犹未尽地与你分开，还在你衣服上摘下了几片落叶。<<He>>并没有丢掉叶子，而是在盯着它们看了一会儿，收入了自己的口袋里。<br>
+<br>
+你点点头，与<<him>>走向神殿大厅。<br>
+<br>
+一些藤蔓横亘在你们返回的道路上。
+<<if currentSkillValue("danceskill") gte 500>>
+	<span class="green">你小心地避开了它们。</span><br>
+	<br>
+	“哦！”一声小小的惨叫响起——是落在你身后的悉尼，看起来<<he>>并没有注意到藤蔓。你连忙伸出手去拉住了<<him>>。悉尼虽然已经紧紧握着你的手，但还是不受控制地倒在了你身上。<br>
+	<br>
+	<<if _sydneyStatus.includes("pure")>>
+		“抱…抱歉！”悉尼匆忙地向你道歉，借着你的搀扶站稳了脚跟。当<<his>>的耳尖擦过你的脸颊时，你捕捉到了那有些发烫的温度。<br>
+	<<elseif _sydneyStatus.includes("neutral")>>
+		“抱歉！我没注意看路！你没事吧？”比起自己，<<he>>更关心你有没有受伤。<br>
+	<<elseif _sydneyStatus.includes("corrupt")>>
+		悉尼趁机抱住你的腰，在你脖颈间蹭了一会儿，才满足地离开你的怀抱，“这下我没什么好遗憾的了。”<br>
+	<</if>>
+<<else>>
+	<span class="red">你没有注意到它们，直到你被绊了一脚。</span><br>
+	<br>
+	悉尼连忙伸出手拉住了即将摔倒的你，但你还是控制不住地往<<his>>身上扑了过去。<<His>>温暖的身体承接住了你。<br>
+	<br>
+	“你没事吧？！有没有受伤？”悉尼立刻关心你的情况，你向<<him>>保证自己什么事都没有，刚才只是个意外。<br>
+	<<if _sydneyStatus.includes("corrupt")>>
+		悉尼嘟哝了句什么，而后用手指拧了一下你的脸，并不痛，ta完全没有用力，“看来我得再把你看紧一些。”<br>
+	<<else>>
+		“你还好吗？”悉尼扶着你站稳，“在花园里最好当心脚下。”你猜测<<he>>自己身上应该发生过不少次这种事。<br>
+	<</if>>
+<</if>>
+<br>
+<<link [[继续|Sydney Garden Pylon 3]]>><</link>>
+
+:: Sydney Garden Pylon 3
+<<run statusCheck("Sydney")>>
+<<set $pylon_collected.pushUnique("Temple")>>
+悉尼整理着自己被刚刚的小插曲弄乱的衣服。你注意到那些藤蔓并不粗壮，应该是新生出来的部分；但由于刚才的踩踏，上面的叶片已经有些散乱了。<br>
+<br>
+一阵微风拂过面颊，你注意到叶片下似乎有什么微光在闪烁，这在晴朗的阳光下并不是特别明显。<br>
+<br>
+“怎么了？”悉尼不知何时凑到你身边。你并没有急着回答<<him>>，而是蹲下身去，小心翼翼地分开缠绕的藤蔓。你没有戴园艺手套，你不得不更加注意自己的手不被划破。<br>
+<br>
+“嘿，你可以不用……”悉尼的叮嘱只进行了一半，后面的话语被浅浅的抽气声代替。<br>
+<br>
+光华如同破土而出的新芽，在你耐心地剥开藤蔓后从你的指缝中流淌出来。起初它不过是零星半点的光芒，使你模糊地回忆起神殿守夜的试炼中，那个<span class="blue">使你双目刺痛的场景</span>。
+<<if $sydney.rank is "monk">>
+	但紧跟着，你感到你颤抖的手被一股温暖的力量包裹，它逐渐扩散到你的全身各处。<span class="green">你当时看到的无数裂隙，在眼前慢慢消弭了。</span>随后
+<<else>>
+	你的头脑一阵恍惚。但很快，
+<</if>>
+这道光就像是绚烂的彩虹绽放在你的手中。由虹色组成的光与清风卷起的花瓣一起撞入你的怀抱，好似淘气的孩童依偎在你臂弯里，又很快为了追寻广阔的天地而从你怀中溜了出去。<br>
+<br>
+你听到悉尼略带颤抖的呼吸声。在你仰头时，<<print $sydney.glasses is "contacts" ? "彩虹色的光晕映入<<his>>琥珀色的眼眸" : "<<his>>镜片上反射出的虹色是如此美丽">>。<<gspurity>><<npcincr Sydney purity 1>><br>
+<br>
+悉尼注视着你的目光如此热切，你从<<his>>的眼中看到自己的倒影：你的身影沐浴着绚烂而华丽的虹彩中。一时间你甚至联想到了在彩绘玻璃下呈现跪坐姿势的圣像。
+<<if $angel gte 6>>
+	你感觉到自己的心脏砰砰直跳，无由来的幸福感让你差点热泪盈眶。<<angel>>
+<<elseif $fallenangel gte 2>>
+	你忍住自己想要别开头躲避的<<his>>视线的冲动。<<fallenangel>>
+<<elseif $demon gte 6>>
+	这有些讽刺，不是吗？<<demon>>
+<</if>><br>
+<br>
+<<if $speech_attitude is "meek">>
+	“你…你能拉我一下吗？”你低声开口，“一直保持这个姿势有些不舒服。”
+<<elseif $speech_attitude is "bratty">>
+	你呼唤了一声悉尼的名字，伸出手示意<<him>>拉你起身。
+<<else>>
+	“我不介意你一直盯着我看，但先拉我一把，我都快腿麻了。”你笑了笑，向悉尼晃了晃你的手。
+<</if>>
+悉尼似乎才回过神来，握住了你的手。你顺着<<his>>的力道重新站起身。虹光仍旧在你们身后柔和地摇曳着，悉尼握着你的手掌微微紧了紧。<br>
+<br>
+“我从来没有想象过，自己会看到这样美丽的景象。”<<His>>的语气依旧有些激动，“它比我想象中地更加令人震撼，你刚才……我……天呐，你知道自己刚才有多么令人心动吗？我本该为自己看到传言中的神迹而欣喜，但因为你在那儿，一切都只是让你变得更加耀眼了！”<<gglove>><<npcincr Sydney love 5>><br>
+<br>
+悉尼好奇地触碰那些有些虚幻的光，这自然不能让<<him>>碰到什么，但<<he>>乐此不疲地尝试着：“我很少如此近在咫尺的观赏彩虹！尤其是它真的很美，我猜这就是它被认为是神迹的原因。”<br>
+<br>
+你也学着悉尼的动作去虚握住无形的光。这并没有什么意义，但就是很有趣。<<lstress>><<stress -3>><br>
+<br>
+<<if _sydneyStatus.includes("corrupt")>>
+	“要不要来猜猜这下面会有什么？”悉尼很快就不满足于只是触碰无形的光影。<<He>>将视线落向藤蔓下的土壤：“我敢说那里一定有什么不得了的东西！”<br>
+<<else>>
+	悉尼若有所思地看向虹光的起点，“<<print C.npc.Sirris.gender is "m" ? "爸爸" : "妈妈">>说彩虹是一种光学的现象，但显然这并不是……会不会是什么东西埋在里面？”<br>
+<</if>>
+<br>
+你们从神殿里找来工具，分工剪断了附近的藤蔓，开始用园艺铲刨开泥土。没一会儿，你们就挖到了一个坚硬的物体，并开始专注清理附近的土。很快，那个掩埋得并不深的物体总算露出了真容：<span class="green">是一块透着梦幻般的紫色的晶石！</span><br>
+<br>
+悉尼惊讶得睁大了眼睛，反复抚摸着水晶的表面：“噢……这真是……不可思议！自然界真的有可能生成这样的水晶吗？”<<He>>又看向了你，视线在你和水晶之间来回逡巡了一会儿。“我想我们已经找到了神迹的真相！尽管它比起我想象中要……没那么浪漫一些，但依旧很让人激动。而且，它真的很适合你。”<<He>>咯咯笑了起来。<br>
+<br>
+悉尼决定这个水晶由你来保管<<print $grace gte 75 ? "，<<he>>想其他人也一定不会有意见的" : "">>。你们一起用干净的毛巾擦去水晶表面剩下的泥土和灰尘，然后你抱起这块水晶。<br>
+<br>
+“我迫不及待要与约旦<<nnpc_brother "Jordan">>分享这件事了！我们回去吧，亲爱的！”你们并肩走出了花园。在花园门口简单道别后，悉尼激动地向大厅小跑而去，你回到神殿的回廊，将水晶安置在了基座上。<<ggggrace>><<grace 10>><br>
+<br>
+<<link [[继续|Temple Cloister]]>><<endevent>><</link>>

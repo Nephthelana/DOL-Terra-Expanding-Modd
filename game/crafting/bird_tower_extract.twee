@@ -17,13 +17,13 @@
 		["leather","皮革"]
 	]>>
 	当前材料：<br>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _btm1 range _birdTowerMaterialList>>
-			<div class="item">
-				<div class="itemTerraGeneral" @tooltip="`${_btm1[1]}`">
+			<div class="terraItem">
+				<div class="terraIcon" @tooltip="`${_btm1[1]}`">
 					<<birdicon `_btm1[0]`>>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<<print $bird.materials[_btm1[0]]>>
 			</div>
 		<</for>>
@@ -78,15 +78,15 @@
 		<</switch>>
 	<</for>>
 	你提炼了<<birdicon "junk">><span class='green'>_i</span>个闪闪发光的小垃圾，得到：<br>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _btm3 range _birdTowerMaterialList>>
 			<<if _extracting[_btm3[0]] gt 0>>
 				<<set $bird.materials[_btm3[0]] += _extracting[_btm3[0]]>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="`${_btm3[1]}`">
+				<div class="terraItem">
+					<div class="terraIcon" @tooltip="`${_btm3[1]}`">
 						<<birdicon `_btm3[0]`>>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					<<print _extracting[_btm3[0]]>>
 				</div>
 			<</if>>

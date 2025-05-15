@@ -1,0 +1,12 @@
+:: Metal Detector Widgets [widget]
+<<widget "metalDetectorFound">>
+	<<if !setup.terraAccessories.Metal_Detector.upgrades.some(a => V[a])>>
+		<<set $Metal_Detector to true>>
+		你还注意到一点：自刚进入这座建筑起，你的耳边时常会响起某种类似警报的嘀嘟声。烟雾似乎阻碍了你对这个声音的感知，但当你站在这个位置时，你终于搞清了声音的来源——是一个附着在基座下半部分的仪器。这个仪器也许是用来检测室内烟雾浓度的，又或是某种保护水晶的装置。<br>
+		<br>
+		出于安全考虑，你决定检查一下这个设备：其上有一对红绿两色的指示灯交替闪烁，与嘀嘟声频率一致，似乎是反映了当前信号强度。你准备进一步检查是否有可操作的按钮，但你惊奇的发现，它竟然是用一些强力胶粘附在基座上的。稍加一用力，你就将其取了下来。<br>
+		<br>
+		<span class="gold">你获得了<<icon "accessories/Metal_Detector.png">>金属探测器！</span><br>
+		<br>
+	<</if>>
+<</widget>>

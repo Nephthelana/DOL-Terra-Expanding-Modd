@@ -5,13 +5,14 @@
 			<<set $terraDebugBack to $passage>>
 		<</link>><br>
 	<<else>>
-		<<icon "Debug.png">><<link [[进入泰拉瑞亚拓展调试/作弊页面(使用前确保自己能善用存档/回溯功能)|Terra Debug]]>>
+		<<icon "terra_debug.png">><<link [[进入泰拉瑞亚拓展调试/作弊页面|Terra Debug]]>>
 			<<set $terraDebugBack to $passage>>
 		<</link>><br>
 	<</if>>
 <</widget>>
 
 :: Terra Debug
+<span class="teal terraBlinking">使用前确保自己能善用存档/回溯功能</span><br>
 数织
 <<link [[进入数织|Nonogram]]>>
 	<<set $Nonogram to $Nonogram or {}>>
@@ -23,176 +24,140 @@
 晶塔相关<br>
 <span class="black">请在历史等级达到B级，在博物馆向温特询问过晶塔的事情后，再使用这些晶塔相关功能。在这之前解锁晶塔功能无法发挥作用。</span><br>
 <span class="no-numberify">
-	<div class="itemTerra">
-		<div class="item">
-			<<if $pylon_collected.includes("Bedroom")>>
-				<div class="itemTerraGeneral" tooltip="孤儿院卧室晶塔">
-					<<icon "pylon/Forest_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+	<div class="terraInventory">
+		<div class="terraItem">
+			<div @class="$pylon_collected.includes('Bedroom') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="孤儿院卧室晶塔">
+				<<icon "pylon/Forest_Pylon.png">>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<if $pylon_collected.includes("Bedroom")>>
 					<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Bedroom")>><</link>>
-				</div>
-			<<else>>
-				<div class="terraFading itemTerraGeneral" tooltip="孤儿院卧室晶塔">
-					<<icon "pylon/Forest_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+				<<else>>
 					<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Bedroom")>><</link>>
-				</div>
-			<</if>>
+				<</if>>
+			</div>
 		</div>
-		<div class="item">
-			<<if $pylon_collected.includes("Eden Cabin")>>
-				<div class="itemTerraGeneral" tooltip="伊甸小屋晶塔">
-					<<icon "pylon/Jungle_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+		<div class="terraItem">
+			<div @class="$pylon_collected.includes('Eden Cabin') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="伊甸小屋晶塔">
+				<<icon "pylon/Jungle_Pylon.png">>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<if $pylon_collected.includes("Eden Cabin")>>
 					<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Eden Cabin")>><</link>>
-				</div>
-			<<else>>
-				<div class="terraFading itemTerraGeneral" tooltip="伊甸小屋晶塔">
-					<<icon "pylon/Jungle_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+				<<else>>
 					<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Eden Cabin")>><</link>>
-				</div>
-			<</if>>
+				<</if>>
+			</div>
 		</div>
-		<div class="item">
-			<<if $pylon_collected.includes("Farm Bedroom")>>
-				<div class="itemTerraGeneral" tooltip="农场卧室晶塔">
-					<<icon "pylon/Universal_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+		<div class="terraItem">
+			<div @class="$pylon_collected.includes('Farm Bedroom') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="农场卧室晶塔">
+				<<icon "pylon/Universal_Pylon.png">>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<if $pylon_collected.includes("Farm Bedroom")>>
 					<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Farm Bedroom")>><</link>>
-				</div>
-			<<else>>
-				<div class="terraFading itemTerraGeneral" tooltip="农场卧室晶塔">
-					<<icon "pylon/Universal_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+				<<else>>
 					<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Farm Bedroom")>><</link>>
-				</div>
-			<</if>>
+				<</if>>
+			</div>
 		</div>
-		<div class="item">
-			<<if $pylon_collected.includes("Hawks Tower")>>
-				<div class="itemTerraGeneral" tooltip="鹰塔晶塔">
-					<<icon "pylon/Sunken_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+		<div class="terraItem">
+			<div @class="$pylon_collected.includes('Hawks Tower') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="鹰塔晶塔">
+				<<icon "pylon/Sunken_Pylon.png">>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<if $pylon_collected.includes("Hawks Tower")>>
 					<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Hawks Tower")>><</link>>
-				</div>
-			<<else>>
-				<div class="terraFading itemTerraGeneral" tooltip="鹰塔晶塔">
-					<<icon "pylon/Sunken_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+				<<else>>
 					<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Hawks Tower")>><</link>>
-				</div>
-			<</if>>
+				<</if>>
+			</div>
 		</div>
-		<div class="item">
-			<<if $pylon_collected.includes("Wolfcave")>>
-				<div class="itemTerraGeneral" tooltip="狼窝晶塔">
-					<<icon "pylon/Mushroom_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+		<div class="terraItem">
+			<div @class="$pylon_collected.includes('Wolfcave') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="狼窝晶塔">
+				<<icon "pylon/Mushroom_Pylon.png">>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<if $pylon_collected.includes("Wolfcave")>>
 					<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Wolfcave")>><</link>>
-				</div>
-			<<else>>
-				<div class="terraFading itemTerraGeneral" tooltip="狼窝晶塔">
-					<<icon "pylon/Mushroom_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+				<<else>>
 					<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Wolfcave")>><</link>>
-				</div>
-			<</if>>
+				<</if>>
+			</div>
 		</div>
-		<div class="item">
-			<<if $pylon_collected.includes("Temple")>>
-				<div class="itemTerraGeneral" tooltip="神殿晶塔">
-					<<icon "pylon/Hallow_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+		<div class="terraItem">
+			<div @class="$pylon_collected.includes('Temple') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="神殿晶塔">
+				<<icon "pylon/Hallow_Pylon.png">>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<if $pylon_collected.includes("Temple")>>
 					<<link [[锁定|Terra Debug]]>><<set $pylon_collected.delete("Temple")>><<unset $sydney_garden_date>><</link>>
-				</div>
-			<<else>>
-				<div class="terraFading itemTerraGeneral" tooltip="神殿晶塔">
-					<<icon "pylon/Hallow_Pylon.png">>
-				</div>
-				<hr>
-				<div class="terraLinks">
+				<<else>>
 					<<link [[解锁|Terra Debug]]>><<set $pylon_collected.pushUnique("Temple")>><<set $sydney_garden_date to true>><</link>>
-				</div>
-			<</if>>
+				<</if>>
+			</div>
 		</div>
 	</div>
 </span>
 <span class="black">在正常解锁对应地点前使用传送，可能会导致问题。(点击图标以查看对应传送地点)</span>
 <span class="no-numberify">
-	<div class="itemTerra">
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="孤儿院卧室">
+	<div class="terraInventory">
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="孤儿院卧室">
 				<<homeicon>>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<link [[传送|Bedroom]]>><</link>>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="伊甸小屋">
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="伊甸小屋">
 				<<edenicon>>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<link [[传送|Eden Cabin]]>><</link>>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="农场卧室">
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="农场卧室">
 				<<farmicon "cottage">>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<link [[传送|Farm Bedroom]]>><</link>>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="鹰塔">
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="鹰塔">
 				<<mooricon "tower">>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<link [[传送|Bird Tower]]>><</link>>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="狼窝">
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="狼窝">
 				<<wolfcaveicon>>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<link [[传送|Wolf Cave]]>><</link>>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" tooltip="神殿回廊">
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="神殿回廊">
 				<<wolficon>>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<link [[传送|Temple Cloister]]>><</link>>
 			</div>
@@ -201,7 +166,7 @@
 </span>
 <br>
 钓鱼相关<br>
-<<if $fishingskill>>
+<<if $fishingskill isnot undefined>>
 	<span class="no-numberify">
 		<<link "<<<">><<set $fishingskill -= 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
 		<<link "<<">><<set $fishingskill -= 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
@@ -210,75 +175,75 @@
 		| <<link ">">><<set $fishingskill += 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
 		| <<link ">>">><<set $fishingskill += 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
 		| <<link ">>>">><<set $fishingskill += 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
-		<div class="itemTerra">
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得/丢弃鱼竿">
+		<div class="terraInventory">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得/丢弃鱼竿">
 					<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[鱼竿|Terra Debug Fishing Pole]]>><</link>>
 				</div>
 			</div>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得/丢弃装备">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得/丢弃装备">
 					<<icon "Accessories_icon.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[装备|Terra Debug Equipment]]>><</link>>
 				</div>
 			</div>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得/丢弃任务鱼">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得/丢弃任务鱼">
 					<<icon "fishing/quest_fish/Clownfish.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[任务|Terra Debug Request Fish]]>><</link>>
 				</div>
 			</div>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得/丢弃渔夫家具">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得/丢弃渔夫家具">
 					<<icon "furniture_item/Ship_in_a_Bottle.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[家具|Terra Debug Fishing Angler Furniture]]>><</link>>
 				</div>
 			</div>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得鱼饵">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得鱼饵">
 					<<icon "fishing/bait/Apprentice_Bait.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[鱼饵|Terra Debug Baits]]>><</link>>
 				</div>
 			</div>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得普通鱼">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得普通鱼">
 					<<icon "fishing/fish/Bass.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[鱼|Terra Debug Fish]]>><</link>>
 				</div>
 			</div>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得宝匣">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得宝匣">
 					<<icon "fishing/crates/Wooden_Crate.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[宝匣|Terra Debug Crates]]>><</link>>
 				</div>
 			</div>
-			<div class="item">
-				<div class="itemTerraGeneral" tooltip="获得药水">
+			<div class="terraItem">
+				<div class="terraIcon" tooltip="获得药水">
 					<<icon "potions/Fishing_Potion.png">>
 				</div>
-				<hr>
+				<div class="terraDivider"></div>
 				<div class="terraLinks">
 					<<link [[药水|Terra Debug Potions]]>><</link>>
 				</div>
@@ -287,15 +252,31 @@
 	</span>
 <<else>>
 	<span class="black">在渔夫处获得<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿后，解锁钓鱼相关的调试功能。</span><br>
+	<span class="black">或者你也可以执行以下选项以直接解锁渔夫及相关调试功能。这会跳过一些剧情，不适合初次体验本模组的玩家使用。</span><br>
+	<<if $options.cute_angler>>
+		<<icon "fishing/house_icon.png">>
+	<<else>>
+		<<icon "fishing/iron_fence.png">>
+	<</if>>
+	<<link [[一键解锁渔夫|Terra Debug]]>>
+		<<set $fishing_anglerintro to true>>
+		<<set $Wood_Fishing_Pole to true>>
+		<<set $options.fishingrod_held to "Wood_Fishing_Pole">>
+		<<set $Bait to "None">>
+		<<set $fishingskill to 0>>
+	<</link>><br>
 <</if>>
 <br>
 血月天塔柱相关<br>
-<<ind>><<link [[重置初遇恐惧鹦鹉螺|Terra Debug]]>><<set $Dreadnautilus_intro to undefined>><</link>><br>
+<<ind>><<link [[重置初遇恐惧鹦鹉螺|Terra Debug]]>><<unset $Dreadnautilus_intro>><</link>><br>
 <<icon "tool/Bloody_Tear.png">><<link [[获得一颗血泪|Terra Debug]]>><<set $Bloody_Tear += 1>><</link>><br>
+<span @class="$blood_moon_monolith is undefined ? 'terraFading' : ''">
+	<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">>
+</span>
 <<if $blood_moon_monolith is undefined>>
-	<span class="terraFading"><<icon "blood_moon_monolith/Blood_Moon_Monolith.png">></span><<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to 0>><</link>><br>
+	<<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to 0>><</link>><br>
 <<else>>
-	<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">><<link [[丢弃血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to undefined>><</link>><br>
+	<<link [[丢弃血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to undefined>><</link>><br>
 <</if>>
 <br>
 海岛相关<br>

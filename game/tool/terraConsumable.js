@@ -6,7 +6,7 @@ setup.terraConsumable = {
 		material: false,
 		amount: V.Bloody_Tear || 0,
 		icon: "tool/Bloody_Tear.png",
-		des: "在夜晚使用以召唤血月。这不会影响原本的血月周期。<br><i><span class='red'>使用它即表示你同意承担召唤血月将会带来的所有后果</span></i>",
+		des: "在夜晚使用以召唤血月。这不会影响原本的血月周期。<br><i><span class='red'>使用它即表示你同意承担召唤血月将会带来的所有后果</span></i><br><i>“诅咒之夜太可怕了。”</i>",
 		use: "<<Bloody_Tear_use>>",
 	},
 	"Mana_Crystal": {

@@ -25,8 +25,7 @@
 	<<run fishingEnd()>>
 	<span class="green">你猛地一收竿，宣示着你的胜利！</span><br>
 	你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
-	<div id="fishingBaitConsumed"></div>
-	<<run fishingBaitConsumed()>>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>
@@ -61,8 +60,7 @@
 				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
 		<</switch>>
 	<</if>>
-	<div id="fishingBaitConsumed"></div>
-	<<run fishingBaitConsumed()>>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>
@@ -78,8 +76,7 @@
 	<<set $fishing_failed_count += 1>>
 	<<run fishingEnd()>>
 	<span class="red">鱼线崩裂的声音，告诉了你这次钓鱼的失败。</span><<ggstress>><<stress 6>><br>
-	<div id="fishingBaitConsumed"></div>
-	<<run fishingBaitConsumed()>>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>
@@ -95,6 +92,7 @@
 	<<set $fishing_failed_count += 1>>
 	<<run fishingEnd()>>
 	你足足搏斗了5分钟！<span class="red">它失去了对你的兴趣。</span><<gstress>><<stress 3>><br>
+	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
 	<<link [[回家|Robin Fishing Finished]]>>

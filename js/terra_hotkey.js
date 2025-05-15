@@ -2,9 +2,9 @@ $(document).on("keyup", function (e){
 	/* 未选中输入框	*/
 	if ($("input:focus").length === 0) {
 		if(V.terraHotKeys) {
-			if(!V.options.voidBagKey)V.options.voidBagKey = "v";
-			if(!V.options.equipmentKey)V.options.equipmentKey = "e";
-			if(!V.options.toolKey)V.options.toolKey = "t";
+			if(!V.options.voidBagKey) V.options.voidBagKey = "v";
+			if(!V.options.equipmentKey) V.options.equipmentKey = "e";
+			if(!V.options.toolKey) V.options.toolKey = "t";
 		} else {
 			delete V.options.voidBagKey;
 			delete V.options.equipmentKey;
@@ -36,7 +36,7 @@ $(document).on("keyup", function (e){
 				T.currentOverlay = "terraExpandEquipmentOverlay";
 				$("#customOverlay").removeClass("hidden").parent().removeClass("hidden");
 				$("#customOverlay").attr("data-overlay", T.currentOverlay);
-				Wikifier.wikifyEval("<<replace #customOverlayTitle>><<terraExpandEquipmentTitle>><</replace>><<replace #customOverlayContent>><<terraExpandEquipment>><</replace>>");
+				Wikifier.wikifyEval("<<replace #customOverlayTitle>><<terraExpandEquipmentTitle>><</replace>><<replace #customOverlayContent>><<terraExpandInformationalAccessory>><</replace>>");
 			}
 			return false;
 		}

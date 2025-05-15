@@ -102,20 +102,20 @@
 <<link [[返回|Fishing Angler Cabin]]>><</link>>
 
 :: RPS Request
-<<npc Angler>><<person1>>
+<<set $terraNPC to "Angler">>
 <<if $options.cute_angler>>
 	<<print [
 		`“这个任务对你来说太难了是吗？我今天确实不急着要这条鱼。”`,
 	].random()>>
 <<else>>	
 	<<print [
-		`“蛤？你想让我放弃今天的目标？我可是花了整整一个晚上的时间，思考出来我今天需要这条鱼的！”<<He>>看你并没有做出让步的样子，最终还是妥协了。`,
+		`“蛤？你想让我放弃今天的目标？我可是花了整整一个晚上的时间，思考出来我今天需要这条鱼的！”<<terraPronoun>>看你并没有做出让步的样子，最终还是妥协了。`,
 	].random()>>
 <</if>><br>
 <br>
 <<link [[那么，今天的新任务是什么呢？|Fishing Request Ask]]>>
+	<<unset $terraNPC>>
 	<<run T.request_fish_list_temp = [...V.fishing_request_selection_list]>>
 	<<set _request_fish_list_temp.delete($fishing_request_selection)>>
 	<<set $fishing_request_selection to _request_fish_list_temp.random()>>
 <</link>>
-<<endevent>>

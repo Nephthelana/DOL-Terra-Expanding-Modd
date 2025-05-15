@@ -1,3 +1,11 @@
+:: Widget Pylon Museum [widget]
+<<widget "pylon_museum_ask">>
+	<!-- 需要历史等级达到B -->
+	<<if $historytrait gte 2 and $pylon_museum_asked isnot true>>
+		<<mysteryicon>><<link [[询问水晶基座的来历|Pylon Museum]]>><</link>><br>
+	<</if>>
+<</widget>>
+
 :: Pylon Museum
 <<npc Winter>><<person1>>
 <<set $pylon_museum_asked to true>>

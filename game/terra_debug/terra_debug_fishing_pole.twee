@@ -1,29 +1,22 @@
 :: Terra Debug Fishing Pole
-<<run initializeTooltips()>>
 请选择获得/丢弃鱼竿。<br>
 <span class="no-numberify">
-	<div class="itemTerra_Tool">
+	<div class="terraInventoryTool">
 		<<for _fr range Object.keys(setup.terraFishingRod)>>
 			<<set _fishingRod to setup.terraFishingRod[_fr]>>
 			<<capture _fishingRod>>
-				<div class="item">
-					<<if V[_fishingRod.name]>>
-						<div class="itemTerraTool" @tooltip="`${_fishingRod.cn_name}<br><br>▶${_fishingRod.des}`">
-							<<icon `_fishingRod.icon`>>
-						</div>
-						<hr>
-						<div class="terraLinks">
+				<div class="terraItem">
+					<div @class="V[_fishingRod.name] ? 'terraIconTool' : 'terraFading terraIconTool'" @tooltip="`${_fishingRod.cn_name}<br><br>▶${_fishingRod.des}`">
+						<<icon `_fishingRod.icon`>>
+					</div>
+					<div class="terraDivider"></div>
+					<div class="terraLinks">
+						<<if V[_fishingRod.name]>>
 							<<link [[丢弃|Terra Debug Fishing Pole]]>><<run delete V[_fishingRod.name]>><</link>>
-						</div>
-					<<else>>
-						<div class="terraFading itemTerraTool" @tooltip="`${_fishingRod.cn_name}<br><br>▶${_fishingRod.des}`">
-							<<icon `_fishingRod.icon`>>
-						</div>
-						<hr>
-						<div class="terraLinks">
+						<<else>>
 							<<link [[获得|Terra Debug Fishing Pole]]>><<set V[_fishingRod.name] to true>><</link>>
-						</div>
-					<</if>>
+						<</if>>
+					</div>
 				</div>
 			<</capture>>
 		<</for>>

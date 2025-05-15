@@ -1,15 +1,14 @@
 :: Goblin Tinkerer Shop
-<<run initializeTooltips()>>
 "相信我，这些东西绝对物超所值。"<br>
 <span class="no-numberify">
-	<div class="itemTerra">
-		<div class="item">
-			<div class="itemTerraGeneral" @tooltip="`工匠作坊<br><br>▶可制作配饰，或将一些配饰组合起来`">
+	<div class="terraInventory">
+		<div class="terraItem">
+			<div class="terraIcon" @tooltip="`工匠作坊<br><br>▶可制作配饰，或将一些配饰组合起来`">
 				<<icon "furniture_item/Tinkerers_Workshop.png">>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<span class="gold">£1000</span>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<if $orphanage_loft_crafting_station.includes("Tinkerers_Workshop")>>
 					<span class="black">已有</span>
@@ -20,13 +19,13 @@
 				<</if>>
 			</div>
 		</div>
-		<div class="item">
-			<div class="itemTerraGeneral" @tooltip="`保暖药水<br><br>▶起到保暖效果，持续9小时<br><br>你现在有保温药水(<span class='green'>$Warmth_Potion</span>)`">
+		<div class="terraItem">
+			<div class="terraIcon" @tooltip="`保暖药水<br><br>▶起到保暖效果，持续9小时<br><br>你现在有保温药水(<span class='green'>$Warmth_Potion</span>)`">
 				<<icon "potions/Warmth_Potion.png">>
 			</div>
-			<hr>
+			<div class="terraDivider"></div>
 			<span class="gold">£500</span>
-			<hr>
+			<div class="terraDivider"></div>
 			<div class="terraLinks">
 				<<if $daily.Warmth_Potion_purchase>>
 					售罄

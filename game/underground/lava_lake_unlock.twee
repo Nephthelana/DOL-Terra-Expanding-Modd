@@ -154,69 +154,10 @@
 地狱熔炉内部流淌着汩汩的熔岩。<br>
 <<icon "furniture_placed/Hellforge_(placed).gif">><br>
 <br>
-<span id="crafting_hellforge_info">
-	<br>
-</span>
-<span id="crafting_hellforge">
-	<<crafting_hellforge>>
-</span>
+<span id="craftingInfo"></span>
+<span id="craftingUI"><<crafting "Hellforge">></span>
 <br>
 <<getouticon>><<link [[返回|Underground Lava Lake]]>><</link>>
-
-:: Widgets Underground Lava Lake Hellforge [widget]
-<<widget "crafting_hellforge_info">>
-	_crafted_info
-<</widget>>
-
-<<widget "crafting_hellforge">>
-	<<run initializeTooltips()>>
-	<span class="no-numberify">
-		<<set _recipe_list to getAllRecipeList()>>
-		<<set _recipe_avalible to false>>
-		<div class="itemTerra">
-			<<for _t to 0; _t lt _recipe_list.length; _t++>>
-				<<set _recipe to setup.terraRecipe[_recipe_list[_t]]>>
-				<<if _recipe.required_crafting_station is "Hellforge">>
-					<<capture _recipe>>
-						_recipe.craftable
-						<<if _craftable>>
-							<<set _recipe_avalible to true>>
-							<div class="item">
-								<div @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-									<div class="itemTerraGeneral">
-										<<icon `_recipe.icon`>>
-									</div>
-								</div>
-								<hr>
-								<mouse class="tooltip">
-									配方
-									<span>
-										_recipe.required_material_info
-									</span>
-								</mouse>
-								<hr>
-								<<link "制作">>
-									_recipe.craft
-									<<set $crafting_count.Hellforge += 1>>
-									<<set _crafted_info to _recipe.crafting_info>>
-									<<replace #crafting_hellforge_info>>
-										<<crafting_hellforge_info>>
-									<</replace>>
-									<<replace #crafting_hellforge>>
-										<<crafting_hellforge>>
-									<</replace>>
-								<</link>>
-							</div>
-						<</if>>
-					<</capture>>
-				<</if>>
-			<</for>>
-		</div>
-		<<if !_recipe_avalible>>
-			<i>无可用配方。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到关于制作物品的提示。</i><br>
-		<</if>>
-	</span>
-<</widget>>
 
 :: Underground Lava Lake Leave
 你通过隧道爬回了走私者洞穴的最深处。

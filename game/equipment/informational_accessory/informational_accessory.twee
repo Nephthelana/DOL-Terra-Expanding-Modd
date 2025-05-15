@@ -7,7 +7,7 @@
 		<<set _accessory to setup.terraAccessories[_a]>>
 		<<if setup.terraAccessories[_a].upgrades.some(a => V[a])>>
 			<<set $informationalAccessoryList.pushUnique(_accessory.name)>>
-			<<set $informationalAccessoryActivating[_accessory.name] to $informationalAccessoryActivating[_accessory.name] or true>>
+			<<set $informationalAccessoryActivating[_accessory.name] to $informationalAccessoryActivating[_accessory.name] is undefined ? true : $informationalAccessoryActivating[_accessory.name]>>
 		<<else>>
 			<<set $informationalAccessoryList.delete(_accessory.name)>>
 			<<set $informationalAccessoryActivating[_accessory.name] to undefined>>
@@ -33,7 +33,6 @@
 <</widget>>
 
 <<widget "informationalAccessorySetting">>
-	<<run initializeTooltips()>>
 	<<link "关闭信息饰品列表">>
 		<<replace #informationalAccessorySetting>>
 			<<link "调整信息饰品列表">>
@@ -43,21 +42,17 @@
 			<</link>>
 		<</replace>>
 	<</link>>
-	<div class="itemTerra">
+	<div class="terraInventory">
 		<<for _aaa=0; _aaa lt $informationalAccessoryList.length; _aaa++>>
 			<<set _accessory to setup.terraAccessories[$informationalAccessoryList[_aaa]]>>
 			<<capture _accessory>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="`${_accessory.cn_name}<br><br>▶${_accessory.des}`">
-						<<if $informationalAccessoryActivating[_accessory.name]>>
+				<div class="terraItem">
+					<div class="terraIcon" @tooltip="`${_accessory.cn_name}<br><br>▶${_accessory.des}`">
+						<span @class="$informationalAccessoryActivating[_accessory.name] ? '' : 'terraFading'">
 							<<icon `_accessory.icon`>>
-						<<else>>
-							<span class="terraFading">
-								<<icon `_accessory.icon`>>
-							</span>
-						<</if>>
+						</span>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					<div class="terraLink">
 						<<link "<<print $informationalAccessoryActivating[_accessory.name] ? '关闭' : '激活'>>">>
 							<<set $informationalAccessoryActivating[_accessory.name] to !$informationalAccessoryActivating[_accessory.name]>>
@@ -69,16 +64,14 @@
 							<</replace>>
 						<</link>>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					<div class="terraLink">
 						<<if _aaa is 0>>
 							/
 						<<else>>
 							<<capture _aaa>>
 								<<link "⬅">>
-									<<set _temp to $informationalAccessoryList[_aaa-1]>>
-									<<set $informationalAccessoryList[_aaa-1] to $informationalAccessoryList[_aaa]>>
-									<<set $informationalAccessoryList[_aaa] to _temp>>
+									<<run swap(V.informationalAccessoryList, _aaa - 1, _aaa)>>
 									<<replace #informationalAccessorySetting>>
 										<<informationalAccessorySetting>>
 									<</replace>>
@@ -201,10 +194,71 @@
 				<<lifeformAnalyzerInfo>>
 			</span>
 		<<case "Thermometer">>
-			室外温度：<span @class="Weather.temperature <= -10 ? 'blue' : Weather.temperature <= 0 ? 'lblue' : Weather.temperature <= 10 ? 'teal' : Weather.temperature <= 20 ? 'yellow' : Weather.temperature <= 30 ? 'orange' : 'red'"><<print Weather.toSelectedString(Weather.temperature, 0)>></span>
+			室外温度：<span @class="
+				Weather.temperature <= -10 ? 'blue' :
+				Weather.temperature <= 0 ? 'lblue' :
+				Weather.temperature <= 10 ? 'teal' :
+				Weather.temperature <= 20 ? 'yellow' :
+				Weather.temperature <= 30 ? 'orange' :
+				'red'
+			">
+				<<print Weather.toSelectedString(Weather.temperature, 0)>>
+			</span>
 			｜
-			室内温度：<span @class="Weather.insideTemperature <= -10 ? 'blue' : Weather.insideTemperature <= 0 ? 'lblue' : Weather.insideTemperature <= 10 ? 'teal' : Weather.insideTemperature <= 20 ? 'yellow' : Weather.insideTemperature <= 30 ? 'orange' : 'red'"><<print Weather.toSelectedString(Weather.insideTemperature, 0)>></span>
+			室内温度：<span @class="
+				Weather.insideTemperature <= -10 ? 'blue' :
+				Weather.insideTemperature <= 0 ? 'lblue' :
+				Weather.insideTemperature <= 10 ? 'teal' :
+				Weather.insideTemperature <= 20 ? 'yellow' :
+				Weather.insideTemperature <= 30 ? 'orange' :
+				'red'
+			">
+				<<print Weather.toSelectedString(Weather.insideTemperature, 0)>>
+			</span>
 			｜
-			水温：<span @class="Weather.waterTemperature <= 5 ? 'blue' : Weather.waterTemperature <= 15 ? 'teal' : Weather.waterTemperature <= 25 ? 'yellow' : Weather.waterTemperature <= 35 ? 'orange' : 'red'"><<print Weather.toSelectedString(Weather.waterTemperature, 0)>></span><br>
+			水温：<span @class="
+				Weather.waterTemperature <= 5 ? 'blue' :
+				Weather.waterTemperature <= 15 ? 'teal' :
+				Weather.waterTemperature <= 25 ? 'yellow' :
+				Weather.waterTemperature <= 35 ? 'orange' :
+				'red'
+			">
+				<<print Weather.toSelectedString(Weather.waterTemperature, 0)>>
+			</span><br>
+		<<case "Radar">>
+			<<if $smuggler_timer is 0 and Time.dayState is "night" and Time.hour gte 18>>
+				走私者正在<<print $smuggler_location.replace("forest","森林商店和老教堂墓地之间的地方").replace("sewer","旧下水道长满水藻的区域").replace("beach","海滩旁的大礁石").replace("bus","丰收街的公交车站")>>进行交易<br>
+			<<else>>
+				<mouse class="tooltip"><span class="black">当前不可用</span><span>没有正在进行的走私者活动</span></mouse><br>
+			<</if>>
+		<<case "Metal_Detector">>
+			<mouse class="tooltip"><span class="black">当前不可用</span><span>该信息饰品需配合全球定位系统显示的地图使用，此处不会显示信息</span></mouse><br>
+		<<case "Tally_Counter">>
+			<span id="tallyCounterInfo">
+				<<tallyCounterInfo>>
+			</span><br>
 	<</switch>>
+<</widget>>
+
+<<widget "silverDebug">>
+	回合数：$birdSilverHunt.timer<br>
+	与银条的距离：$birdSilverHunt.distance（10时得到银条）<br>
+	PC位置：$birdSilverHunt.player.position<br>
+	PC当前活动：$birdSilverHunt.player.action<br>
+	潜伏者位置：$birdSilverHunt.lurkerSpawn<br>
+	1号守卫：<br>
+	名字：$birdSilverHuntGuards[1].name<br>
+	当前活动：$birdSilverHuntGuards[1].action<br>
+	当前位置：$birdSilverHuntGuards[1].position<br>
+	移动方向：$birdSilverHuntGuards[1].movingTo<br>
+	2号守卫：<br>
+	名字：$birdSilverHuntGuards[2].name<br>
+	当前活动：$birdSilverHuntGuards[2].action<br>
+	当前位置：$birdSilverHuntGuards[2].position<br>
+	移动方向：$birdSilverHuntGuards[2].movingTo<br>
+	3号守卫：<br>
+	名字：$birdSilverHuntGuards[3].name<br>
+	当前活动：$birdSilverHuntGuards[3].action<br>
+	当前位置：$birdSilverHuntGuards[3].position<br>
+	移动方向：$birdSilverHuntGuards[3].movingTo<br>
 <</widget>>

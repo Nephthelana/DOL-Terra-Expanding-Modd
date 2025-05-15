@@ -12,6 +12,18 @@
 	<<getouticon>><<link [[离开|Forest]]>><</link>>
 	<<exitAll>>
 <</if>>
+<!--
+<<if $guide_mod_hint and $museumAntiques.antiques.antiquehourglass is "museum" and $dryad_intro is undefined>>
+	<<set $dryad_intro to "museum">>
+	<<antiqueicon "hourglass">><br>
+	你想起在麋鹿街大院里找到的那个沙漏，其上雕刻着即便是温特也无法理解的铭文。也许向导能对解开这个谜团有所帮助。<br>
+	<br>
+	<span class="gold">你需要去博物馆将沙漏上的铭文誊抄一份并交给向导。该任务已被添加到日志中。</span><br>
+	<br>
+	<<link [[继续|Guide Room]]>><</link>>
+	<<exitAll>>
+<</if>>
+-->
 <<if $guide_intro isnot true>>
 	“你好。我知道你是谁，但你也许还不认识我：我是向导。正如我的名字，我可以给你提供一些关于DoL，或者泰拉瑞亚拓展模组的提示。<br>
 	<br>

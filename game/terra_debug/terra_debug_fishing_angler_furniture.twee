@@ -1,20 +1,17 @@
 :: Terra Debug Fishing Angler Furniture
-<<run initializeTooltips()>>
 请选择获得/丢弃渔夫家具。<br>
 <span class="no-numberify">
-	<div class="itemTerra_Tool">
+	<div class="terraInventoryTool">
 		<<for _af range Object.keys(setup.terraAnglerFurniture)>>
 			<<set _anglerFurniture to setup.terraAnglerFurniture[_af]>>
 			<<capture _anglerFurniture>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="_anglerFurniture.cn_name">
-						<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
+				<div class="terraItem">
+					<div class="terraIconTool" @tooltip="_anglerFurniture.cn_name">
+						<span @class="$angler_furniture_obtained.includes(_anglerFurniture.name) ? '' : 'terraFading'">
 							<<icon `_anglerFurniture.item_icon`>>
-						<<else>>
-							<span class="terraFading"><<icon `_anglerFurniture.item_icon`>></span>
-						<</if>>
+						</span>
 					</div>
-					<hr>
+					<div class="terraDivider"></div>
 					<div class="terraLinks">
 						<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
 							<<link [[丢弃|Terra Debug Fishing Angler Furniture]]>><<set $angler_furniture_obtained.delete(_anglerFurniture.name)>><<set $furniture_painting_angler_cabin to $furniture_painting_angler_cabin is _anglerFurniture.name ? "none" : $furniture_painting_angler_cabin>><</link>>

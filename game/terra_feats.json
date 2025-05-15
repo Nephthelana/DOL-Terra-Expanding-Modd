@@ -134,5 +134,13 @@
         "series": "",
         "filter": ["All", "General"],
 		"hint": "提示：填满图鉴的“鱼饵”部分"
+    },
+	"Black Mirror": {
+        "title": "黑镜",
+        "desc": "你以后再也不会不带它就出门。",
+        "difficulty": 3,
+        "series": "",
+        "filter": ["All", "General"],
+		"hint": "提示：制作出一个可以高度集成信息类饰品的工具。"
     }
 }

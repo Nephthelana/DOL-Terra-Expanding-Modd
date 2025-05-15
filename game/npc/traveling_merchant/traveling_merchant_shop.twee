@@ -2,7 +2,7 @@
 <<cleareventpool>>
 <<addinlineevent "daily" 1>>
 	<<print [
-		`“我不会因'买家后悔……'或者任何其它原因退款，绝不退。”`,
+		`“我不会因‘买家后悔……’或者任何其它原因退款，绝不退。”`,
 		`“现在购买还包邮！”`,
 		`“我卖的商品来自可能根本就不存在的地方！”`,
 		`“你想要两文钱！？一文钱就成交。”`,
@@ -29,142 +29,173 @@
 	<</addinlineevent>>
 <</if>>
 <<runeventpool>><br>
+<br>
+<<if $radarMessage is "note">>
+	看到旅商的帽子，你想起了之前从走私者那里偷到的纸条。你不清楚他是否值得信任，但这比跟那些走私者打交道要安全一些。<br>
+	<<mysteryicon>><<link [[询问那张纸条的事情|Traveling Merchant Ask 1]]>><</link>><br>
+<</if>>
 <span id="travelingMerchantShop">
 	<<travelingMerchantShop>>
 </span>
 <<getouticon>><<link [[离开|Docks]]>><</link>>
 
-:: Traveling Merchant Shop Widgets [widget]
-<<widget "travelingMerchantShopListSetup">>
-	<<set _allGoodsList to getAllTravelingMerchantGoodsList()>>
-	<<if $fishingskill is undefined>>
-		<<set _allGoodsList.delete("Sitting_Ducks_Fishing_Pole","Slurper_Pole")>>
-	<</if>>
-	<<switch random(1,27)>>
-		<<case 1 2 3 4 5 6 7>>
-			<<set _traveling_merchant_shop_slot to 4>>
-		<<case 8 9 10 11 12 13 14 15 16>>
-			<<set _traveling_merchant_shop_slot to 5>>
-		<<default>>
-			<<set _traveling_merchant_shop_slot to 6>>
-	<</switch>>
-	<<set $traveling_merchant_shop_list to []>>
-	<<for _t=0; $traveling_merchant_shop_list.length lt (_traveling_merchant_shop_slot - 1); _t++>>
-		<<for _i=0; _i lt _allGoodsList.length; _i++>>
-			<<set _goods to setup.terraTravelingMerchantGoods[_allGoodsList[_i]]>>
-			<<if random(1,(_goods.rarity * 100)) is 1>>
-				<<set $traveling_merchant_shop_list.pushUnique(_goods.name)>>
-				<<break>>
-			<</if>>
-		<</for>>
-		<<if _t gte 998>><!-- 为了避免超出1000次的限制 bruh -->
-			<<set $traveling_merchant_shop_list to _allGoodsList.randomMany(_traveling_merchant_shop_slot - 1)>>
-			<<break>>
-		<</if>>
-	<</for>>
-	<<set $traveling_merchant_shop_list.pushUnique(getAllAnglerFurnitureList().random())>>
-<</widget>>
+:: Traveling Merchant Ask 1
+<<if $speech_attitude is "meek">>
+	“你这顶帽子……好漂亮……”
+<<elseif $speech_attitude is "bratty">>
+	“我才注意到你这帽子真不错。介意给我戴一会吗？”
+<<else>>
+	“上午好！我想问你这顶帽子有得卖嘛？”
+<</if>><br>
+<br>
+旅商压了压他的帽子。“咳咳，不好意思，这是非卖品。虽然我有很多这种一样的帽子，但我不会把它们作为商品卖出去的。”<br>
+<br>
+“那也就是说……”你取出了那张纸条，“这上面的标志，指的就是你吧？”<br>
+<br>
+你可以看出旅商在认清那个标记后，被小小地惊讶了一下。<br>
+<br>
+“没错，是我。”他不紧不慢地承认了这一点，然后拿走了这张纸条。“那我问你，你是在哪里找到它的？”<br>
+<br>
+<<link [[说你是从走私者那里偷来的|Traveling Merchant Ask 2]]>><<set $phase to 0>><</link>><br>
+<<link [[说你是从一条马路边捡到的|Traveling Merchant Ask 2]]>><<set $phase to 1>><</link>>
 
+:: Traveling Merchant Ask 2
+<<set $radarMessage to "dock">>
+<<switch $phase>>
+	<<case 0>>
+		“一天晚上我发现有人在做奇怪的事情，所以从他们那里拿了点东西作为证据。”你回答道。<br>
+		<br>
+		“呵，这些家伙比我想的还要笨，什么事都做不好。”旅商一脸的无奈。<br>
+		<br>
+		“这么说，你认识那些人咯。”<br>
+	<<case 1>>
+		“唔……我不记得是哪一天了。当时我在街上闲逛，然后在路边发现了这张纸。”你回答道。<br>
+		<br>
+		“坏东西。一点都不讲道义。”旅商将手里那张纸条攥得更紧。<br>
+		<br>
+		“你指的是谁？”<br>
+<</switch>>
+<br>
+“你应该比我更了解他们。我只是个偶尔来做生意的。”<br>
+<br>
+“那你知道他们是做什么的吗？”你想搞清那个金属管背后的谜团。<br>
+<br>
+“我不知道他们做什么的，我也不想知道。我只知道他们之前可以让我有钱赚：我现在已经赚不到那笔钱了。”<br>
+<br>
+<span class="blue">看来从他这里是问不出金属管的事情了。</span>“好吧，那么这张纸条上画的是什么？一个方方的东西。”<br>
+<br>
+“好问题，好问题。我刚刚跟你提到了一笔已经赚不到的钱，对吧？”旅商拿出了刚才那张纸条，在上面比划着，“这是一个通讯工具。那些人需要用这种非常机密的手段来互相联系。一开始这种好东西只有我这里才卖的，我就在他们的货物上宣传。但后来赫耳墨斯突然不再眷顾于我，他们不知哪的找到了新的进货渠道，直接光明正大地运到码头来，我的一大财路就这么断了。”<br>
+<br>
+“你的意思是，在那些集装箱里吗？”塞翁失马，焉知非福。也许这一趟你没白来。<br>
+<br>
+“开玩笑，我还能骗你不成？我们商人可是最讲信用的。”他随手指了一个集装箱，“说不定就在这里面——我的钱就是被埋在这里面了……唉……”<br>
+<br>
+<span class="gold">这个通讯工具应该会被放在装有电子产品的集装箱里。要想找到它的话，最好晚上再来码头碰碰运气。</span><br>
+<br>
+旅商看你若有所思的样子，似乎是在同情他，他又振作了起来。“不说这些难过的事情了！再怎么说我得先照顾眼前的生意。”<br>
+<br>
+<<link [[继续|Traveling Merchant Shop]]>><</link>>
+
+:: Traveling Merchant Shop Widgets [widget]
 <<widget "travelingMerchantShop">>
-<<run initializeTooltips()>>
-<<print _purchase_info isnot undefined ? _purchase_info : "">><br>
-<span class="no-numberify">
-	<div class="itemTerra">
-		<<for _i=0; _i lt ($traveling_merchant_shop_list.length - 1); _i++>>
-			<<set _goods to setup.terraTravelingMerchantGoods[$traveling_merchant_shop_list[_i]]>>
-			<<capture _goods>>
-				<<set _price to (_goods.price / 100)>>
-				<div class="item">
-					<div class="itemTerraGeneral" @tooltip="`${_goods.cn_name}<br><br>▶${_goods.des}`">
-						<<icon `_goods.icon`>>
-					</div>
-					<hr>
-					<span class="gold">£_price</span>
-					<hr>
-					<<if _goods.stackable gt 0>>
-						<<set V.daily[_goods.name] to V.daily[_goods.name] is undefined ? _goods.stackable : V.daily[_goods.name]>>
-						<<print V.daily[_goods.name] gt 0 ? V.daily[_goods.name] : "售罄">>
-						<hr>
-						<div class="terraLinks">
-							<<if V.daily[_goods.name] gt 0>>
-								<<link "购买">>
-									<<if $money gte _goods.price>>
-										<<money `-_goods.price` "NPC交易">>
-										<<set V.daily[_goods.name] -= 1>>
-										<<set V[_goods.name] += 1>>
-										<<updatesidebarmoney>>
-										<<set _purchase_info to _goods.purchase_info>>
-									<<else>>
-										<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
-									<</if>>
-									<<replace #travelingMerchantShop>>
-										<<travelingMerchantShop>>
-									<</replace>>
-								<</link>>
-							<<else>>
-								/
-							<</if>>
+	<<print _purchase_info isnot undefined ? _purchase_info : "">><br>
+	<span class="no-numberify">
+		<div class="terraInventory">
+			<<for _i=0; _i lt ($traveling_merchant_shop_list.length - 1); _i++>>
+				<<set _goods to setup.terraTravelingMerchantGoods[$traveling_merchant_shop_list[_i]]>>
+				<<capture _goods>>
+					<<set _price to (_goods.price / 100)>>
+					<div class="terraItem">
+						<div class="terraIcon" @tooltip="`${_goods.cn_name}<br><br>▶${_goods.des}`">
+							<<icon `_goods.icon`>>
 						</div>
-					<<else>>
-						<<print (V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))) ? "已有" : "1">>
-						<hr>
-						<div class="terraLinks">
-							<<if V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))>>
-								/
-							<<else>>
-								<<link "购买">>
-									<<if $money gte _goods.price>>
-										<<money `-_goods.price` "NPC交易">>
-										<<if _goods.type is "pet">>
-											<<set $pet_list.pushUnique(_goods.name)>>
+						<div class="terraDivider"></div>
+						<span class="gold">£_price</span>
+						<div class="terraDivider"></div>
+						<<if _goods.stackable gt 0>>
+							<<set V.daily[_goods.name] to V.daily[_goods.name] is undefined ? _goods.stackable : V.daily[_goods.name]>>
+							<<print V.daily[_goods.name] gt 0 ? V.daily[_goods.name] : "售罄">>
+							<div class="terraDivider"></div>
+							<div class="terraLinks">
+								<<if V.daily[_goods.name] gt 0>>
+									<<link "购买">>
+										<<if $money gte _goods.price>>
+											<<money `-_goods.price` "NPC交易">>
+											<<set V.daily[_goods.name] -= 1>>
+											<<set V[_goods.name] += 1>>
+											<<updatesidebarmoney>>
+											<<set _purchase_info to _goods.purchase_info>>
 										<<else>>
-											<<set V[_goods.name] to true>>
+											<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
 										<</if>>
-										<<updatesidebarmoney>>
-										<<set _purchase_info to _goods.purchase_info>>
-									<<else>>
-										<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
-									<</if>>
-									<<replace #travelingMerchantShop>>
-										<<travelingMerchantShop>>
-									<</replace>>
-								<</link>>
+										<<replace #travelingMerchantShop>>
+											<<travelingMerchantShop>>
+										<</replace>>
+									<</link>>
+								<<else>>
+									/
+								<</if>>
+							</div>
+						<<else>>
+							<<print (V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))) ? "已有" : "1">>
+							<div class="terraDivider"></div>
+							<div class="terraLinks">
+								<<if V[_goods.name] or (_goods.type is "pet" and $pet_list.includes(_goods.name))>>
+									/
+								<<else>>
+									<<link "购买">>
+										<<if $money gte _goods.price>>
+											<<money `-_goods.price` "NPC交易">>
+											<<if _goods.type is "pet">>
+												<<set $pet_list.pushUnique(_goods.name)>>
+											<<else>>
+												<<set V[_goods.name] to true>>
+											<</if>>
+											<<updatesidebarmoney>>
+											<<set _purchase_info to _goods.purchase_info>>
+										<<else>>
+											<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
+										<</if>>
+										<<replace #travelingMerchantShop>>
+											<<travelingMerchantShop>>
+										<</replace>>
+									<</link>>
+								<</if>>
+							</div>
+						<</if>>
+					</div>
+				<</capture>>
+			<</for>>
+			<<set _anglerFurniture to setup.terraAnglerFurniture[$traveling_merchant_shop_list[_i]]>>
+			<div class="terraItem">
+				<div class="terraIcon" @tooltip="`${_anglerFurniture.cn_name}<br><br>▶可以放置在渔夫小屋的家具`">
+					<<icon `_anglerFurniture.item_icon`>>
+				</div>
+				<div class="terraDivider"></div>
+				<span class="gold">£100</span>
+				<div class="terraDivider"></div>
+				<<print $angler_furniture_obtained.includes(_anglerFurniture.name) ? "已有" : "1">>
+				<div class="terraDivider"></div>
+				<div class="terraLinks">
+					<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
+						/
+					<<else>>
+						<<link "购买">>
+							<<if $money gte 10000>>
+								<<money -10000 "NPC交易">>
+								<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
+								<<updatesidebarmoney>>
+								<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
+							<<else>>
+								<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
 							<</if>>
-						</div>
+							<<replace #travelingMerchantShop>>
+								<<travelingMerchantShop>>
+							<</replace>>
+						<</link>>
 					<</if>>
 				</div>
-			<</capture>>
-		<</for>>
-		<<set _anglerFurniture to setup.terraAnglerFurniture[$traveling_merchant_shop_list[_i]]>>
-		<div class="item">
-			<div class="itemTerraGeneral" @tooltip="`${_anglerFurniture.cn_name}<br><br>▶可以放置在渔夫小屋的家具`">
-				<<icon `_anglerFurniture.item_icon`>>
-			</div>
-			<hr>
-			<span class="gold">£100</span>
-			<hr>
-			<<print $angler_furniture_obtained.includes(_anglerFurniture.name) ? "已有" : "1">>
-			<hr>
-			<div class="terraLinks">
-				<<if $angler_furniture_obtained.includes(_anglerFurniture.name)>>
-					/
-				<<else>>
-					<<link "购买">>
-						<<if $money gte 10000>>
-							<<money -10000 "NPC交易">>
-							<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
-							<<updatesidebarmoney>>
-							<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
-						<<else>>
-							<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
-						<</if>>
-						<<replace #travelingMerchantShop>>
-							<<travelingMerchantShop>>
-						<</replace>>
-					<</link>>
-				<</if>>
 			</div>
 		</div>
-	</div>
-</span>
+	</span>
 <</widget>>

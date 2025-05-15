@@ -9,7 +9,11 @@
 			<<case "realized">>
 				<span class="lblue">看来这里附近就是那个猎人的住处。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
-					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
+					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Forest]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
+					<<else>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
+					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
 				<</if>>
@@ -42,7 +46,11 @@
 			<<case "realized">>
 				<span class="lblue">看来这里附近就是那群狼的巢穴。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
-					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
+					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Forest]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
+					<<else>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
+					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
 				<</if>>
@@ -75,7 +83,11 @@
 			<<case "realized">>
 				<span class="lblue">看来这里附近就是那只巨鹰栖息的高塔。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
-					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Moor]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
+					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Moor]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
+					<<else>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Moor]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
+					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
 				<</if>>
@@ -108,7 +120,11 @@
 			<<case "realized">>
 				<span class="lblue">看来这里附近就是施粥所工作人员提到的空地。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
-					<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Churchyard]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
+					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Churchyard]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
+					<<else>>
+						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Churchyard]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
+					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
 				<</if>>
