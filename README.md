@@ -177,7 +177,7 @@
 </details>
 
 ## 后续计划
-以下内容仅供参考，更新内容以实际为准。
+以下内容仅供参考，更新内容以实际为准（目前内容更新暂停）。
 - [ ] 新增NPC：树妖、油漆工；
 - [ ] 新增新地点：地下微光湖；
 - [ ] 炼金草药种植系统；
@@ -194,15 +194,15 @@
 ## 食用说明
 1. 模组文件下载请见本页面右侧/底部的 [Releases(发行版)](https://github.com/Nephthelana/DOL-Terra-Expanding-Modd/releases)；
 2. Release的Assets中含有1个文件：Terraria Expand Mod.mod.zip：模组本体。无需多言；
-3. 本模组部分功能依赖[简易框架模组](https://github.com/emicoto/DOLMods)（Simple Frameworks）生效，故在加载模组时，**必须保证已经加载了简易框架模组**；
+3. 本模组部分功能依赖[秋枫白桦框架模组](https://github.com/MaplebirchLeaf/SCML-DOL-maplebirchframework)生效，故在加载模组时，**必须保证已经加载了秋枫白桦框架模组**；
 4. 模组加载方式与加载汉化包、图片包相同。具体步骤可参考[汉化组Github仓库的说明页面](https://github.com/Eltirosto/Degrees-of-Lewdity-Chinese-Localization?tab=readme-ov-file#%E5%8F%91%E5%B8%83%E4%B8%8B%E8%BD%BD%E7%89%88)。
 ## 注意事项
 - 本模组缺乏测试，***请务必保证自己能善用存档/回溯功能***，来避免因本模组导致的卡档、死档问题。
-- 加载模组前，***请务必保证简易框架mod已经加载***。
+- 加载模组前，***请务必保证秋枫白桦框架mod已经加载***。
 - 可以开新档来游玩/测试mod。如果希望用已有的旧存档来游玩/测试mod，请务必注意：
   
   在用加载了mod的游戏中加载已有存档之前，请务必先***对该已有存档进行存档码文本保存或者导出.save文件***。
-- 本模组最新版（v0.2.7）适配游戏本体0.5.4.9版本。
+- 本模组最新版（v0.2.10.0）适配游戏本体0.5.7.9版本。
 ## 讨论交流
 - 模组作者：苯环(Nephthelana)
 - 贴吧名：脸木挤白
