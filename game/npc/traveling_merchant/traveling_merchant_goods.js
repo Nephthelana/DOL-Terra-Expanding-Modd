@@ -9,7 +9,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Angel_Halo,
 		icon: "accessories/Angel_Halo.png",
 		des: "一个天使的光环！防止天使转化点数衰退<br><br><i>时装</i>：获得仅自己可见的天使光环",
-		purchase_info: "你购买了一个<<icon 'accessories/Angel_Halo.png'>>天使光环。<i>试着在装备栏里戴上它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'accessories/Angel_Halo.png'>>天使光环。<i>试着在装备栏里戴上它。</i>",
 	},
 	"Eye_Bone": {
 		name: "Eye_Bone",
@@ -21,7 +21,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Eye_Bone,
 		icon: "pet/pet_item/Eye_Bone.png",
 		des: "召唤一只活宝箱<br>“它正在审视我的灵魂。”",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Eye_Bone.png'>>眼骨。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Eye_Bone.png'>>眼骨。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Glommers_Flower": {
 		name: "Glommers_Flower",
@@ -33,7 +33,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Glommers_Flower,
 		icon: "pet/pet_item/Glommers_Flower.png",
 		des: "召唤格罗姆<br>“花瓣在阳光下闪闪发光。”",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Glommers_Flower.png'>>格罗姆的花。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Glommers_Flower.png'>>格罗姆的花。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Sitting_Ducks_Fishing_Pole": {
 		name: "Sitting_Ducks_Fishing_Pole",
@@ -44,7 +44,7 @@ setup.terraTravelingMerchantGoods = {
 		price: 350000,
 		obtained: V.Sitting_Ducks_Fishing_Pole,
 		icon: "fishing/fishing_pole/Sitting_Ducks_Fishing_Pole.png",
-		purchase_info: "你购买了一把<<icon 'fishing/fishing_pole/Sitting_Ducks_Fishing_Pole.png'>>冤大头钓竿。<i>为什么这个鱼竿会叫这个名字？</i>",
+		purchase_info: "你购买了一把<<terra_icon 'fishing/fishing_pole/Sitting_Ducks_Fishing_Pole.png'>>冤大头钓竿。<i>为什么这个鱼竿会叫这个名字？</i>",
 		des: "40渔力",
 	},
 	"Companion_Cube": {
@@ -57,7 +57,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Companion_Cube,
 		icon: "pet/pet_item/Companion_Cube.png",
 		des: "召唤同伴方块<br>“易受熔岩伤害！”",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Companion_Cube.png'>>同伴方块。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Companion_Cube.png'>>同伴方块。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Birdie_Rattle": {
 		name: "Birdie_Rattle",
@@ -69,7 +69,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Birdie_Rattle,
 		icon: "pet/pet_item/Birdie_Rattle.png",
 		des: "召唤鸟妖宝宝<br>“不适合你的日常小鹦鹉”",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Birdie_Rattle.png'>>小鸟拨浪鼓。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Birdie_Rattle.png'>>小鸟拨浪鼓。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Exotic_Chew_Toy": {
 		name: "Exotic_Chew_Toy",
@@ -81,7 +81,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Exotic_Chew_Toy,
 		icon: "pet/pet_item/Exotic_Chew_Toy.png",
 		des: "召唤耳廓狐<br>“它的叫声是惊人的96千赫！”",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Exotic_Chew_Toy.png'>>奇异咀嚼玩具。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Exotic_Chew_Toy.png'>>奇异咀嚼玩具。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Blue_Chicken_Egg": {
 		name: "Blue_Chicken_Egg",
@@ -93,7 +93,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Blue_Chicken_Egg,
 		icon: "pet/pet_item/Blue_Chicken_Egg.png",
 		des: "召唤蓝鸡<br>“普普通通的蓝色鸡蛋”",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Blue_Chicken_Egg.png'>>蓝鸡蛋。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Blue_Chicken_Egg.png'>>蓝鸡蛋。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Bedazzled_Nectar": {
 		name: "Bedazzled_Nectar",
@@ -105,7 +105,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Bedazzled_Nectar,
 		icon: "pet/pet_item/Bedazzled_Nectar.png",
 		des: "召唤宠物蝴蝶<br>“只要最好、最精致的花蜜！”",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Bedazzled_Nectar.png'>>眩晕花蜜。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Bedazzled_Nectar.png'>>眩晕花蜜。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Bamboo_Leaf": {
 		name: "Bamboo_Leaf",
@@ -117,7 +117,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Bamboo_Leaf,
 		icon: "pet/pet_item/Bamboo_Leaf.png",
 		des: "召唤小熊猫宝宝",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Bamboo_Leaf.png'>>竹叶。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Bamboo_Leaf.png'>>竹叶。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Slurper_Pole": {
 		name: "Slurper_Pole",
@@ -129,7 +129,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Slurper_Pole,
 		icon: "fishing/fishing_pole/Slurper_Pole.png",
 		des: "25渔力，能够在沸水/岩浆中垂钓",
-		purchase_info: "你购买了一把<<icon 'fishing/fishing_pole/Slurper_Pole.png'>>饮食者钓竿。<i>它隐隐散发着不祥的气息(其实并不会有任何副作用)。</i>",
+		purchase_info: "你购买了一把<<terra_icon 'fishing/fishing_pole/Slurper_Pole.png'>>饮食者钓竿。<i>它隐隐散发着不祥的气息(其实并不会有任何副作用)。</i>",
 	},
 	"Can_Of_Worms": {
 		name: "Can_Of_Worms",
@@ -141,7 +141,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Can_Of_Worms || 0,
 		icon: "fishing/crates/Can_Of_Worms.png",
 		des: "可以打开得到一些蠕虫",
-		purchase_info: "你购买了一罐<<icon 'fishing/crates/Can_Of_Worms.png'>>蠕虫罐头。你现在有蠕虫罐头($Can_Of_Worms)。<i>打开获得丰富的蛋白质。</i>",
+		purchase_info: "你购买了一罐<<terra_icon 'fishing/crates/Can_Of_Worms.png'>>蠕虫罐头。你现在有蠕虫罐头($Can_Of_Worms)。<i>打开获得丰富的蛋白质。</i>",
 	},
 	"Pho": {
 		name: "Pho",
@@ -153,7 +153,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Pho || 0,
 		icon: "food/Pho.png",
 		des: "- - 饥饿值<br>“粉它！”",
-		purchase_info: "你购买了一份<<icon 'food/Pho.png'>>越南河粉。你现在有越南河粉($Pho)。",
+		purchase_info: "你购买了一份<<terra_icon 'food/Pho.png'>>越南河粉。你现在有越南河粉($Pho)。",
 	},
 	"Celestial_Wand": {
 		name: "Celestial_Wand",
@@ -165,7 +165,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Celestial_Wand,
 		icon: "pet/pet_item/Celestial_Wand.png",
 		des: "召唤埃斯蒂",
-		purchase_info: "你购买了一个<<icon 'pet/pet_item/Celestial_Wand.png'>>天界魔棒。<i>你可以在孤儿院的卧室里使用它。</i>",
+		purchase_info: "你购买了一个<<terra_icon 'pet/pet_item/Celestial_Wand.png'>>天界魔棒。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i>",
 	},
 	"Demon_Horns": {
 		name: "Demon_Horns",
@@ -177,7 +177,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Demon_Horns,
 		icon: "accessories/Demon_Horns.png",
 		des: "一对恶魔的犄角！防止恶魔转化点数衰退(不会防止对应的惩罚)<br><br><i>时装</i>：获得仅自己可见的恶魔犄角",
-		purchase_info: "你购买了一对<<icon 'accessories/Demon_Horns.png'>>恶魔角。<i>试着在装备栏里戴上它。</i>",
+		purchase_info: "你购买了一对<<terra_icon 'accessories/Demon_Horns.png'>>恶魔角。<i>试着在装备栏里戴上它。</i>",
 	},
 	"Pad_Thai": {
 		name: "Pad_Thai",
@@ -189,7 +189,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Pad_Thai || 0,
 		icon: "food/Pad_Thai.png",
 		des: "- - 饥饿值<br>“五星级辣度！”",
-		purchase_info: "你购买了一份<<icon 'food/Pad_Thai.png'>>泰式炒面。你现在有泰式炒面($Pad_Thai)。",
+		purchase_info: "你购买了一份<<terra_icon 'food/Pad_Thai.png'>>泰式炒面。你现在有泰式炒面($Pad_Thai)。",
 	},
 	"Stopwatch": {
 		name: "Stopwatch",
@@ -201,7 +201,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Stopwatch,
 		icon: "accessories/Stopwatch.png",
 		des: "允许在合适的地点和时机掐表消磨时间",
-		purchase_info: "你购买了一个<<icon 'accessories/Stopwatch.png'>>秒表。",
+		purchase_info: "你购买了一个<<terra_icon 'accessories/Stopwatch.png'>>秒表。",
 	},
 	"Lifeform_Analyzer": {
 		name: "Lifeform_Analyzer",
@@ -213,7 +213,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Lifeform_Analyzer,
 		icon: "accessories/Lifeform_Analyzer.png",
 		des: "显示NPC的位置（仅限主要角色）",
-		purchase_info: "你购买了一个<<icon 'accessories/Lifeform_Analyzer.png'>>生命体分析机。",
+		purchase_info: "你购买了一个<<terra_icon 'accessories/Lifeform_Analyzer.png'>>生命体分析机。",
 	},
 	"Thermometer": {
 		name: "Thermometer",
@@ -225,7 +225,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Thermometer,
 		icon: "accessories/Thermometer.png",
 		des: "显示室外温度、室内温度与水体温度",
-		purchase_info: "你购买了一个<<icon 'accessories/Thermometer.png'>>温度计。",
+		purchase_info: "你购买了一个<<terra_icon 'accessories/Thermometer.png'>>温度计。",
 	},
 	"Sake": {
 		name: "Sake",
@@ -237,7 +237,7 @@ setup.terraTravelingMerchantGoods = {
 		obtained: V.Sake || 0,
 		icon: "food/Sake.png",
 		des: "给予2小时的醉酒效果<br>“喝多了你会变成空手道大师。”",
-		purchase_info: "你购买了一瓶<<icon 'food/Sake.png'>>清酒。你现在有清酒($Sake)。",
+		purchase_info: "你购买了一瓶<<terra_icon 'food/Sake.png'>>清酒。你现在有清酒($Sake)。",
 	},
 }
 
@@ -246,12 +246,20 @@ function travelingMerchantShopListSetup() {
 	// 还未解锁渔夫以及钓鱼时，在商品列表中删去鱼竿，以免提前买到鱼竿
 	if (V.fishingskill === undefined) goodsList.delete("Sitting_Ducks_Fishing_Pole","Slurper_Pole");
 
-	// 简易框架提供的更灵活的类似switch的写法，决定当天旅商带来几种货物（4～6种）
-	const select = new SelectCase();
-	select.case([1,7],  4)
-		  .case([8,16], 5)
-		  .case([17,27],6);
-	const travelingMerchantShopSlot = select.has(random(1,27));
+	// 框架提供的更灵活的类似switch的写法，决定当天旅商带来几种货物（4～6种）
+	if (window.modUtils.getMod('maplebirch')) {
+		const select = new SelectCase()
+			.caseRange(1,7,  4)
+			.caseRange(8,16, 5)
+			.caseRange(17,27,6);
+		var travelingMerchantShopSlot = select.match(random(1,27));
+	} else {
+		const select = new SelectCase();
+		select.case([1,7],  4)
+			  .case([8,16], 5)
+		 	  .case([17,27],6);
+		var travelingMerchantShopSlot = select.has(random(1,27));
+	}
 
 	V.traveling_merchant_shop_list = [];
 	for (let n=1; V.traveling_merchant_shop_list.length <= (travelingMerchantShopSlot - 1); n++) {

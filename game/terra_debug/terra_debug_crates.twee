@@ -7,7 +7,7 @@
 			<<capture _crate>>
 				<div class="terraItem">
 					<div class="terraIcon" @tooltip="`${_crate.cn_name}`">
-						<<icon `_crate.icon`>>
+						<<terra_icon `_crate.icon`>>
 					</div>
 					<div class="terraDivider"></div>
 					<div class="terraLinks">

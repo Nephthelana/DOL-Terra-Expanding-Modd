@@ -7,7 +7,7 @@
 				这块充满魔力的水晶可以将你传送至别的地方。
 				<<if ["temple","late"].includes(_sydney_location)>>
 					<br>
-					<<icon "pylon/Hallow_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "temple">><</link>>
+					<<terra_icon "pylon/Hallow_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "temple">><</link>>
 				<<else>>
 					<span class="blue">但是现在悉尼不在神殿，你无法使用它。</span>
 				<</if>>

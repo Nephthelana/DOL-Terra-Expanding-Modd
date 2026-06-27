@@ -7,7 +7,7 @@
 			<<capture _potion>>
 				<div class="terraItem">
 					<div class="terraIcon" @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
-						<<icon `_potion.item_icon`>>
+						<<terra_icon `_potion.item_icon`>>
 					</div>
 					<div class="terraDivider"></div>
 					<div class="terraLinks">

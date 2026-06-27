@@ -1,9 +1,9 @@
 :: Orphanage Loft Bottomless Honey Bucket [widget]
 <<widget "orphanage_loft_bottemless_honey_bucket">>
 	<<if $orphanage_loft_crafting_station.includes("Bottomless_Honey_Bucket")>>
-		<<icon "tool/Bottomless_Honey_Bucket.png">><<link [[取回无底蜂蜜桶|Orphanage Loft]]>><<set $orphanage_loft_crafting_station.delete("Bottomless_Honey_Bucket")>><<set $Bottomless_Honey_Bucket to true>><</link>><br>
+		<<terra_icon "tool/Bottomless_Honey_Bucket.png">><<link [[取回无底蜂蜜桶|Orphanage Loft]]>><<set $orphanage_loft_crafting_station.delete("Bottomless_Honey_Bucket")>><<set $Bottomless_Honey_Bucket to true>><</link>><br>
 	<<elseif $Bottomless_Honey_Bucket>>
-		你可以将<<icon "tool/Bottomless_Honey_Bucket.png">>无底蜂蜜桶寄存在这里，给大家供应蜂蜜饮料。<br>
+		你可以将<<terra_icon "tool/Bottomless_Honey_Bucket.png">>无底蜂蜜桶寄存在这里，给大家供应蜂蜜饮料。<br>
 		<<ind>><<link [[留下无底蜂蜜桶|Orphanage Loft Bottomless Honey Bucket Set]]>><<set $Bottomless_Honey_Bucket to false>><<set $orphanage_loft_crafting_station.pushUnique("Bottomless_Honey_Bucket")>><</link>><br>
 	<</if>>
 <</widget>>
@@ -17,7 +17,7 @@
 <</widget>>
 
 :: Orphanage Loft Bottomless Honey Bucket Set
-<<icon "tool/Bottomless_Honey_Bucket.png">><br>
+<<terra_icon "tool/Bottomless_Honey_Bucket.png">><br>
 <<if $orphanage_bottemless_honey_bucket is undefined>>
 	<<set $orphanage_bottemless_honey_bucket to true>>
 	你从虚空袋中取出无底蜂蜜桶，将它放在了<<print $loft_river ? "厨房中" : "阁楼的角落">>。桶中盛满了浓稠晶亮的蜂蜜，如同流动的琥珀。它沉甸甸的重量令你感到喜悦。<br>

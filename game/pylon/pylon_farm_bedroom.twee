@@ -5,7 +5,7 @@
 			<<if $pylon_collected.includes("Farm Bedroom")>>
 				这块充满魔力的水晶可以将你传送至别的地方。
 				<br>
-				<<icon "pylon/Universal_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "farmbedroom">><</link>>
+				<<terra_icon "pylon/Universal_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "farmbedroom">><</link>>
 			<<else>>
 				为了激活这个晶塔，你需要找到那块水晶。<<print C.npc.Alex.love gte 90 ? "<span class='teal'>和艾利克斯一起在树下休息，然后去骑马逛一圈吧。</span>" : "<span class='blue'>如果艾利克斯对你有足够的好感，你将会得到提示。</span>">>
 			<</if>>

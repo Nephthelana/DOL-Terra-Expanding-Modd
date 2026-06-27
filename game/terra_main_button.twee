@@ -51,12 +51,12 @@
 			<<print $terraMainButtonExpand ? "➡️" : "⬅️">>
 		</div>
 		<div class="infoAccButtonItem" onclick="voidBagOverlayBox()">
-			<div id="voidBagButton"><<icon "Void_Bag.png">><<print $terraMainButtonExpand ? "虚空袋" : "">></div>
+			<div id="voidBagButton"><<terra_icon "Void_Bag.png">><<print $terraMainButtonExpand ? "虚空袋" : "">></div>
 		</div>
 		<div class="infoAccButtonItem" onclick="equipmentOverlayBox()">
-			<div><<icon "Accessories_icon.png">><<print $terraMainButtonExpand ? "装备" : "">></div>
+			<div><<terra_icon "Accessories_icon.png">><<print $terraMainButtonExpand ? "装备" : "">></div>
 		</div>
 		<div class="infoAccButtonItem" onclick="toolOverlayBox()">
-			<div><<icon "tool/Magic_Mirror.png">><<print $terraMainButtonExpand ? "工具" : "">></div>
+			<div><<terra_icon "tool/Magic_Mirror.png">><<print $terraMainButtonExpand ? "工具" : "">></div>
 		</div>
 <</widget>>

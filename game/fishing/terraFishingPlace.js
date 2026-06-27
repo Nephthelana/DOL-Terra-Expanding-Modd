@@ -1,3 +1,11 @@
+/*
+	name: 钓鱼点代号/英文名文本
+	cn_name: 钓鱼点中文名文本
+	type: 区分钓鱼点种类（town-普通的；artificial-人工的；island-海岛的），可以自己定义新的种类自用
+	icon: 图标的widget
+	entrance: 入口passage名称，用于从钓鱼小游戏返回到钓鱼点
+	unlock_conditions: 显示解锁条件的文本，可留空
+*/
 setup.terraFishingPlace = {
 	"lake_fishing_rock": {
 		name: "lake_fishing_rock",
@@ -11,7 +19,7 @@ setup.terraFishingPlace = {
 		name: "beach",
 		cn_name: "海滩",
 		type: "town",
-		icon: "<<icon 'beach.gif'>>",
+		icon: "<<terra_icon 'beach.gif'>>",
 		entrance: "Beach",
 		unlock_conditions: "垂钓<<fishingskillRank 0>>，海滩",
 	},
@@ -59,7 +67,7 @@ setup.terraFishingPlace = {
 		name: "wolf_cave_clearing",
 		cn_name: "狼窝的溪流",
 		type: "town",
-		icon: "<<wolfcaveicon 'stream'>>",
+		icon: "<<watericon 'stream_wolfcave'>>",
 		entrance: "Wolf Cave Clearing",
 		unlock_conditions: "垂钓<<fishingskillRank 500>>，狼洞外面的空地(需要获得<<print $bestialitydisable is 'f' ? '斯德哥尔摩综合征：狼群' : '斯德哥尔摩综合征：狼人'>>)",
 	},
@@ -115,7 +123,7 @@ setup.terraFishingPlace = {
 		name: "ice",
 		cn_name: "地下永冻湖",
 		type: "town",
-		icon: "<<icon 'location/underground_ice_lake.png'>>",
+		icon: "<<terra_icon 'location/underground_ice_lake.png'>>",
 		entrance: "Underground Ice Lake",
 		unlock_conditions: "垂钓<<fishingskillRank 0>>，科学 <a class='lblue'>B</a> ，老教堂墓穴中“小溪流淌”字样的位置",
 	},
@@ -123,7 +131,7 @@ setup.terraFishingPlace = {
 		name: "lava",
 		cn_name: "地下熔岩湖",
 		type: "town",
-		icon: "<<icon 'location/underground_lava_lake.png'>>",
+		icon: "<<terra_icon 'location/underground_lava_lake.png'>>",
 		entrance: "Underground Lava Lake",
 		unlock_conditions: "垂钓<<fishingskillRank 0>>，科学 <a class='green'>A*</a> ，历史 <a class='green'>A*</a> ，意志 <a class='teal'>5级</a> ，走私者洞穴最深处的位置",
 	},

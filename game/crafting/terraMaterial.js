@@ -98,6 +98,62 @@ setup.terraMaterial = {
         amount: V.Lava_Moss || 0,
         icon: "material/Lava_Moss.png",
     },
+	"Daybloom": {
+        name: "Daybloom",
+        cn_name: "太阳花",
+		des: "<span class='yellow'>一种在白天盛开的充满活力的草药</span>",
+        type: "material",
+        amount: V.Daybloom || 0,
+        icon: "herb/herb_item/Daybloom.png",
+    },
+	"Moonglow": {
+        name: "Moonglow",
+        cn_name: "月光草",
+		des: "<span class='teal'>一种在月光下绽放光辉的草药</span>",
+        type: "material",
+        amount: V.Moonglow || 0,
+        icon: "herb/herb_item/Moonglow.png",
+    },
+	"Waterleaf": {
+        name: "Waterleaf",
+        cn_name: "水叶草",
+		des: "<span class='lime-green'>一种顽强的在雨中绽放的草药</span>",
+        type: "material",
+        amount: V.Waterleaf || 0,
+        icon: "herb/herb_item/Waterleaf.png",
+    },
+	"Fireblossom": {
+        name: "Fireblossom",
+        cn_name: "火焰花",
+		des: "<span class='orange'>一种在日落时分绽放的生机勃勃的草药</span>",
+        type: "material",
+        amount: V.Fireblossom || 0,
+        icon: "herb/herb_item/Fireblossom.png",
+    },
+	"Shiverthorn": {
+        name: "Shiverthorn",
+        cn_name: "寒颤棘",
+		des: "<span class='lblue'>一种花期很久的在寒冷中坚毅生长的草药</span>",
+        type: "material",
+        amount: V.Shiverthorn || 0,
+        icon: "herb/herb_item/Shiverthorn.png",
+    },
+	"Blinkroot": {
+        name: "Blinkroot",
+        cn_name: "闪耀根",
+		des: "<span class='lightbrown'>一种无法预测开花时间的变幻莫测的草药</span>",
+        type: "material",
+        amount: V.Blinkroot || 0,
+        icon: "herb/herb_item/Blinkroot.png",
+    },
+	"Deathweed": {
+        name: "Deathweed",
+        cn_name: "死亡草",
+		des: "<span class='purple'>一种在满月或血月下绽放的邪恶草药</span>",
+        type: "material",
+        amount: V.Deathweed || 0,
+        icon: "herb/herb_item/Deathweed.png",
+    },
 	//工具
 	"Magic_Conch": {
         name: "Magic_Conch",
@@ -600,3 +656,14 @@ function getMaterialObtainedList() {
     });
 }
 window.getMaterialObtainedList = getMaterialObtainedList;
+
+function getMaterialOnlyObtainedList() {
+	for (let material in setup.terraMaterial) {
+        setup.terraMaterial[material].amount = V[material] || 0;
+    }
+    let material_obtained = Object.keys(setup.terraMaterial);
+    return material_obtained.filter(material => {
+        return (setup.terraMaterial[material].amount > 0 || setup.terraMaterial[material].obtained === true) && setup.terraMaterial[material].type === "material";
+    });
+}
+window.getMaterialOnlyObtainedList = getMaterialOnlyObtainedList;

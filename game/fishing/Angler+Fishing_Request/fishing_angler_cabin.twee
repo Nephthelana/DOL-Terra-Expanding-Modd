@@ -31,7 +31,7 @@
 		<br>
 		<<terraPronoun>>一下涨红了脸，“抱歉，我刚回来不久所以还没好好整理……”<<terraPronoun>>尴尬地不敢用正眼看你，“你之前钓过鱼吗？不介意的话就收下它吧，我相信我们能一起发现钓鱼更多的乐趣！如果你钓到了特别的鱼分享给我，我不会亏待你的。但这些鱼行踪不定，所以记得经常来找我，我或许能给你提供关于它们的信息。”<br>
 		<br>
-		<<terraPronoun>>将鱼竿交给你。<span class="teal">你获得了<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><br>
+		<<terraPronoun>>将鱼竿交给你。<span class="teal">你获得了<<terra_icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><br>
 		<br>
 		“忘了告诉你，我<span class="gold">每天早上6点</span>后可能更需要别的鱼了，所以记得及时把当天的给我哦！”<br>
 	<<else>>
@@ -39,7 +39,7 @@
 		<br>
 		<<terraPronoun>>一下就变了脸，似乎先前的生气是装的。“看来你和这根鱼竿很有缘，”看起来<<terraPronoun>>有了什么计划，“拿它去钓鱼吧！不过你得钓上来我想要的鱼作为道歉——当然，我还会给你'丰厚'的奖励。怎么样，我很慷慨吧？每天来问我任务，然后把那条鱼抓过来：这就是你要做的事情。”<br>
 		<br>
-		鱼竿被不由分说地塞到你的手里。<span class="teal">你获得了<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><br>
+		鱼竿被不由分说地塞到你的手里。<span class="teal">你获得了<<terra_icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿。</span><br>
 		<br>
 		“忘了告诉你，我<span class="gold">每天早上6点</span>后也许就会想要别的鱼了，所以你最好早早把它交给我！”<br>
 	<</if>>
@@ -230,7 +230,7 @@
 	<br>
 	<!-- 放置渔夫任务奖励家具 -->
 	<<if $furniture_painting_angler_cabin isnot undefined and $furniture_painting_angler_cabin isnot "none">>
-		<<icon `setup.terraAnglerFurniture[$furniture_painting_angler_cabin].placed_icon`>><br>
+		<<terra_icon `setup.terraAnglerFurniture[$furniture_painting_angler_cabin].placed_icon`>><br>
 		<br>
 	<</if>>
 	<<mysteryicon>><<link [[关于钓鱼任务|Fishing Request Ask]]>><</link>><br>
@@ -244,18 +244,18 @@
 	<<if $Angler_RPS_daily>>
 		<<ind>><span class="blue">你今天和渔夫猜过拳了。</span><br>
 	<<else>>
-		<<icon "RPS/RPS.gif">><<link [[猜拳|RPS Start]]>><</link>><br>
+		<<terra_icon "RPS/RPS.gif">><<link [[猜拳|RPS Start]]>><</link>><br>
 	<</if>>
 	<<getouticon>><<link [[离开|Beach]]>><<unset $terraNPC>><</link>><br>
 <</if>>
 <br>
 <!-- 从代码上就能看出来对两者的区别对待，嘻嘻 -->
 <<if $options.cute_angler>>
-	<<ind>><<icon "furniture_placed/Reef_Chandelier_(placed).png">>
+	<<ind>><<terra_icon "furniture_placed/Reef_Chandelier_(placed).png">>
 	<br>
 	<br>
 	<br>
-	<<icon "furniture_placed/Reef_Chair_(placed).png">><<icon "furniture_placed/Reef_Table_(placed).png">><<ind>>
+	<<terra_icon "furniture_placed/Reef_Chair_(placed).png">><<terra_icon "furniture_placed/Reef_Table_(placed).png">><<ind>>
 <<else>>
-	<<icon "furniture_placed/Wooden_Chair_(placed).png">><<icon "furniture_placed/Wooden_Table_(placed).png">><<ind>>
+	<<terra_icon "furniture_placed/Wooden_Chair_(placed).png">><<terra_icon "furniture_placed/Wooden_Table_(placed).png">><<ind>>
 <</if>>

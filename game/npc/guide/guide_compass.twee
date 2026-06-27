@@ -20,6 +20,6 @@
 <<set $Compass to true>>
 “修复这块玻璃是很轻松的事。所以我另外做了一些改进，这样你在一些地方探索时，它能显示出你所处的具体位置。”<br>
 <br>
-<span class="gold">你获得了<<icon "accessories/Compass.png">>罗盘！</span><br>
+<span class="gold">你获得了<<terra_icon "accessories/Compass.png">>罗盘！</span><br>
 <br>
 <<link [[继续|Guide Room]]>><</link>>

@@ -42,6 +42,10 @@ function terraReloadVariables() {
 		const mi = setup.terraMaterial[m];
 		V[mi.name] = V[mi.name] || 0;
 	}
+	for (const mi of Object.keys(setup.terraMiscellaneous).filter(pmi => setup.terraMiscellaneous[pmi].type === "herb_seed")) {
+		const mii = setup.terraMiscellaneous[mi];
+		V[mii.name] = V[mii.name] || 0;
+	}
 
 	// 森林商店鱼饵初始化
 	V.bait_forest_shop_main = V.bait_forest_shop_main || "Worm";
@@ -207,6 +211,10 @@ function terraReloadVariables() {
 		base: {
 			default: {
 				image: "base.png",
+				animation: {
+					frameDelay: 500,
+					cycleDelay: () => 0,
+				},
 			}
 		}
 	}
@@ -215,9 +223,19 @@ function terraReloadVariables() {
 		base: {
 			default: {
 				image: "base.png",
+				animation: {
+					frameDelay: 500,
+					cycleDelay: () => 0,
+				},
 			}
 		}
 	}
+
+	// 草药种植区域初始化
+	V.terra_herb_plots = V.terra_herb_plots || {};
+
+	// 草药生长速率
+	V.terra_herb_updateRate = V.terra_herb_updateRate || 550;
 
 	// v0.2.2 删除$terra_bedroom_furniture，并将其中的"Royal_Delight"加入$pet_list
 	if (V.terra_bedroom_furniture !== undefined) {
@@ -241,14 +259,20 @@ function terraReloadVariables() {
 		}
 	}
 
-	// v0.2.7
+	// v0.2.7 + v0.2.8
 	// 删除渔夫的NPC属性，因为模组中只用到其性别
-	if (V.NPCNameList.includes("Angler") || Object.values(V.NPCName).filter(npc => npc.nam === "Angler").length > 0) {
-		V.options.terraGender = {
-			Angler: V.NPCName.find(npc => npc.nam === "Angler").gender || "m",
-		};
-		V.NPCNameList.delete("Angler");
-		Object.values(V.NPCName).filter(npc => npc.nam === "Angler").forEach(npcInfo => {V.NPCName.delete(npcInfo);})
+	if (V.options.terraGender === undefined) {
+		if (V.NPCNameList.includes("Angler") || Object.values(V.NPCName).filter(npc => npc.nam === "Angler").length > 0) {
+			V.options.terraGender = {
+				Angler: V.NPCName.find(npc => npc.nam === "Angler").gender || "m",
+			};
+			V.NPCNameList.delete("Angler");
+			Object.values(V.NPCName).filter(npc => npc.nam === "Angler").forEach(npcInfo => {V.NPCName.delete(npcInfo);})
+		} else {
+			V.options.terraGender = {
+				Angler: "m",
+			};
+		}
 	}
 }
 window.terraReloadVariables = terraReloadVariables;

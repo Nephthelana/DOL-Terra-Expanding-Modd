@@ -8,7 +8,7 @@
 	<<elseif $underground_ice_lake_unlock>>
 		<br>
 		你可以从这里前往地下永冻湖。<br>
-		<<icon "location/underground_ice_lake.png">><<link [[顺流而下 (0:20)|Underground Ice Lake Trip]]>><<pass 20>><</link>><br>
+		<<terra_icon "location/underground_ice_lake.png">><<link [[顺流而下 (0:20)|Underground Ice Lake Trip]]>><<pass 20>><</link>><br>
 	<</if>>
 <</widget>>
 
@@ -19,7 +19,7 @@
 你沿着暗河而下。四周的空气越发寒冷。<br>
 <br>
 <<if $terra_accessories_slots.includes("Magiluminescence")>>
-	<span class="gold"><<icon "accessories/Magiluminescence.png">>魔光护符照亮着你前进的路。</span>这个隐蔽的洞穴顶部长有结实的冰锥，看着十分尖利，但没有掉下来的迹象。
+	<span class="gold"><<terra_icon "accessories/Magiluminescence.png">>魔光护符照亮着你前进的路。</span>这个隐蔽的洞穴顶部长有结实的冰锥，看着十分尖利，但没有掉下来的迹象。
 <<elseif $catacombs_torch gt 0>>
 	<<catacombs_torch_text>>这个隐蔽的洞穴顶部似乎长有结实的冰锥。你试图举起火把仔细查看，但火把的热量，再加上曳动的火光，使它们显得摇摇欲坠。你赶紧把火把重新抱在胸前。
 <<else>>
@@ -60,29 +60,29 @@
 <<link [[继续|Underground Ice Lake]]>><</link>>
 
 :: Underground Ice Lake
+<span class="icon"></span>
 <<location "underground_ice_lake">><<effects>>
 <<set $fishing_place_ice_unlock to true>>
 你站在这片地下永冻湖前。周围的银装素裹让你感觉这里像是一片静谧的桃花源——除了冷之外什么都好。<br>
 <br>
 你可以在这里练习滑冰。<br>
-<<lakeicon "skate">><<link [[滑冰 (0:30)|Underground Ice Lake Skate]]>><<pass 30>><<tiredness 5>><<danceskill 5>><</link>><<gtiredness>><<gdanceskill>><br>
+<span class="icon"><<lakeicon "skate">></span><<link [[滑冰 (0:30)|Underground Ice Lake Skate]]>><<pass 30>><<tiredness 5>><<danceskill 5>><</link>><<gtiredness>><<gdanceskill>><br>
 <br>
-附近的一片地面上生长着几株盛开着白色花朵的植物。蓝色的茎干看起来柔弱，但和花朵一样，在这个严寒的环境中没有一丝退却。<span class="green">看起来已经开花了。</span><br>
-<<icon "herb/Shiverthorn_placed_blossom.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
+<<herbShiverthornEntrance>>
 <br>
 坚固的冰面下隐约可以见到几条正在游动的鱼。
 <<if $underground_ice_lake_broken gte 0 and getFishingRodObtainedList().length gt 0>>
 	<<print $underground_ice_lake_broken gte 1 ? "你可以在新凿开的冰洞里钓鱼了。" : "冰洞开始重新冻结，但目前还是可以钓鱼的。">><br>
 	<<fishingrod_held_icon>><<link [[在永冻湖钓鱼|Fishing Bitten]]>><<set $fishing_place to "ice">><</link>><br>
 <<elseif $Gravediggers_Shovel>>
-	<span class="teal">你可以用<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子敲出一个足够大的冰洞。</span><br>
+	<span class="teal">你可以用<<terra_icon "tool/Gravediggers_Shovel.png">>掘墓者铲子敲出一个足够大的冰洞。</span><br>
 	<<swimicon "break">><<link [[破冰 (0:30)|Underground Ice Lake Break]]>><<pass 30>><<set $underground_ice_lake_broken to 1>><<tiredness 10>><</link>><<ggtiredness>><br>
 <<else>>
 	<span class="blue">面对这个厚实的冰面，你需要借助工具才能敲开它。如果你向博物馆捐赠足够多的古董，温特会给你一把的。</span><br>
 <</if>>
 <br>
 <<if $Goblin_Tinkerer_intro>>
-	<<icon "fishing/house_icon.png">><<link [[进入小屋|Goblin Tinkerer Room]]>><</link>><br>
+	<<terra_icon "fishing/house_icon.png">><<link [[进入哥布林工匠的小屋|Goblin Tinkerer Room]]>><</link>><br>
 <<elseif currentSkillValue("skulduggery") gte random(600,1000)>>
 	<span class="green">湖对岸似乎还有另一个洞口。</span>如果不仔细观察的话很难发现，看起来像是刻意隐藏起来的。<br>
 	<<investigateicon>><<link [[调查 (0:10)|Underground Ice Lake Investigate]]>><</link>><br>
@@ -112,7 +112,7 @@
 <<link [[继续|Underground Ice Lake]]>><</link>>
 
 :: Underground Ice Lake Break
-你用<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子对冰面一阵敲打和开凿。尽管十分费力，你还是挖出了一个足够用于钓鱼的冰洞。<br>
+你用<<terra_icon "tool/Gravediggers_Shovel.png">>掘墓者铲子对冰面一阵敲打和开凿。尽管十分费力，你还是挖出了一个足够用于钓鱼的冰洞。<br>
 <br>
 <<link [[继续|Underground Ice Lake]]>><</link>>
 

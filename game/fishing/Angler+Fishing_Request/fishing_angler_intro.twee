@@ -2,7 +2,6 @@
 <!-- 初见渔夫 -->
 <<set $terraNPC to "Angler">>
 <<set $fishing_anglerintro to true>>
-<<set C.npc.Angler.init to 1>>
 你将<<terraPronoun>>从沉睡中唤醒。<br>
 <br>
 <<if $options.cute_angler>>

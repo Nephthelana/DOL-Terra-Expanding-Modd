@@ -1,0 +1,72 @@
+:: Widgets Robin Lemonade Water [widget]
+<<widget "robin_lemonade_bottomless_water_bucket">>
+	<<if $Bottomless_Water_Bucket>>
+		<<terra_icon "tool/Bottomless_Water_Bucket.png">>你可以用无底水桶轻松地解决这个问题。<<terraHint>><br>
+		<<link [[从无底水桶中取水|Robin Lemonade Water Terra]]>><</link>><br>
+		<<link [[用别的方法来解决|Robin Lemonade Water Others]]>><</link>><br>
+		<<exitAll>>
+	<</if>>
+<</widget>>
+
+:: Robin Lemonade Water Terra
+<<set _robin to statusCheck("Robin")>>
+<<if $robin_bottomless_water_bucket_seen>>
+	“你知道的，我们有这个好东西。”你从虚空袋中取出无底水桶，将摊位旁的空桶全部装满了水。<br>
+	<br>
+	罗宾高兴地拥抱了你，感谢道：“你真是太可靠了。”<<npcincr Robin love 1>><<glove>><br>
+	<br>
+<<else>>
+	<<set $robin_bottomless_water_bucket_seen to true>>
+	“我有一个更轻松的方案。”你得意地从虚空袋中取出无底水桶，然后在罗宾惊奇的注视下，将摊位旁的空桶全部装满了水。<br>
+	<br>
+	<<if _robin.trauma gte 40>>
+		“天……天哪……”看起来<<he>>对眼前的场景感到难以置信，但还是检查了一下从无底水桶中倒出的水，“甚至水质比商业街的要好得多。真是帮大忙了。”罗宾兴奋地给了你一个拥抱。
+	<<else>>
+		“这太不可思议了！”<<He>>检查着从无底水桶中倒出的水，“而且水质比商业街的要好得多。真是帮大忙了。”罗宾兴奋地给了你一个拥抱。
+	<</if>>
+	<<npcincr Robin love 1>><<glove>><br>
+	<br>
+<</if>>
+你将
+<<if _robin.trauma gte 40>>
+	<<set $robinmoney += 20>>
+	£20
+<<else>>
+	<<set $robinmoney += 2>>
+	£2
+<</if>>
+还给了罗宾。<br>
+<<endevent>>
+<<lemonade_stand_options>>
+
+:: Robin Lemonade Water Others
+<<set _robin to statusCheck("Robin")>>
+你决定还是用别的方法来取水。<br>
+<br>
+<<if _robin.trauma gte 40>>
+	当你离开海滩时，你看到一家卖大瓶装水的商店。罗宾的钱只够买四瓶。你可以去商业街买一些，但你不想让罗宾一个人待太久。
+<<else>>
+	当你离开海滩时，你看到一家卖大瓶装水的商店。罗宾说得对，附近的水确实很贵。不过，从商业街一路搬水过来会更困难。
+<</if>>
+<br><br>
+<<link [[去商业街|Robin's Lemonade High]]>><</link>>
+<br>
+<<if $money gte 2000>>
+	<<link [[用自己的钱买水 (£20)|Robin's Lemonade Buy]]>><<set $phase to 0>><<money -2000 "robin">><</link>>
+	<br>
+<</if>>
+<<if _robin.trauma gte 40>>
+	<<link [[用罗宾的钱买水|Robin's Lemonade Buy]]>><<set $phase to 1>><</link>>
+	<br>
+<</if>>
+<<set $skulduggerydifficulty to 200>>
+<<link [[偷水|Robin's Lemonade Steal]]>><<crimeUp 20 "petty">><</link>><<skulduggerydifficulty>><<crime "petty">>
+<br>
+<<if hasSexStat("promiscuity", 2)>>
+	<<if _robin.trauma gte 40>>
+		<<link [[为得到便宜的水调情|Robin's Lemonade Seduction]]>><<set $phase to 1>><</link>><<promiscuous2>>
+	<<else>>
+		<<link [[为得到便宜的水调情|Robin's Lemonade Seduction]]>><<set $phase to 0>><</link>><<promiscuous2>>
+	<</if>>
+	<br>
+<</if>>

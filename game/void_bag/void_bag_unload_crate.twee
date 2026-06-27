@@ -10,13 +10,13 @@
 		<<set _unload_crate_Bait = random(3,7)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<if random(1,8) is 1>>
 		<<if !["Magic_Mirror","Cell_Phone","Shellphone"].some(a => V[a])>>
 			<<set $Magic_Mirror to true>>
 		<</if>>
-		、<<icon "tool/Magic_Mirror.png">>魔镜
+		、<<terra_icon "tool/Magic_Mirror.png">>魔镜
 	<</if>>
 	<<if random(1,5) is 1>>
 		<<set $condoms to ($condoms + 1) or 1>>
@@ -55,12 +55,12 @@
 	<<money _unload_crate_money "宝匣">>
 	<<printmoney _unload_crate_money>>
 	<<if random(1,23) is 1>>
-		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
+		、<<terra_icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
 	<</if>>
 	<<if random(1,5) is 1>>
 		<<set _unload_crate_Iron_Bar = random(4,7)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -68,12 +68,12 @@
 			<<set _unload_crate_Bait = random(2,4)>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set _unload_crate_Bait = random(2,4)>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<if random(1,10) is 1>>
@@ -96,16 +96,16 @@
 		<<printmoney _unload_crate_money>>
 	<</if>>
 	<<if random(1,40) is 1>>
-		、<<icon "accessories/Sailfish_Boots.png">>航鱼靴
+		、<<terra_icon "accessories/Sailfish_Boots.png">>航鱼靴
 		<<set $Sailfish_Boots to true>>
 	<</if>>
 	<<if random(1,10) is 1>>
-		、<<icon "furniture_item/Extractinator.png">>提炼机<mouse class="tooltip linkBlue">(?)<span>可以将钓鱼垃圾转换为低级鱼饵，还可以将鹰塔的垃圾转换为鹰塔建造所需的材料。</span></mouse>
+		、<<terra_icon "furniture_item/Extractinator.png">>提炼机<mouse class="tooltip linkBlue">(?)<span>可以将钓鱼垃圾转换为低级鱼饵，还可以将鹰塔的垃圾转换为鹰塔建造所需的材料。</span></mouse>
 		<<set $Extractinator to true>>
 	<</if>>
 	<<if random(1,10) is 1>>
 		<<set _unload_crate_Iron_Bar = random(2,5)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,3) is 1>>
@@ -113,12 +113,12 @@
 			<<set _unload_crate_Bait = random(1,4)>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set _unload_crate_Bait = random(1,4)>>
 			<<set $Apprentice_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<if random(1,15) is 1>>
@@ -135,21 +135,21 @@
 	<<money _unload_crate_money "宝匣">>
 	<<printmoney _unload_crate_money>>
 	<<if random(1,40) lte 9>>
-		、<<icon "accessories/Inner_Tube.png">>浮游圈
+		、<<terra_icon "accessories/Inner_Tube.png">>浮游圈
 		<<set $Inner_Tube to true>>
 	<</if>>
 	<<if random(1,10) is 1>>
-		、<<icon "pet/pet_item/Shark_Bait.png">>鲨鱼鱼饵<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
+		、<<terra_icon "pet/pet_item/Shark_Bait.png">>鲨鱼鱼饵<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具，或在“盔甲&饰品”窗口里使用它</span></mouse>
 		<<set $pet_list.pushUnique("Shark_Bait")>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Sea_Remains to random(1,2)>>
-		、<<icon "material/Sea_Remains.png">>海洋残渣(_unload_crate_Sea_Remains)
+		、<<terra_icon "material/Sea_Remains.png">>海洋残渣(_unload_crate_Sea_Remains)
 		<<set $Sea_Remains += _unload_crate_Sea_Remains>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -157,11 +157,11 @@
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -172,25 +172,25 @@
 	<<set $unload_crate_count.Oasis_Crate += 1>>
 	<<switch random(1,5)>>
 		<<case 1>>
-			<<icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
+			<<terra_icon "fishing/fishing_pole/Scarab_Fishing_Rod.png">>甲虫钓竿
 			<<set $Scarab_Fishing_Rod to true>>
 		<<case 2>>
-			<<icon "tool/Snake_Charmers_Flute.png">>耍蛇者长笛
+			<<terra_icon "tool/Snake_Charmers_Flute.png">>耍蛇者长笛
 			<<set $Snake_Charmers_Flute to true>>
 		<<case 3>>
 			<<if !["Magic_Conch","Shellphone"].some(a => V[a])>>
 				<<set $Magic_Conch to true>>
 			<</if>>
-			<<icon "tool/Magic_Conch.png">>魔法海螺
+			<<terra_icon "tool/Magic_Conch.png">>魔法海螺
 		<<case 4>>
-			<<icon "accessories/Dunerider_Boots.png">>沙丘行者靴
+			<<terra_icon "accessories/Dunerider_Boots.png">>沙丘行者靴
 			<<set $Dunerider_Boots to true>>
 		<<case 5>>
-			<<icon "accessories/Ancient_Chisel.png">>远古凿子
+			<<terra_icon "accessories/Ancient_Chisel.png">>远古凿子
 			<<set $Ancient_Chisel to true>>
 	<</switch>>
 	<<if random(1,20) is 1>>
-		、<<icon "accessories/Sandstorm_in_a_Bottle.png">>沙暴瓶<<set $Sandstorm_in_a_Bottle to true>>
+		、<<terra_icon "accessories/Sandstorm_in_a_Bottle.png">>沙暴瓶<<set $Sandstorm_in_a_Bottle to true>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		、
@@ -200,7 +200,7 @@
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -208,11 +208,11 @@
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -223,10 +223,10 @@
 	<<set $unload_crate_count.Jungle_Crate += 1>>
 	<<switch random(1,2)>>
 		<<case 1>>
-			<<icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿
+			<<terra_icon "fishing/fishing_pole/Fiberglass_Fishing_Pole.png">>玻璃钢钓竿
 			<<set $Fiberglass_Fishing_Pole to true>>
 		<<case 2>>
-			<<icon "tool/Staff_of_Regrowth.png">>再生法杖
+			<<terra_icon "tool/Staff_of_Regrowth.png">>再生法杖
 			<<set $Staff_of_Regrowth to true>>
 	<</switch>>
 	、<<gardenicon "fertiliser">>一袋肥料<<set $fertiliser.current += 1>>
@@ -238,7 +238,7 @@
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -246,11 +246,11 @@
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -269,7 +269,7 @@
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -277,11 +277,11 @@
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -292,14 +292,14 @@
 	<<set $unload_crate_count.Sky_Crate += 1>>
 	<<switch random(1,2)>>
 		<<case 1>>
-			<<icon "tool/Starfury.png">>星怒<mouse class="tooltip linkBlue">(?)<span>它没有任何用处，但它应该出现在这里()</span></mouse>
+			<<terra_icon "tool/Starfury.png">>星怒<mouse class="tooltip linkBlue">(?)<span>它没有任何用处，但它应该出现在这里()</span></mouse>
 			<<set $Starfury to true>>
 		<<case 2>>
-			<<icon "accessories/Lucky_Horseshoe.png">>幸运马掌
+			<<terra_icon "accessories/Lucky_Horseshoe.png">>幸运马掌
 			<<set $Lucky_Horseshoe to true>>
 	<</switch>>
 	<<if random(1,20) is 1>>
-		、<<icon "accessories/Fledgling_Wings.png">>雏翼
+		、<<terra_icon "accessories/Fledgling_Wings.png">>雏翼
 		<<set $Fledgling_Wings to true>>
 	<</if>>
 	<<if random(1,4) is 1>>
@@ -310,12 +310,12 @@
 	<</if>>
 	<<if random(1,2) is 1>>
 		<<set _unload_crate_Fallen_Star = random(1,3)>>
-		、<<icon "material/Fallen_Star.png">>坠落之星(_unload_crate_Fallen_Star)
+		、<<terra_icon "material/Fallen_Star.png">>坠落之星(_unload_crate_Fallen_Star)
 		<<set $Fallen_Star += _unload_crate_Fallen_Star>>
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -323,11 +323,11 @@
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -338,18 +338,18 @@
 	<<set $unload_crate_count.Frozen_Crate += 1>>
 	<<switch random(1,4)>>
 		<<case 1>>
-			<<icon "accessories/Flurry_Boots.png">>疾风雪靴
+			<<terra_icon "accessories/Flurry_Boots.png">>疾风雪靴
 			<<set $Flurry_Boots to true>>
 		<<case 2>>
 			<<if !["Ice_Mirror","Cell_Phone","Shellphone"].some(a => V[a])>>
 				<<set $Ice_Mirror to true>>
 			<</if>>
-			<<icon "tool/Ice_Mirror.png">>冰雪镜
+			<<terra_icon "tool/Ice_Mirror.png">>冰雪镜
 		<<case 3>>
-			<<icon "accessories/Ice_Skates.png">>溜冰鞋
+			<<terra_icon "accessories/Ice_Skates.png">>溜冰鞋
 			<<set $Ice_Skates to true>>
 		<<case 4>>
-			<<icon "accessories/Blizzard_in_a_Bottle.png">>暴雪瓶
+			<<terra_icon "accessories/Blizzard_in_a_Bottle.png">>暴雪瓶
 			<<set $Blizzard_in_a_Bottle to true>>
 	<</switch>>
 	<<if random(1,4) is 1>>
@@ -360,7 +360,7 @@
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -368,11 +368,11 @@
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -383,10 +383,10 @@
 	<<set $unload_crate_count.Obsidian_Crate += 1>>
 	<<switch random(1,8)>>
 		<<case 8>>
-			<<icon "accessories/Lava_Charm.png">>熔岩护身符
+			<<terra_icon "accessories/Lava_Charm.png">>熔岩护身符
 			<<set $Lava_Charm to true>>
 		<<default>>
-			<<icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">>防熔岩钓钩
+			<<terra_icon "fishing/fishing_accessories/Lavaproof_Fishing_Hook.png">>防熔岩钓钩
 			<<set $Lavaproof_Fishing_Hook to true>>
 	<</switch>>
 	<<if random(1,3) is 1>>
@@ -412,7 +412,7 @@
 	<</if>>
 	<<if random(1,4) is 1>>
 		<<set _unload_crate_Iron_Bar = random(6,16)>>
-		、<<icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
+		、<<terra_icon "material/Iron_Bar.png">>铁锭(_unload_crate_Iron_Bar)
 		<<set $Iron_Bar += _unload_crate_Iron_Bar>>
 	<</if>>
 	<<if random(1,2) is 1>>
@@ -420,11 +420,11 @@
 		<<if random(1,2) is 1>>
 			<<set $Journeyman_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 		<<else>>
 			<<set $Master_Bait += _unload_crate_Bait>>
 			<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-			、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+			、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 		<</if>>
 	<</if>>
 	<<updatesidebarmoney>>
@@ -438,7 +438,7 @@
 	<<printmoney _unload_crate_money>>
 	<<if random(1,5) is 1>>
 		<<set _unload_crate_Sea_Prism = random(2,5)>>
-		、<<icon "material/Sea_Prism.png">>海棱晶(_unload_crate_Sea_Prism)
+		、<<terra_icon "material/Sea_Prism.png">>海棱晶(_unload_crate_Sea_Prism)
 		<<set $Sea_Prism += _unload_crate_Sea_Prism>>
 	<</if>>
 	<<set _bait_chance to random(1,30)>>
@@ -446,17 +446,17 @@
 		<<set _unload_crate_Bait = random(2,3)>>
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -469,10 +469,10 @@
 	<<printmoney _unload_crate_money>>
 	<<if random(1,4) is 1>>
 		<<if random(1,2) is 1>>
-			、<<icon "pet/pet_item/Strange_Orb.png">>奇光球<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse>
+			、<<terra_icon "pet/pet_item/Strange_Orb.png">>奇光球<mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具，或在“盔甲&饰品”窗口里使用它</span></mouse>
 			<<set $pet_list.pushUnique("Strange_Orb")>>
 		<<else>>
-			、<<icon "tool/Torrential_Tear.png">>洪流之泪
+			、<<terra_icon "tool/Torrential_Tear.png">>洪流之泪
 			<<set $Torrential_Tear to true>>
 		<</if>>
 	<</if>>
@@ -481,17 +481,17 @@
 		<<set _unload_crate_Bait = random(2,3)>>
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -503,24 +503,24 @@
 	<<money _unload_crate_money "宝匣">>
 	<<printmoney _unload_crate_money>>
 	<<set _unload_crate_Demonic_Bone_Ash = random(1,4)>>
-	<<icon "material/Demonic_Bone_Ash.png">>恶魔骨灰(_unload_crate_Demonic_Bone_Ash)
+	<<terra_icon "material/Demonic_Bone_Ash.png">>恶魔骨灰(_unload_crate_Demonic_Bone_Ash)
 	<<set $Demonic_Bone_Ash += _unload_crate_Demonic_Bone_Ash>>
 	<<set _bait_chance to random(1,30)>>
 	<<if _bait_chance lte 10>>
 		<<set _unload_crate_Bait = random(2,3)>>
 		<<set $Apprentice_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Apprentice_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 16>>
 		<<set _unload_crate_Bait = random(1,3)>>
 		<<set $Journeyman_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Journeyman_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(_unload_crate_Bait)
 	<<elseif _bait_chance lte 19>>
 		<<set _unload_crate_Bait = random(1,2)>>
 		<<set $Master_Bait += _unload_crate_Bait>>
 		<<bestiaryStatistics "bait" "Master_Bait" _unload_crate_Bait>>
-		、<<icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
+		、<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵(_unload_crate_Bait)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>
@@ -529,17 +529,18 @@
 	<<set $Oyster -= 1>>
 	<<set $unload_crate_count.Oyster += 1>>
 	<<set $Shucked_Oyster += 1>>
-	<<icon "food/Shucked_Oyster.png">>去壳牡蛎(1)
+	<<terra_icon "food/Shucked_Oyster.png">>去壳牡蛎(1)
+	<!-- 总体开出珍珠的概率为1/5，摊分到粉珍珠上即为1/75 -->
 	<<if random(1,5) is 1>>
 		<<set _pearl_chance = random(1,45)>>
 		<<if _pearl_chance lte 28>>
-			、<<icon "material/White_Pearl.png">>白珍珠(1)
+			、<<terra_icon "material/White_Pearl.png">>白珍珠(1)
 			<<set $White_Pearl += 1>>
 		<<elseif _pearl_chance lte 42>>
-			、<<icon "material/Black_Pearl.png">>黑珍珠(1)
+			、<<terra_icon "material/Black_Pearl.png">>黑珍珠(1)
 			<<set $Black_Pearl += 1>>
 		<<else>>
-			、<<icon "material/Pink_Pearl.png">>粉珍珠(1)
+			、<<terra_icon "material/Pink_Pearl.png">>粉珍珠(1)
 			<<set $Pink_Pearl += 1>>
 		<</if>>
 	<</if>>
@@ -551,17 +552,17 @@
 	<<set _unload_crate_Worm to random(5,8)>>
 	<<set $Worm += _unload_crate_Worm>>
 	<<bestiaryStatistics "bait" "Worm" _unload_crate_Worm>>
-	<<icon "fishing/bait/Worm.png">>蠕虫(_unload_crate_Worm)
+	<<terra_icon "fishing/bait/Worm.png">>蠕虫(_unload_crate_Worm)
 	<<if random(1,10) lte 3>>
 		<<set _unload_crate_Enchanted_Nightcrawler to random(1,2)>>
 		<<set $Enchanted_Nightcrawler += _unload_crate_Enchanted_Nightcrawler>>
 		<<bestiaryStatistics "bait" "Enchanted_Nightcrawler" _unload_crate_Enchanted_Nightcrawler>>
-		、<<icon "fishing/bait/Enchanted_Nightcrawler.png">>附魔夜行者(_unload_crate_Enchanted_Nightcrawler)
+		、<<terra_icon "fishing/bait/Enchanted_Nightcrawler.png">>附魔夜行者(_unload_crate_Enchanted_Nightcrawler)
 	<</if>>
 	<<if random(1,20) is 1>>
 		<<set $Gold_Worm += 1>>
 		<<bestiaryStatistics "bait" "Gold_Worm" 1>>
-		、<<icon "fishing/bait/Gold_Worm.png">>金蠕虫(1)
+		、<<terra_icon "fishing/bait/Gold_Worm.png">>金蠕虫(1)
 	<</if>>
 	<<updatesidebarmoney>>
 <</widget>>

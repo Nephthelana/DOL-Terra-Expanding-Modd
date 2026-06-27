@@ -24,7 +24,7 @@
 	<<set $fishing_harvest_count += 1>>
 	<<run fishingEnd()>>
 	<span class="green">你猛地一收竿，宣示着你的胜利！</span><br>
-	你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
+	你钓到了<<if $fishing_harvest.icon isnot undefined>><<terra_icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
 	<<baitConsumed>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Robin Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>
@@ -57,7 +57,7 @@
 				<span class="red">看起来你在咬钩时就没有渔获判定成功，你是怎么看到这条消息的？这是不应该存在的情况，请向模组作者反馈</span><br>
 			<<default>>
 				<<run fishingHarvest()>>
-				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
+				你钓到了<<if $fishing_harvest.icon isnot undefined>><<terra_icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！
 		<</switch>>
 	<</if>>
 	<<baitConsumed>>

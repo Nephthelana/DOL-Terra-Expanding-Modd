@@ -56,7 +56,7 @@
 	<br>
 	约旦把星之果实交给了你。“星之果实在鹈鹕镇是十分珍惜的存在。据说它能吸引祝尼魔，不过我没能幸运地瞥见这种生物。你的Joja可乐让我想起了这个故事，这个星之果实就作为回礼吧。”<br>
 	<br>
-	<span class="gold">你获得了<<icon "pet/pet_item/Stardrop.png">>星之果实！</span><mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里的家具</span></mouse><br>
+	<span class="gold">你获得了<<terra_icon "pet/pet_item/Stardrop.png">>星之果实！</span><mouse class="tooltip linkBlue">(?)<span>可以摆在孤儿院卧室里，或在“盔甲&饰品”窗口里使用它</span></mouse><br>
 <<else>>
 	希望你喜欢我先前送给你的那个<span class="gold">星之果实</span>。“<br>
 <</if>>

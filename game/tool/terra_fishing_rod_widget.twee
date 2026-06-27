@@ -13,7 +13,7 @@
 							<<capture _fishingRod>>
 								<div class="terraItem">
 									<div class="terraIconTool" @tooltip="`${_fishingRod.cn_name}<br><br>▶${_fishingRod.des}`">
-										<<icon `_fishingRod.icon`>>
+										<<terra_icon `_fishingRod.icon`>>
 									</div>
 									<div class="terraDivider"></div>
 									<div class="terraLinks">

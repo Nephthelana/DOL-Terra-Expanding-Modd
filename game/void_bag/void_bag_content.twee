@@ -1,6 +1,12 @@
 :: Void Bag [widget]
 <<widget "void_bag">>
-	<<button '<<icon "Void_Bag.png">>虚空袋'>><<iModReplace "voidBagOverlay">><</button>>
+	<<button '<<terra_icon "Void_Bag.png">>虚空袋'>>
+		<<if (window.modUtils.getMod('maplebirch'))>>
+			<<maplebirchReplace "voidBagOverlay" "customize">>
+		<<else>>
+			<<iModReplace "voidBagOverlay">>
+		<</if>>
+	<</button>>
 <</widget>>
 
 <<widget "voidBagOverlay">>
@@ -52,9 +58,9 @@
 		<div class="terraInventory">
 			<<for _rf range $fishing_request_fish>>
 				<<set _rfInfo to setup.terraRequestFish[_rf]>>
-            	<div class="terraItem" @tooltip="`<span class='gold'>${_rfInfo.cn_name}</span>`">
+				<div class="terraItem" @tooltip="`<span class='gold'>${_rfInfo.cn_name}</span>`">
 					<div class="terraIcon">
-						<<icon `_rfInfo.icon`>>
+						<<terra_icon `_rfInfo.icon`>>
 					</div>
 				</div>
 			<</for>>
@@ -74,18 +80,18 @@
 	<</if>>
 	<!-- 持有鱼 -->
 	<span class="gold bold">鱼</span><mouse class="tooltip linkBlue">(?)<span>普通渔获作为<i>材料</i>可以用于制作物品。你也可以在dom罗宾拓展mod中，和罗宾一起烤鱼并出售它们中的一部分。</span></mouse><br>
-	<<if getFishObtainedList().length gte 1>>
-        <div class="terraInventory">
-			<<set _fishObtained to getFishObtainedList()>>
-			<<for _f range _fishObtained>>
-				<<set _fInfo to setup.terraFish[_f]>>
-				<<set _isMaterial to _fInfo.material ? "<br><i>材料</i>" : "">>
-            	<div class="terraItem" @tooltip="`${_fInfo.cn_name}${_isMaterial}`">
-					<div class="terraIcon">
-						<<icon `_fInfo.icon`>>
+	<<if getFishObtainedList().length gte 1>> <!-- 检测是否持有任意一种鱼类，否的话就不显示这部分 -->
+        <div class="terraInventory"> <!-- 物品栏的大框架的css，定义了大致上的结构，直接套用 -->
+			<<set _fishObtained to getFishObtainedList()>> <!-- 将身上的普通鱼种类的集合放在一个临时变量里 -->
+			<<for _f range _fishObtained>> <!-- 创建for循环，用于显示每种普通鱼 -->
+				<<set _fInfo to setup.terraFish[_f]>> <!-- 将某种普通鱼的全部信息，从setup里调用出来放在一个临时变量里 -->
+				<<set _isMaterial to _fInfo.material ? "<br><i>材料</i>" : "">> <!-- 根据setup里的material，决定是否显示“材料”提示 -->
+            	<div class="terraItem" @tooltip="`${_fInfo.cn_name}${_isMaterial}`"> <!-- 物品栏的每个项目的css，以及显示对应的工具提示 -->
+					<div class="terraIcon"> <!-- 物品栏的每个项目的图标的css -->
+						<<terra_icon `_fInfo.icon`>> <!-- 根据setup里的icon，决定显示具体图标 -->
 					</div>
-					<div class="terraDivider"></div>
-					_fInfo.amount
+					<div class="terraDivider"></div> <!-- 物品栏里，分隔图标与持有数量的分界线 -->
+					_fInfo.amount <!-- 物品栏里，显示的物品数量 -->
 				</div>
 			<</for>>
 		</div>
@@ -95,7 +101,7 @@
 	<!-- 持有垃圾 -->
 	<span class="gold bold">垃圾</span><mouse class="tooltip linkBlue">(?)<span>如果你的渔力足够低(<50)，或者在<<print $fishing_place_park_unlock ? "公园的喷泉" : "一个十分狭小的水域">>里钓鱼，就有可能钓到看起来无用的垃圾。</span></mouse><br>
 	<<if getTrashObtainedList().length gte 1>>
-		<span id="extractTrashHint">你可以用<<icon "furniture_item/Extractinator.png">>提炼机将垃圾转化为低级鱼饵</span>
+		<span id="extractTrashHint">你可以用<<terra_icon "furniture_item/Extractinator.png">>提炼机将垃圾转化为低级鱼饵</span>
         <span id="trashList">
 			<<trashList>>
 		</span>
@@ -113,16 +119,18 @@
 	</span>
 	<br>
 	<span class="gold bold">材料</span><mouse class="tooltip linkBlue">(?)<span>一部分物品并不能直接发挥特别的用处，但它们可以作为合成的材料。你可以从<<print $guide_mod_hint ? "向导" : "某位住在森林里的人">>那里得到提示。</span></mouse><br>
-	<<set _materialObtained to getMaterialObtainedList()>>
+	<<set _materialObtained to getMaterialOnlyObtainedList()>>
 	<<if _materialObtained.length gt 0>>
 		<div class="terraInventory">
 			<<for _m range _materialObtained>>
 				<<set _mInfo to setup.terraMaterial[_m]>>
 				<<capture _mInfo>>
 					<<if _mInfo.type is "material">>
-						<div class="terraItem" @tooltip="_mInfo.cn_name">
+						<<set _tooltip to `${_mInfo.cn_name}`>>
+						<<set _tooltip += _mInfo.des ? `<br><br>${_mInfo.des}` : "">>
+						<div class="terraItem" @tooltip="_tooltip">
 							<div class="terraIcon">
-								<<icon `_mInfo.icon`>>
+								<<terra_icon `_mInfo.icon`>>
 							</div>
 							<div class="terraDivider"></div>
 							_mInfo.amount
@@ -133,6 +141,31 @@
 		</div>
 	<<else>>
 		你没有携带的材料。
+	<</if>>
+	<br>
+	<span class="gold bold">杂项</span><br>
+	<<set _miscellaneousObtained to Object.keys(setup.terraMiscellaneous).filter(m => V[m])>>
+	<<if _miscellaneousObtained.length gt 0>>
+		<div class="terraInventory">
+			<<for _mi range _miscellaneousObtained>>
+				<<set _miInfo to setup.terraMiscellaneous[_mi]>>
+				<<capture _miInfo>>
+					<div class="terraItem" @tooltip="_miInfo.cn_name">
+						<div class="terraIcon">
+							<<terra_icon `_miInfo.icon`>>
+						</div>
+						<div class="terraDivider"></div>
+						<<if typeof V[_miInfo.name] is "number">>
+							<<print V[_miInfo.name]>>
+						<<else>>
+							-
+						<</if>>
+					</div>
+				<</capture>>
+			<</for>>
+		</div>
+	<<else>>
+		你没有携带的杂项物品。
 	<</if>>
 
 <</widget>>
@@ -150,7 +183,7 @@
 			<label>
 				<div class="terraItem">
 					<div class="terraIconBait" @tooltip="_tooltip">
-						<<icon `_bInfo.icon`>>
+						<<terra_icon `_bInfo.icon`>>
 					</div>
 					<div class="terraDivider"></div>
 					<<radiobutton "$Bait" _bInfo.name autocheck>> <<= _amount>>
@@ -163,7 +196,7 @@
 :: Unload Crate [widget]
 <<widget "UnloadCrateHint">>
 	<<set _ucInfo to setup.terraCrate[_void_bag_unload_crate]>>
-	你打开了一个<<icon `_ucInfo.icon`>>_ucInfo.cn_name。<br>
+	你打开了一个<<terra_icon `_ucInfo.icon`>>_ucInfo.cn_name。<br>
 	<span class="gold">
 		你得到了_ucInfo.unload
 	</span><br>
@@ -186,7 +219,7 @@
 				<<capture _cInfo>>
 					<div class="terraItem">
 						<div class="terraIcon" @tooltip="`${_cInfo.cn_name}`">
-							<<icon `_cInfo.icon`>>
+							<<terra_icon `_cInfo.icon`>>
 						</div>
 						<div class="terraDivider"></div>
 						_cInfo.amount
@@ -216,18 +249,18 @@
 
 :: Extract Trash [widget]
 <<widget "extractTrashHint">>
-	<<icon "furniture_placed/Extractinator_(placed).gif">>你提炼得到了
+	<<terra_icon "furniture_placed/Extractinator_(placed).gif">>你提炼得到了
 	<<switch random(1,36)>>
-		<<case 1>><<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(1)
+		<<case 1>><<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵(1)
 			<<bestiaryStatistics "bait" "Journeyman_Bait" 1>>
 			<<set $Journeyman_Bait += 1>>
-		<<case 2 3>><<icon "fishing/bait/Worm.png">>蠕虫(1)
+		<<case 2 3>><<terra_icon "fishing/bait/Worm.png">>蠕虫(1)
 			<<bestiaryStatistics "bait" "Worm" 1>>
 			<<set $Worm += 1>>
-		<<case 4 5 6 7 8 9>><<icon "fishing/bait/Snail.png">>蜗牛(1)
+		<<case 4 5 6 7 8 9>><<terra_icon "fishing/bait/Snail.png">>蜗牛(1)
 			<<bestiaryStatistics "bait" "Snail" 1>>
 			<<set $Snail += 1>>
-		<<default>><<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(1)
+		<<default>><<terra_icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵(1)
 			<<bestiaryStatistics "bait" "Apprentice_Bait" 1>>
 			<<set $Apprentice_Bait += 1>>
 	<</switch>>。
@@ -241,7 +274,7 @@
 			<<capture _tInfo>>
        			<div class="terraItem" @tooltip="`${_tInfo.cn_name}`">
 					<div class="terraIcon">
-						<<icon `_tInfo.icon`>>
+						<<terra_icon `_tInfo.icon`>>
 					</div>
 					<div class="terraDivider"></div>
 					_tInfo.amount
@@ -259,9 +292,11 @@
 									<<replace #trashList>>
 										<<trashList>>
 									<</replace>>
-									<<replace #baitList>>
-										<<baitList>>
-									<</replace>>
+									<<if !["Fishing","Robin Fishing"].includes($passage) and getFishingRodObtainedList().length gt 0>>
+										<<replace #baitList>>
+											<<baitList>>
+										<</replace>>
+									<</if>>
 								<</link>>
 							<</if>>
 						</div>
@@ -285,7 +320,7 @@
 						<<set _isMaterial to _foodInfo.material ? "<br><i>材料</i>" : "">>
 						<div @tooltip="`${_foodInfo.cn_name}${_isMaterial}<br><br>▶${_foodInfo.des}`">
 							<div class="terraIcon">
-								<<icon `_foodInfo.icon`>>
+								<<terra_icon `_foodInfo.icon`>>
 							</div>
 						</div>
 						<div class="terraDivider"></div>
@@ -300,7 +335,7 @@
 									<<else>>
 										<<earnFeat "Don't Starve">>
 										_foodInfo.use
-										你吃了一份<<icon `_foodInfo.icon`>>_foodInfo.cn_name。_foodInfo.use_hint<br>
+										你吃了一份<<terra_icon `_foodInfo.icon`>>_foodInfo.cn_name。_foodInfo.use_hint<br>
 									<</if>>
 								<</replace>>
 								<<replace #foodList>>

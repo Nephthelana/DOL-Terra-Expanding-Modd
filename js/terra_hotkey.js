@@ -68,18 +68,30 @@ window.terraMainButton = terraMainButton;
 
 function voidBagOverlayBox() {
 	const fragment = document.createDocumentFragment();
-	fragment.append(wikifier("<<iModReplace 'voidBagOverlay'>>"));
+	if (window.modUtils.getMod('maplebirch')) {
+		fragment.append(wikifier("<<maplebirchReplace 'voidBagOverlay' 'customize'>>"));
+	} else {
+		fragment.append(wikifier("<<iModReplace 'voidBagOverlay'>>"));
+	}
 }
 window.voidBagOverlayBox = voidBagOverlayBox;
 
 function equipmentOverlayBox() {
 	const fragment = document.createDocumentFragment();
-	fragment.append(wikifier("<<iModReplace 'terraExpandEquipmentOverlay'>>"));
+	if (window.modUtils.getMod('maplebirch')) {
+		fragment.append(wikifier("<<maplebirchReplace 'terraExpandEquipmentOverlay' 'customize'>>"));
+	} else {
+		fragment.append(wikifier("<<iModReplace 'terraExpandEquipmentOverlay'>>"));
+	}
 }
 window.equipmentOverlayBox = equipmentOverlayBox;
 
 function toolOverlayBox() {
 	const fragment = document.createDocumentFragment();
-	fragment.append(wikifier("<<iModReplace 'terraExpandToolOverlay'>>"));
+	if (window.modUtils.getMod('maplebirch')) {
+		fragment.append(wikifier("<<maplebirchReplace 'terraExpandToolOverlay' 'customize'>>"));
+	} else {
+		fragment.append(wikifier("<<iModReplace 'terraExpandToolOverlay'>>"));
+	}
 }
 window.toolOverlayBox = toolOverlayBox;

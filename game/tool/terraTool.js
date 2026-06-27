@@ -166,7 +166,7 @@ setup.terraTool = {
         type: "tool",
         obtained: V.Staff_of_Regrowth,
         icon: "tool/Staff_of_Regrowth.png",
-		des: "用它进行采集可提高炼金植物的采集量(相关功能未实装)",
+		des: "提高草药收获量，收获成熟期草药时也能得到种子",
 		use: "<<terra_tool_use_Staff_of_Regrowth>>"
     },
 	"Starfury": {

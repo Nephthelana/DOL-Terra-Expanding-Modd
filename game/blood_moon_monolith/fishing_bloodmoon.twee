@@ -4,9 +4,9 @@
 		<span class="red">一个熟悉的巨大身影逐渐浮现出来。尽管你已经见过它一面，但你仍不寒而栗。</span><<gstress>><<stress 3>><br>
 		<br>
 		<<if $plants["blood_lemon"].amount lt 10>>
-			<<mysteryicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
+			<<mysteryicon>><span class="teal">保险起见，再多摘一些<<terra_icon "tending/blood_lemon.gif">>血柠吧。</span>
 		<<else>>
-			<<icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 0]]>><</link>>
+			<<terra_icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 0]]>><</link>>
 			<</if>><br>
 	<<else>>
 		<<if $Sonar_Potion_countdown>>
@@ -20,9 +20,9 @@
 		<<if $plants["blood_lemon"] is undefined>>
 			<<mysteryicon>><span class="blue">去森林深处找找看吧。</span>
 		<<elseif $plants["blood_lemon"].amount lt 10>>
-			<<mysteryicon>><span class="teal">保险起见，再多摘一些<<icon "tending/blood_lemon.gif">>血柠吧。</span>
+			<<mysteryicon>><span class="teal">保险起见，再多摘一些<<terra_icon "tending/blood_lemon.gif">>血柠吧。</span>
 		<<else>>
-			<<icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 1]]>><</link>>
+			<<terra_icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice 1]]>><</link>>
 		<</if>><br>
 	<</if>>
 	<br>
@@ -44,10 +44,10 @@
 <br>
 恐惧鹦鹉螺重新沉入了水里，你将血泪小心地保存起来。<br>
 <br>
-<span class="gold">你获得了<<icon "tool/Bloody_Tear.png">>血泪！</span><<set $Bloody_Tear += 1>><br>
+<span class="gold">你获得了<<terra_icon "tool/Bloody_Tear.png">>血泪！</span><<set $Bloody_Tear += 1>><br>
 <<if random($blood_moon_sacrifice,9) gte 9 and $blood_moon_monolith is undefined>>
 	<<set $blood_moon_monolith to 0>>
-	同时，一个奇怪的"灯泡"被不知名的一股力托上水面，并被推到了岸边：这是一个基座上嵌有月球模型的柱子。基座底部刻有一个图案，你一眼认出这就是潜伏在血染水面之下的残忍软体动物——恐惧鹦鹉螺。<span class="gold">你获得了<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">>血月天塔柱！</span><br>
+	同时，一个奇怪的"灯泡"被不知名的一股力托上水面，并被推到了岸边：这是一个基座上嵌有月球模型的柱子。基座底部刻有一个图案，你一眼认出这就是潜伏在血染水面之下的残忍软体动物——恐惧鹦鹉螺。<span class="gold">你获得了<<terra_icon "blood_moon_monolith/Blood_Moon_Monolith.png">>血月天塔柱！</span><br>
 	<br>
 <</if>>
 <br>
@@ -152,7 +152,7 @@
 <br>
 你将它捡起，它是一个泪滴形状的晶体，你看见其中仍有液体在流动，但你试着摇晃它的时候，发现它完全是个固体。<span class="blue">你可以跟向导了解有关它的事情。</span><br>
 <br>
-<span class="gold">你获得了<<icon "tool/Bloody_Tear.png">>血泪！</span><br>
+<span class="gold">你获得了<<terra_icon "tool/Bloody_Tear.png">>血泪！</span><br>
 <br>
 收拾东西的时候，你仍然在意着与它对视时看到的画面。你察觉到这些画面，与向导描述的自己的家乡，以及温特口中的古代传说极为相似。这令你感到十分惊讶。<<ggawareness>><<awareness 6>><<gghistory>><<historyskill 12>><br>
 <br>
@@ -182,7 +182,7 @@
 <<elseif $plants["blood_lemon"].amount lt 10>>
 	<<askicon>><span class="teal">保险起见，再多摘一些吧。</span>
 <<else>>
-	<<icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice]]>><</link>>
+	<<terra_icon "tending/blood_lemon.gif">><<link [[献祭血柠|Blood Moon Sacrifice]]>><</link>>
 <</if>><br>
 <br>
 你可以趁它不注意的时候溜走。<br>

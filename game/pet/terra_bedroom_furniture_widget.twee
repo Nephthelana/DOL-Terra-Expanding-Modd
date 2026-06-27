@@ -5,7 +5,7 @@
 	<<set _pet to setup.terraPet[$pet_list[_p]]>>
 	<<capture _pet>>
 		<<if V.bedroom_pets[_pet.name]>>
-			<<icon `_pet.icon_projectile`>>_pet.des_projectile<br>
+			<<terra_icon `_pet.icon_projectile`>>_pet.des_projectile<br>
 		<</if>>
 	<</capture>>
 <</for>>
@@ -52,9 +52,9 @@
 						<div @tooltip="`${_pet.cn_name}<br><br>▶${_pet.des_item}`">
 							<div class="terraIcon">
 								<<if V.bedroom_pets[_pet.name]>>
-									<<icon `_pet.icon_item`>>
+									<<terra_icon `_pet.icon_item`>>
 								<<else>>
-									<span class="terraFading"><<icon `_pet.icon_item`>></span>
+									<span class="terraFading"><<terra_icon `_pet.icon_item`>></span>
 								<</if>>
 							</div>
 						</div>
@@ -141,11 +141,7 @@
 	<<if $options.petSidebar>>
 		<div class="terraPet">
 			<<set _petSidebarInfo to setup.terraPet[$options.petSidebar]>>
-			<img @src="'img/misc/icon/' + _petSidebarInfo.icon_projectile" @style="'
-				position: relative;
-	   			top: ' + _petSidebarInfo.sidebarCoordinate.y + 'px;
-   				left: ' + _petSidebarInfo.sidebarCoordinate.x + 'px;
-			'" @tooltip="`${_petSidebarInfo.des_projectile}`">
+			<img @src="'img/misc/icon/' + _petSidebarInfo.icon_projectile" @style="'position: relative;top: ' + _petSidebarInfo.sidebarCoordinate.y + 'px;left: ' + _petSidebarInfo.sidebarCoordinate.x + 'px;'" @tooltip="`${_petSidebarInfo.des_projectile}`">
 		</div>
 	<</if>>
 <</widget>>

@@ -19,7 +19,6 @@
 <br>
 “所以我想它更适合在你的手上继续发挥作用。”<<He>>将虫网又递还给你，“这对抓昆虫的初学者来说要友好得多。”<br>
 <br>
-<span class="gold">你获得了<<icon "tool/Bug_Net.png">>虫网。试着用它在森林里抓些什么吧。</span><br>
+<span class="gold">你获得了<<terra_icon "tool/Bug_Net.png">>虫网。试着用它在森林里抓些什么吧。</span><br>
 <br>
-<<link [[返回|Forest Shop]]>><</link>><br>
-<<endevent>>
+<<gwylanOptionsLeave>>

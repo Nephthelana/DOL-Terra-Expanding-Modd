@@ -14,7 +14,7 @@
 				<div class="terraItem">
 					<div @tooltip="`${_potion.cn_name}<br><br>▶${_potion.des}`">
 						<div class="terraIcon">
-							<<icon `_potion.item_icon`>>
+							<<terra_icon `_potion.item_icon`>>
 						</div>
 					</div>
 					<div class="terraDivider"></div>
@@ -29,7 +29,7 @@
 							<<link "使用">>
 								_potion.use
 								<<replace #hint_item_use>>
-									<span class="teal">你使用了1瓶<<icon `_potion.item_icon`>>_potion.cn_name。</span><br>
+									<span class="teal">你使用了1瓶<<terra_icon `_potion.item_icon`>>_potion.cn_name。</span><br>
 									<br>
 								<</replace>>
 								<<replace #void_bag_Potion>><<void_bag_Potion>><</replace>>
@@ -49,7 +49,7 @@
 
 <<widget "buff">>
 	<<if getBuffActivated().length gt 0>>
-		<<icon "buff_icon/Empty.png">><<link "展开增益追踪器">>
+		<<terra_icon "buff_icon/Empty.png">><<link "展开增益追踪器">>
 			<<replace #buff>>
 				<<buffList>>
 			<</replace>>
@@ -59,10 +59,10 @@
 
 <<widget "buffList">>
 	<<if getBuffActivated().length gt 0>>
-		<<icon "buff_icon/Empty.png">><<link "收起增益追踪器">>
+		<<terra_icon "buff_icon/Empty.png">><<link "收起增益追踪器">>
 			<<replace #buff>>
 				<<if getBuffActivated().length gt 0>>
-					<<icon "buff_icon/Empty.png">><<link "展开增益追踪器">>
+					<<terra_icon "buff_icon/Empty.png">><<link "展开增益追踪器">>
 						<<replace #buff>>
 							<<buffList>>
 						<</replace>>
@@ -79,7 +79,7 @@
 					<<set _activated_minutes_countdown to (_buff.activated - _activated_hours_countdown * 60)>>
 					<div class="terraItem">
 						<div class="terraIcon" @tooltip="`${_buff.cn_name}<br><br>▶${_buff.des}`">
-							<<icon `_buff.icon`>>
+							<<terra_icon `_buff.icon`>>
 						</div>
 						<div class="terraDivider"></div>
 						<<if ["Fishing","Sonar","Crate"].includes(_buff.name) and $terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station") and $options.trueSBTBFS>>

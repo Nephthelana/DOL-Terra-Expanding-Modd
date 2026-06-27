@@ -21,6 +21,6 @@
 <br>
 “作为这一情报的交换，我可以送给你一根特殊的钓竿。用它在血月钓鱼，可以大大提高你遇到恐惧鹦鹉螺的概率。但我必须要警告你：尽管目前这个生物现在看上去比较友好，你仍得多加小心。”<br>
 <br>
-<span class="gold">你获得了<<icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者！</span><br>
+<span class="gold">你获得了<<terra_icon "fishing/fishing_pole/Chum_Caster.png">>鱼饵投掷者！</span><br>
 <br>
 <<link [[返回|Guide Mod Hint]]>><</link>>

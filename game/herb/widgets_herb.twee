@@ -1,0 +1,765 @@
+:: Widgets Herb [widget]
+<<widget "herbDaybloomEntrance">>
+	<<if $terra_herb_plots.forest>>
+		<<set _plotInfo to $terra_herb_plots.forest.plot1.plots>>
+		这里有一块适合种植太阳花的区域。<br>
+		<<if Object.keys(_plotInfo).length lte 0>>
+			<span class="blue">你没有在这里种东西。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'blossom')>>
+			<<terra_icon "herb/herb_tile/Daybloom_placed_blossom.png">><span class="green">已经有太阳花开花了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'mature')>>
+			<<terra_icon "herb/herb_tile/Daybloom_placed_mature.png">><span class="teal">已经有太阳花成熟了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'sprout')>>
+			<<terra_icon "herb/herb_tile/Daybloom_placed_sprout.png">><span class="lblue">太阳花还在生长。</span><br>
+		<<else>>
+			<span class="red">草药长势状态异常，请汇报给模组作者。</span><br>
+		<</if>>
+		<<ind>><<link [[检查|Herb Plot]]>>
+			<<set $herbLocation to "forest">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Forest">>
+		<</link>><br>
+	<<else>>
+		<<if Time.dayState isnot "night">>
+			这里有几株喜人的小黄花，点缀着森林的风光。<span class="green">看起来已经开花了。</span><br>
+			<<terra_icon "herb/herb_tile/Daybloom_placed_blossom.png">>
+		<<else>>
+			这里有几株含苞待放的花朵，其绿色的茎干在森林中很不显眼。<span class="teal">看起来已经成熟了。</span><br>
+			<<terra_icon "herb/herb_tile/Daybloom_placed_mature.png">>
+		<</if>>
+		<<link [[检查这些植物|Herb Plot]]>>
+			<!-- 自然环境每个单元内固定只有10个种植栏位，不可种植盆升级 -->
+			<<set $terra_herb_plots.forest to {
+				plot1: {
+					plots: {},
+					bed: "forest_grass",
+					planter_box: false,
+					harvest_type: "byHand",
+					natural: true,
+					background: "forest_grass",
+					area: 10,
+				},
+			}>>
+			<<for _No range ["1","2","3","4","5","6","7","8","9","10"].randomMany(3)>>
+				<<set $terra_herb_plots.forest.plot1.plots[_No] to {
+					name: "Daybloom",
+					stage: Time.dayState !== "night" ? "blossom" : "mature",
+				}>>
+			<</for>>
+			<<set $herbLocation to "forest">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Forest">>
+		<</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "herbMoonglowEntrance">>
+	<<if $terra_herb_plots.meadow>>
+		<<set _plotInfo to $terra_herb_plots.meadow.plot1.plots>>
+		这里有一块适合种植月光草的区域。<br>
+		<<if Object.keys(_plotInfo).length lte 0>>
+			<span class="blue">你没有在这里种东西。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'blossom')>>
+			<<terra_icon "herb/herb_tile/Moonglow_placed_blossom.png">><span class="green">已经有月光草开花了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'mature')>>
+			<<terra_icon "herb/herb_tile/Moonglow_placed_mature.png">><span class="teal">已经有月光草成熟了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'sprout')>>
+			<<terra_icon "herb/herb_tile/Moonglow_placed_sprout.png">><span class="lblue">月光草还在生长。</span><br>
+		<<else>>
+			<span class="red">草药长势状态异常，请汇报给模组作者。</span><br>
+		<</if>>
+		<<ind>><<link [[检查|Herb Plot]]>>
+			<<set $herbLocation to "meadow">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Meadow">>
+		<</link>><br>
+	<<else>>
+		<<if Time.dayState is "night">>
+			黑夜中零星的几点光亮引起了你的注意，是几朵从弯曲的茎上垂下的花朵。<span class="green">看起来已经开花了。</span><br>
+			<<terra_icon "herb/herb_tile/Moonglow_placed_blossom.png">>
+		<<else>>
+			这里有几株被沉甸甸的花苞压弯了茎干的植物。<span class="teal">看起来已经成熟了。</span><br>
+			<<terra_icon "herb/herb_tile/Moonglow_placed_mature.png">>
+		<</if>>
+		<<link [[检查这些植物|Herb Plot]]>>
+			<!-- 自然环境每个单元内固定只有10个种植栏位，不可种植盆升级 -->
+			<<set $terra_herb_plots.meadow to {
+				plot1: {
+					plots: {},
+					bed: "jungle_grass",
+					planter_box: false,
+					harvest_type: "byHand",
+					natural: true,
+					background: "jungle_grass",
+					area: 10,
+				},
+			}>>
+			<<for _No range ["1","2","3","4","5","6","7","8","9","10"].randomMany(3)>>
+				<<set $terra_herb_plots.meadow.plot1.plots[_No] to {
+					name: "Moonglow",
+					stage: Time.dayState === "night" ? "blossom" : "mature",
+				}>>
+			<</for>>
+			<<set $herbLocation to "meadow">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Meadow">>
+		<</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "herbWaterleafEntrance">>
+	<<if $terra_herb_plots.moor>>
+		<<set _plotInfo to $terra_herb_plots.moor.plot1.plots>>
+		这里有一块适合种植水叶草的区域。<br>
+		<<if Object.keys(_plotInfo).length lte 0>>
+			<span class="blue">你没有在这里种东西。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'blossom')>>
+			<<terra_icon "herb/herb_tile/Waterleaf_placed_blossom.png">><span class="green">已经有水叶草开花了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'mature')>>
+			<<terra_icon "herb/herb_tile/Waterleaf_placed_mature.png">><span class="teal">已经有水叶草成熟了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'sprout')>>
+			<<terra_icon "herb/herb_tile/Waterleaf_placed_sprout.png">><span class="lblue">水叶草还在生长。</span><br>
+		<<else>>
+			<span class="red">草药长势状态异常，请汇报给模组作者。</span><br>
+		<</if>>
+		<<ind>><<link [[检查|Herb Plot]]>>
+			<<set $herbLocation to "moor">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Moor">>
+		<</link>><br>
+	<<else>>
+		<<if ["lightPrecipitation","heavyPrecipitation","thunderStorm"].includes(Weather.name)>>
+			这里有几株植物看起来比较矮小，但在雨水的冲刷下却显得更加茁壮。<span class="green">看起来已经开花了。</span><br>
+			<<terra_icon "herb/herb_tile/Waterleaf_placed_blossom.png">>
+		<<else>>
+			这里生长着几株矮小的植物，为这片沙地带来了生机。<span class="teal">看起来已经成熟了。</span><br>
+			<<terra_icon "herb/herb_tile/Waterleaf_placed_mature.png">>
+		<</if>>
+		<<link [[检查这些植物|Herb Plot]]>>
+			<!-- 自然环境每个单元内固定只有10个种植栏位，不可种植盆升级 -->
+			<<set $terra_herb_plots.moor to {
+				plot1: {
+					plots: {},
+					bed: "sand",
+					planter_box: false,
+					harvest_type: "byHand",
+					natural: true,
+					background: "",
+					area: 10,
+				},
+			}>>
+			<<for _No range ["1","2","3","4","5","6","7","8","9","10"].randomMany(3)>>
+				<<set $terra_herb_plots.moor.plot1.plots[_No] to {
+					name: "Waterleaf",
+					stage: ["lightPrecipitation","heavyPrecipitation","thunderStorm"].includes(Weather.name) ? "blossom" : "mature",
+				}>>
+			<</for>>
+			<<set $herbLocation to "moor">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Moor">>
+		<</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "herbFireblossomEntrance">>
+	<<if $terra_herb_plots.underground_lava_lake>>
+		<<set _plotInfo to $terra_herb_plots.underground_lava_lake.plot1.plots>>
+		这里有一块适合种植火焰花的区域。<br>
+		<<if Object.keys(_plotInfo).length lte 0>>
+			<span class="blue">你没有在这里种东西。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'blossom')>>
+			<<terra_icon "herb/herb_tile/Fireblossom_placed_blossom.png">><span class="green">已经有火焰花开花了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'mature')>>
+			<<terra_icon "herb/herb_tile/Fireblossom_placed_mature.png">><span class="teal">已经有火焰花成熟了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'sprout')>>
+			<<terra_icon "herb/herb_tile/Fireblossom_placed_sprout.png">><span class="lblue">火焰花还在生长。</span><br>
+		<<else>>
+			<span class="red">草药长势状态异常，请汇报给模组作者。</span><br>
+		<</if>>
+		<<ind>><<link [[检查|Herb Plot]]>>
+			<<set $herbLocation to "underground_lava_lake">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Underground Lava Lake">>
+		<</link>><br>
+	<<else>>
+		<<if Time.dayState is "dusk">>
+			附近生长着几株火焰般的花朵，偶尔会爆出微小的火星。<span class="green">看起来已经开花了。</span><br>
+			<<terra_icon "herb/herb_tile/Fireblossom_placed_blossom.png">>
+		<<else>>
+			附近生长着几株有粗壮的火红色茎干的植物。<span class="teal">看起来已经成熟了。</span><br>
+			<<terra_icon "herb/herb_tile/Fireblossom_placed_mature.png">>
+		<</if>>
+		<<link [[检查这些植物|Herb Plot]]>>
+			<!-- 自然环境每个单元内固定只有10个种植栏位，不可种植盆升级 -->
+			<<set $terra_herb_plots.underground_lava_lake to {
+				plot1: {
+					plots: {},
+					bed: "ash",
+					planter_box: false,
+					harvest_type: "byHand",
+					natural: true,
+					background: "ash",
+					area: 10,
+				},
+			}>>
+			<<for _No range ["1","2","3","4","5","6","7","8","9","10"].randomMany(3)>>
+				<<set $terra_herb_plots.underground_lava_lake.plot1.plots[_No] to {
+					name: "Fireblossom",
+					stage: Time.dayState === "dusk" ? "blossom" : "mature",
+				}>>
+			<</for>>
+			<<set $herbLocation to "underground_lava_lake">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Underground Lava Lake">>
+		<</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "herbShiverthornEntrance">>
+	<<if $terra_herb_plots.underground_ice_lake>>
+		<<set _plotInfo to $terra_herb_plots.underground_ice_lake.plot1.plots>>
+		这里有一块适合种植寒颤棘的区域。<br>
+		<<if Object.keys(_plotInfo).length lte 0>>
+			<span class="blue">你没有在这里种东西。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'blossom')>>
+			<<terra_icon "herb/herb_tile/Shiverthorn_placed_blossom.png">><span class="green">已经有寒颤棘开花了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'mature')>>
+			<<terra_icon "herb/herb_tile/Shiverthorn_placed_mature.png">><span class="teal">已经有寒颤棘成熟了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'sprout')>>
+			<<terra_icon "herb/herb_tile/Shiverthorn_placed_sprout.png">><span class="lblue">寒颤棘还在生长。</span><br>
+		<<else>>
+			<span class="red">草药长势状态异常，请汇报给模组作者。</span><br>
+		<</if>>
+		<<ind>><<link [[检查|Herb Plot]]>>
+			<<set $herbLocation to "underground_ice_lake">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Underground Ice Lake">>
+		<</link>><br>
+	<<else>>
+		附近的一片地面上生长着几株盛开着白色花朵的植物。蓝色的茎干看起来柔弱，但和花朵一样，在这个严寒的环境中没有一丝退却。<span class="green">看起来已经开花了。</span><br>
+		<<terra_icon "herb/herb_tile/Shiverthorn_placed_blossom.png">><<link [[检查这些植物|Herb Plot]]>>
+			<!-- 自然环境每个单元内固定只有10个种植栏位，不可种植盆升级 -->
+			<<set $terra_herb_plots.underground_ice_lake to {
+				plot1: {
+					plots: {},
+					bed: "snow",
+					planter_box: false,
+					harvest_type: "byHand",
+					natural: true,
+					background: "snow",
+					area: 10,
+				},
+			}>>
+			<<for _No range ["1","2","3","4","5","6","7","8","9","10"].randomMany(3)>>
+				<<set $terra_herb_plots.underground_ice_lake.plot1.plots[_No] to {
+					name: "Shiverthorn",
+					stage: "blossom",
+				}>>
+			<</for>>
+			<<set $herbLocation to "underground_ice_lake">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Underground Ice Lake">>
+		<</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "herbBlinkrootEntrance">>
+	<<if $terra_herb_plots.barb_street>>
+		<<set _plotInfo to $terra_herb_plots.barb_street.plot1.plots>>
+		这里有一块适合种植闪耀根的区域。<br>
+		<<if Object.keys(_plotInfo).length lte 0>>
+			<span class="blue">你没有在这里种东西。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'blossom')>>
+			<<terra_icon "herb/herb_tile/Blinkroot_placed_blossom.png">><span class="green">已经有闪耀根开花了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'mature')>>
+			<<terra_icon "herb/herb_tile/Blinkroot_placed_mature.png">><span class="teal">已经有闪耀根成熟了。</span><br>
+		<<elseif Object.values(_plotInfo).find(h => h.stage === 'sprout')>>
+			<<terra_icon "herb/herb_tile/Blinkroot_placed_sprout.png">><span class="lblue">闪耀根还在生长。</span><br>
+		<<else>>
+			<span class="red">草药长势状态异常，请汇报给模组作者。</span><br>
+		<</if>>
+		<<ind>><<link [[检查|Herb Plot]]>>
+			<<set $herbLocation to "barb_street">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Barb Street">>
+		<</link>><br>
+	<<else>>
+		河床上零星散落着几株植物，细微的黄花点缀着墨绿色的根茎。<span class="green">看起来已经开花了。</span><br>
+		<<terra_icon "herb/herb_tile/Blinkroot_placed_blossom.png">><<link [[检查这些植物|Herb Plot]]>>
+			<!-- 自然环境每个单元内固定只有10个种植栏位，不可种植盆升级 -->
+			<<set $terra_herb_plots.barb_street to {
+				plot1: {
+					plots: {},
+					bed: "dirt",
+					planter_box: false,
+					harvest_type: "byHand",
+					natural: true,
+					background: "dirt",
+					area: 10,
+				},
+			}>>
+			<<for _No range ["1","2","3","4","5","6","7","8","9","10"].randomMany(3)>>
+				<<set $terra_herb_plots.barb_street.plot1.plots[_No] to {
+					name: "Blinkroot",
+					stage: "mature",
+				}>>
+			<</for>>
+			<<set $terra_herb_plots.barb_street.plot1.plots[Object.keys($terra_herb_plots.barb_street.plot1.plots).random()].stage to "blossom">>
+			<<set $herbLocation to "barb_street">>
+			<<set $herbPlotId to "plot1">>
+			<<set $herbPlotEntrance to "Barb Street">>
+		<</link>><br>
+	<</if>>
+<</widget>>
+
+<<widget "herbGardenPlotsEntrance">>
+	<<if $terra_herb_plots.orphanage_garden>>
+		你在这里开辟了一小片草药种植区。<<terraHint>><br>
+		<<link [[检查|Herb Location]]>><<set $herbLocation to "orphanage_garden">><</link>><br>
+		<br>
+	<<else>>
+		<!-- 获取背包中已有的物块列表 -->
+		<<set $_plotBlockAvailable to Object.keys(setup.terraMiscellaneous).filter(m => 
+			setup.terraMiscellaneous[m].type === "block" && V[m] && !["Forest_Grass_Seed","Jungle_Grass_Seed"].includes(m)
+		)>>
+		<<if $_plotBlockAvailable.length gt 0>>
+			花园里还有额外的种植空间。你可以用从别处采集的物块在这里搭建新的草药种植区域。<br>
+			<<link [[清理出一小片区域 (0:10)|Herb Location]]>>
+				<<pass 10>>
+				<<set $herbLocation to "orphanage_garden">>
+				<<set $terra_herb_plots.orphanage_garden to {}>>
+				<!-- 孤儿院花园内设置5块地块 -->
+				<<for _pId to 1; _pId lte 5; _pId++>>
+					<<set $terra_herb_plots.orphanage_garden["plot" + _pId] to {
+						plots: {},
+						bed: "none",
+						planter_box: false,
+						harvest_type: "byHand",
+						natural: false,
+						background: "garden",
+						area: 5,
+					}>>
+				<</for>>
+			<</link>><br>
+			<br>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "herbEdenPlotsEntrance">>
+	<<if $terra_herb_plots.eden_cabin>>
+		你在这里开辟了一片草药种植区。<<terraHint>><br>
+		<<link [[检查|Herb Location]]>><<set $herbLocation to "eden_cabin">><</link>><br>
+		<br>
+	<<else>>
+		<!-- 获取背包中已有的物块列表 -->
+		<<set $_plotBlockAvailable to Object.keys(setup.terraMiscellaneous).filter(m => 
+			setup.terraMiscellaneous[m].type === "block" && V[m] && !["Forest_Grass_Seed","Jungle_Grass_Seed"].includes(m)
+		)>>
+		<<if $_plotBlockAvailable.length gt 0>>
+			伊甸这里的种植圃还有额外的种植空间。你可以用从别处采集的物块在这里搭建新的草药种植区域。<br>
+			<<link [[清理出一片区域 (0:15)|Herb Location]]>>
+				<<set $herbLocation to "eden_cabin">>
+				<<pass 15>>
+				<<set $terra_herb_plots.eden_cabin to {}>>
+				<!-- 伊甸小屋内设置5块地块 -->
+				<<for _pId to 1; _pId lte 5; _pId++>>
+					<<set $terra_herb_plots.eden_cabin["plot" + _pId] to {
+						plots: {},
+						bed: "none",
+						planter_box: false,
+						harvest_type: "byHand",
+						natural: false,
+						background: "wooden_fence",
+						area: 10,
+					}>>
+				<</for>>
+			<</link>><br>
+			<br>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "herbBlackWolfPlotsEntrance">>
+	<<if $terra_herb_plots.wolf_cave>>
+		你在这里开辟了一片草药种植区。<<terraHint>><br>
+		<<link [[检查|Herb Location]]>><<set $herbLocation to "wolf_cave">><</link>><br>
+		<br>
+	<<else>>
+		<!-- 获取背包中已有的物块列表 -->
+		<<set $_plotBlockAvailable to Object.keys(setup.terraMiscellaneous).filter(m => 
+			setup.terraMiscellaneous[m].type === "block" && V[m] && !["Forest_Grass_Seed","Jungle_Grass_Seed"].includes(m)
+		)>>
+		<<if $_plotBlockAvailable.length gt 0>>
+			狼窝这里的土地还有额外的种植空间。你可以用从别处采集的物块在这里搭建新的草药种植区域。<br>
+			<<link [[清理出一片区域 (0:15)|Herb Location]]>>
+				<<set $herbLocation to "wolf_cave">>
+				<<pass 15>>
+				<<set $terra_herb_plots.wolf_cave to {}>>
+				<!-- 狼窝内设置5块地块 -->
+				<<for _pId to 1; _pId lte 5; _pId++>>
+					<<set $terra_herb_plots.wolf_cave["plot" + _pId] to {
+						plots: {},
+						bed: "none",
+						planter_box: false,
+						harvest_type: "byHand",
+						natural: false,
+						background: "",
+						area: 10,
+					}>>
+				<</for>>
+			<</link>><br>
+			<br>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "herbFarmPlotsEntrance">>
+	<<if $terra_herb_plots.alex_farm>>
+		你在这里开辟了一大片草药种植区。<<terraHint>><br>
+		<<link [[检查|Herb Location]]>>
+			<<set $herbLocation to "alex_farm">>
+			<<for _pId to Object.keys($terra_herb_plots.alex_farm).length; _pId lt Object.keys($plots.farm).length; _pId++>>
+				<<set $terra_herb_plots.alex_farm["plot" + _pId] to {
+					plots: {},
+					bed: "none",
+					planter_box: false,
+					harvest_type: "byHand",
+					natural: false,
+					background: "farm_default",
+					area: 50,
+				}>>
+			<</for>>
+		<</link>><br>
+		<br>
+	<<else>>
+		<!-- 获取背包中已有的物块列表 -->
+		<<set $_plotBlockAvailable to Object.keys(setup.terraMiscellaneous).filter(m => 
+			setup.terraMiscellaneous[m].type === "block" && V[m] && !["Forest_Grass_Seed","Jungle_Grass_Seed"].includes(m)
+		)>>
+		<<if $_plotBlockAvailable.length gt 0>>
+				农场每块种植圃旁都留出了一块空地，你可以在这里用从别处采集的物块在这里搭建新的草药种植区域。<br>
+			<<link [[清理出一大片区域 (0:30)|Herb Location]]>>
+				<<set $herbLocation to "alex_farm">>
+				<<pass 30>>
+				<<set $terra_herb_plots.alex_farm to {}>>
+				<!-- 艾利克斯农场内设置与种植圃数量相同的地块 -->
+				<<for _pId to 1; _pId lte Object.keys($plots.farm).length; _pId++>>
+					<<set $terra_herb_plots.alex_farm["plot" + _pId] to {
+						plots: {},
+						bed: "none",
+						planter_box: false,
+						harvest_type: "byHand",
+						natural: false,
+						background: "farm_default",
+						area: 50,
+					}>>
+				<</for>>
+			<</link>><br>
+			<br>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "herbPlotPassage">>
+	<div style="
+		border: 1px solid var(--200);
+		border-radius: 5px;
+		padding: 10px;
+	">
+		<!-- 简写3个常用的变量 -->
+		<<set _plotInfo to $terra_herb_plots[_args[0]][_args[1]]>>
+		<<set _bedInfo to setup.terraHerbBed[_plotInfo.bed]>>
+		<<set _plotArea to _plotInfo.planter_box ? (_plotInfo.area * 3) : _plotInfo.area>>
+		<!-- 根据地块总数量，决定页面内一行显示多少个地块 -->
+		<<set _coloums to 
+			_plotArea is 5 ? 5 :
+			[10,50].includes(_plotArea) ? 10 :
+			15
+		>>
+
+		种植区域信息：<br>
+		<div id="plotPlanterInfo">
+			<<plotPlanterInfo>>
+		</div>
+		<div id="bedObtain">
+			<!-- 只有在自然种植区域内以及持有掘墓者铲子时，才能获取物块 -->
+			<<if _plotInfo.natural>>
+				<<switch _plotInfo.bed>>
+					<<case "sand" "ash" "snow" "dirt">>
+						<<if !V[_bedInfo.block.name]>>
+							你可以采集一些物块，以备之后在其他地方种植这种草药。
+							<<if $Gravediggers_Shovel>>
+								<br>
+								<<terra_icon "tool/Gravediggers_Shovel.png">><<link "铲取物块">>
+									<<set V[_bedInfo.block.name] to true>>
+									<<replace #bedObtain>>
+										你采集了一些<<terra_icon `_bedInfo.block.icon`>><<print _bedInfo.block.name_cn>>。<br>
+									<</replace>>
+								<</link>><br>
+							<</if>>
+						<</if>>
+					<<case "forest_grass" "jungle_grass">>
+						<<if !V[_bedInfo.seed.name]>>
+							你可以采集一些草种，以备之后在其他地方种植这种草药。
+							<<if $Gravediggers_Shovel>>
+								<br>
+								<<terra_icon "tool/Gravediggers_Shovel.png">><<link "收集草种">>
+									<<set V[_bedInfo.seed.name] to true>>
+									<<replace #bedObtain>>
+										你采集了一些<<terra_icon `_bedInfo.seed.icon`>><<print _bedInfo.seed.name_cn>>。<br>
+									<</replace>>
+								<</link>><br>
+							<</if>>
+						<</if>>
+				<</switch>>
+			<</if>>
+			<<if !$Gravediggers_Shovel>>
+				<span class="teal">你需要找到一个合适的挖掘工具。</span><br>
+			<</if>>
+		</div>
+		<<if _plotInfo.bed isnot "none">>
+			<!-- 统计当前地块内植株总数以及各个生长阶段的植株数 -->
+			<div id="herbCounting">
+				<<herbCounting>>
+			</div>
+			<div style="border-top: 1px solid var(--600); width: 100%; padding-bottom: 5px; margin-top: 5px;"></div>
+			<mouse class="tooltip"><span class="linkBlue">图格互动操作</span><span>点击植株图格以进行收获/破坏，点击空闲图格以进行种植（如果有种子）</span></mouse>
+			<<set _herbId to 0>>
+			<<for _rows=1; _plotArea gte (_rows * _coloums); _rows++>> <!-- 一行行地生成，直到总图格数不小于地块数 -->
+				<div @class="'herbBackGround' + _coloums">
+					<!-- 背景图，wip -->
+					<<if _plotInfo.background isnot "">>
+						<<if _plotInfo.natural>>
+							<img @src="'img/misc/herb_planting/background/' + _plotInfo.background + '.png'">
+						<<else>>
+							<<switch _plotInfo.background>>
+								<<case "garden">>
+									<<set _background to $alex_greenhouse gte 3 ? "glass" : "wooden_fence">>
+								<<case "farm_default">>
+									<<set _background to $farm.wall gte 4 ? "wrought_iron_fence" : $farm.wall gte 3 ? "iron_fence" : "wooden_fence">>
+								<<default>>
+									<<set _background to _plotInfo.background>>
+							<</switch>>
+							<div style="display: flex">
+								<img @src="'img/misc/herb_planting/background/' + _background + '_left.png'">
+								<<for $_bId=1; $_bId lte (_coloums / 5); $_bId++>>
+									<img @src="'img/misc/herb_planting/background/' + _background + '_middle.png'">
+								<</for>>
+								<img @src="'img/misc/herb_planting/background/' + _background + '_right.png'">
+							</div>
+						<</if>>
+					<</if>>
+					<!-- 植株图 -->
+					<div @style="'
+						display: flex;
+						position: absolute;
+						top: ' + _bedInfo.herb_icon_position.y + 'px; 
+						left: ' + _bedInfo.herb_icon_position.x + 'px;
+					'"> <!-- 调整草药图像位置，使其位于背景图中合适的位置 -->
+						<<for $_rId=1; $_rId lte _coloums; $_rId++>> <!-- 每行放_coloums个植株 -->
+							<<set _herbId += 1>> <!-- 为整个页面的草药附上id标记 -->
+							<<capture _herbId>>
+								<div @id="'herbPlot' + _herbId" class="terraHerb" @onclick="`herbInteract('` + _herbId + `');`">
+									<<herbPlotIcon _herbId>>
+								</div>
+							<</capture>>
+						<</for>>
+					</div>
+					<!-- 地块图 -->
+					<div @style="'
+						display: flex;
+						position: absolute;
+						top: ' + _bedInfo.planter_icon_position.y + 'px;
+						left: ' + _bedInfo.planter_icon_position.x + 'px;
+					'"> <!-- 调整地块图像位置，使其位于背景图中合适的位置 -->
+						<<for $_pb=1; $_pb lte _coloums; $_pb++>> <!-- 每行放_coloums个地块 -->
+							<<if _plotInfo.planter_box>>
+								<img @src="
+									'img/misc/herb_planting/planter_box/' + _bedInfo.herb_name + '_' +
+									($_pb is 1 ? 'left' : $_pb is _coloums ? 'right' : 'middle') +
+									'.png'
+								">
+							<<else>>
+								<img @src="
+									'img/misc/herb_planting/planter_block/' + _plotInfo.bed + '/' +
+									($_pb is 1 ? 'left' : $_pb is _coloums ? 'right' : 'middle') +
+									'_' + random(1,3) + '.png'
+								">
+							<</if>>
+						<</for>>
+					</div>
+				</div>
+			<</for>>
+			<div style="border-top: 1px solid var(--600); width: 100%; padding-bottom: 5px; margin-top: 5px;"></div>
+			你有：
+			<span id="herbObtained">
+				<<herbObtained>>
+			</span>
+			收获：
+			<label><<radiobutton "_plotInfo.harvest_type" "byHand" autocheck>> 徒手</label> |
+			<<if $Staff_of_Regrowth>>
+				<label><<radiobutton "_plotInfo.harvest_type" "staff" autocheck>> <<terra_icon "tool/Staff_of_Regrowth.png">>再生法杖</label>
+			<<else>>
+				<span class="blue">如果你能找到一个合适的工具…</span>
+			<</if>>
+			<mouse class="tooltip"><span class="linkBlue">(?)</span><span>徒手收获植株时，开花期的植株会同时掉落草药和种子，成熟期的植株则只会掉落草药。而<<print $Staff_of_Regrowth ? "再生法杖" : "一个合适的工具">>将会使草药收获更加高效</span></mouse><br>
+			<br>
+			<<link "智能收获">>
+				<<run terraAutoHarvest()>>
+			<</link>><mouse class="tooltip"><span class="linkBlue">(?)</span><span>自动根据当前地块种类与收获方式，收获全部能够产出草药种子的植株</span></mouse><br>
+			<<link "智能种植">>
+				<<run terraAutoPlant()>>
+			<</link>><mouse class="tooltip"><span class="linkBlue">(?)</span><span>自动按顺序在空闲地块上种植草药种子，直到种子耗尽或无空闲地块</span></mouse><br>
+			<<if ["alex_farm","eden_cabin","wolf_cave"].includes($herbLocation)>>
+				<<link [[切换背景|Herb Background Switch]]>><</link>>
+				<mouse class="tooltip"><span class="linkBlue">(?)</span><span>切换该地块的背景。只有在特定的种植区域里才能这么做</span></mouse><br>
+			<</if>>
+		<</if>>
+	</div>
+<</widget>>
+
+<<widget "plotPlanterInfo">>
+	<span class="no-numberify">
+		<span class="icon"></span>
+		地块：<!-- 显示该处地块种类，并根据情况进行提示或地块改造 -->
+		<<if _plotInfo.planter_box>>
+			<<terra_icon `_bedInfo.planter_box.icon`>>(_plotArea)
+			<mouse class="tooltip"><span class="linkBlue">(?)</span><span>种植盆能提高种植密度（可种植3倍于物块数量的植株），并很好地保护植株不受意外破坏，但此时再生法杖只能收获开花期的植株</span></mouse> |
+			<<if Object.keys(_plotInfo.plots).length gt 0>>
+				<mouse class="tooltip"><span class="black">不可改造</span><span>该地块植株清空后才可改造</span></mouse>
+			<<else>>
+				改造 (0:05)：
+				<<terra_icon `_bedInfo.block.icon`>><<link [[物块|$passage]]>><<pass 5>><<set _plotInfo.planter_box to false>><</link>>
+				| <<link [[清空|$passage]]>><<pass 5>><<set _plotInfo.bed to "none">><<set _plotInfo.planter_box to false>><</link>>
+			<</if>>
+			<br>
+		<<else>>
+			<<if _plotInfo.bed is "none">>
+				<!-- 获取背包中已有的物块列表 -->
+				<<set $_plotBlockAvailable to Object.keys(setup.terraMiscellaneous).filter(m => 
+					setup.terraMiscellaneous[m].type === "block" && V[m] && !["Forest_Grass_Seed","Jungle_Grass_Seed"].includes(m)
+				)>>
+				无 | 
+				<<if $_plotBlockAvailable.length lte 0>>
+					<span class="black">你没有可以用于填充的物块</span>
+				<<else>>
+					填充 (0:05)：
+					<<for $_pb range $_plotBlockAvailable>>
+						<<set _pbInfo to setup.terraMiscellaneous[$_pb]>>
+						<<capture _pbInfo>>
+							<<terra_icon `_pbInfo.icon`>><<link [[`${_pbInfo.cn_name}`|$passage]]>>
+								<<pass 5>>
+								<!-- 将地块修改为指定物块的对应种类 -->
+								<<set _plotInfo.bed to Object.keys(setup.terraHerbBed).find(b => setup.terraHerbBed[b].block.name === T.pbInfo.name)>>
+							<</link>>
+						<</capture>>
+					<</for>>
+				<</if>>
+			<<else>>
+				<<terra_icon `_bedInfo.block.icon`>>(_plotArea)
+				<mouse class="tooltip"><span class="linkBlue">(?)</span><span>种植在物块上的植株非常脆弱，要小心意外的破坏（尤其是发芽期的植株）。可以合理使用下方的“智能操作”</span></mouse> |
+				<<if _plotInfo.natural>>
+					<mouse class="tooltip"><span class="black">不可改造</span><span>自然环境中的地块不可改造</span></mouse>
+				<<elseif Object.keys(_plotInfo.plots).length gt 0>>
+					<mouse class="tooltip"><span class="black">不可改造</span><span>该地块植株清空后才可改造</span></mouse>
+				<<else>>
+					改造 (0:05)：
+					<!-- 地块为土块时，额外增加种植草种的选项 -->
+					<<if _plotInfo.bed is "dirt" and ($Forest_Grass_Seed or $Jungle_Grass_Seed)>>
+						种植 
+						<<if $Forest_Grass_Seed>><<terra_icon "herb/planter_block/Forest_Grass_Seed.png">><<link [[森林草种子|$passage]]>><<pass 5>><<set _plotInfo.bed to "forest_grass">><</link>><</if>>
+						<<if $Jungle_Grass_Seed>><<terra_icon "herb/planter_block/Jungle_Grass_Seed.png">><<link [[丛林草种子|$passage]]>><<pass 5>><<set _plotInfo.bed to "jungle_grass">><</link>><</if>>
+						|
+					<</if>>
+					<<if $planter_box>>
+						<<terra_icon `_bedInfo.planter_box.icon`>><<link [[种植盆|$passage]]>><<pass 5>><<set _plotInfo.planter_box to true>><</link>> |
+					<</if>>
+					<<link [[清空|$passage]]>><<pass 5>><<set _plotInfo.bed to "none">><</link>>
+				<</if>>
+			<</if>>
+		<</if>>
+	</span>
+<</widget>>
+
+<<widget "herbCounting">>
+	植株：
+	<<if Object.keys(_plotInfo.plots).length lte 0>>
+		<span class="blue">(0)</span><br>
+	<<else>>
+		<!-- 将该地块中所有植株的生长阶段记录在数组中，用于统计数量 -->
+		<<set $_herbList to Object.values(_plotInfo.plots).map(h => h.stage)>>
+		<span class="gold">(<<print $_herbList.length>>)</span> |
+		<<for $_stage range ["blossom","mature","sprout"]>>
+			<<if $_herbList.count($_stage) gt 0>>
+				<img @src="'img/misc/herb_planting/herb_tile/' + _bedInfo.herb_name + '_placed_' + $_stage + '.png'">
+				<span @class="
+					$_stage is 'blossom' ? 'green' :
+					$_stage is 'mature' ? 'teal' :
+					'lblue'
+				">
+					(<<print $_herbList.count($_stage)>>)
+				</span>
+				|
+			<</if>>
+		<</for>>
+		<span class="no-numberify">
+			<<link "清空">>
+				<<for $_id range Object.keys(_plotInfo.plots)>>
+					<<run delete _plotInfo.plots[$_id]>>
+					<<replace `"#herbPlot" + $_id`>><<herbPlotIcon $_id>><</replace>>
+				<</for>>
+				<<herbDataUpdate>>
+				<<replace #plotPlanterInfo>><<plotPlanterInfo>><</replace>>
+			<</link>>
+		</span><br>
+	<</if>>
+<</widget>>
+
+<<widget "herbPlotIcon">>
+	<<set $_herbInfo to _plotInfo.plots[_args[0]]>>
+	<<if $_herbInfo>>
+		<!-- 一行内的植株图像镜像交替，用transform: scaleX(-1)实现镜像翻转 -->
+		<!-- 发芽期、成熟期的月光草植株有特殊的图像位置要求，故使用transform: translateX()实现水平位移 -->
+		<<if (_args[0] % _coloums) % 2>>
+			<<set $_style= 
+				$_herbInfo.name isnot "Moonglow" ? "" :
+				$_herbInfo.stage is "sprout" ? "transform: translateX(-4px)" :
+				$_herbInfo.stage is "mature" ? "transform: translateX(-1px)" :
+				""
+			>>
+		<<else>>
+			<<set $_style= 
+				$_herbInfo.name isnot "Moonglow" ? "transform: scaleX(-1)" :
+				$_herbInfo.stage is "sprout" ? "transform: translateX(4px) scaleX(-1)" :
+				$_herbInfo.stage is "mature" ? "transform: translateX(1px) scaleX(-1)" :
+				"transform: scaleX(-1)"
+			>>
+		<</if>>
+		<img @style="$_style" @src="'img/misc/herb_planting/herb_tile/' + _bedInfo.herb_name + '_placed_' + $_herbInfo.stage + '.png'">
+	<</if>>
+<</widget>>
+
+<<widget "herbObtained">>
+	<!-- 草药及其种子数量增加时，用绿色的“+ xx”表示当前操作后增加的数量 -->
+	<!-- 地块对应草药的持有数量 -->
+	<<terra_icon `'herb/herb_item/' + _bedInfo.herb_name + '.png'`>>
+	(<<print _harvest_herb ?
+		`${V[T.bedInfo.herb_name] - T.harvest_herb}<span class="green">+${T.harvest_herb}</span>` :
+		V[T.bedInfo.herb_name]
+	>>) |
+	<!-- 地块对应种子的持有数量 -->
+	<<terra_icon `'herb/herb_seed/' + _bedInfo.herb_name + '_Seed.png'`>>
+	(<<print _harvest_seed ?
+		`${V[T.bedInfo.herb_name + "_Seed"] - T.harvest_seed}<span class="green">+<<print T.harvest_seed>></span>` :
+		V[T.bedInfo.herb_name + "_Seed"]
+	>>)<br>
+	<!-- 清除当前操作统计获得的物品 -->
+	<<unset _harvest_herb>>
+	<<unset _harvest_seed>>
+<</widget>>
+
+<<widget "herbDataUpdate">>
+	<<replace #herbCounting>><<herbCounting>><</replace>>
+	<<replace #herbObtained>><<herbObtained>><</replace>>
+<</widget>>

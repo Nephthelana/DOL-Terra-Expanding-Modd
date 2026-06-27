@@ -1,6 +1,12 @@
 :: Terra Expand Tool [widget]
 <<widget "terraExpandToolButton">>
-	<<button '<<icon "tool/Snake_Charmers_Flute.png">>工具'>><<iModReplace "terraExpandToolOverlay">><</button>>
+	<<button '<<terra_icon "tool/Snake_Charmers_Flute.png">>工具'>>
+		<<if (window.modUtils.getMod('maplebirch'))>>
+			<<maplebirchReplace "terraExpandToolOverlay" "customize">>
+		<<else>>
+			<<iModReplace "terraExpandToolOverlay">>
+		<</if>>
+	<</button>>
 <</widget>>
 
 <<widget "terraExpandToolOverlay">>

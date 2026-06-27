@@ -13,20 +13,20 @@
 <<else>>
 	<span class="green">你拿出你的
 		<<if $Golden_Bug_Net>>
-			<<icon "tool/Golden_Bug_Net.png">>金虫网
+			<<terra_icon "tool/Golden_Bug_Net.png">>金虫网
 		<<elseif $Lavaproof_Bug_Net>>
-			<<icon "tool/Lavaproof_Bug_Net.png">>防熔岩虫网
+			<<terra_icon "tool/Lavaproof_Bug_Net.png">>防熔岩虫网
 		<<elseif $Bug_Net>>
-			<<icon "tool/Bug_Net.png">>虫网
+			<<terra_icon "tool/Bug_Net.png">>虫网
 		<</if>>
 	</span>
 	，网住了这些蠕虫。<br>
 	<br>
 	<<set _bait to random(2,4)>>
-	你获得了_bait只<<icon "fishing/bait/Worm.png">>蠕虫。<br>
+	你获得了_bait只<<terra_icon "fishing/bait/Worm.png">>蠕虫。<br>
 	<<if random(1,400) is 1>>
 		<br>
-		<span class="gold">你还发现其中一条是<<icon "fishing/bait/Gold_Worm.png">>金蠕虫！</span><br>
+		<span class="gold">你还发现其中一条是<<terra_icon "fishing/bait/Gold_Worm.png">>金蠕虫！</span><br>
 		<<set $Worm += _bait>>
 		<<set $Worm -= 1>>
 		<<set $Gold_Worm += 1>>

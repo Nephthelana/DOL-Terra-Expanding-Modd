@@ -48,7 +48,7 @@
 		<<link [[继续|Pirate Talk]]>><</link>>
 	<<elseif $Sake gt 0>>
 		<<set $Pirate_intro to true>>
-		<span class="teal">你身上带着<<icon "food/Sake.png">>清酒，可以分给老船长一瓶。</span><br>
+		<span class="teal">你身上带着<<terra_icon "food/Sake.png">>清酒，可以分给老船长一瓶。</span><br>
 		<br>
 		<<link [[给他一瓶清酒|Pirate Sake]]>><</link>><br>
 	<</if>>
@@ -56,7 +56,7 @@
 
 :: Pirate Sake
 <<set $Sake -= 1>>
-你取出一瓶<<icon "food/Sake.png">>清酒。<br>
+你取出一瓶<<terra_icon "food/Sake.png">>清酒。<br>
 <br>
 老海盗接过这瓶清酒，饶有兴致地端详着瓶身。“非常有趣的走私物品。俺还是小看你了。哈！真是好东西！”<br>
 <br>
@@ -115,7 +115,7 @@
 	<div class="terraInventory">
 		<div class="terraItem">
 			<div class="terraIcon" @tooltip='`鹦鹉饼干<br><br>▶召唤宠物鹦鹉<br>“不适合人类食用。”`'>
-				<<icon "pet/pet_item/Parrot_Cracker.png">>
+				<<terra_icon "pet/pet_item/Parrot_Cracker.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<span class="gold">£37500</span>
@@ -134,7 +134,7 @@
 		</div>
 		<div class="terraItem">
 			<div class="terraIcon" @tooltip="`深度计<br><i>材料</i><br><br>位于沼泽、走私者洞穴时，显示当前在该区域内的具体位置，无需装备即可生效`">
-				<<icon "accessories/Depth_Meter.png">>
+				<<terra_icon "accessories/Depth_Meter.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<span class="gold">£1000</span>
@@ -160,7 +160,7 @@
 <<set $pet_list.pushUnique("Parrot_Cracker")>>
 “相信俺，这些饼干比那些什么金核桃更能吸引鹦鹉——但你不会想去尝尝它的味道的。很好，一手交钱一手交货。”<br>
 <br>
-<span class="gold">你购买了<<icon "pet/pet_item/Parrot_Cracker.png">>鹦鹉饼干。<i>你可以在孤儿院的卧室里使用它。</i></span><br>
+<span class="gold">你购买了<<terra_icon "pet/pet_item/Parrot_Cracker.png">>鹦鹉饼干。<i>你可以在孤儿院的卧室或“盔甲&饰品”窗口里使用它。</i></span><br>
 <br>
 <<link [[继续|Pirate Shop]]>><</link>>
 
@@ -168,6 +168,6 @@
 <<set $Depth_Meter to true>>
 “说实话，一个海盗手里会有这种东西挺奇怪的，但俺们肯定都是把这些好东西作为战利品抢来的！”老海盗在手里把玩着深度计，“正因如此你才有机会买到它！像罗盘这种东西，你就只能祈祷这酒吧旁边的洞穴里能捡到了！哈！”<br>
 <br>
-<span class="gold">你购买了<<icon "accessories/Depth_Meter.png">>深度计。</span><br>
+<span class="gold">你购买了<<terra_icon "accessories/Depth_Meter.png">>深度计。</span><br>
 <br>
 <<link [[继续|Pirate Shop]]>><</link>><br>

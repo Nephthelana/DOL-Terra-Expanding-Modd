@@ -14,7 +14,7 @@
 	<<if _bestiary_crate_length gte (getAllCrateList().length-2)>>
 		<<earnFeat "Always More Fish Than Crates">>
 	<</if>>
-	<<if _bestiary_bait_fish_length gte (getAllBaitList().length-1)>>
+	<<if _bestiary_bait_length gte (getAllBaitList().length-1)>>
 		<<earnFeat "Baits Makes Perfect">>
 	<</if>>
 
@@ -88,13 +88,9 @@
 			<<set _unlocked = Object.keys(V.bestiary.request_fish).includes(_requestFish.name)>>
 			<<capture _requestFish _unlocked>>
 				<div id="bestiaryItem">
-					<<set _tooltip = `<span class="gold">${_requestFish.cn_name}</span>`>>
+					<<set _tooltip = `<span class="gold">${_unlocked ? _requestFish.cn_name : "？？？"}</span>`>>
 					<<set _class = _unlocked ? "terraIconButton" : "terraIconButton terraItemLocked">>
-					<<button '
-						<span @class="_class" @tooltip="_tooltip">
-							<<icon `"fishing/quest_fish/" + _requestFish.name + ".png"`>>
-						</span>
-					'>>
+					<<button '<span @class="_class" @tooltip="_tooltip"><<terra_icon `"fishing/quest_fish/" + _requestFish.name + ".png"`>></span>'>>
 						<<if _unlocked or $options.bestiaryHint>>
 							<<replace #bestiaryInfoTempSolid>>
 								<div id="bestiaryInfoTemp">
@@ -124,13 +120,9 @@
 			<<set _unlocked = Object.keys(V.bestiary.fish).includes(_fish.name)>>
 			<<capture _fish _unlocked>>
 				<div id="bestiaryItem">
-					<<set _tooltip to `${_fish.cn_name}`>>
+					<<set _tooltip to `${_unlocked ? _fish.cn_name : "？？？"}`>>
 					<<set _class = _unlocked ? "terraIconButton" : "terraIconButton terraItemLocked">>
-					<<button '
-						<span @class="_class" @tooltip="_tooltip">
-							<<icon `"fishing/fish/" + _fish.name + ".png"`>>
-						</span>
-					'>>
+					<<button '<span @class="_class" @tooltip="_tooltip"><<terra_icon `"fishing/fish/" + _fish.name + ".png"`>></span>'>>
 						<<if _unlocked or $options.bestiaryHint>>
 							<<replace #bestiaryInfoTempSolid>>
 								<div id="bestiaryInfoTemp">
@@ -160,13 +152,9 @@
 			<<set _unlocked = Object.keys(V.bestiary.crate).includes(_crate.name)>>
 			<<capture _crate _unlocked>>
 				<div id="bestiaryItem">
-					<<set _tooltip to `${_crate.cn_name}`>>
+					<<set _tooltip to `${_unlocked ? _crate.cn_name : "？？？"}`>>
 					<<set _class = _unlocked ? "terraIconButton" : "terraIconButton terraItemLocked">>
-					<<button '
-						<span @class="_class" @tooltip="_tooltip">
-							<<icon `"fishing/crates/" + _crate.name + ".png"`>>
-						</span>
-					'>>
+					<<button '<span @class="_class" @tooltip="_tooltip"><<terra_icon `"fishing/crates/" + _crate.name + ".png"`>></span>'>>
 						<<if _unlocked or $options.bestiaryHint>>
 							<<replace #bestiaryInfoTempSolid>>
 								<div id="bestiaryInfoTemp">
@@ -196,13 +184,9 @@
 			<<set _unlocked = Object.keys(V.bestiary.bait).includes(_bait.name)>>
 			<<capture _bait _unlocked>>
 				<div id="bestiaryItem">
-					<<set _tooltip to `${_bait.cn_name}`>>
+					<<set _tooltip to `${_unlocked ? _bait.cn_name : "？？？"}`>>
 					<<set _class = _unlocked ? "terraIconButton" : "terraIconButton terraItemLocked">>
-					<<button '
-						<span @class="_class" @tooltip="_tooltip">
-							<<icon `"fishing/bait/" + _bait.name + ".png"`>>
-						</span>
-					'>>
+					<<button '<span @class="_class" @tooltip="_tooltip"><<terra_icon `"fishing/bait/" + _bait.name + ".png"`>></span>'>>
 						<<if _unlocked or $options.bestiaryHint>>
 							<<replace #bestiaryInfoTempSolid>>
 								<div id="bestiaryInfoTemp">

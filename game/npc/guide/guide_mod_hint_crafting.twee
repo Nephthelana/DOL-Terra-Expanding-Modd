@@ -4,7 +4,7 @@
 “如果物品描述中被标记为'<i>材料</i>'，说明它可以用于制作物品——而我能告诉你它可以用来做什么。
 <<if !$orphanage_loft_crafting_station.includes("Work_Bench")>>
 	<br><br>
-	”另外，如果你找不到<<icon "furniture_item/Work_Bench.png">>工作台，它可能藏在阁楼的一个角落，需要你用足够的<span class="gold">家务技能</span>来找到它。
+	”另外，如果你找不到<<terra_icon "furniture_item/Work_Bench.png">>工作台，它可能藏在阁楼的一个角落，需要你用足够的<span class="gold">家务技能</span>来找到它。
 <</if>>
 ”<br>
 <div style="border: 1px solid var(--500); height: 80vh; border-radius: 5px 0 0 5px;" class="no-numberify">
@@ -38,7 +38,7 @@
 				<<capture _mInfo>>
 					<<button '
 						<span class="terraIconButton">
-							<<icon `_mInfo.icon`>>
+							<<terra_icon `_mInfo.icon`>>
 						</span>
 					'>>
 						<<replace #recipeTitle>>
@@ -55,7 +55,7 @@
 							<div style="padding: 5px">
 								<<set _mDetail to _mInfo>>
 								<div style="height: 40px; display: flex; align-items: center;">
-									<<icon `_mDetail.icon`>><<print _mDetail.cn_name>>
+									<<terra_icon `_mDetail.icon`>><<print _mDetail.cn_name>>
 								</div>
 								<div style="
 									border-top: 1px solid var(--600);
@@ -69,7 +69,7 @@
 										<<if Object.keys(_rInfo.ingredients).includes(_mDetail.name)>>
 											<div class="terraItem">
 												<div class="terraIcon" @tooltip="`${_rInfo.cn_name}<br><br>▶ ${_rInfo.des}`">
-													<<icon `_rInfo.icon`>>
+													<<terra_icon `_rInfo.icon`>>
 												</div>
 												<div class="terraDivider"></div>
 												<mouse class="tooltip-image" style="border-bottom: dotted 1px">

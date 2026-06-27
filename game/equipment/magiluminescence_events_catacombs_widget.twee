@@ -22,7 +22,7 @@
 			你听到黑暗中有动静。前面有东西，越来越近了。你身后也有东西。到一边去。一切都越来越近了。
 			<br><br>
 
-				你用手托起<<icon "accessories/Magiluminescence.png">>魔光护符，<span class="green">它的光使它们无法靠近。</span>他们逃到深处。
+				你用手托起<<terra_icon "accessories/Magiluminescence.png">>魔光护符，<span class="green">它的光使它们无法靠近。</span>他们逃到深处。
 				<br><br>
 
 				<<destination_catacombs skip>>
@@ -30,7 +30,7 @@
 		<<addinlineevent "catacombs_barrow_2" 1>>
 			你来到一滩白色的液体。它挡住了通道，找到另一条路可能会很困难。
 			<br><br>
-				你借助<<icon "accessories/Magiluminescence.png">>魔光护符<span class="green">看到了从液体中伸出来的几块砖石。</span>你爬上最近的，用它们穿过水池，小心不要摔倒。
+				你借助<<terra_icon "accessories/Magiluminescence.png">>魔光护符<span class="green">看到了从液体中伸出来的几块砖石。</span>你爬上最近的，用它们穿过水池，小心不要摔倒。
 				<br><br>
 
 				<<destination_catacombs skip>>
@@ -104,7 +104,7 @@
 			你发现路中间有一个一个直立的，打开的石棺。内部被黑暗笼罩，但你认为你看到一个人在里面。
 			<br><br>
 
-				你吸了一口气，用你的<<icon "accessories/Magiluminescence.png">>魔光护符照亮内部。<span class="green">里面没有尸骸。</span>
+				你吸了一口气，用你的<<terra_icon "accessories/Magiluminescence.png">>魔光护符照亮内部。<span class="green">里面没有尸骸。</span>
 				<<if random(1, 4) is 4>>
 					不过，你确实发现了一些破烂的布屑。你把它们加进了火炬里。<<gtorch>><<catacombs_torch 15>>
 				<</if>>
@@ -126,7 +126,7 @@
 		<br>
 	<</addinlineevent>>
 	<<addinlineevent "catacombs_3" 1>>
-			你看到一个大蜘蛛网，完全覆盖了通道。你举起<<icon "accessories/Magiluminescence.png">>魔光护符，<span class="green">扯碎了这些蜘蛛网。</span>
+			你看到一个大蜘蛛网，完全覆盖了通道。你举起<<terra_icon "accessories/Magiluminescence.png">>魔光护符，<span class="green">扯碎了这些蜘蛛网。</span>
 			<br><br>
 
 			<<destination_catacombs skip>>
@@ -135,7 +135,7 @@
 		你来到一堆瓦砾，石头砌成的砖石，没有一点土壤。这里的隧道坍塌了，但仍有裂缝。
 		<br><br>
 
-			你用<<icon "accessories/Magiluminescence.png">>魔光护符探了探这些洞的内部，找定了一个最宽敞的。<span class="green">你有能钻进去的自信。</span>
+			你用<<terra_icon "accessories/Magiluminescence.png">>魔光护符探了探这些洞的内部，找定了一个最宽敞的。<span class="green">你有能钻进去的自信。</span>
 			<br><br>
 
 			这需要一点扭动，<span class="green">但你设法把自己拉出来，</span>从瓦砾的另一边爬下来。
@@ -145,21 +145,21 @@
 	<</addinlineevent>>
 	<<if $spiderdisable is "f">>
 		<<addinlineevent "catacombs_5" 1>>
-				有什么东西在头顶的阴影中移动。你托起<<icon "accessories/Magiluminescence.png">>魔光护符。不管它是什么，<span class="green">它怕光。</span>
+				有什么东西在头顶的阴影中移动。你托起<<terra_icon "accessories/Magiluminescence.png">>魔光护符。不管它是什么，<span class="green">它怕光。</span>
 				<br><br>
 
 				<<destination_catacombs skip>>
 		<</addinlineevent>>
 	<</if>>
 	<<addinlineevent "catacombs_6" 1>>
-			<span class="green">你的<<icon "accessories/Magiluminescence.png">>魔光护符照亮了倒下的柱子。</span>你站起来跨过它。
+			<span class="green">你的<<terra_icon "accessories/Magiluminescence.png">>魔光护符照亮了倒下的柱子。</span>你站起来跨过它。
 		<br><br>
 
 		<<destination_catacombs skip>>
 	<</addinlineevent>>
 	<<addinlineevent "catacombs_7" 1>>
 		<<if $worn.feet.type.includes("naked")>>
-				<span class="green">你的<<icon "accessories/Magiluminescence.png">>魔光护符</span>照亮了前方的陶器碎片。你绕过他们。
+				<span class="green">你的<<terra_icon "accessories/Magiluminescence.png">>魔光护符</span>照亮了前方的陶器碎片。你绕过他们。
 		<<else>>
 			破碎的陶器<span class="green">在脚下嘎吱作响</span>。
 		<</if>>

@@ -9,7 +9,7 @@
 				<div class="terraItem">
 					<div class="terraIcon" @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}<br><span class='black'>_armor.set_bonus（未激活）</span>`">
 						<span @class="V[_armor.name] ? '' : 'terraFading'">
-							<<icon `_armor.icon`>>
+							<<terra_icon `_armor.icon`>>
 						</span>
 					</div>
 					<div class="terraDivider"></div>
@@ -45,7 +45,7 @@
 					<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
 					<div class="terraIcon" @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}<br>${_accessory.vanity}`">
 						<span @class="V[_accessory.name] ? '' : 'terraFading'">
-							<<icon `_accessory.icon`>>
+							<<terra_icon `_accessory.icon`>>
 						</span>
 					</div>
 					<div class="terraDivider"></div>

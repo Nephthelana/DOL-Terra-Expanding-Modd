@@ -1,4 +1,5 @@
 :: Bait Forest Shop Receive
+<span class="icon"></span>
 <<npc Gwylan>><<person1>>
 <<set $bait_forest_shop_received to true>>
 <<switch $bait_forest_shop>>
@@ -16,7 +17,6 @@
 <<set _bait_forest_shop to setup.terraBait[$bait_forest_shop]>>
 “你对这些小家伙感兴趣么？”<<He>>钻入一个隐秘的房间中，拿着一个罐子走了出来。<br>
 <br>
-你获得了：<<icon `_bait_forest_shop.icon`>><<print _bait_forest_shop.cn_name>>(_bait_forest_shop_receive)<br>
+你获得了：<<terra_icon `_bait_forest_shop.icon`>><<print _bait_forest_shop.cn_name>>(_bait_forest_shop_receive)<br>
 <br>
-<<getouticon>><<link [[返回|Forest Shop]]>><</link>>
-<<endevent>>
+<<gwylanOptionsLeave>>

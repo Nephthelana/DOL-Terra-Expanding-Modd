@@ -5,7 +5,7 @@
 			墓地里生长着一朵与众不同的花。也许是你之前没有注意到它，它已经生长到想要怒放的状态了。<br>
 			<br>
 			与其它花草不同，<i>它美得摄人心魄。</i><br>
-			<<icon "Abigails_Flower_(placed).png">><<link [[接近|Abigails Flower Pick 1]]>><</link>><br>
+			<<terra_icon "Abigails_Flower_(placed).png">><<link [[接近|Abigails Flower Pick 1]]>><</link>><br>
 			<br>
 		<</if>>
 	<</if>>

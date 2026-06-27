@@ -12,7 +12,7 @@
 					<div class="terraItem">
 						<div @tooltip="_tooltip">
 							<div class="terraIconTool">
-								<<icon `_anglerFurniture.item_icon`>>
+								<<terra_icon `_anglerFurniture.item_icon`>>
 							</div>
 						</div>
 						<div class="terraDivider"></div>

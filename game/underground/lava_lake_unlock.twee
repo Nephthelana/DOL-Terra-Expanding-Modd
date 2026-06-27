@@ -31,28 +31,23 @@
 <</widget>>
 
 <<widget "lavaLakeClothes">>
-	<br>
-	<<storeactions "lavaLake">>
-	<<wardrobeSelection true>>
-	<<set _store_location to "lavaLake">>
-	<<storeon _store_location "check">>
-	<<if _store_check is 1>>
-		<<set _clothes to clothingInStorage(_store_location)>>
-		<<if _clothes.length gt 0>>
-			<<if _clothes.length gt 2>>
-				你的衣服散落在一块岩石后面的地上。
-				<br>
-			<<elseif _clothes.length is 2>>
-				你的_clothes[0].cn_name_cap和你的_clothes[1].cn_name_cap散落在一块岩石后面的地上。
-				<br>
-			<<else>>
-				你的_clothes[0].cn_name_cap散落在一块岩石后面的地上。
-				<br>
-			<</if>>
-			<<clothingicon _clothes[0] _clothes[0].slot>><<link [[穿上衣服|$passage]]>><<set $eventskip to 1>><<storeload _store_location>><</link>>
-			<br><br>
-		<</if>>
+	<<if clothingInStorage("lavaLake").length lt 1>>
+		你可以在一个岩洞处存放你的衣服。<br>
+	<<else>>
+		你的衣服散落在地上。<br>
 	<</if>>
+	<<if $lavaLakeStrip>>
+		<<dressasyouwereicon>><<link [[穿上|$passage]]>>
+			<<storeon "lavaLake">>
+			<<unset $lavaLakeStrip>>
+		<</link>>
+	<<else>>
+		<<skinicon "strip">><<link [[脱下所有衣服|$passage]]>>
+			<<undress "lavaLake">>
+			<<set $lavaLakeStrip to true>>
+		<</link>>
+	<</if>><br>
+	<br>
 <</widget>>
 
 :: Underground Lava Lake Intro 1
@@ -68,7 +63,7 @@
 :: Underground Lava Lake Trip
 你已经熟悉这个隧道的结构了，但你还是无法避免地接触到附着在内壁的地衣，
 <<if $terra_accessories_slots.includes("Lava_Charm")>>
-	<span class="green">好在有<<icon "accessories/Lava_Charm.png">>熔岩护身符的保护，你并没有受到其影响。</span><br>
+	<span class="green">好在有<<terra_icon "accessories/Lava_Charm.png">>熔岩护身符的保护，你并没有受到其影响。</span><br>
 <<else>>
 	<span class="lewd">这使你感到一股淫荡的暖意在体内蔓延。</span><<garousal>><<arousal 1000>><br>
 <</if>>
@@ -76,6 +71,7 @@
 <<link [[继续|Underground Lava Lake]]>><</link>>
 
 :: Underground Lava Lake
+<span class="icon"></span>
 <<location "underground_lava_lake">><<effects>>
 你站在这片地下熔岩湖前。熔岩中的气泡在湖面迸裂的声音警告着你，这里不是什么安全的地方。<br>
 <br>
@@ -88,9 +84,9 @@
 		<<case 4 5>>
 			<<set _randomBait to "Hell_Butterfly">>
 	<</switch>>
-	<<icon `'fishing/bait/bait_animation/' + _randomBait + '.gif'`>>
+	<<terra_icon `'fishing/bait/bait_animation/' + _randomBait + '.gif'`>>
 	你看到有只熔岩小动物在旁边活动。<br>
-	<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<icon 'tool/Lavaproof_Bug_Net.png'>>" : $Bug_Net ? "<<icon 'tool/Bug_Net.png'>>" : "<<ind>>">>
+	<<print $Golden_Bug_Net ? "<<terra_icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<terra_icon 'tool/Lavaproof_Bug_Net.png'>>" : $Bug_Net ? "<<terra_icon 'tool/Bug_Net.png'>>" : "<<ind>>">>
 	<<if $Golden_Bug_Net or $Lavaproof_Bug_Net>>
 		<<link [[抓住它！(0:02)|Underground Lava Lake Catch Success]]>><<pass 2>><<set $randomBait to _randomBait>><</link>><br>
 	<<elseif $Bug_Net>>
@@ -103,25 +99,16 @@
 <<if $daily.Lava_Moss isnot true>>
 	隧道入口处的周围分布着一些苔藓，看起来与隧道内部的地衣有着一定的亲缘关系。
 	<br>
-	<<icon "material/Lava_Moss.png">><<link [[采集发光苔藓|Terra Lava Moss]]>><</link>><br>
+	<<terra_icon "material/Lava_Moss.png">><<link [[采集发光苔藓|Terra Lava Moss]]>><</link>><br>
 <<else>>
 	<span class="blue">你今天采集过这里的苔藓了。</span><br>
 <</if>>
 <br>
-<<if clothingInStorage("lavaLake").length lt 1>>
-	你可以在一个岩洞处存放你的衣服。<br>
-<</if>>
 <<lavaLakeClothes>>
 熔岩湖岸有一个看起来由炽热的石砖堆砌而成的熔炉。<br>
-<<icon "furniture_placed/Hellforge_(placed).gif">><<link [[使用地狱熔炉|Underground Lava Lake Hellforge]]>><</link>><br>
+<<terra_icon "furniture_placed/Hellforge_(placed).gif">><<link [[使用地狱熔炉|Underground Lava Lake Hellforge]]>><</link>><br>
 <br>
-<<if (Time.hour gte 18 and Time.hour lte 20) or (Time.hour is 21 and Time.minute lte 30)>>
-	附近生长着几株火焰般的花朵，偶尔会爆出微小的火星。<span class="green">看起来已经开花了。</span><br>
-	<<icon "herb/Fireblossom_placed_blossom.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
-<<else>>
-	附近生长着几株有粗壮的火红色茎干的植物。<span class="lblue">看起来已经成熟了。</span><br>
-	<<icon "herb/Fireblossom_placed_mature.png">><span class="blue">你现在还不能收获这种植物，请等待模组更新。</span><br>
-<</if>>
+<<herbFireblossomEntrance>>
 <br>
 <<if getFishingRodObtainedList().length gt 0>>
 	钓鱼<br>
@@ -134,16 +121,16 @@
 <<set _catchingBaitInfo to setup.terraBait[$randomBait]>>
 <<set V[_catchingBaitInfo.name] += 1>>
 <<bestiaryStatistics "bait" _catchingBaitInfo.name 1>>
-你抄起你的<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>金虫网" : "<<icon 'tool/Lavaproof_Bug_Net.png'>>防熔岩捕虫网">>，抓住了这只<<icon `_catchingBaitInfo.icon`>>_catchingBaitInfo.cn_name。<br>
+你抄起你的<<print $Golden_Bug_Net ? "<<terra_icon 'tool/Golden_Bug_Net.png'>>金虫网" : "<<terra_icon 'tool/Lavaproof_Bug_Net.png'>>防熔岩捕虫网">>，抓住了这只<<terra_icon `_catchingBaitInfo.icon`>>_catchingBaitInfo.cn_name。<br>
 <br>
 <<link [[继续|Underground Lava Lake]]>><<unset $randomBait>><</link>>
 
 :: Underground Lava Lake Catch Fail
 <<set _catchingBaitInfo to setup.terraBait[$randomBait]>>
-你抄起你的<<icon 'tool/Bug_Net.png'>>虫网，试图抓住这只<<icon `_catchingBaitInfo.icon`>>_catchingBaitInfo.cn_name。<span class="purple">但很不幸的是，你的虫网并没有结实到能够捕捉这些生活在熔岩环境中的小动物。</span><br>
+你抄起你的<<terra_icon 'tool/Bug_Net.png'>>虫网，试图抓住这只<<terra_icon `_catchingBaitInfo.icon`>>_catchingBaitInfo.cn_name。<span class="purple">但很不幸的是，你的虫网并没有结实到能够捕捉这些生活在熔岩环境中的小动物。</span><br>
 <br>
 <<if $terra_accessories_slots.includes("Lava_Charm")>>
-	<span class="green">好在有<<icon "accessories/Lava_Charm.png">>熔岩护身符的保护，你并没有受到其影响。</span><br>
+	<span class="green">好在有<<terra_icon "accessories/Lava_Charm.png">>熔岩护身符的保护，你并没有受到其影响。</span><br>
 <<else>>
 	<span class="lewd">熔岩小动物带来的热量使你产生了奇怪的感觉。</span><<garousal>><<arousal 300>><br>
 <</if>>
@@ -152,7 +139,7 @@
 
 :: Underground Lava Lake Hellforge
 地狱熔炉内部流淌着汩汩的熔岩。<br>
-<<icon "furniture_placed/Hellforge_(placed).gif">><br>
+<<terra_icon "furniture_placed/Hellforge_(placed).gif">><br>
 <br>
 <span id="craftingInfo"></span>
 <span id="craftingUI"><<crafting "Hellforge">></span>
@@ -162,7 +149,7 @@
 :: Underground Lava Lake Leave
 你通过隧道爬回了走私者洞穴的最深处。
 <<if $terra_accessories_slots.includes("Lava_Charm")>>
-	<span class="green"><<icon "accessories/Lava_Charm.png">>熔岩护身符的保护使你免于受到地衣的影响。</span><br>
+	<span class="green"><<terra_icon "accessories/Lava_Charm.png">>熔岩护身符的保护使你免于受到地衣的影响。</span><br>
 <<else>>
 	<span class="lewd">那些灼热的地衣使你感到一股淫荡的暖意在体内蔓延。</span><<garousal>><<arousal 1000>><br>
 <</if>>

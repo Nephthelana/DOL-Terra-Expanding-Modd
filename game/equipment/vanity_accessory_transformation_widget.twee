@@ -6,14 +6,26 @@
 	<<set $transformationParts.demon.horns to $demon gte 2 ? $transformationParts.demon.horns : !_terra_vanity_demonHorns ? "disabled" : $transformationParts.demon.horns is "disabled" ? "default" : $transformationParts.demon.horns>>
 
 	<script>
-		if (V.options.buttonsLegacy) {
-			simpleFrameworks.data.ModMenuBig.pushUnique('void_bag');
-			simpleFrameworks.data.ModMenuSmall.pushUnique('terraExpandEquipmentButton');
-			simpleFrameworks.data.ModMenuSmall.pushUnique('terraExpandToolButton');
+		if (window.modUtils.getMod('maplebirch')) {
+			if (V.options.buttonsLegacy) {
+				maplebirch.tool.zone.data.MenuBig.pushUnique('void_bag');
+				maplebirch.tool.zone.data.MenuSmall.pushUnique('terraExpandEquipmentButton');
+				maplebirch.tool.zone.data.MenuSmall.pushUnique('terraExpandToolButton');
+			} else {
+				maplebirch.tool.zone.data.MenuBig.delete('void_bag');
+				maplebirch.tool.zone.data.MenuSmall.delete('terraExpandEquipmentButton');
+				maplebirch.tool.zone.data.MenuSmall.delete('terraExpandToolButton');
+			}
 		} else {
-			simpleFrameworks.data.ModMenuBig.delete('void_bag');
-			simpleFrameworks.data.ModMenuSmall.delete('terraExpandEquipmentButton');
-			simpleFrameworks.data.ModMenuSmall.delete('terraExpandToolButton');
+			if (V.options.buttonsLegacy) {
+				simpleFrameworks.data.ModMenuBig.pushUnique('void_bag');
+				simpleFrameworks.data.ModMenuSmall.pushUnique('terraExpandEquipmentButton');
+				simpleFrameworks.data.ModMenuSmall.pushUnique('terraExpandToolButton');
+			} else {
+				simpleFrameworks.data.ModMenuBig.delete('void_bag');
+				simpleFrameworks.data.ModMenuSmall.delete('terraExpandEquipmentButton');
+				simpleFrameworks.data.ModMenuSmall.delete('terraExpandToolButton');
+			}
 		}
 	</script>
 
@@ -22,7 +34,7 @@
 <<widget "vanityAccessoryTransformationToggle">>
 	<<if _terra_vanity_angelHalo>>
 		<div @class="_terra_vanity_demonHorns ? 'settingsToggleItem' : 'settingsToggleItemWide'">
-			<<icon "accessories/Angel_Halo.png">><span class="gold bold">时装：天使光环</span>
+			<<terra_icon "accessories/Angel_Halo.png">><span class="gold bold">时装：天使光环</span>
 			<<set _BA_Halos to {
 				"玛█(M██y)": "mary",
 				"圣█(S██a)": "seia",
@@ -68,7 +80,7 @@
 	<</if>>
 	<<if _terra_vanity_demonHorns>>
 		<div @class="_terra_vanity_angelHalo ? 'settingsToggleItem' : 'settingsToggleItemWide'">
-			<<icon "accessories/Demon_Horns.png">><span class="gold bold">时装：恶魔角</span>
+			<<terra_icon "accessories/Demon_Horns.png">><span class="gold bold">时装：恶魔角</span>
 			<div class='tf-part-item'>
 				<<listbox "_demon.horns" autoselect>>
 					<<option "隐藏" "hidden">>

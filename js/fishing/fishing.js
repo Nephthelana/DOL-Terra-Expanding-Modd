@@ -438,9 +438,9 @@ terraFishing.create("baitConsumed", () => {
 		}
 		if (V[T.bait.name] <= 0) {
 			V.Bait = "None";
-			sWikifier(`你用掉了最后一个<<icon \`T.bait.icon\`>>${T.bait.cn_name}。<br>`);
+			sWikifier(`你用掉了最后一个<<terra_icon \`T.bait.icon\`>>${T.bait.cn_name}。<br>`);
 		} else {
-			sWikifier(`你还剩下${V[T.bait.name]}个<<icon \`T.bait.icon\`>>${T.bait.cn_name}。<br>`);
+			sWikifier(`你还剩下${V[T.bait.name]}个<<terra_icon \`T.bait.icon\`>>${T.bait.cn_name}。<br>`);
 		}
 	} else {
 		sWikifier(``);
@@ -467,11 +467,19 @@ terraFishing.create("fishing_request_reward", () => {
 		if (T.rInfo.condition()) {
 			if (T.rInfo.rarity() == 1) {
 				T.rInfo.reward();
-				sWikifier(`<<icon \`T.rInfo.icon\`>>${T.rInfo.cn_name}`);
+				sWikifier(`<<terra_icon \`T.rInfo.icon\`>>${T.rInfo.cn_name}`);
+				// 0.2.8.0 修复由渔夫任务奖励系统重置引起的无法解锁金钓竿相关的成就的问题
+				if (T.rInfo.name == "Golden_Fishing_Rod") {
+					sWikifier(`<<earnFeat "Glorious Golden Pole">>`);
+				}
 				break;
 			} else if (random(1 , Math.round(T.rInfo.rarity() * rarity_reduction)) == 1) {
 				T.rInfo.reward();
-				sWikifier(`<<icon \`T.rInfo.icon\`>>${T.rInfo.cn_name}`);
+				sWikifier(`<<terra_icon \`T.rInfo.icon\`>>${T.rInfo.cn_name}`);
+				// 0.2.8.0 修复由渔夫任务奖励系统重置引起的无法解锁金钓竿相关的成就的问题
+				if (T.rInfo.name == "Golden_Fishing_Rod") {
+					sWikifier(`<<earnFeat "Glorious Golden Pole">>`);
+				}
 				break;
 			}
 		}
@@ -487,7 +495,7 @@ terraFishing.create("fishing_request_reward", () => {
 	if (V.fishing_requests_finished_count >= random(1,100)) {
 		T.anglerFurniture = setup.terraAnglerFurniture[getAllAnglerFurnitureList().random()];
 		V.angler_furniture_obtained.pushUnique(T.anglerFurniture.name);
-		sWikifier(`、<<icon \`T.anglerFurniture.item_icon\`>>${T.anglerFurniture.cn_name}`);
+		sWikifier(`、<<terra_icon \`T.anglerFurniture.item_icon\`>>${T.anglerFurniture.cn_name}`);
 	}
 
 	// 鱼饵奖励
@@ -500,8 +508,9 @@ terraFishing.create("fishing_request_reward", () => {
 		else if (random(1,5) == 1) {var baitType = "Journeyman_Bait";}
 		else {var baitType = "Apprentice_Bait";}
 		T.bait_type_info = setup.terraBait[baitType];
+		V[baitType] += bait;
 		sWikifier(`<<bestiaryStatistics "bait" ${baitType} ${bait}>>`);
-		sWikifier(`、<<icon \`T.bait_type_info.icon\`>>${T.bait_type_info.cn_name}(${bait})`);
+		sWikifier(`、<<terra_icon \`T.bait_type_info.icon\`>>${T.bait_type_info.cn_name}(${bait})`);
 	}
 
 	sWikifier(`。`);

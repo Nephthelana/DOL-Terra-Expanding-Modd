@@ -29,7 +29,7 @@
 		<</for>>
 	</div>
 	<br>
-	<<icon "furniture_placed/Extractinator_(placed).gif">><br>
+	<<terra_icon "furniture_placed/Extractinator_(placed).gif">><br>
 	<<print $bird.materials.junk gt 0 ? "你有<<birdicon 'junk'>><span class='green'>$bird.materials.junk</span>个闪闪发光的小垃圾。" : "<span class='black'>你没有<<birdicon 'junk'>>闪闪发光的小垃圾了。</span>">><br>
 	<<if $bird.materials.junk gt 0>>
 		<<link "提炼1个">>

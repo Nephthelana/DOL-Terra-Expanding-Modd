@@ -37,13 +37,13 @@
 <<elseif !$pet_list.includes("Royal_Delight") and $guide_mod_hint>>
 	<<set $pet_list.pushUnique("Royal_Delight")>>
 	“谢谢你之前帮我找到的净化粉和铜短剑，请收下这个。”<br>
-	<<icon "pet/pet_item/Royal_Delight.png">>
+	<<terra_icon "pet/pet_item/Royal_Delight.png">>
 	<br>
 	他将一碟蓝色果冻状的东西递了过来。你最初以为这是某种甜品，直到你亲眼看到它蠕动起来。它慢慢地融化、变形，然后突然冒出两只豆豆眼。它好奇地看了看你，脸上浮现出了两团可疑的红晕。<br>
 	<br>
-	“别担心，它只是一团无害的史菜姆。<span class="teal">你可以把这份‘皇家美味’放在卧室里。</span>”向导微笑着说，<span class="gold">“感谢游玩泰拉瑞亚模组，祝你玩得开心。”</span>他向你友好地眨眨眼。<br>
+	“别担心，它只是一团无害的史菜姆。<span class="teal">你可以把这份‘皇家美味’放在卧室里，或者<mouse class="tooltip">让它跟着你<span class="linkBlue">在“盔甲&饰品”窗口进行设置</span></mouse>。</span>”向导微笑着说，<span class="gold">“感谢游玩泰拉瑞亚模组，祝你玩得开心。”</span>他向你友好地眨眨眼。<br>
 	<br>
-	<<icon "pet/pet_projectile/Slime_Prince.gif">><br>
+	<<terra_icon "pet/pet_projectile/Slime_Prince.gif">><br>
 	<br>
 	<<link [[继续|Guide Room]]>><</link>><br>
 <<else>>
@@ -116,12 +116,16 @@
 	<<if $GoldWatchPre is "done">>
 		<br>
 		看来向导已经完成了他的研究工作。<br>
-		<<icon "antiques/antique_watch.gif">><<link [[询问怀表|Guide Watch 2]]>><</link>><br>
+		<<terra_icon "antiques/antique_watch.gif">><<link [[询问怀表|Guide Watch 2]]>><</link>><br>
 	<</if>>
 	<<if $CompassPre is "done">>
 		<br>
 		看来向导已经完成了他的研究工作。<br>
-		<<icon "antiques/antique_silver_compass.png">><<link [[询问银质指南针|Guide Compass 2]]>><</link>><br>
+		<<terra_icon "antiques/antique_silver_compass.png">><<link [[询问银质指南针|Guide Compass 2]]>><</link>><br>
+	<</if>>
+	<<if $dryad_intro is "symbol">>
+		你可以将从沙漏上抄写的铭文交给向导。<br>
+		<<antiqueicon "hourglass">><<link [[交付|Dryad Hourglass Guide 1]]>><</link>><br>
 	<</if>>
 	<br>
 	<<getouticon>><<link [[离开|Forest]]>><<set $forest to 0>><</link>><br>

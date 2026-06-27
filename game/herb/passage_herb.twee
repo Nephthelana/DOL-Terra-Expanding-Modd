@@ -1,0 +1,88 @@
+:: Herb Plot
+<span class="icon"></span>
+<<set _herbLocation to $herbLocation>>
+<<set _herbPlotId to $herbPlotId>>
+
+<<herbPlotPassage _herbLocation _herbPlotId>>
+
+<br>
+<<link [[返回|$herbPlotEntrance]]>>
+	<<if _plotInfo.natural>>
+		<<unset $herbLocation>>
+	<</if>>
+	<<unset $herbPlotId>>
+	<<unset $herbPlotEntrance>>
+<</link>>
+
+:: Herb Location
+<span class="icon"></span>
+<<set _locInfo to setup.terraHerbLocation[$herbLocation]>>
+你在<<print _locInfo.name_cn>>的草药种植区。<br>
+<div class="settingsGrid">
+	<<for _plot range Object.keys($terra_herb_plots[$herbLocation])>>
+		<<set _plotInfo to $terra_herb_plots[$herbLocation][_plot]>>
+		<<set _idNumber to (_idNumber + 1) || 1>>
+		<div class="settingsToggleItem" style="
+			border: 1px solid var(--200);
+			border-radius: 5px;
+			padding: 10px;
+		">
+			<<print _idNumber>>号地块：
+			<<if _plotInfo.bed is "none">>
+				<span class="black">这处地块是空的。</span><br>
+				<div style="border-top: 1px solid var(--600); width: 100%; padding-bottom: 5px; margin-top: 5px;"></div>
+				<span class="gold">填充地块以开始种植草药</span><br>
+			<<else>>
+				<<set _bedInfo to setup.terraHerbBed[_plotInfo.bed]>>
+				<<if _plotInfo.planter_box>>
+					<<terra_icon `_bedInfo.planter_box.icon`>>
+				<<else>>
+					<<terra_icon `_bedInfo.block.icon`>>
+				<</if>>
+				<div style="border-top: 1px solid var(--600); width: 100%; padding-bottom: 5px; margin-top: 5px;"></div>
+				<<if Object.keys(_plotInfo.plots).length lte 0>>
+					<span class="blue">你没有在这里种东西</span><br>
+				<<elseif Object.values(_plotInfo.plots).find(h => h.stage === 'blossom')>>
+					<<terra_icon `"herb/herb_tile/" + _bedInfo.herb_name + "_placed_blossom.png"`>><span class="green">已经有<<print _bedInfo.herb_name_cn>>开花了</span><br>
+				<<elseif Object.values(_plotInfo.plots).find(h => h.stage === 'mature')>>
+					<<terra_icon `"herb/herb_tile/" + _bedInfo.herb_name + "_placed_mature.png"`>><span class="teal">已经有<<print _bedInfo.herb_name_cn>>成熟了</span><br>
+				<<elseif Object.values(_plotInfo.plots).find(h => h.stage === 'sprout')>>
+					<<terra_icon `"herb/herb_tile/" + _bedInfo.herb_name + "_placed_sprout.png"`>><span class="lblue"><<print _bedInfo.herb_name_cn>>还在生长</span><br>
+				<<else>>
+					<span class="red">草药长势状态异常，请汇报给模组作者</span><br>
+				<</if>>
+			<</if>>
+			<<capture _plot>>
+				<<link [[检查|Herb Plot]]>>
+					<<set $herbPlotId to _plot>>
+					<<set $herbPlotEntrance to "Herb Location">>
+				<</link>><br>
+			<</capture>>
+		</div>
+	<</for>>
+</div>
+<<link [[返回|_locInfo.entrance]]>><<unset $herbLocation>><</link>>
+
+:: Herb Background Switch
+<span class="icon"></span>
+<<set _plot to $terra_herb_plots[$herbLocation][$herbPlotId]>>
+将该地块背景设为：<br>
+<<if $herbLocation is "alex_farm">>
+	<<terra_icon `"herb/background_block/" + ($farm.wall gte 4 ? "wrought_iron_fence" : $farm.wall gte 3 ? "iron_fence" : "wooden_fence") + ".png"`>>
+	<<link [[默认|Herb Plot]]>><<set _plot.background to "farm_default">><</link>><br>
+<</if>>
+<<ind>><<link [[无|Herb Plot]]>><<set _plot.background to "">><</link>><br>
+<<for _fence range [
+	["wooden_fence","木栅栏"],
+	["rich_mahogany_fence","红木栅栏"],
+	["boreal_wood_fence","针叶木栅栏"],
+	["palm_wood_fence","棕榈木栅栏"],
+	["ash_wood_fence","灰烬木栅栏"],
+	["bamboo_fence","竹栅栏"]
+]>>
+	<<capture _fence>>
+		<<terra_icon `"herb/background_block/" + _fence[0] + ".png"`>><<link [[`_fence[1]`|Herb Plot]]>><<set _plot.background to _fence[0]>><</link>><br>
+	<</capture>>
+<</for>>
+<br>
+<<getouticon>><<link [[返回|Herb Plot]]>><</link>>

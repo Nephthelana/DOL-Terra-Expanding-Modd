@@ -17,9 +17,18 @@
 	<<if !setup.terraAccessories.Radar.upgrades.some(a => V[a])>>
 		<<switch $radarMessage>>
 			<<case "note">>
-				<li>你身上有一张标记着<<icon "Peddlers_Hat.png">>的纸条。</li>
+				<li>你身上有一张标记着<<terra_icon "Peddlers_Hat.png">>的纸条。</li>
 			<<case "dock">>
 				<li>码头装有电子产品的集装箱里，应该有旅商提到的那个通讯工具。</li>
 		<</switch>>
 	<</if>>
+<</widget>>
+
+<<widget "dryad_journal">>
+	<<swich $dryad_intro>>
+		<<case "museum">>
+			<li>去博物馆抄写铭文沙漏上的铭文。</li>
+		<<case "symbol">>
+			<li>将从沙漏上抄写的铭文交给向导。</li>
+	<</switch>>
 <</widget>>

@@ -17,7 +17,7 @@
 		<br>
 		<<if $Truffle_Worm lte 0>>
 			<<set $Bait to "None">>
-			你用掉了最后一个<<icon "fishing/bait/Truffle_Worm.png">>松露虫。<br>
+			你用掉了最后一个<<terra_icon "fishing/bait/Truffle_Worm.png">>松露虫。<br>
 		<</if>>
 	<<else>>
 		<<pass 30>>
@@ -55,10 +55,10 @@
 		<<set $fishing_bitten_count += 1>>
 		经过_fishing_cast_time分钟的等待，有东西上钩了！<br>
 		<<if $Sonar_Potion_countdown>>
-			<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
+			<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<terra_icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
 			<br>
 		<</if>>
-		<<icon "hint/Emote_Item_Fishing_Rod.gif">><<link [[收竿！|Fishing]]>><<run fishingPrepare()>><</link>><br>
+		<<terra_icon "hint/Emote_Item_Fishing_Rod.gif">><<link [[收竿！|Fishing]]>><<run fishingPrepare()>><</link>><br>
 	<</if>>
 	<br>
 	<<fishingrod_held_icon>><<link [[再抛最后亿竿|Fishing Bitten]]>><<unset $fishing_harvest>><</link>><br>

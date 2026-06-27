@@ -20,6 +20,6 @@
 <<set $Gold_Watch to true>>
 “如你所见，这块怀表在用材和做工上都无可挑剔，但那个时代的工艺技术有所欠缺，导致它的某个功能已经严重损坏。几乎每个怀表都会在岁月流逝中出现这种问题——但现在我把它修好了。”<br>
 <br>
-<span class="gold">你获得了<<icon "accessories/Gold_Watch.png">>金表！</span><br>
+<span class="gold">你获得了<<terra_icon "accessories/Gold_Watch.png">>金表！</span><br>
 <br>
 <<link [[继续|Guide Room]]>><</link>>

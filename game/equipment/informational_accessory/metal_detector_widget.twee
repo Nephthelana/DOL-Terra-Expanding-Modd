@@ -6,7 +6,7 @@
 		<br>
 		出于安全考虑，你决定检查一下这个设备：其上有一对红绿两色的指示灯交替闪烁，与嘀嘟声频率一致，似乎是反映了当前信号强度。你准备进一步检查是否有可操作的按钮，但你惊奇的发现，它竟然是用一些强力胶粘附在基座上的。稍加一用力，你就将其取了下来。<br>
 		<br>
-		<span class="gold">你获得了<<icon "accessories/Metal_Detector.png">>金属探测器！</span><br>
+		<span class="gold">你获得了<<terra_icon "accessories/Metal_Detector.png">>金属探测器！</span><br>
 		<br>
 	<</if>>
 <</widget>>

@@ -1,3 +1,16 @@
+/* 
+	name: 钓鱼点代号/英文名文本
+	cn_name: 钓鱼点中文名文本
+	material: 值为true/false，用于标记是否显示“材料”标记，并不能决定其本身能否在向导处查询
+	type: 被我分为了cookable/potion/fish，目前意义不大
+	rarity: 渔获品位分布
+	rarity_cn: 其最低的渔获品位文本，用于区分稀有度
+	catching_place: 可产出对应渔获的钓鱼点
+	price: 价值（并没有任何用处，纯捣乱），不用写
+	amount: 没有任何用处，也纯捣乱，不用写
+	icon: 图标在icon文件夹中的路径
+	difficulty: 渔获难度系数，由最低的渔获品位决定
+*/
 setup.terraFish = {
 	"Salmon": {
         name: "Salmon",

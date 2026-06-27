@@ -26,7 +26,7 @@
 	你向渔夫询问今天的钓鱼任务。<br>
 	<br>
 	<<print $options.cute_angler ? _requestFish.cute_angler_des : _requestFish.angler_des>><br>
-	<<icon `_requestFish.icon`>>_requestFish.cn_name（抓捕地点：_requestFish.catching_place_des）
+	<<terra_icon `_requestFish.icon`>>_requestFish.cn_name（抓捕地点：_requestFish.catching_place_des）
 	<<if $fishingskill lt 1000>>
 		<mouse class="tooltip linkBlue">(?)<span>出现“？？？”时，表明你需要更高的垂钓等级，才能解锁钓鱼点的信息</span></mouse>
 	<</if>><br>
@@ -47,7 +47,7 @@
 		<<link [[提交任务|Fishing Request Rewarding]]>><</link>><br>
 	<</if>>
 	<<if $Golden_Carp gt 0>>
-		<<link [[提交金鲤鱼|Fishing Request Rewarding]]>><<set $fishing_request_Golden_Carp to true>><</link>>｜你可以用<<icon "fishing/fish/Golden_Carp.png">>金鲤鱼来代替今天的任务鱼。<br>
+		<<link [[提交金鲤鱼|Fishing Request Rewarding]]>><<set $fishing_request_Golden_Carp to true>><</link>>｜你可以用<<terra_icon "fishing/fish/Golden_Carp.png">>金鲤鱼来代替今天的任务鱼。<br>
 	<</if>>
 <</if>>
 <br>

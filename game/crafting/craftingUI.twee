@@ -28,7 +28,7 @@
 					<<set _recipe_avalible to true>>
 					<div class="terraItem">
 						<div class="terraIcon" @tooltip="`${_recipe.cn_name}<br><br>${_recipe.des}`">
-							<<icon `_recipe.icon`>>
+							<<terra_icon `_recipe.icon`>>
 						</div>
 						<div class="terraDivider"></div>
 						<mouse class="tooltip-image" style="border-bottom: dotted 1px">
@@ -45,9 +45,11 @@
 										<<case "number">>
 											<<run V[_ing2[0]] -= _ing2[1]>>
 										<<case "boolean">>
-											<<run delete V[_ing2[0]]>>
-											<<set $terra_accessories_slots.delete(_ing2[0])>>
-											<<set $terra_vanity_accessories_slots.delete(_ing2[0])>>
+											<<if _ing2[0] isnot "Bottomless_Honey_Bucket">>
+												<<run delete V[_ing2[0]]>>
+												<<set $terra_accessories_slots.delete(_ing2[0])>>
+												<<set $terra_vanity_accessories_slots.delete(_ing2[0])>>
+											<</if>>
 									<</switch>>
 								<</for>>
 								_recipe.craft

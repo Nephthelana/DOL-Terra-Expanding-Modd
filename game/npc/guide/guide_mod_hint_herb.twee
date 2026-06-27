@@ -1,0 +1,12 @@
+:: Guide Mod Hint Herb
+“草药与农田中的作物有很大不同。它们没有季节与浇水需求，但必须要种植在对应的物块上。草药在种下后便会开始生长。<br>
+<br>
+“草药的生长可以分为3个阶段，分别是<span class="lblue">发芽期</span>、<span class="teal">成熟期</span>与<span class="green">开花期</span>。<br>
+<br>
+“<span class="lblue">发芽期</span>的草药，在外观上是非常小的植物枝条或幼芽。这一阶段可以在种子刚刚播撒时观察到。<br>
+<br>
+“<span class="teal">成熟期</span>的草药，需要<span class="lblue">发芽期</span>的草药经过一段时间的生长才能得到。此时植物的植株部分已经有所生长，变化相当显著。<br>
+<br>
+“<span class="green">开花期</span>的草药，需要<span class="teal">成熟期</span>的草药满足一定条件时才能得到。它以花的出现为主要特征。对于大部分草药，它会根据条件在<span class="green">开花期</span>与<span class="teal">成熟期</span>之间转换。”<br>
+<br>
+<<link [[返回|Guide Mod Hint]]>><</link>>

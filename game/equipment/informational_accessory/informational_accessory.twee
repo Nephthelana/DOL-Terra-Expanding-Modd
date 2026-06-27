@@ -28,7 +28,11 @@
 		<</if>>
 	</div>
 	<div id="informationalAccessoryInfo">
-		<<informationalAccessoryInfo>>
+		<<if $informationalAccessoryList.length lte 0>>
+			<i>你还没有获得信息饰品</i>
+		<<else>>
+			<<informationalAccessoryInfo>>
+		<</if>>
 	</div>
 <</widget>>
 
@@ -49,7 +53,7 @@
 				<div class="terraItem">
 					<div class="terraIcon" @tooltip="`${_accessory.cn_name}<br><br>▶${_accessory.des}`">
 						<span @class="$informationalAccessoryActivating[_accessory.name] ? '' : 'terraFading'">
-							<<icon `_accessory.icon`>>
+							<<terra_icon `_accessory.icon`>>
 						</span>
 					</div>
 					<div class="terraDivider"></div>
@@ -71,7 +75,9 @@
 						<<else>>
 							<<capture _aaa>>
 								<<link "⬅">>
-									<<run swap(V.informationalAccessoryList, _aaa - 1, _aaa)>>
+									<<set _temp to $informationalAccessoryList[_aaa]>>
+									<<set $informationalAccessoryList[_aaa] to $informationalAccessoryList[_aaa - 1]>>
+									<<set $informationalAccessoryList[_aaa - 1] to _temp>>
 									<<replace #informationalAccessorySetting>>
 										<<informationalAccessorySetting>>
 									<</replace>>
@@ -92,7 +98,7 @@
 	<<for _aa range $informationalAccessoryList>>
 		<<if $informationalAccessoryActivating[_aa]>>
 			<<set _accessory_activated to setup.terraAccessories[_aa]>>
-			<<icon `_accessory_activated.icon`>><<informationalAccessoryDetail _accessory_activated.name>>
+			<<terra_icon `_accessory_activated.icon`>><<informationalAccessoryDetail _accessory_activated.name>>
 			<br>
 		<</if>>
 	<</for>>
@@ -135,7 +141,7 @@
 		<<case "Weather_Radio">>
 			<<set $weather_forecast_hours to $weather_forecast_hours or 6>>
 			当前天气：
-			<<icon `Weather.name + "_icon.png"`>><<print Weather.name.replace("clear","晴天").replace("lightClouds","有云").replace("heavyClouds","多云").replace("lightPrecipitation","小雨").replace("heavyPrecipitation","大雨")>>
+			<<terra_icon `Weather.name + "_icon.png"`>><<print Weather.name.replace("clear","晴天").replace("lightClouds","有云").replace("heavyClouds","多云").replace("lightPrecipitation","小雨").replace("heavyPrecipitation","大雨")>>
 			｜
 			<span id="terraWeatherForcast">
 				<<link "查看天气预报">>

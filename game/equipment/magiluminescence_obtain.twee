@@ -69,6 +69,6 @@
 <br>
 盒子里静静地躺着一块护符，发出不寻常的暖光。看起来它救了你一命。<br>
 <br>
-<span class="gold">你获得了<<icon "accessories/Magiluminescence.png">>魔光护符！</span><br>
+<span class="gold">你获得了<<terra_icon "accessories/Magiluminescence.png">>魔光护符！</span><br>
 <br>
 <<link [[继续|Elk Compound Station]]>><</link>><br>

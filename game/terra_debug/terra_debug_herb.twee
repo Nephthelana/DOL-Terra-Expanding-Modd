@@ -1,0 +1,45 @@
+:: Terra Debug Herb
+请选择获得的草药。<br>
+<span class="no-numberify">
+	<div class="terraInventory">
+		<<for _h range ["Daybloom","Moonglow","Waterleaf","Fireblossom","Shiverthorn","Blinkroot"]>>
+			<<set _hInfo to setup.terraMaterial[_h]>>
+			<<capture _hInfo>>
+				<div class="terraItem">
+					<div class="terraIcon" @tooltip="`${_hInfo.cn_name}`">
+						<<terra_icon `_hInfo.icon`>>
+					</div>
+					<div class="terraDivider"></div>
+					<div class="terraLinks">
+						<<link [[`+100`|Terra Debug Herb Seed]]>><<set V[_hInfo.name] += 100>><</link>>
+					</div>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
+<br>
+<<getouticon>><<link [[返回|Terra Debug]]>><</link>>
+
+:: Terra Debug Herb Seed
+请选择获得的草药种子。<br>
+<span class="no-numberify">
+	<div class="terraInventory">
+		<<for _hs range Object.keys(setup.terraMiscellaneous).filter(m => setup.terraMiscellaneous[m].type === "herb_seed" && m !== "Deathweed_Seed")>>
+			<<set _hsInfo to setup.terraMiscellaneous[_hs]>>
+			<<capture _hsInfo>>
+				<div class="terraItem">
+					<div class="terraIcon" @tooltip="`${_hsInfo.cn_name}`">
+						<<terra_icon `_hsInfo.icon`>>
+					</div>
+					<div class="terraDivider"></div>
+					<div class="terraLinks">
+						<<link [[`+100`|Terra Debug Herb Seed]]>><<set V[_hsInfo.name] += 100>><</link>>
+					</div>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+</span>
+<br>
+<<getouticon>><<link [[返回|Terra Debug]]>><</link>>

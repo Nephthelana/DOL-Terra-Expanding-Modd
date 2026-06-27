@@ -6,7 +6,7 @@
 			<<ind>><<link [[搬走上面的箱子|Orphanage Loft Work Bench 1]]>><</link>><br>
 		<</if>>
 	<<else>>
-		<<icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Orphanage Loft Work Bench]]>><</link>><br>
+		<<terra_icon "furniture_placed/Work_Bench_(placed).png">><<link [[使用工作台|Orphanage Loft Work Bench]]>><</link>><br>
 	<</if>>
 <</widget>>
 
@@ -18,7 +18,7 @@
 
 :: Orphanage Loft Work Bench
 你擦去落在工作台上的灰尘。
-<<icon "furniture_placed/Work_Bench_(placed).png">><br>
+<<terra_icon "furniture_placed/Work_Bench_(placed).png">><br>
 <br>
 <span id="housekeepingInfo">
 	<<if $housekeeping lt 600>>

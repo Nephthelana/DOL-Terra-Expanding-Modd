@@ -9,7 +9,7 @@
 					<div class="terraItem">
 						<<set _isMaterial to _consumable.material ? "<br><i>材料</i>" : "">>
 						<div class="terraIcon" @tooltip="`${_consumable.cn_name}${_isMaterial}<br><br>▶${_consumable.des}`">
-							<<icon `_consumable.icon`>>
+							<<terra_icon `_consumable.icon`>>
 						</div>
 						<div class="terraDivider"></div>
 						_consumable.amount
@@ -45,7 +45,7 @@
 			<</if>>
 			<<checkWraith true>>
 			<<replace #hint_item_use>>
-				<span class="red">你使用了<<icon "tool/Bloody_Tear.png">>血泪。<i>"诅咒之夜真可怕。"</i></span><br>
+				<span class="red">你使用了<<terra_icon "tool/Bloody_Tear.png">>血泪。<i>"诅咒之夜真可怕。"</i></span><br>
 				<br>
 			<</replace>>
 			<<replace #void_bag_Consumable>>
@@ -60,7 +60,7 @@
 		<<link "使用">>
 			<<replace #hint_item_use>>
 				<<set $Mana_Crystal -= 1>>
-				<span class="teal">你使用了<<icon "tool/Mana_Crystal.png">>魔力水晶。</span>
+				<span class="teal">你使用了<<terra_icon "tool/Mana_Crystal.png">>魔力水晶。</span>
 				<<cleareventpool>>
 				<<if $hypnosis gt 0>>
 					<<addinlineevent "Harper" 1>>

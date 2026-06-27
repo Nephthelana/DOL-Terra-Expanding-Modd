@@ -1,19 +1,20 @@
 :: Terra Debug Link [widget]
 <<widget "terraDebugLink">>
 	<<if random(1,20) is 1>>
-		<<icon "Journey_Toggle.png">><<link [[旅行模式能力菜单|Terra Debug]]>>
+		<<terra_icon "Journey_Toggle.png">><<link [[旅行模式能力菜单|Terra Debug]]>>
 			<<set $terraDebugBack to $passage>>
 		<</link>><br>
 	<<else>>
-		<<icon "terra_debug.png">><<link [[进入泰拉瑞亚拓展调试/作弊页面|Terra Debug]]>>
+		<<terra_icon "terra_debug.png">><<link [[进入泰拉瑞亚拓展调试/作弊页面|Terra Debug]]>>
 			<<set $terraDebugBack to $passage>>
 		<</link>><br>
 	<</if>>
 <</widget>>
 
 :: Terra Debug
+<span class="icon"></span>
 <span class="teal terraBlinking">使用前确保自己能善用存档/回溯功能</span><br>
-数织
+数织<br>
 <<link [[进入数织|Nonogram]]>>
 	<<set $Nonogram to $Nonogram or {}>>
 	<<set $Nonogram.sideLength to $Nonogram.sideLength or 5>>
@@ -27,7 +28,7 @@
 	<div class="terraInventory">
 		<div class="terraItem">
 			<div @class="$pylon_collected.includes('Bedroom') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="孤儿院卧室晶塔">
-				<<icon "pylon/Forest_Pylon.png">>
+				<<terra_icon "pylon/Forest_Pylon.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<div class="terraLinks">
@@ -40,7 +41,7 @@
 		</div>
 		<div class="terraItem">
 			<div @class="$pylon_collected.includes('Eden Cabin') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="伊甸小屋晶塔">
-				<<icon "pylon/Jungle_Pylon.png">>
+				<<terra_icon "pylon/Jungle_Pylon.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<div class="terraLinks">
@@ -53,7 +54,7 @@
 		</div>
 		<div class="terraItem">
 			<div @class="$pylon_collected.includes('Farm Bedroom') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="农场卧室晶塔">
-				<<icon "pylon/Universal_Pylon.png">>
+				<<terra_icon "pylon/Universal_Pylon.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<div class="terraLinks">
@@ -66,7 +67,7 @@
 		</div>
 		<div class="terraItem">
 			<div @class="$pylon_collected.includes('Hawks Tower') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="鹰塔晶塔">
-				<<icon "pylon/Sunken_Pylon.png">>
+				<<terra_icon "pylon/Sunken_Pylon.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<div class="terraLinks">
@@ -79,7 +80,7 @@
 		</div>
 		<div class="terraItem">
 			<div @class="$pylon_collected.includes('Wolfcave') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="狼窝晶塔">
-				<<icon "pylon/Mushroom_Pylon.png">>
+				<<terra_icon "pylon/Mushroom_Pylon.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<div class="terraLinks">
@@ -92,7 +93,7 @@
 		</div>
 		<div class="terraItem">
 			<div @class="$pylon_collected.includes('Temple') ? 'terraIcon' : 'terraFading terraIcon'" tooltip="神殿晶塔">
-				<<icon "pylon/Hallow_Pylon.png">>
+				<<terra_icon "pylon/Hallow_Pylon.png">>
 			</div>
 			<div class="terraDivider"></div>
 			<div class="terraLinks">
@@ -168,17 +169,12 @@
 钓鱼相关<br>
 <<if $fishingskill isnot undefined>>
 	<span class="no-numberify">
-		<<link "<<<">><<set $fishingskill -= 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
-		<<link "<<">><<set $fishingskill -= 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
-		<<link "<">><<set $fishingskill -= 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>> |
-		垂钓: <span id="statsfishingskill"><<print Math.trunc($fishingskill)>></span>
-		| <<link ">">><<set $fishingskill += 10>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
-		| <<link ">>">><<set $fishingskill += 100>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
-		| <<link ">>>">><<set $fishingskill += 1000>><<clamp>><<replace "#statsfishingskill">><<print Math.trunc($fishingskill)>><</replace>> <<updatesidebarimg>><</link>>
+		<label><<checkbox "$terra_fishing_skip" false true autocheck>>跳过钓鱼小游戏</label><mouse class="tooltip linkBlue">(?)<span>开启后，将跳过计算渔获距离、渔线耐久的钓鱼小游戏，直接进入结算</span></mouse>
+		<<numberStepper "垂钓" $fishingskill "fishingskill" {max: 1000}>>
 		<div class="terraInventory">
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得/丢弃鱼竿">
-					<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
+					<<terra_icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -187,7 +183,7 @@
 			</div>
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得/丢弃装备">
-					<<icon "Accessories_icon.png">>
+					<<terra_icon "Accessories_icon.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -196,7 +192,7 @@
 			</div>
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得/丢弃任务鱼">
-					<<icon "fishing/quest_fish/Clownfish.png">>
+					<<terra_icon "fishing/quest_fish/Clownfish.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -205,7 +201,7 @@
 			</div>
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得/丢弃渔夫家具">
-					<<icon "furniture_item/Ship_in_a_Bottle.png">>
+					<<terra_icon "furniture_item/Ship_in_a_Bottle.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -214,7 +210,7 @@
 			</div>
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得鱼饵">
-					<<icon "fishing/bait/Apprentice_Bait.png">>
+					<<terra_icon "fishing/bait/Apprentice_Bait.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -223,7 +219,7 @@
 			</div>
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得普通鱼">
-					<<icon "fishing/fish/Bass.png">>
+					<<terra_icon "fishing/fish/Bass.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -232,7 +228,7 @@
 			</div>
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得宝匣">
-					<<icon "fishing/crates/Wooden_Crate.png">>
+					<<terra_icon "fishing/crates/Wooden_Crate.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -241,7 +237,7 @@
 			</div>
 			<div class="terraItem">
 				<div class="terraIcon" tooltip="获得药水">
-					<<icon "potions/Fishing_Potion.png">>
+					<<terra_icon "potions/Fishing_Potion.png">>
 				</div>
 				<div class="terraDivider"></div>
 				<div class="terraLinks">
@@ -251,12 +247,12 @@
 		</div>
 	</span>
 <<else>>
-	<span class="black">在渔夫处获得<<icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿后，解锁钓鱼相关的调试功能。</span><br>
+	<span class="black">在渔夫处获得<<terra_icon "fishing/fishing_pole/Wood_Fishing_Pole.png">>木钓竿后，解锁钓鱼相关的调试功能。</span><br>
 	<span class="black">或者你也可以执行以下选项以直接解锁渔夫及相关调试功能。这会跳过一些剧情，不适合初次体验本模组的玩家使用。</span><br>
 	<<if $options.cute_angler>>
-		<<icon "fishing/house_icon.png">>
+		<<terra_icon "fishing/house_icon.png">>
 	<<else>>
-		<<icon "fishing/iron_fence.png">>
+		<<terra_icon "fishing/iron_fence.png">>
 	<</if>>
 	<<link [[一键解锁渔夫|Terra Debug]]>>
 		<<set $fishing_anglerintro to true>>
@@ -267,11 +263,40 @@
 	<</link>><br>
 <</if>>
 <br>
+草药相关<br>
+<span class="no-numberify">
+	<div class="terraInventory">
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="获得草药">
+				<<terra_icon `"herb/herb_item/" + (["Daybloom","Moonglow","Waterleaf","Fireblossom","Shiverthorn","Blinkroot"].random()) + ".png"`>>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<link [[草药|Terra Debug Herb]]>><</link>>
+			</div>
+		</div>
+		<div class="terraItem">
+			<div class="terraIcon" tooltip="获得草药种子">
+				<<terra_icon `"herb/herb_seed/" + (["Daybloom","Moonglow","Waterleaf","Fireblossom","Shiverthorn","Blinkroot"].random()) + "_Seed.png"`>>
+			</div>
+			<div class="terraDivider"></div>
+			<div class="terraLinks">
+				<<link [[种子|Terra Debug Herb Seed]]>><</link>>
+			</div>
+		</div>
+	</div>
+</span>
+<<link [[清空所有已解锁的草药种植区|Terra Debug]]>><<set $terra_herb_plots to {}>><</link>>
+<mouse class="tooltip"><span class="linkBlue">(?)</span><span>用于测试各个草药种植区的初始化。这不会清除已获得的草药、种子、物块</span></mouse><br>
+<div id="herb_updateRate">
+	<<herb_updateRate>>
+</div>
+<br>
 血月天塔柱相关<br>
 <<ind>><<link [[重置初遇恐惧鹦鹉螺|Terra Debug]]>><<unset $Dreadnautilus_intro>><</link>><br>
-<<icon "tool/Bloody_Tear.png">><<link [[获得一颗血泪|Terra Debug]]>><<set $Bloody_Tear += 1>><</link>><br>
+<<terra_icon "tool/Bloody_Tear.png">><<link [[获得一颗血泪|Terra Debug]]>><<set $Bloody_Tear += 1>><</link>><br>
 <span @class="$blood_moon_monolith is undefined ? 'terraFading' : ''">
-	<<icon "blood_moon_monolith/Blood_Moon_Monolith.png">>
+	<<terra_icon "blood_moon_monolith/Blood_Moon_Monolith.png">>
 </span>
 <<if $blood_moon_monolith is undefined>>
 	<<link [[获得血月天塔柱|Terra Debug]]>><<set $blood_moon_monolith to 0>><</link>><br>
@@ -283,3 +308,16 @@
 <<link [[传送到海岛|Island]]>><<island_init>><<if $island.home is undefined>><<set $island.home to "rocky_hillock">><</if>><</link>><br>
 <br>
 <<getouticon>><<link [[返回|$terraDebugBack ? $terraDebugBack : "Bedroom"]]>><<unset $terraDebugBack>><</link>>
+
+:: Widgets Terra Debug [widget]
+<<widget "herb_updateRate">>
+	生长速率（默认值为 1 / 
+	<span class="no-numberify">
+		<<link "550">>
+			<<set $terra_herb_updateRate to 550>>
+			<<replace #herb_updateRate>><<herb_updateRate>><</replace>>
+		<</link>>
+	</span>
+	）<mouse class="tooltip"><span class="linkBlue">(?)</span><span>滑块数值表示每分钟草药生长的判定概率的倒数。其值越小，生长越快</span></mouse><br>
+	<<numberslider "$terra_herb_updateRate" $terra_herb_updateRate 10 1000 10>><br>
+<</widget>>

@@ -16,11 +16,11 @@
 		<<case "intro">>
 			“去拿怀表的时候，小心下水道里可能的危险，尤其是下雨的时候。”<br>
 			<<if $antiqueWatchObtained>>
-				<<icon "antiques/antique_watch.gif">><<link [[将怀表交给向导|Guide Watch]]>><</link>><br>
+				<<terra_icon "antiques/antique_watch.gif">><<link [[将怀表交给向导|Guide Watch]]>><</link>><br>
 			<</if>>
 			<br>
 		<<case "done">>
-			<<icon "antiques/antique_watch.gif">><<link [[询问怀表|Guide Watch 2]]>><</link>><br>
+			<<terra_icon "antiques/antique_watch.gif">><<link [[询问怀表|Guide Watch 2]]>><</link>><br>
 			<br>
 	<</switch>>
 <</if>>
@@ -41,35 +41,38 @@
 		<<case "intro">>
 			“去那个洞穴中拿银质指南针的时候，千万不要为了贪图小利而造成更大的损失。祝你好运。”<br>
 			<<if $antiqueCompassObtained>>
-				<<icon "antiques/antique_silver_compass.png">><<link [[将银质指南针交给向导|Guide Compass]]>><</link>><br>
+				<<terra_icon "antiques/antique_silver_compass.png">><<link [[将银质指南针交给向导|Guide Compass]]>><</link>><br>
 			<</if>>
 			<br>
 		<<case "done">>
-			<<icon "antiques/antique_silver_compass.png">><<link [[询问银质指南针|Guide Compass 2]]>><</link>><br>
+			<<terra_icon "antiques/antique_silver_compass.png">><<link [[询问银质指南针|Guide Compass 2]]>><</link>><br>
 			<br>
 	<</switch>>
 <</if>>
 “如果你还有什么其他疑问或者建议，欢迎通过贴吧、QQ与我……哦不是，与作者 <i>苯环</i> 交流。你可以在<a href="https://github.com/Nephthelana/DOL-Terra-Expanding-Modd" target="_blank">模组的Github主页</a>里找到联系方式。”<br>
 <br>
-<<icon "hint/Emote_Emote_Confused.gif">>关于模组提示的前置任务<br>
+<<terra_icon "hint/Emote_Emote_Confused.gif">>关于模组提示的前置任务<br>
 <<link [[关于净化粉|Guide Mod Hint Purification Powder Guide]]>><</link>><br>
 <<link [[关于铜短剑|Guide Mod Hint Copper Shortsword Guide]]>><</link>><br>
 <br>
-<<icon "hint/Forest_Pylon_icon.png">>关于晶塔<br>
+<<terra_icon "hint/Forest_Pylon_icon.png">>关于晶塔<br>
 <<link [[关于解锁晶塔|Guide Mod Hint Pylon]]>><</link>><br>
 <br>
-<<icon "hint/Emote_Item_Fishing_Rod.gif">>关于钓鱼<br>
+<<terra_icon "hint/Emote_Item_Fishing_Rod.gif">>关于钓鱼<br>
 <<link [[关于钓鱼点|Guide Mod Hint Fishing Place]]>><</link>><br>
 <<link [[关于渔力|Guide Mod Hint Fishing Power]]>><</link>><br>
 <<link [[关于渔夫任务|Guide Mod Hint Fishing Request]]>><</link>><br>
 <br>
-<<icon "hint/Emote_Event_Bloodmoon.gif">>关于血月<br>
+<<terra_icon `"herb/herb_item/" + (["Daybloom","Moonglow","Waterleaf","Fireblossom","Shiverthorn","Blinkroot"].random()) + ".png"`>>关于草药<br>
+<<link [[关于草药的生长|Guide Mod Hint Herb]]>><</link>><br>
+<br>
+<<terra_icon "hint/Emote_Event_Bloodmoon.gif">>关于血月<br>
 <<link [[关于血月时的怪物|Guide Mod Hint Bloodmoon]]>><</link>><br>
 <<if $Dreadnautilus_intro and $Bloody_Tear gte 1>>
 	<<link [[关于血泪|Guide Mod Hint Bloody Tear]]>><</link>><br>
 <</if>>
 <br>
-<<icon "hint/Emote_Crafting.gif">>关于制作<br>
+<<terra_icon "hint/Emote_Crafting.gif">>关于制作<br>
 <<link [[关于合成物品|Guide Mod Hint Crafting]]>><</link>><br>
 <br>
 <<link [[返回|Guide Room]]>><</link>><br>

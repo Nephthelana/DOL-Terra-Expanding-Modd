@@ -1,6 +1,12 @@
 :: Terra Expand Equipment [widget]
 <<widget "terraExpandEquipmentButton">>
-	<<button '<<icon "Accessories_icon.png">>装备'>><<iModReplace "terraExpandEquipmentOverlay">><</button>>
+	<<button '<<terra_icon "Accessories_icon.png">>装备'>>
+		<<if (window.modUtils.getMod('maplebirch'))>>
+			<<maplebirchReplace "terraExpandEquipmentOverlay" "customize">>
+		<<else>>
+			<<iModReplace "terraExpandEquipmentOverlay">>
+		<</if>>
+	<</button>>
 <</widget>>
 
 <<widget "terraExpandEquipmentOverlay">>
@@ -119,14 +125,14 @@
 					<div class="terraItem" @id="_armor.name" draggable="true" ondragstart="dragTEM(event)">
 						<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
 							<div class="terraIcon" style="pointer-events: none">
-								<<icon `_armor.icon_item`>>
+								<<terra_icon `_armor.icon_item`>>
 							</div>
 						</div>
 					</div>
 				<<else>>
 					<div class="terraItem">
 						<div class="terraIcon" @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
-							<<icon `_armor.icon_item`>>
+							<<terra_icon `_armor.icon_item`>>
 						</div>
 						<div class="terraDivider"></div>
 						<div class="terraLinks">
@@ -173,14 +179,14 @@
 					<div class="terraItem" @id="_armor.name" draggable="true" ondragstart="dragTEM(event)">
 						<div @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
 							<div class="terraIcon" style="pointer-events: none">
-								<<icon `_armor.icon_item`>>
+								<<terra_icon `_armor.icon_item`>>
 							</div>
 						</div>
 					</div>
 				<<else>>
 					<div class="terraItem">
 						<div class="terraIcon" @tooltip="`${_armor.cn_name}<br><br>▶${_armor.des}${_isArmorSet}`">
-							<<icon `_armor.icon_item`>>
+							<<terra_icon `_armor.icon_item`>>
 						</div>
 						<div class="terraDivider"></div>
 						<div class="terraLinks">
@@ -277,7 +283,7 @@
 					<<set _isMaterial to _accessory_equipped.material ? "<br><i>材料</i>" : "">>
 					<div @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}<br>${_accessory_equipped.vanity}`">
 						<div class="terraIcon" style="pointer-events: none">
-							<<icon `_accessory_equipped.icon`>>
+							<<terra_icon `_accessory_equipped.icon`>>
 						</div>
 					</div>
 				</div>
@@ -285,7 +291,7 @@
 				<div class="terraItem">
 					<<set _isMaterial to _accessory_equipped.material ? "<br><i>材料</i>" : "">>
 					<div class="terraIcon" @tooltip="`${_accessory_equipped.cn_name}${_isMaterial}<br><br>▶${_accessory_equipped.des}<br>${_accessory_equipped.vanity}`">
-						<<icon `_accessory_equipped.icon`>>
+						<<terra_icon `_accessory_equipped.icon`>>
 					</div>
 					<div class="terraDivider"></div>
 					<div class="terraLinks">
@@ -325,7 +331,7 @@
 	<<for _t to 0; _t lt (6-$terra_accessories_slots.length); _t++>>
 		<div class="terraItem">
 			<div class="terraIcon">
-				<<icon "Accessories_icon.png">>
+				<<terra_icon "Accessories_icon.png">>
 			</div>
 			<<if !$options.dragModeTEM>>
 				<div class="terraDivider"></div>
@@ -350,7 +356,7 @@
 					<<set _isMaterial to _vanity_accessory_equipped.material ? "<br><i>材料</i>" : "">>
 					<div @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶<<if ['informational','multiInfo'].includes(_vanity_accessory_equipped.type)>>${_vanity_accessory_equipped.des}<<else>><i>时装栏内主要效果不生效</i><</if>><br>${_vanity_accessory_equipped.vanity}`">
 						<div class="terraIcon" style="pointer-events: none">
-							<<icon `_vanity_accessory_equipped.icon`>>
+							<<terra_icon `_vanity_accessory_equipped.icon`>>
 						</div>
 					</div>
 				</div>
@@ -358,7 +364,7 @@
 				<div class="terraItem">
 					<<set _isMaterial to _vanity_accessory_equipped.material ? "<br><i>材料</i>" : "">>
 					<div class="terraIcon" @tooltip="`${_vanity_accessory_equipped.cn_name}${_isMaterial}<br><br>▶<<if ['informational','multiInfo'].includes(_vanity_accessory_equipped.type)>>${_vanity_accessory_equipped.des}<<else>><i>时装栏内主要效果不生效</i><</if>><br>${_vanity_accessory_equipped.vanity}`">
-						<<icon `_vanity_accessory_equipped.icon`>>
+						<<terra_icon `_vanity_accessory_equipped.icon`>>
 					</div>
 					<div class="terraDivider"></div>
 					<div class="terraLinks">
@@ -390,7 +396,7 @@
 	<<for _t to 0; _t lt (6-$terra_vanity_accessories_slots.length); _t++>>
 		<div class="terraItem">
 			<div class="terraIcon">
-				<<icon "Vanity_Accessories_icon.png">>
+				<<terra_icon "Vanity_Accessories_icon.png">>
 			</div>
 			<<if !$options.dragModeTEM>>
 				<div class="terraDivider"></div>
@@ -417,7 +423,7 @@
 						<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
 						<div @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}<br>${_accessory.vanity}`">
 							<div class="terraIcon" style="pointer-events: none">
-								<<icon `_accessory.icon`>>
+								<<terra_icon `_accessory.icon`>>
 							</div>
 						</div>
 					</div>
@@ -425,7 +431,7 @@
 					<div class="terraItem">
 						<<set _isMaterial to _accessory.material ? "<br><i>材料</i>" : "">>
 						<div class="terraIcon" @tooltip="`${_accessory.cn_name}${_isMaterial}<br><br>▶${_accessory.des}<br>${_accessory.vanity}`">
-							<<icon `_accessory.icon`>>
+							<<terra_icon `_accessory.icon`>>
 						</div>
 						<div class="terraDivider"></div>
 						<div class="terraLinks">
@@ -504,7 +510,7 @@
 					<<capture _petInfo>>
 						<div class="terraItem">
 							<div class="terraIcon" @tooltip="`${_petInfo.cn_name}<br><br>▶${_petInfo.des_item}`">
-								<<icon `_petInfo.icon_item`>>
+								<<terra_icon `_petInfo.icon_item`>>
 							</div>
 							<div class="terraDivider"></div>
 							<div class="terraLinks">

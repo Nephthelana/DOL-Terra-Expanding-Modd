@@ -10,7 +10,7 @@
 			<span class="teal">但你现在没有空瓶需要补充。</span><br>
 		<</if>>
 	<<else>>
-		你可以在实验室中研究从<<icon "fishing/crates/Obsidian_Crate.png">>黑曜石匣中开出的粉末。<br>
+		你可以在实验室中研究从<<terra_icon "fishing/crates/Obsidian_Crate.png">>黑曜石匣中开出的粉末。<br>
 		<<ind>><<link [[研究粉末 (0:10)|Terra Manor Lab Spray Research]]>><<pass 10>><</link>><<terraHint>><br>
 	<</if>>
 	<br>

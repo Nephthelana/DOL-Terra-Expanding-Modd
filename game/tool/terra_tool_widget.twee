@@ -3,7 +3,7 @@
 	<<set $options.terraTransportLimit to $options.terraTransportLimit is undefined ? 1 : $options.terraTransportLimit>>
 	<<if getToolObtained().length gt 0 or $debug is 1>>
 		<span class="gold bold">工具</span><mouse class="tooltip linkBlue">(?)<span>部分工具可以主动使用，它们下方会显示蓝色链接字可供使用，或显示暂时不可用的原因；<br>另一部分工具只能在特定场景中使用，或是还未实装，它们下方会显示黑白的“不可用”字样；<br>传送类工具的每日允许使用次数，可在 <i>选项</i>-<i>模组设置</i> 中的 <i>传送工具每日使用次数</i> 选项进行调整。</span></mouse><br>
-		<<print $debug is 1 ? "[DEBUG模式]你可以查看并使用全部的工具<br>" : "">>
+		<<print $debug is 1 ? "[DEBUG模式]你可以查看并使用全部的工具（仅限于在本窗口内可以随意使用工具，并不代表持有所有工具）<br>" : "">>
 		<<set _toolObtainedList to $debug is 1 ? getAllToolList() : getToolObtained()>>
 		<div class="terraInventoryTool">
 			<<for _t to 0; _t lt _toolObtainedList.length; _t++>>
@@ -13,7 +13,7 @@
 						<<set _isMaterial to _tool.material ? "<br><i>材料</i>" : "">>
 						<div @tooltip="`${_tool.cn_name}${_isMaterial}<br><br>▶${_tool.des}`">
 							<div class="terraIconTool">
-								<<icon `_tool.icon`>>
+								<<terra_icon `_tool.icon`>>
 							</div>
 						</div>
 						<div class="terraDivider"></div>
@@ -38,6 +38,7 @@
 	</span>
 <<else>>
 	<<link [[使用|Beach]]>>
+		<<pass 10 seconds>>
 		<<if $daily.Magic_Conch_use is undefined>>
 			<<set $daily.Magic_Conch_use to 1>>
 		<<else>>
@@ -58,6 +59,7 @@
 	</span>
 <<else>>
 	<<link [[使用|Underground Lava Lake]]>>
+		<<pass 10 seconds>>
 		<<if $daily.Demon_Conch_use is undefined>>
 			<<set $daily.Demon_Conch_use to 1>>
 		<<else>>
@@ -82,7 +84,7 @@
 
 <<widget "terra_tool_use_Magic_Mirror_anchorSettingGeneral">>
 	<<replace #hint_item_use>>
-		<<icon "tool/Magic_Mirror.png">><span class="green">已将魔镜锚点设为$Magic_Mirror_anchor_cn！</span><br>
+		<<terra_icon "tool/Magic_Mirror.png">><span class="green">已将魔镜锚点设为$Magic_Mirror_anchor_cn！</span><br>
 		<br>
 	<</replace>>
 	<<replace #void_bag_Tool>>
@@ -91,7 +93,7 @@
 <</widget>>
 
 <<widget "terra_tool_use_Magic_Mirror_detail">>
-	<<icon "tool/Magic_Mirror.png">>
+	<<terra_icon "tool/Magic_Mirror.png">>
 	<<if $daily.Magic_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
 		<span style="border-bottom: dotted 1px" tooltip="当日魔镜使用次数达到上限">
 			<span class="linkBlue">不可用</span>
@@ -101,7 +103,8 @@
 			<span class="linkBlue">不可用</span>
 		</span>
 	<<else>>
-		<<link [[`传送至${$Magic_Mirror_anchor_cn}`|$Magic_Mirror_anchor]]>>	
+		<<link [[`传送至${$Magic_Mirror_anchor_cn}`|$Magic_Mirror_anchor]]>>
+			<<pass 10 seconds>>
 			<<if $daily.Magic_Mirror_use is undefined>>
 				<<set $daily.Magic_Mirror_use to 1>>
 			<<else>>
@@ -168,6 +171,7 @@
 	</span>
 <<else>>
 	<<link [[使用|Underground Ice Lake]]>>
+		<<pass 10 seconds>>
 		<<if $daily.Ice_Mirror_use is undefined>>
 			<<set $daily.Ice_Mirror_use to 1>>
 		<<else>>
@@ -181,7 +185,7 @@
 	<<link "使用">>
 		<<replace #hint_item_use>>
 			<<terra_tool_use_Magic_Mirror_detail>>
-			<<icon "tool/Ice_Mirror.png">>
+			<<terra_icon "tool/Ice_Mirror.png">>
 			<<if $daily.Ice_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
 				<span style="border-bottom: dotted 1px" tooltip="当日冰雪镜使用次数达到上限">
 					<span class="linkBlue">不可用</span><br>
@@ -192,6 +196,7 @@
 				</span>
 			<<else>>
 				<<link [[传送至地下永冻湖|Underground Ice Lake]]>>
+					<<pass 10 seconds>>
 					<<if $daily.Ice_Mirror_use is undefined>>
 						<<set $daily.Ice_Mirror_use to 1>>
 					<<else>>
@@ -208,7 +213,7 @@
 	<<link "使用">>
 		<<replace #hint_item_use>>
 			<<terra_tool_use_Magic_Mirror_detail>>
-			<<icon "tool/Ice_Mirror.png">>
+			<<terra_icon "tool/Ice_Mirror.png">>
 			<<if $daily.Ice_Mirror_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
 				<span style="border-bottom: dotted 1px" tooltip="当日冰雪镜使用次数达到上限">
 					<span class="linkBlue">不可用</span><br>
@@ -219,6 +224,7 @@
 				</span>
 			<<else>>
 				<<link [[传送至地下永冻湖|Underground Ice Lake]]>>
+					<<pass 10 seconds>>
 					<<if $daily.Ice_Mirror_use is undefined>>
 						<<set $daily.Ice_Mirror_use to 1>>
 					<<else>>
@@ -226,7 +232,7 @@
 					<</if>>
 				<</link>><br>
 			<</if>>
-			<<icon "tool/Magic_Conch.png">>
+			<<terra_icon "tool/Magic_Conch.png">>
 			<<if $daily.Magic_Conch_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
 				<span style="border-bottom: dotted 1px" tooltip="当日魔法海螺使用次数达到上限">
 					<span class="linkBlue">不可用</span><br>
@@ -238,13 +244,14 @@
 			<<else>>
 				<<link [[传送至海滩|Beach]]>>
 					<<if $daily.Magic_Conch_use is undefined>>
+						<<pass 10 seconds>>
 						<<set $daily.Magic_Conch_use to 1>>
 					<<else>>
 						<<set $daily.Magic_Conch_use += 1>>
 					<</if>>
 				<</link>><br>
 			<</if>>
-			<<icon "tool/Demon_Conch.png">>
+			<<terra_icon "tool/Demon_Conch.png">>
 			<<if $daily.Demon_Conch_use gte $options.terraTransportLimit and $options.terraTransportLimit isnot "Unlimited">>
 				<span style="border-bottom: dotted 1px" tooltip="当日恶魔海螺使用次数达到上限">
 					<span class="linkBlue">不可用</span><br>
@@ -255,6 +262,7 @@
 				</span>
 			<<else>>
 				<<link [[传送至地下熔岩湖|Underground Lava Lake]]>>
+					<<pass 10 seconds>>
 					<<if $daily.Demon_Conch_use is undefined>>
 						<<set $daily.Demon_Conch_use to 1>>
 					<<else>>
@@ -301,39 +309,39 @@
 <<link "使用">>
 	<<replace #hint_item_use>>
 		<span class="teal">
-		<<icon "tool/Torrential_Tear.png">>将天气调节为
+		<<terra_icon "tool/Torrential_Tear.png">>将天气调节为
 		<<link "晴天">>
 			<<set Weather.set("clear", true, 6 * 60)>>
 			<<replace #hint_item_use>>
-				<span class="teal">天气已设为<<icon "clear_icon.png">>晴天</span>
+				<span class="teal">天气已设为<<terra_icon "clear_icon.png">>晴天</span>
 				<br>
 			<</replace>>
 		<</link>> |
 		<<link "有云">>
 			<<set Weather.set("lightClouds", true, 6 * 60)>>
 			<<replace #hint_item_use>>
-				<span class="teal">天气已设为<<icon "lightClouds_icon.png">>有云</span>
+				<span class="teal">天气已设为<<terra_icon "lightClouds_icon.png">>有云</span>
 				<br>
 			<</replace>>
 		<</link>> |
 		<<link "多云">>
 			<<set Weather.set("heavyClouds", true, 6 * 60)>>
 			<<replace #hint_item_use>>
-				<span class="teal">天气已设为<<icon "heavyClouds_icon.png">>多云</span>
+				<span class="teal">天气已设为<<terra_icon "heavyClouds_icon.png">>多云</span>
 				<br>
 			<</replace>>
 		<</link>> |
 		<<link "小雨">>
 			<<set Weather.set("lightPrecipitation", true, 6 * 60)>>
 			<<replace #hint_item_use>>
-				<span class="teal">天气已设为<<icon "lightPrecipitation_icon.png">>小雨</span>
+				<span class="teal">天气已设为<<terra_icon "lightPrecipitation_icon.png">>小雨</span>
 				<br>
 			<</replace>>
 		<</link>> |
 		<<link "大雨">>
 			<<set Weather.set("heavyPrecipitation", true, 6 * 60)>>
 			<<replace #hint_item_use>>
-				<span class="teal">天气已设为<<icon "heavyPrecipitation_icon.png">>大雨</span>
+				<span class="teal">天气已设为<<terra_icon "heavyPrecipitation_icon.png">>大雨</span>
 				<br>
 			<</replace>>
 		<</link>> |
@@ -358,7 +366,7 @@
 <<link "使用">>
 	<<if $terra_accessories_slots.includes("Lava_Charm")>>
 		<<replace #hint_item_use>>
-			<span class="blue">你往自己身上倒了一些岩浆。</span><span class="teal">但在<<icon "accessories/Lava_Charm.png">>熔岩护身符的作用下无事发生。</span><br>
+			<span class="blue">你往自己身上倒了一些岩浆。</span><span class="teal">但在<<terra_icon "accessories/Lava_Charm.png">>熔岩护身符的作用下无事发生。</span><br>
 			<br>
 		<</replace>>
 	<<else>>

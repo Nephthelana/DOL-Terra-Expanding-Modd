@@ -10,7 +10,7 @@
 		`“看一看，瞧一瞧！一斤重的鱼！新鲜味美！一斤重的鱼！”`,
 		`“如果你是在找垃圾，那就来错地方了。”`,
 		`“旧货店？不，我只卖市场上的尖货。”`,
-		`“来码头整点薯条！你没带吗？”`,
+		`“来码头整点薯条！……你没带吗？”`,
 	].random()>>
 <</addinlineevent>>
 <<if $guide_intro>>
@@ -107,7 +107,7 @@
 					<<set _price to (_goods.price / 100)>>
 					<div class="terraItem">
 						<div class="terraIcon" @tooltip="`${_goods.cn_name}<br><br>▶${_goods.des}`">
-							<<icon `_goods.icon`>>
+							<<terra_icon `_goods.icon`>>
 						</div>
 						<div class="terraDivider"></div>
 						<span class="gold">£_price</span>
@@ -169,7 +169,7 @@
 			<<set _anglerFurniture to setup.terraAnglerFurniture[$traveling_merchant_shop_list[_i]]>>
 			<div class="terraItem">
 				<div class="terraIcon" @tooltip="`${_anglerFurniture.cn_name}<br><br>▶可以放置在渔夫小屋的家具`">
-					<<icon `_anglerFurniture.item_icon`>>
+					<<terra_icon `_anglerFurniture.item_icon`>>
 				</div>
 				<div class="terraDivider"></div>
 				<span class="gold">£100</span>
@@ -185,7 +185,7 @@
 								<<money -10000 "NPC交易">>
 								<<set $angler_furniture_obtained.pushUnique(_anglerFurniture.name)>>
 								<<updatesidebarmoney>>
-								<<set _purchase_info to "你购买了一个<<icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
+								<<set _purchase_info to "你购买了一个<<terra_icon `_anglerFurniture.item_icon`>>_anglerFurniture.cn_name。">>
 							<<else>>
 								<<set _purchase_info to ["“很好，成交！……什么？你根本就没有这么多钱！”","“你很有眼光……但你下次能不能先看清你身上到底有多少钱？”","“我这里不接受赊账！”"].random()>>
 							<</if>>

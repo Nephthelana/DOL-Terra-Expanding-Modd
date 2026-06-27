@@ -107,10 +107,10 @@
 <<widget "robin_bait_back">>
 /* 返程时，如有剩余的鱼饵，则返还。同时清除相关的变量 */
 <<if $robin_bait_amount lte 0>>
-	罗宾用完了你给他的<<icon `$robin_bait_icon`>>$robin_bait_cn_name。
+	罗宾用完了你给他的<<terra_icon `$robin_bait_icon`>>$robin_bait_cn_name。
 <<else>>
 	<<set V[$robin_bait_type] += $robin_bait_amount>>
-	“我这还有剩下的鱼饵。”罗宾把<<icon `$robin_bait_icon`>>$robin_bait_cn_name($robin_bait_amount)还给了你。
+	“我这还有剩下的鱼饵。”罗宾把<<terra_icon `$robin_bait_icon`>>$robin_bait_cn_name($robin_bait_amount)还给了你。
 <</if>>
 <<unset $robin_bait_amount>>
 <<unset $robin_bait_type>>

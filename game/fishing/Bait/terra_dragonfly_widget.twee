@@ -9,7 +9,7 @@
 		<img @src="'img/misc/icon/fishing/bait/bait_animation/' + $random_dragonfly + '.gif'">
 		你看到有几只蜻蜓在沙地的水池边打转。<br>
 		<<if $Bug_Net or $Lavaproof_Bug_Net or $Golden_Bug_Net>>
-			<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<icon 'tool/Lavaproof_Bug_Net.png'>>" : "<<icon 'tool/Bug_Net.png'>>">>
+			<<print $Golden_Bug_Net ? "<<terra_icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<terra_icon 'tool/Lavaproof_Bug_Net.png'>>" : "<<terra_icon 'tool/Bug_Net.png'>>">>
 			<<link [[试着抓住它们 (0:02)|Terra Dragonfly Estate Catch]]>><<pass 2>><</link>>
 			<<if $Golden_Bug_Net>>
 				<<athleticsdifficulty 500 1200>>
@@ -36,7 +36,7 @@
 		<img @src="'img/misc/icon/fishing/bait/bait_animation/' + $random_dragonfly + '.gif'">
 		你看到有几只蜻蜓在森林湖边打转。<br>
 		<<if $Bug_Net or $Lavaproof_Bug_Net or $Golden_Bug_Net>>
-			<<print $Golden_Bug_Net ? "<<icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<icon 'tool/Lavaproof_Bug_Net.png'>>" : "<<icon 'tool/Bug_Net.png'>>">>
+			<<print $Golden_Bug_Net ? "<<terra_icon 'tool/Golden_Bug_Net.png'>>" : $Lavaproof_Bug_Net ? "<<terra_icon 'tool/Lavaproof_Bug_Net.png'>>" : "<<terra_icon 'tool/Bug_Net.png'>>">>
 			<<link [[试着抓住它们 (0:02)|Terra Dragonfly Lake Catch]]>><<pass 2>><</link>>
 			<<if $Golden_Bug_Net>>
 				<<athleticsdifficulty 500 1200>>
@@ -81,14 +81,14 @@
 			<<set _caught[_random_df] += 1>>
 		<</if>>
 	<</for>>
-	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
+	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<terra_icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<terra_icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
 	<br>
 	你抓到了：<br>
 	<<for _dragonfly range Object.keys(_caught).filter(df => T.caught[df] > 0)>>
 		<<set _dragonflyInfo to setup.terraBait[_dragonfly]>>
 		<<set V[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
 		<<bestiaryStatistics "bait" _dragonflyInfo.name _caught[_dragonflyInfo.name]>>
-		<<icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
+		<<terra_icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
 	<</for>>
 <<else>>
 	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>
@@ -138,14 +138,14 @@
 			<<set _caught[_random_df] += 1>>
 		<</if>>
 	<</for>>
-	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
+	<span class="green">你追上了</span>，并用<<print $Golden_Bug_Net ? "<<terra_icon \"tool/Golden_Bug_Net.png\">>金虫网" : "<<terra_icon \"tool/Bug_Net.png\">>虫网">>网住了其中几只。<br>
 	<br>
 	你抓到了：<br>
 	<<for _dragonfly range Object.keys(_caught).filter(df => T.caught[df] > 0)>>
 		<<set _dragonflyInfo to setup.terraBait[_dragonfly]>>
 		<<set V[_dragonflyInfo.name] += _caught[_dragonflyInfo.name]>>
 		<<bestiaryStatistics "bait" _dragonflyInfo.name _caught[_dragonflyInfo.name]>>
-		<<icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
+		<<terra_icon `_dragonflyInfo.icon`>><<print T.caught[_dragonflyInfo.name]>>只_dragonflyInfo.cn_name<br>
 	<</for>>
 <<else>>
 	<span class="red">你没追上</span>，它们实在是又快又灵活。<br>

@@ -11,7 +11,7 @@
 			<br>
 			你拿起模型，随即响起沉闷的碰撞声——内部还放着什么东西。很快你找到了可以活动的下颚结构，然后将其打开。模型的口中滚出来了一个奇怪的物品。<br>
 			<br>
-			<span class="gold">你获得了<<icon "accessories/Tally_Counter.png">>战斗计数器！</span><br>
+			<span class="gold">你获得了<<terra_icon "accessories/Tally_Counter.png">>战斗计数器！</span><br>
 			<br>
 		<</if>>
 	<</if>>
@@ -77,7 +77,7 @@
 					<<set $defeated_counter.human.others to ($defeated_counter.human.others + $enemynomax) or $enemynomax>>
 				<<case "beast">>
 					<<for _beastType range ["wolf","fox","hawk","harpy","horse","centaur","lizard","dog","dolphin","bear","cat","pig","boar","cow","bull","spider","creature","horned"]>>
-						<<if $NPCList[0].type.includes(_beastType)>>
+						<<if $NPCList[0].type?.includes(_beastType)>>
 							<<if ["cow","bull"].includes(_beastType)>>
 								<<set $defeated_counter.beast.cow to ($defeated_counter.beast.cow + 1) or 1>>
 							<<elseif ["hawk","harpy"].includes(_beastType)>>

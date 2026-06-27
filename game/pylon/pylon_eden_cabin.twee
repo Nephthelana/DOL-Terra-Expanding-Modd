@@ -6,7 +6,7 @@
 				这块充满魔力的水晶可以将你传送至别的地方。
 				<<if Time.hour lt 11 or Time.hour gt 14>>
 					<br>
-					<<icon "pylon/Jungle_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "edencabin">><</link>>
+					<<terra_icon "pylon/Jungle_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "edencabin">><</link>>
 				<<else>>
 					<span class="blue">但是现在伊甸不在小屋，你无法使用它。</span>
 				<</if>>

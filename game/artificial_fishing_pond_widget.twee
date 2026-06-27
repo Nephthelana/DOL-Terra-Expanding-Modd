@@ -10,9 +10,9 @@
 				<span class="lblue">看来这里附近就是那个猎人的住处。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
 					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Forest]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Forest]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
 					<<else>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_eden_cabin to "progressing">><</link>><<gggtiredness>><br>
 					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
@@ -20,7 +20,7 @@
 			<<case "progressing">>
 				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
 				<<if $Bottomless_Water_Bucket>>
-					<<icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Forest]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_eden_cabin to "done">><</link>><<gtiredness>><br>
+					<<terra_icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Forest]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_eden_cabin to "done">><</link>><<gtiredness>><br>
 				<<else>>
 					<i>你没有无底水桶，无法填满水池。再多完成些渔夫任务吧。</i><br>
 				<</if>>
@@ -47,9 +47,9 @@
 				<span class="lblue">看来这里附近就是那群狼的巢穴。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
 					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Forest]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Forest]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
 					<<else>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Forest]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_wolf_cave_clearing to "progressing">><</link>><<gggtiredness>><br>
 					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
@@ -57,7 +57,7 @@
 			<<case "progressing">>
 				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
 				<<if $Bottomless_Water_Bucket>>
-					<<icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Forest]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_wolf_cave_clearing to "done">><</link>><<gtiredness>><br>
+					<<terra_icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Forest]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_wolf_cave_clearing to "done">><</link>><<gtiredness>><br>
 				<<else>>
 					<i>你没有无底水桶，无法填满水池。再多完成些渔夫任务吧。</i><br>
 				<</if>>
@@ -84,9 +84,9 @@
 				<span class="lblue">看来这里附近就是那只巨鹰栖息的高塔。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
 					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Moor]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Moor]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
 					<<else>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Moor]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Moor]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_bird_tower to "progressing">><</link>><<gggtiredness>><br>
 					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
@@ -94,7 +94,7 @@
 			<<case "progressing">>
 				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
 				<<if $Bottomless_Water_Bucket>>
-					<<icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Moor]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_bird_tower to "done">><</link>><<gtiredness>><br>
+					<<terra_icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Moor]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_bird_tower to "done">><</link>><<gtiredness>><br>
 				<<else>>
 					<i>你没有无底水桶，无法填满水池。再多完成些渔夫任务吧。</i><br>
 				<</if>>
@@ -121,9 +121,9 @@
 				<span class="lblue">看来这里附近就是施粥所工作人员提到的空地。你可以在这里建造一个钓鱼池。</span><br>
 				<<if $Gravediggers_Shovel>>
 					<<if $terra_accessories_slots.includes("Ancient_Chisel")>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Churchyard]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (1:36)|Churchyard]]>><<pass 96>><<tiredness 25>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
 					<<else>>
-						<<icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Churchyard]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
+						<<terra_icon "tool/Gravediggers_Shovel.png">><<link [[挖掘水池 (2:00)|Churchyard]]>><<pass 120>><<tiredness 30>><<set $artificial_fishing_pond_temple_garden to "progressing">><</link>><<gggtiredness>><br>
 					<</if>>
 				<<else>>
 					<i>你没有掘墓者铲子，无法挖掘水池。再多捐几种古董吧，博物馆馆长或许会有办法。</i><br>
@@ -131,7 +131,7 @@
 			<<case "progressing">>
 				<span class="teal">水池已经准备好了，接下来就是往里面倒水</span><br>
 				<<if $Bottomless_Water_Bucket>>
-					<<icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Churchyard]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_temple_garden to "done">><</link>><<gtiredness>><br>
+					<<terra_icon "tool/Bottomless_Water_Bucket.png">><<link [[倒水 (0:30)|Churchyard]]>><<pass 30>><<tiredness 10>><<set $artificial_fishing_pond_temple_garden to "done">><</link>><<gtiredness>><br>
 				<<else>>
 					<i>你没有无底水桶，无法填满水池。再多完成些渔夫任务吧。</i><br>
 				<</if>>

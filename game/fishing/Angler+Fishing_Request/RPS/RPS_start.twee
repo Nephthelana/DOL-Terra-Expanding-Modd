@@ -1,9 +1,9 @@
 :: RPS Start
 你准备出什么？<br>
 <br>
-<<icon "RPS/Emote_RPS_Rock.png">><<link [[石头！|RPS]]>><<set $RPS_PC to "Rock">><</link>><br>
-<<icon "RPS/Emote_RPS_Scissors.png">><<link [[剪刀！|RPS]]>><<set $RPS_PC to "Scissors">><</link>><br>
-<<icon "RPS/Emote_RPS_Paper.png">><<link [[布！|RPS]]>><<set $RPS_PC to "Paper">><</link>><br>
+<<terra_icon "RPS/Emote_RPS_Rock.png">><<link [[石头！|RPS]]>><<set $RPS_PC to "Rock">><</link>><br>
+<<terra_icon "RPS/Emote_RPS_Scissors.png">><<link [[剪刀！|RPS]]>><<set $RPS_PC to "Scissors">><</link>><br>
+<<terra_icon "RPS/Emote_RPS_Paper.png">><<link [[布！|RPS]]>><<set $RPS_PC to "Paper">><</link>><br>
 
 :: RPS
 <<set $Angler_RPS_daily to true>>

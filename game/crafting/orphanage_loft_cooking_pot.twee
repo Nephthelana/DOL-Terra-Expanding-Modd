@@ -1,13 +1,13 @@
 :: Orphanage Loft Cooking Pot Widget [widget]
 <<widget "orphanage_loft_cooking_pot">>
 	<<if $orphanage_loft_crafting_station.includes("Cooking_Pot")>>
-		<<icon "furniture_placed/Cooking_Pot_(placed).png">><<link [[使用烹饪锅|Orphanage Loft Cooking Pot]]>><</link>><br>
+		<<terra_icon "furniture_placed/Cooking_Pot_(placed).png">><<link [[使用烹饪锅|Orphanage Loft Cooking Pot]]>><</link>><br>
 	<</if>>
 <</widget>>
 
 :: Orphanage Loft Cooking Pot
 阁楼里有充足的用于加热烹饪锅的木材。
-<<icon "furniture_placed/Cooking_Pot_(placed).png">><br>
+<<terra_icon "furniture_placed/Cooking_Pot_(placed).png">><br>
 <br>
 <span id="housekeepingInfo">
 	<<if $housekeeping lt 1000>>

@@ -18,14 +18,14 @@
 			<<set $_disableBuild_Work_Bench to true>>
 		<</if>>
 		<<if !$_disableBuild_Work_Bench>>
-			<<icon "furniture_item/Work_Bench.png">><<link [[制作工作台 (0:30)|Island Build Cooking Work Bench]]>>
+			<<terra_icon "furniture_item/Work_Bench.png">><<link [[制作工作台 (0:30)|Island Build Cooking Work Bench]]>>
 				<<set $island_build_cooking.pushUnique("Work Bench")>>
 				<<island_pass 30>>
 				<<set $island.wood -= 5>>
 			<</link>> | 需要木材的数量：5<br>
 		<</if>>
 	<<else>>
-		<<icon "furniture_item/Work_Bench.png">><span class="green">工作台</span>：可以简单地将鱼类处理成生鱼片。<br>
+		<<terra_icon "furniture_item/Work_Bench.png">><span class="green">工作台</span>：可以简单地将鱼类处理成生鱼片。<br>
 		<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Work Bench")>><</link>>
 	<</if>>
 </div>
@@ -51,14 +51,14 @@
 			<</if>>
 		<</if>>
 		<<if !$_disableBuild_Campfire>>
-			<<icon "furniture_item/Campfire.png">><<link [[制作篝火 (0:30)|Island Build Cooking Campfire]]>>
+			<<terra_icon "furniture_item/Campfire.png">><<link [[制作篝火 (0:30)|Island Build Cooking Campfire]]>>
 				<<set $island_build_cooking.pushUnique("Campfire")>>
 				<<island_pass 30>>
 				<<set $island.wood -= 5>>
 			<</link>> | 需要木材的数量：5<br>
 		<</if>>
 	<<else>>
-		<<icon "furniture_item/Campfire.png">><span class="green">篝火</span>：可以消耗木头，为鱼类加工提供热源<br>
+		<<terra_icon "furniture_item/Campfire.png">><span class="green">篝火</span>：可以消耗木头，为鱼类加工提供热源<br>
 		<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Campfire")>><</link>>
 	<</if>>
 </div>
@@ -77,7 +77,7 @@
 					<span class="black">需要在铁砧上制作得到烹饪锅。</span> | 制作铁砧需要铁锭的数量：5<br>
 					<<set $_disableBuild_Cooking_Pot to true>>
 					<<if $Iron_Bar gte 5>>
-						<<icon "furniture_item/Iron_Anvil.png">><<link [[制作铁砧 (0:30)|Island Build]]>><<island_pass 30>><<set $Iron_Bar -= 5>><<set $island_build_cooking.pushUnique("Iron Anvil")>><</link>><br>
+						<<terra_icon "furniture_item/Iron_Anvil.png">><<link [[制作铁砧 (0:30)|Island Build]]>><<island_pass 30>><<set $Iron_Bar -= 5>><<set $island_build_cooking.pushUnique("Iron Anvil")>><</link>><br>
 					<</if>>
 				<</if>>
 			<<else>>
@@ -99,7 +99,7 @@
 				<</if>>
 			<</if>>
 			<<if !$_disableBuild_Cooking_Pot>>
-				<<icon "furniture_item/Cooking_Pot.png">><<link [[制作烹饪锅 (1:00)|Island Build Cooking Cooking Pot]]>>
+				<<terra_icon "furniture_item/Cooking_Pot.png">><<link [[制作烹饪锅 (1:00)|Island Build Cooking Cooking Pot]]>>
 					<<set $island_build_cooking.pushUnique("Cooking Pot")>>
 					<<island_pass 60>>
 					<<set $island.wood -= 2>>
@@ -107,7 +107,7 @@
 				<</link>> | 需要木材的数量：5<br>
 			<</if>>
 		<<else>>
-			<<icon "furniture_item/Cooking_Pot.png">><span class="green">烹饪锅</span>：配合篝火，可以消耗木头，烹饪得到更有营养的食物<br>
+			<<terra_icon "furniture_item/Cooking_Pot.png">><span class="green">烹饪锅</span>：配合篝火，可以消耗木头，烹饪得到更有营养的食物<br>
 			<<link [[拆除|Island Build]]>><<set $island_build_cooking.delete("Cooking Pot")>><</link>>
 		<</if>>
 	</div>

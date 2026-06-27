@@ -10,7 +10,7 @@
 					<<set _buff to setup.terraBuff[_buffActivatedList[_i]]>>
 					<<set _activated_hours_countdown to Math.floor(_buff.activated / 60)>>
 					<<set _activated_minutes_countdown to (_buff.activated - _activated_hours_countdown * 60)>>
-					<<icon `_buff.icon`>>_buff.cn_name:
+					<<terra_icon `_buff.icon`>>_buff.cn_name:
 					<<if ["Fishing","Sonar","Crate"].includes(_buff.name) and $terra_accessories_slots.includes("Supreme_Bait_Tackle_Box_Fishing_Station") and $options.trueSBTBFS>>
 						<a class="green">无限</a><br>
 					<<else>>
@@ -19,7 +19,7 @@
 				<</for>>
 			</span>
 		</mouse>
-		<<icon "buff_icon/Empty.png">><br>
+		<<terra_icon "buff_icon/Empty.png">><br>
 	<<else>>
 		<div></div>
 	<</if>>

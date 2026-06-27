@@ -1,4 +1,9 @@
 :: Terra Mod Icon [widget]
+<!-- 拜0.5.9的神秘文件命名规范化更新所赐。感谢枫桦叶提供的写法，帮大忙了QAQ -->
+<<widget "terra_icon">>
+	<img class="icon" @src="'img/misc/icon/' + _args[0]">
+<</widget>>
+
 <<widget "terraExpandHintMobile">>
 
 	<<cleareventpool>>

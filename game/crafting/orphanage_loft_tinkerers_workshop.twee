@@ -5,13 +5,13 @@
 		<<unset $featMessageBlackMirror>>
 	<</if>>
 	<<if $orphanage_loft_crafting_station.includes("Tinkerers_Workshop")>>
-		<<icon "furniture_placed/Tinkerers_Workshop_(placed).png">><<link [[使用工匠作坊|Orphanage Loft Tinkerers Workshop]]>><</link>><br>
+		<<terra_icon "furniture_placed/Tinkerers_Workshop_(placed).png">><<link [[使用工匠作坊|Orphanage Loft Tinkerers Workshop]]>><</link>><br>
 	<</if>>
 <</widget>>
 
 :: Orphanage Loft Tinkerers Workshop
 工匠作坊里有专门将配饰组合在一起的工具。
-<<icon "furniture_placed/Tinkerers_Workshop_(placed).png">><br>
+<<terra_icon "furniture_placed/Tinkerers_Workshop_(placed).png">><br>
 <br>
 <span id="craftingInfo"></span>
 <span id="craftingUI"><<crafting "Tinkerers_Workshop">></span>

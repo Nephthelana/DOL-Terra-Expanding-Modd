@@ -1,0 +1,26 @@
+.terraHerb {
+	position: relative;
+	display: grid;
+	width: 16px;
+	height: 20px;
+	align-items: end;
+	justify-items: center;
+}
+
+.herbBackGround5 {
+	position: relative;
+	width: 96px;
+	height: 64px;
+}
+
+.herbBackGround10 {
+	position: relative;
+	width: 176px;
+	height: 64px;
+}
+
+.herbBackGround15 {
+	position: relative;
+	width: 256px;
+	height: 64px;
+}

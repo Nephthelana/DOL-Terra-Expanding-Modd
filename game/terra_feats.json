@@ -73,7 +73,7 @@
     },
 	"Pylon Collector": {
         "title": "晶塔收藏家",
-        "desc": "集齐5个晶塔所需的晶石。",
+        "desc": "集齐6个晶塔所需的晶石。",
         "difficulty": 4,
         "series": "",
         "filter": ["All", "Social"],

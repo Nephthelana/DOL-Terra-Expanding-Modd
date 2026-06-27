@@ -142,7 +142,7 @@
 <</widget>>
 
 :: Nonogram Details
-<<icon "hint/Emote_Emote_Confused.gif">>
+<<terra_icon "hint/Emote_Emote_Confused.gif">>
 数织（Nonogram），又称为Picross、Griddlers、或Picture Cross，是一种益智游戏。玩家通过推理填充一个方格网格，最终揭示出隐藏的图像。游戏的目标是根据每行和每列的数字提示，正确地填充或标记方格。<br>
 <br>
 游戏玩法：<br>
@@ -153,9 +153,9 @@
 <br>
 二、解决方法：<br>
 <li>点击图标以切换表格内的答案。</li>
-<<icon "nonogram/nonogram_true.png">>填充方格的标记为绿色方块。<br>
-<<icon "nonogram/nonogram_false.png">>需要留空的标记为红色叉。<br>
-<<icon "nonogram/nonogram_blank.png">>待定的方格标记为白色问号。<br>
+<<terra_icon "nonogram/nonogram_true.png">>填充方格的标记为绿色方块。<br>
+<<terra_icon "nonogram/nonogram_false.png">>需要留空的标记为红色叉。<br>
+<<terra_icon "nonogram/nonogram_blank.png">>待定的方格标记为白色问号。<br>
 <li>通常，解决数织的策略包括从已经确定的方格入手，逐步排除可能性，直到所有的方格都被正确填充。</li>
 <li>你可以通过<span class="gold">排除法</span>来逐步解开谜题。</li>
 <br>

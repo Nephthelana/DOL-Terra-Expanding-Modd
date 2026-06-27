@@ -67,7 +67,7 @@
 		<<case 2>>
 			<!-- 已展示过的任务鱼中随机猜测一条 -->
 			<<set _requestFish to setup.terraRequestFish[$fishing_request_robin.random()]>>
-			“让我猜猜……今天的鱼是<<icon `_requestFish.icon`>><span class="gold">_requestFish.cn_name</span>！对不对？”<br>
+			“让我猜猜……今天的鱼是<<terra_icon `_requestFish.icon`>><span class="gold">_requestFish.cn_name</span>！对不对？”<br>
 		<<case 3>>
 			<!-- 不同已展示任务鱼数量的差分 -->
 			<<if $fishing_request_robin.length lt 5>>
@@ -98,7 +98,7 @@
 					<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
 					<div class="terraItem" @tooltip="_tooltip">
 						<div class="terraIcon">
-							<<icon `_requestFish.icon`>>
+							<<terra_icon `_requestFish.icon`>>
 						</div>
 						<div class="terraDivider"></div>
 						<<link [[⬆|Fishing Request Robin Showing]]>><<set $fishing_request_robin_show to _requestFish.name>><</link>>
@@ -125,7 +125,7 @@
 			<<set _tooltip to `<span class="gold">${_requestFish.cn_name}</span>`>>
 			<div class="terraItem" @tooltip="_tooltip">
 				<div class="terraIcon">
-					<<icon `_requestFish.icon`>>
+					<<terra_icon `_requestFish.icon`>>
 				</div>
 			</div>
 		<</for>>
@@ -143,7 +143,7 @@
 <<npc Robin>><<person1>>
 <<set _requestFish to setup.terraRequestFish[$fishing_request_robin_show]>>
 <<set $fishing_request_robin.pushUnique(_requestFish.name)>>
-你将<<icon `_requestFish.icon`>><span class="gold">_requestFish.cn_name</span>交给罗宾。<br>
+你将<<terra_icon `_requestFish.icon`>><span class="gold">_requestFish.cn_name</span>交给罗宾。<br>
 <br>
 <<request_fish_robin_react $fishing_request_robin_show>>
 <<unset $fishing_request_robin_show>>

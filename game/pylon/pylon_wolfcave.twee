@@ -8,7 +8,7 @@
 					<span class="blue">但是现在黑狼不在狼窝，你无法使用它。</span>
 				<<else>>
 					<br>
-					<<icon "pylon/Mushroom_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "wolfcave">><</link>>
+					<<terra_icon "pylon/Mushroom_Pylon_(placed).gif">><<link [[访问晶塔网络|Pylon Transport]]>><<set $pylon to "wolfcave">><</link>>
 				<</if>>
 			<<else>>
 				为了激活这个晶塔，你需要找到那块水晶。<<print $syndromewolves is undefined ? "<span class='purple'>但你现在无法完全信任这群狼。</span>" : statusCheck("Black Wolf").love gte 27 ? "<span class='teal'>成为头狼，带黑狼一起去河边打猎吧。</span>" : "<span class='blue'>如果黑狼对你有足够的好感，你将会得到提示。</span>">>

@@ -24,7 +24,7 @@
 	<<set $robin_fishing_date_time_passed += _fishing_cast_time * 60>>
 	经过_fishing_cast_time分钟的等待，有东西上钩了！<br>
 	<<if $Sonar_Potion_countdown>>
-		<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
+		<span class="green">你的声呐药水显示，这是</span><<if $fishing_harvest.icon isnot undefined>><<terra_icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>><span class="green">!</span><br>
 	<</if>>
 	<br>
 	<!-- 显示罗宾的钓鱼状态。钓鱼状态机制详见<<widget "robin_fishing_phase">> -->
@@ -112,7 +112,7 @@
 	<</switch>>
 	<!-- 如果罗宾还有剩余鱼饵，显示剩余的鱼饵信息 -->
 	<<if $robin_bait_amount gt 0>>
-		罗宾还剩$robin_bait_amount个<<icon `$robin_bait_icon`>>$robin_bait_cn_name。<br>
+		罗宾还剩$robin_bait_amount个<<terra_icon `$robin_bait_icon`>>$robin_bait_cn_name。<br>
 	<</if>>
 
 <</widget>>

@@ -88,15 +88,15 @@
 <<if random(1,20) is 1>>
 	<<set $Master_Bait += _fishing_reward_bait>>
 	<<bestiaryStatistics "bait" "Master_Bait" _fishing_reward_bait>>
-	<<icon "fishing/bait/Master_Bait.png">>大师诱饵
+	<<terra_icon "fishing/bait/Master_Bait.png">>大师诱饵
 <<elseif random(1,10) is 1>>
 	<<set $Journeyman_Bait += _fishing_reward_bait>>
 	<<bestiaryStatistics "bait" "Journeyman_Bait" _fishing_reward_bait>>
-	<<icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵
+	<<terra_icon "fishing/bait/Journeyman_Bait.png">>熟手诱饵
 <<else>>
 	<<set $Apprentice_Bait += _fishing_reward_bait>>
 	<<bestiaryStatistics "bait" "Apprentice_Bait" _fishing_reward_bait>>
-	<<icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵
+	<<terra_icon "fishing/bait/Apprentice_Bait.png">>学徒诱饵
 <</if>>(_fishing_reward_bait)。<br>
 <br>
 <<link [[返回|Fishing Angler Cabin]]>><</link>>

@@ -19,6 +19,8 @@ terraEffect.create("terraEffect", () => {
 
 	const sWikifier = text => {fragment.append(Wikifier.wikifyEval(text));};
 
+	if (V.fishingskill >= 1000) sWikifier('<<earnFeat "Kong Jun">>');
+
 	if (V.Traveling_Merchant_arrive_message) {
 		sWikifier('<span class=\"teal\"><i>旅商已到达梅尔街的码头！</i></span><br><br>');
 		delete V.Traveling_Merchant_arrive_message;
@@ -30,12 +32,12 @@ terraEffect.create("terraEffect", () => {
 	}
 
 	if (V.Angel_Halo_nessage) {
-		sWikifier('<<icon "accessories/Angel_Halo.png">><span class="gold"><i>天使光环牢牢束缚住了你体内因纯洁不足而试图逸散的天使气息。</i></span><br><br>');
+		sWikifier('<<terra_icon "accessories/Angel_Halo.png">><span class="gold"><i>天使光环牢牢束缚住了你体内因纯洁不足而试图逸散的天使气息。</i></span><br><br>');
 		delete V.Angel_Halo_nessage;
 	}
 
 	if (V.Demon_Horns_nessage) {
-		sWikifier('<<icon "accessories/Demon_Horns.png">><span class="gold"><i>恶魔角抵抗着你体内太多的纯洁，阻止了你体内恶魔之力的流失。</i></span><br><br>');
+		sWikifier('<<terra_icon "accessories/Demon_Horns.png">><span class="gold"><i>恶魔角抵抗着你体内太多的纯洁，阻止了你体内恶魔之力的流失。</i></span><br><br>');
 		delete V.Demon_Horns_nessage;
 	}
 

@@ -9,7 +9,7 @@
 				<div class="terraItem">
 					<div class="terraIcon" @tooltip="_tooltip">
 						<span @class="$fishing_request_fish.includes(_requestFish.name) ? '' : 'terraFading'">
-							<<icon `_requestFish.icon`>>
+							<<terra_icon `_requestFish.icon`>>
 						</span>
 					</div>
 					<div class="terraDivider"></div>

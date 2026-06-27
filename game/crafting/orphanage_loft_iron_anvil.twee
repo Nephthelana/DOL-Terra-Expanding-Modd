@@ -1,13 +1,13 @@
 :: Orphanage Loft Iron Anvil Widget [widget]
 <<widget "orphanage_loft_iron_anvil">>
 	<<if $orphanage_loft_crafting_station.includes("Iron_Anvil")>>
-		<<icon "furniture_placed/Iron_Anvil_(placed).png">><<link [[使用铁砧|Orphanage Loft Iron Anvil]]>><</link>><br>
+		<<terra_icon "furniture_placed/Iron_Anvil_(placed).png">><<link [[使用铁砧|Orphanage Loft Iron Anvil]]>><</link>><br>
 	<</if>>
 <</widget>>
 
 :: Orphanage Loft Iron Anvil
 你拿起锻造用的工具。
-<<icon "furniture_placed/Iron_Anvil_(placed).png">><br>
+<<terra_icon "furniture_placed/Iron_Anvil_(placed).png">><br>
 <br>
 <span id="craftingInfo"></span>
 <span id="craftingUI"><<crafting "Iron_Anvil">></span>

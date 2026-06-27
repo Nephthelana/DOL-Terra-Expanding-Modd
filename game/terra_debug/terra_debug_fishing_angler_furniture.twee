@@ -8,7 +8,7 @@
 				<div class="terraItem">
 					<div class="terraIconTool" @tooltip="_anglerFurniture.cn_name">
 						<span @class="$angler_furniture_obtained.includes(_anglerFurniture.name) ? '' : 'terraFading'">
-							<<icon `_anglerFurniture.item_icon`>>
+							<<terra_icon `_anglerFurniture.item_icon`>>
 						</span>
 					</div>
 					<div class="terraDivider"></div>

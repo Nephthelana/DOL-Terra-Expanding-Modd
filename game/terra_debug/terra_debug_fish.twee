@@ -8,7 +8,7 @@
 				<div class="terraItem">
 					<<set _isMaterial to _fish.material ? "<br><i>材料</i>" : "">>
 					<div class="terraIcon" @tooltip="`${_fish.cn_name}${_isMaterial}`">
-						<<icon `_fish.icon`>>
+						<<terra_icon `_fish.icon`>>
 					</div>
 					<div class="terraDivider"></div>
 					<div class="terraLinks">

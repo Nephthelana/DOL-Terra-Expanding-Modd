@@ -76,7 +76,7 @@
 <br>
 <<He>>叹了口气，看向你。“嗯……或许这把铲子在你手里能发挥它应有的价值。收下吧，就当是博物馆对你的谢礼。但我可没有鼓励你用它去盗墓。”<br>
 <br>
-<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
+<span class="gold">你获得了<<terra_icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
 <br>
 <<getouticon>><<link [[返回|Museum]]>><</link>><br>
 <<endevent>>
@@ -97,7 +97,7 @@
 	<<mysteryicon>><<link [[询问铲子|Museum Gravediggers Shovel Ask]]>><</link>><br>
 <<else>>
 	<<set $Gravediggers_Shovel to true>>
-	<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
+	<span class="gold">你获得了<<terra_icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
 	<br>
 	<<getouticon>><<link [[返回|Museum]]>><</link>><br>
 <</if>>
@@ -111,6 +111,6 @@
 <br>
 ”总之我用不到这把铲子。作为谢礼，它是你的了。“<br>
 <br>
-<span class="gold">你获得了<<icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
+<span class="gold">你获得了<<terra_icon "tool/Gravediggers_Shovel.png">>掘墓者铲子。</span><br>
 <br>
 <<getouticon>><<link [[返回|Museum]]>><</link>><br>

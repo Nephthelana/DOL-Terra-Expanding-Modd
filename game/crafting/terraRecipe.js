@@ -25,9 +25,9 @@ setup.terraRecipe = {
 			Sea_Prism: 10,
 			Sea_Remains: 3,
 		},
-		ingredients_info: "<<icon \"material/White_Pearl.png\">>白珍珠(1)<br><<icon \"material/Sea_Prism.png\">>海棱晶(10)<br><<icon \"material/Sea_Remains.png\">>海洋残渣(3)",
+		ingredients_info: "<<terra_icon \"material/White_Pearl.png\">>白珍珠(1)<br><<terra_icon \"material/Sea_Prism.png\">>海棱晶(10)<br><<terra_icon \"material/Sea_Remains.png\">>海洋残渣(3)",
 		craft: "<<set $Enchanted_Pearl to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Enchanted_Pearl.png\">>附魔珍珠。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Enchanted_Pearl.png\">>附魔珍珠。",
     },
 	"Demon_Conch": {
         name: "Demon_Conch",
@@ -41,9 +41,9 @@ setup.terraRecipe = {
 			Magic_Conch: true,
 			Demonic_Bone_Ash: 5,
 		},
-		ingredients_info: "<<icon \"tool/Magic_Conch.png\">>魔法海螺<br><<icon \"material/Demonic_Bone_Ash.png\">>恶魔骨灰(5)",
+		ingredients_info: "<<terra_icon \"tool/Magic_Conch.png\">>魔法海螺<br><<terra_icon \"material/Demonic_Bone_Ash.png\">>恶魔骨灰(5)",
 		craft: "<<set $Demon_Conch to true>>",
-		crafting_info: "你制作了1个<<icon \"tool/Demon_Conch.png\">>恶魔海螺。",
+		crafting_info: "你制作了1个<<terra_icon \"tool/Demon_Conch.png\">>恶魔海螺。",
     },
 	"Cell_Phone": {
         name: "Cell_Phone",
@@ -58,9 +58,9 @@ setup.terraRecipe = {
 			Magic_Mirror: true,
 			Ice_Mirror: true,
 		},
-		ingredients_info: "<<icon \"accessories/PDA.png\">>个人数字助手<br><<icon \"tool/Magic_Mirror.png\">>魔镜<br><<icon \"tool/Ice_Mirror.png\">>冰雪镜",
+		ingredients_info: "<<terra_icon \"accessories/PDA.png\">>个人数字助手<br><<terra_icon \"tool/Magic_Mirror.png\">>魔镜<br><<terra_icon \"tool/Ice_Mirror.png\">>冰雪镜",
 		craft: "<<set $Cell_Phone to true>>",
-		crafting_info: "你制作了1个<<icon \"tool/Cell_Phone.png\">>手机。",
+		crafting_info: "你制作了1个<<terra_icon \"tool/Cell_Phone.png\">>手机。",
     },
 	"Shellphone": {
         name: "Shellphone",
@@ -75,9 +75,9 @@ setup.terraRecipe = {
 			Magic_Conch: true,
 			Demon_Conch: true,
 		},
-		ingredients_info: "<<icon \"tool/Cell_Phone.png\">>手机<br><<icon \"tool/Magic_Conch.png\">>魔法海螺<br><<icon \"tool/Demon_Conch.png\">>恶魔海螺",
+		ingredients_info: "<<terra_icon \"tool/Cell_Phone.png\">>手机<br><<terra_icon \"tool/Magic_Conch.png\">>魔法海螺<br><<terra_icon \"tool/Demon_Conch.png\">>恶魔海螺",
 		craft: "<<set $Shellphone to true>>",
-		crafting_info: "你制作了1个<<icon \"tool/Shellphone.png\">>贝壳电话。",
+		crafting_info: "你制作了1个<<terra_icon \"tool/Shellphone.png\">>贝壳电话。",
     },
 	"Lavaproof_Bug_Net": {
         name: "Lavaproof_Bug_Net",
@@ -91,9 +91,9 @@ setup.terraRecipe = {
 			Bug_Net: true,
 			Demonic_Bone_Ash: 5,
 		},
-		ingredients_info: "<<icon \"tool/Bug_Net.png\">>虫网<br><<icon \"material/Demonic_Bone_Ash.png\">>恶魔骨灰(5)",
+		ingredients_info: "<<terra_icon \"tool/Bug_Net.png\">>虫网<br><<terra_icon \"material/Demonic_Bone_Ash.png\">>恶魔骨灰(5)",
 		craft: "<<set $Lavaproof_Bug_Net to true>>",
-		crafting_info: "你制作了1个<<icon \"tool/Lavaproof_Bug_Net.png\">>防熔岩虫网。",
+		crafting_info: "你制作了1个<<terra_icon \"tool/Lavaproof_Bug_Net.png\">>防熔岩虫网。",
     },
 	"Mana_Crystal": {
 		name: "Mana_Crystal",
@@ -106,9 +106,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Fallen_Star: 5,
 		},
-		ingredients_info: "<<icon \"material/Fallen_Star.png\">>坠落之星(5)",
+		ingredients_info: "<<terra_icon \"material/Fallen_Star.png\">>坠落之星(5)",
 		craft: "<<set $Mana_Crystal += 1>>",
-		crafting_info: "你制作了1个<<icon \"tool/Mana_Crystal.png\">>魔力水晶。<br>你有<<icon \"tool/Mana_Crystal.png\">>魔力水晶($Mana_Crystal)，你还有<<icon \"material/Fallen_Star.png\">>坠落之星($Fallen_Star)。",
+		crafting_info: "你制作了1个<<terra_icon \"tool/Mana_Crystal.png\">>魔力水晶。<br>你有<<terra_icon \"tool/Mana_Crystal.png\">>魔力水晶($Mana_Crystal)，你还有<<terra_icon \"material/Fallen_Star.png\">>坠落之星($Fallen_Star)。",
 	},
 	"Iron_Anvil": {
         name: "Iron_Anvil",
@@ -121,9 +121,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Iron_Bar: 5,
 		},
-		ingredients_info: "需要有C级家务技能<br><<icon \"material/Iron_Bar.png\">>铁锭(5)",
+		ingredients_info: "需要有C级家务技能<br><<terra_icon \"material/Iron_Bar.png\">>铁锭(5)",
 		craft: "<<set $orphanage_loft_crafting_station.pushUnique(\"Iron_Anvil\")>>",
-		crafting_info: "你制作了1个<<icon \"furniture_item/Iron_Anvil.png\">>铁砧，将它放在了阁楼。",
+		crafting_info: "你制作了1个<<terra_icon \"furniture_item/Iron_Anvil.png\">>铁砧，将它放在了阁楼。",
     },
 	"Cooking_Pot": {
         name: "Cooking_Pot",
@@ -136,9 +136,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Iron_Bar: 10,
 		},
-		ingredients_info: "需要有B级家务技能<br><<icon \"material/Iron_Bar.png\">>铁锭(10)",
+		ingredients_info: "需要有B级家务技能<br><<terra_icon \"material/Iron_Bar.png\">>铁锭(10)",
 		craft: "<<set $orphanage_loft_crafting_station.pushUnique(\"Cooking_Pot\")>>",
-		crafting_info: "你制作了1个<<icon \"furniture_item/Cooking_Pot.png\">>烹饪锅，将它放在了阁楼。",
+		crafting_info: "你制作了1个<<terra_icon \"furniture_item/Cooking_Pot.png\">>烹饪锅，将它放在了阁楼。",
     },
 	"Angler_Tackle_Bag": {
         name: "Angler_Tackle_Bag",
@@ -153,9 +153,9 @@ setup.terraRecipe = {
 			High_Test_Fishing_Line: true,
 			Tackle_Box: true,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Angler_Earring.png\">>渔夫耳环<br><<icon \"fishing/fishing_accessories/High_Test_Fishing_Line.png\">>优质钓鱼线<br><<icon \"fishing/fishing_accessories/Tackle_Box.png\">>钓具箱",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Angler_Earring.png\">>渔夫耳环<br><<terra_icon \"fishing/fishing_accessories/High_Test_Fishing_Line.png\">>优质钓鱼线<br><<terra_icon \"fishing/fishing_accessories/Tackle_Box.png\">>钓具箱",
 		craft: "<<set $Angler_Tackle_Bag to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Angler_Tackle_Bag.png\">>渔夫渔具袋。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Angler_Tackle_Bag.png\">>渔夫渔具袋。",
     },
 	"Lavaproof_Tackle_Bag": {
         name: "Lavaproof_Tackle_Bag",
@@ -169,9 +169,9 @@ setup.terraRecipe = {
 			Angler_Tackle_Bag: true,
 			Lavaproof_Fishing_Hook: true,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Angler_Tackle_Bag.png\">>渔夫渔具袋<br><<icon \"fishing/fishing_accessories/Lavaproof_Fishing_Hook.png\">>防熔岩钓钩",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Angler_Tackle_Bag.png\">>渔夫渔具袋<br><<terra_icon \"fishing/fishing_accessories/Lavaproof_Fishing_Hook.png\">>防熔岩钓钩",
 		craft: "<<set $Lavaproof_Tackle_Bag to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Lavaproof_Tackle_Bag.png\">>防熔岩渔具袋。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Lavaproof_Tackle_Bag.png\">>防熔岩渔具袋。",
     },
 	"Supreme_Bait_Tackle_Box_Fishing_Station": {
         name: "Supreme_Bait_Tackle_Box_Fishing_Station",
@@ -189,9 +189,9 @@ setup.terraRecipe = {
 			Sonar_Potion: 5,
 			Crate_Potion: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Lavaproof_Tackle_Bag.png\">>防熔岩渔具袋<br><<icon 'material/Pink_Pearl.png'>>粉珍珠(1)<br><<icon 'fishing/bait/Master_Bait.png'>>大师诱饵(5)<br><<icon 'potions/Fishing_Potion.png'>>钓鱼药水(5)<br><<icon 'potions/Sonar_Potion.png'>>声呐药水(5)<br><<icon 'potions/Crate_Potion.png'>>宝匣药水(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Lavaproof_Tackle_Bag.png\">>防熔岩渔具袋<br><<terra_icon 'material/Pink_Pearl.png'>>粉珍珠(1)<br><<terra_icon 'fishing/bait/Master_Bait.png'>>大师诱饵(5)<br><<terra_icon 'potions/Fishing_Potion.png'>>钓鱼药水(5)<br><<terra_icon 'potions/Sonar_Potion.png'>>声呐药水(5)<br><<terra_icon 'potions/Crate_Potion.png'>>宝匣药水(5)",
 		craft: "<<set $Supreme_Bait_Tackle_Box_Fishing_Station to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Supreme_Bait_Tackle_Box_Fishing_Station.png\">>万能渔具包。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Supreme_Bait_Tackle_Box_Fishing_Station.png\">>万能渔具包。",
     },
 	"Fish_Finder": {
         name: "Fish_Finder",
@@ -206,9 +206,9 @@ setup.terraRecipe = {
 			Sextant: true,
 			Weather_Radio: true,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Fishermans_Pocket_Guide.png\">>渔民袖珍宝典<br><<icon \"fishing/fishing_accessories/Sextant.png\">>六分仪<br><<icon \"fishing/fishing_accessories/Weather_Radio.png\">>天气收音机",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Fishermans_Pocket_Guide.png\">>渔民袖珍宝典<br><<terra_icon \"fishing/fishing_accessories/Sextant.png\">>六分仪<br><<terra_icon \"fishing/fishing_accessories/Weather_Radio.png\">>天气收音机",
 		craft: "<<set $Fish_Finder to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Fish_Finder.png\">>探鱼器。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Fish_Finder.png\">>探鱼器。",
     },
 	"GPS": {
         name: "GPS",
@@ -223,9 +223,9 @@ setup.terraRecipe = {
 			Compass: true,
 			Depth_Meter: true,
 		},
-		ingredients_info: "<<icon 'accessories/Gold_Watch.png'>>金表<br><<icon 'accessories/Compass.png'>>罗盘<br><<icon 'accessories/Depth_Meter.png'>>深度计",
+		ingredients_info: "<<terra_icon 'accessories/Gold_Watch.png'>>金表<br><<terra_icon 'accessories/Compass.png'>>罗盘<br><<terra_icon 'accessories/Depth_Meter.png'>>深度计",
 		craft: "<<set $GPS to true>>",
-		crafting_info: "你制作了1个<<icon 'accessories/GPS.png'>>全球定位系统。",
+		crafting_info: "你制作了1个<<terra_icon 'accessories/GPS.png'>>全球定位系统。",
     },
 	"Goblin_Tech": {
         name: "Goblin_Tech",
@@ -240,9 +240,9 @@ setup.terraRecipe = {
 			Stopwatch: true,
 			Metal_Detector: true,
 		},
-		ingredients_info: "<<icon 'accessories/Thermometer.png'>>温度计<br><<icon 'accessories/Stopwatch.png'>>秒表<br><<icon 'accessories/Metal_Detector.png'>>金属探测器",
+		ingredients_info: "<<terra_icon 'accessories/Thermometer.png'>>温度计<br><<terra_icon 'accessories/Stopwatch.png'>>秒表<br><<terra_icon 'accessories/Metal_Detector.png'>>金属探测器",
 		craft: "<<set $Goblin_Tech to true>>",
-		crafting_info: "你制作了1个<<icon 'accessories/Goblin_Tech.png'>>哥布林数据仪。",
+		crafting_info: "你制作了1个<<terra_icon 'accessories/Goblin_Tech.png'>>哥布林数据仪。",
     },
 	"R_E_K_3000": {
         name: "R_E_K_3000",
@@ -257,9 +257,9 @@ setup.terraRecipe = {
 			Lifeform_Analyzer: true,
 			Tally_Counter: true,
 		},
-		ingredients_info: "<<icon 'accessories/Radar.png'>>雷达<br><<icon 'accessories/Lifeform_Analyzer.png'>>生命体分析机<br><<icon 'accessories/Tally_Counter.png'>>战斗计数器",
+		ingredients_info: "<<terra_icon 'accessories/Radar.png'>>雷达<br><<terra_icon 'accessories/Lifeform_Analyzer.png'>>生命体分析机<br><<terra_icon 'accessories/Tally_Counter.png'>>战斗计数器",
 		craft: "<<set $R_E_K_3000 to true>>",
-		crafting_info: "你制作了1个<<icon 'accessories/R_E_K_3000.png'>>R.E.K.3000。",
+		crafting_info: "你制作了1个<<terra_icon 'accessories/R_E_K_3000.png'>>R.E.K.3000。",
     },
 	"PDA": {
         name: "PDA",
@@ -275,9 +275,9 @@ setup.terraRecipe = {
 			Goblin_Tech: true,
 			R_E_K_3000: true,
 		},
-		ingredients_info: "<<icon 'fishing/fishing_accessories/Fish_Finder.png'>>探鱼器<br><<icon 'accessories/GPS.png'>>全球定位系统<br><<icon 'accessories/Goblin_Tech.png'>>哥布林数据仪<br><<icon 'accessories/R_E_K_3000.png'>>R.E.K.3000",
+		ingredients_info: "<<terra_icon 'fishing/fishing_accessories/Fish_Finder.png'>>探鱼器<br><<terra_icon 'accessories/GPS.png'>>全球定位系统<br><<terra_icon 'accessories/Goblin_Tech.png'>>哥布林数据仪<br><<terra_icon 'accessories/R_E_K_3000.png'>>R.E.K.3000",
 		craft: "<<set $PDA to true>>",
-		crafting_info: "你制作了1个<<icon 'accessories/PDA.png'>>个人数字助手。",
+		crafting_info: "你制作了1个<<terra_icon 'accessories/PDA.png'>>个人数字助手。",
     },
 	"Glowing_Fishing_Bobber": {
         name: "Glowing_Fishing_Bobber",
@@ -291,9 +291,9 @@ setup.terraRecipe = {
 			Fishing_Bobber: true,
 			Fallen_Star: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Fishing_Bobber.png\">>钓鱼浮标<br><<icon \"material/Fallen_Star.png\">>坠落之星(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Fishing_Bobber.png\">>钓鱼浮标<br><<terra_icon \"material/Fallen_Star.png\">>坠落之星(5)",
 		craft: "<<set $Glowing_Fishing_Bobber to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标。",
     },
 	"Helium_Moss_Fishing_Bobber": {
         name: "Helium_Moss_Fishing_Bobber",
@@ -307,9 +307,9 @@ setup.terraRecipe = {
 			Glowing_Fishing_Bobber: true,
 			Helium_Moss: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<icon \"material/Helium_Moss.gif\">>氦苔藓(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<terra_icon \"material/Helium_Moss.gif\">>氦苔藓(5)",
 		craft: "<<set $Helium_Moss_Fishing_Bobber to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Helium_Moss_Fishing_Bobber.gif\">>氦苔藓钓鱼浮标。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Helium_Moss_Fishing_Bobber.gif\">>氦苔藓钓鱼浮标。",
     },
 	"Neon_Moss_Fishing_Bobber": {
         name: "Neon_Moss_Fishing_Bobber",
@@ -323,9 +323,9 @@ setup.terraRecipe = {
 			Glowing_Fishing_Bobber: true,
 			Neon_Moss: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<icon \"material/Neon_Moss.png\">>氖苔藓(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<terra_icon \"material/Neon_Moss.png\">>氖苔藓(5)",
 		craft: "<<set $Neon_Moss_Fishing_Bobber to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Neon_Moss_Fishing_Bobber.png\">>氖苔藓钓鱼浮标。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Neon_Moss_Fishing_Bobber.png\">>氖苔藓钓鱼浮标。",
     },
 	"Argon_Moss_Fishing_Bobber": {
         name: "Argon_Moss_Fishing_Bobber",
@@ -339,9 +339,9 @@ setup.terraRecipe = {
 			Glowing_Fishing_Bobber: true,
 			Argon_Moss: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<icon \"material/Argon_Moss.png\">>氩苔藓(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<terra_icon \"material/Argon_Moss.png\">>氩苔藓(5)",
 		craft: "<<set $Argon_Moss_Fishing_Bobber to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Argon_Moss_Fishing_Bobber.png\">>氩苔藓钓鱼浮标。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Argon_Moss_Fishing_Bobber.png\">>氩苔藓钓鱼浮标。",
     },
 	"Krypton_Moss_Fishing_Bobber": {
         name: "Krypton_Moss_Fishing_Bobber",
@@ -355,9 +355,9 @@ setup.terraRecipe = {
 			Glowing_Fishing_Bobber: true,
 			Krypton_Moss: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<icon \"material/Krypton_Moss.png\">>氪苔藓(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<terra_icon \"material/Krypton_Moss.png\">>氪苔藓(5)",
 		craft: "<<set $Krypton_Moss_Fishing_Bobber to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Krypton_Moss_Fishing_Bobber.png\">>氪苔藓钓鱼浮标。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Krypton_Moss_Fishing_Bobber.png\">>氪苔藓钓鱼浮标。",
     },
 	"Xenon_Moss_Fishing_Bobber": {
         name: "Xenon_Moss_Fishing_Bobber",
@@ -371,9 +371,9 @@ setup.terraRecipe = {
 			Glowing_Fishing_Bobber: true,
 			Xenon_Moss: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<icon \"material/Xenon_Moss.png\">>氙苔藓(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<terra_icon \"material/Xenon_Moss.png\">>氙苔藓(5)",
 		craft: "<<set $Xenon_Moss_Fishing_Bobber to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Xenon_Moss_Fishing_Bobber.png\">>氙苔藓钓鱼浮标。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Xenon_Moss_Fishing_Bobber.png\">>氙苔藓钓鱼浮标。",
     },
 	"Lava_Moss_Fishing_Bobber": {
         name: "Lava_Moss_Fishing_Bobber",
@@ -387,9 +387,9 @@ setup.terraRecipe = {
 			Glowing_Fishing_Bobber: true,
 			Lava_Moss: 5,
 		},
-		ingredients_info: "<<icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<icon \"material/Lava_Moss.png\">>熔岩苔藓(5)",
+		ingredients_info: "<<terra_icon \"fishing/fishing_accessories/Glowing_Fishing_Bobber.png\">>发光钓鱼浮标<br><<terra_icon \"material/Lava_Moss.png\">>熔岩苔藓(5)",
 		craft: "<<set $Lava_Moss_Fishing_Bobber to true>>",
-		crafting_info: "你制作了1个<<icon \"fishing/fishing_accessories/Lava_Moss_Fishing_Bobber.png\">>熔岩苔藓钓鱼浮标。",
+		crafting_info: "你制作了1个<<terra_icon \"fishing/fishing_accessories/Lava_Moss_Fishing_Bobber.png\">>熔岩苔藓钓鱼浮标。",
     },
 	//生鱼片：可由 三文鱼、鲈鱼、金枪鱼、红鲷鱼、鳟鱼、偏口鱼、大西洋鳕鱼、棱晶孔雀鱼、硫火崖回鱼 在 工作台 上制作得到
 	"Sashimi_Salmon": {
@@ -403,9 +403,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Salmon: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Salmon.png\">>三文鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Salmon.png\">>三文鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Salmon.png\">>三文鱼($Salmon)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Salmon.png\">>三文鱼($Salmon)。",
 	},
 	"Sashimi_Bass": {
 		name: "Sashimi",
@@ -418,9 +418,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Bass: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Bass.png\">>鲈鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Bass.png\">>鲈鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Bass.png\">>鲈鱼($Bass)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Bass.png\">>鲈鱼($Bass)。",
 	},
 	"Sashimi_Tuna": {
 		name: "Sashimi",
@@ -433,9 +433,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Tuna: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Tuna.png\">>金枪鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Tuna.png\">>金枪鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Tuna.png\">>金枪鱼($Tuna)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Tuna.png\">>金枪鱼($Tuna)。",
 	},
 	"Sashimi_Red_Snapper": {
 		name: "Sashimi",
@@ -448,9 +448,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Red_Snapper: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼($Red_Snapper)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼($Red_Snapper)。",
 	},
 	"Sashimi_Trout": {
 		name: "Sashimi",
@@ -463,9 +463,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Trout: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Trout.png\">>鳟鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Trout.png\">>鳟鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Trout.png\">>鳟鱼($Trout)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Trout.png\">>鳟鱼($Trout)。",
 	},
 	"Sashimi_Flounder": {
 		name: "Sashimi",
@@ -478,9 +478,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Flounder: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Flounder.png\">>偏口鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Flounder.png\">>偏口鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Flounder.png\">>偏口鱼($Flounder)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Flounder.png\">>偏口鱼($Flounder)。",
 	},
 	"Sashimi_Atlantic_Cod": {
 		name: "Sashimi",
@@ -493,9 +493,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Atlantic_Cod: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼($Atlantic_Cod)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼($Atlantic_Cod)。",
 	},
 	"Sashimi_Prismatic_Guppy": {
 		name: "Sashimi",
@@ -508,9 +508,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Prismatic_Guppy: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼($Prismatic_Guppy)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼($Prismatic_Guppy)。",
 	},
 	"Sashimi_Crag_Bullhead": {
 		name: "Sashimi",
@@ -523,9 +523,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Crag_Bullhead: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼(1)",
 		craft: "<<set $Sashimi += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼($Crag_Bullhead)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Sashimi.png\">>生鱼片。<<if currentSkillValue('housekeeping') lt 600>><<ghousekeeping 600>><</if>><br>你有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)，你还有<<terra_icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼($Crag_Bullhead)。",
 	},
 	//熟鱼：可由 三文鱼、鲈鱼、金枪鱼、红鲷鱼、鳟鱼、偏口鱼、大西洋鳕鱼、棱晶孔雀鱼、硫火崖回鱼 在 烹饪锅 上制作得到
 	"Cooked_Fish_Salmon": {
@@ -539,9 +539,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Salmon: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Salmon.png\">>三文鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Salmon.png\">>三文鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Salmon.png\">>三文鱼($Salmon)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Salmon.png\">>三文鱼($Salmon)。",
 	},
 	"Cooked_Fish_Bass": {
 		name: "Cooked_Fish",
@@ -554,9 +554,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Bass: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Bass.png\">>鲈鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Bass.png\">>鲈鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Bass.png\">>鲈鱼($Bass)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Bass.png\">>鲈鱼($Bass)。",
 	},
 	"Cooked_Fish_Tuna": {
 		name: "Cooked_Fish",
@@ -569,9 +569,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Tuna: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Tuna.png\">>金枪鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Tuna.png\">>金枪鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Tuna.png\">>金枪鱼($Tuna)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Tuna.png\">>金枪鱼($Tuna)。",
 	},
 	"Cooked_Fish_Red_Snapper": {
 		name: "Cooked_Fish",
@@ -584,9 +584,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Red_Snapper: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼($Red_Snapper)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Red_Snapper.png\">>红鲷鱼($Red_Snapper)。",
 	},
 	"Cooked_Fish_Trout": {
 		name: "Cooked_Fish",
@@ -599,9 +599,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Trout: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Trout.png\">>鳟鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Trout.png\">>鳟鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Trout.png\">>鳟鱼($Trout)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Trout.png\">>鳟鱼($Trout)。",
 	},
 	"Cooked_Fish_Flounder": {
 		name: "Cooked_Fish",
@@ -614,9 +614,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Flounder: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Flounder.png\">>偏口鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Flounder.png\">>偏口鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Flounder.png\">>偏口鱼($Flounder)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Flounder.png\">>偏口鱼($Flounder)。",
 	},
 	"Cooked_Fish_Atlantic_Cod": {
 		name: "Cooked_Fish",
@@ -629,9 +629,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Atlantic_Cod: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼($Atlantic_Cod)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼($Atlantic_Cod)。",
 	},
 	"Cooked_Fish_Prismatic_Guppy": {
 		name: "Cooked_Fish",
@@ -644,9 +644,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Prismatic_Guppy: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼($Prismatic_Guppy)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Prismatic_Guppy.png\">>棱晶孔雀鱼($Prismatic_Guppy)。",
 	},
 	"Cooked_Fish_Crag_Bullhead": {
 		name: "Cooked_Fish",
@@ -659,9 +659,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Crag_Bullhead: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼(1)",
 		craft: "<<set $Cooked_Fish += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼($Crag_Bullhead)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Fish.png\">>熟鱼。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Fish.png\">>熟鱼($Cooked_Fish)，你还有<<terra_icon \"fishing/fish/Crag_Bullhead.png\">>硫火崖回鱼($Crag_Bullhead)。",
 	},
 	//熟虾：可由 虾 在 烹饪锅 上制作得到
 	"Cooked_Shrimp": {
@@ -675,9 +675,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Shrimp: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Shrimp.png\">>虾(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Shrimp.png\">>虾(1)",
 		craft: "<<set $Cooked_Shrimp += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Cooked_Shrimp.png\">>熟虾。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Cooked_Shrimp.png\">>熟虾($Cooked_Shrimp)，你还有<<icon \"fishing/fish/Shrimp.png\">>虾($Shrimp)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Cooked_Shrimp.png\">>熟虾。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Cooked_Shrimp.png\">>熟虾($Cooked_Shrimp)，你还有<<terra_icon \"fishing/fish/Shrimp.png\">>虾($Shrimp)。",
 	},
 	//龙虾尾：可由 岩石龙虾 在 烹饪锅 上制作得到
 	"Lobster_Tail": {
@@ -691,9 +691,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Rock_Lobster: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Rock_Lobster.png\">>岩石龙虾(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Rock_Lobster.png\">>岩石龙虾(1)",
 		craft: "<<set $Lobster_Tail += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Lobster_Tail.png\">>龙虾尾。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Lobster_Tail.png\">>龙虾尾($Lobster_Tail)，你还有<<icon \"fishing/fish/Rock_Lobster.png\">>岩石龙虾($Rock_Lobster)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Lobster_Tail.png\">>龙虾尾。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Lobster_Tail.png\">>龙虾尾($Lobster_Tail)，你还有<<terra_icon \"fishing/fish/Rock_Lobster.png\">>岩石龙虾($Rock_Lobster)。",
 	},
 	//海鲜大餐：可由 臭味鱼、装甲洞穴鱼、镜面鱼、双鳍鳕鱼、斑驳油鱼、霓虹脂鲤、混沌鱼、七彩矿鱼、公主鱼、寒霜绦鱼、闪鳍锦鲤、黑曜石鱼、沉沦帆鱼、海岸恶魔鱼 在 烹饪锅 上制作得到
 	"Seafood_Dinner_Stinkfish": {
@@ -707,9 +707,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Stinkfish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Stinkfish.png\">>臭味鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Stinkfish.png\">>臭味鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Stinkfish.png\">>臭味鱼($Stinkfish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Stinkfish.png\">>臭味鱼($Stinkfish)。",
 	},
 	"Seafood_Dinner_Armored_Cavefish": {
 		name: "Seafood_Dinner",
@@ -722,9 +722,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Armored_Cavefish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Armored_Cavefish.png\">>装甲洞穴鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Armored_Cavefish.png\">>装甲洞穴鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Armored_Cavefish.png\">>装甲洞穴鱼($Armored_Cavefish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Armored_Cavefish.png\">>装甲洞穴鱼($Armored_Cavefish)。",
 	},
 	"Seafood_Dinner_Specular_Fish": {
 		name: "Seafood_Dinner",
@@ -737,9 +737,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Specular_Fish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Specular_Fish.png\">>镜面鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Specular_Fish.png\">>镜面鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Specular_Fish.png\">>镜面鱼($Specular_Fish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Specular_Fish.png\">>镜面鱼($Specular_Fish)。",
 	},
 	"Seafood_Dinner_Honeyfin": {
 		name: "Seafood_Dinner",
@@ -752,9 +752,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Honeyfin: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼($Honeyfin)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼($Honeyfin)。",
 	},
 	"Seafood_Dinner_Double_Cod": {
 		name: "Seafood_Dinner",
@@ -767,9 +767,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Double_Cod: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼($Double_Cod)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼($Double_Cod)。",
 	},
 	"Seafood_Dinner_Variegated_Lardfish": {
 		name: "Seafood_Dinner",
@@ -782,9 +782,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Variegated_Lardfish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Variegated_Lardfish.png\">>斑驳油鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Variegated_Lardfish.png\">>斑驳油鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Variegated_Lardfish.png\">>斑驳油鱼($Variegated_Lardfish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Variegated_Lardfish.png\">>斑驳油鱼($Variegated_Lardfish)。",
 	},
 	"Seafood_Dinner_Neon_Tetra": {
 		name: "Seafood_Dinner",
@@ -797,9 +797,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Neon_Tetra: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Neon_Tetra.png\">>霓虹脂鲤(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Neon_Tetra.png\">>霓虹脂鲤(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Neon_Tetra.png\">>霓虹脂鲤($Neon_Tetra)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Neon_Tetra.png\">>霓虹脂鲤($Neon_Tetra)。",
 	},
 	"Seafood_Dinner_Chaos_Fish": {
 		name: "Seafood_Dinner",
@@ -812,9 +812,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Chaos_Fish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Chaos_Fish.png\">>混沌鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Chaos_Fish.png\">>混沌鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Chaos_Fish.png\">>混沌鱼($Chaos_Fish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Chaos_Fish.png\">>混沌鱼($Chaos_Fish)。",
 	},
 	"Seafood_Dinner_Prismite": {
 		name: "Seafood_Dinner",
@@ -827,9 +827,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Prismite: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Prismite.png\">>七彩矿鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Prismite.png\">>七彩矿鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Prismite.png\">>七彩矿鱼($Prismite)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Prismite.png\">>七彩矿鱼($Prismite)。",
 	},
 	"Seafood_Dinner_Princess_Fish": {
 		name: "Seafood_Dinner",
@@ -842,9 +842,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Princess_Fish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Princess_Fish.png\">>公主鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Princess_Fish.png\">>公主鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Princess_Fish.png\">>公主鱼($Princess_Fish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Princess_Fish.png\">>公主鱼($Princess_Fish)。",
 	},
 	"Seafood_Dinner_Damselfish": {
 		name: "Seafood_Dinner",
@@ -857,9 +857,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Damselfish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Damselfish.png\">>雀鲷(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Damselfish.png\">>雀鲷(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Damselfish.png\">>雀鲷($Damselfish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Damselfish.png\">>雀鲷($Damselfish)。",
 	},
 	"Seafood_Dinner_Frost_Minnow": {
 		name: "Seafood_Dinner",
@@ -872,9 +872,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Frost_Minnow: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Frost_Minnow.png\">>寒霜绦鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Frost_Minnow.png\">>寒霜绦鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Frost_Minnow.png\">>寒霜绦鱼($Frost_Minnow)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Frost_Minnow.png\">>寒霜绦鱼($Frost_Minnow)。",
 	},
 	"Seafood_Dinner_Flarefin_Koi": {
 		name: "Seafood_Dinner",
@@ -887,9 +887,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Flarefin_Koi: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Flarefin_Koi.png\">>闪鳍锦鲤(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Flarefin_Koi.png\">>闪鳍锦鲤(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Flarefin_Koi.png\">>闪鳍锦鲤($Flarefin_Koi)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Flarefin_Koi.png\">>闪鳍锦鲤($Flarefin_Koi)。",
 	},
 	"Seafood_Dinner_Obsidifish": {
 		name: "Seafood_Dinner",
@@ -902,9 +902,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Obsidifish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Obsidifish.png\">>黑曜石鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Obsidifish.png\">>黑曜石鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Obsidifish.png\">>黑曜石鱼($Obsidifish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Obsidifish.png\">>黑曜石鱼($Obsidifish)。",
 	},
 	"Seafood_Dinner_Sunken_Sailfish": {
 		name: "Seafood_Dinner",
@@ -917,9 +917,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Sunken_Sailfish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Sunken_Sailfish.png\">>沉沦帆鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Sunken_Sailfish.png\">>沉沦帆鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Sunken_Sailfish.png\">>沉沦帆鱼($Sunken_Sailfish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Sunken_Sailfish.png\">>沉沦帆鱼($Sunken_Sailfish)。",
 	},
 	"Seafood_Dinner_Coastal_Demonfish": {
 		name: "Seafood_Dinner",
@@ -933,9 +933,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Coastal_Demonfish: 2,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Coastal_Demonfish.png\">>海岸恶魔鱼(2)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Coastal_Demonfish.png\">>海岸恶魔鱼(2)",
 		craft: "<<set $Seafood_Dinner += 1>>",
-		crafting_info: "你制作了1份<<icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<icon \"fishing/fish/Coastal_Demonfish.png\">>海岸恶魔鱼($Coastal_Demonfish)。",
+		crafting_info: "你制作了1份<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐。<<if currentSkillValue('housekeeping') lt 1000>><<ghousekeeping 1000>><</if>><br>你有<<terra_icon \"food/Seafood_Dinner.png\">>海鲜大餐($Seafood_Dinner)，你还有<<terra_icon \"fishing/fish/Coastal_Demonfish.png\">>海岸恶魔鱼($Coastal_Demonfish)。",
 	},
 	// 肥料：生鱼片(2)+学徒诱饵(10)/熟手诱饵(5)/大师诱饵(3) 在 工作台 上制作得到
 	"fertiliser_Apprentice_Bait": {
@@ -950,9 +950,9 @@ setup.terraRecipe = {
 			Sashimi: 2,
 			Apprentice_Bait: 10,
 		},
-		ingredients_info: "<<icon \"food/Sashimi.png\">>生鱼片(2)<br><<icon \"fishing/bait/Apprentice_Bait.png\">>学徒诱饵(10)",
+		ingredients_info: "<<terra_icon \"food/Sashimi.png\">>生鱼片(2)<br><<terra_icon \"fishing/bait/Apprentice_Bait.png\">>学徒诱饵(10)",
 		craft: "<<if $Apprentice_Bait lte 0 and $Bait is 'Apprentice_Bait'>><<set $Bait to 'None'>><</if>><<set $fertiliser.current += 1>>",
-		crafting_info: "你制作了1袋<<icon \"fertiliser.png\">>肥料。<br>你有<<icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<icon \"fishing/bait/Apprentice_Bait.png\">>学徒诱饵($Apprentice_Bait)。",
+		crafting_info: "你制作了1袋<<terra_icon \"fertiliser.png\">>肥料。<br>你有<<terra_icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<terra_icon \"fishing/bait/Apprentice_Bait.png\">>学徒诱饵($Apprentice_Bait)。",
 	},
 	"fertiliser_Journeyman_Bait": {
 		name: "fertiliser",
@@ -966,9 +966,9 @@ setup.terraRecipe = {
 			Sashimi: 2,
 			Journeyman_Bait: 5,
 		},
-		ingredients_info: "<<icon \"food/Sashimi.png\">>生鱼片(2)<br><<icon \"fishing/bait/Journeyman_Bait.png\">>熟手诱饵(5)",
+		ingredients_info: "<<terra_icon \"food/Sashimi.png\">>生鱼片(2)<br><<terra_icon \"fishing/bait/Journeyman_Bait.png\">>熟手诱饵(5)",
 		craft: "<<if $Journeyman_Bait lte 0 and $Bait is 'Journeyman_Bait'>><<set $Bait to 'None'>><</if>><<set $fertiliser.current += 1>>",
-		crafting_info: "你制作了1袋<<icon \"fertiliser.png\">>肥料。<br>你有<<icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<icon \"fishing/bait/Journeyman_Bait.png\">>熟手诱饵($Journeyman_Bait)。",
+		crafting_info: "你制作了1袋<<terra_icon \"fertiliser.png\">>肥料。<br>你有<<terra_icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<terra_icon \"fishing/bait/Journeyman_Bait.png\">>熟手诱饵($Journeyman_Bait)。",
 	},
 	"fertiliser_Master_Bait": {
 		name: "fertiliser",
@@ -982,9 +982,9 @@ setup.terraRecipe = {
 			Sashimi: 2,
 			Master_Bait: 3,
 		},
-		ingredients_info: "<<icon \"food/Sashimi.png\">>生鱼片(2)<br><<icon \"fishing/bait/Master_Bait.png\">>大师诱饵(3)",
+		ingredients_info: "<<terra_icon \"food/Sashimi.png\">>生鱼片(2)<br><<terra_icon \"fishing/bait/Master_Bait.png\">>大师诱饵(3)",
 		craft: "<<if $Master_Bait lte 0 and $Bait is 'Master_Bait'>><<set $Bait to 'None'>><</if>><<set $fertiliser.current += 1>>",
-		crafting_info: "你制作了1袋<<icon \"fertiliser.png\">>肥料。<br>你有<<icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<icon \"fishing/bait/Master_Bait.png\">>大师诱饵($Master_Bait)。",
+		crafting_info: "你制作了1袋<<terra_icon \"fertiliser.png\">>肥料。<br>你有<<terra_icon \"fertiliser.png\">>肥料($fertiliser.current)，你还有<<terra_icon \"food/Sashimi.png\">>生鱼片($Sashimi)和<<terra_icon \"fishing/bait/Master_Bait.png\">>大师诱饵($Master_Bait)。",
 	},
 	//鱼饵
 	"Enchanted_Nightcrawler": {
@@ -999,9 +999,9 @@ setup.terraRecipe = {
 			Worm: 1,
 			Fallen_Star: 1,
 		},
-		ingredients_info: "<<icon \"fishing/bait/Worm.png\">>蠕虫(1)<br><<icon \"material/Fallen_Star.png\">>坠落之星(1)",
+		ingredients_info: "<<terra_icon \"fishing/bait/Worm.png\">>蠕虫(1)<br><<terra_icon \"material/Fallen_Star.png\">>坠落之星(1)",
 		craft: "<<if $Worm lte 0 and $Bait is 'Worm'>><<set $Bait to 'None'>><</if>><<set $Enchanted_Nightcrawler += 1>><<bestiaryStatistics 'bait' 'Enchanted_Nightcrawler' 1>>",
-		crafting_info: "你制作了1只<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者。<br>你有<<icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者($Enchanted_Nightcrawler)，你还有<<icon \"fishing/bait/Worm.png\">>蠕虫($Worm)和<<icon \"material/Fallen_Star.png\">>坠落之星($Fallen_Star)。",
+		crafting_info: "你制作了1只<<terra_icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者。<br>你有<<terra_icon \"fishing/bait/Enchanted_Nightcrawler.png\">>附魔夜行者($Enchanted_Nightcrawler)，你还有<<terra_icon \"fishing/bait/Worm.png\">>蠕虫($Worm)和<<terra_icon \"material/Fallen_Star.png\">>坠落之星($Fallen_Star)。",
 	},
 	// 原版的新食材
 	"Cod": {
@@ -1015,9 +1015,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Atlantic_Cod: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼(1)",
 		craft: "<<set $plants.cod.amount += 1>>",
-		crafting_info: "你制作了1份<<icon \"tending/cod.png\">>鳕鱼。<br>你有<<icon \"tending/cod.png\">>鳕鱼($plants.cod.amount)，你还有<<icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼($Atlantic_Cod)。",
+		crafting_info: "你制作了1份<<terra_icon \"tending/cod.png\">>鳕鱼。<br>你有<<terra_icon \"tending/cod.png\">>鳕鱼($plants.cod.amount)，你还有<<terra_icon \"fishing/fish/Atlantic_Cod.png\">>大西洋鳕鱼($Atlantic_Cod)。",
 	},
 	"Haddock": {
 		name: "Haddock",
@@ -1030,9 +1030,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Double_Cod: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼(1)",
 		craft: "<<set $plants.haddock.amount += 1>>",
-		crafting_info: "你制作了1份<<icon \"tending/haddock.png\">>黑线鳕鱼。<br>你有<<icon \"tending/haddock.png\">>黑线鳕鱼($plants.haddock.amount)，你还有<<icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼($Double_Cod)。",
+		crafting_info: "你制作了1份<<terra_icon \"tending/haddock.png\">>黑线鳕鱼。<br>你有<<terra_icon \"tending/haddock.png\">>黑线鳕鱼($plants.haddock.amount)，你还有<<terra_icon \"fishing/fish/Double_Cod.png\">>双鳍鳕鱼($Double_Cod)。",
 	},
 	"Prawn": {
 		name: "Prawn",
@@ -1045,9 +1045,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Shrimp: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Shrimp.png\">>虾(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Shrimp.png\">>虾(1)",
 		craft: "<<set $plants.prawn.amount += 1>>",
-		crafting_info: "你制作了1份<<icon \"tending/prawn.png\">>虾。<br>你有<<icon \"tending/prawn.png\">>虾($plants.prawn.amount)，你还有<<icon \"fishing/fish/Shrimp.png\">>虾($Shrimp)。",
+		crafting_info: "你制作了1份<<terra_icon \"tending/prawn.png\">>虾。<br>你有<<terra_icon \"tending/prawn.png\">>虾($plants.prawn.amount)，你还有<<terra_icon \"fishing/fish/Shrimp.png\">>虾($Shrimp)。",
 	},
 	"Salmon": {
 		name: "Salmon",
@@ -1060,9 +1060,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Salmon: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Salmon.png\">>三文鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Salmon.png\">>三文鱼(1)",
 		craft: "<<set $plants.salmon.amount += 1>>",
-		crafting_info: "你制作了1份<<icon \"tending/salmon.png\">>鲑鱼。<br>你有<<icon \"tending/salmon.png\">>鲑鱼($plants.salmon.amount)，你还有<<icon \"fishing/fish/Salmon.png\">>三文鱼($Salmon)。",
+		crafting_info: "你制作了1份<<terra_icon \"tending/salmon.png\">>鲑鱼。<br>你有<<terra_icon \"tending/salmon.png\">>鲑鱼($plants.salmon.amount)，你还有<<terra_icon \"fishing/fish/Salmon.png\">>三文鱼($Salmon)。",
 	},
 	"Trout": {
 		name: "Trout",
@@ -1075,9 +1075,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Trout: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Trout.png\">>鳟鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Trout.png\">>鳟鱼(1)",
 		craft: "<<set $plants.trout.amount += 1>>",
-		crafting_info: "你制作了1份<<icon \"tending/trout.png\">>鳟鱼。<br>你有<<icon \"tending/trout.png\">>鳟鱼($plants.trout.amount)，你还有<<icon \"fishing/fish/Trout.png\">>鳟鱼($Trout)。",
+		crafting_info: "你制作了1份<<terra_icon \"tending/trout.png\">>鳟鱼。<br>你有<<terra_icon \"tending/trout.png\">>鳟鱼($plants.trout.amount)，你还有<<terra_icon \"fishing/fish/Trout.png\">>鳟鱼($Trout)。",
 	},
 	"Honey_Honeyfin": {
 		name: "Honey",
@@ -1090,9 +1090,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Honeyfin: 1,
 		},
-		ingredients_info: "<<icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼(1)",
+		ingredients_info: "<<terra_icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼(1)",
 		craft: "<<set $plants.honey.amount += 400>>",
-		crafting_info: "你制作了400份<<icon \"tending/honey.png\">>蜂蜜。<br>你有<<icon \"tending/honey.png\">>蜂蜜($plants.honey.amount)，你还有<<icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼($Honeyfin)。",
+		crafting_info: "你制作了400份<<terra_icon \"tending/honey.png\">>蜂蜜。<br>你有<<terra_icon \"tending/honey.png\">>蜂蜜($plants.honey.amount)，你还有<<terra_icon \"fishing/fish/Honeyfin.png\">>蜂蜜鱼($Honeyfin)。",
 	},
 	"Honey_Bottomless_Honey_Bucket": {
 		name: "Honey",
@@ -1105,9 +1105,9 @@ setup.terraRecipe = {
 		ingredients: {
 			Bottomless_Honey_Bucket: true,
 		},
-		ingredients_info: "<<icon \"tool/Bottomless_Honey_Bucket.png\">>无底蜂蜜桶(不消耗)",
+		ingredients_info: "<<terra_icon \"tool/Bottomless_Honey_Bucket.png\">>无底蜂蜜桶(不消耗)",
 		craft: "<<set $plants.honey.amount += 100>>",
-		crafting_info: "你制作了100份<<icon \"tending/honey.png\">>蜂蜜。",
+		crafting_info: "你制作了100份<<terra_icon \"tending/honey.png\">>蜂蜜。",
 	},
 }
 

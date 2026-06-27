@@ -39,7 +39,7 @@
 		<<set $fishing_place to "barb_street">>
 <</switch>>
 <!-- 给予罗宾鱼饵。在罗宾的鱼饵消耗完之前，罗宾会处在钓鱼状态；消耗完之后，会处于在旁边看pc钓鱼的状态 -->
-你给了罗宾$robin_bait_amount个<<icon `$robin_bait_icon`>>$robin_bait_cn_name。<br>
+你给了罗宾$robin_bait_amount个<<terra_icon `$robin_bait_icon`>>$robin_bait_cn_name。<br>
 <!-- 从pc身上扣除给出的鱼饵，免得在约会中继续使用这种鱼饵产生透支的情况 -->
 <<set V[$robin_bait_type] -= $robin_bait_amount>>
 <br>

@@ -7,7 +7,9 @@ function terraStartOnly() {
 	V.fishing_requests_finished_count = 0;
 
 	// NPC性别选项（目前只有渔夫性别可选）
-	V.options.terraGender = {};
+	V.options.terraGender = {
+		Angler: "m",
+	};
 
 	// 渔夫任务奖励家具
 	V.angler_furniture_obtained = [];
@@ -44,6 +46,10 @@ function terraStartOnly() {
 	for (const m of Object.keys(setup.terraMaterial).filter(pm => setup.terraMaterial[pm].type === "material")) {
 		const mi = setup.terraMaterial[m];
 		V[mi.name] = 0;
+	}
+	for (const mi of Object.keys(setup.terraMiscellaneous).filter(pmi => setup.terraMiscellaneous[pmi].type === "herb_seed")) {
+		const mii = setup.terraMiscellaneous[mi];
+		V[mii.name] = 0;
 	}
 
 	// 森林商店鱼饵初始化，第一周固定为蠕虫类，第一天固定为蠕虫
@@ -142,6 +148,12 @@ function terraStartOnly() {
 			}
 		}
 	}
+
+	// 草药种植区域初始化
+	V.terra_herb_plots = {};
+
+	// 草药生长速率
+	V.terra_herb_updateRate = 550;
 }
 window.terraStartOnly = terraStartOnly;
 

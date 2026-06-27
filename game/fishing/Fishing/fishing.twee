@@ -1,4 +1,5 @@
 :: Fishing
+<span class="icon"></span>
 <!-- 每回合耗时10s -->
 <<pass 10 seconds>>
 <!-- 显示钓鱼地点 -->
@@ -17,23 +18,29 @@
 	<<fishing_finished_back>>
 	<<exitAll>>
 <</if>>
-<!-- 钓到钓鱼垃圾和内裤时直接跳过跳鱼小游戏 -->
-<<if ["Old_Shoe","Seaweed_junk","Tin_Can","Joja_Cola","feathers","swim_underwear"].includes($fishing_harvest.name)>>
+<!-- 钓到钓鱼垃圾和内裤时，或在调试界面开启了跳过钓鱼小游戏时，直接跳过钓鱼小游戏 -->
+<<if ["Old_Shoe","Seaweed_junk","Tin_Can","Joja_Cola","feathers","swim_underwear"].includes($fishing_harvest.name) or $terra_fishing_skip>>
 	<<set $fishing_harvest_count += 1>>
 	<<run fishingEnd()>>
-	<span class="green">你猛地一收竿，宣示着你的胜利！</span><br>
+	<span class="green">你猛地一收竿，宣示着你的胜利！</span>
 	<<if $fishing_harvest.name is "swim_underwear">>
 		<<set _colour to either("蓝色","绿色","红色","黑色","粉色","紫色","黄色","白色","橙色","条纹","波点")>>
+		<br>
 		你钓到了一条_colour的<<print $fishing_harvest.cn_name>>！
-		<<if $panties_held is undefined>>
+		<<if $panties_held is undefined and $panty_thief is undefined>> <!-- 如果之前没有偷到内裤，并且还没认识内衣小偷，就不能通过此方法获得内裤 -->
 			但你并不知道这能用来做什么，将它扔回了泳池。<br>
 		<<else>>
 			<<run fishingHarvest()>>
 			或许有人愿意出价收购它。<br>
 		<</if>>
+	<<elseif ["Old_Shoe","Seaweed_junk","Tin_Can","Joja_Cola","feathers"].includes($fishing_harvest.name)>>
+		<<run fishingHarvest()>>
+		<br>
+		你钓到了<<if $fishing_harvest.icon isnot undefined>><<terra_icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
 	<<else>>
 		<<run fishingHarvest()>>
-		你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
+		<<llstress>><<stress -6>><br>
+		你钓到了<<if $fishing_harvest.icon isnot undefined>><<terra_icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
 	<</if>>
 	<<baitConsumed>>
 	<br>
@@ -60,7 +67,7 @@
 				<span class="red">看起来你在咬钩时就没有渔获判定成功，你是怎么看到这条消息的？这是不应该存在的情况，请向模组作者反馈</span><br>
 			<<default>>
 				<<run fishingHarvest()>>
-				你钓到了<<if $fishing_harvest.icon isnot undefined>><<icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
+				你钓到了<<if $fishing_harvest.icon isnot undefined>><<terra_icon `$fishing_harvest.icon`>><</if>><<print $fishing_harvest.cn_name>>！<br>
 		<</switch>>
 	<</if>>
 	<<baitConsumed>>
@@ -99,7 +106,7 @@
 			<span class="red">在强烈的拽拉下，你还没来得及甩开紧握的鱼竿，逐渐感到身体失去平衡……你被拖进了<<print $fishing_place is "trash" ? "沸水" : "熔岩">>里。</span><<ggstress>><<stress 18>><<gtrauma>><<trauma 2>><br>
 			<br>
 			<<if $terra_accessories_slots.includes("Lava_Charm")>>
-				<span class="green">幸运的是，<<icon "accessories/Lava_Charm.png">>熔岩护身符的保护下，这种强烈催情性的液体对你没有效果。</span><br>
+				<span class="green">幸运的是，<<terra_icon "accessories/Lava_Charm.png">>熔岩护身符的保护下，这种强烈催情性的液体对你没有效果。</span><br>
 				<br>
 				你花费了一些时间爬到岸上。<br>
 			<<else>>
@@ -151,7 +158,7 @@
 
 :: Widgets Fishing [widget]
 <<widget "fishingrod_held_icon">>
-	<<icon `setup.terraFishingRod[$options.fishingrod_held].icon`>>
+	<<terra_icon `setup.terraFishingRod[$options.fishingrod_held].icon`>>
 <</widget>>
 
 <<widget "fishing_place">>
@@ -171,7 +178,7 @@
 			<span class="pink">它刚刚明明就没动！</span>| <span class="green">+ + 垂钓</span><<gstress>><<stress 3>>
 	<</switch>><br>
 	<br>
-	<<if $Bait isnot "None">><<icon `setup.terraBait[$Bait].icon`>><</if>>钓鱼状态<br>
+	<<if $Bait isnot "None">><<terra_icon `setup.terraBait[$Bait].icon`>><</if>>钓鱼状态<br>
 	<span @class="
 		$fishing_distance <=   0 ? 'green' :
 		$fishing_distance <=  20 ? 'teal' :
@@ -199,9 +206,9 @@
 	<!-- 判断是否装备着钓鱼浮标及其升级物 -->
 	<<set $_accessory_Fishing_Bobber to V.terra_accessories_slots.find(accessory => setup.terraAccessories[accessory].type === "bobber") or V.terra_vanity_accessories_slots.find(accessory => setup.terraAccessories[accessory].type === "bobber")>>
 	<<if $_accessory_Fishing_Bobber>>
-		<<icon `'fishing/bobber/' + $_accessory_Fishing_Bobber + ($_accessory_Fishing_Bobber is "Helium_Moss_Fishing_Bobber" ? '.gif' : '.png')`>>
+		<<terra_icon `'fishing/bobber/' + $_accessory_Fishing_Bobber + ($_accessory_Fishing_Bobber is "Helium_Moss_Fishing_Bobber" ? '.gif' : '.png')`>>
 	<<else>>
-		<<icon `setup.terraFishingRod[$options.fishingrod_held].icon_bobber`>>
+		<<terra_icon `setup.terraFishingRod[$options.fishingrod_held].icon_bobber`>>
 	<</if>>
 <</widget>>
 

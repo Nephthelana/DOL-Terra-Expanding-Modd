@@ -1,0 +1,14 @@
+:: Terra Gold Fish [widget]
+<<widget "terraGoldFish">>
+	<<if ["lightPrecipitation","heavyPrecipitation"].includes(Weather.name) and random(1,9) is 1>>
+		<<if Time.isBloodMoon()>>
+			<<if random(1,2) is 1>>
+				<<terra_icon "gold_fish/Vicious_Goldfish2.gif">>有一条丑陋无比的鱼在岸边蠕动着，你尽量避开了它。<<terraHint>><br>
+			<</if>>
+		<<elseif random(1,400) is 1>>
+			<<terra_icon "gold_fish/Gold_Goldfish_Walker.gif">>有一条金金鱼在岸边行走着，你简直不敢相信自己的眼睛！<<terraHint>><br>
+		<<else>>
+			<<terra_icon "gold_fish/Goldfish_Walker.gif">>有一条金鱼在岸边行走着，真有趣！<<terraHint>><br>
+		<</if>>
+	<</if>>
+<</widget>>

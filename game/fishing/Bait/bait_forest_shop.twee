@@ -1,44 +1,53 @@
 :: Bait Forest Shop [widget]
-<<widget "bait_forest_shop">>
-	<br>
+<<widget "bait_forest_shop_icon">>
 	<<if $bait_forest_shop_intro is undefined>>
-		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
-		放在商店中央的是一张生命木桌，上面一个装着小动物的容器引起了你的注意。<br>
-		<br>
-		<<link [[凑上前去|Bait Forest Shop Intro]]>><</link>>
-		<<exitAll>>
-	<</if>>
-	<<set _bait_forest_shop to setup.terraBait[$bait_forest_shop]>>
-	<<icon `_bait_forest_shop.icon_placed`>><br>
-	<<if !(_bait_forest_shop.type is "firefly")>>
-		<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
-	<</if>>
-	<<if Object.keys(V.bestiary.bait).includes(_bait_forest_shop.name)>>
-		<<print _bait_forest_shop.type is "firefly" ? "天花板上挂着" : "生命木桌上摆着">>一个装有<<print _bait_forest_shop.cn_name>>的<<print ["butterfly","dragonfly","firefly"].includes(_bait_forest_shop.type) ? "罐子" : "笼子">>。<br>
-		<<if $bait_forest_shop_received>>
-			<span class="blue">这周你已经向格威岚要过小虫子了。</span>
-		<<else>>
-			<<link [[看向格威岚，指着里面|Bait Forest Shop Receive]]>><</link>>
-		<</if>>
+		<<terra_icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		放在商店中央的是一张生命木桌，上面摆着装有小动物的容器。你可以向格威岚问问这是什么。<br>
 	<<else>>
-		<<mysteryicon>><<link [[询问这里面是什么|Bestiary Forest Shop]]>><</link>>
+		<<set _bait_forest_shop to setup.terraBait[$bait_forest_shop]>>
+		<<terra_icon `_bait_forest_shop.icon_placed`>><br>
+		<<if !(_bait_forest_shop.type is "firefly")>>
+			<<terra_icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+		<</if>>
+		<<if Object.keys(V.bestiary.bait).includes(_bait_forest_shop.name)>>
+			<<print _bait_forest_shop.type is "firefly" ? "天花板上挂着" : "生命木桌上摆着">>一个装有<<print _bait_forest_shop.cn_name>>的<<print ["butterfly","dragonfly","firefly"].includes(_bait_forest_shop.type) ? "罐子" : "笼子">>。<br>
+			<<if $bait_forest_shop_received>>
+				<span class="blue">你这周已经向格威岚要过小虫子了。</span><br>
+			<</if>>
+		<</if>>
 	<</if>>
-	<<if $Bug_Net isnot true and $Lavaproof_Bug_Net isnot true>>
-		<br>
-		<<link [[你都是怎么抓的虫子？|Bait Forest Shop Bug Net]]>><</link>>
+	<br>
+<</widget>>
+
+<<widget "bait_forest_shop_conversation">>
+	<<if $bait_forest_shop_intro is undefined>>
+		<<mysteryicon>><<link [[询问生命木桌上的东西|Bait Forest Shop Intro]]>><</link>><<terraHint>><br>
+	<<else>>
+		<<set _bait_forest_shop to setup.terraBait[$bait_forest_shop]>>
+		<<if Object.keys(V.bestiary.bait).includes(_bait_forest_shop.name)>>
+			<<if !$bait_forest_shop_received>>
+				<<ind>><<link [[向格威岚要这周的昆虫|Bait Forest Shop Receive]]>><</link>><<terraHint>><br>
+			<</if>>
+		<<else>>
+			<<mysteryicon>><<link [[询问店内的瓶罐里装的是什么昆虫|Bestiary Forest Shop]]>><</link>><<terraHint>><br>
+		<</if>>
+		<<if $Bug_Net isnot true and $Lavaproof_Bug_Net isnot true>>
+			<<ind>><<link [[你都是怎么抓的虫子？|Bait Forest Shop Bug Net]]>><</link>><br>
+		<</if>>
 	<</if>>
 <</widget>>
 
 :: Bait Forest Shop Intro
 <<npc Gwylan>><<person1>>
+<<set $bait_forest_shop_intro to true>>
 <<set _bait_forest_shop to setup.terraBait[$bait_forest_shop]>>
 <<bestiaryStatistics "bait" $bait_forest_shop 0>>
-“如你所见，这里面装着一只小虫子。我喜欢像这样把它们装在玻璃里欣赏。你觉得呢？”你的耳边响起了格威岚的声音。<br>
+“如你所见，这里面装着一只小虫子。我喜欢像这样把它们装在玻璃里欣赏。你觉得呢？”格威岚向你解释道。<br>
 <br>
-还没等你回答，<<He>>继续说道：“在森林里能抓到的可不止这一种昆虫。虽然我在这里已经生活了很久，但我不敢保证我已经将它们中的每一种都收入囊中——不断地丰富自己的图鉴也是一桩乐事。”<br>
-<<icon `_bait_forest_shop.icon_placed`>><br>
+还没等你回答，<<He>>继续说：“在森林里能抓到的可不止这一种昆虫。虽然我在这里已经生活了很久，但我不敢保证我已经将它们中的每一种都收入囊中——不断地丰富自己的图鉴也是一桩乐事。”<br>
+<<terra_icon `_bait_forest_shop.icon_placed`>><br>
 <<if !(_bait_forest_shop.type is "firefly")>>
-	<<icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
+	<<terra_icon "furniture_placed/Living_Wood_Table_(placed).png">><br>
 <</if>>
 格威岚告诉你这是一只<<print _bait_forest_shop.cn_name>>。<br>
 <span class="gold">图鉴解锁了新的条目！</span><br>
@@ -51,7 +60,7 @@
 <br>
 “还要看看商店里的其他东西吗？”<br>
 <br>
-<<getouticon>><<link [[返回|Forest Shop]]>><<set $bait_forest_shop_intro to true>><<endevent>><</link>>
+<<gwylanOptionsLeave>>
 
 :: Bestiary Forest Shop
 <<npc Gwylan>><<person1>>
@@ -61,6 +70,4 @@
 <br>
 <span class="gold">图鉴解锁了新的条目！</span><br>
 <br>
-<<getouticon>><<link [[返回|Forest Shop]]>><</link>><br>
-<br>
-<<endevent>>
+<<gwylanOptionsLeave>>

@@ -21,13 +21,13 @@
 	<<set $guide_mod_hint to true>>
 	<<set $pet_list.pushUnique("Royal_Delight")>>
 	“谢谢你帮我找到了净化粉和铜短剑，之后我会为你提供关于模组的提示。另外请收下这个。”<br>
-	<<icon "pet/pet_item/Royal_Delight.png">>
+	<<terra_icon "pet/pet_item/Royal_Delight.png">>
 	<br>
 	他将一碟蓝色果冻状的东西递了过来。你最初以为这是某种甜品，直到你亲眼看到它蠕动起来。它慢慢地融化、变形，然后突然冒出两只豆豆眼。它好奇地看了看你，脸上浮现出了两团可疑的红晕。<br>
 	<br>
-	“别担心，它只是一团无害的史菜姆。<span class="teal">你可以把这份‘皇家美味’放在卧室里。</span>”向导微笑着说，<span class="gold">“感谢游玩泰拉瑞亚模组，祝你玩得开心。”</span>他向你友好地眨眨眼。<br>
+	“别担心，它只是一团无害的史菜姆。<span class="teal">你可以把这份‘皇家美味’放在卧室里，或者<mouse class="tooltip">让它跟着你<span class="linkBlue">在“盔甲&饰品”窗口进行设置</span></mouse>。</span>”向导微笑着说，<span class="gold">“感谢游玩泰拉瑞亚模组，祝你玩得开心。”</span>他向你友好地眨眨眼。<br>
 	<br>
-	<<icon "pet/pet_projectile/Slime_Prince.gif">><br>
+	<<terra_icon "pet/pet_projectile/Slime_Prince.gif">><br>
 <</if>>
 <br>
 <<link [[返回|Guide Room]]>><</link>>
@@ -39,7 +39,7 @@
 <br>
 “至于这些物品是什么，请允许我暂且向你保密。”<br>
 <br>
-<span class="green">你获得了<<icon "Purification_Powder.png">>净化粉。</span><br>
+<span class="green">你获得了<<terra_icon "Purification_Powder.png">>净化粉。</span><br>
 <br>
 <<link [[返回|Temple Jordan]]>><<set $Purification_Powder to true>><</link>>
 
@@ -50,7 +50,7 @@
 <br>
 “至于如何得到有效的比例，以后的我们应该能得到答案。谢谢你帮我带来这个。”<br>
 <br>
-<<icon "Purification_Powder.png">><br>
+<<terra_icon "Purification_Powder.png">><br>
 <br>
 <<link [[你记得当时约旦说了什么吗？|Guide Mod Hint Purification Powder Recall]]>><</link>><br>
 <<if $guide_mod_hint>>
@@ -77,7 +77,7 @@
 <br>
 “而以前的人为何会持有这样一把，与‘剑’本身的地位相差如此悬殊的武器，也值得推敲。”<br>
 <br>
-<span class="green">你获得了<<icon "Copper_Shortsword.png">>铜短剑。</span><br>
+<span class="green">你获得了<<terra_icon "Copper_Shortsword.png">>铜短剑。</span><br>
 <br>
 <<link [[返回|Museum]]>><<set $Copper_Shortsword to true>><</link>>
 
@@ -88,7 +88,7 @@
 <br>
 “也许我们能在这个世界里赋予它新的存在价值，但不是今天。谢谢你帮我带来这个。”<br>
 <br>
-<<icon "Copper_Shortsword.png">><br>
+<<terra_icon "Copper_Shortsword.png">><br>
 <br>
 <<link [[你记得当时温特说了什么吗？|Guide Mod Hint Copper Shortsword Recall]]>><</link>><br>
 <<if $guide_mod_hint>>

@@ -35,7 +35,7 @@
 		}>>
 
 		<br>
-		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了旧下水道的地图以及你所处的位置。</span>
+		<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了旧下水道的地图以及你所处的位置。</span>
 		<div class="GPSOldSewerMap">
 			<img src="img/misc/map/旧下水道地图.png">
 			<img src="img/misc/map/箭头.png" @style="'
@@ -86,12 +86,12 @@
 		<<set _markLocation.pushUnique({
 			x: $tentnorth,
 			y: $tenteast,
-			icon: "<<icon 'map/pc.png'>>",
+			icon: "<<terra_icon 'map/pc.png'>>",
 			class: "",
 		})>>
 
 		<br>
-		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了触手平原的地图以及你所处的位置。</span>
+		<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了触手平原的地图以及你所处的位置。</span>
 		<div class="GPSTentaclePlainsMap">
 			<img src="img/misc/map/11*11地图.png">
 			<<for _mark range _markLocation>>
@@ -144,7 +144,7 @@
 		}>>
 
 		<br>
-		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了老教堂墓地的地图以及你所处的位置。</span>
+		<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了老教堂墓地的地图以及你所处的位置。</span>
 		<div class="GPSCatacombs">
 			<img src="img/misc/map/老教堂墓地地图.png">
 			<<if $tending lt 500>>
@@ -220,7 +220,7 @@
 		}>>
 
 		<br>
-		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了码头的地图以及你所处的位置。</span>
+		<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了码头的地图以及你所处的位置。</span>
 		<div class="GPSDocks">
 			<img src="img/misc/map/码头地图.png">
 			<<if setup.terraAccessories.Metal_Detector.upgrades.some(a => V[a])>>
@@ -233,14 +233,14 @@
 					'">
 						<<switch _location[1].contents>>
 							<<case "gold">>
-								<<icon "map/Gold_Bar.png">>
+								<<terra_icon "map/Gold_Bar.png">>
 							<<case "aphrodisiacs">>
-								<<icon "aphrodisiac.png">>
+								<<terra_icon "aphrodisiac.png">>
 							<<case "fertiliser">>
-								<<icon "fertiliser.png">>
+								<<terra_icon "fertiliser.png">>
 							<<case "electronics">>
 								<<if $radarMessage is "dock">>
-									<<icon "accessories/Radar.png">>
+									<<terra_icon "accessories/Radar.png">>
 								<</if>>
 						<</switch>>
 					</div>
@@ -259,11 +259,11 @@
 <<widget "GPSForest">>
 	<<if setup.terraAccessories.GPS.upgrades.some(a => V[a])>>
 		<br>
-		<<if between(V.forest, 0, 20) or $passage is "Churchyard">>
-			<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了森林入口附近的地图以及你所处的位置。</span>
+		<<if ($forest gte 0 and $forest lte 20) or $passage is "Churchyard">>
+			<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了森林入口附近的地图以及你所处的位置。</span>
 			<<set _markLocation to {
-				0 : {x: 0, y: 0},
-				5 : {x: 1, y: 0},
+				 0: {x: 0, y: 0},
+				 5: {x: 1, y: 0},
 				10: {x: 2, y: 0},
 				15: {x: 3, y: 0},
 				20: {x: 4, y: 0},
@@ -290,7 +290,7 @@
 				</div>
 			</div>
 		<<else>>
-			<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了森林深处的地图以及你所处的位置。</span>
+			<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了森林深处的地图以及你所处的位置。</span>
 			<<set _markLocation to {
 				25: {x: 0, y: 0},
 				30: {x: 1, y: 0},
@@ -429,7 +429,7 @@
 		}>>
 
 		<br>
-		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了走私者洞穴的地图以及你所处的位置。</span>
+		<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了走私者洞穴的地图以及你所处的位置。</span>
 		<div class="GPSBeachCave">
 			<img src="img/misc/map/走私者洞穴地图.png">
 			<<if $smuggler_pub_known is 1 or ($historytrait gte 4 or ($temple_spear_mission gte 1 and $temple_spear_mission_winter is 1))>>
@@ -484,13 +484,13 @@
 				{
 					x: -3,
 					y: 3,
-					icon: "<<icon 'bush.png'>>",
+					icon: "<<terra_icon 'bush.png'>>",
 					class: "",
 				},
 				{
 					x: -3,
 					y: -3,
-					icon: "<<icon 'bush.png'>>",
+					icon: "<<terra_icon 'bush.png'>>",
 					class: "",
 				}
 			]>>
@@ -499,7 +499,7 @@
 					<<set _markLocation.pushUnique({
 						x: $daily.huntRemyCampNorth,
 						y: $daily.huntRemyCampEast,
-						icon: "<<icon 'birdTower/cooking_pot.png'>>",
+						icon: "<<terra_icon 'birdTower/cooking_pot.png'>>",
 						class: "",
 					})>>
 				<</if>>
@@ -507,7 +507,7 @@
 					<<set _markLocation.pushUnique({
 						x: $daily.emptyCampNorth,
 						y: $daily.emptyCampEast,
-						icon: Time.dayState isnot "night" ? "<<icon 'birdTower/firepit_robust_0.gif'>>" : "<<icon 'birdTower/firepit_robust_3.gif'>>",
+						icon: Time.dayState isnot "night" ? "<<terra_icon 'birdTower/firepit_robust_0.gif'>>" : "<<terra_icon 'birdTower/firepit_robust_3.gif'>>",
 						class: "",
 					})>>
 				<</if>>
@@ -520,7 +520,7 @@
 			})>>
 
 			<br>
-			<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了鹰塔及其周围区域的地图以及你所处的位置。</span>
+			<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了鹰塔及其周围区域的地图以及你所处的位置。</span>
 			<div class="GPSTentaclePlainsMap">
 				<img src="img/misc/map/11*11地图.png">
 				<<for _mark range _markLocation>>
@@ -565,7 +565,7 @@
 		}>>
 
 		<br>
-		<<icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了荒原的地图以及你所处的位置。</span>
+		<<terra_icon "accessories/GPS.png">><span class="gold">全球定位系统显示出了荒原的地图以及你所处的位置。</span>
 		<div class="GPSMoor">
 			<img src="img/misc/map/荒原地图.png">
 			<<if $bogProgress gte 1>>

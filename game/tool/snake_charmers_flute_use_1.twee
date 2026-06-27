@@ -1,7 +1,7 @@
 :: Snake Charmers Flute Use 1
 <<set $outside to 1>><<effects>>
 你用耍蛇者长笛爬到了高处。<br>
-<<icon "Mystic_Snake_Coil.png">><br>
+<<terra_icon "Mystic_Snake_Coil.png">><br>
 <br>
 <<snakeCharmersFluteText>>
 <br>
